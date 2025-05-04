@@ -12,17 +12,15 @@
 	let isLoading = false;
 	let isModelLoaded = false;
 	let downloadProgress = 0;
-	let error = '';
+	let downloadError = false;
 
 	// Function to generate completion
 	async function generateCompletion() {
 		if (!isModelLoaded) {
-			error = 'Model is not loaded yet. Please wait.';
 			return;
 		}
 
 		try {
-			error = '';
 			isLoading = true;
 			outputText = await wllama.createCompletion(inputText, {
 				nPredict: 50,
@@ -33,16 +31,18 @@
 				}
 			});
 		} catch (err) {
-			error = `Error generating completion: ${err.message}`;
-			console.error(err);
+			console.error('Generation error:', err);
 		} finally {
 			isLoading = false;
 		}
 	}
 
-	onMount(async () => {
+	// Function to load model
+	async function loadModel() {
 		try {
 			isLoading = true;
+			downloadError = false;
+
 			const CONFIG_PATHS = {
 				'single-thread/wllama.wasm': singleThreaded,
 				'multi-thread/wllama.wasm': multiThreaded
@@ -69,11 +69,15 @@
 
 			isModelLoaded = true;
 		} catch (err) {
-			error = `Error loading model: ${err.message}`;
-			console.error(err);
+			console.error('Model loading error:', err);
+			downloadError = true;
 		} finally {
 			isLoading = false;
 		}
+	}
+
+	onMount(() => {
+		loadModel();
 	});
 </script>
 
@@ -82,8 +86,17 @@
 
 	{#if !isModelLoaded}
 		<div class="loading">
-			<p>Loading model: {downloadProgress}%</p>
-			<progress value={downloadProgress} max="100"></progress>
+			{#if downloadError}
+				<div class="error">
+					<p>Failed to load model. Please check your connection and try again.</p>
+					<button on:click={loadModel} disabled={isLoading}>
+						{isLoading ? 'Reloading...' : 'Reload Model'}
+					</button>
+				</div>
+			{:else}
+				<p>Loading model: {downloadProgress}%</p>
+				<progress value={downloadProgress} max="100"></progress>
+			{/if}
 		</div>
 	{:else}
 		<div class="input-section">
@@ -100,12 +113,6 @@
 				{isLoading ? 'Generating...' : 'Generate Completion'}
 			</button>
 		</div>
-
-		{#if error}
-			<div class="error">
-				{error}
-			</div>
-		{/if}
 
 		{#if outputText}
 			<div class="output-section">
@@ -151,6 +158,10 @@
 	button:disabled {
 		background-color: #cccccc;
 		cursor: not-allowed;
+	}
+
+	button:hover:not(:disabled) {
+		background-color: #45a049;
 	}
 
 	.loading {
