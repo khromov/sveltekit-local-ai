@@ -22,10 +22,14 @@
 		};
 		// Load GGUF from Hugging Face hub
 		// (alternatively, you can use loadModelFromUrl if the model is not from HF hub)
-		await wllama.loadModelFromHF('ggml-org/models', 'tinyllamas/stories260K.gguf', {
-			progressCallback
-		});
-		const outputText = await wllama.createCompletion('The ball was', {
+		await wllama.loadModelFromHF(
+			'HuggingFaceTB/SmolLM2-360M-Instruct-GGUF',
+			'smollm2-360m-instruct-q8_0.gguf',
+			{
+				progressCallback
+			}
+		);
+		const outputText = await wllama.createCompletion('The capital of France is', {
 			nPredict: 50,
 			sampling: {
 				temp: 0.5,
