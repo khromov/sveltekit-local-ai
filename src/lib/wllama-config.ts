@@ -47,17 +47,6 @@ export interface Message {
 	content: string;
 }
 
-export const WllamaStorage = {
-	save<T>(key: string, data: T) {
-		localStorage.setItem(key, JSON.stringify(data));
-	},
-
-	load<T>(key: string, defaultValue: T): T {
-		const stored = localStorage.getItem(key);
-		return stored ? JSON.parse(stored) : defaultValue;
-	}
-};
-
 // Helper to format human readable file sizes
 export function formatFileSize(bytes: number): string {
 	const units = ['B', 'KB', 'MB', 'GB', 'TB'];

@@ -7,10 +7,11 @@
 		DEFAULT_INFERENCE_PARAMS,
 		DEFAULT_CHAT_TEMPLATE,
 		AVAILABLE_MODELS,
-		WllamaStorage,
 		formatFileSize,
 		type Message
 	} from '$lib/wllama-config';
+
+	import { chat, inferenceParams } from '$lib/stores';
 
 	// State variables
 	let wllama: Wllama;
@@ -22,10 +23,10 @@
 	let modelSelection = AVAILABLE_MODELS[0].url;
 	let selectedModel = AVAILABLE_MODELS[0];
 	let inputText = '';
-	let messages: Message[] = WllamaStorage.load('chat_messages', []);
+	let messages: Message[] = $chat || [];
 	let stopSignal = false;
 
-	let params = WllamaStorage.load('inference_params', DEFAULT_INFERENCE_PARAMS);
+	let params = $inferenceParams || DEFAULT_INFERENCE_PARAMS;
 
 	async function loadModel() {
 		try {
@@ -82,7 +83,7 @@
 		};
 
 		messages = [...messages, assistantMessage];
-		WllamaStorage.save('chat_messages', messages);
+		$chat = messages;
 
 		inputText = '';
 		isGenerating = true;
@@ -112,7 +113,7 @@
 			});
 
 			// Save messages to storage
-			WllamaStorage.save('chat_messages', messages);
+			$chat = messages;
 		} catch (err) {
 			console.error('Generation error:', err);
 		} finally {
@@ -174,12 +175,12 @@
 			stopGeneration();
 		}
 		messages = [];
-		WllamaStorage.save('chat_messages', messages);
+		//WllamaStorage.save('chat_messages', messages);
 	}
 
 	// Update inference parameters
 	function updateParams() {
-		WllamaStorage.save('inference_params', params);
+		$inferenceParams = params;
 	}
 
 	// Initialize on component mount
@@ -193,7 +194,7 @@
 						"You are a helpful AI assistant. Answer the user's questions concisely and accurately."
 				}
 			];
-			WllamaStorage.save('chat_messages', messages);
+			//WllamaStorage.save('chat_messages', messages);
 		}
 	});
 </script>
