@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Wllama } from '@wllama/wllama';
 	import { onMount } from 'svelte';
+	import { Template } from '@huggingface/jinja';
 	import {
 		WLLAMA_CONFIG_PATHS,
 		DEFAULT_INFERENCE_PARAMS,
@@ -11,6 +12,7 @@
 		type Message
 	} from '$lib/wllama-config';
 
+	// State variables
 	let wllama: Wllama;
 	let isLoading = false;
 	let isModelLoaded = false;
@@ -23,8 +25,10 @@
 	let messages: Message[] = WllamaStorage.load('chat_messages', []);
 	let stopSignal = false;
 
+	// Inference params
 	let params = WllamaStorage.load('inference_params', DEFAULT_INFERENCE_PARAMS);
 
+	// Function to load model
 	async function loadModel() {
 		try {
 			isLoading = true;
@@ -92,7 +96,8 @@
 
 		try {
 			// Format chat history for the model
-			let formattedChat = formatChatHistory(messages.slice(0, -1));
+			let formattedChat = await formatChatHistory(messages.slice(0, -1));
+			console.log('Formatted chat:', formattedChat);
 
 			// Generate completion
 			await wllama.createCompletion(formattedChat, {
@@ -127,21 +132,44 @@
 	}
 
 	// Function to format chat history
-	function formatChatHistory(msgs: Message[]): string {
+	async function formatChatHistory(msgs: Message[]): Promise<string> {
 		try {
-			const template = wllama.getChatTemplate() || DEFAULT_CHAT_TEMPLATE;
+			const templateStr = wllama.getChatTemplate() || DEFAULT_CHAT_TEMPLATE;
 
-			// Simple template handling for common formats
-			// This is a simplified version - a proper implementation would use a template engine
-			let result = '';
-			for (const msg of msgs) {
-				result += `<|im_start|>${msg.role}\n${msg.content}<|im_end|>\n`;
+			// Special handling for DeepSeek models that cause issues with jinja
+			const isDeepSeekR1 =
+				templateStr.match(/<｜Assistant｜>/) &&
+				templateStr.match(/<｜User｜>/) &&
+				templateStr.match(/<\/think>/);
+
+			if (isDeepSeekR1) {
+				let result = '';
+				for (const message of msgs) {
+					if (message.role === 'system') {
+						result += `${message.content}\n\n`;
+					} else if (message.role === 'user') {
+						result += `<｜User｜>${message.content}`;
+					} else {
+						result += `<｜Assistant｜>${message.content.split('</think>').pop()}<｜end▁of▁sentence｜>`;
+					}
+				}
+				return result + '<｜Assistant｜>';
 			}
 
-			result += '<|im_start|>assistant\n';
-			return result;
+			// Standard template rendering with jinja
+			const template = new Template(templateStr);
+			const bos_token = await wllama.detokenize([wllama.getBOS()], true);
+			const eos_token = await wllama.detokenize([wllama.getEOS()], true);
+
+			return template.render({
+				messages: msgs,
+				bos_token,
+				eos_token,
+				add_generation_prompt: true
+			});
 		} catch (err) {
 			console.error('Error formatting chat:', err);
+			// Fallback to basic formatting
 			return msgs.map((m) => `${m.role}: ${m.content}`).join('\n\n') + '\n\nassistant: ';
 		}
 	}
