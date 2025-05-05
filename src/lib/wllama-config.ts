@@ -7,8 +7,6 @@ export const WLLAMA_CONFIG_PATHS = {
 	'multi-thread/wllama.wasm': multiThreaded
 };
 
-export const MAX_GGUF_SIZE = 2 * 1024 * 1024 * 1024; // 2GB
-
 export const DEFAULT_INFERENCE_PARAMS = {
 	nThreads: -1, // auto
 	nContext: 4096,
@@ -24,17 +22,17 @@ export const DEFAULT_CHAT_TEMPLATE =
 export const AVAILABLE_MODELS = [
 	{
 		url: 'https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct-GGUF/resolve/main/smollm2-360m-instruct-q8_0.gguf',
-		name: 'SmolLM2-360M-Instruct',
+		name: 'SmolLM2-360M-Instruct (q8_0)',
 		size: 386404992
 	},
 	{
 		url: 'https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/qwen2.5-0.5b-instruct-q8_0.gguf',
-		name: 'Qwen2.5-0.5B-Instruct',
+		name: 'Qwen2.5-0.5B-Instruct (q8_0)',
 		size: 675710816
 	},
 	{
 		url: 'https://huggingface.co/hugging-quants/Llama-3.2-1B-Instruct-Q4_K_M-GGUF/resolve/main/llama-3.2-1b-instruct-q4_k_m.gguf',
-		name: 'Llama-3.2-1B-Instruct',
+		name: 'Llama-3.2-1B-Instruct (q4_k_m)',
 		size: 807690656
 	}
 ];

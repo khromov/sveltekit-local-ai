@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Wllama } from '@wllama/wllama';
+	import { Wllama, type DownloadProgressCallback } from '@wllama/wllama';
 	import { onMount } from 'svelte';
 	import { Template } from '@huggingface/jinja';
 	import {
@@ -25,10 +25,8 @@
 	let messages: Message[] = WllamaStorage.load('chat_messages', []);
 	let stopSignal = false;
 
-	// Inference params
 	let params = WllamaStorage.load('inference_params', DEFAULT_INFERENCE_PARAMS);
 
-	// Function to load model
 	async function loadModel() {
 		try {
 			isLoading = true;
@@ -40,17 +38,13 @@
 				selectedModel = model;
 			}
 
-			// Initialize Wllama
 			wllama = new Wllama(WLLAMA_CONFIG_PATHS);
 
-			// Define a function for tracking the model download progress
-			const progressCallback = ({ loaded, total }) => {
-				// Calculate the progress as a percentage
+			const progressCallback: DownloadProgressCallback = ({ loaded, total }) => {
 				downloadProgress = Math.round((loaded / total) * 100);
 				console.log(`Downloading... ${downloadProgress}%`);
 			};
 
-			// Load GGUF from Hugging Face hub
 			await wllama.loadModelFromUrl(modelSelection, {
 				progressCallback,
 				n_threads: params.nThreads > 0 ? params.nThreads : undefined,
