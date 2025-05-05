@@ -4,7 +4,6 @@
 	import { Template } from '@huggingface/jinja';
 	import {
 		WLLAMA_CONFIG_PATHS,
-		DEFAULT_INFERENCE_PARAMS,
 		DEFAULT_CHAT_TEMPLATE,
 		AVAILABLE_MODELS,
 		formatFileSize,
@@ -26,8 +25,6 @@
 	let messages: Message[] = $chat || [];
 	let stopSignal = false;
 
-	let params = $inferenceParams || DEFAULT_INFERENCE_PARAMS;
-
 	async function loadModel() {
 		try {
 			isLoading = true;
@@ -48,9 +45,9 @@
 
 			await wllama.loadModelFromUrl(modelSelection, {
 				progressCallback,
-				n_threads: params.nThreads > 0 ? params.nThreads : undefined,
-				n_ctx: params.nContext,
-				n_batch: params.nBatch
+				n_threads: $inferenceParams.nThreads > 0 ? $inferenceParams.nThreads : undefined,
+				n_ctx: $inferenceParams.nContext,
+				n_batch: $inferenceParams.nBatch
 			});
 
 			isModelLoaded = true;
@@ -96,9 +93,9 @@
 
 			// Generate completion
 			await wllama.createCompletion(formattedChat, {
-				nPredict: params.nPredict,
+				nPredict: $inferenceParams.nPredict,
 				sampling: {
-					temp: params.temperature
+					temp: $inferenceParams.temperature
 				},
 				onNewToken: (token, piece, currentText, optionals) => {
 					// Update the last message with the current generated text
@@ -178,11 +175,6 @@
 		//WllamaStorage.save('chat_messages', messages);
 	}
 
-	// Update inference parameters
-	function updateParams() {
-		$inferenceParams = params;
-	}
-
 	// Initialize on component mount
 	onMount(() => {
 		if (messages.length === 0) {
@@ -228,33 +220,20 @@
 						<h3>Inference Parameters</h3>
 						<label>
 							Threads (0 for auto):
-							<input
-								type="number"
-								bind:value={params.nThreads}
-								min="-1"
-								max="32"
-								on:change={updateParams}
-							/>
+							<input type="number" bind:value={$inferenceParams.nThreads} min="-1" max="32" />
 						</label>
 						<label>
 							Context Size:
-							<input
-								type="number"
-								bind:value={params.nContext}
-								min="512"
-								max="8192"
-								on:change={updateParams}
-							/>
+							<input type="number" bind:value={$inferenceParams.nContext} min="512" max="8192" />
 						</label>
 						<label>
 							Temperature:
 							<input
 								type="number"
-								bind:value={params.temperature}
+								bind:value={$inferenceParams.temperature}
 								min="0"
 								max="2"
 								step="0.1"
-								on:change={updateParams}
 							/>
 						</label>
 					</div>
