@@ -199,7 +199,7 @@
 </script>
 
 <div class="container">
-	<h1>Wllama Chat</h1>
+	<h1>Svelte + Wllama</h1>
 
 	{#if !isModelLoaded}
 		<div class="loading">

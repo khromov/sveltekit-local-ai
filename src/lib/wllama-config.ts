@@ -21,7 +21,12 @@ export const DEFAULT_CHAT_TEMPLATE =
 // Models available for download
 export const AVAILABLE_MODELS = [
 	{
-		url: 'https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct-GGUF/resolve/main/smollm2-360m-instruct-q8_0.gguf',
+		url: 'https://huggingface.co/bartowski/google_gemma-3-1b-it-qat-GGUF/resolve/main/google_gemma-3-1b-it-qat-Q4_0.gguf',
+		name: 'Gemma3 (q4_0 qat)',
+		size: 1
+	},
+	{
+		url: 'https://files.khromov.se/models/smollm2-360m-instruct-q8_0.gguf',
 		name: 'SmolLM2-360M-Instruct (q8_0)',
 		size: 386404992
 	},
@@ -37,13 +42,11 @@ export const AVAILABLE_MODELS = [
 	}
 ];
 
-// Message type interface
 export interface Message {
 	role: 'user' | 'assistant' | 'system';
 	content: string;
 }
 
-// Storage helper functions
 export const WllamaStorage = {
 	save<T>(key: string, data: T) {
 		localStorage.setItem(key, JSON.stringify(data));
