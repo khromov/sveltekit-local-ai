@@ -10,7 +10,7 @@
 		type Message
 	} from '$lib/wllama-config';
 
-	import { chat, inferenceParams } from '$lib/stores';
+	import { messages, inferenceParams } from '$lib/stores';
 
 	// State variables
 	let wllama: Wllama;
@@ -22,7 +22,6 @@
 	let modelSelection = AVAILABLE_MODELS[0].url;
 	let selectedModel = AVAILABLE_MODELS[0];
 	let inputText = '';
-	let messages: Message[] = $chat || [];
 	let stopSignal = false;
 
 	async function loadModel() {
@@ -71,7 +70,7 @@
 			content: inputText
 		};
 
-		messages = [...messages, userMessage];
+		$messages = [...$messages, userMessage];
 
 		// Add empty assistant message
 		const assistantMessage: Message = {
@@ -79,8 +78,7 @@
 			content: ''
 		};
 
-		messages = [...messages, assistantMessage];
-		$chat = messages;
+		$messages = [...$messages, assistantMessage];
 
 		inputText = '';
 		isGenerating = true;
@@ -88,7 +86,7 @@
 
 		try {
 			// Format chat history for the model
-			let formattedChat = await formatChatHistory(messages.slice(0, -1));
+			let formattedChat = await formatChatHistory($messages.slice(0, -1));
 			console.log('Formatted chat:', formattedChat);
 
 			// Generate completion
@@ -99,8 +97,8 @@
 				},
 				onNewToken: (token, piece, currentText, optionals) => {
 					// Update the last message with the current generated text
-					messages[messages.length - 1].content = currentText;
-					messages = [...messages];
+					$messages[$messages.length - 1].content = currentText;
+					$messages = [...$messages];
 
 					// If stop requested, abort generation
 					if (stopSignal) {
@@ -108,9 +106,6 @@
 					}
 				}
 			});
-
-			// Save messages to storage
-			$chat = messages;
 		} catch (err) {
 			console.error('Generation error:', err);
 		} finally {
@@ -171,22 +166,20 @@
 		if (isGenerating) {
 			stopGeneration();
 		}
-		messages = [];
-		//WllamaStorage.save('chat_messages', messages);
+		$messages = [];
 	}
 
 	// Initialize on component mount
 	onMount(() => {
-		if (messages.length === 0) {
+		if ($messages.length === 0) {
 			// Add a system message for first-time users
-			messages = [
+			$messages = [
 				{
 					role: 'system',
 					content:
 						"You are a helpful AI assistant. Answer the user's questions concisely and accurately."
 				}
 			];
-			//WllamaStorage.save('chat_messages', messages);
 		}
 	});
 </script>
@@ -249,11 +242,11 @@
 			</div>
 
 			<div class="chat-messages" id="chat-container">
-				{#each messages as message, i}
+				{#each $messages as message, i}
 					{#if message.role !== 'system'}
 						<div class="message {message.role}-message">
 							<div class="message-content">
-								{#if message.role === 'assistant' && message.content === '' && isGenerating && i === messages.length - 1}
+								{#if message.role === 'assistant' && message.content === '' && isGenerating && i === $messages.length - 1}
 									<div class="typing-indicator">
 										<span></span>
 										<span></span>
