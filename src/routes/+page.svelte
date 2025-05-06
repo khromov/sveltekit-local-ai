@@ -25,6 +25,7 @@
 	let inputText = '';
 	let stopSignal = false;
 	let chatContainer: HTMLElement;
+	let inputElement: HTMLTextAreaElement;
 
 	// Scroll to the bottom of the chat
 	function scrollToBottom() {
@@ -130,6 +131,13 @@
 			console.error('Generation error:', err);
 		} finally {
 			isGenerating = false;
+
+			// Focus the input field when generation is complete
+			if (inputElement) {
+				setTimeout(() => {
+					inputElement.focus();
+				}, 10);
+			}
 		}
 	}
 
@@ -187,6 +195,13 @@
 			stopGeneration();
 		}
 		$messages = [];
+
+		// Focus the input field after clearing chat
+		if (inputElement) {
+			setTimeout(() => {
+				inputElement.focus();
+			}, 10);
+		}
 	}
 
 	// Initialize on component mount
@@ -307,6 +322,7 @@
 
 				<div class="message-input">
 					<textarea
+						bind:this={inputElement}
 						bind:value={inputText}
 						placeholder="Message"
 						rows="1"
@@ -762,11 +778,11 @@
 	.message-input {
 		display: flex;
 		align-items: flex-end;
-		gap: 0.75rem;
 		background-color: #f0f0f0;
 		border-radius: 18px;
-		padding: 0.625rem 0.875rem;
+		padding: 0.625rem 1.125rem 0.625rem 0.875rem;
 		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+		position: relative;
 	}
 
 	textarea {
@@ -782,6 +798,14 @@
 		min-height: 24px;
 		max-height: 120px;
 		outline: none;
+		width: calc(100% - 50px); /* Make room for the send button */
+	}
+
+	textarea:disabled {
+		background-color: #e5e5e5;
+		color: #777;
+		cursor: not-allowed;
+		opacity: 0.8;
 	}
 
 	.send-btn {
@@ -796,8 +820,10 @@
 		border-radius: 50%;
 		cursor: pointer;
 		transition: background-color 0.2s;
-		flex-shrink: 0;
 		padding: 0;
+		position: absolute;
+		right: 8px;
+		bottom: 8px;
 	}
 
 	.send-btn:hover {
