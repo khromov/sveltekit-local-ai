@@ -18,6 +18,7 @@
 	let isModelLoaded = false;
 	let isGenerating = false;
 	let downloadProgress = 0;
+	let previousProgress = 0;
 	let downloadError = false;
 	let modelSelection = AVAILABLE_MODELS[0].url;
 	let selectedModel = AVAILABLE_MODELS[0];
@@ -25,11 +26,11 @@
 	let stopSignal = false;
 	let chatContainer: HTMLElement;
 
-	// Auto-scroll to bottom of chat when messages update
-	$: if (chatContainer && $messages) {
-		setTimeout(() => {
+	// Scroll to the bottom of the chat
+	function scrollToBottom() {
+		if (chatContainer) {
 			chatContainer.scrollTop = chatContainer.scrollHeight;
-		}, 0);
+		}
 	}
 
 	async function loadModel() {
@@ -37,6 +38,7 @@
 			isLoading = true;
 			downloadError = false;
 			downloadProgress = 0;
+			previousProgress = 0;
 
 			const model = AVAILABLE_MODELS.find((m) => m.url === modelSelection);
 			if (model) {
@@ -46,6 +48,7 @@
 			wllama = new Wllama(WLLAMA_CONFIG_PATHS);
 
 			const progressCallback: DownloadProgressCallback = ({ loaded, total }) => {
+				previousProgress = downloadProgress;
 				downloadProgress = Math.round((loaded / total) * 100);
 				console.log(`Downloading... ${downloadProgress}%`);
 			};
@@ -80,6 +83,9 @@
 
 		$messages = [...$messages, userMessage];
 
+		// After adding user message, scroll to bottom
+		setTimeout(scrollToBottom, 0);
+
 		// Add empty assistant message
 		const assistantMessage: Message = {
 			role: 'assistant',
@@ -87,6 +93,9 @@
 		};
 
 		$messages = [...$messages, assistantMessage];
+
+		// Scroll to see empty assistant message with typing indicator
+		setTimeout(scrollToBottom, 0);
 
 		inputText = '';
 		isGenerating = true;
@@ -107,6 +116,9 @@
 					// Update the last message with the current generated text
 					$messages[$messages.length - 1].content = currentText;
 					$messages = [...$messages];
+
+					// Scroll to bottom with each new token when generating
+					scrollToBottom();
 
 					// If stop requested, abort generation
 					if (stopSignal) {
@@ -206,30 +218,18 @@
 				</div>
 			{:else if isLoading}
 				<div class="loading-progress">
-					<div class="loading-icon">
-						<svg
-							viewBox="0 0 24 24"
-							width="40"
-							height="40"
-							stroke="#0071e3"
-							stroke-width="2"
-							fill="none"
-						>
-							<circle cx="12" cy="12" r="10" opacity="0.25"></circle>
-							<circle
-								cx="12"
-								cy="12"
-								r="10"
-								stroke-dasharray="60"
-								stroke-dashoffset="30"
-								class="loading-circle"
-							></circle>
-						</svg>
-					</div>
 					<h3>Loading Model</h3>
 					<p class="download-percentage">{downloadProgress}% Complete</p>
 					<div class="progress-container">
-						<progress value={downloadProgress} max="100"></progress>
+						<div class="progress-bar">
+							<div
+								class="progress-bar-fill"
+								style="width: {downloadProgress}%; transition: width {downloadProgress >
+								previousProgress
+									? '0.5s'
+									: '0s'} ease"
+							></div>
+						</div>
 					</div>
 					<p class="loading-message">
 						This might take a moment. The model is being downloaded to your browser.
@@ -410,19 +410,6 @@
 		text-align: center;
 	}
 
-	.loading-icon {
-		margin-bottom: 0.5rem;
-	}
-
-	.loading-icon svg {
-		animation: spin 1.5s linear infinite;
-	}
-
-	.loading-circle {
-		transform-origin: center;
-		animation: circle-animation 1.5s ease-in-out infinite;
-	}
-
 	.loading-progress h3 {
 		font-size: 1.5rem;
 		font-weight: 600;
@@ -439,7 +426,34 @@
 
 	.progress-container {
 		width: 100%;
-		margin: 0.25rem 0;
+		margin: 0.5rem 0;
+	}
+
+	.progress-bar {
+		height: 0.6rem;
+		background-color: #e1e1e1;
+		border-radius: 8px;
+		overflow: hidden;
+		width: 100%;
+		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+	}
+
+	.progress-bar-fill {
+		height: 100%;
+		background-color: #0071e3;
+		border-radius: 8px;
+		background-image: linear-gradient(
+			45deg,
+			rgba(255, 255, 255, 0.15) 25%,
+			transparent 25%,
+			transparent 50%,
+			rgba(255, 255, 255, 0.15) 50%,
+			rgba(255, 255, 255, 0.15) 75%,
+			transparent 75%,
+			transparent
+		);
+		background-size: 1rem 1rem;
+		animation: progress-animation 1s linear infinite;
 	}
 
 	.loading-message {
@@ -615,55 +629,6 @@
 	.error button:active {
 		transform: translateY(0);
 		box-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
-	}
-
-	progress {
-		width: 100%;
-		height: 0.6rem;
-		border-radius: 8px;
-		overflow: hidden;
-		appearance: none;
-		background-color: #e1e1e1;
-		border: none;
-	}
-
-	progress::-webkit-progress-bar {
-		background-color: #e1e1e1;
-		border-radius: 8px;
-	}
-
-	progress::-webkit-progress-value {
-		background-color: #0071e3;
-		border-radius: 8px;
-		background-image: linear-gradient(
-			45deg,
-			rgba(255, 255, 255, 0.15) 25%,
-			transparent 25%,
-			transparent 50%,
-			rgba(255, 255, 255, 0.15) 50%,
-			rgba(255, 255, 255, 0.15) 75%,
-			transparent 75%,
-			transparent
-		);
-		background-size: 1rem 1rem;
-		animation: progress-animation 1s linear infinite;
-	}
-
-	progress::-moz-progress-bar {
-		background-color: #0071e3;
-		border-radius: 8px;
-		background-image: linear-gradient(
-			45deg,
-			rgba(255, 255, 255, 0.15) 25%,
-			transparent 25%,
-			transparent 50%,
-			rgba(255, 255, 255, 0.15) 50%,
-			rgba(255, 255, 255, 0.15) 75%,
-			transparent 75%,
-			transparent
-		);
-		background-size: 1rem 1rem;
-		animation: progress-animation 1s linear infinite;
 	}
 
 	/* Chat Interface */
@@ -917,27 +882,6 @@
 		to {
 			opacity: 1;
 			transform: translateY(0);
-		}
-	}
-
-	@keyframes spin {
-		0% {
-			transform: rotate(0deg);
-		}
-		100% {
-			transform: rotate(360deg);
-		}
-	}
-
-	@keyframes circle-animation {
-		0% {
-			stroke-dashoffset: 60;
-		}
-		50% {
-			stroke-dashoffset: 30;
-		}
-		100% {
-			stroke-dashoffset: 60;
 		}
 	}
 
