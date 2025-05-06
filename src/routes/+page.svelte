@@ -205,11 +205,39 @@
 					</button>
 				</div>
 			{:else if isLoading}
-				<p>Loading model: {downloadProgress}%</p>
-				<progress value={downloadProgress} max="100"></progress>
+				<div class="loading-progress">
+					<div class="loading-icon">
+						<svg
+							viewBox="0 0 24 24"
+							width="40"
+							height="40"
+							stroke="#0071e3"
+							stroke-width="2"
+							fill="none"
+						>
+							<circle cx="12" cy="12" r="10" opacity="0.25"></circle>
+							<circle
+								cx="12"
+								cy="12"
+								r="10"
+								stroke-dasharray="60"
+								stroke-dashoffset="30"
+								class="loading-circle"
+							></circle>
+						</svg>
+					</div>
+					<h3>Loading Model</h3>
+					<p class="download-percentage">{downloadProgress}% Complete</p>
+					<div class="progress-container">
+						<progress value={downloadProgress} max="100"></progress>
+					</div>
+					<p class="loading-message">
+						This might take a moment. The model is being downloaded to your browser.
+					</p>
+				</div>
 			{:else}
 				<div class="model-selector">
-					<h2>Select a model to get started</h2>
+					<h2>Select a Model to Get Started</h2>
 					<select bind:value={modelSelection}>
 						{#each AVAILABLE_MODELS as model}
 							<option value={model.url}>
@@ -220,15 +248,15 @@
 					<div class="inference-params">
 						<h3>Inference Parameters</h3>
 						<label>
-							Threads (0 for auto):
+							<span>Threads <span class="param-hint">(0 for auto)</span></span>
 							<input type="number" bind:value={$inferenceParams.nThreads} min="-1" max="32" />
 						</label>
 						<label>
-							Context Size:
+							<span>Context Size</span>
 							<input type="number" bind:value={$inferenceParams.nContext} min="512" max="8192" />
 						</label>
 						<label>
-							Temperature:
+							<span>Temperature</span>
 							<input
 								type="number"
 								bind:value={$inferenceParams.temperature}
@@ -239,6 +267,7 @@
 						</label>
 					</div>
 					<button on:click={loadModel}>Load Model</button>
+					<p class="model-note">Model will be downloaded and run locally in your browser</p>
 				</div>
 			{/if}
 		</div>
@@ -349,6 +378,11 @@
 		margin-bottom: 1.5rem;
 		font-size: 1.8rem;
 		font-weight: 600;
+		background: linear-gradient(to right, #0071e3, #42aaff);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		text-fill-color: transparent;
 	}
 
 	/* Loading and Model Selection */
@@ -356,8 +390,76 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 1.5rem;
-		margin: 2rem 0;
+		gap: 1.75rem;
+		margin: 2.5rem 0;
+		animation: fadeIn 0.4s ease-out;
+		width: 100%;
+	}
+
+	.loading-progress {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.25rem;
+		padding: 2.5rem;
+		background-color: white;
+		border-radius: 20px;
+		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+		width: 100%;
+		max-width: 500px;
+		text-align: center;
+	}
+
+	.loading-icon {
+		margin-bottom: 0.5rem;
+	}
+
+	.loading-icon svg {
+		animation: spin 1.5s linear infinite;
+	}
+
+	.loading-circle {
+		transform-origin: center;
+		animation: circle-animation 1.5s ease-in-out infinite;
+	}
+
+	.loading-progress h3 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin: 0;
+		color: #111;
+	}
+
+	.download-percentage {
+		font-size: 1.125rem;
+		font-weight: 500;
+		color: #0071e3;
+		margin: 0;
+	}
+
+	.progress-container {
+		width: 100%;
+		margin: 0.25rem 0;
+	}
+
+	.loading-message {
+		font-size: 0.9375rem;
+		color: #666;
+		margin: 0;
+		max-width: 320px;
+	}
+
+	.model-note {
+		font-size: 0.875rem;
+		color: #777;
+		text-align: center;
+		margin-top: 0.5rem;
+	}
+
+	.param-hint {
+		font-size: 0.875rem;
+		color: #777;
+		font-weight: normal;
 	}
 
 	.model-selector {
@@ -365,71 +467,203 @@
 		max-width: 500px;
 		display: flex;
 		flex-direction: column;
-		gap: 1.25rem;
-		padding: 1.75rem;
-		border-radius: 16px;
+		gap: 1.5rem;
+		padding: 2rem;
+		border-radius: 20px;
 		background-color: white;
-		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 	}
 
 	.model-selector h2 {
-		font-size: 1.4rem;
+		font-size: 1.5rem;
 		font-weight: 600;
 		margin: 0;
+		color: #111;
+		text-align: center;
 	}
 
 	.model-selector select {
-		padding: 0.75rem;
-		border-radius: 10px;
-		border: 1px solid #ddd;
-		font-size: 1rem;
+		padding: 0.875rem;
+		border-radius: 12px;
+		border: 1px solid #e1e1e1;
+		font-size: 1.0625rem;
 		background-color: #f8f8f8;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+		appearance: none;
+		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+		background-repeat: no-repeat;
+		background-position: right 0.875rem center;
+		background-size: 1em;
+		padding-right: 2.5rem;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.model-selector select:focus {
+		border-color: #0071e3;
+		outline: none;
+		box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
 	}
 
 	.model-selector button {
-		padding: 0.875rem;
+		padding: 1rem;
 		background-color: #0071e3;
 		color: white;
 		border: none;
-		border-radius: 12px;
+		border-radius: 14px;
 		cursor: pointer;
-		font-size: 1.1rem;
+		font-size: 1.125rem;
 		font-weight: 500;
-		transition: background-color 0.2s;
+		transition: all 0.2s;
+		box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
 	}
 
 	.model-selector button:hover {
 		background-color: #0062cc;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px rgba(0, 113, 227, 0.4);
+	}
+
+	.model-selector button:active {
+		transform: translateY(0);
+		box-shadow: 0 1px 3px rgba(0, 113, 227, 0.3);
 	}
 
 	.inference-params {
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
-		margin: 1rem 0;
-		background-color: #f8f8f8;
-		padding: 1rem;
-		border-radius: 12px;
+		gap: 1rem;
+		margin: 0.5rem 0;
+		background-color: #f7f7f9;
+		padding: 1.5rem;
+		border-radius: 16px;
+		box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
 	}
 
 	.inference-params h3 {
-		font-size: 1.1rem;
+		font-size: 1.25rem;
 		font-weight: 600;
-		margin: 0 0 0.5rem 0;
+		margin: 0 0 0.75rem 0;
+		color: #333;
+		text-align: center;
 	}
 
 	.inference-params label {
 		display: flex;
 		flex-direction: column;
-		gap: 0.4rem;
-		font-size: 1rem;
+		gap: 0.5rem;
+		font-size: 1.0625rem;
+		color: #444;
 	}
 
 	.inference-params input {
-		padding: 0.625rem;
+		padding: 0.75rem;
+		border-radius: 10px;
+		border: 1px solid #e1e1e1;
+		font-size: 1.0625rem;
+		background-color: white;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.inference-params input:focus {
+		border-color: #0071e3;
+		outline: none;
+		box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
+	}
+
+	.error {
+		color: #ff3b30;
+		background-color: #feeced;
+		padding: 1.5rem;
+		border-radius: 16px;
+		text-align: center;
+		box-shadow: 0 2px 12px rgba(255, 59, 48, 0.15);
+		width: 100%;
+		max-width: 500px;
+		animation: errorPulse 2s infinite alternate;
+	}
+
+	.error p {
+		font-size: 1.0625rem;
+		margin-bottom: 1.25rem;
+		line-height: 1.5;
+	}
+
+	.error button {
+		padding: 0.875rem 1.5rem;
+		background-color: #ff3b30;
+		color: white;
+		border: none;
+		border-radius: 12px;
+		cursor: pointer;
+		font-size: 1.0625rem;
+		font-weight: 500;
+		transition: all 0.2s;
+		box-shadow: 0 2px 8px rgba(255, 59, 48, 0.3);
+	}
+
+	.error button:hover {
+		background-color: #e0352b;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4);
+	}
+
+	.error button:active {
+		transform: translateY(0);
+		box-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
+	}
+
+	progress {
+		width: 100%;
+		height: 0.6rem;
 		border-radius: 8px;
-		border: 1px solid #ddd;
-		font-size: 1rem;
+		overflow: hidden;
+		appearance: none;
+		background-color: #e1e1e1;
+		border: none;
+	}
+
+	progress::-webkit-progress-bar {
+		background-color: #e1e1e1;
+		border-radius: 8px;
+	}
+
+	progress::-webkit-progress-value {
+		background-color: #0071e3;
+		border-radius: 8px;
+		background-image: linear-gradient(
+			45deg,
+			rgba(255, 255, 255, 0.15) 25%,
+			transparent 25%,
+			transparent 50%,
+			rgba(255, 255, 255, 0.15) 50%,
+			rgba(255, 255, 255, 0.15) 75%,
+			transparent 75%,
+			transparent
+		);
+		background-size: 1rem 1rem;
+		animation: progress-animation 1s linear infinite;
+	}
+
+	progress::-moz-progress-bar {
+		background-color: #0071e3;
+		border-radius: 8px;
+		background-image: linear-gradient(
+			45deg,
+			rgba(255, 255, 255, 0.15) 25%,
+			transparent 25%,
+			transparent 50%,
+			rgba(255, 255, 255, 0.15) 50%,
+			rgba(255, 255, 255, 0.15) 75%,
+			transparent 75%,
+			transparent
+		);
+		background-size: 1rem 1rem;
+		animation: progress-animation 1s linear infinite;
 	}
 
 	/* Chat Interface */
@@ -639,22 +873,6 @@
 		text-align: center;
 	}
 
-	.error {
-		color: #ff3b30;
-		background-color: #feeced;
-		padding: 1.25rem;
-		border-radius: 12px;
-		text-align: center;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-	}
-
-	progress {
-		width: 100%;
-		height: 0.5rem;
-		border-radius: 4px;
-		overflow: hidden;
-	}
-
 	/* Typing indicator */
 	.typing-indicator {
 		display: inline-flex;
@@ -679,6 +897,7 @@
 		animation-delay: -0.16s;
 	}
 
+	/* Animations */
 	@keyframes bounce {
 		0%,
 		80%,
@@ -698,6 +917,45 @@
 		to {
 			opacity: 1;
 			transform: translateY(0);
+		}
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes circle-animation {
+		0% {
+			stroke-dashoffset: 60;
+		}
+		50% {
+			stroke-dashoffset: 30;
+		}
+		100% {
+			stroke-dashoffset: 60;
+		}
+	}
+
+	@keyframes progress-animation {
+		0% {
+			background-position: 0 0;
+		}
+		100% {
+			background-position: 1rem 0;
+		}
+	}
+
+	@keyframes errorPulse {
+		0% {
+			box-shadow: 0 2px 12px rgba(255, 59, 48, 0.15);
+		}
+		100% {
+			box-shadow: 0 2px 16px rgba(255, 59, 48, 0.3);
 		}
 	}
 
@@ -724,6 +982,18 @@
 		.chat-interface {
 			height: calc(100vh - 5rem);
 			border-radius: 12px;
+		}
+
+		.model-selector {
+			padding: 1.5rem;
+		}
+
+		.inference-params {
+			padding: 1.25rem;
+		}
+
+		.loading-progress {
+			padding: 1.75rem;
 		}
 	}
 </style>
