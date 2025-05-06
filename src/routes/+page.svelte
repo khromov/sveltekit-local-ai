@@ -1,3 +1,23 @@
+<script context="module">
+	// Custom action to focus the input after mounting
+	function effect(node: HTMLElement, callback: () => void) {
+		callback();
+		return {
+			destroy() {}
+		};
+	}
+
+	function focusAfterMount() {
+		// Wait for next tick to ensure elements are properly mounted
+		setTimeout(() => {
+			const textarea = document.querySelector('.message-input textarea') as HTMLTextAreaElement;
+			if (textarea && !textarea.disabled) {
+				textarea.focus();
+			}
+		}, 100);
+	}
+</script>
+
 <script lang="ts">
 	import { Wllama, type DownloadProgressCallback } from '@wllama/wllama';
 	import { onMount } from 'svelte';
@@ -34,15 +54,6 @@
 		}
 	}
 
-	// Focus the input field
-	function focusInput() {
-		if (inputElement && isModelLoaded && !isGenerating) {
-			setTimeout(() => {
-				inputElement.focus();
-			}, 10);
-		}
-	}
-
 	async function loadModel() {
 		try {
 			isLoading = true;
@@ -71,9 +82,6 @@
 			});
 
 			isModelLoaded = true;
-
-			// Focus input after model loads
-			focusInput();
 		} catch (err) {
 			console.error('Model loading error:', err);
 			downloadError = true;
@@ -145,7 +153,11 @@
 			isGenerating = false;
 
 			// Focus the input field when generation is complete
-			focusInput();
+			if (inputElement) {
+				setTimeout(() => {
+					inputElement.focus();
+				}, 10);
+			}
 		}
 	}
 
@@ -205,7 +217,11 @@
 		$messages = [];
 
 		// Focus the input field after clearing chat
-		focusInput();
+		if (inputElement) {
+			setTimeout(() => {
+				inputElement.focus();
+			}, 10);
+		}
 	}
 
 	// Initialize on component mount
@@ -220,14 +236,14 @@
 				}
 			];
 		}
-	});
 
-	// Reset textarea height on input clear
-	$: if (inputText === '') {
-		if (inputElement) {
-			inputElement.style.height = 'auto';
+		// Focus input when already loaded
+		if (isModelLoaded && inputElement) {
+			setTimeout(() => {
+				inputElement.focus();
+			}, 100);
 		}
-	}
+	});
 </script>
 
 <div class="container">
@@ -326,18 +342,19 @@
 				{/each}
 			</div>
 
-			<div class="input-area">
+			<div class="input-area" use:effect={focusAfterMount}>
 				{#if isGenerating}
 					<button on:click={stopGeneration} class="stop-btn">Stop Generation</button>
 				{/if}
 
-				<div class="message-input" class:disabled={isGenerating}>
+				<div class="message-input" class:is-disabled={isGenerating}>
 					<textarea
 						bind:this={inputElement}
 						bind:value={inputText}
 						placeholder="Message"
 						rows="1"
 						disabled={isGenerating}
+						style="height: {inputText ? 'auto' : '20px'};"
 						on:keydown={(e) => {
 							if (e.key === 'Enter' && !e.shiftKey) {
 								e.preventDefault();
@@ -346,8 +363,7 @@
 						}}
 						on:input={(e) => {
 							const target = e.target as HTMLTextAreaElement;
-							// Reset height first to get accurate scrollHeight
-							target.style.height = '24px';
+							target.style.height = '20px';
 							target.style.height = Math.min(120, target.scrollHeight) + 'px';
 						}}
 					></textarea>
@@ -798,9 +814,13 @@
 		transition: background-color 0.2s;
 	}
 
-	.message-input.disabled {
-		background-color: #e5e5e5;
-		opacity: 0.8;
+	.message-input.is-disabled {
+		background-color: #dfdfdf;
+	}
+
+	.message-input.is-disabled textarea {
+		color: #777;
+		cursor: not-allowed;
 	}
 
 	textarea {
@@ -813,16 +833,12 @@
 		font-size: 1.0625rem;
 		line-height: 1.4;
 		background-color: transparent;
-		min-height: 24px;
+		min-height: 20px; /* Lower start height */
 		max-height: 120px;
 		outline: none;
 		width: calc(100% - 50px); /* Make room for the send button */
 		transition: color 0.2s;
-	}
-
-	textarea:disabled {
-		color: #777;
-		cursor: not-allowed;
+		overflow: hidden; /* Hide scrollbar */
 	}
 
 	.send-btn {
