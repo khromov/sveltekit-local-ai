@@ -34,6 +34,15 @@
 		}
 	}
 
+	// Focus the input field
+	function focusInput() {
+		if (inputElement && isModelLoaded && !isGenerating) {
+			setTimeout(() => {
+				inputElement.focus();
+			}, 10);
+		}
+	}
+
 	async function loadModel() {
 		try {
 			isLoading = true;
@@ -62,6 +71,9 @@
 			});
 
 			isModelLoaded = true;
+
+			// Focus input after model loads
+			focusInput();
 		} catch (err) {
 			console.error('Model loading error:', err);
 			downloadError = true;
@@ -133,11 +145,7 @@
 			isGenerating = false;
 
 			// Focus the input field when generation is complete
-			if (inputElement) {
-				setTimeout(() => {
-					inputElement.focus();
-				}, 10);
-			}
+			focusInput();
 		}
 	}
 
@@ -197,11 +205,7 @@
 		$messages = [];
 
 		// Focus the input field after clearing chat
-		if (inputElement) {
-			setTimeout(() => {
-				inputElement.focus();
-			}, 10);
-		}
+		focusInput();
 	}
 
 	// Initialize on component mount
@@ -217,6 +221,13 @@
 			];
 		}
 	});
+
+	// Reset textarea height on input clear
+	$: if (inputText === '') {
+		if (inputElement) {
+			inputElement.style.height = 'auto';
+		}
+	}
 </script>
 
 <div class="container">
@@ -320,7 +331,7 @@
 					<button on:click={stopGeneration} class="stop-btn">Stop Generation</button>
 				{/if}
 
-				<div class="message-input">
+				<div class="message-input" class:disabled={isGenerating}>
 					<textarea
 						bind:this={inputElement}
 						bind:value={inputText}
@@ -335,7 +346,8 @@
 						}}
 						on:input={(e) => {
 							const target = e.target as HTMLTextAreaElement;
-							target.style.height = 'auto';
+							// Reset height first to get accurate scrollHeight
+							target.style.height = '24px';
 							target.style.height = Math.min(120, target.scrollHeight) + 'px';
 						}}
 					></textarea>
@@ -783,6 +795,12 @@
 		padding: 0.625rem 1.125rem 0.625rem 0.875rem;
 		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 		position: relative;
+		transition: background-color 0.2s;
+	}
+
+	.message-input.disabled {
+		background-color: #e5e5e5;
+		opacity: 0.8;
 	}
 
 	textarea {
@@ -799,13 +817,12 @@
 		max-height: 120px;
 		outline: none;
 		width: calc(100% - 50px); /* Make room for the send button */
+		transition: color 0.2s;
 	}
 
 	textarea:disabled {
-		background-color: #e5e5e5;
 		color: #777;
 		cursor: not-allowed;
-		opacity: 0.8;
 	}
 
 	.send-btn {
