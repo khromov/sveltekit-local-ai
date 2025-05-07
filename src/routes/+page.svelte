@@ -1,23 +1,3 @@
-<script lang="ts" context="module">
-	// Custom action to focus the input after mounting
-	function effect(node: HTMLElement, callback: () => void) {
-		callback();
-		return {
-			destroy() {}
-		};
-	}
-
-	function focusAfterMount() {
-		// Wait for next tick to ensure elements are properly mounted
-		setTimeout(() => {
-			const textarea = document.querySelector('.message-input textarea') as HTMLTextAreaElement;
-			if (textarea && !textarea.disabled) {
-				textarea.focus();
-			}
-		}, 100);
-	}
-</script>
-
 <script lang="ts">
 	import { Wllama, type DownloadProgressCallback } from '@wllama/wllama';
 	import { onMount } from 'svelte';
@@ -224,6 +204,12 @@
 		}
 	}
 
+	function focusAfterMount(node: HTMLTextAreaElement) {
+		if (node && !node.disabled) {
+			node.focus();
+		}
+	}
+
 	// Initialize on component mount
 	onMount(() => {
 		if ($messages.length === 0) {
@@ -343,7 +329,7 @@
 				{/each}
 			</div>
 
-			<div class="input-area" use:effect={focusAfterMount}>
+			<div class="input-area">
 				{#if isGenerating}
 					<button on:click={stopGeneration} class="stop-btn">Stop Generation</button>
 				{/if}
@@ -356,6 +342,7 @@
 						rows="1"
 						disabled={isGenerating}
 						style="height: {inputText ? 'auto' : '20px'};"
+						use:focusAfterMount
 						on:keydown={(e) => {
 							if (e.key === 'Enter' && !e.shiftKey) {
 								e.preventDefault();
