@@ -341,18 +341,12 @@
 						placeholder="Message"
 						rows="1"
 						disabled={isGenerating}
-						style="height: {inputText ? 'auto' : '20px'};"
 						use:focusAfterMount
 						on:keydown={(e) => {
 							if (e.key === 'Enter' && !e.shiftKey) {
 								e.preventDefault();
 								sendMessage();
 							}
-						}}
-						on:input={(e) => {
-							const target = e.target as HTMLTextAreaElement;
-							target.style.height = '20px';
-							target.style.height = Math.min(120, target.scrollHeight) + 'px';
 						}}
 					></textarea>
 					<button
