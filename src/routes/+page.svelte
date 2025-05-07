@@ -290,7 +290,7 @@
 					<div class="inference-params">
 						<h3>Inference Parameters</h3>
 						<label>
-							<span>Threads <span class="param-hint">(0 for auto)</span></span>
+							<span>Threads <span class="param-hint">(-1 for auto)</span></span>
 							<input type="number" bind:value={$inferenceParams.nThreads} min="-1" max="32" />
 						</label>
 						<label>
