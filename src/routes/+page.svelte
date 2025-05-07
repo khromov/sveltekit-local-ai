@@ -401,8 +401,8 @@
 
 	h1 {
 		text-align: center;
-		margin-bottom: 1.5rem;
-		font-size: 1.8rem;
+		font-size: 24px;
+		margin: 0;
 		font-weight: 600;
 		background: linear-gradient(to right, #0071e3, #42aaff);
 		-webkit-background-clip: text;
@@ -416,7 +416,7 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 1.75rem;
-		margin: 2.5rem 0;
+		margin: 1rem 0;
 		animation: fadeIn 0.4s ease-out;
 		width: 100%;
 	}
@@ -698,13 +698,14 @@
 
 	/* Chat Messages */
 	.chat-messages {
-		height: clamp(400px, 100vh - 200px, 600px);
+		height: clamp(350px, calc(100vh - 250px), 600px);
 		overflow-y: auto;
 		padding: 1.25rem;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
 		background-color: #f5f5f7;
+		max-height: calc(100vh - 250px);
 	}
 
 	.message-wrapper {
@@ -941,13 +942,15 @@
 
 	/* Responsive adjustments */
 	@media (max-width: 600px) {
+		/* Keep existing mobile styles */
 		.container {
+			margin-left: 25px;
+			margin-right: 25px;
 			padding: 0.75rem;
 		}
 
 		h1 {
 			font-size: 1.5rem;
-			margin-bottom: 1rem;
 		}
 
 		.message-content {
@@ -959,8 +962,10 @@
 			max-width: 90%;
 		}
 
+		/* Updated chat messages style for mobile */
 		.chat-messages {
-			height: clamp(300px, 100vh - 150px, 400px);
+			height: clamp(250px, calc(100vh - 220px), 400px);
+			max-height: calc(100vh - 220px);
 		}
 
 		.chat-interface {
