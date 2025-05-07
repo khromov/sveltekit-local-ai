@@ -14,18 +14,18 @@
 
 	// State variables
 	let wllama: Wllama;
-	let isLoading = false;
-	let isModelLoaded = false;
-	let isGenerating = false;
-	let downloadProgress = 0;
-	let previousProgress = 0;
-	let downloadError = false;
-	let modelSelection = AVAILABLE_MODELS[0].url;
-	let selectedModel = AVAILABLE_MODELS[0];
-	let inputText = '';
+	let isLoading = $state(false);
+	let isModelLoaded = $state(false);
+	let isGenerating = $state(false);
+	let downloadProgress = $state(0);
+	let previousProgress = $state(0);
+	let downloadError = $state(false);
+	let modelSelection = $state(AVAILABLE_MODELS[0].url);
+	let selectedModel = $state(AVAILABLE_MODELS[0]);
+	let inputText = $state('');
 	let stopSignal = false;
-	let chatContainer: HTMLElement;
-	let inputElement: HTMLTextAreaElement;
+	let chatContainer: HTMLElement = $state();
+	let inputElement: HTMLTextAreaElement = $state();
 
 	// Scroll to the bottom of the chat
 	function scrollToBottom() {
@@ -240,7 +240,7 @@
 			{#if downloadError}
 				<div class="error">
 					<p>Failed to load model. Please check your connection and try again.</p>
-					<button on:click={loadModel} disabled={isLoading}>
+					<button onclick={loadModel} disabled={isLoading}>
 						{isLoading ? 'Reloading...' : 'Reload Model'}
 					</button>
 				</div>
@@ -295,7 +295,7 @@
 							/>
 						</label>
 					</div>
-					<button on:click={loadModel}>Load Model</button>
+					<button onclick={loadModel}>Load Model</button>
 					<p class="model-note">Model will be downloaded and run locally in your browser</p>
 				</div>
 			{/if}
@@ -304,7 +304,7 @@
 		<div class="chat-interface">
 			<div class="toolbar">
 				<span class="model-info">Model: {selectedModel.name}</span>
-				<button on:click={newChat} class="new-chat-btn">New Chat</button>
+				<button onclick={newChat} class="new-chat-btn">New Chat</button>
 			</div>
 
 			<div bind:this={chatContainer} class="chat-messages" id="chat-container">
@@ -331,7 +331,7 @@
 
 			<div class="input-area">
 				{#if isGenerating}
-					<button on:click={stopGeneration} class="stop-btn">Stop Generation</button>
+					<button onclick={stopGeneration} class="stop-btn">Stop Generation</button>
 				{/if}
 
 				<div class="message-input" class:is-disabled={isGenerating}>
@@ -342,7 +342,7 @@
 						rows="1"
 						disabled={isGenerating}
 						use:focusAfterMount
-						on:keydown={(e) => {
+						onkeydown={(e) => {
 							if (e.key === 'Enter' && !e.shiftKey) {
 								e.preventDefault();
 								sendMessage();
@@ -350,7 +350,7 @@
 						}}
 					></textarea>
 					<button
-						on:click={sendMessage}
+						onclick={sendMessage}
 						disabled={isGenerating || !inputText.trim()}
 						class="send-btn"
 						aria-label="Send message"
