@@ -1,4 +1,4 @@
-<script context="module">
+<script lang="ts" context="module">
 	// Custom action to focus the input after mounting
 	function effect(node: HTMLElement, callback: () => void) {
 		callback();
