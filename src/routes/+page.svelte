@@ -274,12 +274,13 @@
 						</div>
 					</div>
 					<p class="loading-message">
-						This might take a moment. The model is being downloaded to your browser.
+						This will take a couple of minutes. The chat model is being downloaded to your browser.
 					</p>
 				</div>
 			{:else}
 				<div class="model-selector">
-					<h2>Select a Model to Get Started</h2>
+					<h2>On-device, local chat in your web browser. Select a model to start.</h2>
+
 					<select bind:value={modelSelection}>
 						{#each AVAILABLE_MODELS as model}
 							<option value={model.url}>
