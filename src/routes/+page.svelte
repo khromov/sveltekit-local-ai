@@ -233,7 +233,7 @@
 </script>
 
 <div class="container">
-	<h1>Svelte + Wllama</h1>
+	<h1>Svelte + Wllama Local AI chat</h1>
 
 	{#if !isModelLoaded}
 		<div class="loading">
@@ -408,7 +408,6 @@
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
-		text-fill-color: transparent;
 	}
 
 	/* Loading and Model Selection */
@@ -659,9 +658,6 @@
 
 	/* Chat Interface */
 	.chat-interface {
-		display: flex;
-		flex-direction: column;
-		height: calc(100vh - 6rem);
 		border-radius: 16px;
 		overflow: hidden;
 		border: none;
@@ -702,7 +698,7 @@
 
 	/* Chat Messages */
 	.chat-messages {
-		flex-grow: 1;
+		height: clamp(400px, 100vh - 200px, 600px);
 		overflow-y: auto;
 		padding: 1.25rem;
 		display: flex;
@@ -780,9 +776,6 @@
 		padding: 1rem 1.25rem;
 		border-top: 1px solid #e5e5e5;
 		background-color: white;
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
 	}
 
 	.message-input {
@@ -794,6 +787,7 @@
 		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 		position: relative;
 		transition: background-color 0.2s;
+		margin-bottom: 0.5rem;
 	}
 
 	.message-input.is-disabled {
@@ -864,7 +858,8 @@
 		cursor: pointer;
 		font-size: 1rem;
 		font-weight: 500;
-		align-self: center;
+		display: block;
+		margin: 0 auto 0.75rem;
 		transition: background-color 0.2s;
 	}
 
@@ -964,8 +959,11 @@
 			max-width: 90%;
 		}
 
+		.chat-messages {
+			height: clamp(300px, 100vh - 150px, 400px);
+		}
+
 		.chat-interface {
-			height: calc(100vh - 5rem);
 			border-radius: 12px;
 		}
 
