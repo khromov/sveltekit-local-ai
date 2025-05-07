@@ -3,7 +3,7 @@ name: build + publish
 on:
   push:
     branches:
-      - main-custom
+      - main
   workflow_dispatch:
 
 env:
