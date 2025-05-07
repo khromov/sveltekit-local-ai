@@ -402,7 +402,7 @@
 	h1 {
 		text-align: center;
 		font-size: 24px;
-		margin: 0;
+		margin: 0 0 16px 0;
 		font-weight: 600;
 		background: linear-gradient(to right, #0071e3, #42aaff);
 		-webkit-background-clip: text;
@@ -663,6 +663,7 @@
 		border: none;
 		background-color: white;
 		box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+		width: 100%;
 	}
 
 	.toolbar {
@@ -942,11 +943,20 @@
 
 	/* Responsive adjustments */
 	@media (max-width: 600px) {
-		/* Keep existing mobile styles */
 		.container {
-			margin-left: 25px;
-			margin-right: 25px;
-			padding: 0.75rem;
+			padding: 0.75rem 1rem;
+			margin: 0 auto;
+		}
+
+		.loading {
+			align-items: stretch;
+		}
+
+		.loading-progress,
+		.model-selector,
+		.error {
+			width: auto;
+			max-width: none;
 		}
 
 		h1 {
