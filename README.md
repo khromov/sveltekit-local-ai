@@ -1,38 +1,47 @@
-# sv
+# SvelteKit Local AI Chat
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A browser-based chat application with AI models that run entirely on your device without sending data to external servers. This project uses Svelte 5, SvelteKit, WebAssembly, and the Wllama library.
 
-## Creating a project
+## Live Demo
 
-If you're seeing this, you've probably already done this step. Congrats!
+You can try the application at:
+[https://svelte-local-ai.khromov.se/](https://svelte-local-ai.khromov.se/)
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Running Locally
 
-# create a new project in my-app
-npx sv create my-app
-```
+1. Clone the repository
 
-## Developing
+2. Install dependencies
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+   ```bash
+   nvm use
+   npm install
+   ```
 
-```bash
-npm run dev
+3. Start the development server
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+   ```bash
+   npm run dev
+   ```
 
-## Building
+4. Open your browser and navigate to `http://localhost:5173`
 
-To create a production version of your app:
+## Building for Production
 
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+## Using Docker
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+# Build the Docker image
+docker build -t sveltekit-local-ai .
+
+# Run the container
+docker run -p 3000:3000 sveltekit-local-ai
+```
+
+## How It Works
+
+The application downloads compact language models directly to your browser and runs inference using WebAssembly. This approach ensures your conversations stay private and can work offline after the initial model download.
