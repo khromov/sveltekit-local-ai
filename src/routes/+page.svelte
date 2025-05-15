@@ -58,8 +58,7 @@
 				progressCallback,
 				n_threads: $inferenceParams.nThreads > 0 ? $inferenceParams.nThreads : undefined,
 				n_ctx: $inferenceParams.nContext,
-				n_batch: $inferenceParams.nBatch,
-				useCache: true
+				n_batch: $inferenceParams.nBatch
 			});
 
 			isModelLoaded = true;
@@ -114,6 +113,7 @@
 				sampling: {
 					temp: $inferenceParams.temperature
 				},
+				useCache: true,
 				onNewToken: (token, piece, currentText, optionals) => {
 					// Update the last message with the current generated text
 					$messages[$messages.length - 1].content = currentText;
