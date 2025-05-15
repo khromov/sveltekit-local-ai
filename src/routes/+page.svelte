@@ -24,8 +24,8 @@
 	let selectedModel = $state(AVAILABLE_MODELS[0]);
 	let inputText = $state('');
 	let stopSignal = false;
-	let chatContainer: HTMLElement = $state();
-	let inputElement: HTMLTextAreaElement = $state();
+	let chatContainer: HTMLElement | undefined = $state();
+	let inputElement: HTMLTextAreaElement | undefined = $state();
 
 	// Scroll to the bottom of the chat
 	function scrollToBottom() {
@@ -58,7 +58,8 @@
 				progressCallback,
 				n_threads: $inferenceParams.nThreads > 0 ? $inferenceParams.nThreads : undefined,
 				n_ctx: $inferenceParams.nContext,
-				n_batch: $inferenceParams.nBatch
+				n_batch: $inferenceParams.nBatch,
+				useCache: true
 			});
 
 			isModelLoaded = true;
@@ -135,7 +136,9 @@
 			// Focus the input field when generation is complete
 			if (inputElement) {
 				setTimeout(() => {
-					inputElement.focus();
+					if (inputElement) {
+						inputElement.focus();
+					}
 				}, 10);
 			}
 		}
