@@ -20,6 +20,7 @@
 		"@sveltejs/adapter-node": "^5.2.12",
 		"@sveltejs/kit": "^2.20.8",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@transcribe/transcriber": "^2.0.6",
 		"@wllama/wllama": "^2.3.1",
 		"eslint": "^9.26.0",
 		"eslint-config-prettier": "^10.1.2",
