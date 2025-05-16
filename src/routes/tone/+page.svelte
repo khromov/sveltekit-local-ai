@@ -86,12 +86,13 @@
 		// Construct the prompt
 		const prompt = `
 You are a helpful assistant that rewrites messages with different tones. 
+
+Your task is to rewrite a single message with a ${directionDescriptions[dir]} tone.
+
+Do not include any explanations,  prefixes, or anything other than the rewritten message. Keep it concise.
+
 Original message: "${message}"
-
-Your task is to rewrite this message with a ${directionDescriptions[dir]} tone.
-
-The ONLY thing you should output is the rewritten message. Do not include any explanations, 
-prefixes, or anything other than the rewritten message. Keep it concise.
+New message:
 `;
 
 		try {
@@ -99,12 +100,13 @@ prefixes, or anything other than the rewritten message. Keep it concise.
 
 			// Generate completion with limited tokens
 			await wllama.createCompletion(prompt, {
-				nPredict: 10, // Limiting to 10 tokens as requested
+				nPredict: 100,
 				sampling: {
 					temp: 0.7
 				},
 				useCache: true,
 				onNewToken: (token, piece, currentText) => {
+					console.log('currentText:', currentText);
 					generatedText = currentText;
 				}
 			});
