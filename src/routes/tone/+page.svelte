@@ -1,12 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import ModelLoader from '$lib/components/ModelLoader.svelte';
-	import ToneCompass from '$lib/components//ToneCompass.svelte';
-	import MessageEditor from '$lib/components//MessageEditor.svelte';
-	import InstructionsPanel from '$lib/components//InstructionsPanel.svelte';
+	import ToneCompass from '$lib/components/ToneCompass.svelte';
+	import MessageEditor from '$lib/components/MessageEditor.svelte';
+	import InstructionsPanel from '$lib/components/InstructionsPanel.svelte';
 	import { Wllama } from '@wllama/wllama';
-	import { WLLAMA_CONFIG_PATHS, AVAILABLE_MODELS } from '$lib/wllama-config';
+	import {
+		WLLAMA_CONFIG_PATHS,
+		AVAILABLE_MODELS,
+		type Message,
+		DEFAULT_CHAT_TEMPLATE
+	} from '$lib/wllama-config';
 	import { inferenceParams } from '$lib/stores';
+	import { Template } from '@huggingface/jinja';
 
 	// State variables
 	let wllama: Wllama;
@@ -65,6 +71,29 @@
 		}
 	}
 
+	// Format chat history for the model using a template
+	async function formatChatMessages(messages: Message[]): Promise<string> {
+		try {
+			const templateStr = wllama?.getChatTemplate() || DEFAULT_CHAT_TEMPLATE;
+
+			// Standard template rendering with jinja
+			const template = new Template(templateStr);
+			const bos_token = wllama ? await wllama.detokenize([wllama.getBOS()], true) : '';
+			const eos_token = wllama ? await wllama.detokenize([wllama.getEOS()], true) : '';
+
+			return template.render({
+				messages: messages,
+				bos_token,
+				eos_token,
+				add_generation_prompt: true
+			});
+		} catch (err) {
+			console.error('Error formatting chat:', err);
+			// Fallback to basic formatting if template rendering fails
+			return messages.map((m) => `${m.role}: ${m.content}`).join('\n\n') + '\n\nassistant: ';
+		}
+	}
+
 	// Adjust the tone based on direction
 	async function adjustTone(dir: 'up' | 'down' | 'left' | 'right') {
 		if (!isModelLoaded || isGenerating || !message.trim()) {
@@ -83,37 +112,63 @@
 			right: 'more elaborate and detailed'
 		};
 
-		// Construct the prompt
-		const prompt = `
-You are a helpful assistant that rewrites messages with different tones. 
-
-Your task is to rewrite a single message with a ${directionDescriptions[dir]} tone.
-
-Do not include any explanations,  prefixes, or anything other than the rewritten message. Keep it concise.
-
-Original message: "${message}"
-New message:
-`;
+		// Create a new chat for each tone adjustment
+		const chatMessages: Message[] = [
+			{
+				role: 'system',
+				content: `You are a helpful assistant that rewrites messages with different tones. Your responses should be brief, direct, and only contain the rewritten message without any explanations, introductions, or commentary.`
+			},
+			{
+				role: 'user',
+				content: `Rewrite this message in a ${directionDescriptions[dir]} tone. Answer only with the rewritten message. Message: "${message}"`
+			}
+		];
 
 		try {
+			// Format chat using the model's template
+			const formattedChat = await formatChatMessages(chatMessages);
+			console.log('Formatted chat:', formattedChat);
 			let generatedText = '';
 
-			// Generate completion with limited tokens
-			await wllama.createCompletion(prompt, {
-				nPredict: 100,
+			// Generate completion
+			await wllama.createCompletion(formattedChat, {
+				nPredict: 100, // Keeping the token limit from the pasted code
 				sampling: {
 					temp: 0.7
 				},
 				useCache: true,
 				onNewToken: (token, piece, currentText) => {
-					console.log('currentText:', currentText);
 					generatedText = currentText;
 				}
 			});
 
-			// Clean up the response
-			const cleanedText = generatedText.trim().replace(/^["']|["']$/g, '');
+			// Extract just the assistant's response
+			let cleanedText = generatedText.trim();
 
+			// Attempt to extract just the response content based on common patterns
+			const assistantPrefixes = [
+				'assistant:',
+				'assistant\n',
+				'<|im_start|>assistant\n',
+				'Assistant:',
+				'Assistant\n'
+			];
+
+			// Try to find and remove any assistant prefix
+			for (const prefix of assistantPrefixes) {
+				if (cleanedText.includes(prefix)) {
+					cleanedText = cleanedText.split(prefix).pop() || cleanedText;
+					break;
+				}
+			}
+
+			// Remove any end markers
+			cleanedText = cleanedText.replace(/<\|im_end\|>/g, '').trim();
+
+			// Remove any surrounding quotes
+			cleanedText = cleanedText.replace(/^["']|["']$/g, '');
+
+			// Save the original message if this is the first adjustment
 			if (!originalMessage) {
 				originalMessage = message;
 			}
