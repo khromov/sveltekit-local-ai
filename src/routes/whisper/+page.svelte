@@ -43,7 +43,9 @@
 			// create new instance
 			transcriber = new FileTranscriber({
 				createModule,
-				model: 'https://files.khromov.se/whisper/ggml-base-q5_1.bin'
+				model: '/ggml-tiny-q5_1.bin'
+				// TODO: Figure out cache,
+				// model: 'https://files.khromov.se/whisper/ggml-base-q5_1.bin'
 			});
 
 			// and initialize the transcriber
