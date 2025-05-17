@@ -75,15 +75,15 @@
 			{#if isLoading}
 				Loading model...
 			{:else}
-				<button on:click={loadModel}>Load Model</button>
+				<button onclick={loadModel}>Load Model</button>
 			{/if}
 		</div>
 	{:else}
 		<div class="actions">
-			<button on:click={generate} disabled={isGenerating}>
+			<button onclick={generate} disabled={isGenerating}>
 				{stepCount === 0 ? 'Start Generation' : 'Continue Generation'}
 			</button>
-			<button on:click={reset} disabled={isGenerating}>Reset</button>
+			<button onclick={reset} disabled={isGenerating}>Reset</button>
 		</div>
 
 		<!-- Simple output display -->
@@ -131,8 +131,7 @@
 		cursor: not-allowed;
 	}
 
-	.output-section,
-	.logs-section {
+	.output-section {
 		margin: 20px 0;
 	}
 
@@ -153,16 +152,5 @@
 		white-space: pre-wrap;
 		min-height: 100px;
 		margin: 0;
-	}
-
-	.logs {
-		padding: 10px;
-		background: #222;
-		color: #eee;
-		border-radius: 4px;
-		white-space: pre-wrap;
-		height: 300px;
-		overflow-y: auto;
-		font-family: monospace;
 	}
 </style>
