@@ -239,6 +239,12 @@ New message:
 	}
 
 	/* Responsive Design */
+	@media (max-width: 950px) {
+		.adjuster-interface {
+			max-width: 95%;
+		}
+	}
+
 	@media (max-width: 768px) {
 		.tone-adjuster-container {
 			padding: 1rem;
