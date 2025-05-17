@@ -1,23 +1,47 @@
 <script lang="ts">
-  //import createModule from "@transcribe/shout";
-  import { onMount } from "svelte";
-  //import type { FileTranscriber } from "@transcribe/transcriber";
+	import createModule from '@transcribe/shout';
+	import { FileTranscriber } from '@transcribe/transcriber';
+	import { onMount } from 'svelte';
 
-  let transcriber: any;
+	let isReady = $state(false);
+	let transcriber: FileTranscriber;
+	let text = $state('');
 
-  onMount(async () => {
-    const createModuleImport = await import("@transcribe/shout");
-    // create new instance
-    /*
-    ip.FileTranscriber.transcriber = new ip.FileTranscriber({
-      createModule,
-      model: "/ggml-tiny-q5_1.bin",
-    });
+	async function transcribe() {
+		if (!transcriber?.isReady) return;
 
-    // and initialize the transcriber
-    await transcriber.init();
-    */
-  });
+		text = 'Transcribing...';
+
+		// transcribe the file
+		// there must be at least one user interaction (e.g click) before you can call this function
+		const result = await transcriber.transcribe('/voice-note.wav', { lang: 'en' });
+
+		// do something with the result
+		text = result.transcription.map((t) => t.text).join(' ');
+	}
+
+	onMount(async () => {
+		// create new instance
+		transcriber = new FileTranscriber({
+			createModule,
+			model: '/ggml-tiny-q5_1.bin'
+		});
+
+		// and initialize the transcriber
+		await transcriber.init();
+
+		isReady = true;
+	});
 </script>
 
-123
+<h1>Transcribe.js SvelteKit Example</h1>
+
+<p>Click the button to transcribe the example wav file. (check console for detailed output)</p>
+
+{#if isReady}
+	<button onclick={transcribe}>Transcribe</button>
+
+	{#if text}
+		<p><b>Result:</b> {text}</p>
+	{/if}
+{/if}
