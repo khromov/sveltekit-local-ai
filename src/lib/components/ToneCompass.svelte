@@ -113,15 +113,17 @@
 	.compass-container {
 		width: 100%;
 		margin: 1rem 0;
+		display: flex;
+		justify-content: center;
 	}
 
 	.compass-grid {
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		grid-template-rows: 1fr 1fr 1fr;
-		gap: 0.75rem;
+		grid-template-columns: minmax(80px, 1fr) minmax(300px, 3fr) minmax(80px, 1fr);
+		grid-template-rows: auto auto auto;
+		gap: 1rem;
 		width: 100%;
-		max-width: 550px;
+		max-width: 800px; /* Increased from 550px */
 		margin: 0 auto;
 	}
 
@@ -139,16 +141,21 @@
 	.left-cell {
 		grid-row: 2;
 		grid-column: 1;
+		justify-content: flex-end; /* Push button to the right edge of the cell */
+		padding-right: 10px;
 	}
 
 	.center-cell {
 		grid-row: 2;
 		grid-column: 2;
+		padding: 0 10px; /* Add some horizontal padding */
 	}
 
 	.right-cell {
 		grid-row: 2;
 		grid-column: 3;
+		justify-content: flex-start; /* Push button to the left edge of the cell */
+		padding-left: 10px;
 	}
 
 	.down-cell {
@@ -246,6 +253,7 @@
 		transition: all 0.2s;
 		font-family: 'Nunito', sans-serif;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		white-space: nowrap;
 	}
 
 	.reset-btn:hover:not(:disabled) {
@@ -305,8 +313,8 @@
 	/* Responsive styles */
 	@media (max-width: 768px) {
 		.compass-grid {
-			grid-template-columns: 1fr 2fr 1fr;
-			grid-template-rows: 1fr auto 1fr;
+			grid-template-columns: minmax(70px, 1fr) minmax(200px, 2fr) minmax(70px, 1fr);
+			gap: 0.75rem;
 		}
 
 		.compass-btn {
@@ -324,7 +332,7 @@
 		.compass-grid {
 			grid-template-columns: 1fr;
 			grid-template-rows: auto auto auto auto auto;
-			gap: 0.5rem;
+			gap: 0.75rem;
 		}
 
 		.up-cell {
@@ -336,16 +344,21 @@
 			grid-row: 3;
 			grid-column: 1;
 			margin: 0.75rem 0;
+			padding: 0;
 		}
 
 		.left-cell {
 			grid-row: 2;
 			grid-column: 1;
+			justify-content: center;
+			padding-right: 0;
 		}
 
 		.right-cell {
 			grid-row: 4;
 			grid-column: 1;
+			justify-content: center;
+			padding-left: 0;
 		}
 
 		.down-cell {
