@@ -24,8 +24,8 @@
 	let selectedModel = $state(AVAILABLE_MODELS[0]);
 	let inputText = $state('');
 	let stopSignal = false;
-	let chatContainer: HTMLElement = $state();
-	let inputElement: HTMLTextAreaElement = $state();
+	let chatContainer: HTMLElement | undefined = $state();
+	let inputElement: HTMLTextAreaElement | undefined = $state();
 
 	// Scroll to the bottom of the chat
 	function scrollToBottom() {
@@ -113,6 +113,7 @@
 				sampling: {
 					temp: $inferenceParams.temperature
 				},
+				useCache: true,
 				onNewToken: (token, piece, currentText, optionals) => {
 					// Update the last message with the current generated text
 					$messages[$messages.length - 1].content = currentText;
@@ -135,7 +136,9 @@
 			// Focus the input field when generation is complete
 			if (inputElement) {
 				setTimeout(() => {
-					inputElement.focus();
+					if (inputElement) {
+						inputElement.focus();
+					}
 				}, 10);
 			}
 		}
