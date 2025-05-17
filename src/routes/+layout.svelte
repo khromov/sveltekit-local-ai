@@ -1,13 +1,68 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
 
 	let { children }: Props = $props();
+
+	// Navigation links
+	const navLinks = [
+		{ path: '/', label: 'Chat', icon: 'chat' },
+		{ path: '/whisper', label: 'Transcribe', icon: 'mic' }
+	];
+
+	// Check if a path is active
+	function isActive(path: string): boolean {
+		return $page.url.pathname === path;
+	}
 </script>
 
 <div class="container">
-	<h1>Svelte + Wllama Local AI</h1>
+	<nav class="main-nav">
+		<ul>
+			{#each navLinks as link}
+				<li>
+					<a href={link.path} class:active={isActive(link.path)}>
+						{#if link.icon === 'chat'}
+							<svg
+								class="nav-icon"
+								viewBox="0 0 24 24"
+								width="24"
+								height="24"
+								stroke="currentColor"
+								stroke-width="2"
+								fill="none"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+							</svg>
+						{:else if link.icon === 'mic'}
+							<svg
+								class="nav-icon"
+								viewBox="0 0 24 24"
+								width="24"
+								height="24"
+								stroke="currentColor"
+								stroke-width="2"
+								fill="none"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+								<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+								<line x1="12" y1="19" x2="12" y2="23"></line>
+								<line x1="8" y1="23" x2="16" y2="23"></line>
+							</svg>
+						{/if}
+						<span>{link.label}</span>
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</nav>
 
 	{@render children?.()}
 </div>
@@ -41,6 +96,58 @@
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
+	}
+
+	/* Navigation styles */
+	.main-nav {
+		margin-bottom: 1.5rem;
+	}
+
+	.main-nav ul {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		border-radius: 16px;
+		background-color: white;
+		padding: 0.5rem;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+	}
+
+	.main-nav li {
+		flex: 1;
+		max-width: 180px;
+	}
+
+	.main-nav a {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1.25rem;
+		border-radius: 12px;
+		text-decoration: none;
+		color: #666;
+		font-weight: 500;
+		transition: all 0.2s ease;
+	}
+
+	.main-nav a:hover {
+		background-color: #f0f0f0;
+		color: #0071e3;
+	}
+
+	.main-nav a.active {
+		background-color: #0071e3;
+		color: white;
+	}
+
+	.nav-icon {
+		width: 16px;
+		height: 16px;
 	}
 
 	/* Shared component styling */
@@ -268,6 +375,16 @@
 		.container {
 			padding: 0.75rem 1rem;
 			margin: 0 auto;
+		}
+
+		.main-nav ul {
+			gap: 0.5rem;
+			padding: 0.375rem;
+		}
+
+		.main-nav a {
+			padding: 0.625rem 0.75rem;
+			font-size: 0.9375rem;
 		}
 
 		:global(.loading) {
