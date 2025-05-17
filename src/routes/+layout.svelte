@@ -64,7 +64,9 @@
 		</ul>
 	</nav>
 
-	{@render children?.()}
+	<div class="content-wrapper">
+		{@render children?.()}
+	</div>
 </div>
 
 <style>
@@ -82,25 +84,21 @@
 	}
 
 	.container {
+		width: 100%;
 		max-width: 800px;
 		margin: 0 auto;
 		padding: 1rem;
+		box-sizing: border-box;
 	}
 
-	h1 {
-		text-align: center;
-		font-size: 24px;
-		margin: 0 0 16px 0;
-		font-weight: 600;
-		background: linear-gradient(to right, #0071e3, #42aaff);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+	.content-wrapper {
+		width: 100%;
 	}
 
 	/* Navigation styles */
 	.main-nav {
 		margin-bottom: 1.5rem;
+		width: 100%;
 	}
 
 	.main-nav ul {
@@ -114,6 +112,8 @@
 		background-color: white;
 		padding: 0.5rem;
 		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+		width: 100%;
+		box-sizing: border-box;
 	}
 
 	.main-nav li {
@@ -217,7 +217,6 @@
 		border-radius: 20px;
 		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 		width: 100%;
-		max-width: 500px;
 		text-align: center;
 	}
 

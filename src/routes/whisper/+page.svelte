@@ -19,7 +19,7 @@
 		try {
 			// transcribe the file
 			// there must be at least one user interaction (e.g click) before you can call this function
-			const result = await transcriber.transcribe('/jfk.mp3', { lang: 'en' });
+			const result = await transcriber.transcribe('/yt.mp3', { lang: 'en' });
 
 			// do something with the result
 			text = result.transcription.map((t) => t.text).join(' ');
@@ -43,7 +43,7 @@
 			// create new instance
 			transcriber = new FileTranscriber({
 				createModule,
-				model: '/ggml-tiny-q5_1.bin'
+				model: 'https://files.khromov.se/whisper/ggml-base-q5_1.bin'
 			});
 
 			// and initialize the transcriber
