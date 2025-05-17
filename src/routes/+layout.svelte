@@ -6,4 +6,294 @@
 	let { children }: Props = $props();
 </script>
 
-{@render children?.()}
+<div class="container">
+	<h1>Svelte + Wllama Local AI</h1>
+
+	{@render children?.()}
+</div>
+
+<style>
+	/* Base styles */
+	:global(body) {
+		margin: 0;
+		padding: 0;
+		font-family:
+			-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+			'Helvetica Neue', sans-serif;
+		font-size: 16px;
+		line-height: 1.5;
+		background-color: #f5f5f7;
+		color: #333;
+	}
+
+	.container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 1rem;
+	}
+
+	h1 {
+		text-align: center;
+		font-size: 24px;
+		margin: 0 0 16px 0;
+		font-weight: 600;
+		background: linear-gradient(to right, #0071e3, #42aaff);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	/* Shared component styling */
+	:global(.card-interface) {
+		border-radius: 16px;
+		overflow: hidden;
+		border: none;
+		background-color: white;
+		box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+		width: 100%;
+	}
+
+	:global(.toolbar) {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem 1.25rem;
+		background-color: #f8f8f8;
+		border-bottom: 1px solid #e5e5e5;
+	}
+
+	:global(.model-info) {
+		font-size: 1rem;
+		font-weight: 500;
+		color: #666;
+	}
+
+	:global(.content-area) {
+		padding: 1.25rem;
+		background-color: #f5f5f7;
+		min-height: 300px;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	:global(.input-area) {
+		padding: 1rem 1.25rem;
+		border-top: 1px solid #e5e5e5;
+		background-color: white;
+	}
+
+	:global(.disclaimer) {
+		margin-top: 0.375rem;
+		font-size: 0.8125rem;
+		color: #8e8e93;
+		text-align: center;
+	}
+
+	:global(.loading) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.75rem;
+		margin: 1rem 0;
+		animation: fadeIn 0.4s ease-out;
+		width: 100%;
+	}
+
+	:global(.loading-progress) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.25rem;
+		padding: 2.5rem;
+		background-color: white;
+		border-radius: 20px;
+		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+		width: 100%;
+		max-width: 500px;
+		text-align: center;
+	}
+
+	:global(.loading-progress h3) {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin: 0;
+		color: #111;
+	}
+
+	:global(.progress-container) {
+		width: 100%;
+		margin: 0.5rem 0;
+	}
+
+	:global(.progress-bar) {
+		height: 0.6rem;
+		background-color: #e1e1e1;
+		border-radius: 8px;
+		overflow: hidden;
+		width: 100%;
+		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+	}
+
+	:global(.progress-bar-fill) {
+		height: 100%;
+		background-color: #0071e3;
+		border-radius: 8px;
+		background-image: linear-gradient(
+			45deg,
+			rgba(255, 255, 255, 0.15) 25%,
+			transparent 25%,
+			transparent 50%,
+			rgba(255, 255, 255, 0.15) 50%,
+			rgba(255, 255, 255, 0.15) 75%,
+			transparent 75%,
+			transparent
+		);
+		background-size: 1rem 1rem;
+		animation: progress-animation 1s linear infinite;
+	}
+
+	:global(.loading-message) {
+		font-size: 0.9375rem;
+		color: #666;
+		margin: 0;
+		max-width: 320px;
+	}
+
+	:global(.error) {
+		color: #ff3b30;
+		background-color: #feeced;
+		padding: 1.5rem;
+		border-radius: 16px;
+		text-align: center;
+		box-shadow: 0 2px 12px rgba(255, 59, 48, 0.15);
+		width: 100%;
+		max-width: 500px;
+		animation: errorPulse 2s infinite alternate;
+	}
+
+	:global(.error p) {
+		font-size: 1.0625rem;
+		margin-bottom: 1.25rem;
+		line-height: 1.5;
+	}
+
+	:global(.error button) {
+		padding: 0.875rem 1.5rem;
+		background-color: #ff3b30;
+		color: white;
+		border: none;
+		border-radius: 12px;
+		cursor: pointer;
+		font-size: 1.0625rem;
+		font-weight: 500;
+		transition: all 0.2s;
+		box-shadow: 0 2px 8px rgba(255, 59, 48, 0.3);
+	}
+
+	:global(.error button:hover) {
+		background-color: #e0352b;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4);
+	}
+
+	:global(.error button:active) {
+		transform: translateY(0);
+		box-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
+	}
+
+	:global(.primary-button) {
+		padding: 0.875rem 1.5rem;
+		background-color: #0071e3;
+		color: white;
+		border: none;
+		border-radius: 14px;
+		cursor: pointer;
+		font-size: 1.125rem;
+		font-weight: 500;
+		transition: all 0.2s;
+		box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
+	}
+
+	:global(.primary-button:hover) {
+		background-color: #0062cc;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px rgba(0, 113, 227, 0.4);
+	}
+
+	:global(.primary-button:active) {
+		transform: translateY(0);
+		box-shadow: 0 1px 3px rgba(0, 113, 227, 0.3);
+	}
+
+	:global(.primary-button:disabled) {
+		background-color: #b0b0b0;
+		cursor: not-allowed;
+		transform: none;
+		box-shadow: none;
+	}
+
+	/* Animations */
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes progress-animation {
+		0% {
+			background-position: 0 0;
+		}
+		100% {
+			background-position: 1rem 0;
+		}
+	}
+
+	@keyframes errorPulse {
+		0% {
+			box-shadow: 0 2px 12px rgba(255, 59, 48, 0.15);
+		}
+		100% {
+			box-shadow: 0 2px 16px rgba(255, 59, 48, 0.3);
+		}
+	}
+
+	/* Responsive adjustments */
+	@media (max-width: 600px) {
+		.container {
+			padding: 0.75rem 1rem;
+			margin: 0 auto;
+		}
+
+		:global(.loading) {
+			align-items: stretch;
+		}
+
+		:global(.loading-progress),
+		:global(.error) {
+			width: auto;
+			max-width: none;
+		}
+
+		h1 {
+			font-size: 1.5rem;
+		}
+
+		:global(.card-interface) {
+			border-radius: 12px;
+		}
+
+		:global(.content-area) {
+			min-height: 250px;
+		}
+
+		:global(.loading-progress) {
+			padding: 1.75rem;
+		}
+	}
+</style>

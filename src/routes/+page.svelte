@@ -235,275 +235,151 @@
 	});
 </script>
 
-<div class="container">
-	<h1>Svelte + Wllama Local AI chat</h1>
-
-	{#if !isModelLoaded}
-		<div class="loading">
-			{#if downloadError}
-				<div class="error">
-					<p>Failed to load model. Please check your connection and try again.</p>
-					<button onclick={loadModel} disabled={isLoading}>
-						{isLoading ? 'Reloading...' : 'Reload Model'}
-					</button>
-				</div>
-			{:else if isLoading}
-				<div class="loading-progress">
-					<h3>Loading Model</h3>
-					<p class="download-percentage">{downloadProgress}% Complete</p>
-					<div class="progress-container">
-						<div class="progress-bar">
-							<div
-								class="progress-bar-fill"
-								style="width: {downloadProgress}%; transition: width {downloadProgress >
-								previousProgress
-									? '0.5s'
-									: '0s'} ease"
-							></div>
-						</div>
-					</div>
-					<p class="loading-message">
-						This will take a couple of minutes. The chat model is being downloaded to your browser.
-					</p>
-				</div>
-			{:else}
-				<div class="model-selector">
-					<h2>On-device, local chat in your web browser. Select a model to start.</h2>
-
-					<select bind:value={modelSelection}>
-						{#each AVAILABLE_MODELS as model}
-							<option value={model.url}>
-								{model.name} ({formatFileSize(model.size)})
-							</option>
-						{/each}
-					</select>
-					<div class="inference-params">
-						<h3>Inference Parameters</h3>
-						<label>
-							<span>Threads <span class="param-hint">(-1 for auto)</span></span>
-							<input type="number" bind:value={$inferenceParams.nThreads} min="-1" max="32" />
-						</label>
-						<label>
-							<span>Context Size</span>
-							<input type="number" bind:value={$inferenceParams.nContext} min="512" max="8192" />
-						</label>
-						<label>
-							<span>Temperature</span>
-							<input
-								type="number"
-								bind:value={$inferenceParams.temperature}
-								min="0"
-								max="2"
-								step="0.1"
-							/>
-						</label>
-					</div>
-					<button onclick={loadModel}>Load Model</button>
-					<p class="model-note">Model will be downloaded and run locally in your browser</p>
-				</div>
-			{/if}
-		</div>
-	{:else}
-		<div class="chat-interface">
-			<div class="toolbar">
-				<span class="model-info">Model: {selectedModel.name}</span>
-				<button onclick={newChat} class="new-chat-btn">New Chat</button>
+{#if !isModelLoaded}
+	<div class="loading">
+		{#if downloadError}
+			<div class="error">
+				<p>Failed to load model. Please check your connection and try again.</p>
+				<button onclick={loadModel} disabled={isLoading}>
+					{isLoading ? 'Reloading...' : 'Reload Model'}
+				</button>
 			</div>
+		{:else if isLoading}
+			<div class="loading-progress">
+				<h3>Loading Model</h3>
+				<p class="download-percentage">{downloadProgress}% Complete</p>
+				<div class="progress-container">
+					<div class="progress-bar">
+						<div
+							class="progress-bar-fill"
+							style="width: {downloadProgress}%; transition: width {downloadProgress >
+							previousProgress
+								? '0.5s'
+								: '0s'} ease"
+						></div>
+					</div>
+				</div>
+				<p class="loading-message">
+					This will take a couple of minutes. The chat model is being downloaded to your browser.
+				</p>
+			</div>
+		{:else}
+			<div class="model-selector">
+				<h2>On-device, local chat in your web browser. Select a model to start.</h2>
 
-			<div bind:this={chatContainer} class="chat-messages" id="chat-container">
-				{#each $messages as message, i}
-					{#if message.role !== 'system'}
-						<div class="message-wrapper {message.role}-wrapper">
-							<div class="message {message.role}-message">
-								<div class="message-content">
-									{#if message.role === 'assistant' && message.content === '' && isGenerating && i === $messages.length - 1}
-										<div class="typing-indicator">
-											<span></span>
-											<span></span>
-											<span></span>
-										</div>
-									{:else}
-										{message.content}
-									{/if}
-								</div>
+				<select bind:value={modelSelection}>
+					{#each AVAILABLE_MODELS as model}
+						<option value={model.url}>
+							{model.name} ({formatFileSize(model.size)})
+						</option>
+					{/each}
+				</select>
+				<div class="inference-params">
+					<h3>Inference Parameters</h3>
+					<label>
+						<span>Threads <span class="param-hint">(-1 for auto)</span></span>
+						<input type="number" bind:value={$inferenceParams.nThreads} min="-1" max="32" />
+					</label>
+					<label>
+						<span>Context Size</span>
+						<input type="number" bind:value={$inferenceParams.nContext} min="512" max="8192" />
+					</label>
+					<label>
+						<span>Temperature</span>
+						<input
+							type="number"
+							bind:value={$inferenceParams.temperature}
+							min="0"
+							max="2"
+							step="0.1"
+						/>
+					</label>
+				</div>
+				<button onclick={loadModel} class="primary-button">Load Model</button>
+				<p class="model-note">Model will be downloaded and run locally in your browser</p>
+			</div>
+		{/if}
+	</div>
+{:else}
+	<div class="card-interface">
+		<div class="toolbar">
+			<span class="model-info">Model: {selectedModel.name}</span>
+			<button onclick={newChat} class="new-chat-btn">New Chat</button>
+		</div>
+
+		<div bind:this={chatContainer} class="chat-messages content-area" id="chat-container">
+			{#each $messages as message, i}
+				{#if message.role !== 'system'}
+					<div class="message-wrapper {message.role}-wrapper">
+						<div class="message {message.role}-message">
+							<div class="message-content">
+								{#if message.role === 'assistant' && message.content === '' && isGenerating && i === $messages.length - 1}
+									<div class="typing-indicator">
+										<span></span>
+										<span></span>
+										<span></span>
+									</div>
+								{:else}
+									{message.content}
+								{/if}
 							</div>
 						</div>
-					{/if}
-				{/each}
+					</div>
+				{/if}
+			{/each}
+		</div>
+
+		<div class="input-area">
+			{#if isGenerating}
+				<button onclick={stopGeneration} class="stop-btn">Stop Generation</button>
+			{/if}
+
+			<div class="message-input" class:is-disabled={isGenerating}>
+				<textarea
+					bind:this={inputElement}
+					bind:value={inputText}
+					placeholder="Message"
+					rows="1"
+					disabled={isGenerating}
+					use:focusAfterMount
+					onkeydown={(e) => {
+						if (e.key === 'Enter' && !e.shiftKey) {
+							e.preventDefault();
+							sendMessage();
+						}
+					}}
+				></textarea>
+				<button
+					onclick={sendMessage}
+					disabled={isGenerating || !inputText.trim()}
+					class="send-btn"
+					aria-label="Send message"
+				>
+					<svg
+						viewBox="0 0 24 24"
+						width="24"
+						height="24"
+						stroke="currentColor"
+						stroke-width="2"
+						fill="none"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<line x1="22" y1="2" x2="11" y2="13"></line>
+						<polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+					</svg>
+				</button>
 			</div>
 
-			<div class="input-area">
-				{#if isGenerating}
-					<button onclick={stopGeneration} class="stop-btn">Stop Generation</button>
-				{/if}
-
-				<div class="message-input" class:is-disabled={isGenerating}>
-					<textarea
-						bind:this={inputElement}
-						bind:value={inputText}
-						placeholder="Message"
-						rows="1"
-						disabled={isGenerating}
-						use:focusAfterMount
-						onkeydown={(e) => {
-							if (e.key === 'Enter' && !e.shiftKey) {
-								e.preventDefault();
-								sendMessage();
-							}
-						}}
-					></textarea>
-					<button
-						onclick={sendMessage}
-						disabled={isGenerating || !inputText.trim()}
-						class="send-btn"
-						aria-label="Send message"
-					>
-						<svg
-							viewBox="0 0 24 24"
-							width="24"
-							height="24"
-							stroke="currentColor"
-							stroke-width="2"
-							fill="none"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<line x1="22" y1="2" x2="11" y2="13"></line>
-							<polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-						</svg>
-					</button>
-				</div>
-
-				<div class="disclaimer">
-					Wllama is running locally in your browser. Model responses may not always be accurate.
-				</div>
+			<div class="disclaimer">
+				Wllama is running locally in your browser. Model responses may not always be accurate.
 			</div>
 		</div>
-	{/if}
-</div>
+	</div>
+{/if}
 
 <style>
-	/* Base styles */
-	:global(body) {
-		margin: 0;
-		padding: 0;
-		font-family:
-			-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-			'Helvetica Neue', sans-serif;
-		font-size: 16px;
-		line-height: 1.5;
-		background-color: #f5f5f7;
-		color: #333;
-	}
-
-	.container {
-		max-width: 800px;
-		margin: 0 auto;
-		padding: 1rem;
-	}
-
-	h1 {
-		text-align: center;
-		font-size: 24px;
-		margin: 0 0 16px 0;
-		font-weight: 600;
-		background: linear-gradient(to right, #0071e3, #42aaff);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-
-	/* Loading and Model Selection */
-	.loading {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1.75rem;
-		margin: 1rem 0;
-		animation: fadeIn 0.4s ease-out;
-		width: 100%;
-	}
-
-	.loading-progress {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1.25rem;
-		padding: 2.5rem;
-		background-color: white;
-		border-radius: 20px;
-		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-		width: 100%;
-		max-width: 500px;
-		text-align: center;
-	}
-
-	.loading-progress h3 {
-		font-size: 1.5rem;
-		font-weight: 600;
-		margin: 0;
-		color: #111;
-	}
-
-	.download-percentage {
-		font-size: 1.125rem;
-		font-weight: 500;
-		color: #0071e3;
-		margin: 0;
-	}
-
-	.progress-container {
-		width: 100%;
-		margin: 0.5rem 0;
-	}
-
-	.progress-bar {
-		height: 0.6rem;
-		background-color: #e1e1e1;
-		border-radius: 8px;
-		overflow: hidden;
-		width: 100%;
-		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-	}
-
-	.progress-bar-fill {
-		height: 100%;
-		background-color: #0071e3;
-		border-radius: 8px;
-		background-image: linear-gradient(
-			45deg,
-			rgba(255, 255, 255, 0.15) 25%,
-			transparent 25%,
-			transparent 50%,
-			rgba(255, 255, 255, 0.15) 50%,
-			rgba(255, 255, 255, 0.15) 75%,
-			transparent 75%,
-			transparent
-		);
-		background-size: 1rem 1rem;
-		animation: progress-animation 1s linear infinite;
-	}
-
-	.loading-message {
-		font-size: 0.9375rem;
-		color: #666;
-		margin: 0;
-		max-width: 320px;
-	}
-
-	.model-note {
-		font-size: 0.875rem;
-		color: #777;
-		text-align: center;
-		margin-top: 0.5rem;
-	}
-
-	.param-hint {
-		font-size: 0.875rem;
-		color: #777;
-		font-weight: normal;
-	}
-
+	/* Model selector styling */
 	.model-selector {
 		width: 100%;
 		max-width: 500px;
@@ -548,28 +424,17 @@
 		box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
 	}
 
-	.model-selector button {
-		padding: 1rem;
-		background-color: #0071e3;
-		color: white;
-		border: none;
-		border-radius: 14px;
-		cursor: pointer;
-		font-size: 1.125rem;
-		font-weight: 500;
-		transition: all 0.2s;
-		box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
+	.model-note {
+		font-size: 0.875rem;
+		color: #777;
+		text-align: center;
+		margin-top: 0.5rem;
 	}
 
-	.model-selector button:hover {
-		background-color: #0062cc;
-		transform: translateY(-1px);
-		box-shadow: 0 4px 12px rgba(0, 113, 227, 0.4);
-	}
-
-	.model-selector button:active {
-		transform: translateY(0);
-		box-shadow: 0 1px 3px rgba(0, 113, 227, 0.3);
+	.param-hint {
+		font-size: 0.875rem;
+		color: #777;
+		font-weight: normal;
 	}
 
 	.inference-params {
@@ -617,73 +482,14 @@
 		box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
 	}
 
-	.error {
-		color: #ff3b30;
-		background-color: #feeced;
-		padding: 1.5rem;
-		border-radius: 16px;
-		text-align: center;
-		box-shadow: 0 2px 12px rgba(255, 59, 48, 0.15);
-		width: 100%;
-		max-width: 500px;
-		animation: errorPulse 2s infinite alternate;
-	}
-
-	.error p {
-		font-size: 1.0625rem;
-		margin-bottom: 1.25rem;
-		line-height: 1.5;
-	}
-
-	.error button {
-		padding: 0.875rem 1.5rem;
-		background-color: #ff3b30;
-		color: white;
-		border: none;
-		border-radius: 12px;
-		cursor: pointer;
-		font-size: 1.0625rem;
+	.download-percentage {
+		font-size: 1.125rem;
 		font-weight: 500;
-		transition: all 0.2s;
-		box-shadow: 0 2px 8px rgba(255, 59, 48, 0.3);
+		color: #0071e3;
+		margin: 0;
 	}
 
-	.error button:hover {
-		background-color: #e0352b;
-		transform: translateY(-1px);
-		box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4);
-	}
-
-	.error button:active {
-		transform: translateY(0);
-		box-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
-	}
-
-	/* Chat Interface */
-	.chat-interface {
-		border-radius: 16px;
-		overflow: hidden;
-		border: none;
-		background-color: white;
-		box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-		width: 100%;
-	}
-
-	.toolbar {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 1rem 1.25rem;
-		background-color: #f8f8f8;
-		border-bottom: 1px solid #e5e5e5;
-	}
-
-	.model-info {
-		font-size: 1rem;
-		font-weight: 500;
-		color: #666;
-	}
-
+	/* Chat specific styling */
 	.new-chat-btn {
 		padding: 0.5rem 1rem;
 		background-color: #0071e3;
@@ -700,15 +506,9 @@
 		background-color: #0062cc;
 	}
 
-	/* Chat Messages */
 	.chat-messages {
 		height: clamp(350px, calc(100vh - 250px), 600px);
 		overflow-y: auto;
-		padding: 1.25rem;
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		background-color: #f5f5f7;
 		max-height: calc(100vh - 250px);
 	}
 
@@ -774,13 +574,6 @@
 		width: 16px;
 		height: 16px;
 		background: radial-gradient(40px at top left, transparent 50%, #e5e5ea 50%);
-	}
-
-	/* Input Area */
-	.input-area {
-		padding: 1rem 1.25rem;
-		border-top: 1px solid #e5e5e5;
-		background-color: white;
 	}
 
 	.message-input {
@@ -872,13 +665,6 @@
 		background-color: #e0352b;
 	}
 
-	.disclaimer {
-		margin-top: 0.375rem;
-		font-size: 0.8125rem;
-		color: #8e8e93;
-		text-align: center;
-	}
-
 	/* Typing indicator */
 	.typing-indicator {
 		display: inline-flex;
@@ -903,7 +689,6 @@
 		animation-delay: -0.16s;
 	}
 
-	/* Animations */
 	@keyframes bounce {
 		0%,
 		80%,
@@ -915,86 +700,15 @@
 		}
 	}
 
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	@keyframes progress-animation {
-		0% {
-			background-position: 0 0;
-		}
-		100% {
-			background-position: 1rem 0;
-		}
-	}
-
-	@keyframes errorPulse {
-		0% {
-			box-shadow: 0 2px 12px rgba(255, 59, 48, 0.15);
-		}
-		100% {
-			box-shadow: 0 2px 16px rgba(255, 59, 48, 0.3);
-		}
-	}
-
-	/* Responsive adjustments */
+	/* Responsive adjustments for the main page */
 	@media (max-width: 600px) {
-		.container {
-			padding: 0.75rem 1rem;
-			margin: 0 auto;
-		}
-
-		.loading {
-			align-items: stretch;
-		}
-
-		.loading-progress,
-		.model-selector,
-		.error {
-			width: auto;
-			max-width: none;
-		}
-
-		h1 {
-			font-size: 1.5rem;
-		}
-
-		.message-content {
-			font-size: 1rem;
-			padding: 0.75rem 1rem;
-		}
-
 		.message {
 			max-width: 90%;
 		}
 
-		/* Updated chat messages style for mobile */
 		.chat-messages {
 			height: clamp(250px, calc(100vh - 220px), 400px);
 			max-height: calc(100vh - 220px);
-		}
-
-		.chat-interface {
-			border-radius: 12px;
-		}
-
-		.model-selector {
-			padding: 1.5rem;
-		}
-
-		.inference-params {
-			padding: 1.25rem;
-		}
-
-		.loading-progress {
-			padding: 1.75rem;
 		}
 	}
 </style>
