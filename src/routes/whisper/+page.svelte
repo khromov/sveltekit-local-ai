@@ -11,7 +11,8 @@
 	let error = $state(false);
 	let transcribeProgress = $state(0);
 	let previousProgress = $state(0);
-	
+	let currentSegment = $state('');
+
 	// File upload state
 	let selectedFile: File | null = $state(null);
 	let transcribeMode = $state<'demo' | 'upload'>('demo');
@@ -21,15 +22,14 @@
 
 	// Model selection state
 	let selectedModel = $state(DEFAULT_MODEL);
-	const availableModels = [
-		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' }
-	];
+	const availableModels = [{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' }];
 
 	async function transcribe() {
 		if (!transcriber?.isReady) return;
 		if (transcribeMode === 'upload' && !selectedFile) return;
 
 		text = '';
+		currentSegment = '';
 		isTranscribing = true;
 		transcribeProgress = 0;
 		previousProgress = 0;
@@ -53,6 +53,7 @@
 		} finally {
 			isTranscribing = false;
 			transcribeProgress = 0;
+			currentSegment = '';
 		}
 	}
 
@@ -92,7 +93,11 @@
 					transcribeProgress = Math.round(progress);
 					console.log(`Transcription progress: ${transcribeProgress}%`);
 				},
-				onSegment: (segment) => console.log('New segment:', segment),
+				onSegment: (segment) => {
+					console.log('New segment:', segment);
+					// Update the current segment preview
+					currentSegment = segment.segment.text.trim();
+				},
 				onComplete: (result) => console.log('Transcription complete:', result),
 				onCanceled: () => console.log('Transcription canceled')
 			});
@@ -124,7 +129,7 @@
 						<option value={model.path}>{model.name}</option>
 					{/each}
 				</select>
-				
+
 				{#if !isReady}
 					<button onclick={loadModel} disabled={isLoading} class="load-model-btn primary-button">
 						{isLoading ? 'Loading Model...' : 'Load Model'}
@@ -151,13 +156,13 @@
 		<div class="main-content" class:disabled={!isReady}>
 			<div class="transcribe-options">
 				<h3>Choose Audio Source</h3>
-				
+
 				<div class="option-group">
 					<label class="option-label">
-						<input 
-							type="radio" 
-							name="transcribeMode" 
-							value="demo" 
+						<input
+							type="radio"
+							name="transcribeMode"
+							value="demo"
 							checked={transcribeMode === 'demo'}
 							onchange={selectDemoMode}
 							disabled={!isReady}
@@ -167,14 +172,14 @@
 							<small>Use the included JFK speech sample</small>
 						</span>
 					</label>
-					
+
 					<label class="option-label">
-						<input 
-							type="radio" 
-							name="transcribeMode" 
-							value="upload" 
+						<input
+							type="radio"
+							name="transcribeMode"
+							value="upload"
 							checked={transcribeMode === 'upload'}
-							onchange={() => transcribeMode = 'upload'}
+							onchange={() => (transcribeMode = 'upload')}
 							disabled={!isReady}
 						/>
 						<span class="option-content">
@@ -186,10 +191,10 @@
 
 				{#if transcribeMode === 'upload'}
 					<div class="file-upload">
-						<input 
+						<input
 							bind:this={fileInputElement}
-							type="file" 
-							accept="audio/*" 
+							type="file"
+							accept="audio/*"
 							onchange={handleFileSelect}
 							id="audio-file"
 							disabled={!isReady}
@@ -207,12 +212,23 @@
 					<p class="progress-percentage">{transcribeProgress}% Complete</p>
 					<div class="progress-container">
 						<div class="progress-bar">
-							<div 
+							<div
 								class="progress-bar-fill"
-								style="width: {transcribeProgress}%; transition: width {transcribeProgress > previousProgress ? '0.3s' : '0s'} ease"
+								style="width: {transcribeProgress}%; transition: width {transcribeProgress >
+								previousProgress
+									? '0.3s'
+									: '0s'} ease"
 							></div>
 						</div>
 					</div>
+
+					{#if currentSegment}
+						<div class="segment-preview">
+							<h4>Current Segment</h4>
+							<p>"{currentSegment}"</p>
+						</div>
+					{/if}
+
 					<p class="transcribing-message">Please wait while we process your audio...</p>
 				</div>
 			{:else if text}
@@ -229,9 +245,9 @@
 	</div>
 
 	<div class="input-area" class:disabled={!isReady}>
-		<button 
-			onclick={transcribe} 
-			disabled={!isReady || isTranscribing || (transcribeMode === 'upload' && !selectedFile)} 
+		<button
+			onclick={transcribe}
+			disabled={!isReady || isTranscribing || (transcribeMode === 'upload' && !selectedFile)}
 			class="transcribe-btn primary-button"
 		>
 			{isTranscribing ? 'Transcribing...' : 'Start Transcription'}
@@ -380,7 +396,7 @@
 		background-color: #f0f4ff;
 	}
 
-	.option-label input[type="radio"] {
+	.option-label input[type='radio'] {
 		margin: 0;
 		accent-color: #0071e3;
 	}
@@ -405,7 +421,7 @@
 		margin-top: 0.5rem;
 	}
 
-	.file-upload input[type="file"] {
+	.file-upload input[type='file'] {
 		display: none;
 	}
 
@@ -457,6 +473,35 @@
 		font-weight: 500;
 		color: #0071e3;
 		margin-bottom: 1rem;
+	}
+
+	.segment-preview {
+		margin: 1rem 0;
+		padding: 1rem;
+		background-color: #f8f9ff;
+		border: 1px solid #e1e5ff;
+		border-radius: 12px;
+		width: 100%;
+		max-width: 400px;
+		animation: fadeIn 0.3s ease-in-out;
+	}
+
+	.segment-preview h4 {
+		text-align: center;
+		margin: 0 0 0.5rem 0;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #555;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+
+	.segment-preview p {
+		margin: 0;
+		font-size: 0.9375rem;
+		line-height: 1.4;
+		color: #333;
+		font-style: italic;
 	}
 
 	.transcribing-message {
@@ -584,25 +629,29 @@
 		.transcribe-options {
 			padding: 1rem;
 		}
-		
+
 		.option-group {
 			gap: 0.5rem;
 		}
-		
+
 		.option-label {
 			padding: 0.75rem;
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 0.5rem;
 		}
-		
+
 		.result-content {
 			font-size: 1rem;
 			padding: 1rem;
 		}
-		
+
 		.transcribing {
 			padding: 1.5rem;
+		}
+
+		.segment-preview {
+			max-width: none;
 		}
 	}
 </style>
