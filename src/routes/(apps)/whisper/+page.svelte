@@ -15,8 +15,11 @@
 
 	// File upload state
 	let selectedFile: File | null = $state(null);
-	let transcribeMode = $state<'demo' | 'upload'>('demo');
+	let transcribeMode = $state<'demo' | 'upload'>('upload'); // Changed default to upload
 	let fileInputElement = $state<HTMLInputElement | null>(null);
+
+	// Drag and drop state
+	let isDragging = $state(false);
 
 	const DEFAULT_MODEL = 'https://files.khromov.se/whisper/ggml-tiny-q5_1.bin';
 
@@ -75,6 +78,38 @@
 		selectedFile = null;
 		if (fileInputElement) {
 			fileInputElement.value = '';
+		}
+	}
+
+	// Drag and drop handlers
+	function handleDragOver(event: DragEvent) {
+		event.preventDefault();
+		if (!isReady) return;
+		isDragging = true;
+	}
+
+	function handleDragLeave(event: DragEvent) {
+		event.preventDefault();
+		// Only set isDragging to false if we're leaving the drop zone entirely
+		const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+		const x = event.clientX;
+		const y = event.clientY;
+		
+		if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) {
+			isDragging = false;
+		}
+	}
+
+	function handleDrop(event: DragEvent) {
+		event.preventDefault();
+		isDragging = false;
+		
+		if (!isReady) return;
+		
+		const files = event.dataTransfer?.files;
+		if (files && files.length > 0) {
+			selectedFile = files[0];
+			transcribeMode = 'upload';
 		}
 	}
 
@@ -162,14 +197,14 @@
 						<input
 							type="radio"
 							name="transcribeMode"
-							value="demo"
-							checked={transcribeMode === 'demo'}
-							onchange={selectDemoMode}
+							value="upload"
+							checked={transcribeMode === 'upload'}
+							onchange={() => (transcribeMode = 'upload')}
 							disabled={!isReady}
 						/>
 						<span class="option-content">
-							<strong>Demo Audio</strong>
-							<small>Use the included JFK speech sample</small>
+							<strong>Local File</strong>
+							<small>Select an audio file from your device (.mp3, .wav, .m4a)</small>
 						</span>
 					</label>
 
@@ -177,14 +212,14 @@
 						<input
 							type="radio"
 							name="transcribeMode"
-							value="upload"
-							checked={transcribeMode === 'upload'}
-							onchange={() => (transcribeMode = 'upload')}
+							value="demo"
+							checked={transcribeMode === 'demo'}
+							onchange={selectDemoMode}
 							disabled={!isReady}
 						/>
 						<span class="option-content">
-							<strong>Upload Audio</strong>
-							<small>Select your own audio file (.mp3, .wav, .m4a)</small>
+							<strong>Demo Audio</strong>
+							<small>Use the included JFK speech sample (<a href="/jfk.mp3" target="_blank">listen to audio</a>)</small>
 						</span>
 					</label>
 				</div>
@@ -199,9 +234,40 @@
 							id="audio-file"
 							disabled={!isReady}
 						/>
-						<label for="audio-file" class="file-upload-label" class:disabled={!isReady}>
-							{selectedFile ? selectedFile.name : 'Choose audio file...'}
-						</label>
+						<div 
+							class="file-upload-label" 
+							class:disabled={!isReady}
+							class:dragging={isDragging}
+							ondragover={handleDragOver}
+							ondragleave={handleDragLeave}
+							ondrop={handleDrop}
+							onclick={() => fileInputElement?.click()}
+						>
+							{#if isDragging}
+								<div class="drag-overlay">
+									<svg class="drag-icon" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
+										<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+										<polyline points="14,2 14,8 20,8"></polyline>
+										<line x1="16" y1="13" x2="8" y2="13"></line>
+										<line x1="16" y1="17" x2="8" y2="17"></line>
+										<polyline points="10,9 9,9 8,9"></polyline>
+									</svg>
+									<p>Drop audio file here</p>
+								</div>
+							{:else}
+								<div class="upload-content">
+									<svg class="upload-icon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+										<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+										<polyline points="7,10 12,15 17,10"></polyline>
+										<line x1="12" y1="15" x2="12" y2="3"></line>
+									</svg>
+									<p class="upload-text">
+										{selectedFile ? selectedFile.name : 'Choose audio file or drag and drop here'}
+									</p>
+									<p class="upload-hint">Supports MP3, WAV, M4A and other audio formats</p>
+								</div>
+							{/if}
+						</div>
 					</div>
 				{/if}
 			</div>
@@ -417,6 +483,15 @@
 		color: #666;
 	}
 
+	.option-content small a {
+		color: #0071e3;
+		text-decoration: none;
+	}
+
+	.option-content small a:hover {
+		text-decoration: underline;
+	}
+
 	.file-upload {
 		margin-top: 0.5rem;
 	}
@@ -427,25 +502,85 @@
 
 	.file-upload-label {
 		display: block;
-		padding: 0.875rem 1.25rem;
+		position: relative;
+		min-height: 120px;
 		background-color: #f8f8f8;
 		border: 2px dashed #ccc;
 		border-radius: 12px;
-		text-align: center;
 		cursor: pointer;
 		transition: all 0.2s ease;
-		font-size: 1rem;
-		color: #555;
+		overflow: hidden;
 	}
 
 	.file-upload-label:hover:not(.disabled) {
 		border-color: #0071e3;
 		background-color: #f0f4ff;
-		color: #0071e3;
 	}
 
 	.file-upload-label.disabled {
 		cursor: not-allowed;
+	}
+
+	.file-upload-label.dragging {
+		border-color: #0071e3;
+		background-color: #f0f4ff;
+		border-style: solid;
+	}
+
+	.upload-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 1.5rem;
+		height: 100%;
+		min-height: 120px;
+	}
+
+	.upload-icon {
+		color: #0071e3;
+		margin-bottom: 0.75rem;
+	}
+
+	.upload-text {
+		font-size: 1rem;
+		color: #333;
+		margin: 0 0 0.25rem 0;
+		text-align: center;
+		font-weight: 500;
+	}
+
+	.upload-hint {
+		font-size: 0.875rem;
+		color: #666;
+		margin: 0;
+		text-align: center;
+	}
+
+	.drag-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background-color: rgba(0, 113, 227, 0.1);
+		border-radius: 10px;
+	}
+
+	.drag-icon {
+		color: #0071e3;
+		margin-bottom: 0.5rem;
+	}
+
+	.drag-overlay p {
+		font-size: 1.125rem;
+		font-weight: 600;
+		color: #0071e3;
+		margin: 0;
 	}
 
 	.transcribing {
@@ -652,6 +787,11 @@
 
 		.segment-preview {
 			max-width: none;
+		}
+
+		.upload-content {
+			padding: 1rem;
+			min-height: 100px;
 		}
 	}
 </style>
