@@ -340,7 +340,7 @@
 	}
 
 	/* Animations */
-	@keyframes fadeIn {
+	@keyframes -global-fadeIn {
 		from {
 			opacity: 0;
 			transform: translateY(10px);
@@ -351,7 +351,7 @@
 		}
 	}
 
-	@keyframes progress-animation {
+	@keyframes -global-progress-animation {
 		0% {
 			background-position: 0 0;
 		}

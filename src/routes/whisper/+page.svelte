@@ -114,7 +114,7 @@
 	}
 </script>
 
-<div class="card-interface">
+<div class="card-interface" style="animation: fadeIn 0.5s ease-out;">
 	<div class="toolbar">
 		<span class="model-info">Whisper Audio Transcription</span>
 	</div>
