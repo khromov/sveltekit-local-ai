@@ -15,11 +15,19 @@
 
 	// File upload state
 	let selectedFile: File | null = $state(null);
-	let transcribeMode = $state<'demo' | 'upload'>('upload'); // Changed default to upload
+	let transcribeMode = $state<'demo' | 'upload'>('upload');
 	let fileInputElement = $state<HTMLInputElement | null>(null);
 
 	// Drag and drop state
 	let isDragging = $state(false);
+
+	// Timeout tracking for stuck transcription
+	let lastSegmentTime = $state(0);
+	let stuckCheckInterval: number | null = null;
+	let isStuck = $state(false);
+
+	// Copy to clipboard state
+	let hasCopied = $state(false);
 
 	const DEFAULT_MODEL = 'https://files.khromov.se/whisper/ggml-tiny-q5_1.bin';
 
@@ -36,6 +44,11 @@
 		isTranscribing = true;
 		transcribeProgress = 0;
 		previousProgress = 0;
+		isStuck = false;
+		lastSegmentTime = Date.now();
+
+		// Start checking for stuck transcription
+		startStuckCheck();
 
 		try {
 			let result;
@@ -57,6 +70,39 @@
 			isTranscribing = false;
 			transcribeProgress = 0;
 			currentSegment = '';
+			stopStuckCheck();
+		}
+	}
+
+	function startStuckCheck() {
+		stuckCheckInterval = window.setInterval(() => {
+			if (isTranscribing && Date.now() - lastSegmentTime > 60000) {
+				isStuck = true;
+				stopStuckCheck();
+			}
+		}, 5000); // Check every 5 seconds
+	}
+
+	function stopStuckCheck() {
+		if (stuckCheckInterval) {
+			clearInterval(stuckCheckInterval);
+			stuckCheckInterval = null;
+		}
+	}
+
+	function reloadPage() {
+		window.location.reload();
+	}
+
+	async function copyToClipboard() {
+		try {
+			await navigator.clipboard.writeText(text);
+			hasCopied = true;
+			setTimeout(() => {
+				hasCopied = false;
+			}, 2000);
+		} catch (err) {
+			console.error('Failed to copy text:', err);
 		}
 	}
 
@@ -130,8 +176,10 @@
 				},
 				onSegment: (segment) => {
 					console.log('New segment:', segment);
-					// Update the current segment preview
+					// Update the current segment preview and reset timer
 					currentSegment = segment.segment.text.trim();
+					lastSegmentTime = Date.now();
+					isStuck = false;
 				},
 				onComplete: (result) => console.log('Transcription complete:', result),
 				onCanceled: () => console.log('Transcription canceled')
@@ -243,30 +291,17 @@
 							ondrop={handleDrop}
 							onclick={() => fileInputElement?.click()}
 						>
-							{#if isDragging}
-								<div class="drag-overlay">
-									<svg class="drag-icon" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
-										<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-										<polyline points="14,2 14,8 20,8"></polyline>
-										<line x1="16" y1="13" x2="8" y2="13"></line>
-										<line x1="16" y1="17" x2="8" y2="17"></line>
-										<polyline points="10,9 9,9 8,9"></polyline>
-									</svg>
-									<p>Drop audio file here</p>
-								</div>
-							{:else}
-								<div class="upload-content">
-									<svg class="upload-icon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
-										<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-										<polyline points="7,10 12,15 17,10"></polyline>
-										<line x1="12" y1="15" x2="12" y2="3"></line>
-									</svg>
-									<p class="upload-text">
-										{selectedFile ? selectedFile.name : 'Choose audio file or drag and drop here'}
-									</p>
-									<p class="upload-hint">Supports MP3, WAV, M4A and other audio formats</p>
-								</div>
-							{/if}
+							<div class="upload-content">
+								<svg class="upload-icon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+									<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+									<polyline points="7,10 12,15 17,10"></polyline>
+									<line x1="12" y1="15" x2="12" y2="3"></line>
+								</svg>
+								<p class="upload-text">
+									{selectedFile ? selectedFile.name : 'Choose audio file or drag and drop here'}
+								</p>
+								<p class="upload-hint">Supports MP3, WAV, M4A and other audio formats</p>
+							</div>
 						</div>
 					</div>
 				{/if}
@@ -295,13 +330,37 @@
 						</div>
 					{/if}
 
-					<p class="transcribing-message">Please wait while we process your audio...</p>
+					{#if isStuck}
+						<p class="stuck-message">
+							Transcription seems stuck. <button class="reload-link" onclick={reloadPage}>Reload the page</button> and try again.
+						</p>
+					{:else}
+						<p class="transcribing-message">
+							⚠️ Keep this tab active during transcription to avoid issues.
+						</p>
+					{/if}
 				</div>
 			{:else if text}
 				<div class="result-wrapper">
 					<div class="result">
 						<div class="result-content">
-							<h3>Transcription Result:</h3>
+							<div class="result-header">
+								<h3>Transcription Result:</h3>
+								<button class="copy-btn" onclick={copyToClipboard} class:copied={hasCopied}>
+									{#if hasCopied}
+										<svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+											<polyline points="20,6 9,17 4,12"></polyline>
+										</svg>
+										Copied!
+									{:else}
+										<svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+											<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+											<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+										</svg>
+										Copy
+									{/if}
+								</button>
+							</div>
 							<p>{text}</p>
 						</div>
 					</div>
@@ -557,32 +616,6 @@
 		text-align: center;
 	}
 
-	.drag-overlay {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		background-color: rgba(0, 113, 227, 0.1);
-		border-radius: 10px;
-	}
-
-	.drag-icon {
-		color: #0071e3;
-		margin-bottom: 0.5rem;
-	}
-
-	.drag-overlay p {
-		font-size: 1.125rem;
-		font-weight: 600;
-		color: #0071e3;
-		margin: 0;
-	}
-
 	.transcribing {
 		display: flex;
 		flex-direction: column;
@@ -644,6 +677,36 @@
 		color: #666;
 		font-weight: 500;
 		text-align: center;
+		background-color: #fff3cd;
+		padding: 0.75rem 1rem;
+		border-radius: 8px;
+		border: 1px solid #ffeaa8;
+	}
+
+	.stuck-message {
+		margin-top: 1rem;
+		color: #ff3b30;
+		font-weight: 500;
+		text-align: center;
+		background-color: #feeced;
+		padding: 0.75rem 1rem;
+		border-radius: 8px;
+		border: 1px solid #ffcccc;
+	}
+
+	.reload-link {
+		background: none;
+		border: none;
+		color: #0071e3;
+		text-decoration: underline;
+		cursor: pointer;
+		font-size: inherit;
+		font-weight: inherit;
+		padding: 0;
+	}
+
+	.reload-link:hover {
+		text-decoration: none;
 	}
 
 	.result-wrapper {
@@ -671,9 +734,15 @@
 		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 	}
 
-	.result-content h3 {
-		margin-top: 0;
+	.result-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 		margin-bottom: 0.75rem;
+	}
+
+	.result-content h3 {
+		margin: 0;
 		font-size: 1.125rem;
 		font-weight: 600;
 		color: #333;
@@ -681,6 +750,34 @@
 
 	.result-content p {
 		margin: 0;
+	}
+
+	.copy-btn {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 0.75rem;
+		background-color: #0071e3;
+		color: white;
+		border: none;
+		border-radius: 8px;
+		cursor: pointer;
+		font-size: 0.875rem;
+		font-weight: 500;
+		transition: all 0.2s ease;
+	}
+
+	.copy-btn:hover {
+		background-color: #0062cc;
+	}
+
+	.copy-btn.copied {
+		background-color: #28a745;
+	}
+
+	.copy-icon {
+		width: 16px;
+		height: 16px;
 	}
 
 	.transcribe-btn {
@@ -779,6 +876,12 @@
 		.result-content {
 			font-size: 1rem;
 			padding: 1rem;
+		}
+
+		.result-header {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.75rem;
 		}
 
 		.transcribing {
