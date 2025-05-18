@@ -33,7 +33,15 @@
 
 	// Model selection state
 	let selectedModel = $state(DEFAULT_MODEL);
-	const availableModels = [{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' }];
+	const availableModels = [
+		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' },
+		{ path: 'https://files.khromov.se/whisper/ggml-tiny.en-q5_1.bin', name: 'Whisper Tiny English (q5_1)' },
+		{ path: 'https://files.khromov.se/whisper/ggml-small-q5_1.bin', name: 'Whisper Small (q5_1)' },
+		{ path: 'https://files.khromov.se/whisper/ggml-small.en-q5_1.bin', name: 'Whisper Small English (q5_1)' },
+		{ path: 'https://files.khromov.se/whisper/ggml-medium-q5_0.bin', name: 'Whisper Medium (q5_0)' },
+		{ path: 'https://files.khromov.se/whisper/ggml-medium.en-q5_0.bin', name: 'Whisper Medium English (q5_0)' },
+		{ path: 'https://files.khromov.se/whisper/ggml-large-v2-q5_0.bin', name: 'Whisper Large (q5_0)' },
+	];
 
 	async function transcribe() {
 		if (!transcriber?.isReady) return;
