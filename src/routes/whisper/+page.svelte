@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 
 	let isReady = $state(false);
-	let isLoading = $state(true);
+	let isLoading = $state(false);
 	let isTranscribing = $state(false);
 	let transcriber: FileTranscriber;
 	let text = $state('');
@@ -15,7 +15,15 @@
 	// File upload state
 	let selectedFile: File | null = $state(null);
 	let transcribeMode = $state<'demo' | 'upload'>('demo');
-	let fileInputElement: HTMLInputElement;
+	let fileInputElement = $state<HTMLInputElement | null>(null);
+
+	const DEFAULT_MODEL = 'https://files.khromov.se/whisper/ggml-tiny-q5_1.bin';
+
+	// Model selection state
+	let selectedModel = $state(DEFAULT_MODEL);
+	const availableModels = [
+		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' }
+	];
 
 	async function transcribe() {
 		if (!transcriber?.isReady) return;
@@ -50,8 +58,7 @@
 
 	function retry() {
 		error = false;
-		isLoading = true;
-		initTranscriber();
+		loadModel();
 	}
 
 	function handleFileSelect(event: Event) {
@@ -70,12 +77,15 @@
 		}
 	}
 
-	async function initTranscriber() {
+	async function loadModel() {
 		try {
+			isLoading = true;
+			error = false;
+
 			// Create new instance with progress tracking
 			transcriber = new FileTranscriber({
 				createModule,
-				model: '/ggml-tiny-q5_1.bin',
+				model: selectedModel,
 				onReady: () => console.log('Transcriber ready'),
 				onProgress: (progress) => {
 					previousProgress = transcribeProgress;
@@ -97,42 +107,48 @@
 			isLoading = false;
 		}
 	}
-
-	onMount(() => {
-		initTranscriber();
-	});
 </script>
 
-{#if isLoading || !isReady}
-	<div class="loading">
-		{#if error}
-			<div class="error">
-				<p>Failed to load transcription model. Please check your connection and try again.</p>
-				<button onclick={retry} disabled={isLoading}>
-					{isLoading ? 'Reloading...' : 'Reload Model'}
-				</button>
-			</div>
-		{:else}
-			<div class="loading-progress">
-				<h3>Loading Transcription Model</h3>
-				<div class="progress-container">
-					<div class="progress-bar">
-						<div class="progress-bar-fill"></div>
-					</div>
-				</div>
-				<p class="loading-message">
-					This will take a moment. The whisper model is being loaded to your browser.
-				</p>
-			</div>
-		{/if}
+<div class="card-interface">
+	<div class="toolbar">
+		<span class="model-info">Whisper Audio Transcription</span>
 	</div>
-{:else}
-	<div class="card-interface" style="animation: fadeIn 0.5s ease-out;">
-		<div class="toolbar">
-			<span class="model-info">Model: Whisper (tiny.en)</span>
+
+	<div class="content-area">
+		<!-- Model Selection Section -->
+		<div class="model-selection">
+			<h3>Select Model</h3>
+			<div class="model-controls">
+				<select bind:value={selectedModel} disabled={isLoading}>
+					{#each availableModels as model}
+						<option value={model.path}>{model.name}</option>
+					{/each}
+				</select>
+				
+				{#if !isReady}
+					<button onclick={loadModel} disabled={isLoading} class="load-model-btn primary-button">
+						{isLoading ? 'Loading Model...' : 'Load Model'}
+					</button>
+				{:else}
+					<div class="model-ready">
+						<span class="checkmark">✓</span>
+						Model Ready
+					</div>
+				{/if}
+			</div>
+
+			{#if error}
+				<div class="inline-error">
+					<p>Failed to load transcription model. Please try again.</p>
+					<button onclick={retry} disabled={isLoading} class="retry-btn">
+						{isLoading ? 'Reloading...' : 'Retry'}
+					</button>
+				</div>
+			{/if}
 		</div>
 
-		<div class="content-area">
+		<!-- Main Content (grayed out when model not ready) -->
+		<div class="main-content" class:disabled={!isReady}>
 			<div class="transcribe-options">
 				<h3>Choose Audio Source</h3>
 				
@@ -144,6 +160,7 @@
 							value="demo" 
 							checked={transcribeMode === 'demo'}
 							onchange={selectDemoMode}
+							disabled={!isReady}
 						/>
 						<span class="option-content">
 							<strong>Demo Audio</strong>
@@ -158,6 +175,7 @@
 							value="upload" 
 							checked={transcribeMode === 'upload'}
 							onchange={() => transcribeMode = 'upload'}
+							disabled={!isReady}
 						/>
 						<span class="option-content">
 							<strong>Upload Audio</strong>
@@ -174,8 +192,9 @@
 							accept="audio/*" 
 							onchange={handleFileSelect}
 							id="audio-file"
+							disabled={!isReady}
 						/>
-						<label for="audio-file" class="file-upload-label">
+						<label for="audio-file" class="file-upload-label" class:disabled={!isReady}>
 							{selectedFile ? selectedFile.name : 'Choose audio file...'}
 						</label>
 					</div>
@@ -207,24 +226,115 @@
 				</div>
 			{/if}
 		</div>
+	</div>
 
-		<div class="input-area">
-			<button 
-				onclick={transcribe} 
-				disabled={isTranscribing || (transcribeMode === 'upload' && !selectedFile)} 
-				class="transcribe-btn primary-button"
-			>
-				{isTranscribing ? 'Transcribing...' : 'Start Transcription'}
-			</button>
+	<div class="input-area" class:disabled={!isReady}>
+		<button 
+			onclick={transcribe} 
+			disabled={!isReady || isTranscribing || (transcribeMode === 'upload' && !selectedFile)} 
+			class="transcribe-btn primary-button"
+		>
+			{isTranscribing ? 'Transcribing...' : 'Start Transcription'}
+		</button>
 
-			<div class="disclaimer">
-				Transcription is performed locally in your browser. Results may not always be accurate.
-			</div>
+		<div class="disclaimer">
+			Transcription is performed locally in your browser. Results may not always be accurate.
 		</div>
 	</div>
-{/if}
+</div>
 
 <style>
+	.model-selection {
+		background-color: white;
+		border-radius: 16px;
+		padding: 1.5rem;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+		margin-bottom: 1rem;
+	}
+
+	.model-selection h3 {
+		margin-top: 0;
+		margin-bottom: 1rem;
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: #333;
+		text-align: center;
+	}
+
+	.model-controls {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+	}
+
+	.model-controls select {
+		padding: 0.75rem;
+		border-radius: 12px;
+		border: 1px solid #e1e1e1;
+		font-size: 1rem;
+		background-color: #f8f8f8;
+		min-width: 250px;
+		text-align: center;
+	}
+
+	.model-controls select:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
+	}
+
+	.load-model-btn {
+		min-width: 150px;
+	}
+
+	.model-ready {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #28a745;
+		font-weight: 500;
+		font-size: 1rem;
+	}
+
+	.checkmark {
+		font-size: 1.25rem;
+		font-weight: bold;
+	}
+
+	.inline-error {
+		margin-top: 1rem;
+		padding: 1rem;
+		background-color: #feeced;
+		border-radius: 12px;
+		text-align: center;
+	}
+
+	.inline-error p {
+		color: #ff3b30;
+		margin: 0 0 0.75rem 0;
+		font-size: 0.875rem;
+	}
+
+	.retry-btn {
+		padding: 0.5rem 1rem;
+		background-color: #ff3b30;
+		color: white;
+		border: none;
+		border-radius: 8px;
+		cursor: pointer;
+		font-size: 0.875rem;
+	}
+
+	.retry-btn:hover {
+		background-color: #e0352b;
+	}
+
+	.main-content.disabled,
+	.input-area.disabled {
+		opacity: 0.3;
+		pointer-events: none;
+	}
+
 	.transcribe-options {
 		background-color: white;
 		border-radius: 16px;
@@ -312,10 +422,14 @@
 		color: #555;
 	}
 
-	.file-upload-label:hover {
+	.file-upload-label:hover:not(.disabled) {
 		border-color: #0071e3;
 		background-color: #f0f4ff;
 		color: #0071e3;
+	}
+
+	.file-upload-label.disabled {
+		cursor: not-allowed;
 	}
 
 	.transcribing {
@@ -459,6 +573,14 @@
 
 	/* Responsive adjustments */
 	@media (max-width: 600px) {
+		.model-controls {
+			align-items: stretch;
+		}
+
+		.model-controls select {
+			min-width: auto;
+		}
+
 		.transcribe-options {
 			padding: 1rem;
 		}
