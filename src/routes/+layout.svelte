@@ -396,10 +396,6 @@
 			max-width: none;
 		}
 
-		h1 {
-			font-size: 1.5rem;
-		}
-
 		:global(.card-interface) {
 			border-radius: 12px;
 		}
