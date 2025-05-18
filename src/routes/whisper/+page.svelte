@@ -19,7 +19,7 @@
 		try {
 			// transcribe the file
 			// there must be at least one user interaction (e.g click) before you can call this function
-			const result = await transcriber.transcribe('/jhf.mp3', { lang: 'en' });
+			const result = await transcriber.transcribe('/jfk.mp3', { lang: 'en' });
 
 			// do something with the result
 			text = result.transcription.map((t) => t.text).join(' ');
@@ -43,7 +43,13 @@
 			// create new instance
 			transcriber = new FileTranscriber({
 				createModule,
-				model: '/ggml-tiny-q5_1.bin'
+				model: '/ggml-tiny-q5_1.bin',
+				onReady: () => console.log('ready'), // called after init, aka. transcriber is ready
+				onProgress: (progress) => console.log(progress), // progress 0..100
+				onSegment: (segment) => console.log(segment), // on new segement
+				onComplete: (result) => console.log(result), // on transcription done
+				onCanceled: () => console.log('canceled') // called after transcriber.cancel() when the wasm operation actually canceled
+
 				// TODO: Figure out cache,
 				// model: 'https://files.khromov.se/whisper/ggml-base-q5_1.bin'
 			});
