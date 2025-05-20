@@ -11,6 +11,8 @@
 	let error = $state(false);
 	let transcribeProgress = $state(0);
 	let previousProgress = $state(0);
+	let downloadProgress = $state(0);
+	let previousDownloadProgress = $state(0);
 	let currentSegment = $state('');
 
 	// File upload state
@@ -171,6 +173,18 @@
 		try {
 			isLoading = true;
 			error = false;
+			downloadProgress = 0;
+			previousDownloadProgress = 0;
+			
+			// Start progress simulation
+			const progressInterval = setInterval(() => {
+				// Simulate progress up to 95% (last 5% will be when model is actually loaded)
+				if (downloadProgress < 95) {
+					previousDownloadProgress = downloadProgress;
+					downloadProgress += Math.floor(Math.random() * 3) + 1;
+					if (downloadProgress > 95) downloadProgress = 95;
+				}
+			}, 150);
 
 			// Create new instance with progress tracking
 			transcriber = new FileTranscriber({
@@ -195,6 +209,12 @@
 
 			// Initialize the transcriber
 			await transcriber.init();
+			
+			// Clear the progress simulation interval and set to 100%
+			clearInterval(progressInterval);
+			previousDownloadProgress = downloadProgress;
+			downloadProgress = 100;
+			
 			isReady = true;
 		} catch (err) {
 			console.error('Failed to initialize transcriber:', err);
@@ -239,6 +259,25 @@
 					<button onclick={retry} disabled={isLoading} class="retry-btn">
 						{isLoading ? 'Reloading...' : 'Retry'}
 					</button>
+				</div>
+			{:else if isLoading}
+				<div class="loading-progress">
+					<h3>Loading Model</h3>
+					<p class="download-percentage">{downloadProgress}% Complete</p>
+					<div class="progress-container">
+						<div class="progress-bar">
+							<div
+								class="progress-bar-fill"
+								style="width: {downloadProgress}%; transition: width {downloadProgress >
+								previousDownloadProgress
+									? '0.3s'
+									: '0s'} ease"
+							></div>
+						</div>
+					</div>
+					<p class="loading-message">
+						The transcription model is being downloaded to your browser.
+					</p>
 				</div>
 			{/if}
 		</div>
