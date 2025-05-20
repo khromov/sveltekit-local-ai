@@ -9,7 +9,7 @@
 		formatFileSize,
 		type Message
 	} from '$lib/wllama-config';
-
+	import { useWakeLock } from '$lib/wakeLock';
 	import { messages, inferenceParams } from '$lib/stores';
 
 	// State variables
@@ -26,66 +26,14 @@
 	let stopSignal = false;
 	let chatContainer: HTMLElement | undefined = $state();
 	let inputElement: HTMLTextAreaElement | undefined = $state();
-	
-	// Screen wake lock state
-	let wakeLock: WakeLockSentinel | null = $state(null);
 
-	// Request a screen wake lock to keep screen on during text generation
-	async function requestWakeLock() {
-		try {
-			if ('wakeLock' in navigator && navigator.wakeLock) {
-				// Release any existing wake lock
-				if (wakeLock) {
-					await wakeLock.release();
-					wakeLock = null;
-				}
-				
-				// Request a new wake lock
-				wakeLock = await navigator.wakeLock.request('screen');
-				console.log('Wake lock acquired');
-				
-				// Add event listener for when wake lock is released
-				wakeLock.addEventListener('release', () => {
-					console.log('Wake lock released');
-					wakeLock = null;
-				});
-			}
-		} catch (err) {
-			console.error('Could not acquire wake lock:', err);
-			wakeLock = null;
-		}
-	}
-
-	// Release any active wake lock
-	async function releaseWakeLock() {
-		if (wakeLock) {
-			try {
-				await wakeLock.release();
-				wakeLock = null;
-				console.log('Wake lock released');
-			} catch (err) {
-				console.error('Error releasing wake lock:', err);
-			}
-		}
-	}
-
-	// Handle visibility change events to reacquire wake lock if needed
-	function handleVisibilityChange() {
-		if (document.visibilityState === 'visible' && isGenerating && !wakeLock) {
-			requestWakeLock();
-		}
-	}
+	// Initialize wake lock functionality
+	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
 
 	// Set up event listeners
 	onMount(() => {
-		// Set up visibility change listener to handle wake lock when tab becomes visible
-		document.addEventListener('visibilitychange', handleVisibilityChange);
-		
-		return () => {
-			// Clean up
-			document.removeEventListener('visibilitychange', handleVisibilityChange);
-			releaseWakeLock();
-		};
+		// Set up wake lock management
+		return setupWakeLock(() => isGenerating);
 	});
 
 	// Scroll to the bottom of the chat
@@ -162,7 +110,7 @@
 		inputText = '';
 		isGenerating = true;
 		stopSignal = false;
-		
+
 		// Request wake lock to keep screen on during generation
 		await requestWakeLock();
 
@@ -196,7 +144,7 @@
 			console.error('Generation error:', err);
 		} finally {
 			isGenerating = false;
-			
+
 			// Release wake lock when generation is complete
 			await releaseWakeLock();
 
@@ -214,7 +162,7 @@
 	// Function to stop text generation
 	async function stopGeneration() {
 		stopSignal = true;
-		
+
 		// Release wake lock when generation is stopped
 		await releaseWakeLock();
 	}

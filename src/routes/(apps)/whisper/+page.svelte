@@ -2,6 +2,7 @@
 	import createModule from '@transcribe/shout';
 	import { FileTranscriber } from '@transcribe/transcriber';
 	import { onMount } from 'svelte';
+	import { useWakeLock } from '$lib/wakeLock';
 
 	let isReady = $state(false);
 	let isLoading = $state(false);
@@ -13,16 +14,13 @@
 	let previousProgress = $state(0);
 	let currentSegment = $state('');
 
+	// Initialize wake lock functionality
+	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
+
 	// Set up event listeners
 	onMount(() => {
-		// Set up visibility change listener to handle wake lock when tab becomes visible
-		document.addEventListener('visibilitychange', handleVisibilityChange);
-		
-		return () => {
-			// Clean up
-			document.removeEventListener('visibilitychange', handleVisibilityChange);
-			releaseWakeLock();
-		};
+		// Set up wake lock management
+		return setupWakeLock(() => isTranscribing);
 	});
 
 	// File upload state
@@ -40,9 +38,6 @@
 
 	// Copy to clipboard state
 	let hasCopied = $state(false);
-	
-	// Screen Wake Lock state
-	let wakeLock: WakeLockSentinel | null = $state(null);
 
 	const DEFAULT_MODEL = 'https://files.khromov.se/whisper/ggml-tiny-q5_1.bin';
 
@@ -50,12 +45,27 @@
 	let selectedModel = $state(DEFAULT_MODEL);
 	const availableModels = [
 		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-tiny.en-q5_1.bin', name: 'Whisper Tiny English (q5_1)' },
+		{
+			path: 'https://files.khromov.se/whisper/ggml-tiny.en-q5_1.bin',
+			name: 'Whisper Tiny English (q5_1)'
+		},
 		{ path: 'https://files.khromov.se/whisper/ggml-small-q5_1.bin', name: 'Whisper Small (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-small.en-q5_1.bin', name: 'Whisper Small English (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-medium-q5_0.bin', name: 'Whisper Medium (q5_0)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-medium.en-q5_0.bin', name: 'Whisper Medium English (q5_0)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-large-v2-q5_0.bin', name: 'Whisper Large (q5_0)' },
+		{
+			path: 'https://files.khromov.se/whisper/ggml-small.en-q5_1.bin',
+			name: 'Whisper Small English (q5_1)'
+		},
+		{
+			path: 'https://files.khromov.se/whisper/ggml-medium-q5_0.bin',
+			name: 'Whisper Medium (q5_0)'
+		},
+		{
+			path: 'https://files.khromov.se/whisper/ggml-medium.en-q5_0.bin',
+			name: 'Whisper Medium English (q5_0)'
+		},
+		{
+			path: 'https://files.khromov.se/whisper/ggml-large-v2-q5_0.bin',
+			name: 'Whisper Large (q5_0)'
+		}
 	];
 
 	async function transcribe() {
@@ -72,7 +82,7 @@
 
 		// Start checking for stuck transcription
 		startStuckCheck();
-		
+
 		// Request wake lock to keep screen on during transcription
 		await requestWakeLock();
 
@@ -97,7 +107,7 @@
 			transcribeProgress = 0;
 			currentSegment = '';
 			stopStuckCheck();
-			
+
 			// Release wake lock when done
 			await releaseWakeLock();
 		}
@@ -169,7 +179,7 @@
 		const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
 		const x = event.clientX;
 		const y = event.clientY;
-		
+
 		if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) {
 			isDragging = false;
 		}
@@ -178,9 +188,9 @@
 	function handleDrop(event: DragEvent) {
 		event.preventDefault();
 		isDragging = false;
-		
+
 		if (!isReady) return;
-		
+
 		const files = event.dataTransfer?.files;
 		if (files && files.length > 0) {
 			selectedFile = files[0];
@@ -222,52 +232,6 @@
 			error = true;
 		} finally {
 			isLoading = false;
-		}
-	}
-
-	// Request a screen wake lock to keep screen on during transcription
-	async function requestWakeLock() {
-		try {
-			if ('wakeLock' in navigator && navigator.wakeLock) {
-				// Release any existing wake lock
-				if (wakeLock) {
-					await wakeLock.release();
-					wakeLock = null;
-				}
-				
-				// Request a new wake lock
-				wakeLock = await navigator.wakeLock.request('screen');
-				console.log('Wake lock acquired');
-				
-				// Add event listener for when wake lock is released
-				wakeLock.addEventListener('release', () => {
-					console.log('Wake lock released');
-					wakeLock = null;
-				});
-			}
-		} catch (err) {
-			console.error('Could not acquire wake lock:', err);
-			wakeLock = null;
-		}
-	}
-
-	// Release any active wake lock
-	async function releaseWakeLock() {
-		if (wakeLock) {
-			try {
-				await wakeLock.release();
-				wakeLock = null;
-				console.log('Wake lock released');
-			} catch (err) {
-				console.error('Error releasing wake lock:', err);
-			}
-		}
-	}
-
-	// Handle visibility change events to reacquire wake lock if needed
-	function handleVisibilityChange() {
-		if (document.visibilityState === 'visible' && isTranscribing && !wakeLock) {
-			requestWakeLock();
 		}
 	}
 </script>
@@ -342,7 +306,11 @@
 						/>
 						<span class="option-content">
 							<strong>Demo Audio</strong>
-							<small>Use the included JFK speech sample (<a href="/jfk.mp3" target="_blank">listen to audio</a>)</small>
+							<small
+								>Use the included JFK speech sample (<a href="/jfk.mp3" target="_blank"
+									>listen to audio</a
+								>)</small
+							>
 						</span>
 					</label>
 				</div>
@@ -357,8 +325,8 @@
 							id="audio-file"
 							disabled={!isReady}
 						/>
-						<div 
-							class="file-upload-label" 
+						<div
+							class="file-upload-label"
 							class:disabled={!isReady}
 							class:dragging={isDragging}
 							ondragover={handleDragOver}
@@ -367,7 +335,15 @@
 							onclick={() => fileInputElement?.click()}
 						>
 							<div class="upload-content">
-								<svg class="upload-icon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+								<svg
+									class="upload-icon"
+									viewBox="0 0 24 24"
+									width="32"
+									height="32"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
 									<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
 									<polyline points="7,10 12,15 17,10"></polyline>
 									<line x1="12" y1="15" x2="12" y2="3"></line>
@@ -407,7 +383,9 @@
 
 					{#if isStuck}
 						<p class="stuck-message">
-							Transcription seems stuck. <button class="reload-link" onclick={reloadPage}>Reload the page</button> and try again.
+							Transcription seems stuck. <button class="reload-link" onclick={reloadPage}
+								>Reload the page</button
+							> and try again.
 						</p>
 					{:else}
 						<p class="transcribing-message">
@@ -423,12 +401,28 @@
 								<h3>Transcription Result:</h3>
 								<button class="copy-btn" onclick={copyToClipboard} class:copied={hasCopied}>
 									{#if hasCopied}
-										<svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+										<svg
+											class="copy-icon"
+											viewBox="0 0 24 24"
+											width="16"
+											height="16"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+										>
 											<polyline points="20,6 9,17 4,12"></polyline>
 										</svg>
 										Copied!
 									{:else}
-										<svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+										<svg
+											class="copy-icon"
+											viewBox="0 0 24 24"
+											width="16"
+											height="16"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+										>
 											<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
 											<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
 										</svg>
