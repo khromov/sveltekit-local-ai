@@ -1,12 +1,13 @@
 <script lang="ts">
-	import createModule from '@transcribe/shout';
-	import { FileTranscriber } from '@transcribe/transcriber';
 	import { onMount } from 'svelte';
-
+	import { useWhisperTranscriber } from '$lib/hooks/useWhisperTranscriber';
+	import { AVAILABLE_MODELS } from '$lib/whisperConstants';
+	
+	// Setup transcriber
+	const transcriber = useWhisperTranscriber();
 	let isReady = $state(false);
 	let isLoading = $state(false);
 	let isTranscribing = $state(false);
-	let transcriber: FileTranscriber;
 	let text = $state('');
 	let error = $state(false);
 	let transcribeProgress = $state(0);
@@ -29,22 +30,12 @@
 	// Copy to clipboard state
 	let hasCopied = $state(false);
 
-	const DEFAULT_MODEL = 'https://files.khromov.se/whisper/ggml-tiny-q5_1.bin';
-
 	// Model selection state
-	let selectedModel = $state(DEFAULT_MODEL);
-	const availableModels = [
-		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-tiny.en-q5_1.bin', name: 'Whisper Tiny English (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-small-q5_1.bin', name: 'Whisper Small (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-small.en-q5_1.bin', name: 'Whisper Small English (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-medium-q5_0.bin', name: 'Whisper Medium (q5_0)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-medium.en-q5_0.bin', name: 'Whisper Medium English (q5_0)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-large-v2-q5_0.bin', name: 'Whisper Large (q5_0)' },
-	];
+	let selectedModel = $state(transcriber.model);
+	const availableModels = AVAILABLE_MODELS;
 
 	async function transcribe() {
-		if (!transcriber?.isReady) return;
+		if (!isReady) return;
 		if (transcribeMode === 'upload' && !selectedFile) return;
 
 		text = '';
@@ -59,22 +50,56 @@
 		startStuckCheck();
 
 		try {
-			let result;
+			let audioContext = new AudioContext();
+			let audioBuffer: AudioBuffer;
+
 			if (transcribeMode === 'demo') {
-				// Transcribe the demo file
-				result = await transcriber.transcribe('/jfk.mp3', { lang: 'en' });
+				// Fetch and decode the demo file
+				const response = await fetch('/jfk.mp3');
+				const arrayBuffer = await response.arrayBuffer();
+				audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
 			} else {
-				// Transcribe the uploaded file
-				result = await transcriber.transcribe(selectedFile!, { lang: 'en' });
+				// Decode the uploaded file
+				const arrayBuffer = await selectedFile!.arrayBuffer();
+				audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
 			}
 
-			// Extract the transcription text
-			text = result.transcription.map((t) => t.text).join(' ');
+			// Transcribe using our new implementation
+			transcriber.start(audioBuffer);
+
+			// Monitor the transcription output
+			const intervalId = setInterval(() => {
+				if (transcriber.output) {
+					// Update progress (simulate based on isBusy)
+					if (transcriber.output.isBusy) {
+						// Simulate progress between 0-95% while busy
+						previousProgress = transcribeProgress;
+						transcribeProgress = Math.min(95, transcribeProgress + (Math.random() * 2));
+						
+						// Update current segment preview and reset timer
+						if (transcriber.output.chunks.length > 0) {
+							const lastChunk = transcriber.output.chunks[transcriber.output.chunks.length - 1];
+							const newSegment = lastChunk.text.trim();
+							if (newSegment && newSegment !== currentSegment) {
+								currentSegment = newSegment;
+								lastSegmentTime = Date.now();
+								isStuck = false;
+							}
+						}
+					} else {
+						// Done transcribing
+						text = transcriber.output.text;
+						clearInterval(intervalId);
+						isTranscribing = false;
+						transcribeProgress = 100;
+						stopStuckCheck();
+					}
+				}
+			}, 100);
 		} catch (err) {
 			console.error('Transcription error:', err);
 			error = true;
 			text = 'An error occurred during transcription. Please try again.';
-		} finally {
 			isTranscribing = false;
 			transcribeProgress = 0;
 			currentSegment = '';
@@ -116,6 +141,7 @@
 
 	function retry() {
 		error = false;
+		isLoading = true;
 		loadModel();
 	}
 
@@ -169,37 +195,40 @@
 
 	async function loadModel() {
 		try {
-			isLoading = true;
 			error = false;
+			isLoading = true;
+			
+			// Update model in the transcriber
+			transcriber.setModel(selectedModel);
+			
+			// Set multilingual based on model name
+			const isMultilingual = !selectedModel.includes('.en');
+			transcriber.setMultilingual(isMultilingual);
 
-			// Create new instance with progress tracking
-			transcriber = new FileTranscriber({
-				createModule,
-				model: selectedModel,
-				onReady: () => console.log('Transcriber ready'),
-				onProgress: (progress) => {
-					previousProgress = transcribeProgress;
-					transcribeProgress = Math.round(progress);
-					console.log(`Transcription progress: ${transcribeProgress}%`);
-				},
-				onSegment: (segment) => {
-					console.log('New segment:', segment);
-					// Update the current segment preview and reset timer
-					currentSegment = segment.segment.text.trim();
-					lastSegmentTime = Date.now();
-					isStuck = false;
-				},
-				onComplete: (result) => console.log('Transcription complete:', result),
-				onCanceled: () => console.log('Transcription canceled')
-			});
-
-			// Initialize the transcriber
-			await transcriber.init();
-			isReady = true;
+			// Watch for progress by monitoring the transcriber state
+			const checkModelReady = () => {
+				if (transcriber.progressItems.length > 0) {
+					// Model is still loading
+					for (const item of transcriber.progressItems) {
+						transcribeProgress = item.progress || 0;
+					}
+					setTimeout(checkModelReady, 100);
+				} else if (transcriber.isModelLoading) {
+					// Just waiting a bit more
+					setTimeout(checkModelReady, 100);
+				} else {
+					// Model is ready!
+					isReady = true;
+					transcribeProgress = 0;
+					isLoading = false;
+				}
+			};
+			
+			// Start checking for model ready state
+			checkModelReady();
 		} catch (err) {
 			console.error('Failed to initialize transcriber:', err);
 			error = true;
-		} finally {
 			isLoading = false;
 		}
 	}
