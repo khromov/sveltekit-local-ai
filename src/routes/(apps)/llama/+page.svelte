@@ -9,7 +9,7 @@
 		formatFileSize,
 		type Message
 	} from '$lib/wllama-config';
-	import { useWakeLock } from '$lib/wakeLock';
+	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import { messages, inferenceParams } from '$lib/stores';
 
 	// State variables

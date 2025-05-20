@@ -2,7 +2,7 @@
 	import createModule from '@transcribe/shout';
 	import { FileTranscriber } from '@transcribe/transcriber';
 	import { onMount } from 'svelte';
-	import { useWakeLock } from '$lib/wakeLock';
+	import { useWakeLock } from '$lib/wakeLock.svelte';
 
 	let isReady = $state(false);
 	let isLoading = $state(false);
