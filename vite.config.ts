@@ -17,7 +17,7 @@ export default defineConfig({
 		sveltekit()
 	],
 	optimizeDeps: {
-		exclude: ['@transcribe/shout']
+		exclude: [] // Removed dependency that's no longer needed
 	},
 	worker: {
 		format: 'es'
