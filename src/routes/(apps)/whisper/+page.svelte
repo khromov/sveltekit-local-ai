@@ -124,6 +124,9 @@
 				// 3. Text content
 				// 4. Blank line
 				const segmentIndex = index + 1;
+				
+				// Make sure timestamps are in correct SRT format (00:00:00,000)
+				// The transcribe.js library already provides timestamps in this format
 				const timeRange = `${segment.timestamps.from} --> ${segment.timestamps.to}`;
 				const content = segment.text.trim();
 				
@@ -413,24 +416,26 @@
 							<div class="result-header">
 								<h3>Transcription Result:</h3>
 								<div class="result-actions">
-									<!-- Tab selectors -->
-									<div class="tab-selectors">
-										<button 
-											class:active={activeTab === 'text'}
-											onclick={() => activeTab = 'text'}
-										>
-											Text
-										</button>
-										<button 
-											class:active={activeTab === 'srt'}
-											onclick={() => activeTab = 'srt'}
-										>
-											SRT
-										</button>
-									</div>
+									<!-- Tab selectors only shown when there is transcription data -->
+									{#if transcriptionData?.transcription?.length}
+										<div class="tab-selectors">
+											<button 
+												class:active={activeTab === 'text'}
+												onclick={() => activeTab = 'text'}
+											>
+												Text
+											</button>
+											<button 
+												class:active={activeTab === 'srt'}
+												onclick={() => activeTab = 'srt'}
+											>
+												SRT
+											</button>
+										</div>
+									{/if}
 									
 									<!-- Action buttons based on active tab -->
-									{#if activeTab === 'text'}
+									{#if !transcriptionData?.transcription?.length || activeTab === 'text'}
 										<button class="copy-btn" onclick={copyToClipboard} class:copied={hasCopied}>
 											{#if hasCopied}
 												<svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
@@ -464,9 +469,9 @@
 									{/if}
 								</div>
 							</div>
-							{#if activeTab === 'text'}
+							{#if !transcriptionData?.transcription?.length || activeTab === 'text'}
 								<p>{text}</p>
-							{:else if activeTab === 'srt'}
+							{:else if activeTab === 'srt' && transcriptionData?.transcription?.length}
 								<pre class="srt-preview">{convertToSRT()}</pre>
 							{/if}
 						</div>
