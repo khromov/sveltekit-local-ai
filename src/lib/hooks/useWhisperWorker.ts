@@ -12,7 +12,7 @@ export function useWhisperWorker(messageEventHandler: MessageEventHandler): Work
 
 function createWorker(messageEventHandler: MessageEventHandler): Worker {
     // Need to use new URL for vite bundling
-    const worker = new Worker(new URL('../whisperWorker.js', import.meta.url), {
+    const worker = new Worker(new URL('../whisperWorker.ts', import.meta.url), {
         type: "module",
     });
     // Listen for messages from the Web Worker
