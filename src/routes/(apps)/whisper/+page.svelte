@@ -1,7 +1,8 @@
 <script lang="ts">
 	import createModule from '@transcribe/shout';
 	import { FileTranscriber } from '@transcribe/transcriber';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
+	import { whisperModel } from '$lib/stores';
 
 	let isReady = $state(false);
 	let isLoading = $state(false);
@@ -32,7 +33,7 @@
 	const DEFAULT_MODEL = 'https://files.khromov.se/whisper/ggml-tiny-q5_1.bin';
 
 	// Model selection state
-	let selectedModel = $state(DEFAULT_MODEL);
+	let selectedModel = $state($whisperModel || DEFAULT_MODEL);
 	const availableModels = [
 		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' },
 		{ path: 'https://files.khromov.se/whisper/ggml-tiny.en-q5_1.bin', name: 'Whisper Tiny English (q5_1)' },
@@ -172,6 +173,15 @@
 			isLoading = true;
 			error = false;
 
+			// If there's already a transcriber loaded, clean it up first
+			if (transcriber) {
+				transcriber.destroy();
+				isReady = false;
+			}
+
+			// Save the selected model to the store
+			$whisperModel = selectedModel;
+
 			// Create new instance with progress tracking
 			transcriber = new FileTranscriber({
 				createModule,
@@ -203,6 +213,30 @@
 			isLoading = false;
 		}
 	}
+
+	// Function to change the model once one is already loaded
+	function changeModel() {
+		// This will trigger the loadModel function with the currently selected model
+		isReady = false;
+		loadModel();
+	}
+
+	// Load saved model on mount
+	onMount(() => {
+		// If we have a saved model, load it immediately
+		if ($whisperModel) {
+			selectedModel = $whisperModel;
+			loadModel();
+		}
+	});
+	
+	// Clean up resources when component is destroyed
+	onDestroy(() => {
+		if (transcriber) {
+			transcriber.destroy();
+		}
+		stopStuckCheck();
+	});
 </script>
 
 <div class="card-interface" style="animation: fadeIn 0.5s ease-out;">
@@ -226,9 +260,14 @@
 						{isLoading ? 'Loading Model...' : 'Load Model'}
 					</button>
 				{:else}
-					<div class="model-ready">
-						<span class="checkmark">✓</span>
-						Model Ready
+					<div class="model-controls-loaded">
+						<div class="model-ready">
+							<span class="checkmark">✓</span>
+							Model Ready
+						</div>
+						<button onclick={changeModel} disabled={isLoading} class="change-model-btn">
+							{isLoading ? 'Changing...' : 'Change Model'}
+						</button>
 					</div>
 				{/if}
 			</div>
@@ -443,6 +482,34 @@
 		color: #28a745;
 		font-weight: 500;
 		font-size: 1rem;
+	}
+
+	.model-controls-loaded {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		align-items: center;
+	}
+
+	.change-model-btn {
+		padding: 0.5rem 1rem;
+		background-color: #f8f8f8;
+		color: #333;
+		border: 1px solid #e1e1e1;
+		border-radius: 8px;
+		cursor: pointer;
+		font-size: 0.875rem;
+		transition: all 0.2s ease;
+	}
+
+	.change-model-btn:hover {
+		background-color: #e9ecef;
+		border-color: #ced4da;
+	}
+
+	.change-model-btn:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
 	}
 
 	.checkmark {
