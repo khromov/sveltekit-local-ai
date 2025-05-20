@@ -13,6 +13,18 @@
 	let previousProgress = $state(0);
 	let currentSegment = $state('');
 
+	// Set up event listeners
+	onMount(() => {
+		// Set up visibility change listener to handle wake lock when tab becomes visible
+		document.addEventListener('visibilitychange', handleVisibilityChange);
+		
+		return () => {
+			// Clean up
+			document.removeEventListener('visibilitychange', handleVisibilityChange);
+			releaseWakeLock();
+		};
+	});
+
 	// File upload state
 	let selectedFile: File | null = $state(null);
 	let transcribeMode = $state<'demo' | 'upload'>('upload');
@@ -28,6 +40,9 @@
 
 	// Copy to clipboard state
 	let hasCopied = $state(false);
+	
+	// Screen Wake Lock state
+	let wakeLock: WakeLockSentinel | null = $state(null);
 
 	const DEFAULT_MODEL = 'https://files.khromov.se/whisper/ggml-tiny-q5_1.bin';
 
@@ -57,6 +72,9 @@
 
 		// Start checking for stuck transcription
 		startStuckCheck();
+		
+		// Request wake lock to keep screen on during transcription
+		await requestWakeLock();
 
 		try {
 			let result;
@@ -79,6 +97,9 @@
 			transcribeProgress = 0;
 			currentSegment = '';
 			stopStuckCheck();
+			
+			// Release wake lock when done
+			await releaseWakeLock();
 		}
 	}
 
@@ -201,6 +222,52 @@
 			error = true;
 		} finally {
 			isLoading = false;
+		}
+	}
+
+	// Request a screen wake lock to keep screen on during transcription
+	async function requestWakeLock() {
+		try {
+			if ('wakeLock' in navigator && navigator.wakeLock) {
+				// Release any existing wake lock
+				if (wakeLock) {
+					await wakeLock.release();
+					wakeLock = null;
+				}
+				
+				// Request a new wake lock
+				wakeLock = await navigator.wakeLock.request('screen');
+				console.log('Wake lock acquired');
+				
+				// Add event listener for when wake lock is released
+				wakeLock.addEventListener('release', () => {
+					console.log('Wake lock released');
+					wakeLock = null;
+				});
+			}
+		} catch (err) {
+			console.error('Could not acquire wake lock:', err);
+			wakeLock = null;
+		}
+	}
+
+	// Release any active wake lock
+	async function releaseWakeLock() {
+		if (wakeLock) {
+			try {
+				await wakeLock.release();
+				wakeLock = null;
+				console.log('Wake lock released');
+			} catch (err) {
+				console.error('Error releasing wake lock:', err);
+			}
+		}
+	}
+
+	// Handle visibility change events to reacquire wake lock if needed
+	function handleVisibilityChange() {
+		if (document.visibilityState === 'visible' && isTranscribing && !wakeLock) {
+			requestWakeLock();
 		}
 	}
 </script>
