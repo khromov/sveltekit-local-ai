@@ -1,7 +1,7 @@
 <script lang="ts">
 	import createModule from '@transcribe/shout';
 	import { FileTranscriber } from '@transcribe/transcriber';
-	import { onMount } from 'svelte';
+	import { downloadModelWithProgress } from '$lib/download-utils';
 
 	let isReady = $state(false);
 	let isLoading = $state(false);
@@ -37,12 +37,27 @@
 	let selectedModel = $state(DEFAULT_MODEL);
 	const availableModels = [
 		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-tiny.en-q5_1.bin', name: 'Whisper Tiny English (q5_1)' },
+		{
+			path: 'https://files.khromov.se/whisper/ggml-tiny.en-q5_1.bin',
+			name: 'Whisper Tiny English (q5_1)'
+		},
 		{ path: 'https://files.khromov.se/whisper/ggml-small-q5_1.bin', name: 'Whisper Small (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-small.en-q5_1.bin', name: 'Whisper Small English (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-medium-q5_0.bin', name: 'Whisper Medium (q5_0)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-medium.en-q5_0.bin', name: 'Whisper Medium English (q5_0)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-large-v2-q5_0.bin', name: 'Whisper Large (q5_0)' },
+		{
+			path: 'https://files.khromov.se/whisper/ggml-small.en-q5_1.bin',
+			name: 'Whisper Small English (q5_1)'
+		},
+		{
+			path: 'https://files.khromov.se/whisper/ggml-medium-q5_0.bin',
+			name: 'Whisper Medium (q5_0)'
+		},
+		{
+			path: 'https://files.khromov.se/whisper/ggml-medium.en-q5_0.bin',
+			name: 'Whisper Medium English (q5_0)'
+		},
+		{
+			path: 'https://files.khromov.se/whisper/ggml-large-v2-q5_0.bin',
+			name: 'Whisper Large (q5_0)'
+		}
 	];
 
 	async function transcribe() {
@@ -150,7 +165,7 @@
 		const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
 		const x = event.clientX;
 		const y = event.clientY;
-		
+
 		if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) {
 			isDragging = false;
 		}
@@ -159,9 +174,9 @@
 	function handleDrop(event: DragEvent) {
 		event.preventDefault();
 		isDragging = false;
-		
+
 		if (!isReady) return;
-		
+
 		const files = event.dataTransfer?.files;
 		if (files && files.length > 0) {
 			selectedFile = files[0];
@@ -169,80 +184,19 @@
 		}
 	}
 
-	async function downloadModelWithProgress(url) {
-		// Reset progress tracking
-		downloadProgress = 0;
-		previousDownloadProgress = 0;
-		
-		// Fetch the model with progress tracking
-		const response = await fetch(url);
-		
-		if (!response.ok) {
-			throw new Error(`Failed to download model: ${response.statusText}`);
-		}
-		
-		// Get total file size from Content-Length header
-		const contentLength = response.headers.get('Content-Length');
-		const total = contentLength ? parseInt(contentLength, 10) : 0;
-		
-		// Create a reader from the response body stream
-		const reader = response.body.getReader();
-		
-		// Create an array to hold the chunks
-		const chunks = [];
-		let receivedLength = 0;
-		
-		// Process the data stream
-		while (true) {
-			const { done, value } = await reader.read();
-			
-			if (done) {
-				break;
-			}
-			
-			// Add the chunk to our array
-			chunks.push(value);
-			receivedLength += value.length;
-			
-			// Update the progress (as a percentage)
-			if (total) {
-				previousDownloadProgress = downloadProgress;
-				downloadProgress = Math.round((receivedLength / total) * 100);
-				console.log(`Model download progress: ${downloadProgress}%`);
-			}
-		}
-		
-		// Combine the chunks into a single Uint8Array
-		const allChunks = new Uint8Array(receivedLength);
-		let position = 0;
-		
-		for (const chunk of chunks) {
-			allChunks.set(chunk, position);
-			position += chunk.length;
-		}
-		
-		// Convert the downloaded data to a Blob and then to a File
-		const blob = new Blob([allChunks]);
-		const fileName = url.split('/').pop();
-		
-		// Return the File object that can be used by Transcribe.js
-		return new File([blob], fileName);
-	}
-
 	async function loadModel() {
 		try {
 			isLoading = true;
 			error = false;
-			
+
 			console.log(`Downloading model from: ${selectedModel}`);
-			
+
 			// Download the model with real progress tracking
-			const modelFile = await downloadModelWithProgress(selectedModel);
-			
-			// Set progress to 99% while initializing (final 1% will be when model is fully loaded)
-			previousDownloadProgress = downloadProgress;
-			downloadProgress = 99;
-			
+			const modelFile = await downloadModelWithProgress(selectedModel, (progress) => {
+				previousDownloadProgress = downloadProgress;
+				downloadProgress = progress;
+			});
+
 			// Create new instance with progress tracking
 			transcriber = new FileTranscriber({
 				createModule,
@@ -266,11 +220,7 @@
 
 			// Initialize the transcriber
 			await transcriber.init();
-			
-			// Set progress to 100% now that the model is fully loaded
-			previousDownloadProgress = downloadProgress;
-			downloadProgress = 100;
-			
+
 			isReady = true;
 		} catch (err) {
 			console.error('Failed to initialize transcriber:', err);
@@ -292,7 +242,7 @@
 			<h3>Select Model</h3>
 			<div class="model-controls">
 				<select bind:value={selectedModel} disabled={isLoading}>
-					{#each availableModels as model}
+					{#each availableModels as model (model.path)}
 						<option value={model.path}>{model.name}</option>
 					{/each}
 				</select>
@@ -370,7 +320,11 @@
 						/>
 						<span class="option-content">
 							<strong>Demo Audio</strong>
-							<small>Use the included JFK speech sample (<a href="/jfk.mp3" target="_blank">listen to audio</a>)</small>
+							<small
+								>Use the included JFK speech sample (<a href="/jfk.mp3" target="_blank"
+									>listen to audio</a
+								>)</small
+							>
 						</span>
 					</label>
 				</div>
@@ -385,8 +339,8 @@
 							id="audio-file"
 							disabled={!isReady}
 						/>
-						<div 
-							class="file-upload-label" 
+						<div
+							class="file-upload-label"
 							class:disabled={!isReady}
 							class:dragging={isDragging}
 							ondragover={handleDragOver}
@@ -395,7 +349,15 @@
 							onclick={() => fileInputElement?.click()}
 						>
 							<div class="upload-content">
-								<svg class="upload-icon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+								<svg
+									class="upload-icon"
+									viewBox="0 0 24 24"
+									width="32"
+									height="32"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
 									<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
 									<polyline points="7,10 12,15 17,10"></polyline>
 									<line x1="12" y1="15" x2="12" y2="3"></line>
@@ -435,7 +397,9 @@
 
 					{#if isStuck}
 						<p class="stuck-message">
-							Transcription seems stuck. <button class="reload-link" onclick={reloadPage}>Reload the page</button> and try again.
+							Transcription seems stuck. <button class="reload-link" onclick={reloadPage}
+								>Reload the page</button
+							> and try again.
 						</p>
 					{:else}
 						<p class="transcribing-message">
@@ -451,12 +415,28 @@
 								<h3>Transcription Result:</h3>
 								<button class="copy-btn" onclick={copyToClipboard} class:copied={hasCopied}>
 									{#if hasCopied}
-										<svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+										<svg
+											class="copy-icon"
+											viewBox="0 0 24 24"
+											width="16"
+											height="16"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+										>
 											<polyline points="20,6 9,17 4,12"></polyline>
 										</svg>
 										Copied!
 									{:else}
-										<svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+										<svg
+											class="copy-icon"
+											viewBox="0 0 24 24"
+											width="16"
+											height="16"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+										>
 											<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
 											<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
 										</svg>
