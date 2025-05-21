@@ -117,22 +117,35 @@
 	function convertToSRT(): string {
 		if (!transcriptionData?.transcription?.length) return '';
 		
-		// Create captions in the format expected by subsrt-ts
-		const captions = transcriptionData.transcription.map((segment, index) => {
-			// subsrt-ts expects timestamps as strings in the format "HH:MM:SS,mmm"
-			// The timestamps from transcribe.js are already in this format
-			return {
-				type: 'caption',
-				index: index + 1,
-				start: segment.timestamps.from,
-				end: segment.timestamps.to,
-				content: segment.text.trim(),
-				text: segment.text.trim()
-			};
-		});
-		
-		// Build SRT content using subsrt-ts
-		return subsrt.build(captions);
+		try {
+			// Create captions in the format expected by subsrt-ts
+			const captions = transcriptionData.transcription.map((segment, index) => {
+				return {
+					type: 'caption',
+					index: index + 1,
+					// Parse timestamps - subsrt-ts expects either milliseconds or "HH:MM:SS,mmm" format
+					start: segment.timestamps.from,
+					end: segment.timestamps.to,
+					content: segment.text.trim(),
+					text: segment.text.trim()
+				};
+			});
+			
+			// Build SRT content using subsrt-ts
+			return subsrt.build(captions);
+		} catch (error) {
+			console.error('Error generating SRT format:', error);
+			// Fallback to manual conversion if subsrt-ts fails
+			return transcriptionData.transcription
+				.map((segment, index) => {
+					const segmentIndex = index + 1;
+					const timeRange = `${segment.timestamps.from} --> ${segment.timestamps.to}`;
+					const content = segment.text.trim();
+					
+					return `${segmentIndex}\n${timeRange}\n${content}\n`;
+				})
+				.join('\n');
+		}
 	}
 	
 	// Download SRT file
