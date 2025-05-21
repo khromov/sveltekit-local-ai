@@ -36,6 +36,7 @@
 		"vite": "^6.3.5"
 	},
 	"dependencies": {
-		"express": "^5.1.0"
+		"express": "^5.1.0",
+		"subsrt-ts": "^2.1.2"
 	}
 }
