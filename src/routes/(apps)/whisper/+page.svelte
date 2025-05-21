@@ -1,16 +1,16 @@
 <script lang="ts">
-	import createModule from '@transcribe/shout';
-	import { FileTranscriber } from '@transcribe/transcriber';
 	import { onMount } from 'svelte';
+	import { pipeline, env } from '@xenova/transformers';
+
+	let modelPipeline: any = $state(null); // For Transformers.js pipeline
 
 	let isReady = $state(false);
 	let isLoading = $state(false);
 	let isTranscribing = $state(false);
-	let transcriber: FileTranscriber;
 	let text = $state('');
 	let error = $state(false);
 	let transcribeProgress = $state(0);
-	let previousProgress = $state(0);
+	let previousProgress = $state(0); // Keep for now, might be useful for UI
 	let currentSegment = $state('');
 	
 	// Store full transcription data for formats
@@ -34,22 +34,20 @@
 	// Copy to clipboard state
 	let hasCopied = $state(false);
 
-	const DEFAULT_MODEL = 'https://files.khromov.se/whisper/ggml-tiny-q5_1.bin';
+	const DEFAULT_MODEL = 'Xenova/whisper-tiny'; // Updated model name
 
 	// Model selection state
 	let selectedModel = $state(DEFAULT_MODEL);
-	const availableModels = [
-		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-tiny.en-q5_1.bin', name: 'Whisper Tiny English (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-small-q5_1.bin', name: 'Whisper Small (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-small.en-q5_1.bin', name: 'Whisper Small English (q5_1)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-medium-q5_0.bin', name: 'Whisper Medium (q5_0)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-medium.en-q5_0.bin', name: 'Whisper Medium English (q5_0)' },
-		{ path: 'https://files.khromov.se/whisper/ggml-large-v2-q5_0.bin', name: 'Whisper Large (q5_0)' },
+	const availableModels = [ // Updated to Hugging Face model identifiers
+		{ path: 'Xenova/whisper-tiny', name: 'Whisper Tiny' },
+		{ path: 'Xenova/whisper-base', name: 'Whisper Base' },
+		{ path: 'Xenova/whisper-small', name: 'Whisper Small' },
+		{ path: 'Xenova/whisper-medium', name: 'Whisper Medium' },
+		// { path: 'Xenova/whisper-large-v3', name: 'Whisper Large v3' }, // Usually too large for browser
 	];
 
 	async function transcribe() {
-		if (!transcriber?.isReady) return;
+		if (!modelPipeline || !isReady) return;
 		if (transcribeMode === 'upload' && !selectedFile) return;
 
 		text = '';
@@ -66,20 +64,77 @@
 		startStuckCheck();
 
 		try {
-			let result;
+			let audioData: AudioBufferSourceNode | ArrayBuffer | string;
+			let progressHandler: ((p: any) => void) | undefined;
+
 			if (transcribeMode === 'demo') {
-				// Transcribe the demo file
-				result = await transcriber.transcribe('/jfk.mp3', { lang: 'en' });
+				const response = await fetch('/jfk.mp3');
+				audioData = await response.arrayBuffer();
+				console.log('Transcribing demo file /jfk.mp3');
+			} else if (selectedFile) {
+				const reader = new FileReader();
+				audioData = await new Promise((resolve, reject) => {
+					reader.onload = (e) => resolve(e.target?.result as ArrayBuffer);
+					reader.onerror = (e) => reject(e.target?.error);
+					reader.readAsArrayBuffer(selectedFile);
+				});
+				console.log('Transcribing uploaded file:', selectedFile.name);
 			} else {
-				// Transcribe the uploaded file
-				result = await transcriber.transcribe(selectedFile!, { lang: 'en' });
+				return; // Should not happen if checks are correct
 			}
+			
+			// Define a progress handler for transcription
+			progressHandler = (progress) => {
+				console.log('Transcription progress:', progress);
+				// Example progress: { status: "progress", chunk: ..., progress: 0-100 }
+				// This progress callback in whisper is per-chunk, not overall.
+				// We might need a more sophisticated way to show overall progress,
+				// or just use the segment updates as an indicator.
+				// For now, let's update transcribeProgress based on the last reported chunk progress
+				if (progress.status === 'progress' && typeof progress.progress === 'number') {
+					// Let's assume we have an estimated number of chunks or use a moving average.
+					// Simplistic approach: show progress for current chunk, but this won't be overall.
+					// A better approach might be to count chunks if possible, or use the callback_function's calls.
+					// For now, we'll keep the main progress bar for model loading and use currentSegment for transcription feedback.
+				}
+			};
+			
+			// Define a callback function for segment updates
+			const segmentCallback = (data: any) => {
+				// Type: "transcribe", data: { chunks: [], text: "..." }
+				// Type: "progress", data: { progress: ..., text: "..." } -> this is actually the segment
+				console.log('Segment callback:', data);
+				if (data.type === 'transcribe' && data.data?.text) {
+					currentSegment = data.data.text.trim();
+					lastSegmentTime = Date.now();
+					isStuck = false;
+					// Update overall text if needed, or wait for final result
+					// text = data.data.text; // This would make the main text update live
+				} else if (Array.isArray(data)) { // Sometimes it sends an array of chunks directly
+					const latestChunk = data[data.length-1];
+					if (latestChunk?.text) {
+						currentSegment = latestChunk.text.trim();
+						lastSegmentTime = Date.now();
+						isStuck = false;
+					}
+				}
+			};
+
+			const result = await modelPipeline(audioData, {
+				chunk_length_s: 30,
+				stride_length_s: 5,
+				language: 'english', // TODO: Make this configurable
+				task: 'transcribe',
+				progress_callback: progressHandler, // For per-chunk progress if implemented by model
+				callback_function: segmentCallback // For interim results (segments)
+			});
 
 			// Store the full result for different formats
-			transcriptionData = result;
+			transcriptionData = result; // result should have {text: "...", chunks: [...]}
 			
 			// Extract the transcription text
-			text = result.transcription.map((t) => t.text).join(' ');
+			text = result.text || 'No transcription result.';
+			
 		} catch (err) {
 			console.error('Transcription error:', err);
 			error = true;
@@ -112,23 +167,26 @@
 		window.location.reload();
 	}
 
+	// Helper function to format seconds to SRT timestamp
+	function formatTimestamp(seconds: number): string {
+		const hours = Math.floor(seconds / 3600);
+		const minutes = Math.floor((seconds % 3600) / 60);
+		const secs = Math.floor(seconds % 60);
+		const ms = Math.floor((seconds - Math.floor(seconds)) * 1000);
+		return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')},${String(ms).padStart(3, '0')}`;
+	}
+
 	// Convert transcription data to SRT format
 	function convertToSRT(): string {
-		if (!transcriptionData?.transcription?.length) return '';
+		if (!transcriptionData?.chunks?.length) return '';
 		
-		return transcriptionData.transcription
-			.map((segment, index) => {
-				// SRT format has these components:
-				// 1. Index number
-				// 2. Start time --> End time (in format 00:00:00,000)
-				// 3. Text content
-				// 4. Blank line
+		return transcriptionData.chunks
+			.map((chunk: any, index: number) => {
 				const segmentIndex = index + 1;
-				
-				// Make sure timestamps are in correct SRT format (00:00:00,000)
-				// The transcribe.js library already provides timestamps in this format
-				const timeRange = `${segment.timestamps.from} --> ${segment.timestamps.to}`;
-				const content = segment.text.trim();
+				const startTime = formatTimestamp(chunk.timestamp[0]);
+				const endTime = formatTimestamp(chunk.timestamp[1]);
+				const timeRange = `${startTime} --> ${endTime}`;
+				const content = chunk.text.trim();
 				
 				return `${segmentIndex}\n${timeRange}\n${content}\n`;
 			})
@@ -232,36 +290,47 @@
 		try {
 			isLoading = true;
 			error = false;
+			isReady = false;
+			transcribeProgress = 0; // Reset progress for model loading
 
-			// Create new instance with progress tracking
-			transcriber = new FileTranscriber({
-				createModule,
-				model: selectedModel,
-				onReady: () => console.log('Transcriber ready'),
-				onProgress: (progress) => {
-					previousProgress = transcribeProgress;
-					transcribeProgress = Math.round(progress);
-					console.log(`Transcription progress: ${transcribeProgress}%`);
-				},
-				onSegment: (segment) => {
-					console.log('New segment:', segment);
-					// Update the current segment preview and reset timer
-					currentSegment = segment.segment.text.trim();
-					lastSegmentTime = Date.now();
-					isStuck = false;
-				},
-				onComplete: (result) => console.log('Transcription complete:', result),
-				onCanceled: () => console.log('Transcription canceled')
+			env.allowLocalModels = false; // Use remote models
+
+			// Destroy previous pipeline if exists
+			if (modelPipeline) {
+				await modelPipeline.dispose();
+				modelPipeline = null;
+			}
+			
+			modelPipeline = await pipeline('automatic-speech-recognition', selectedModel, {
+				progress_callback: (progress) => {
+					console.log('Model loading progress:', progress);
+					// Example progress data: { status: "progress", file: "config.json", progress: 50, loaded: 500, total: 1000 }
+					// Example progress data for model file: { status: "progress", file: "model.onnx", progress: percentage, loaded: bytes, total: bytes }
+					// We can simplify this to overall percentage if file is model.onnx or similar
+					if (progress.status === 'progress' && progress.file.includes('onnx')) {
+						transcribeProgress = Math.round(progress.progress);
+					} else if (progress.status === 'ready') {
+						transcribeProgress = 100; // Model is ready
+					} else {
+						// For other files like config.json, tokenizer.json, show a small progress
+						// This is a rough estimation, might need refinement
+						if (progress.file === 'config.json') transcribeProgress = 10;
+						else if (progress.file === 'tokenizer.json') transcribeProgress = 20;
+						else if (progress.file === 'preprocessor_config.json') transcribeProgress = 30;
+
+					}
+					previousProgress = transcribeProgress -1; // to show animation
+				}
 			});
 
-			// Initialize the transcriber
-			await transcriber.init();
 			isReady = true;
+			console.log('Model pipeline loaded successfully');
 		} catch (err) {
-			console.error('Failed to initialize transcriber:', err);
+			console.error('Failed to initialize model pipeline:', err);
 			error = true;
 		} finally {
 			isLoading = false;
+			if (!isReady) transcribeProgress = 0; // Reset if loading failed
 		}
 	}
 </script>
@@ -417,7 +486,7 @@
 								<h3>Transcription Result:</h3>
 								<div class="result-actions">
 									<!-- Tab selectors only shown when there is transcription data -->
-									{#if transcriptionData?.transcription?.length}
+									{#if transcriptionData?.chunks?.length}
 										<div class="tab-selectors">
 											<button 
 												class:active={activeTab === 'text'}
@@ -435,7 +504,7 @@
 									{/if}
 									
 									<!-- Action buttons based on active tab -->
-									{#if !transcriptionData?.transcription?.length || activeTab === 'text'}
+									{#if !transcriptionData?.chunks?.length || activeTab === 'text'}
 										<button class="copy-btn" onclick={copyToClipboard} class:copied={hasCopied}>
 											{#if hasCopied}
 												<svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
@@ -469,9 +538,9 @@
 									{/if}
 								</div>
 							</div>
-							{#if !transcriptionData?.transcription?.length || activeTab === 'text'}
+							{#if !transcriptionData?.chunks?.length || activeTab === 'text'}
 								<p>{text}</p>
-							{:else if activeTab === 'srt' && transcriptionData?.transcription?.length}
+							{:else if activeTab === 'srt' && transcriptionData?.chunks?.length}
 								<pre class="srt-preview">{convertToSRT()}</pre>
 							{/if}
 						</div>
