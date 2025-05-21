@@ -169,27 +169,84 @@
 		}
 	}
 
+	async function downloadModelWithProgress(url) {
+		// Reset progress tracking
+		downloadProgress = 0;
+		previousDownloadProgress = 0;
+		
+		// Fetch the model with progress tracking
+		const response = await fetch(url);
+		
+		if (!response.ok) {
+			throw new Error(`Failed to download model: ${response.statusText}`);
+		}
+		
+		// Get total file size from Content-Length header
+		const contentLength = response.headers.get('Content-Length');
+		const total = contentLength ? parseInt(contentLength, 10) : 0;
+		
+		// Create a reader from the response body stream
+		const reader = response.body.getReader();
+		
+		// Create an array to hold the chunks
+		const chunks = [];
+		let receivedLength = 0;
+		
+		// Process the data stream
+		while (true) {
+			const { done, value } = await reader.read();
+			
+			if (done) {
+				break;
+			}
+			
+			// Add the chunk to our array
+			chunks.push(value);
+			receivedLength += value.length;
+			
+			// Update the progress (as a percentage)
+			if (total) {
+				previousDownloadProgress = downloadProgress;
+				downloadProgress = Math.round((receivedLength / total) * 100);
+				console.log(`Model download progress: ${downloadProgress}%`);
+			}
+		}
+		
+		// Combine the chunks into a single Uint8Array
+		const allChunks = new Uint8Array(receivedLength);
+		let position = 0;
+		
+		for (const chunk of chunks) {
+			allChunks.set(chunk, position);
+			position += chunk.length;
+		}
+		
+		// Convert the downloaded data to a Blob and then to a File
+		const blob = new Blob([allChunks]);
+		const fileName = url.split('/').pop();
+		
+		// Return the File object that can be used by Transcribe.js
+		return new File([blob], fileName);
+	}
+
 	async function loadModel() {
 		try {
 			isLoading = true;
 			error = false;
-			downloadProgress = 0;
-			previousDownloadProgress = 0;
 			
-			// Start progress simulation
-			const progressInterval = setInterval(() => {
-				// Simulate progress up to 95% (last 5% will be when model is actually loaded)
-				if (downloadProgress < 95) {
-					previousDownloadProgress = downloadProgress;
-					downloadProgress += Math.floor(Math.random() * 3) + 1;
-					if (downloadProgress > 95) downloadProgress = 95;
-				}
-			}, 150);
-
+			console.log(`Downloading model from: ${selectedModel}`);
+			
+			// Download the model with real progress tracking
+			const modelFile = await downloadModelWithProgress(selectedModel);
+			
+			// Set progress to 99% while initializing (final 1% will be when model is fully loaded)
+			previousDownloadProgress = downloadProgress;
+			downloadProgress = 99;
+			
 			// Create new instance with progress tracking
 			transcriber = new FileTranscriber({
 				createModule,
-				model: selectedModel,
+				model: modelFile, // Pass the downloaded File object instead of URL
 				onReady: () => console.log('Transcriber ready'),
 				onProgress: (progress) => {
 					previousProgress = transcribeProgress;
@@ -210,8 +267,7 @@
 			// Initialize the transcriber
 			await transcriber.init();
 			
-			// Clear the progress simulation interval and set to 100%
-			clearInterval(progressInterval);
+			// Set progress to 100% now that the model is fully loaded
 			previousDownloadProgress = downloadProgress;
 			downloadProgress = 100;
 			
