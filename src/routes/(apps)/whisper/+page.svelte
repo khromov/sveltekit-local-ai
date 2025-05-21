@@ -118,14 +118,29 @@
 		if (!transcriptionData?.transcription?.length) return '';
 		
 		try {
-			// Create captions in the format expected by subsrt-ts
+			// Helper function to convert time format "00:00:00.000" to milliseconds
+			const convertTimeToMs = (timeString) => {
+				if (!timeString) return 0;
+				
+				// Handle "00:00:00.000" format
+				const parts = timeString.split(':');
+				if (parts.length !== 3) return 0;
+				
+				const hours = parseInt(parts[0], 10);
+				const minutes = parseInt(parts[1], 10);
+				const seconds = parseFloat(parts[2]);
+				
+				return (hours * 3600 + minutes * 60 + seconds) * 1000;
+			};
+			
+			// Create captions with milliseconds for proper subsrt-ts support
 			const captions = transcriptionData.transcription.map((segment, index) => {
 				return {
 					type: 'caption',
 					index: index + 1,
-					// Parse timestamps - subsrt-ts expects either milliseconds or "HH:MM:SS,mmm" format
-					start: segment.timestamps.from,
-					end: segment.timestamps.to,
+					// Convert timestamps to milliseconds for reliable processing
+					start: convertTimeToMs(segment.timestamps.from),
+					end: convertTimeToMs(segment.timestamps.to),
 					content: segment.text.trim(),
 					text: segment.text.trim()
 				};
