@@ -2,6 +2,7 @@
 	import createModule from '@transcribe/shout';
 	import { FileTranscriber } from '@transcribe/transcriber';
 	import { onMount } from 'svelte';
+	import subsrt from 'subsrt-ts';
 
 	let isReady = $state(false);
 	let isLoading = $state(false);
@@ -116,23 +117,22 @@
 	function convertToSRT(): string {
 		if (!transcriptionData?.transcription?.length) return '';
 		
-		return transcriptionData.transcription
-			.map((segment, index) => {
-				// SRT format has these components:
-				// 1. Index number
-				// 2. Start time --> End time (in format 00:00:00,000)
-				// 3. Text content
-				// 4. Blank line
-				const segmentIndex = index + 1;
-				
-				// Make sure timestamps are in correct SRT format (00:00:00,000)
-				// The transcribe.js library already provides timestamps in this format
-				const timeRange = `${segment.timestamps.from} --> ${segment.timestamps.to}`;
-				const content = segment.text.trim();
-				
-				return `${segmentIndex}\n${timeRange}\n${content}\n`;
-			})
-			.join('\n');
+		// Create captions in the format expected by subsrt-ts
+		const captions = transcriptionData.transcription.map((segment, index) => {
+			// subsrt-ts expects timestamps as strings in the format "HH:MM:SS,mmm"
+			// The timestamps from transcribe.js are already in this format
+			return {
+				type: 'caption',
+				index: index + 1,
+				start: segment.timestamps.from,
+				end: segment.timestamps.to,
+				content: segment.text.trim(),
+				text: segment.text.trim()
+			};
+		});
+		
+		// Build SRT content using subsrt-ts
+		return subsrt.build(captions);
 	}
 	
 	// Download SRT file
