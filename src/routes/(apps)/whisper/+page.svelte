@@ -1,7 +1,5 @@
 <script lang="ts">
-	import createModule from '@transcribe/shout';
-	import { FileTranscriber } from '@transcribe/transcriber';
-	import { downloadModelWithProgress, isModelCached, isOPFSSupported } from '$lib/download-utils';
+	import { pipeline } from '@huggingface/transformers';
 	import { onMount, onDestroy } from 'svelte';
 	import { whisperModel } from '$lib/stores';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
@@ -10,7 +8,7 @@
 	let isReady = $state(false);
 	let isLoading = $state(false);
 	let isTranscribing = $state(false);
-	let transcriber: FileTranscriber;
+	let transcriber: any;
 	let text = $state('');
 	let error = $state(false);
 	let transcribeProgress = $state(0);
@@ -51,37 +49,23 @@
 	// Copy to clipboard state
 	let hasCopied = $state(false);
 
-	const DEFAULT_MODEL = 'https://files.khromov.se/whisper/ggml-tiny-q5_1.bin';
+	const DEFAULT_MODEL = 'Xenova/whisper-tiny';
 
 	// Model selection state
 	let selectedModel = $state($whisperModel || DEFAULT_MODEL);
 	const availableModels = [
-		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' },
-		{
-			path: 'https://files.khromov.se/whisper/ggml-tiny.en-q5_1.bin',
-			name: 'Whisper Tiny English (q5_1)'
-		},
-		{ path: 'https://files.khromov.se/whisper/ggml-small-q5_1.bin', name: 'Whisper Small (q5_1)' },
-		{
-			path: 'https://files.khromov.se/whisper/ggml-small.en-q5_1.bin',
-			name: 'Whisper Small English (q5_1)'
-		},
-		{
-			path: 'https://files.khromov.se/whisper/ggml-medium-q5_0.bin',
-			name: 'Whisper Medium (q5_0)'
-		},
-		{
-			path: 'https://files.khromov.se/whisper/ggml-medium.en-q5_0.bin',
-			name: 'Whisper Medium English (q5_0)'
-		},
-		{
-			path: 'https://files.khromov.se/whisper/ggml-large-v2-q5_0.bin',
-			name: 'Whisper Large (q5_0)'
-		}
+		{ path: 'Xenova/whisper-tiny', name: 'Whisper Tiny' },
+		{ path: 'Xenova/whisper-tiny.en', name: 'Whisper Tiny English' },
+		{ path: 'Xenova/whisper-small', name: 'Whisper Small' },
+		{ path: 'Xenova/whisper-small.en', name: 'Whisper Small English' },
+		{ path: 'Xenova/whisper-base', name: 'Whisper Base' },
+		{ path: 'Xenova/whisper-base.en', name: 'Whisper Base English' },
+		{ path: 'Xenova/whisper-medium', name: 'Whisper Medium' },
+		{ path: 'Xenova/whisper-medium.en', name: 'Whisper Medium English' }
 	];
 
 	async function transcribe() {
-		if (!transcriber?.isReady) return;
+		if (!transcriber) return;
 		if (transcribeMode === 'upload' && !selectedFile) return;
 
 		text = '';
@@ -100,20 +84,57 @@
 		await requestWakeLock();
 
 		try {
-			let result;
+			let audioData;
 			if (transcribeMode === 'demo') {
-				// Transcribe the demo file
-				result = await transcriber.transcribe('/jfk.mp3', { lang: 'en' });
+				// Load demo file
+				const response = await fetch('/jfk.mp3');
+				audioData = await response.arrayBuffer();
 			} else {
-				// Transcribe the uploaded file
-				result = await transcriber.transcribe(selectedFile!, { lang: 'en' });
+				// Use uploaded file
+				audioData = await selectedFile!.arrayBuffer();
 			}
 
-			// Store the full result for different formats
-			transcriptionData = result;
+			// Create audio context and decode
+			const audioContext = new AudioContext({ sampleRate: 16000 });
+			const audioBuffer = await audioContext.decodeAudioData(audioData);
 
-			// Extract the transcription text
-			text = result.transcription.map((t) => t.text).join(' ');
+			// Convert to the format expected by Transformers.js
+			let audio = audioBuffer.getChannelData(0);
+			if (audioBuffer.sampleRate !== 16000) {
+				// Resample to 16kHz if needed
+				const resampleRatio = 16000 / audioBuffer.sampleRate;
+				const resampledLength = Math.round(audio.length * resampleRatio);
+				const resampled = new Float32Array(resampledLength);
+				for (let i = 0; i < resampledLength; i++) {
+					const sourceIndex = Math.round(i / resampleRatio);
+					resampled[i] = audio[sourceIndex] || 0;
+				}
+				audio = resampled;
+			}
+
+			// Transcribe using Transformers.js
+			const result = await transcriber(audio, {
+				chunk_length_s: 30,
+				stride_length_s: 5,
+				return_timestamps: true
+			});
+
+			// Convert result to expected format
+			if (result.chunks && result.chunks.length > 0) {
+				transcriptionData = {
+					transcription: result.chunks.map((chunk: any, index: number) => ({
+						text: chunk.text,
+						timestamps: {
+							from: formatTimestamp(chunk.timestamp[0] || 0),
+							to: formatTimestamp(chunk.timestamp[1] || 0)
+						}
+					}))
+				};
+				text = result.chunks.map((chunk: any) => chunk.text).join(' ');
+			} else {
+				text = result.text || 'No transcription available';
+				transcriptionData = { transcription: [] };
+			}
 		} catch (err) {
 			console.error('Transcription error:', err);
 			error = true;
@@ -127,6 +148,15 @@
 			// Release wake lock when done
 			await releaseWakeLock();
 		}
+	}
+
+	// Helper function to format timestamps
+	function formatTimestamp(seconds: number): string {
+		const hours = Math.floor(seconds / 3600);
+		const minutes = Math.floor((seconds % 3600) / 60);
+		const secs = Math.floor(seconds % 60);
+		const ms = Math.floor((seconds % 1) * 1000);
+		return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')},${ms.toString().padStart(3, '0')}`;
 	}
 
 	function startStuckCheck() {
@@ -152,30 +182,30 @@
 	// Convert transcription data to SRT format using subsrt-ts
 	function convertToSRT(): string {
 		if (!transcriptionData?.transcription?.length) return '';
-		
+
 		// Transform transcription data to subsrt format
 		const captions = transcriptionData.transcription.map((segment) => {
 			// Convert timestamp format from "hh:mm:ss,mmm" to milliseconds
 			const startMs = timestampToMs(segment.timestamps.from);
 			const endMs = timestampToMs(segment.timestamps.to);
-			
+
 			return {
 				start: startMs,
 				end: endMs,
 				text: segment.text.trim()
 			};
 		});
-		
+
 		// Generate SRT content using subsrt-ts
 		return subsrt.build(captions, { format: 'srt' });
 	}
-	
+
 	// Helper function to convert SRT timestamp format to milliseconds
 	function timestampToMs(timestamp: string): number {
 		// timestamp format: "hh:mm:ss,mmm"
 		const [time, ms] = timestamp.split(',');
 		const [hours, minutes, seconds] = time.split(':').map(Number);
-		
+
 		return (hours * 3600 + minutes * 60 + seconds) * 1000 + Number(ms);
 	}
 
@@ -263,63 +293,31 @@
 			isLoading = true;
 			error = false;
 
-			// If there's already a transcriber loaded, clean it up first
-			if (transcriber) {
-				transcriber.destroy();
-				isReady = false;
-			}
-
 			// Save the selected model to the store
 			$whisperModel = selectedModel;
 
-			console.log(`Loading model from: ${selectedModel}`);
+			console.log(`Loading model: ${selectedModel}`);
 
 			// Reset state
 			usingCachedModel = false;
 			downloadProgress = 0;
 			hasProgressTracking = true;
 
-			// Download the model with real progress tracking
-			const modelFile = await downloadModelWithProgress(selectedModel, (progress, cached) => {
-				previousDownloadProgress = downloadProgress;
-				downloadProgress = progress;
-				
-				// Check for no progress tracking signal
-				if (progress === -1) {
-					hasProgressTracking = false;
-					downloadProgress = 0;
-					return;
-				}
-				
-				// Update cached state
-				if (cached) {
-					usingCachedModel = true;
+			// Create Transformers.js pipeline for automatic speech recognition
+			transcriber = await pipeline('automatic-speech-recognition', selectedModel, {
+				progress_callback: (progress: any) => {
+					if (progress.status === 'downloading') {
+						const percentage = Math.round((progress.loaded / progress.total) * 100);
+						previousDownloadProgress = downloadProgress;
+						downloadProgress = percentage;
+						console.log(`Downloading model: ${percentage}%`);
+					} else if (progress.status === 'loading') {
+						console.log('Loading model into memory...');
+					} else if (progress.status === 'ready') {
+						console.log('Model ready!');
+					}
 				}
 			});
-
-			// Create new instance with progress tracking
-			transcriber = new FileTranscriber({
-				createModule,
-				model: modelFile, // Pass the downloaded File object instead of URL
-				onReady: () => console.log('Transcriber ready'),
-				onProgress: (progress) => {
-					previousProgress = transcribeProgress;
-					transcribeProgress = Math.round(progress);
-					console.log(`Transcription progress: ${transcribeProgress}%`);
-				},
-				onSegment: (segment) => {
-					console.log('New segment:', segment);
-					// Update the current segment preview and reset timer
-					currentSegment = segment.segment.text.trim();
-					lastSegmentTime = Date.now();
-					isStuck = false;
-				},
-				onComplete: (result) => console.log('Transcription complete:', result),
-				onCanceled: () => console.log('Transcription canceled')
-			});
-
-			// Initialize the transcriber
-			await transcriber.init();
 
 			isReady = true;
 		} catch (err) {
@@ -339,36 +337,19 @@
 
 	// Load saved model on mount
 	onMount(async () => {
-		// Check OPFS support
-		opfsSupported = isOPFSSupported();
-		if (!opfsSupported) {
-			console.log('OPFS not supported - models will not be cached');
-		}
-		
-		// If we have a saved model, only load it if it's cached (or if OPFS not supported, don't autoload)
+		// Models are automatically cached by Transformers.js
+		opfsSupported = true;
+
+		// If we have a saved model, use it
 		if ($whisperModel) {
 			selectedModel = $whisperModel;
-			
-			if (opfsSupported) {
-				// Only autoload if the model is already cached
-				const cached = await isModelCached($whisperModel);
-				if (cached) {
-					console.log('Autoloading cached model:', $whisperModel);
-					loadModel();
-				} else {
-					console.log('Model not cached, user must manually load:', $whisperModel);
-				}
-			} else {
-				console.log('OPFS not supported, user must manually load model:', $whisperModel);
-			}
+			console.log('Using saved model:', $whisperModel);
 		}
 	});
 
 	// Clean up resources when component is destroyed
 	onDestroy(() => {
-		if (transcriber) {
-			transcriber.destroy();
-		}
+		// Transformers.js handles cleanup automatically
 		stopStuckCheck();
 	});
 </script>
@@ -418,10 +399,10 @@
 			{:else if isLoading}
 				<div class="loading-progress">
 					<h3>
-						{usingCachedModel 
-							? 'Loading Cached Model' 
-							: opfsSupported 
-								? 'Downloading Model' 
+						{usingCachedModel
+							? 'Loading Cached Model'
+							: opfsSupported
+								? 'Downloading Model'
 								: 'Loading Model'}
 					</h3>
 					{#if hasProgressTracking}
@@ -433,16 +414,17 @@
 						<div class="progress-bar">
 							<div
 								class="progress-bar-fill"
-								style="width: {hasProgressTracking ? downloadProgress : 100}%; transition: width {downloadProgress >
-								previousDownloadProgress
+								style="width: {hasProgressTracking
+									? downloadProgress
+									: 100}%; transition: width {downloadProgress > previousDownloadProgress
 									? '0.3s'
 									: '0s'} ease"
 							></div>
 						</div>
 					</div>
 					<p class="loading-message">
-						{usingCachedModel 
-							? 'Loading model from local cache...' 
+						{usingCachedModel
+							? 'Loading model from local cache...'
 							: opfsSupported
 								? 'The transcription model is being downloaded to your browser.'
 								: 'Loading model... Progress tracking not available in this browser.'}
@@ -1192,7 +1174,6 @@
 	.copy-btn.copied {
 		background-color: #28a745;
 	}
-
 
 	.copy-icon {
 		width: 16px;
