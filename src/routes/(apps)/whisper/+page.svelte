@@ -17,6 +17,7 @@
 	let downloadProgress = $state(0);
 	let previousDownloadProgress = $state(0);
 	let currentSegment = $state('');
+	let usingCachedModel = $state(false);
 
 	// Store full transcription data for formats
 	let transcriptionData = $state<any>(null);
@@ -277,12 +278,21 @@
 			// Save the selected model to the store
 			$whisperModel = selectedModel;
 
-			console.log(`Downloading model from: ${selectedModel}`);
+			console.log(`Loading model from: ${selectedModel}`);
+
+			// Reset state
+			usingCachedModel = false;
+			downloadProgress = 0;
 
 			// Download the model with real progress tracking
-			const modelFile = await downloadModelWithProgress(selectedModel, (progress) => {
+			const modelFile = await downloadModelWithProgress(selectedModel, (progress, cached) => {
 				previousDownloadProgress = downloadProgress;
 				downloadProgress = progress;
+				
+				// Update cached state
+				if (cached) {
+					usingCachedModel = true;
+				}
 			});
 
 			// Create new instance with progress tracking
@@ -387,7 +397,7 @@
 				</div>
 			{:else if isLoading}
 				<div class="loading-progress">
-					<h3>Loading Model</h3>
+					<h3>{usingCachedModel ? 'Loading Cached Model' : 'Downloading Model'}</h3>
 					<p class="download-percentage">{downloadProgress}% Complete</p>
 					<div class="progress-container">
 						<div class="progress-bar">
@@ -401,7 +411,9 @@
 						</div>
 					</div>
 					<p class="loading-message">
-						The transcription model is being downloaded to your browser.
+						{usingCachedModel 
+							? 'Loading model from local cache...' 
+							: 'The transcription model is being downloaded to your browser.'}
 					</p>
 				</div>
 			{/if}
