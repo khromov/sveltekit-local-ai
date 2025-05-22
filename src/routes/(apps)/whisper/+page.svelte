@@ -13,7 +13,7 @@
 	let transcribeProgress = $state(0);
 	let previousProgress = $state(0);
 	let currentSegment = $state('');
-	
+
 	// Store full transcription data for formats
 	let transcriptionData = $state<any>(null);
 	let activeTab = $state<'text' | 'srt'>('text');
@@ -105,7 +105,7 @@
 
 			// Store the full result for different formats
 			transcriptionData = result;
-			
+
 			// Extract the transcription text
 			text = result.transcription.map((t) => t.text).join(' ');
 		} catch (err) {
@@ -146,7 +146,7 @@
 	// Convert transcription data to SRT format
 	function convertToSRT(): string {
 		if (!transcriptionData?.transcription?.length) return '';
-		
+
 		return transcriptionData.transcription
 			.map((segment, index) => {
 				// SRT format has these components:
@@ -155,17 +155,17 @@
 				// 3. Text content
 				// 4. Blank line
 				const segmentIndex = index + 1;
-				
+
 				// Make sure timestamps are in correct SRT format (00:00:00,000)
 				// The transcribe.js library already provides timestamps in this format
 				const timeRange = `${segment.timestamps.from} --> ${segment.timestamps.to}`;
 				const content = segment.text.trim();
-				
+
 				return `${segmentIndex}\n${timeRange}\n${content}\n`;
 			})
 			.join('\n');
 	}
-	
+
 	// Download SRT file
 	async function downloadSRT() {
 		try {
@@ -173,18 +173,18 @@
 			const blob = new Blob([srtContent], { type: 'text/plain' });
 			const url = URL.createObjectURL(blob);
 			const a = document.createElement('a');
-			
+
 			a.href = url;
-			const filename = selectedFile?.name 
-				? `${selectedFile.name.split('.').slice(0, -1).join('.')}.srt` 
+			const filename = selectedFile?.name
+				? `${selectedFile.name.split('.').slice(0, -1).join('.')}.srt`
 				: 'transcription.srt';
 			a.download = filename;
-			
+
 			document.body.appendChild(a);
 			a.click();
 			document.body.removeChild(a);
 			URL.revokeObjectURL(url);
-			
+
 			hasDownloaded = true;
 			setTimeout(() => {
 				hasDownloaded = false;
@@ -464,31 +464,47 @@
 									<!-- Tab selectors only shown when there is transcription data -->
 									{#if transcriptionData?.transcription?.length}
 										<div class="tab-selectors">
-											<button 
+											<button
 												class:active={activeTab === 'text'}
-												onclick={() => activeTab = 'text'}
+												onclick={() => (activeTab = 'text')}
 											>
 												Text
 											</button>
-											<button 
+											<button
 												class:active={activeTab === 'srt'}
-												onclick={() => activeTab = 'srt'}
+												onclick={() => (activeTab = 'srt')}
 											>
 												SRT
 											</button>
 										</div>
 									{/if}
-									
+
 									<!-- Action buttons based on active tab -->
 									{#if !transcriptionData?.transcription?.length || activeTab === 'text'}
 										<button class="copy-btn" onclick={copyToClipboard} class:copied={hasCopied}>
 											{#if hasCopied}
-												<svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+												<svg
+													class="copy-icon"
+													viewBox="0 0 24 24"
+													width="16"
+													height="16"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+												>
 													<polyline points="20,6 9,17 4,12"></polyline>
 												</svg>
 												Copied!
 											{:else}
-												<svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+												<svg
+													class="copy-icon"
+													viewBox="0 0 24 24"
+													width="16"
+													height="16"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+												>
 													<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
 													<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
 												</svg>
@@ -496,14 +512,34 @@
 											{/if}
 										</button>
 									{:else if activeTab === 'srt'}
-										<button class="download-btn" onclick={downloadSRT} class:downloaded={hasDownloaded}>
+										<button
+											class="download-btn"
+											onclick={downloadSRT}
+											class:downloaded={hasDownloaded}
+										>
 											{#if hasDownloaded}
-												<svg class="download-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+												<svg
+													class="download-icon"
+													viewBox="0 0 24 24"
+													width="16"
+													height="16"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+												>
 													<polyline points="20,6 9,17 4,12"></polyline>
 												</svg>
 												Downloaded!
 											{:else}
-												<svg class="download-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+												<svg
+													class="download-icon"
+													viewBox="0 0 24 24"
+													width="16"
+													height="16"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+												>
 													<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
 													<polyline points="7 10 12 15 17 10"></polyline>
 													<line x1="12" y1="15" x2="12" y2="3"></line>
@@ -910,13 +946,13 @@
 	.result-content p {
 		margin: 0;
 	}
-	
+
 	.result-actions {
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
 	}
-	
+
 	/* Tab selectors */
 	.tab-selectors {
 		display: flex;
@@ -924,7 +960,7 @@
 		overflow: hidden;
 		border: 1px solid #e1e1e1;
 	}
-	
+
 	.tab-selectors button {
 		padding: 0.5rem 0.75rem;
 		background-color: #f8f8f8;
@@ -935,20 +971,20 @@
 		color: #666;
 		transition: all 0.2s ease;
 	}
-	
+
 	.tab-selectors button:not(:last-child) {
 		border-right: 1px solid #e1e1e1;
 	}
-	
+
 	.tab-selectors button:hover:not(.active) {
 		background-color: #f0f0f0;
 	}
-	
+
 	.tab-selectors button.active {
 		background-color: #0071e3;
 		color: white;
 	}
-	
+
 	/* SRT Preview */
 	.srt-preview {
 		font-family: monospace;
@@ -985,7 +1021,7 @@
 	.copy-btn.copied {
 		background-color: #28a745;
 	}
-	
+
 	.download-btn {
 		display: flex;
 		align-items: center;
@@ -1000,15 +1036,15 @@
 		font-weight: 500;
 		transition: all 0.2s ease;
 	}
-	
+
 	.download-btn:hover {
 		background-color: #0062cc;
 	}
-	
+
 	.download-btn.downloaded {
 		background-color: #28a745;
 	}
-	
+
 	.download-icon {
 		width: 16px;
 		height: 16px;
@@ -1122,23 +1158,24 @@
 			align-items: flex-start;
 			gap: 0.75rem;
 		}
-		
+
 		.result-actions {
 			width: 100%;
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 0.75rem;
 		}
-		
+
 		.tab-selectors {
 			width: 100%;
 		}
-		
+
 		.tab-selectors button {
 			flex: 1;
 		}
-		
-		.copy-btn, .download-btn {
+
+		.copy-btn,
+		.download-btn {
 			width: 100%;
 			justify-content: center;
 		}
