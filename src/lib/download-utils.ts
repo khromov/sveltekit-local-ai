@@ -8,7 +8,7 @@ function getModelFileName(url: string): string {
 /**
  * Checks if OPFS is supported in the current browser
  */
-function isOPFSSupported(): boolean {
+export function isOPFSSupported(): boolean {
 	return 'navigator' in globalThis && 'storage' in navigator && 'getDirectory' in navigator.storage;
 }
 
@@ -65,7 +65,7 @@ export async function downloadModelWithProgress(
 ): Promise<File> {
 	const fileName = getModelFileName(url);
 	
-	// Check if model is already cached
+	// Check if model is already cached (only if OPFS is supported)
 	const cachedModel = await getCachedModel(fileName);
 	if (cachedModel) {
 		onProgress(100, true);
@@ -76,6 +76,21 @@ export async function downloadModelWithProgress(
 	// Reset progress tracking
 	onProgress(0);
 	console.log(`Downloading model from: ${url}`);
+
+	// If OPFS is not supported, use simple fetch without progress tracking
+	if (!isOPFSSupported()) {
+		console.log('OPFS not supported, using simple fetch');
+		const response = await fetch(url);
+		
+		if (!response.ok) {
+			throw new Error(`Failed to download model: ${response.statusText}`);
+		}
+		
+		const blob = await response.blob();
+		onProgress(100);
+		console.log(`Downloaded model without progress tracking: ${fileName}`);
+		return new File([blob], fileName);
+	}
 
 	// Fetch the model with progress tracking
 	const response = await fetch(url);
@@ -154,7 +169,7 @@ export async function clearModelCache(): Promise<void> {
 		const opfsRoot = await navigator.storage.getDirectory();
 		
 		// List all files and remove model files
-		for await (const [name, handle] of opfsRoot.entries()) {
+		for await (const [name, handle] of (opfsRoot as any).entries()) {
 			if (handle.kind === 'file' && name.endsWith('.bin')) {
 				await opfsRoot.removeEntry(name);
 				console.log(`Removed cached model: ${name}`);
@@ -165,6 +180,15 @@ export async function clearModelCache(): Promise<void> {
 	} catch (error) {
 		console.error('Failed to clear model cache:', error);
 	}
+}
+
+/**
+ * Checks if a model is cached locally
+ */
+export async function isModelCached(url: string): Promise<boolean> {
+	const fileName = getModelFileName(url);
+	const cachedModel = await getCachedModel(fileName);
+	return cachedModel !== null;
 }
 
 /**
@@ -180,7 +204,7 @@ export async function getCacheInfo(): Promise<{ fileName: string; size: number }
 	try {
 		const opfsRoot = await navigator.storage.getDirectory();
 		
-		for await (const [name, handle] of opfsRoot.entries()) {
+		for await (const [name, handle] of (opfsRoot as any).entries()) {
 			if (handle.kind === 'file' && name.endsWith('.bin')) {
 				const file = await handle.getFile();
 				cacheInfo.push({

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import createModule from '@transcribe/shout';
 	import { FileTranscriber } from '@transcribe/transcriber';
-	import { downloadModelWithProgress } from '$lib/download-utils';
+	import { downloadModelWithProgress, isModelCached, isOPFSSupported } from '$lib/download-utils';
 	import { onMount, onDestroy } from 'svelte';
 	import { whisperModel } from '$lib/stores';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
@@ -18,6 +18,7 @@
 	let previousDownloadProgress = $state(0);
 	let currentSegment = $state('');
 	let usingCachedModel = $state(false);
+	let opfsSupported = $state(true);
 
 	// Store full transcription data for formats
 	let transcriptionData = $state<any>(null);
@@ -336,11 +337,29 @@
 	}
 
 	// Load saved model on mount
-	onMount(() => {
-		// If we have a saved model, load it immediately
+	onMount(async () => {
+		// Check OPFS support
+		opfsSupported = isOPFSSupported();
+		if (!opfsSupported) {
+			console.log('OPFS not supported - models will not be cached');
+		}
+		
+		// If we have a saved model, only load it if it's cached (or if OPFS not supported, don't autoload)
 		if ($whisperModel) {
 			selectedModel = $whisperModel;
-			loadModel();
+			
+			if (opfsSupported) {
+				// Only autoload if the model is already cached
+				const cached = await isModelCached($whisperModel);
+				if (cached) {
+					console.log('Autoloading cached model:', $whisperModel);
+					loadModel();
+				} else {
+					console.log('Model not cached, user must manually load:', $whisperModel);
+				}
+			} else {
+				console.log('OPFS not supported, user must manually load model:', $whisperModel);
+			}
 		}
 	});
 
@@ -397,23 +416,33 @@
 				</div>
 			{:else if isLoading}
 				<div class="loading-progress">
-					<h3>{usingCachedModel ? 'Loading Cached Model' : 'Downloading Model'}</h3>
+					<h3>
+						{usingCachedModel 
+							? 'Loading Cached Model' 
+							: opfsSupported 
+								? 'Downloading Model' 
+								: 'Loading Model'}
+					</h3>
 					<p class="download-percentage">{downloadProgress}% Complete</p>
-					<div class="progress-container">
-						<div class="progress-bar">
-							<div
-								class="progress-bar-fill"
-								style="width: {downloadProgress}%; transition: width {downloadProgress >
-								previousDownloadProgress
-									? '0.3s'
-									: '0s'} ease"
-							></div>
+					{#if opfsSupported || usingCachedModel}
+						<div class="progress-container">
+							<div class="progress-bar">
+								<div
+									class="progress-bar-fill"
+									style="width: {downloadProgress}%; transition: width {downloadProgress >
+									previousDownloadProgress
+										? '0.3s'
+										: '0s'} ease"
+								></div>
+							</div>
 						</div>
-					</div>
+					{/if}
 					<p class="loading-message">
 						{usingCachedModel 
 							? 'Loading model from local cache...' 
-							: 'The transcription model is being downloaded to your browser.'}
+							: opfsSupported
+								? 'The transcription model is being downloaded to your browser.'
+								: 'Loading model... Progress tracking not available in this browser.'}
 					</p>
 				</div>
 			{/if}
