@@ -1,8 +1,9 @@
 <script lang="ts">
 	import createModule from '@transcribe/shout';
 	import { FileTranscriber } from '@transcribe/transcriber';
-	import { downloadModelWithProgress } from '$lib/download-utils';
-	import { onMount } from 'svelte';
+	import { downloadModelWithProgress, isModelCached, isOPFSSupported } from '$lib/download-utils';
+	import { onMount, onDestroy } from 'svelte';
+	import { whisperModel } from '$lib/stores';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import subsrt from 'subsrt-ts';
 
@@ -17,6 +18,9 @@
 	let downloadProgress = $state(0);
 	let previousDownloadProgress = $state(0);
 	let currentSegment = $state('');
+	let usingCachedModel = $state(false);
+	let opfsSupported = $state(true);
+	let hasProgressTracking = $state(true);
 
 	// Store full transcription data for formats
 	let transcriptionData = $state<any>(null);
@@ -50,7 +54,7 @@
 	const DEFAULT_MODEL = 'https://files.khromov.se/whisper/ggml-tiny-q5_1.bin';
 
 	// Model selection state
-	let selectedModel = $state(DEFAULT_MODEL);
+	let selectedModel = $state($whisperModel || DEFAULT_MODEL);
 	const availableModels = [
 		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' },
 		{
@@ -259,12 +263,38 @@
 			isLoading = true;
 			error = false;
 
-			console.log(`Downloading model from: ${selectedModel}`);
+			// If there's already a transcriber loaded, clean it up first
+			if (transcriber) {
+				transcriber.destroy();
+				isReady = false;
+			}
+
+			// Save the selected model to the store
+			$whisperModel = selectedModel;
+
+			console.log(`Loading model from: ${selectedModel}`);
+
+			// Reset state
+			usingCachedModel = false;
+			downloadProgress = 0;
+			hasProgressTracking = true;
 
 			// Download the model with real progress tracking
-			const modelFile = await downloadModelWithProgress(selectedModel, (progress) => {
+			const modelFile = await downloadModelWithProgress(selectedModel, (progress, cached) => {
 				previousDownloadProgress = downloadProgress;
 				downloadProgress = progress;
+				
+				// Check for no progress tracking signal
+				if (progress === -1) {
+					hasProgressTracking = false;
+					downloadProgress = 0;
+					return;
+				}
+				
+				// Update cached state
+				if (cached) {
+					usingCachedModel = true;
+				}
 			});
 
 			// Create new instance with progress tracking
@@ -299,6 +329,48 @@
 			isLoading = false;
 		}
 	}
+
+	// Function to change the model once one is already loaded
+	function changeModel() {
+		// This will trigger the loadModel function with the currently selected model
+		isReady = false;
+		loadModel();
+	}
+
+	// Load saved model on mount
+	onMount(async () => {
+		// Check OPFS support
+		opfsSupported = isOPFSSupported();
+		if (!opfsSupported) {
+			console.log('OPFS not supported - models will not be cached');
+		}
+		
+		// If we have a saved model, only load it if it's cached (or if OPFS not supported, don't autoload)
+		if ($whisperModel) {
+			selectedModel = $whisperModel;
+			
+			if (opfsSupported) {
+				// Only autoload if the model is already cached
+				const cached = await isModelCached($whisperModel);
+				if (cached) {
+					console.log('Autoloading cached model:', $whisperModel);
+					loadModel();
+				} else {
+					console.log('Model not cached, user must manually load:', $whisperModel);
+				}
+			} else {
+				console.log('OPFS not supported, user must manually load model:', $whisperModel);
+			}
+		}
+	});
+
+	// Clean up resources when component is destroyed
+	onDestroy(() => {
+		if (transcriber) {
+			transcriber.destroy();
+		}
+		stopStuckCheck();
+	});
 </script>
 
 <div class="card-interface" style="animation: fadeIn 0.5s ease-out;">
@@ -322,9 +394,16 @@
 						{isLoading ? 'Loading Model...' : 'Load Model'}
 					</button>
 				{:else}
-					<div class="model-ready">
-						<span class="checkmark">✓</span>
-						Model Ready
+					<div class="model-controls-loaded">
+						<div class="model-ready">
+							<span class="checkmark">✓</span>
+							Model Ready
+						</div>
+						{#if selectedModel !== $whisperModel}
+							<button onclick={changeModel} disabled={isLoading} class="change-model-btn">
+								{isLoading ? 'Changing...' : 'Change Model'}
+							</button>
+						{/if}
 					</div>
 				{/if}
 			</div>
@@ -338,13 +417,23 @@
 				</div>
 			{:else if isLoading}
 				<div class="loading-progress">
-					<h3>Loading Model</h3>
-					<p class="download-percentage">{downloadProgress}% Complete</p>
+					<h3>
+						{usingCachedModel 
+							? 'Loading Cached Model' 
+							: opfsSupported 
+								? 'Downloading Model' 
+								: 'Loading Model'}
+					</h3>
+					{#if hasProgressTracking}
+						<p class="download-percentage">{downloadProgress}% Complete</p>
+					{:else}
+						<p class="download-percentage">Loading...</p>
+					{/if}
 					<div class="progress-container">
 						<div class="progress-bar">
 							<div
 								class="progress-bar-fill"
-								style="width: {downloadProgress}%; transition: width {downloadProgress >
+								style="width: {hasProgressTracking ? downloadProgress : 100}%; transition: width {downloadProgress >
 								previousDownloadProgress
 									? '0.3s'
 									: '0s'} ease"
@@ -352,7 +441,11 @@
 						</div>
 					</div>
 					<p class="loading-message">
-						The transcription model is being downloaded to your browser.
+						{usingCachedModel 
+							? 'Loading model from local cache...' 
+							: opfsSupported
+								? 'The transcription model is being downloaded to your browser.'
+								: 'Loading model... Progress tracking not available in this browser.'}
 					</p>
 				</div>
 			{/if}
@@ -646,6 +739,34 @@
 		color: #28a745;
 		font-weight: 500;
 		font-size: 1rem;
+	}
+
+	.model-controls-loaded {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		align-items: center;
+	}
+
+	.change-model-btn {
+		padding: 0.5rem 1rem;
+		background-color: #f8f8f8;
+		color: #333;
+		border: 1px solid #e1e1e1;
+		border-radius: 8px;
+		cursor: pointer;
+		font-size: 0.875rem;
+		transition: all 0.2s ease;
+	}
+
+	.change-model-btn:hover {
+		background-color: #e9ecef;
+		border-color: #ced4da;
+	}
+
+	.change-model-btn:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
 	}
 
 	.checkmark {
