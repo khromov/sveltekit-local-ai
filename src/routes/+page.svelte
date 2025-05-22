@@ -33,7 +33,8 @@
 					</div>
 					<h2>Chat with AI</h2>
 					<p class="feature-description">
-						Have conversations with AI models that run completely offline. Your data never leaves your device.
+						Have conversations with AI models that run completely offline. Your data never leaves
+						your device.
 					</p>
 					<div class="feature-highlights">
 						<span class="highlight">• Private & Secure</span>
@@ -65,7 +66,8 @@
 					</div>
 					<h2>Transcribe Audio</h2>
 					<p class="feature-description">
-						Convert speech to text using Whisper AI. Upload audio files or use the demo to see it in action.
+						Convert speech to text using Whisper AI. Upload audio files or use the demo to see it in
+						action.
 					</p>
 					<div class="feature-highlights">
 						<span class="highlight">• High Accuracy</span>

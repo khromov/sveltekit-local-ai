@@ -8,7 +8,7 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
-	
+
 	// Screen Wake Lock API definitions
 	interface WakeLockSentinel {
 		readonly released: boolean;
