@@ -112,11 +112,33 @@
 				audio = resampled;
 			}
 
-			// Transcribe using Transformers.js
+			// Transcribe using Transformers.js with progress callback
 			const result = await transcriber(audio, {
 				chunk_length_s: 30,
 				stride_length_s: 5,
-				return_timestamps: true
+				return_timestamps: true,
+				callback_function: (beams: any) => {
+					// Update progress based on beams
+					if (beams && beams.length > 0) {
+						const beam = beams[0];
+						if (beam.output_token_ids && beam.output_token_ids.length > 0) {
+							// Estimate progress based on processed tokens vs expected length
+							const estimatedProgress = Math.min(95, (beam.output_token_ids.length / 100) * 100);
+							previousProgress = transcribeProgress;
+							transcribeProgress = Math.round(estimatedProgress);
+							
+							// Try to extract current text being processed
+							if (beam.decoded && beam.decoded.trim()) {
+								const words = beam.decoded.trim().split(/\s+/);
+								if (words.length > 0) {
+									currentSegment = words.slice(-10).join(' '); // Show last 10 words
+									lastSegmentTime = Date.now();
+									isStuck = false;
+								}
+							}
+						}
+					}
+				}
 			});
 
 			// Convert result to expected format
@@ -306,15 +328,35 @@
 			// Create Transformers.js pipeline for automatic speech recognition
 			transcriber = await pipeline('automatic-speech-recognition', selectedModel, {
 				progress_callback: (progress: any) => {
+					console.log('Model loading progress:', progress);
+					
 					if (progress.status === 'downloading') {
-						const percentage = Math.round((progress.loaded / progress.total) * 100);
-						previousDownloadProgress = downloadProgress;
-						downloadProgress = percentage;
-						console.log(`Downloading model: ${percentage}%`);
+						if (progress.total && progress.loaded) {
+							const percentage = Math.round((progress.loaded / progress.total) * 100);
+							previousDownloadProgress = downloadProgress;
+							downloadProgress = percentage;
+							console.log(`Downloading model: ${percentage}%`);
+						} else {
+							// Fallback for progress without size info
+							hasProgressTracking = false;
+						}
 					} else if (progress.status === 'loading') {
 						console.log('Loading model into memory...');
+						// Show indeterminate progress for loading
+						downloadProgress = 100;
 					} else if (progress.status === 'ready') {
 						console.log('Model ready!');
+						downloadProgress = 100;
+					} else if (progress.status === 'initiate') {
+						console.log('Initiating model download...');
+						downloadProgress = 0;
+					} else if (progress.status === 'progress') {
+						// Handle general progress updates
+						if (progress.loaded && progress.total) {
+							const percentage = Math.round((progress.loaded / progress.total) * 100);
+							previousDownloadProgress = downloadProgress;
+							downloadProgress = percentage;
+						}
 					}
 				}
 			});
