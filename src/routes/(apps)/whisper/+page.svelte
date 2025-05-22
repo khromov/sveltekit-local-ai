@@ -1,6 +1,7 @@
 <script lang="ts">
 	import createModule from '@transcribe/shout';
 	import { FileTranscriber } from '@transcribe/transcriber';
+	import { downloadModelWithProgress } from '$lib/download-utils';
 	import { onMount, onDestroy } from 'svelte';
 	import { whisperModel } from '$lib/stores';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
@@ -13,6 +14,8 @@
 	let error = $state(false);
 	let transcribeProgress = $state(0);
 	let previousProgress = $state(0);
+	let downloadProgress = $state(0);
+	let previousDownloadProgress = $state(0);
 	let currentSegment = $state('');
 
 	// Store full transcription data for formats
@@ -274,10 +277,18 @@
 			// Save the selected model to the store
 			$whisperModel = selectedModel;
 
+			console.log(`Downloading model from: ${selectedModel}`);
+
+			// Download the model with real progress tracking
+			const modelFile = await downloadModelWithProgress(selectedModel, (progress) => {
+				previousDownloadProgress = downloadProgress;
+				downloadProgress = progress;
+			});
+
 			// Create new instance with progress tracking
 			transcriber = new FileTranscriber({
 				createModule,
-				model: selectedModel,
+				model: modelFile, // Pass the downloaded File object instead of URL
 				onReady: () => console.log('Transcriber ready'),
 				onProgress: (progress) => {
 					previousProgress = transcribeProgress;
@@ -297,6 +308,7 @@
 
 			// Initialize the transcriber
 			await transcriber.init();
+
 			isReady = true;
 		} catch (err) {
 			console.error('Failed to initialize transcriber:', err);
@@ -342,7 +354,7 @@
 			<h3>Select Model</h3>
 			<div class="model-controls">
 				<select bind:value={selectedModel} disabled={isLoading}>
-					{#each availableModels as model}
+					{#each availableModels as model (model.path)}
 						<option value={model.path}>{model.name}</option>
 					{/each}
 				</select>
@@ -372,6 +384,25 @@
 					<button onclick={retry} disabled={isLoading} class="retry-btn">
 						{isLoading ? 'Reloading...' : 'Retry'}
 					</button>
+				</div>
+			{:else if isLoading}
+				<div class="loading-progress">
+					<h3>Loading Model</h3>
+					<p class="download-percentage">{downloadProgress}% Complete</p>
+					<div class="progress-container">
+						<div class="progress-bar">
+							<div
+								class="progress-bar-fill"
+								style="width: {downloadProgress}%; transition: width {downloadProgress >
+								previousDownloadProgress
+									? '0.3s'
+									: '0s'} ease"
+							></div>
+						</div>
+					</div>
+					<p class="loading-message">
+						The transcription model is being downloaded to your browser.
+					</p>
 				</div>
 			{/if}
 		</div>
@@ -730,6 +761,38 @@
 
 	.retry-btn:hover {
 		background-color: #e0352b;
+	}
+
+	.loading-progress {
+		margin: 1rem 0;
+		padding: 1.5rem;
+		background-color: #f8f9ff;
+		border: 1px solid #e1e5ff;
+		border-radius: 12px;
+		text-align: center;
+		max-width: 100%;
+		box-sizing: border-box;
+	}
+
+	.loading-progress h3 {
+		margin: 0 0 0.5rem 0;
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: #333;
+	}
+
+	.download-percentage {
+		font-size: 1.125rem;
+		font-weight: 500;
+		color: #0071e3;
+		margin: 0 0 1rem 0;
+	}
+
+	.loading-message {
+		margin: 1rem 0 0 0;
+		color: #666;
+		font-size: 0.875rem;
+		line-height: 1.4;
 	}
 
 	.main-content.disabled,
@@ -1142,7 +1205,8 @@
 	.progress-container {
 		width: 100%;
 		max-width: 300px;
-		margin: 0.5rem 0;
+		margin: 0.5rem auto;
+		box-sizing: border-box;
 	}
 
 	.progress-bar {
