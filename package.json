@@ -28,6 +28,7 @@
 		"globals": "^16.0.0",
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.3.3",
+		"subsrt-ts": "^2.1.2",
 		"svelte": "^5.28.2",
 		"svelte-check": "^4.1.7",
 		"svelte-persisted-store": "^0.12.0",

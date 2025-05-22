@@ -4,6 +4,7 @@
 	import { downloadModelWithProgress } from '$lib/download-utils';
 	import { onMount } from 'svelte';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
+	import subsrt from 'subsrt-ts';
 
 	let isReady = $state(false);
 	let isLoading = $state(false);
@@ -20,7 +21,6 @@
 	// Store full transcription data for formats
 	let transcriptionData = $state<any>(null);
 	let activeTab = $state<'text' | 'srt'>('text');
-	let hasDownloaded = $state(false);
 
 	// Initialize wake lock functionality
 	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
@@ -88,7 +88,6 @@
 		isStuck = false;
 		lastSegmentTime = Date.now();
 		transcriptionData = null;
-		hasDownloaded = false;
 
 		// Start checking for stuck transcription
 		startStuckCheck();
@@ -146,54 +145,47 @@
 		window.location.reload();
 	}
 
-	// Convert transcription data to SRT format
+	// Convert transcription data to SRT format using subsrt-ts
 	function convertToSRT(): string {
 		if (!transcriptionData?.transcription?.length) return '';
-
-		return transcriptionData.transcription
-			.map((segment, index) => {
-				// SRT format has these components:
-				// 1. Index number
-				// 2. Start time --> End time (in format 00:00:00,000)
-				// 3. Text content
-				// 4. Blank line
-				const segmentIndex = index + 1;
-
-				// Make sure timestamps are in correct SRT format (00:00:00,000)
-				// The transcribe.js library already provides timestamps in this format
-				const timeRange = `${segment.timestamps.from} --> ${segment.timestamps.to}`;
-				const content = segment.text.trim();
-
-				return `${segmentIndex}\n${timeRange}\n${content}\n`;
-			})
-			.join('\n');
+		
+		// Transform transcription data to subsrt format
+		const captions = transcriptionData.transcription.map((segment) => {
+			// Convert timestamp format from "hh:mm:ss,mmm" to milliseconds
+			const startMs = timestampToMs(segment.timestamps.from);
+			const endMs = timestampToMs(segment.timestamps.to);
+			
+			return {
+				start: startMs,
+				end: endMs,
+				text: segment.text.trim()
+			};
+		});
+		
+		// Generate SRT content using subsrt-ts
+		return subsrt.build(captions, { format: 'srt' });
+	}
+	
+	// Helper function to convert SRT timestamp format to milliseconds
+	function timestampToMs(timestamp: string): number {
+		// timestamp format: "hh:mm:ss,mmm"
+		const [time, ms] = timestamp.split(',');
+		const [hours, minutes, seconds] = time.split(':').map(Number);
+		
+		return (hours * 3600 + minutes * 60 + seconds) * 1000 + Number(ms);
 	}
 
-	// Download SRT file
-	async function downloadSRT() {
+	// Copy SRT content to clipboard
+	async function copySRTToClipboard() {
 		try {
 			const srtContent = convertToSRT();
-			const blob = new Blob([srtContent], { type: 'text/plain' });
-			const url = URL.createObjectURL(blob);
-			const a = document.createElement('a');
-
-			a.href = url;
-			const filename = selectedFile?.name
-				? `${selectedFile.name.split('.').slice(0, -1).join('.')}.srt`
-				: 'transcription.srt';
-			a.download = filename;
-
-			document.body.appendChild(a);
-			a.click();
-			document.body.removeChild(a);
-			URL.revokeObjectURL(url);
-
-			hasDownloaded = true;
+			await navigator.clipboard.writeText(srtContent);
+			hasCopied = true;
 			setTimeout(() => {
-				hasDownloaded = false;
+				hasCopied = false;
 			}, 2000);
 		} catch (err) {
-			console.error('Failed to download SRT file:', err);
+			console.error('Failed to copy SRT to clipboard:', err);
 		}
 	}
 
@@ -543,14 +535,10 @@
 											{/if}
 										</button>
 									{:else if activeTab === 'srt'}
-										<button
-											class="download-btn"
-											onclick={downloadSRT}
-											class:downloaded={hasDownloaded}
-										>
-											{#if hasDownloaded}
+										<button class="copy-btn" onclick={copySRTToClipboard} class:copied={hasCopied}>
+											{#if hasCopied}
 												<svg
-													class="download-icon"
+													class="copy-icon"
 													viewBox="0 0 24 24"
 													width="16"
 													height="16"
@@ -560,10 +548,10 @@
 												>
 													<polyline points="20,6 9,17 4,12"></polyline>
 												</svg>
-												Downloaded!
+												Copied!
 											{:else}
 												<svg
-													class="download-icon"
+													class="copy-icon"
 													viewBox="0 0 24 24"
 													width="16"
 													height="16"
@@ -571,11 +559,10 @@
 													stroke="currentColor"
 													stroke-width="2"
 												>
-													<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-													<polyline points="7 10 12 15 17 10"></polyline>
-													<line x1="12" y1="15" x2="12" y2="3"></line>
+													<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+													<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2 2v1"></path>
 												</svg>
-												Download SRT
+												Copy
 											{/if}
 										</button>
 									{/if}
@@ -1085,33 +1072,6 @@
 		background-color: #28a745;
 	}
 
-	.download-btn {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 0.5rem 0.75rem;
-		background-color: #0071e3;
-		color: white;
-		border: none;
-		border-radius: 8px;
-		cursor: pointer;
-		font-size: 0.875rem;
-		font-weight: 500;
-		transition: all 0.2s ease;
-	}
-
-	.download-btn:hover {
-		background-color: #0062cc;
-	}
-
-	.download-btn.downloaded {
-		background-color: #28a745;
-	}
-
-	.download-icon {
-		width: 16px;
-		height: 16px;
-	}
 
 	.copy-icon {
 		width: 16px;
@@ -1238,8 +1198,7 @@
 			flex: 1;
 		}
 
-		.copy-btn,
-		.download-btn {
+		.copy-btn {
 			width: 100%;
 			justify-content: center;
 		}
