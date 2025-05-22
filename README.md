@@ -18,13 +18,23 @@ https://ai.stanislav.garden
    npm install
    ```
 
-3. Start the development server
+3. (Optional) Configure environment variables
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Available variables:
+
+   - `PUBLIC_DISABLE_OPFS=true` - Disable OPFS caching for testing fallback behavior
+
+4. Start the development server
 
    ```bash
    npm run dev
    ```
 
-4. Open your browser and navigate to `http://localhost:5173`
+5. Open your browser and navigate to `http://localhost:5173`
 
 ## Building for Production
 

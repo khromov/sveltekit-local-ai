@@ -1,3 +1,5 @@
+import { PUBLIC_DISABLE_OPFS } from '$env/static/public';
+
 /**
  * Gets the model file name from URL
  */
@@ -9,6 +11,12 @@ function getModelFileName(url: string): string {
  * Checks if OPFS is supported in the current browser
  */
 export function isOPFSSupported(): boolean {
+	// Check if OPFS is disabled via environment variable
+	if (PUBLIC_DISABLE_OPFS === 'true') {
+		console.log('OPFS disabled via PUBLIC_DISABLE_OPFS environment variable');
+		return false;
+	}
+	
 	return 'navigator' in globalThis && 'storage' in navigator && 'getDirectory' in navigator.storage;
 }
 
@@ -80,6 +88,7 @@ export async function downloadModelWithProgress(
 	// If OPFS is not supported, use simple fetch without progress tracking
 	if (!isOPFSSupported()) {
 		console.log('OPFS not supported, using simple fetch');
+		onProgress(-1); // Signal no progress tracking available
 		const response = await fetch(url);
 		
 		if (!response.ok) {

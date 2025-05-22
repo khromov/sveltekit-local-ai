@@ -19,6 +19,7 @@
 	let currentSegment = $state('');
 	let usingCachedModel = $state(false);
 	let opfsSupported = $state(true);
+	let hasProgressTracking = $state(true);
 
 	// Store full transcription data for formats
 	let transcriptionData = $state<any>(null);
@@ -284,11 +285,19 @@
 			// Reset state
 			usingCachedModel = false;
 			downloadProgress = 0;
+			hasProgressTracking = true;
 
 			// Download the model with real progress tracking
 			const modelFile = await downloadModelWithProgress(selectedModel, (progress, cached) => {
 				previousDownloadProgress = downloadProgress;
 				downloadProgress = progress;
+				
+				// Check for no progress tracking signal
+				if (progress === -1) {
+					hasProgressTracking = false;
+					downloadProgress = 0;
+					return;
+				}
 				
 				// Update cached state
 				if (cached) {
@@ -423,8 +432,8 @@
 								? 'Downloading Model' 
 								: 'Loading Model'}
 					</h3>
-					<p class="download-percentage">{downloadProgress}% Complete</p>
-					{#if opfsSupported || usingCachedModel}
+					{#if hasProgressTracking}
+						<p class="download-percentage">{downloadProgress}% Complete</p>
 						<div class="progress-container">
 							<div class="progress-bar">
 								<div
@@ -436,6 +445,8 @@
 								></div>
 							</div>
 						</div>
+					{:else}
+						<p class="download-percentage">Loading...</p>
 					{/if}
 					<p class="loading-message">
 						{usingCachedModel 
