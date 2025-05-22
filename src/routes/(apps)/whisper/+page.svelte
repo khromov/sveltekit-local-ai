@@ -694,6 +694,38 @@
 		background-color: #e0352b;
 	}
 
+	.loading-progress {
+		margin: 1rem 0;
+		padding: 1.5rem;
+		background-color: #f8f9ff;
+		border: 1px solid #e1e5ff;
+		border-radius: 12px;
+		text-align: center;
+		max-width: 100%;
+		box-sizing: border-box;
+	}
+
+	.loading-progress h3 {
+		margin: 0 0 0.5rem 0;
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: #333;
+	}
+
+	.download-percentage {
+		font-size: 1.125rem;
+		font-weight: 500;
+		color: #0071e3;
+		margin: 0 0 1rem 0;
+	}
+
+	.loading-message {
+		margin: 1rem 0 0 0;
+		color: #666;
+		font-size: 0.875rem;
+		line-height: 1.4;
+	}
+
 	.main-content.disabled,
 	.input-area.disabled {
 		opacity: 0.3;
@@ -1104,7 +1136,8 @@
 	.progress-container {
 		width: 100%;
 		max-width: 300px;
-		margin: 0.5rem 0;
+		margin: 0.5rem auto;
+		box-sizing: border-box;
 	}
 
 	.progress-bar {
