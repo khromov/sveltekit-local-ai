@@ -434,20 +434,20 @@
 					</h3>
 					{#if hasProgressTracking}
 						<p class="download-percentage">{downloadProgress}% Complete</p>
-						<div class="progress-container">
-							<div class="progress-bar">
-								<div
-									class="progress-bar-fill"
-									style="width: {downloadProgress}%; transition: width {downloadProgress >
-									previousDownloadProgress
-										? '0.3s'
-										: '0s'} ease"
-								></div>
-							</div>
-						</div>
 					{:else}
 						<p class="download-percentage">Loading...</p>
 					{/if}
+					<div class="progress-container">
+						<div class="progress-bar">
+							<div
+								class="progress-bar-fill"
+								style="width: {hasProgressTracking ? downloadProgress : 100}%; transition: width {downloadProgress >
+								previousDownloadProgress
+									? '0.3s'
+									: '0s'} ease"
+							></div>
+						</div>
+					</div>
 					<p class="loading-message">
 						{usingCachedModel 
 							? 'Loading model from local cache...' 
