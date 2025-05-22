@@ -18,7 +18,7 @@ https://ai.stanislav.garden
    npm install
    ```
 
-3. (Optional) Configure environment variables
+3. Configure environment variables
 
    ```bash
    cp .env.example .env
