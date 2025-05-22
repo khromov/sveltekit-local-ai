@@ -5,7 +5,7 @@ A browser-based chat application with AI models that run entirely on your device
 ## Live Demo
 
 You can try the application at:
-[https://svelte-local-ai.khromov.se/](https://svelte-local-ai.khromov.se/)
+https://ai.stanislav.garden
 
 ## Running Locally
 

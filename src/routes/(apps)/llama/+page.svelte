@@ -9,7 +9,7 @@
 		formatFileSize,
 		type Message
 	} from '$lib/wllama-config';
-
+	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import { messages, inferenceParams } from '$lib/stores';
 
 	// State variables
@@ -26,6 +26,15 @@
 	let stopSignal = false;
 	let chatContainer: HTMLElement | undefined = $state();
 	let inputElement: HTMLTextAreaElement | undefined = $state();
+
+	// Initialize wake lock functionality
+	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
+
+	// Set up event listeners
+	onMount(() => {
+		// Set up wake lock management
+		return setupWakeLock(() => isGenerating);
+	});
 
 	// Scroll to the bottom of the chat
 	function scrollToBottom() {
@@ -102,6 +111,9 @@
 		isGenerating = true;
 		stopSignal = false;
 
+		// Request wake lock to keep screen on during generation
+		await requestWakeLock();
+
 		try {
 			// Format chat history for the model
 			let formattedChat = await formatChatHistory($messages.slice(0, -1));
@@ -133,6 +145,9 @@
 		} finally {
 			isGenerating = false;
 
+			// Release wake lock when generation is complete
+			await releaseWakeLock();
+
 			// Focus the input field when generation is complete
 			if (inputElement) {
 				setTimeout(() => {
@@ -145,8 +160,11 @@
 	}
 
 	// Function to stop text generation
-	function stopGeneration() {
+	async function stopGeneration() {
 		stopSignal = true;
+
+		// Release wake lock when generation is stopped
+		await releaseWakeLock();
 	}
 
 	// Function to format chat history
