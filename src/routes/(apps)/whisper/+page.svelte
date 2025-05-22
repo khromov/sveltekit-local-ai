@@ -49,6 +49,9 @@
 	// Copy to clipboard state
 	let hasCopied = $state(false);
 
+	// Track progress for multiple model files
+	let modelFileProgress = $state<Record<string, { loaded: number; total: number }>>({});
+
 	const DEFAULT_MODEL = 'Xenova/whisper-tiny';
 
 	// Model selection state
@@ -330,33 +333,42 @@
 				progress_callback: (progress: any) => {
 					console.log('Model loading progress:', progress);
 					
-					if (progress.status === 'downloading') {
-						if (progress.total && progress.loaded) {
-							const percentage = Math.round((progress.loaded / progress.total) * 100);
-							previousDownloadProgress = downloadProgress;
-							downloadProgress = percentage;
-							console.log(`Downloading model: ${percentage}%`);
+					if (progress.status === 'downloading' || progress.status === 'progress') {
+						if (progress.file && progress.total && progress.loaded) {
+							// Track progress for each individual file
+							modelFileProgress[progress.file] = {
+								loaded: progress.loaded,
+								total: progress.total
+							};
+							
+							// Calculate overall progress by averaging all files
+							const files = Object.values(modelFileProgress);
+							if (files.length > 0) {
+								const totalLoaded = files.reduce((sum, file) => sum + file.loaded, 0);
+								const totalSize = files.reduce((sum, file) => sum + file.total, 0);
+								const overallPercentage = Math.round((totalLoaded / totalSize) * 100);
+								
+								previousDownloadProgress = downloadProgress;
+								downloadProgress = Math.min(99, overallPercentage); // Cap at 99% until ready
+								console.log(`Overall model download: ${downloadProgress}% (${files.length} files)`);
+							}
 						} else {
-							// Fallback for progress without size info
+							// Fallback for progress without detailed info
 							hasProgressTracking = false;
 						}
 					} else if (progress.status === 'loading') {
 						console.log('Loading model into memory...');
-						// Show indeterminate progress for loading
-						downloadProgress = 100;
+						// Show 99% while loading into memory
+						downloadProgress = 99;
 					} else if (progress.status === 'ready') {
 						console.log('Model ready!');
 						downloadProgress = 100;
+						// Clear file progress tracking
+						modelFileProgress = {};
 					} else if (progress.status === 'initiate') {
 						console.log('Initiating model download...');
 						downloadProgress = 0;
-					} else if (progress.status === 'progress') {
-						// Handle general progress updates
-						if (progress.loaded && progress.total) {
-							const percentage = Math.round((progress.loaded / progress.total) * 100);
-							previousDownloadProgress = downloadProgress;
-							downloadProgress = percentage;
-						}
+						modelFileProgress = {}; // Reset file tracking
 					}
 				}
 			});
