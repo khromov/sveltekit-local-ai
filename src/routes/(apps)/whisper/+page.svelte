@@ -357,9 +357,11 @@
 							<span class="checkmark">✓</span>
 							Model Ready
 						</div>
-						<button onclick={changeModel} disabled={isLoading} class="change-model-btn">
-							{isLoading ? 'Changing...' : 'Change Model'}
-						</button>
+						{#if selectedModel !== $whisperModel}
+							<button onclick={changeModel} disabled={isLoading} class="change-model-btn">
+								{isLoading ? 'Changing...' : 'Change Model'}
+							</button>
+						{/if}
 					</div>
 				{/if}
 			</div>
