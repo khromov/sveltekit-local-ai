@@ -510,6 +510,9 @@
 							ondragleave={handleDragLeave}
 							ondrop={handleDrop}
 							onclick={() => fileInputElement?.click()}
+							onkeydown={(e) => e.key === 'Enter' || e.key === ' ' ? fileInputElement?.click() : null}
+							role="button"
+							tabindex="0"
 						>
 							<div class="upload-content">
 								<svg
