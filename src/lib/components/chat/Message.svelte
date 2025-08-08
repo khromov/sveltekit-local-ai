@@ -130,7 +130,7 @@
 		color: #000;
 		box-shadow: 5px 5px 0 #000;
 		border-bottom-right-radius: 4px;
-		transform: rotate(1deg);
+		transform: rotate(0deg);
 	}
 
 	.user-message .message-content:hover {
@@ -161,7 +161,7 @@
 		color: #000;
 		box-shadow: 5px 5px 0 #000;
 		border-bottom-left-radius: 4px;
-		transform: rotate(-1deg);
+		transform: rotate(0deg);
 	}
 
 	.assistant-message .message-content:hover {

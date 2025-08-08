@@ -310,18 +310,18 @@
 
 	.chat-interface {
 		position: relative;
-		transform: rotate(-0.5deg);
+		transform: rotate(0deg);
 		animation: slideInChat 0.5s ease-out;
 	}
 
 	@keyframes slideInChat {
 		from {
 			opacity: 0;
-			transform: translateY(20px) rotate(-1deg);
+			transform: translateY(20px) rotate(0deg);
 		}
 		to {
 			opacity: 1;
-			transform: translateY(0) rotate(-0.5deg);
+			transform: translateY(0) rotate(0deg);
 		}
 	}
 
@@ -408,7 +408,7 @@
 		display: flex;
 		align-items: center;
 		gap: 0.375rem;
-		transform: rotate(1deg);
+		transform: rotate(0deg);
 	}
 
 	.new-chat-btn:hover {
