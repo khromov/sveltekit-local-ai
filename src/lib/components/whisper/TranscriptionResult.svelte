@@ -24,14 +24,18 @@
 		if (!transcriptionData?.transcription?.length) return '';
 
 		// Transform transcription data to subsrt format
-		const captions = transcriptionData.transcription.map((segment) => {
+		const captions = transcriptionData.transcription.map((segment, index) => {
 			// Convert timestamp format from "hh:mm:ss,mmm" to milliseconds
 			const startMs = timestampToMs(segment.timestamps.from);
 			const endMs = timestampToMs(segment.timestamps.to);
 
 			return {
+				type: 'caption' as const,
+				index: index + 1,
 				start: startMs,
 				end: endMs,
+				duration: endMs - startMs,
+				content: segment.text.trim(),
 				text: segment.text.trim()
 			};
 		});

@@ -29,15 +29,18 @@
 	let hasProgressTracking = $state(true);
 
 	// Store full transcription data for formats
-	let transcriptionData = $state<{
-		transcription: Array<{
-			text: string;
-			timestamps: {
-				from: string;
-				to: string;
-			};
-		}>;
-	} | null>(null);
+	let transcriptionData = $state<
+		| {
+				transcription: Array<{
+					text: string;
+					timestamps: {
+						from: string;
+						to: string;
+					};
+				}>;
+		  }
+		| undefined
+	>(undefined);
 
 	// Initialize wake lock functionality
 	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
@@ -97,7 +100,7 @@
 		previousProgress = 0;
 		isStuck = false;
 		lastSegmentTime = Date.now();
-		transcriptionData = null;
+		transcriptionData = undefined;
 
 		// Start checking for stuck transcription
 		startStuckCheck();

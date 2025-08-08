@@ -1,5 +1,15 @@
 import { PUBLIC_DISABLE_OPFS } from '$env/static/public';
 
+// Extend FileSystem interfaces to include missing methods
+declare global {
+	interface FileSystemDirectoryHandle {
+		entries(): AsyncIterableIterator<[string, FileSystemHandle]>;
+	}
+	interface FileSystemFileHandle {
+		getFile(): Promise<File>;
+	}
+}
+
 /**
  * Gets the model file name from URL
  */
@@ -178,7 +188,7 @@ export async function clearModelCache(): Promise<void> {
 		const opfsRoot = await navigator.storage.getDirectory();
 
 		// List all files and remove model files
-		for await (const [name, handle] of (opfsRoot as FileSystemDirectoryHandle).entries()) {
+		for await (const [name, handle] of opfsRoot.entries()) {
 			if (handle.kind === 'file' && name.endsWith('.bin')) {
 				await opfsRoot.removeEntry(name);
 				console.log(`Removed cached model: ${name}`);
@@ -213,9 +223,9 @@ export async function getCacheInfo(): Promise<{ fileName: string; size: number }
 	try {
 		const opfsRoot = await navigator.storage.getDirectory();
 
-		for await (const [name, handle] of (opfsRoot as FileSystemDirectoryHandle).entries()) {
+		for await (const [name, handle] of opfsRoot.entries()) {
 			if (handle.kind === 'file' && name.endsWith('.bin')) {
-				const file = await handle.getFile();
+				const file = await (handle as FileSystemFileHandle).getFile();
 				cacheInfo.push({
 					fileName: name,
 					size: file.size
