@@ -17,7 +17,7 @@
 
 		<div class="feature-grid">
 			<a href="/llama" class="feature-card chat-card">
-				<div class="card-number">01</div>
+				<div class="card-number">TOOL #01</div>
 				<div class="card-content">
 					<div class="icon-container">
 						<svg
@@ -48,7 +48,7 @@
 			</a>
 
 			<a href="/whisper" class="feature-card transcribe-card">
-				<div class="card-number">02</div>
+				<div class="card-number">TOOL #02</div>
 				<div class="card-content">
 					<div class="icon-container">
 						<svg
