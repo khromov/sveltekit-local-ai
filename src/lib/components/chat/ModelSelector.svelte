@@ -85,11 +85,6 @@
 			Load Model
 		{/if}
 	</button>
-
-	<p class="model-note">
-		<span class="note-icon">💾</span>
-		Model will be downloaded and run locally in your browser
-	</p>
 </div>
 
 <style>
@@ -177,8 +172,7 @@
 	}
 
 	@keyframes bounce {
-		0%,
-		100% {
+		0%, 100% {
 			transform: translateY(0);
 		}
 		50% {
@@ -187,7 +181,7 @@
 	}
 
 	.select-wrapper {
-		margin-top: 1rem;
+		margin-top: 1rem;	
 		position: relative;
 		transform: rotate(-0.5deg);
 	}
@@ -395,8 +389,7 @@
 	}
 
 	@keyframes pulse {
-		0%,
-		100% {
+		0%, 100% {
 			opacity: 1;
 		}
 		50% {
@@ -404,29 +397,12 @@
 		}
 	}
 
-	.button-icon,
-	.loading-icon {
+	.button-icon, .loading-icon {
 		font-size: 1.5rem;
 	}
 
 	.loading-icon {
 		animation: spin 1s linear infinite;
-	}
-
-	.model-note {
-		font-size: 0.875rem;
-		color: #666;
-		text-align: center;
-		margin: 0;
-		font-weight: 600;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.375rem;
-	}
-
-	.note-icon {
-		font-size: 1rem;
 	}
 
 	@media (max-width: 600px) {
