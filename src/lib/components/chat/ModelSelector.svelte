@@ -16,9 +16,8 @@
 	<div class="selector-decoration"></div>
 	<h2>
 		<span class="title-icon">🚀</span>
-		On-device Local Chat
+		Local Chat
 	</h2>
-	<p class="subtitle">Select a model to start your private AI experience</p>
 
 	<div class="select-wrapper">
 		<label class="select-label" for="model-select">
@@ -186,15 +185,8 @@
 		}
 	}
 
-	.subtitle {
-		text-align: center;
-		font-size: 1rem;
-		color: #666;
-		margin: -0.5rem 0 0 0;
-		font-weight: 600;
-	}
-
 	.select-wrapper {
+		margin-top: 1rem;
 		position: relative;
 		transform: rotate(-0.5deg);
 	}
