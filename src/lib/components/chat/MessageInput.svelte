@@ -58,6 +58,7 @@
 	<div class="message-input" class:is-disabled={isGenerating}>
 		<span class="input-emoji">💭</span>
 		<textarea
+			id="chat"
 			bind:this={inputElement}
 			bind:value
 			{placeholder}
@@ -139,7 +140,7 @@
 
 	.input-emoji {
 		position: absolute;
-		top: -10px;
+		top: -15px;
 		left: 10px;
 		font-size: 1.5rem;
 		z-index: 1;
@@ -198,7 +199,8 @@
 		justify-content: center;
 		width: 44px;
 		height: 44px;
-		margin: 4px;
+		margin: 8px;
+		align-self: center;
 		background: linear-gradient(135deg, #ffd93d 0%, #ffa500 100%);
 		color: #000;
 		border: 2px solid #000;
