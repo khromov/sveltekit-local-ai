@@ -24,7 +24,6 @@
 					{message.content}
 				{/if}
 			</div>
-			<div class="message-decoration"></div>
 		</div>
 	</div>
 {/if}
@@ -32,165 +31,122 @@
 <style>
 	.message-wrapper {
 		display: flex;
-		margin-bottom: 1.5rem;
+		margin-bottom: 1rem;
 		width: 100%;
 		animation: messageSlide 0.3s ease-out;
 		position: relative;
-		z-index: 1;
+		padding: 0 0.5rem;
 	}
 
 	@keyframes messageSlide {
 		from {
-			transform: translateY(20px) rotate(-2deg);
 			opacity: 0;
+			transform: translateY(10px);
 		}
 		to {
-			transform: translateY(0) rotate(0);
 			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 
 	.user-wrapper {
 		justify-content: flex-end;
-		padding-right: 1rem;
 	}
 
 	.assistant-wrapper {
 		justify-content: flex-start;
-		padding-left: 1rem;
 	}
 
 	.message {
 		position: relative;
-		max-width: 75%;
-		transform: rotate(-1deg);
-	}
-
-	.user-message {
-		transform: rotate(1deg);
+		max-width: 70%;
 	}
 
 	.message-content {
-		padding: 1rem 1.25rem;
-		font-size: 1.0625rem;
+		padding: 0.875rem 1.125rem;
+		font-size: 1rem;
 		line-height: 1.5;
 		white-space: pre-wrap;
 		word-break: break-word;
-		border: 3px solid #000;
+		border: 2px solid #000;
 		position: relative;
 		font-weight: 500;
+		border-radius: 12px;
 	}
 
 	/* User message styling */
 	.user-message .message-content {
-		background: #FFD93D;
+		background: #FFD700;
 		color: #000;
-		box-shadow: 5px 5px 0 #000;
-		border-radius: 20% 5% 20% 5% / 5% 20% 5% 20%;
-		position: relative;
+		box-shadow: 3px 3px 0 #000;
+		border-bottom-right-radius: 4px;
 	}
 
 	.user-message .message-content::before {
-		content: 'USER';
+		content: 'You';
 		position: absolute;
-		top: -14px;
-		right: 10px;
-		background: #000;
-		color: #FFD93D;
-		padding: 2px 8px;
+		top: -20px;
+		right: 0;
 		font-size: 0.75rem;
 		font-weight: 700;
-		letter-spacing: 1px;
-		border: 2px solid #000;
-	}
-
-	.user-message .message-decoration {
-		position: absolute;
-		top: -5px;
-		right: -5px;
-		width: 30px;
-		height: 30px;
-		background: #FF69B4;
-		border: 2px solid #000;
-		border-radius: 50%;
-		z-index: -1;
-		transform: rotate(45deg);
+		color: #666;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
 	}
 
 	/* Assistant message styling */
 	.assistant-message .message-content {
-		background: #98FB98;
+		background: #F0F0F0;
 		color: #000;
-		box-shadow: -5px 5px 0 #000;
-		border-radius: 5% 20% 5% 20% / 20% 5% 20% 5%;
-		position: relative;
+		box-shadow: 3px 3px 0 #000;
+		border-bottom-left-radius: 4px;
 	}
 
 	.assistant-message .message-content::before {
 		content: 'AI';
 		position: absolute;
-		top: -14px;
-		left: 10px;
-		background: #000;
-		color: #98FB98;
-		padding: 2px 12px;
+		top: -20px;
+		left: 0;
 		font-size: 0.75rem;
 		font-weight: 700;
-		letter-spacing: 1px;
-		border: 2px solid #000;
-	}
-
-	.assistant-message .message-decoration {
-		position: absolute;
-		top: -5px;
-		left: -5px;
-		width: 40px;
-		height: 40px;
-		border: 3px dashed #000;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		z-index: -1;
-		opacity: 0.3;
-		transform: rotate(-30deg);
+		color: #666;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
 	}
 
 	/* Typing indicator */
 	.typing-indicator {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.5rem;
-		padding: 0.5rem 0;
+		gap: 0.375rem;
+		padding: 0.25rem 0;
 	}
 
 	.typing-indicator span {
-		width: 12px;
-		height: 12px;
-		background: #000;
+		width: 8px;
+		height: 8px;
+		background: #666;
+		border-radius: 50%;
 		display: inline-block;
 		animation: bounce 1.4s infinite ease-in-out both;
-		border-radius: 2px;
-		transform: rotate(45deg);
 	}
 
 	.typing-indicator span:nth-child(1) {
 		animation-delay: -0.32s;
-		background: #FFD93D;
 	}
 
 	.typing-indicator span:nth-child(2) {
 		animation-delay: -0.16s;
-		background: #FF69B4;
-	}
-
-	.typing-indicator span:nth-child(3) {
-		background: #98FB98;
 	}
 
 	@keyframes bounce {
 		0%, 80%, 100% {
-			transform: scale(0.6) rotate(45deg);
+			transform: scale(0.8);
+			opacity: 0.5;
 		}
 		40% {
-			transform: scale(1.2) rotate(45deg);
+			transform: scale(1);
+			opacity: 1;
 		}
 	}
 
@@ -199,17 +155,18 @@
 			max-width: 85%;
 		}
 
-		.user-wrapper {
-			padding-right: 0.5rem;
-		}
-
-		.assistant-wrapper {
-			padding-left: 0.5rem;
+		.message-wrapper {
+			padding: 0 0.25rem;
 		}
 
 		.message-content {
-			padding: 0.875rem 1rem;
-			font-size: 1rem;
+			padding: 0.75rem 1rem;
+			font-size: 0.9375rem;
+		}
+
+		.user-message .message-content::before,
+		.assistant-message .message-content::before {
+			font-size: 0.7rem;
 		}
 	}
 </style>

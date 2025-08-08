@@ -21,7 +21,6 @@
 
 <div class="container">
 	<nav class="main-nav">
-		<div class="nav-bg-shape"></div>
 		<ul>
 			{#each navLinks as link}
 				<li>
@@ -33,7 +32,7 @@
 								width="24"
 								height="24"
 								stroke="currentColor"
-								stroke-width="3"
+								stroke-width="2.5"
 								fill="none"
 								stroke-linecap="round"
 								stroke-linejoin="round"
@@ -47,7 +46,7 @@
 								width="24"
 								height="24"
 								stroke="currentColor"
-								stroke-width="3"
+								stroke-width="2.5"
 								fill="none"
 								stroke-linecap="round"
 								stroke-linejoin="round"
@@ -71,16 +70,16 @@
 </div>
 
 <style>
-	/* Base styles with Neo-Brutalist approach */
+	/* Base styles with refined Neo-Brutalist approach */
 	:global(body) {
 		margin: 0;
 		padding: 0;
-		font-family: 'Space Grotesk', monospace;
+		font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
 		font-size: 16px;
 		line-height: 1.5;
-		background: linear-gradient(135deg, #FFD93D 0%, #FFB6C1 25%, #98FB98 50%, #87CEEB 75%, #DDA0DD 100%);
-		background-size: 400% 400%;
-		animation: gradient-shift 15s ease infinite;
+		background: linear-gradient(135deg, #FFE5B4 0%, #E6E6FA 50%, #B4E7CE 100%);
+		background-size: 200% 200%;
+		animation: gradient-shift 20s ease infinite;
 		color: #000;
 		position: relative;
 		overflow-x: hidden;
@@ -94,8 +93,7 @@
 		right: 0;
 		bottom: 0;
 		background-image: 
-			repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0,0,0,.05) 35px, rgba(0,0,0,.05) 70px),
-			repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
+			repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0,0,0,.02) 40px, rgba(0,0,0,.02) 41px);
 		pointer-events: none;
 		z-index: 1;
 	}
@@ -121,39 +119,25 @@
 		position: relative;
 	}
 
-	/* Navigation styles - Neo-Brutalist */
+	/* Navigation styles - Refined Neo-Brutalist */
 	.main-nav {
 		margin-bottom: 2rem;
 		width: 100%;
-		position: relative;
-	}
-
-	.nav-bg-shape {
-		position: absolute;
-		top: -5px;
-		left: -10px;
-		right: -10px;
-		bottom: -5px;
-		background: #000;
-		border-radius: 20% 80% 70% 30% / 30% 30% 70% 70%;
-		transform: rotate(-1deg);
-		z-index: -1;
 	}
 
 	.main-nav ul {
 		display: flex;
 		justify-content: center;
-		gap: 1.5rem;
+		gap: 1rem;
 		padding: 0;
 		margin: 0;
 		list-style: none;
 		background: #FFF;
-		padding: 1rem;
+		padding: 0.75rem;
 		box-sizing: border-box;
-		border: 4px solid #000;
-		border-radius: 15% 85% 85% 15% / 85% 15% 85% 15%;
-		position: relative;
-		box-shadow: 8px 8px 0 #000;
+		border: 3px solid #000;
+		box-shadow: 5px 5px 0 #000;
+		border-radius: 12px;
 	}
 
 	.main-nav li {
@@ -167,30 +151,29 @@
 		align-items: center;
 		justify-content: center;
 		gap: 0.5rem;
-		padding: 0.875rem 1.5rem;
+		padding: 0.75rem 1.25rem;
 		text-decoration: none;
 		color: #000;
-		font-weight: 700;
-		font-size: 1.1rem;
-		transition: all 0.15s ease;
-		background: #FFD93D;
-		border: 3px solid #000;
-		border-radius: 50% 20% 30% 70% / 30% 70% 20% 50%;
+		font-weight: 600;
+		font-size: 1rem;
+		transition: all 0.2s ease;
+		background: #FFF;
+		border: 2px solid transparent;
+		border-radius: 8px;
 		position: relative;
 		text-transform: uppercase;
-		letter-spacing: 1px;
+		letter-spacing: 0.5px;
 	}
 
 	.main-nav a:hover {
-		transform: translate(-3px, -3px);
-		box-shadow: 6px 6px 0 #000;
-		background: #FF69B4;
+		background: #FFE5B4;
+		transform: translateY(-2px);
 	}
 
 	.main-nav a.active {
-		background: #98FB98;
-		transform: translate(-3px, -3px);
-		box-shadow: 6px 6px 0 #000;
+		background: #FFD700;
+		border-color: #000;
+		box-shadow: 3px 3px 0 #000;
 	}
 
 	.nav-icon {
@@ -198,64 +181,32 @@
 		height: 20px;
 	}
 
-	/* Shared component styling - Neo-Brutalist */
+	/* Shared component styling - Refined Neo-Brutalist */
 	:global(.card-interface) {
-		border: 4px solid #000;
+		border: 3px solid #000;
 		background: #FFF;
-		box-shadow: 10px 10px 0 #000;
+		box-shadow: 6px 6px 0 #000;
 		width: 100%;
 		position: relative;
-		border-radius: 0;
-		overflow: visible;
-		transform: rotate(-0.5deg);
-	}
-
-	:global(.card-interface)::before {
-		content: '';
-		position: absolute;
-		top: -8px;
-		left: -8px;
-		right: -8px;
-		bottom: -8px;
-		background: #FF69B4;
-		border: 3px solid #000;
-		z-index: -1;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		transform: rotate(1deg);
+		border-radius: 12px;
+		overflow: hidden;
 	}
 
 	:global(.toolbar) {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 1.25rem 1.5rem;
-		background: linear-gradient(135deg, #FFD93D 0%, #FF69B4 100%);
-		border-bottom: 4px solid #000;
-		position: relative;
-	}
-
-	:global(.toolbar)::after {
-		content: '';
-		position: absolute;
-		bottom: -8px;
-		left: 0;
-		right: 0;
-		height: 4px;
-		background: repeating-linear-gradient(
-			90deg,
-			#000,
-			#000 10px,
-			transparent 10px,
-			transparent 20px
-		);
+		padding: 1rem 1.25rem;
+		background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
+		border-bottom: 3px solid #000;
 	}
 
 	:global(.model-info) {
-		font-size: 1.1rem;
+		font-size: 0.875rem;
 		font-weight: 700;
 		color: #000;
 		text-transform: uppercase;
-		letter-spacing: 1px;
+		letter-spacing: 0.5px;
 	}
 
 	:global(.content-area) {
@@ -264,35 +215,21 @@
 		min-height: 300px;
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
-		position: relative;
-		background-image: 
-			radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
-			radial-gradient(circle at 80% 20%, rgba(152, 251, 152, 0.1) 0%, transparent 50%);
+		gap: 1rem;
 	}
 
 	:global(.input-area) {
-		padding: 1.25rem 1.5rem;
-		border-top: 4px solid #000;
-		background: linear-gradient(135deg, #98FB98 0%, #87CEEB 100%);
-		position: relative;
+		padding: 1rem 1.25rem;
+		border-top: 3px solid #000;
+		background: #F5F5F5;
 	}
 
 	:global(.disclaimer) {
-		margin-top: 0.75rem;
-		font-size: 0.875rem;
-		font-weight: 600;
-		color: #000;
+		margin-top: 0.5rem;
+		font-size: 0.8125rem;
+		font-weight: 500;
+		color: #666;
 		text-align: center;
-		background: #FFD93D;
-		padding: 0.5rem;
-		border: 2px solid #000;
-		border-radius: 50% 20% 30% 70% / 30% 70% 20% 50%;
-		display: inline-block;
-		margin-left: auto;
-		margin-right: auto;
-		width: fit-content;
-		box-shadow: 3px 3px 0 #000;
 	}
 
 	:global(.loading) {
@@ -301,52 +238,43 @@
 		align-items: center;
 		gap: 2rem;
 		margin: 2rem 0;
-		animation: wobble 2s ease-in-out infinite;
+		animation: fadeIn 0.4s ease-out;
 		width: 100%;
 	}
 
-	@keyframes wobble {
-		0%, 100% { transform: rotate(-1deg); }
-		50% { transform: rotate(1deg); }
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
 	:global(.loading-progress) {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 1.5rem;
-		padding: 2.5rem;
+		gap: 1.25rem;
+		padding: 2rem;
 		background: #FFF;
-		border: 4px solid #000;
-		box-shadow: 10px 10px 0 #000;
+		border: 3px solid #000;
+		box-shadow: 5px 5px 0 #000;
 		width: 100%;
 		text-align: center;
-		position: relative;
-		transform: rotate(-1deg);
-	}
-
-	:global(.loading-progress)::before {
-		content: '⚡';
-		position: absolute;
-		top: -20px;
-		right: 20px;
-		font-size: 2rem;
-		animation: pulse 1s ease-in-out infinite;
-	}
-
-	@keyframes pulse {
-		0%, 100% { transform: scale(1); }
-		50% { transform: scale(1.2); }
+		border-radius: 12px;
 	}
 
 	:global(.loading-progress h3) {
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: 2rem;
-		font-weight: 400;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 1.75rem;
+		font-weight: 700;
 		margin: 0;
 		color: #000;
 		text-transform: uppercase;
-		letter-spacing: 2px;
+		letter-spacing: 1px;
 	}
 
 	:global(.progress-container) {
@@ -355,157 +283,98 @@
 	}
 
 	:global(.progress-bar) {
-		height: 1.5rem;
-		background: #FFF;
-		border: 3px solid #000;
+		height: 1.25rem;
+		background: #F0F0F0;
+		border: 2px solid #000;
+		border-radius: 6px;
 		overflow: hidden;
 		width: 100%;
-		position: relative;
 	}
 
 	:global(.progress-bar-fill) {
 		height: 100%;
-		background: repeating-linear-gradient(
-			45deg,
-			#FFD93D,
-			#FFD93D 10px,
-			#FF69B4 10px,
-			#FF69B4 20px
-		);
-		border-right: 3px solid #000;
+		background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
 		position: relative;
-		animation: progress-animation 1s linear infinite;
+		transition: width 0.3s ease;
 	}
 
 	:global(.loading-message) {
-		font-size: 1rem;
-		font-weight: 600;
-		color: #000;
+		font-size: 0.9375rem;
+		font-weight: 500;
+		color: #666;
 		margin: 0;
 		max-width: 400px;
-		padding: 1rem;
-		background: #98FB98;
-		border: 3px solid #000;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		box-shadow: 5px 5px 0 #000;
 	}
 
 	:global(.error) {
 		color: #000;
-		background: #FF6B6B;
-		padding: 2rem;
-		border: 4px solid #000;
+		background: #FFB6C1;
+		padding: 1.5rem;
+		border: 3px solid #000;
 		text-align: center;
-		box-shadow: 8px 8px 0 #000;
+		box-shadow: 5px 5px 0 #000;
 		width: 100%;
 		max-width: 600px;
-		animation: shake 0.5s ease-in-out;
-		position: relative;
-		transform: rotate(-2deg);
-	}
-
-	@keyframes shake {
-		0%, 100% { transform: translateX(0) rotate(-2deg); }
-		25% { transform: translateX(-10px) rotate(-2deg); }
-		75% { transform: translateX(10px) rotate(-2deg); }
-	}
-
-	:global(.error)::before {
-		content: '⚠️';
-		position: absolute;
-		top: -25px;
-		left: 50%;
-		transform: translateX(-50%);
-		font-size: 2.5rem;
+		border-radius: 12px;
 	}
 
 	:global(.error p) {
-		font-size: 1.125rem;
-		font-weight: 600;
-		margin-bottom: 1.5rem;
+		font-size: 1rem;
+		font-weight: 500;
+		margin-bottom: 1.25rem;
 		line-height: 1.5;
 	}
 
 	:global(.error button) {
-		padding: 1rem 2rem;
-		background: #FFD93D;
-		color: #000;
-		border: 4px solid #000;
+		padding: 0.75rem 1.5rem;
+		background: #000;
+		color: #FFF;
+		border: none;
+		border-radius: 8px;
 		cursor: pointer;
-		font-size: 1.125rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		transition: all 0.15s;
-		box-shadow: 6px 6px 0 #000;
-		font-family: 'Space Grotesk', monospace;
+		font-size: 1rem;
+		font-weight: 600;
+		transition: all 0.2s;
+		font-family: 'Space Grotesk', sans-serif;
 	}
 
 	:global(.error button:hover) {
-		transform: translate(-3px, -3px);
-		box-shadow: 9px 9px 0 #000;
-		background: #98FB98;
-	}
-
-	:global(.error button:active) {
-		transform: translate(0);
-		box-shadow: 3px 3px 0 #000;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 	}
 
 	:global(.primary-button) {
-		padding: 1rem 2rem;
-		background: #FFD93D;
+		padding: 0.875rem 1.75rem;
+		background: #FFD700;
 		color: #000;
-		border: 4px solid #000;
+		border: 3px solid #000;
+		border-radius: 8px;
 		cursor: pointer;
-		font-size: 1.25rem;
+		font-size: 1rem;
 		font-weight: 700;
-		transition: all 0.15s;
-		box-shadow: 6px 6px 0 #000;
+		transition: all 0.2s;
+		box-shadow: 4px 4px 0 #000;
 		text-transform: uppercase;
-		letter-spacing: 1px;
-		font-family: 'Space Grotesk', monospace;
-		border-radius: 20% 5% 20% 5% / 5% 20% 5% 20%;
+		letter-spacing: 0.5px;
+		font-family: 'Space Grotesk', sans-serif;
 	}
 
 	:global(.primary-button:hover) {
-		transform: translate(-3px, -3px);
-		box-shadow: 9px 9px 0 #000;
-		background: #FF69B4;
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 #000;
 	}
 
 	:global(.primary-button:active) {
 		transform: translate(0);
-		box-shadow: 3px 3px 0 #000;
+		box-shadow: 2px 2px 0 #000;
 	}
 
 	:global(.primary-button:disabled) {
-		background: #CCC;
+		background: #E0E0E0;
+		color: #999;
 		cursor: not-allowed;
 		transform: none;
 		box-shadow: none;
-		opacity: 0.7;
-	}
-
-	/* Animations */
-	@keyframes -global-fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(20px) rotate(-2deg);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0) rotate(-2deg);
-		}
-	}
-
-	@keyframes -global-progress-animation {
-		0% {
-			background-position: 0 0;
-		}
-		100% {
-			background-position: 40px 0;
-		}
 	}
 
 	/* Responsive adjustments */
@@ -515,14 +384,13 @@
 		}
 
 		.main-nav ul {
-			gap: 0.75rem;
-			padding: 0.75rem;
-			flex-direction: column;
+			gap: 0.5rem;
+			padding: 0.5rem;
 		}
 
 		.main-nav a {
-			padding: 0.75rem 1rem;
-			font-size: 1rem;
+			padding: 0.625rem 0.875rem;
+			font-size: 0.875rem;
 		}
 
 		:global(.loading) {
@@ -535,16 +403,13 @@
 			max-width: none;
 		}
 
-		:global(.card-interface) {
-			box-shadow: 6px 6px 0 #000;
-		}
-
 		:global(.content-area) {
+			padding: 1rem;
 			min-height: 250px;
 		}
 
 		:global(.loading-progress) {
-			padding: 1.75rem;
+			padding: 1.5rem;
 		}
 	}
 </style>

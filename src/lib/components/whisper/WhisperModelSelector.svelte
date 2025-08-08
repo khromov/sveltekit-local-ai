@@ -41,40 +41,27 @@
 </script>
 
 <div class="model-selection">
-	<div class="selection-decoration"></div>
-	<h3>
-		<span class="title-icon">🎙️</span>
-		SELECT MODEL
-	</h3>
+	<h3>Select Model</h3>
 	<div class="model-controls">
-		<div class="select-wrapper">
-			<label class="select-label">WHISPER MODEL</label>
-			<select bind:value={selectedModel} disabled={isLoading}>
-				{#each availableModels as model (model.path)}
-					<option value={model.path}>{model.name}</option>
-				{/each}
-			</select>
-		</div>
+		<select bind:value={selectedModel} disabled={isLoading}>
+			{#each availableModels as model (model.path)}
+				<option value={model.path}>{model.name}</option>
+			{/each}
+		</select>
 
 		{#if !isReady}
 			<button onclick={onLoadModel} disabled={isLoading} class="load-model-btn primary-button">
-				{#if isLoading}
-					<span class="loading-spinner">◐</span>
-					LOADING MODEL...
-				{:else}
-					<span class="button-icon">🚀</span>
-					LOAD MODEL
-				{/if}
+				{isLoading ? 'Loading Model...' : 'Load Model'}
 			</button>
 		{:else}
 			<div class="model-controls-loaded">
 				<div class="model-ready">
-					<span class="checkmark">✅</span>
-					<span>MODEL READY</span>
+					<span class="checkmark">✓</span>
+					<span>Model Ready</span>
 				</div>
 				{#if selectedModel !== availableModels[0].path}
 					<button onclick={onChangeModel} disabled={isLoading} class="change-model-btn">
-						{isLoading ? 'CHANGING...' : 'CHANGE MODEL'}
+						{isLoading ? 'Changing...' : 'Change Model'}
 					</button>
 				{/if}
 			</div>
@@ -111,118 +98,60 @@
 <style>
 	.model-selection {
 		background: #FFF;
-		border: 4px solid #000;
-		padding: 2rem;
-		box-shadow: 8px 8px 0 #000;
+		border: 3px solid #000;
+		padding: 1.5rem;
+		box-shadow: 5px 5px 0 #000;
 		margin-bottom: 1.5rem;
-		position: relative;
-		transform: rotate(-0.5deg);
-		animation: slideIn 0.4s ease-out;
-	}
-
-	@keyframes slideIn {
-		from {
-			transform: translateX(-20px) rotate(-1deg);
-			opacity: 0;
-		}
-		to {
-			transform: translateX(0) rotate(-0.5deg);
-			opacity: 1;
-		}
-	}
-
-	.selection-decoration {
-		position: absolute;
-		top: -8px;
-		left: -8px;
-		right: -8px;
-		bottom: -8px;
-		background: linear-gradient(135deg, #98FB98 0%, #87CEEB 100%);
-		z-index: -1;
-		opacity: 0.3;
-		border-radius: 20% 5% 20% 5% / 5% 20% 5% 20%;
+		border-radius: 12px;
 	}
 
 	.model-selection h3 {
 		margin-top: 0;
-		margin-bottom: 1.5rem;
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: 2rem;
+		margin-bottom: 1rem;
+		font-size: 1.25rem;
 		color: #000;
 		text-align: center;
-		letter-spacing: 2px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.75rem;
-		background: #98FB98;
-		padding: 0.5rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(-1deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.title-icon {
-		font-size: 1.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
 	}
 
 	.model-controls {
 		display: flex;
 		flex-direction: column;
-		gap: 1.25rem;
+		gap: 1rem;
 		align-items: center;
-	}
-
-	.select-wrapper {
-		position: relative;
-		width: 100%;
-		max-width: 400px;
-	}
-
-	.select-label {
-		position: absolute;
-		top: -12px;
-		left: 15px;
-		background: #FFD93D;
-		padding: 2px 10px;
-		font-size: 0.875rem;
-		font-weight: 700;
-		letter-spacing: 1px;
-		border: 2px solid #000;
-		z-index: 1;
 	}
 
 	.model-controls select {
 		width: 100%;
-		padding: 1rem;
-		border: 3px solid #000;
-		font-size: 1rem;
-		font-weight: 600;
+		max-width: 400px;
+		padding: 0.75rem;
+		border: 2px solid #000;
+		border-radius: 6px;
+		font-size: 0.9375rem;
+		font-weight: 500;
 		background: #FFF;
 		text-align: center;
-		box-shadow: 5px 5px 0 #000;
-		font-family: 'Space Grotesk', monospace;
+		box-shadow: 3px 3px 0 #000;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
 		cursor: pointer;
-		transition: all 0.15s;
+		transition: all 0.2s;
 		appearance: none;
-		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
 		background-repeat: no-repeat;
-		background-position: right 1rem center;
-		background-size: 1.5em;
-		padding-right: 3rem;
+		background-position: right 0.75rem center;
+		background-size: 1.25em;
+		padding-right: 2.5rem;
 	}
 
 	.model-controls select:hover:not(:disabled) {
-		transform: translate(-2px, -2px);
-		box-shadow: 7px 7px 0 #000;
+		box-shadow: 4px 4px 0 #000;
 	}
 
 	.model-controls select:focus {
 		outline: none;
-		background-color: #FFFACD;
+		border-color: #FFD700;
 	}
 
 	.model-controls select:disabled {
@@ -231,55 +160,52 @@
 	}
 
 	.load-model-btn {
-		min-width: 200px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.75rem;
+		min-width: 180px;
 	}
 
 	.model-ready {
 		display: flex;
 		align-items: center;
-		gap: 0.75rem;
+		gap: 0.5rem;
 		color: #000;
-		font-weight: 700;
-		font-size: 1.125rem;
-		background: #98FB98;
-		padding: 0.75rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		transform: rotate(1deg);
+		font-weight: 600;
+		font-size: 1rem;
+		background: #B4E7CE;
+		padding: 0.5rem 1rem;
+		border: 2px solid #000;
+		border-radius: 6px;
+	}
+
+	.checkmark {
+		font-size: 1.25rem;
+		color: #000;
 	}
 
 	.model-controls-loaded {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: 0.75rem;
 		align-items: center;
 	}
 
 	.change-model-btn {
-		padding: 0.75rem 1.5rem;
-		background: #FFD93D;
+		padding: 0.5rem 1rem;
+		background: #F0F0F0;
 		color: #000;
-		border: 3px solid #000;
+		border: 2px solid #000;
+		border-radius: 6px;
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
-		transition: all 0.15s;
-		box-shadow: 4px 4px 0 #000;
+		font-size: 0.875rem;
+		font-weight: 600;
+		transition: all 0.2s;
 		text-transform: uppercase;
-		letter-spacing: 1px;
-		font-family: 'Space Grotesk', monospace;
+		letter-spacing: 0.5px;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
 	}
 
 	.change-model-btn:hover {
-		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
-		background: #FF69B4;
+		background: #E0E0E0;
+		box-shadow: 2px 2px 0 #000;
 	}
 
 	.change-model-btn:disabled {
@@ -287,55 +213,36 @@
 		cursor: not-allowed;
 	}
 
-	.checkmark {
-		font-size: 1.5rem;
-	}
-
-	.button-icon {
-		font-size: 1.5rem;
-	}
-
-	.loading-spinner {
-		font-size: 1.5rem;
-		animation: spin 1s linear infinite;
-		display: inline-block;
-	}
-
-	@keyframes spin {
-		from { transform: rotate(0deg); }
-		to { transform: rotate(360deg); }
-	}
-
 	.primary-button {
-		padding: 1rem 2rem;
-		background: #98FB98;
+		padding: 0.875rem 1.75rem;
+		background: #FFD700;
 		color: #000;
-		border: 4px solid #000;
+		border: 3px solid #000;
+		border-radius: 8px;
 		cursor: pointer;
-		font-size: 1.25rem;
+		font-size: 1rem;
 		font-weight: 700;
-		transition: all 0.15s;
-		box-shadow: 6px 6px 0 #000;
+		transition: all 0.2s;
+		box-shadow: 4px 4px 0 #000;
 		text-transform: uppercase;
-		letter-spacing: 1px;
-		font-family: 'Space Grotesk', monospace;
+		letter-spacing: 0.5px;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
 	}
 
 	.primary-button:hover:not(:disabled) {
-		transform: translate(-3px, -3px);
-		box-shadow: 9px 9px 0 #000;
-		background: #FFD93D;
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 #000;
 	}
 
 	.primary-button:active:not(:disabled) {
 		transform: translate(0);
-		box-shadow: 3px 3px 0 #000;
+		box-shadow: 2px 2px 0 #000;
 	}
 
 	.primary-button:disabled {
 		background: #E0E0E0;
+		color: #999;
 		cursor: not-allowed;
-		opacity: 0.7;
 	}
 
 	@media (max-width: 600px) {
@@ -343,7 +250,7 @@
 			align-items: stretch;
 		}
 
-		.select-wrapper {
+		.model-controls select {
 			max-width: none;
 		}
 	}

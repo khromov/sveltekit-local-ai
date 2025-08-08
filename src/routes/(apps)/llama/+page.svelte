@@ -261,10 +261,9 @@
 {:else}
 	<div class="card-interface">
 		<div class="toolbar">
-			<span class="model-info">MODEL: {selectedModel.name.toUpperCase()}</span>
+			<span class="model-info">Model: {selectedModel.name}</span>
 			<button onclick={newChat} class="new-chat-btn">
-				<span class="btn-icon">✨</span>
-				NEW CHAT
+				New Chat
 			</button>
 		</div>
 
@@ -291,52 +290,39 @@
 		align-items: center;
 		gap: 2rem;
 		margin: 2rem 0;
-		animation: fadeIn 0.5s ease-out;
+		animation: fadeIn 0.4s ease-out;
 		width: 100%;
 	}
 
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
-			transform: translateY(20px) rotate(-2deg);
+			transform: translateY(20px);
 		}
 		to {
 			opacity: 1;
-			transform: translateY(0) rotate(0);
+			transform: translateY(0);
 		}
 	}
 
 	.new-chat-btn {
-		padding: 0.75rem 1.25rem;
-		background: #FFD93D;
-		color: #000;
-		border: 3px solid #000;
+		padding: 0.5rem 1rem;
+		background: #000;
+		color: #FFF;
+		border: none;
+		border-radius: 6px;
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
-		transition: all 0.15s;
-		box-shadow: 4px 4px 0 #000;
+		font-size: 0.875rem;
+		font-weight: 600;
+		transition: all 0.2s;
 		text-transform: uppercase;
-		letter-spacing: 1px;
-		font-family: 'Space Grotesk', monospace;
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
+		letter-spacing: 0.5px;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
 	}
 
 	.new-chat-btn:hover {
-		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
-		background: #FF69B4;
-	}
-
-	.new-chat-btn:active {
-		transform: translate(0);
-		box-shadow: 2px 2px 0 #000;
-	}
-
-	.btn-icon {
-		font-size: 1.25rem;
+		transform: translateY(-1px);
+		box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 	}
 
 	/* Responsive adjustments for the main page */
@@ -346,8 +332,8 @@
 		}
 
 		.new-chat-btn {
-			padding: 0.625rem 1rem;
-			font-size: 0.875rem;
+			padding: 0.375rem 0.75rem;
+			font-size: 0.8125rem;
 		}
 	}
 </style>
