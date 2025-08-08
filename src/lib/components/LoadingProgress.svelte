@@ -39,38 +39,85 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 1.25rem;
-		padding: 2.5rem;
-		background-color: white;
-		border-radius: 20px;
-		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-		width: 100%;
+		padding: 2rem;
+		background: #fff;
+		border: 3px solid #000;
+		box-shadow: 5px 5px 0 #000;
+		width: calc(100% - 4rem);
+		max-width: 500px;
 		text-align: center;
+		border-radius: 12px;
+		margin: 0 auto;
+		box-sizing: border-box;
 	}
 
 	.loading-progress h3 {
-		font-size: 1.5rem;
-		font-weight: 600;
+		font-size: 1.75rem;
+		font-weight: 700;
 		margin: 0;
-		color: #111;
+		color: #000;
+		text-transform: uppercase;
+		letter-spacing: 1px;
 	}
 
 	.download-percentage {
-		font-size: 1.125rem;
-		font-weight: 500;
-		color: #0071e3;
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: #000;
 		margin: 0;
+		background: #ffe5b4;
+		padding: 0.375rem 1rem;
+		border: 2px solid #000;
+		border-radius: 6px;
+		text-transform: uppercase;
 	}
 
 	.loading-message {
 		font-size: 0.9375rem;
+		font-weight: 500;
 		color: #666;
 		margin: 0;
-		max-width: 320px;
+		max-width: 100%;
+		padding: 0 1rem;
+		word-wrap: break-word;
 	}
 
 	@media (max-width: 600px) {
 		.loading-progress {
-			padding: 1.75rem;
+			width: calc(100% - 2rem);
+			padding: 1.5rem 1rem;
+			max-width: none;
+			margin: 0 1rem;
+		}
+
+		.loading-progress h3 {
+			font-size: 1.5rem;
+		}
+
+		.download-percentage {
+			font-size: 1.125rem;
+			padding: 0.25rem 0.75rem;
+		}
+
+		.loading-message {
+			font-size: 0.875rem;
+			padding: 0 0.5rem;
+		}
+	}
+
+	@media (max-width: 400px) {
+		.loading-progress {
+			width: calc(100% - 1rem);
+			margin: 0 0.5rem;
+			padding: 1.25rem 0.75rem;
+		}
+
+		.loading-progress h3 {
+			font-size: 1.25rem;
+		}
+
+		.download-percentage {
+			font-size: 1rem;
 		}
 	}
 </style>

@@ -14,7 +14,7 @@
 		isGenerating = false,
 		onSend,
 		onStop,
-		placeholder = 'Message'
+		placeholder = 'Type your message...'
 	}: Props = $props();
 
 	let inputElement: HTMLTextAreaElement | undefined = $state();
@@ -46,12 +46,19 @@
 </script>
 
 <div class="input-area">
+	<div class="input-decoration"></div>
+
 	{#if isGenerating && onStop}
-		<button onclick={onStop} class="stop-btn">Stop Generation</button>
+		<button onclick={onStop} class="stop-btn">
+			<span class="stop-icon">🛑</span>
+			Stop Generation
+		</button>
 	{/if}
 
 	<div class="message-input" class:is-disabled={isGenerating}>
+		<span class="input-emoji">💭</span>
 		<textarea
+			id="chat"
 			bind:this={inputElement}
 			bind:value
 			{placeholder}
@@ -68,10 +75,10 @@
 		>
 			<svg
 				viewBox="0 0 24 24"
-				width="24"
-				height="24"
+				width="20"
+				height="20"
 				stroke="currentColor"
-				stroke-width="2"
+				stroke-width="2.5"
 				fill="none"
 				stroke-linecap="round"
 				stroke-linejoin="round"
@@ -83,110 +90,236 @@
 	</div>
 
 	<div class="disclaimer">
-		Wllama is running locally in your browser. Model responses may not always be accurate.
+		<span class="disclaimer-icon">💡</span>
+		Model responses may not always be accurate.
 	</div>
 </div>
 
 <style>
 	.input-area {
-		padding: 1rem 1.25rem;
-		border-top: 1px solid #e5e5e5;
-		background-color: white;
+		padding: 1.25rem;
+		background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+		border-top: 3px solid #000;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.input-decoration {
+		position: absolute;
+		top: -2px;
+		left: 0;
+		right: 0;
+		height: 3px;
+		background: repeating-linear-gradient(90deg, #98fb98, #98fb98 8px, #ffd93d 8px, #ffd93d 16px);
+		animation: slide 2s linear infinite;
+	}
+
+	@keyframes slide {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(16px);
+		}
 	}
 
 	.message-input {
 		display: flex;
 		align-items: flex-end;
-		background-color: #f0f0f0;
-		border-radius: 18px;
-		padding: 0.625rem 1.125rem 0.625rem 0.875rem;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+		background: #fff;
+		border: 3px solid #000;
+		padding: 0;
+		box-shadow: 5px 5px 0 #000;
+		border-radius: 12px;
+		overflow: hidden;
+		transition: all 0.2s;
+		margin-bottom: 0.75rem;
+		transform: rotate(-0.5deg);
 		position: relative;
-		transition: background-color 0.2s;
-		margin-bottom: 0.5rem;
+	}
+
+	.input-emoji {
+		position: absolute;
+		top: -15px;
+		left: 10px;
+		font-size: 1.5rem;
+		z-index: 1;
+		background: #98fb98;
+		padding: 0 8px;
+		border: 2px solid #000;
+		border-radius: 4px;
+		animation: bounce-emoji 3s ease-in-out infinite;
+	}
+
+	@keyframes bounce-emoji {
+		0%,
+		100% {
+			transform: translateY(0) rotate(-5deg);
+		}
+		50% {
+			transform: translateY(-3px) rotate(5deg);
+		}
+	}
+
+	.message-input:hover:not(.is-disabled) {
+		transform: translate(-2px, -2px) rotate(0deg);
+		box-shadow: 7px 7px 0 #000;
 	}
 
 	.message-input.is-disabled {
-		background-color: #dfdfdf;
-	}
-
-	.message-input.is-disabled textarea {
-		color: #777;
-		cursor: not-allowed;
+		background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+		opacity: 0.7;
 	}
 
 	textarea {
 		flex-grow: 1;
-		padding: 0.625rem;
+		padding: 0.875rem 1rem;
+		padding-top: 1.25rem;
 		border: none;
-		border-radius: 12px;
 		resize: none;
-		font-family: inherit;
-		font-size: 1.0625rem;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-size: 1rem;
+		font-weight: 500;
 		line-height: 1.4;
-		background-color: transparent;
-		min-height: 20px;
+		background: transparent;
+		min-height: 22px;
 		max-height: 120px;
 		outline: none;
-		width: calc(100% - 50px);
-		transition: color 0.2s;
-		overflow: hidden;
+		color: #000;
+	}
+
+	textarea::placeholder {
+		color: #999;
+		font-weight: 400;
 	}
 
 	.send-btn {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 36px;
-		height: 36px;
-		background-color: #0071e3;
-		color: white;
-		border: none;
-		border-radius: 50%;
+		width: 44px;
+		height: 44px;
+		margin: 8px;
+		align-self: center;
+		background: linear-gradient(135deg, #ffd93d 0%, #ffa500 100%);
+		color: #000;
+		border: 2px solid #000;
+		border-radius: 8px;
 		cursor: pointer;
-		transition: background-color 0.2s;
-		padding: 0;
-		position: absolute;
-		right: 8px;
-		bottom: 8px;
+		transition: all 0.2s;
+		box-shadow: 2px 2px 0 #000;
+		transform: rotate(5deg);
 	}
 
-	.send-btn:hover {
-		background-color: #0062cc;
+	.send-btn:hover:not(:disabled) {
+		background: linear-gradient(135deg, #98fb98 0%, #90ee90 100%);
+		transform: scale(1.1) rotate(0deg);
+		box-shadow: 3px 3px 0 #000;
 	}
 
-	.send-btn svg {
-		width: 18px;
-		height: 18px;
+	.send-btn:active:not(:disabled) {
+		transform: scale(0.95);
+		box-shadow: 1px 1px 0 #000;
 	}
 
 	.send-btn:disabled {
-		background-color: #b0b0b0;
+		background: #e0e0e0;
 		cursor: not-allowed;
+		opacity: 0.5;
+		transform: rotate(0deg);
 	}
 
 	.stop-btn {
-		padding: 0.625rem 1rem;
-		background-color: #ff3b30;
-		color: white;
-		border: none;
-		border-radius: 12px;
+		padding: 0.75rem 1.25rem;
+		background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+		color: #000;
+		border: 3px solid #000;
+		border-radius: 8px;
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 500;
-		display: block;
-		margin: 0 auto 0.75rem;
-		transition: background-color 0.2s;
+		font-size: 0.9375rem;
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		margin: 0 auto 1rem;
+		transition: all 0.2s;
+		box-shadow: 5px 5px 0 #000;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		transform: rotate(-1deg);
+		animation: shake 0.5s ease-in-out infinite;
+	}
+
+	@keyframes shake {
+		0%,
+		100% {
+			transform: translateX(0) rotate(-1deg);
+		}
+		25% {
+			transform: translateX(-2px) rotate(-1deg);
+		}
+		75% {
+			transform: translateX(2px) rotate(-1deg);
+		}
 	}
 
 	.stop-btn:hover {
-		background-color: #e0352b;
+		transform: translate(-2px, -2px) rotate(0deg);
+		box-shadow: 7px 7px 0 #000;
+		animation: none;
+	}
+
+	.stop-icon {
+		font-size: 1.125rem;
 	}
 
 	.disclaimer {
-		margin-top: 0.375rem;
-		font-size: 0.8125rem;
-		color: #8e8e93;
+		font-size: 0.75rem;
+		font-weight: 400;
+		color: #666;
 		text-align: center;
+		background: #f8f8f8;
+		padding: 0.5rem 0.75rem;
+		border: 1px solid #e0e0e0;
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.25rem;
+		margin: 0 auto;
+		width: fit-content;
+		max-width: 300px;
+	}
+
+	.disclaimer-icon {
+		font-size: 0.875rem;
+	}
+
+	@media (max-width: 600px) {
+		.input-area {
+			padding: 1rem;
+		}
+
+		textarea {
+			font-size: 0.9375rem;
+			padding: 0.75rem;
+			padding-top: 1.125rem;
+		}
+
+		.send-btn {
+			width: 40px;
+			height: 40px;
+		}
+
+		.disclaimer {
+			font-size: 0.75rem;
+			width: 100%;
+		}
+
+		.input-emoji {
+			font-size: 1.25rem;
+		}
 	}
 </style>

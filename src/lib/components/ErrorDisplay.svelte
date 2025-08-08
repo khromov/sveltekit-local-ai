@@ -10,9 +10,10 @@
 </script>
 
 <div class="error">
+	<h3>Error</h3>
 	<p>{message}</p>
 	{#if onRetry}
-		<button onclick={onRetry} disabled={isRetrying}>
+		<button onclick={onRetry} disabled={isRetrying} class="retry-button">
 			{isRetrying ? 'Retrying...' : buttonText}
 		</button>
 	{/if}
@@ -20,66 +21,85 @@
 
 <style>
 	.error {
-		color: #ff3b30;
-		background-color: #feeced;
+		color: #000;
+		background: #ffb6c1;
 		padding: 1.5rem;
-		border-radius: 16px;
+		border: 3px solid #000;
 		text-align: center;
-		box-shadow: 0 2px 12px rgba(255, 59, 48, 0.15);
-		width: 100%;
+		box-shadow: 5px 5px 0 #000;
+		width: calc(100% - 4rem);
 		max-width: 500px;
-		animation: errorPulse 2s infinite alternate;
+		border-radius: 12px;
+		margin: 0 auto;
+		box-sizing: border-box;
+	}
+
+	.error h3 {
+		font-size: 1.5rem;
+		margin: 0 0 0.75rem 0;
+		color: #000;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1px;
 	}
 
 	.error p {
-		font-size: 1.0625rem;
+		font-size: 1rem;
+		font-weight: 500;
 		margin-bottom: 1.25rem;
 		line-height: 1.5;
+		color: #000;
+		word-wrap: break-word;
 	}
 
-	.error button {
-		padding: 0.875rem 1.5rem;
-		background-color: #ff3b30;
-		color: white;
+	.retry-button {
+		padding: 0.75rem 1.5rem;
+		background: #000;
+		color: #fff;
 		border: none;
-		border-radius: 12px;
+		border-radius: 8px;
 		cursor: pointer;
-		font-size: 1.0625rem;
-		font-weight: 500;
+		font-size: 1rem;
+		font-weight: 600;
 		transition: all 0.2s;
-		box-shadow: 0 2px 8px rgba(255, 59, 48, 0.3);
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
 	}
 
-	.error button:hover {
-		background-color: #e0352b;
-		transform: translateY(-1px);
-		box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4);
+	.retry-button:hover:not(:disabled) {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	}
 
-	.error button:active {
-		transform: translateY(0);
-		box-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
-	}
-
-	.error button:disabled {
-		background-color: #b0b0b0;
+	.retry-button:disabled {
+		background: #666;
 		cursor: not-allowed;
-		transform: none;
-		box-shadow: none;
-	}
-
-	@keyframes errorPulse {
-		0% {
-			box-shadow: 0 2px 12px rgba(255, 59, 48, 0.15);
-		}
-		100% {
-			box-shadow: 0 2px 16px rgba(255, 59, 48, 0.3);
-		}
+		opacity: 0.7;
 	}
 
 	@media (max-width: 600px) {
 		.error {
+			width: calc(100% - 2rem);
 			max-width: none;
+			padding: 1.25rem 1rem;
+			margin: 0 1rem;
+		}
+
+		.error h3 {
+			font-size: 1.25rem;
+		}
+
+		.error p {
+			font-size: 0.9375rem;
+		}
+	}
+
+	@media (max-width: 400px) {
+		.error {
+			width: calc(100% - 1rem);
+			margin: 0 0.5rem;
+			padding: 1rem 0.75rem;
 		}
 	}
 </style>

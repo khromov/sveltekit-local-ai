@@ -3,7 +3,15 @@
 
 	interface Props {
 		text: string;
-		transcriptionData?: any;
+		transcriptionData?: {
+			transcription: Array<{
+				text: string;
+				timestamps: {
+					from: string;
+					to: string;
+				};
+			}>;
+		};
 	}
 
 	let { text, transcriptionData }: Props = $props();
@@ -16,14 +24,18 @@
 		if (!transcriptionData?.transcription?.length) return '';
 
 		// Transform transcription data to subsrt format
-		const captions = transcriptionData.transcription.map((segment: any) => {
+		const captions = transcriptionData.transcription.map((segment, index) => {
 			// Convert timestamp format from "hh:mm:ss,mmm" to milliseconds
 			const startMs = timestampToMs(segment.timestamps.from);
 			const endMs = timestampToMs(segment.timestamps.to);
 
 			return {
+				type: 'caption' as const,
+				index: index + 1,
 				start: startMs,
 				end: endMs,
+				duration: endMs - startMs,
+				content: segment.text.trim(),
 				text: segment.text.trim()
 			};
 		});
@@ -57,9 +69,13 @@
 
 <div class="result-wrapper">
 	<div class="result">
+		<div class="result-decoration"></div>
 		<div class="result-content">
 			<div class="result-header">
-				<h3>Transcription Result:</h3>
+				<h3>
+					<span class="header-icon">📝</span>
+					Transcription Result
+				</h3>
 				<div class="result-actions">
 					{#if transcriptionData?.transcription?.length}
 						<div class="tab-selectors">
@@ -74,42 +90,23 @@
 
 					<button class="copy-btn" onclick={copyToClipboard} class:copied={hasCopied}>
 						{#if hasCopied}
-							<svg
-								class="copy-icon"
-								viewBox="0 0 24 24"
-								width="16"
-								height="16"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-							>
-								<polyline points="20,6 9,17 4,12"></polyline>
-							</svg>
+							<span class="copy-icon">✅</span>
 							Copied!
 						{:else}
-							<svg
-								class="copy-icon"
-								viewBox="0 0 24 24"
-								width="16"
-								height="16"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-							>
-								<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-								<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-							</svg>
+							<span class="copy-icon">📋</span>
 							Copy
 						{/if}
 					</button>
 				</div>
 			</div>
 
-			{#if !transcriptionData?.transcription?.length || activeTab === 'text'}
-				<p>{text}</p>
-			{:else if activeTab === 'srt' && transcriptionData?.transcription?.length}
-				<pre class="srt-preview">{convertToSRT()}</pre>
-			{/if}
+			<div class="result-text-container">
+				{#if !transcriptionData?.transcription?.length || activeTab === 'text'}
+					<p class="result-text">{text}</p>
+				{:else if activeTab === 'srt' && transcriptionData?.transcription?.length}
+					<pre class="srt-preview">{convertToSRT()}</pre>
+				{/if}
+			</div>
 		</div>
 	</div>
 </div>
@@ -117,156 +114,245 @@
 <style>
 	.result-wrapper {
 		display: flex;
-		margin: 1rem 0;
+		margin: 1.5rem 0;
 		width: 100%;
-		animation: fadeIn 0.3s ease-in-out;
+		animation: resultSlide 0.5s ease-out;
+	}
+
+	@keyframes resultSlide {
+		from {
+			transform: translateY(20px) rotate(-1deg);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0) rotate(0.5deg);
+			opacity: 1;
+		}
 	}
 
 	.result {
 		position: relative;
 		width: 100%;
 		max-width: 100%;
+		transform: rotate(0.5deg);
+	}
+
+	.result-decoration {
+		position: absolute;
+		top: -10px;
+		left: -10px;
+		right: -10px;
+		bottom: -10px;
+		background: linear-gradient(135deg, #98fb98 0%, #87ceeb 100%);
+		z-index: -1;
+		opacity: 0.3;
+		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
+		transform: rotate(-1deg);
 	}
 
 	.result-content {
-		padding: 1.25rem;
-		border-radius: 16px;
-		font-size: 1.0625rem;
-		line-height: 1.5;
-		white-space: pre-wrap;
-		word-break: break-word;
-		background-color: #e5e5ea;
-		color: #000;
-		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+		padding: 2rem;
+		background: #fff;
+		border: 4px solid #000;
+		box-shadow: 8px 8px 0 #000;
+		position: relative;
 	}
 
 	.result-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-bottom: 0.75rem;
+		margin-bottom: 1.5rem;
 		flex-wrap: wrap;
-		gap: 0.75rem;
+		gap: 1rem;
+		padding-bottom: 1rem;
+		border-bottom: 3px solid #000;
 	}
 
 	.result-content h3 {
 		margin: 0;
-		font-size: 1.125rem;
-		font-weight: 600;
-		color: #333;
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.75rem;
+		color: #000;
+		letter-spacing: 2px;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		background: #98fb98;
+		padding: 0.5rem 1rem;
+		border: 3px solid #000;
+		box-shadow: 4px 4px 0 #000;
+		transform: rotate(-1deg);
+		text-transform: uppercase;
 	}
 
-	.result-content p {
-		margin: 0;
+	.header-icon {
+		font-size: 1.5rem;
 	}
 
 	.result-actions {
 		display: flex;
 		align-items: center;
-		gap: 0.75rem;
+		gap: 1rem;
 	}
 
 	/* Tab selectors */
 	.tab-selectors {
 		display: flex;
-		border-radius: 8px;
-		overflow: hidden;
-		border: 1px solid #e1e1e1;
+		border: 3px solid #000;
+		background: #fff;
+		box-shadow: 4px 4px 0 #000;
 	}
 
 	.tab-selectors button {
-		padding: 0.5rem 0.75rem;
-		background-color: #f8f8f8;
+		padding: 0.625rem 1rem;
+		background: #fff;
 		border: none;
 		cursor: pointer;
-		font-size: 0.875rem;
-		font-weight: 500;
-		color: #666;
-		transition: all 0.2s ease;
+		font-size: 1rem;
+		font-weight: 700;
+		color: #000;
+		transition: all 0.15s ease;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-family: 'Space Grotesk', monospace;
 	}
 
 	.tab-selectors button:not(:last-child) {
-		border-right: 1px solid #e1e1e1;
+		border-right: 3px solid #000;
 	}
 
 	.tab-selectors button:hover:not(.active) {
-		background-color: #f0f0f0;
+		background: #fffacd;
 	}
 
 	.tab-selectors button.active {
-		background-color: #0071e3;
-		color: white;
+		background: #ffd93d;
+	}
+
+	/* Result text container */
+	.result-text-container {
+		background: linear-gradient(
+			135deg,
+			rgba(255, 217, 61, 0.05) 0%,
+			rgba(152, 251, 152, 0.05) 100%
+		);
+		border: 3px solid #000;
+		padding: 1.5rem;
+		box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.1);
+		min-height: 100px;
+		max-height: 400px;
+		overflow-y: auto;
+	}
+
+	.result-text {
+		margin: 0;
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: #000;
+		font-weight: 500;
+		white-space: pre-wrap;
+		word-break: break-word;
 	}
 
 	/* SRT Preview */
 	.srt-preview {
 		font-family: monospace;
-		font-size: 0.9rem;
+		font-size: 0.9375rem;
 		line-height: 1.5;
 		white-space: pre-wrap;
-		background-color: #f8f8f8;
+		background: #fff;
 		padding: 1rem;
-		border-radius: 8px;
-		border: 1px solid #e1e1e1;
+		border: 2px dashed #000;
 		overflow-x: auto;
 		margin: 0;
+		color: #000;
+		font-weight: 600;
 	}
 
 	.copy-btn {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 0.5rem 0.75rem;
-		background-color: #0071e3;
-		color: white;
-		border: none;
-		border-radius: 8px;
+		padding: 0.625rem 1.25rem;
+		background: #ff69b4;
+		color: #000;
+		border: 3px solid #000;
 		cursor: pointer;
-		font-size: 0.875rem;
-		font-weight: 500;
-		transition: all 0.2s ease;
+		font-size: 1rem;
+		font-weight: 700;
+		transition: all 0.15s ease;
+		box-shadow: 4px 4px 0 #000;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-family: 'Space Grotesk', monospace;
 	}
 
 	.copy-btn:hover {
-		background-color: #0062cc;
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 #000;
+		background: #ffd93d;
 	}
 
 	.copy-btn.copied {
-		background-color: #28a745;
+		background: #98fb98;
+		animation: copySuccess 0.3s ease-out;
+	}
+
+	@keyframes copySuccess {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.1);
+		}
+		100% {
+			transform: scale(1);
+		}
 	}
 
 	.copy-icon {
-		width: 16px;
-		height: 16px;
+		font-size: 1.25rem;
 	}
 
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
+	/* Custom scrollbar */
+	.result-text-container::-webkit-scrollbar {
+		width: 12px;
+	}
+
+	.result-text-container::-webkit-scrollbar-track {
+		background: #fff;
+		border-left: 3px solid #000;
+	}
+
+	.result-text-container::-webkit-scrollbar-thumb {
+		background: #ffd93d;
+		border: 2px solid #000;
+	}
+
+	.result-text-container::-webkit-scrollbar-thumb:hover {
+		background: #ff69b4;
 	}
 
 	@media (max-width: 600px) {
 		.result-content {
-			font-size: 1rem;
-			padding: 1rem;
+			padding: 1.25rem;
 		}
 
 		.result-header {
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 0.75rem;
+			gap: 1rem;
+		}
+
+		.result-content h3 {
+			font-size: 1.5rem;
 		}
 
 		.result-actions {
 			width: 100%;
 			flex-direction: column;
-			align-items: flex-start;
+			align-items: stretch;
 			gap: 0.75rem;
 		}
 
@@ -281,6 +367,10 @@
 		.copy-btn {
 			width: 100%;
 			justify-content: center;
+		}
+
+		.result-text-container {
+			padding: 1rem;
 		}
 	}
 </style>

@@ -31,8 +31,6 @@
 		console.log(`\n--- STEP ${stepCount} ---`);
 
 		try {
-			// Save previous text length to track new content
-			const prevLength = fullText.length;
 			console.log('generating starting from ', fullText);
 
 			let newText = '';
@@ -48,7 +46,7 @@
 			// Append the new text to the full text
 			fullText = fullText + newText;
 		} catch (err) {
-			log('Error: ' + err);
+			console.log('Error: ' + err);
 		} finally {
 			isGenerating = false;
 		}

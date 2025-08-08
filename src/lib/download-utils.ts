@@ -1,5 +1,15 @@
 import { PUBLIC_DISABLE_OPFS } from '$env/static/public';
 
+// Extend FileSystem interfaces to include missing methods
+declare global {
+	interface FileSystemDirectoryHandle {
+		entries(): AsyncIterableIterator<[string, FileSystemHandle]>;
+	}
+	interface FileSystemFileHandle {
+		getFile(): Promise<File>;
+	}
+}
+
 /**
  * Gets the model file name from URL
  */
@@ -34,7 +44,7 @@ async function getCachedModel(fileName: string): Promise<File | null> {
 		const file = await fileHandle.getFile();
 		console.log(`Found cached model: ${fileName}`);
 		return file;
-	} catch (error) {
+	} catch {
 		// File doesn't exist in cache
 		console.log(`Model not cached: ${fileName}`);
 		return null;
@@ -53,7 +63,7 @@ async function cacheModel(fileName: string, data: Uint8Array): Promise<void> {
 		const opfsRoot = await navigator.storage.getDirectory();
 		const fileHandle = await opfsRoot.getFileHandle(fileName, { create: true });
 		const writable = await fileHandle.createWritable();
-		await writable.write(data);
+		await writable.write(new Uint8Array(data));
 		await writable.close();
 		console.log(`Cached model: ${fileName}`);
 	} catch (error) {
@@ -178,7 +188,7 @@ export async function clearModelCache(): Promise<void> {
 		const opfsRoot = await navigator.storage.getDirectory();
 
 		// List all files and remove model files
-		for await (const [name, handle] of (opfsRoot as any).entries()) {
+		for await (const [name, handle] of opfsRoot.entries()) {
 			if (handle.kind === 'file' && name.endsWith('.bin')) {
 				await opfsRoot.removeEntry(name);
 				console.log(`Removed cached model: ${name}`);
@@ -213,9 +223,9 @@ export async function getCacheInfo(): Promise<{ fileName: string; size: number }
 	try {
 		const opfsRoot = await navigator.storage.getDirectory();
 
-		for await (const [name, handle] of (opfsRoot as any).entries()) {
+		for await (const [name, handle] of opfsRoot.entries()) {
 			if (handle.kind === 'file' && name.endsWith('.bin')) {
-				const file = await handle.getFile();
+				const file = await (handle as FileSystemFileHandle).getFile();
 				cacheInfo.push({
 					fileName: name,
 					size: file.size

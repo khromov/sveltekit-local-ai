@@ -14,7 +14,7 @@
 			class="progress-bar-fill"
 			class:animated
 			style="width: {progress}%; transition: width {animated && progress > previousProgress
-				? '0.5s'
+				? '0.3s'
 				: '0s'} ease"
 		></div>
 	</div>
@@ -27,41 +27,44 @@
 	}
 
 	.progress-bar {
-		height: 0.6rem;
-		background-color: #e1e1e1;
-		border-radius: 8px;
+		height: 1.25rem;
+		background: #f0f0f0;
+		border: 2px solid #000;
+		border-radius: 6px;
 		overflow: hidden;
 		width: 100%;
-		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+		position: relative;
 	}
 
 	.progress-bar-fill {
 		height: 100%;
-		background-color: #0071e3;
-		border-radius: 8px;
+		background: linear-gradient(90deg, #ffd700 0%, #ffa500 100%);
+		position: relative;
+		transition: width 0.3s ease;
 	}
 
-	.progress-bar-fill.animated {
-		background-image: linear-gradient(
-			45deg,
-			rgba(255, 255, 255, 0.15) 25%,
-			transparent 25%,
-			transparent 50%,
-			rgba(255, 255, 255, 0.15) 50%,
-			rgba(255, 255, 255, 0.15) 75%,
-			transparent 75%,
-			transparent
+	.progress-bar-fill.animated::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(
+			90deg,
+			transparent 0%,
+			rgba(255, 255, 255, 0.3) 50%,
+			transparent 100%
 		);
-		background-size: 1rem 1rem;
-		animation: progress-animation 1s linear infinite;
+		animation: shimmer 1.5s infinite;
 	}
 
-	@keyframes progress-animation {
+	@keyframes shimmer {
 		0% {
-			background-position: 0 0;
+			transform: translateX(-100%);
 		}
 		100% {
-			background-position: 1rem 0;
+			transform: translateX(100%);
 		}
 	}
 </style>

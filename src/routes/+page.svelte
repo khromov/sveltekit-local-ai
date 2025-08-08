@@ -1,20 +1,22 @@
 <script lang="ts">
-	interface Props {
-		children?: import('svelte').Snippet;
-	}
-
-	let { children }: Props = $props();
+	// No props needed for this component
 </script>
 
 <div class="main-menu">
 	<div class="menu-container">
 		<header class="menu-header">
-			<h1>Local AI Chat</h1>
-			<p class="subtitle">Private AI tools that run entirely in your browser</p>
+			<h1 class="main-title">
+				<span class="title-line">Local AI Playground</span>
+			</h1>
+			<p class="subtitle">
+				On this page you'll find free, private AI tools that run entirely in your browser - and even
+				offline!
+			</p>
 		</header>
 
 		<div class="feature-grid">
-			<a href="/llama" class="feature-card chat-card">
+			<a href="/chat" class="feature-card chat-card">
+				<div class="card-number">Tool #01</div>
 				<div class="card-content">
 					<div class="icon-container">
 						<svg
@@ -23,7 +25,7 @@
 							width="48"
 							height="48"
 							stroke="currentColor"
-							stroke-width="2"
+							stroke-width="2.5"
 							fill="none"
 							stroke-linecap="round"
 							stroke-linejoin="round"
@@ -31,20 +33,20 @@
 							<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
 						</svg>
 					</div>
-					<h2>Chat with AI</h2>
+					<h2>Chat</h2>
 					<p class="feature-description">
-						Have conversations with AI models that run completely offline. Your data never leaves
-						your device.
+						Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp
 					</p>
 					<div class="feature-highlights">
-						<span class="highlight">• Private & Secure</span>
-						<span class="highlight">• Works Offline</span>
-						<span class="highlight">• No Data Sharing</span>
+						<span class="highlight">Private & Secure</span>
+						<span class="highlight">Works Offline</span>
+						<span class="highlight">No Data Sharing</span>
 					</div>
 				</div>
 			</a>
 
-			<a href="/whisper" class="feature-card transcribe-card">
+			<a href="/transcribe" class="feature-card transcribe-card">
+				<div class="card-number">Tool #02</div>
 				<div class="card-content">
 					<div class="icon-container">
 						<svg
@@ -53,7 +55,7 @@
 							width="48"
 							height="48"
 							stroke="currentColor"
-							stroke-width="2"
+							stroke-width="2.5"
 							fill="none"
 							stroke-linecap="round"
 							stroke-linejoin="round"
@@ -66,13 +68,13 @@
 					</div>
 					<h2>Transcribe Audio</h2>
 					<p class="feature-description">
-						Convert speech to text using Whisper AI. Upload audio files or use the demo to see it in
-						action.
+						Convert speech to text using Whisper AI. Upload any existing audio file and export as
+						text or a subtitle file.
 					</p>
 					<div class="feature-highlights">
-						<span class="highlight">• High Accuracy</span>
-						<span class="highlight">• Multiple Formats</span>
-						<span class="highlight">• Local Processing</span>
+						<span class="highlight">High Accuracy</span>
+						<span class="highlight">Multiple Formats</span>
+						<span class="highlight">Local Processing</span>
 					</div>
 				</div>
 			</a>
@@ -91,171 +93,226 @@
 		margin: 0;
 		padding: 0;
 		font-family:
-			-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-			'Helvetica Neue', sans-serif;
+			'Space Grotesk',
+			system-ui,
+			-apple-system,
+			sans-serif;
 		font-size: 16px;
 		line-height: 1.5;
-		background-color: #f5f5f7;
-		color: #333;
+		background: linear-gradient(135deg, #ffe5b4 0%, #e6e6fa 50%, #b4e7ce 100%);
+		background-size: 200% 200%;
+		animation: gradient-shift 20s ease infinite;
+		color: #000;
+		overflow-x: hidden;
+	}
+
+	@keyframes gradient-shift {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
 	}
 
 	.main-menu {
 		min-height: 100vh;
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: center;
-		padding: 2rem 1rem;
+		padding: 1rem 1rem 2rem;
 		box-sizing: border-box;
+		position: relative;
+		z-index: 2;
 	}
 
 	.menu-container {
 		width: 100%;
-		max-width: 900px;
+		max-width: 1000px;
 		margin: 0 auto;
 	}
 
 	.menu-header {
 		text-align: center;
-		margin-bottom: 3rem;
-		animation: fadeInUp 0.6s ease-out;
+		margin-bottom: 2rem;
+		animation: fadeIn 0.6s ease-out;
 	}
 
-	.menu-header h1 {
-		font-size: 3rem;
-		font-weight: 700;
-		margin: 0 0 1rem 0;
-		color: #1a1a1a;
-		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.main-title {
+		font-size: 3.5rem;
+		line-height: 1.1;
+		margin: 0 0 1.5rem 0;
+		font-weight: 800;
+	}
+
+	.title-line {
+		background: #000;
+		color: #ffd700;
+		padding: 0.5rem 2rem;
+		display: inline-block;
+		border: 3px solid #000;
+		box-shadow: 5px 5px 0 #000;
+		letter-spacing: 2px;
+		text-transform: uppercase;
 	}
 
 	.subtitle {
 		font-size: 1.25rem;
-		color: #666;
+		color: #000;
 		margin: 0;
-		font-weight: 400;
+		font-weight: 500;
+		background: #fff;
+		display: inline-block;
+		padding: 0.5rem 1.5rem;
+		border: 2px solid #000;
+		box-shadow: 3px 3px 0 #000;
 	}
 
 	.feature-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 		gap: 2rem;
 		margin-bottom: 3rem;
+		padding: 0 1rem;
 	}
 
 	.feature-card {
 		display: block;
 		text-decoration: none;
-		color: inherit;
-		background-color: white;
-		border-radius: 20px;
-		padding: 2rem;
-		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-		transition: all 0.3s ease;
-		border: 2px solid transparent;
-		animation: fadeInUp 0.6s ease-out;
-		animation-delay: 0.2s;
+		color: #000;
+		background: #fff;
+		border: 3px solid #000;
+		padding: 0;
+		box-shadow: 5px 5px 0 #000;
+		transition: all 0.2s ease;
+		position: relative;
+		overflow: hidden;
+		border-radius: 12px;
+		animation: cardFade 0.6s ease-out;
 		animation-fill-mode: both;
 	}
 
+	.feature-card:nth-child(1) {
+		animation-delay: 0.2s;
+	}
+
+	.feature-card:nth-child(2) {
+		animation-delay: 0.3s;
+	}
+
+	@keyframes cardFade {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.card-number {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		background: #000;
+		color: #ffd700;
+		padding: 0.25rem 0.75rem;
+		font-weight: 700;
+		font-size: 0.875rem;
+		letter-spacing: 1px;
+		border-radius: 4px;
+		text-transform: uppercase;
+	}
+
 	.feature-card:hover {
-		transform: translateY(-8px);
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-		border-color: #e5e5ea;
-	}
-
-	.chat-card:hover {
-		border-color: #0071e3;
-		box-shadow: 0 8px 32px rgba(0, 113, 227, 0.15);
-	}
-
-	.transcribe-card:hover {
-		border-color: #28a745;
-		box-shadow: 0 8px 32px rgba(40, 167, 69, 0.15);
+		transform: translate(-3px, -3px);
+		box-shadow: 8px 8px 0 #000;
 	}
 
 	.card-content {
-		text-align: center;
+		padding: 2rem;
 	}
 
 	.icon-container {
 		margin-bottom: 1.5rem;
+		width: fit-content;
+		padding: 0.75rem;
+		background: #ffe5b4;
+		border: 2px solid #000;
+		border-radius: 8px;
 	}
 
 	.feature-icon {
-		color: #0071e3;
-		margin: 0 auto;
+		color: #000;
 		display: block;
-	}
-
-	.transcribe-card .feature-icon {
-		color: #28a745;
 	}
 
 	.feature-card h2 {
 		font-size: 1.75rem;
-		font-weight: 600;
+		font-weight: 700;
 		margin: 0 0 1rem 0;
-		color: #1a1a1a;
+		color: #000;
 	}
 
 	.feature-description {
-		font-size: 1.125rem;
-		color: #555;
+		font-size: 1rem;
+		color: #333;
 		line-height: 1.6;
 		margin: 0 0 1.5rem 0;
 	}
 
 	.feature-highlights {
 		display: flex;
-		flex-direction: column;
+		flex-wrap: wrap;
 		gap: 0.5rem;
-		margin-top: 1.5rem;
 	}
 
 	.highlight {
-		font-size: 0.9375rem;
-		color: #666;
-		padding: 0.5rem 1rem;
-		background-color: #f8f9fa;
-		border-radius: 12px;
-		border: 1px solid #e9ecef;
+		font-size: 0.875rem;
+		color: #000;
+		padding: 0.375rem 0.75rem;
+		background: #f0f0f0;
+		border: 2px solid #000;
+		font-weight: 600;
+		border-radius: 4px;
+		transition: all 0.2s ease;
 	}
 
 	.chat-card:hover .highlight {
-		background-color: #f0f4ff;
-		border-color: #d4e5ff;
-		color: #0056b3;
+		background: #ffe5b4;
 	}
 
 	.transcribe-card:hover .highlight {
-		background-color: #f0fff4;
-		border-color: #c3e6cb;
-		color: #155724;
+		background: #b4e7ce;
 	}
 
 	.menu-footer {
 		text-align: center;
-		color: #8e8e93;
+		color: #666;
 		font-size: 0.9375rem;
-		animation: fadeInUp 0.6s ease-out;
-		animation-delay: 0.4s;
+		margin-top: 3rem;
+		animation: fadeIn 0.6s ease-out;
+		animation-delay: 0.5s;
 		animation-fill-mode: both;
 	}
 
 	.menu-footer p {
 		margin: 0.5rem 0;
-	}
-
-	/* Animations */
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
 	}
 
 	/* Responsive adjustments */
@@ -264,44 +321,38 @@
 			padding: 1.5rem 1rem;
 		}
 
-		.menu-header h1 {
-			font-size: 2.25rem;
+		.main-title {
+			font-size: 2.5rem;
+		}
+
+		.title-line {
+			padding: 0.375rem 1.25rem;
+			font-size: 2rem;
 		}
 
 		.subtitle {
 			font-size: 1.125rem;
+			padding: 0.375rem 1rem;
 		}
 
 		.feature-grid {
 			grid-template-columns: 1fr;
 			gap: 1.5rem;
-			margin-bottom: 2rem;
-		}
-
-		.feature-card {
-			padding: 1.5rem;
+			padding: 0;
 		}
 
 		.feature-card h2 {
 			font-size: 1.5rem;
 		}
-
-		.feature-description {
-			font-size: 1rem;
-		}
-
-		.feature-highlights {
-			margin-top: 1rem;
-		}
 	}
 
 	@media (max-width: 480px) {
-		.menu-header h1 {
-			font-size: 1.875rem;
+		.main-title {
+			font-size: 2rem;
 		}
 
-		.feature-card {
-			padding: 1.25rem;
+		.card-content {
+			padding: 1.5rem;
 		}
 
 		.feature-highlights {
@@ -309,8 +360,8 @@
 		}
 
 		.highlight {
-			font-size: 0.875rem;
-			padding: 0.375rem 0.75rem;
+			font-size: 0.8125rem;
+			padding: 0.25rem 0.5rem;
 		}
 	}
 </style>
