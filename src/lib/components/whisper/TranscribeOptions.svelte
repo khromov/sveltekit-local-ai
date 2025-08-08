@@ -74,7 +74,7 @@
 
 <style>
 	.transcribe-options {
-		background: #FFF;
+		background: #fff;
 		border: 4px solid #000;
 		padding: 2rem;
 		box-shadow: 8px 8px 0 #000;
@@ -103,7 +103,7 @@
 		left: -8px;
 		right: -8px;
 		bottom: -8px;
-		background: linear-gradient(135deg, #FFD93D 0%, #FF69B4 100%);
+		background: linear-gradient(135deg, #ffd93d 0%, #ff69b4 100%);
 		z-index: -1;
 		opacity: 0.3;
 		border-radius: 5% 20% 5% 20% / 20% 5% 20% 5%;
@@ -121,7 +121,7 @@
 		align-items: center;
 		justify-content: center;
 		gap: 0.75rem;
-		background: #FFD93D;
+		background: #ffd93d;
 		padding: 0.5rem 1.5rem;
 		border: 3px solid #000;
 		box-shadow: 5px 5px 0 #000;
@@ -148,7 +148,7 @@
 		gap: 1rem;
 		padding: 1.25rem;
 		border: 3px solid #000;
-		background: #FFF;
+		background: #fff;
 		cursor: pointer;
 		transition: all 0.15s ease;
 		box-shadow: 4px 4px 0 #000;
@@ -163,11 +163,11 @@
 	.option-label:hover {
 		transform: translate(-2px, -2px) rotate(0deg);
 		box-shadow: 6px 6px 0 #000;
-		background: #FFFACD;
+		background: #fffacd;
 	}
 
 	.option-label.selected {
-		background: #98FB98;
+		background: #98fb98;
 		transform: translate(-3px, -3px) rotate(0deg);
 		box-shadow: 7px 7px 0 #000;
 	}
@@ -217,7 +217,7 @@
 		font-weight: 700;
 		text-decoration: none;
 		padding: 2px 6px;
-		background: #FFD93D;
+		background: #ffd93d;
 		border: 2px solid #000;
 		transition: all 0.15s;
 		display: inline-block;
@@ -227,7 +227,7 @@
 	.option-content small a:hover {
 		transform: translate(-1px, -1px);
 		box-shadow: 3px 3px 0 #000;
-		background: #FF69B4;
+		background: #ff69b4;
 	}
 
 	@media (max-width: 600px) {

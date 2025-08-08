@@ -22,7 +22,7 @@
 <style>
 	.error {
 		color: #000;
-		background: #FFB6C1;
+		background: #ffb6c1;
 		padding: 1.5rem;
 		border: 3px solid #000;
 		text-align: center;
@@ -55,7 +55,7 @@
 	.retry-button {
 		padding: 0.75rem 1.5rem;
 		background: #000;
-		color: #FFF;
+		color: #fff;
 		border: none;
 		border-radius: 8px;
 		cursor: pointer;
@@ -69,7 +69,7 @@
 
 	.retry-button:hover:not(:disabled) {
 		transform: translateY(-2px);
-		box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	}
 
 	.retry-button:disabled {

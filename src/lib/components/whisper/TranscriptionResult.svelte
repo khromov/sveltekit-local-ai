@@ -67,10 +67,7 @@
 				<div class="result-actions">
 					{#if transcriptionData?.transcription?.length}
 						<div class="tab-selectors">
-							<button
-								class:active={activeTab === 'text'}
-								onclick={() => (activeTab = 'text')}
-							>
+							<button class:active={activeTab === 'text'} onclick={() => (activeTab = 'text')}>
 								TEXT
 							</button>
 							<button class:active={activeTab === 'srt'} onclick={() => (activeTab = 'srt')}>
@@ -90,7 +87,7 @@
 					</button>
 				</div>
 			</div>
-			
+
 			<div class="result-text-container">
 				{#if !transcriptionData?.transcription?.length || activeTab === 'text'}
 					<p class="result-text">{text}</p>
@@ -134,7 +131,7 @@
 		left: -10px;
 		right: -10px;
 		bottom: -10px;
-		background: linear-gradient(135deg, #98FB98 0%, #87CEEB 100%);
+		background: linear-gradient(135deg, #98fb98 0%, #87ceeb 100%);
 		z-index: -1;
 		opacity: 0.3;
 		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
@@ -143,7 +140,7 @@
 
 	.result-content {
 		padding: 2rem;
-		background: #FFF;
+		background: #fff;
 		border: 4px solid #000;
 		box-shadow: 8px 8px 0 #000;
 		position: relative;
@@ -169,7 +166,7 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		background: #98FB98;
+		background: #98fb98;
 		padding: 0.5rem 1rem;
 		border: 3px solid #000;
 		box-shadow: 4px 4px 0 #000;
@@ -190,13 +187,13 @@
 	.tab-selectors {
 		display: flex;
 		border: 3px solid #000;
-		background: #FFF;
+		background: #fff;
 		box-shadow: 4px 4px 0 #000;
 	}
 
 	.tab-selectors button {
 		padding: 0.625rem 1rem;
-		background: #FFF;
+		background: #fff;
 		border: none;
 		cursor: pointer;
 		font-size: 1rem;
@@ -213,19 +210,23 @@
 	}
 
 	.tab-selectors button:hover:not(.active) {
-		background: #FFFACD;
+		background: #fffacd;
 	}
 
 	.tab-selectors button.active {
-		background: #FFD93D;
+		background: #ffd93d;
 	}
 
 	/* Result text container */
 	.result-text-container {
-		background: linear-gradient(135deg, rgba(255, 217, 61, 0.05) 0%, rgba(152, 251, 152, 0.05) 100%);
+		background: linear-gradient(
+			135deg,
+			rgba(255, 217, 61, 0.05) 0%,
+			rgba(152, 251, 152, 0.05) 100%
+		);
 		border: 3px solid #000;
 		padding: 1.5rem;
-		box-shadow: inset 3px 3px 0 rgba(0,0,0,0.1);
+		box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.1);
 		min-height: 100px;
 		max-height: 400px;
 		overflow-y: auto;
@@ -247,7 +248,7 @@
 		font-size: 0.9375rem;
 		line-height: 1.5;
 		white-space: pre-wrap;
-		background: #FFF;
+		background: #fff;
 		padding: 1rem;
 		border: 2px dashed #000;
 		overflow-x: auto;
@@ -261,7 +262,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		padding: 0.625rem 1.25rem;
-		background: #FF69B4;
+		background: #ff69b4;
 		color: #000;
 		border: 3px solid #000;
 		cursor: pointer;
@@ -277,18 +278,24 @@
 	.copy-btn:hover {
 		transform: translate(-2px, -2px);
 		box-shadow: 6px 6px 0 #000;
-		background: #FFD93D;
+		background: #ffd93d;
 	}
 
 	.copy-btn.copied {
-		background: #98FB98;
+		background: #98fb98;
 		animation: copySuccess 0.3s ease-out;
 	}
 
 	@keyframes copySuccess {
-		0% { transform: scale(1); }
-		50% { transform: scale(1.1); }
-		100% { transform: scale(1); }
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.1);
+		}
+		100% {
+			transform: scale(1);
+		}
 	}
 
 	.copy-icon {
@@ -301,17 +308,17 @@
 	}
 
 	.result-text-container::-webkit-scrollbar-track {
-		background: #FFF;
+		background: #fff;
 		border-left: 3px solid #000;
 	}
 
 	.result-text-container::-webkit-scrollbar-thumb {
-		background: #FFD93D;
+		background: #ffd93d;
 		border: 2px solid #000;
 	}
 
 	.result-text-container::-webkit-scrollbar-thumb:hover {
-		background: #FF69B4;
+		background: #ff69b4;
 	}
 
 	@media (max-width: 600px) {

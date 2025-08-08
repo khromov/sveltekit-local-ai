@@ -47,9 +47,7 @@
 
 <div class="input-area">
 	{#if isGenerating && onStop}
-		<button onclick={onStop} class="stop-btn">
-			Stop Generation
-		</button>
+		<button onclick={onStop} class="stop-btn"> Stop Generation </button>
 	{/if}
 
 	<div class="message-input" class:is-disabled={isGenerating}>
@@ -92,14 +90,14 @@
 <style>
 	.input-area {
 		padding: 1.25rem;
-		background: #F5F5F5;
+		background: #f5f5f5;
 		border-top: 3px solid #000;
 	}
 
 	.message-input {
 		display: flex;
 		align-items: flex-end;
-		background: #FFF;
+		background: #fff;
 		border: 2px solid #000;
 		padding: 0;
 		box-shadow: 3px 3px 0 #000;
@@ -114,7 +112,7 @@
 	}
 
 	.message-input.is-disabled {
-		background: #F0F0F0;
+		background: #f0f0f0;
 		opacity: 0.7;
 	}
 
@@ -145,7 +143,7 @@
 		width: 44px;
 		height: 44px;
 		margin: 4px;
-		background: #FFD700;
+		background: #ffd700;
 		color: #000;
 		border: 2px solid #000;
 		border-radius: 6px;
@@ -154,19 +152,19 @@
 	}
 
 	.send-btn:hover:not(:disabled) {
-		background: #FFA500;
+		background: #ffa500;
 		transform: scale(1.05);
 	}
 
 	.send-btn:disabled {
-		background: #E0E0E0;
+		background: #e0e0e0;
 		cursor: not-allowed;
 		opacity: 0.5;
 	}
 
 	.stop-btn {
 		padding: 0.75rem 1.25rem;
-		background: #FF6B6B;
+		background: #ff6b6b;
 		color: #000;
 		border: 2px solid #000;
 		border-radius: 6px;

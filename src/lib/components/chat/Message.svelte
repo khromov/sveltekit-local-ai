@@ -76,7 +76,7 @@
 
 	/* User message styling */
 	.user-message .message-content {
-		background: #FFD700;
+		background: #ffd700;
 		color: #000;
 		box-shadow: 3px 3px 0 #000;
 		border-bottom-right-radius: 4px;
@@ -96,7 +96,7 @@
 
 	/* Assistant message styling */
 	.assistant-message .message-content {
-		background: #F0F0F0;
+		background: #f0f0f0;
 		color: #000;
 		box-shadow: 3px 3px 0 #000;
 		border-bottom-left-radius: 4px;
@@ -140,7 +140,9 @@
 	}
 
 	@keyframes bounce {
-		0%, 80%, 100% {
+		0%,
+		80%,
+		100% {
 			transform: scale(0.8);
 			opacity: 0.5;
 		}

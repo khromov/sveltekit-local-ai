@@ -97,7 +97,7 @@
 
 <style>
 	.model-selection {
-		background: #FFF;
+		background: #fff;
 		border: 3px solid #000;
 		padding: 1.5rem;
 		box-shadow: 5px 5px 0 #000;
@@ -131,7 +131,7 @@
 		border-radius: 6px;
 		font-size: 0.9375rem;
 		font-weight: 500;
-		background: #FFF;
+		background: #fff;
 		text-align: center;
 		box-shadow: 3px 3px 0 #000;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
@@ -151,7 +151,7 @@
 
 	.model-controls select:focus {
 		outline: none;
-		border-color: #FFD700;
+		border-color: #ffd700;
 	}
 
 	.model-controls select:disabled {
@@ -170,7 +170,7 @@
 		color: #000;
 		font-weight: 600;
 		font-size: 1rem;
-		background: #B4E7CE;
+		background: #b4e7ce;
 		padding: 0.5rem 1rem;
 		border: 2px solid #000;
 		border-radius: 6px;
@@ -190,7 +190,7 @@
 
 	.change-model-btn {
 		padding: 0.5rem 1rem;
-		background: #F0F0F0;
+		background: #f0f0f0;
 		color: #000;
 		border: 2px solid #000;
 		border-radius: 6px;
@@ -204,7 +204,7 @@
 	}
 
 	.change-model-btn:hover {
-		background: #E0E0E0;
+		background: #e0e0e0;
 		box-shadow: 2px 2px 0 #000;
 	}
 
@@ -215,7 +215,7 @@
 
 	.primary-button {
 		padding: 0.875rem 1.75rem;
-		background: #FFD700;
+		background: #ffd700;
 		color: #000;
 		border: 3px solid #000;
 		border-radius: 8px;
@@ -240,7 +240,7 @@
 	}
 
 	.primary-button:disabled {
-		background: #E0E0E0;
+		background: #e0e0e0;
 		color: #999;
 		cursor: not-allowed;
 	}

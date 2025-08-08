@@ -40,7 +40,7 @@
 		align-items: center;
 		gap: 1.25rem;
 		padding: 2rem;
-		background: #FFF;
+		background: #fff;
 		border: 3px solid #000;
 		box-shadow: 5px 5px 0 #000;
 		width: calc(100% - 4rem);
@@ -65,7 +65,7 @@
 		font-weight: 600;
 		color: #000;
 		margin: 0;
-		background: #FFE5B4;
+		background: #ffe5b4;
 		padding: 0.375rem 1rem;
 		border: 2px solid #000;
 		border-radius: 6px;

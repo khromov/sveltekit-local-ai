@@ -120,7 +120,7 @@
 		display: block;
 		position: relative;
 		min-height: 140px;
-		background: #FFF;
+		background: #fff;
 		border: 4px dashed #000;
 		cursor: pointer;
 		transition: all 0.15s ease;
@@ -132,22 +132,22 @@
 	.file-upload-label:hover:not(.disabled) {
 		transform: translate(-2px, -2px) rotate(0deg);
 		box-shadow: 7px 7px 0 #000;
-		background: #FFFACD;
+		background: #fffacd;
 	}
 
 	.file-upload-label.has-file {
-		background: #98FB98;
+		background: #98fb98;
 		border-style: solid;
 	}
 
 	.file-upload-label.disabled {
 		cursor: not-allowed;
 		opacity: 0.6;
-		background: #E0E0E0;
+		background: #e0e0e0;
 	}
 
 	.file-upload-label.dragging {
-		background: #FFD93D;
+		background: #ffd93d;
 		border-style: solid;
 		border-color: #000;
 		transform: translate(-3px, -3px) rotate(0deg);
@@ -160,7 +160,7 @@
 		right: 10px;
 		width: 60px;
 		height: 60px;
-		background: #FF69B4;
+		background: #ff69b4;
 		border: 3px solid #000;
 		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
 		opacity: 0.3;
@@ -186,8 +186,13 @@
 	}
 
 	@keyframes float {
-		0%, 100% { transform: translateY(0); }
-		50% { transform: translateY(-10px); }
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
 	}
 
 	.upload-text {
@@ -213,14 +218,14 @@
 		margin: 0;
 		text-align: center;
 		font-weight: 600;
-		background: #FFD93D;
+		background: #ffd93d;
 		padding: 4px 12px;
 		border: 2px solid #000;
 		box-shadow: 3px 3px 0 #000;
 	}
 
 	.file-upload-label.has-file .upload-hint {
-		background: #FFF;
+		background: #fff;
 	}
 
 	@media (max-width: 600px) {

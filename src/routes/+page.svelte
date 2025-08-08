@@ -94,10 +94,14 @@
 	:global(body) {
 		margin: 0;
 		padding: 0;
-		font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+		font-family:
+			'Space Grotesk',
+			system-ui,
+			-apple-system,
+			sans-serif;
 		font-size: 16px;
 		line-height: 1.5;
-		background: linear-gradient(135deg, #FFE5B4 0%, #E6E6FA 50%, #B4E7CE 100%);
+		background: linear-gradient(135deg, #ffe5b4 0%, #e6e6fa 50%, #b4e7ce 100%);
 		background-size: 200% 200%;
 		animation: gradient-shift 20s ease infinite;
 		color: #000;
@@ -105,9 +109,15 @@
 	}
 
 	@keyframes gradient-shift {
-		0% { background-position: 0% 50%; }
-		50% { background-position: 100% 50%; }
-		100% { background-position: 0% 50%; }
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
 	}
 
 	.main-menu {
@@ -153,7 +163,7 @@
 
 	.title-line {
 		background: #000;
-		color: #FFD700;
+		color: #ffd700;
 		padding: 0.5rem 2rem;
 		display: inline-block;
 		border: 3px solid #000;
@@ -166,7 +176,7 @@
 		color: #000;
 		margin: 0;
 		font-weight: 500;
-		background: #FFF;
+		background: #fff;
 		display: inline-block;
 		padding: 0.5rem 1.5rem;
 		border: 2px solid #000;
@@ -185,7 +195,7 @@
 		display: block;
 		text-decoration: none;
 		color: #000;
-		background: #FFF;
+		background: #fff;
 		border: 3px solid #000;
 		padding: 0;
 		box-shadow: 5px 5px 0 #000;
@@ -221,7 +231,7 @@
 		top: 1rem;
 		right: 1rem;
 		background: #000;
-		color: #FFD700;
+		color: #ffd700;
 		padding: 0.25rem 0.75rem;
 		font-weight: 700;
 		font-size: 0.875rem;
@@ -242,7 +252,7 @@
 		margin-bottom: 1.5rem;
 		width: fit-content;
 		padding: 0.75rem;
-		background: #FFE5B4;
+		background: #ffe5b4;
 		border: 2px solid #000;
 		border-radius: 8px;
 	}
@@ -276,7 +286,7 @@
 		font-size: 0.875rem;
 		color: #000;
 		padding: 0.375rem 0.75rem;
-		background: #F0F0F0;
+		background: #f0f0f0;
 		border: 2px solid #000;
 		font-weight: 600;
 		border-radius: 4px;
@@ -284,11 +294,11 @@
 	}
 
 	.chat-card:hover .highlight {
-		background: #FFE5B4;
+		background: #ffe5b4;
 	}
 
 	.transcribe-card:hover .highlight {
-		background: #B4E7CE;
+		background: #b4e7ce;
 	}
 
 	.menu-footer {

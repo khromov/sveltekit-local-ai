@@ -44,7 +44,7 @@
 		overflow-y: auto;
 		max-height: calc(100vh - 250px);
 		position: relative;
-		background: #FFF;
+		background: #fff;
 		padding-top: 1rem;
 	}
 
@@ -54,14 +54,14 @@
 	}
 
 	.chat-messages::-webkit-scrollbar-track {
-		background: #F0F0F0;
+		background: #f0f0f0;
 		border-radius: 5px;
 	}
 
 	.chat-messages::-webkit-scrollbar-thumb {
 		background: #000;
 		border-radius: 5px;
-		border: 2px solid #F0F0F0;
+		border: 2px solid #f0f0f0;
 	}
 
 	.chat-messages::-webkit-scrollbar-thumb:hover {

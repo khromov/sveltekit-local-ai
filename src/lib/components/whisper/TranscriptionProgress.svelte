@@ -25,7 +25,7 @@
 		TRANSCRIBING AUDIO
 	</h3>
 	<p class="progress-percentage">{progress}% COMPLETE</p>
-	
+
 	<div class="progress-wrapper">
 		<ProgressBar {progress} {previousProgress} />
 	</div>
@@ -42,9 +42,7 @@
 		<div class="stuck-message">
 			<span class="warning-icon">⚠️</span>
 			TRANSCRIPTION SEEMS STUCK
-			<button class="reload-link" onclick={onReload}>
-				RELOAD PAGE →
-			</button>
+			<button class="reload-link" onclick={onReload}> RELOAD PAGE → </button>
 		</div>
 	{:else}
 		<div class="transcribing-message">
@@ -60,7 +58,7 @@
 		flex-direction: column;
 		align-items: center;
 		padding: 2.5rem;
-		background: #FFF;
+		background: #fff;
 		border: 4px solid #000;
 		box-shadow: 10px 10px 0 #000;
 		margin: 1.5rem 0;
@@ -88,8 +86,8 @@
 		height: 100px;
 		background: repeating-linear-gradient(
 			45deg,
-			#98FB98,
-			#98FB98 10px,
+			#98fb98,
+			#98fb98 10px,
 			transparent 10px,
 			transparent 20px
 		);
@@ -100,8 +98,12 @@
 	}
 
 	@keyframes spin {
-		from { transform: rotate(0deg); }
-		to { transform: rotate(360deg); }
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
 	}
 
 	.transcribing h3 {
@@ -114,7 +116,7 @@
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
-		background: #FFD93D;
+		background: #ffd93d;
 		padding: 0.5rem 2rem;
 		border: 3px solid #000;
 		box-shadow: 6px 6px 0 #000;
@@ -127,8 +129,13 @@
 	}
 
 	@keyframes bounce {
-		0%, 100% { transform: translateY(0); }
-		50% { transform: translateY(-5px); }
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-5px);
+		}
 	}
 
 	.progress-percentage {
@@ -136,7 +143,7 @@
 		font-weight: 700;
 		color: #000;
 		margin-bottom: 1.5rem;
-		background: #98FB98;
+		background: #98fb98;
 		padding: 0.5rem 1.5rem;
 		border: 3px solid #000;
 		box-shadow: 5px 5px 0 #000;
@@ -145,8 +152,13 @@
 	}
 
 	@keyframes pulse {
-		0%, 100% { transform: scale(1) rotate(1deg); }
-		50% { transform: scale(1.05) rotate(1deg); }
+		0%,
+		100% {
+			transform: scale(1) rotate(1deg);
+		}
+		50% {
+			transform: scale(1.05) rotate(1deg);
+		}
 	}
 
 	.progress-wrapper {
@@ -158,7 +170,7 @@
 	.segment-preview {
 		margin: 1.5rem 0;
 		padding: 1.5rem;
-		background: #FFF;
+		background: #fff;
 		border: 3px solid #000;
 		box-shadow: 6px 6px 0 #000;
 		width: 100%;
@@ -185,7 +197,7 @@
 		right: -8px;
 		width: 50px;
 		height: 50px;
-		background: #FF69B4;
+		background: #ff69b4;
 		border: 2px solid #000;
 		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
 		opacity: 0.4;
@@ -200,7 +212,7 @@
 		color: #000;
 		text-transform: uppercase;
 		letter-spacing: 2px;
-		background: #FFD93D;
+		background: #ffd93d;
 		padding: 4px 12px;
 		border: 2px solid #000;
 		display: inline-block;
@@ -224,7 +236,7 @@
 		color: #000;
 		font-weight: 700;
 		text-align: center;
-		background: #FFD93D;
+		background: #ffd93d;
 		padding: 1rem 1.5rem;
 		border: 3px solid #000;
 		box-shadow: 5px 5px 0 #000;
@@ -242,8 +254,13 @@
 	}
 
 	@keyframes flash {
-		0%, 100% { opacity: 1; }
-		50% { opacity: 0.5; }
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.5;
+		}
 	}
 
 	.stuck-message {
@@ -251,7 +268,7 @@
 		color: #000;
 		font-weight: 700;
 		text-align: center;
-		background: #FF6B6B;
+		background: #ff6b6b;
 		padding: 1rem 1.5rem;
 		border: 3px solid #000;
 		box-shadow: 5px 5px 0 #000;
@@ -264,9 +281,16 @@
 	}
 
 	@keyframes shake {
-		0%, 100% { transform: translateX(0) rotate(-1deg); }
-		25% { transform: translateX(-5px) rotate(-1deg); }
-		75% { transform: translateX(5px) rotate(-1deg); }
+		0%,
+		100% {
+			transform: translateX(0) rotate(-1deg);
+		}
+		25% {
+			transform: translateX(-5px) rotate(-1deg);
+		}
+		75% {
+			transform: translateX(5px) rotate(-1deg);
+		}
 	}
 
 	.warning-icon {
@@ -274,7 +298,7 @@
 	}
 
 	.reload-link {
-		background: #FFD93D;
+		background: #ffd93d;
 		border: 3px solid #000;
 		color: #000;
 		padding: 0.5rem 1rem;
@@ -291,7 +315,7 @@
 	.reload-link:hover {
 		transform: translate(-2px, -2px);
 		box-shadow: 6px 6px 0 #000;
-		background: #98FB98;
+		background: #98fb98;
 	}
 
 	@media (max-width: 600px) {

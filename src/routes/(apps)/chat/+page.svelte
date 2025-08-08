@@ -258,9 +258,7 @@
 	<div class="card-interface">
 		<div class="toolbar">
 			<span class="model-info">Model: {selectedModel.name}</span>
-			<button onclick={newChat} class="new-chat-btn">
-				New Chat
-			</button>
+			<button onclick={newChat} class="new-chat-btn"> New Chat </button>
 		</div>
 
 		<ChatMessages bind:this={chatMessagesComponent} messages={$messages} {isGenerating} />
@@ -303,7 +301,7 @@
 	.new-chat-btn {
 		padding: 0.5rem 1rem;
 		background: #000;
-		color: #FFF;
+		color: #fff;
 		border: none;
 		border-radius: 6px;
 		cursor: pointer;
@@ -318,7 +316,7 @@
 
 	.new-chat-btn:hover {
 		transform: translateY(-1px);
-		box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	}
 
 	/* Responsive adjustments for the main page */

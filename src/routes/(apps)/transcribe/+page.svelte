@@ -355,13 +355,7 @@
 		left: 0;
 		right: 0;
 		height: 4px;
-		background: repeating-linear-gradient(
-			90deg,
-			#000,
-			#000 10px,
-			#98FB98 10px,
-			#98FB98 20px
-		);
+		background: repeating-linear-gradient(90deg, #000, #000 10px, #98fb98 10px, #98fb98 20px);
 	}
 
 	.main-content {
@@ -403,7 +397,7 @@
 	}
 
 	.transcribe-btn:disabled {
-		background: #E0E0E0;
+		background: #e0e0e0;
 		cursor: not-allowed;
 		transform: none;
 		box-shadow: none;
@@ -421,13 +415,17 @@
 	}
 
 	@keyframes spin {
-		from { transform: rotate(0deg); }
-		to { transform: rotate(360deg); }
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
 	}
 
 	.primary-button {
 		padding: 1.25rem 2rem;
-		background: #98FB98;
+		background: #98fb98;
 		color: #000;
 		border: 4px solid #000;
 		cursor: pointer;
@@ -443,7 +441,7 @@
 	.primary-button:hover:not(:disabled) {
 		transform: translate(-4px, -4px);
 		box-shadow: 12px 12px 0 #000;
-		background: #FFD93D;
+		background: #ffd93d;
 	}
 
 	.primary-button:active:not(:disabled) {
@@ -461,7 +459,7 @@
 		font-weight: 600;
 		color: #000;
 		text-align: center;
-		background: #FF69B4;
+		background: #ff69b4;
 		padding: 0.75rem 1rem;
 		border: 3px solid #000;
 		box-shadow: 5px 5px 0 #000;

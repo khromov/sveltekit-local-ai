@@ -18,7 +18,6 @@
 	function isActive(path: string): boolean {
 		return $page.url.pathname === path;
 	}
-
 </script>
 
 <div class="app-wrapper">
@@ -28,7 +27,11 @@
 				{#each navLinks as link}
 					{#if link.icon === 'home'}
 						<li class="home-item">
-							<a href={link.path} class:active={isActive(link.path)} class:home-link={link.icon === 'home'}>
+							<a
+								href={link.path}
+								class:active={isActive(link.path)}
+								class:home-link={link.icon === 'home'}
+							>
 								<svg
 									class="nav-icon"
 									viewBox="0 0 24 24"
@@ -67,7 +70,8 @@
 											stroke-linecap="round"
 											stroke-linejoin="round"
 										>
-											<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+											<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+											></path>
 										</svg>
 									{:else if link.icon === 'mic'}
 										<svg
@@ -113,10 +117,14 @@
 	:global(body) {
 		margin: 0;
 		padding: 0;
-		font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+		font-family:
+			'Space Grotesk',
+			system-ui,
+			-apple-system,
+			sans-serif;
 		font-size: 16px;
 		line-height: 1.5;
-		background: linear-gradient(135deg, #FFE5B4 0%, #E6E6FA 50%, #B4E7CE 100%);
+		background: linear-gradient(135deg, #ffe5b4 0%, #e6e6fa 50%, #b4e7ce 100%);
 		background-size: 200% 200%;
 		background-attachment: fixed;
 		animation: gradient-shift 20s ease infinite;
@@ -133,16 +141,27 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-image: 
-			repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0,0,0,.02) 40px, rgba(0,0,0,.02) 41px);
+		background-image: repeating-linear-gradient(
+			0deg,
+			transparent,
+			transparent 40px,
+			rgba(0, 0, 0, 0.02) 40px,
+			rgba(0, 0, 0, 0.02) 41px
+		);
 		pointer-events: none;
 		z-index: 1;
 	}
 
 	@keyframes gradient-shift {
-		0% { background-position: 0% 50%; }
-		50% { background-position: 100% 50%; }
-		100% { background-position: 0% 50%; }
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
 	}
 
 	.app-wrapper {
@@ -164,7 +183,6 @@
 		flex-direction: column;
 	}
 
-
 	.content-wrapper {
 		width: 100%;
 		position: relative;
@@ -180,7 +198,6 @@
 		width: 100%;
 	}
 
-
 	.main-nav ul {
 		display: flex;
 		align-items: center;
@@ -189,7 +206,7 @@
 		padding: 0;
 		margin: 0;
 		list-style: none;
-		background: #FFF;
+		background: #fff;
 		padding: 0.75rem;
 		box-sizing: border-box;
 		border: 3px solid #000;
@@ -222,7 +239,7 @@
 		font-weight: 600;
 		font-size: 1rem;
 		transition: all 0.2s ease;
-		background: #FFF;
+		background: #fff;
 		border: 2px solid transparent;
 		border-radius: 8px;
 		position: relative;
@@ -231,12 +248,12 @@
 	}
 
 	.main-nav a:hover {
-		background: #FFE5B4;
+		background: #ffe5b4;
 		transform: translateY(-2px);
 	}
 
 	.main-nav a.active {
-		background: #FFD700;
+		background: #ffd700;
 		border-color: #000;
 		box-shadow: 3px 3px 0 #000;
 	}
@@ -255,7 +272,7 @@
 	/* Shared component styling - Refined Neo-Brutalist */
 	:global(.card-interface) {
 		border: 3px solid #000;
-		background: #FFF;
+		background: #fff;
 		box-shadow: 6px 6px 0 #000;
 		width: 100%;
 		position: relative;
@@ -269,7 +286,7 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 1rem 1.25rem;
-		background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
+		background: linear-gradient(90deg, #ffd700 0%, #ffa500 100%);
 		border-bottom: 3px solid #000;
 		flex-wrap: wrap;
 		gap: 0.5rem;
@@ -287,7 +304,7 @@
 
 	:global(.content-area) {
 		padding: 1.5rem;
-		background: #FFF;
+		background: #fff;
 		min-height: 300px;
 		display: flex;
 		flex-direction: column;
@@ -298,7 +315,7 @@
 	:global(.input-area) {
 		padding: 1rem 1.25rem;
 		border-top: 3px solid #000;
-		background: #F5F5F5;
+		background: #f5f5f5;
 		box-sizing: border-box;
 	}
 
@@ -336,7 +353,7 @@
 
 	:global(.primary-button) {
 		padding: 0.875rem 1.75rem;
-		background: #FFD700;
+		background: #ffd700;
 		color: #000;
 		border: 3px solid #000;
 		border-radius: 8px;
@@ -362,7 +379,7 @@
 	}
 
 	:global(.primary-button:disabled) {
-		background: #E0E0E0;
+		background: #e0e0e0;
 		color: #999;
 		cursor: not-allowed;
 		transform: none;
@@ -375,12 +392,10 @@
 			padding: 0.75rem;
 		}
 
-
 		.main-nav ul {
 			gap: 0.5rem;
 			padding: 0.5rem;
 		}
-
 
 		.main-nav a {
 			padding: 0.625rem 0.875rem;
@@ -418,7 +433,5 @@
 		.container {
 			padding: 0.5rem;
 		}
-
-
 	}
 </style>

@@ -28,18 +28,18 @@
 	</div>
 
 	<div class="inference-params">
-		<button class="params-toggle" onclick={() => showParams = !showParams}>
+		<button class="params-toggle" onclick={() => (showParams = !showParams)}>
 			<span>Advanced Parameters</span>
-			<svg 
-				class="toggle-icon" 
+			<svg
+				class="toggle-icon"
 				class:rotated={showParams}
-				viewBox="0 0 24 24" 
-				width="20" 
-				height="20" 
-				stroke="currentColor" 
-				stroke-width="2" 
-				fill="none" 
-				stroke-linecap="round" 
+				viewBox="0 0 24 24"
+				width="20"
+				height="20"
+				stroke="currentColor"
+				stroke-width="2"
+				fill="none"
+				stroke-linecap="round"
 				stroke-linejoin="round"
 			>
 				<polyline points="6 9 12 15 18 9"></polyline>
@@ -76,10 +76,8 @@
 			Load Model
 		{/if}
 	</button>
-	
-	<p class="model-note">
-		Model will be downloaded and run locally in your browser
-	</p>
+
+	<p class="model-note">Model will be downloaded and run locally in your browser</p>
 </div>
 
 <style>
@@ -90,7 +88,7 @@
 		flex-direction: column;
 		gap: 1.5rem;
 		padding: 2rem;
-		background: #FFF;
+		background: #fff;
 		border: 3px solid #000;
 		box-shadow: 6px 6px 0 #000;
 		margin: 0 auto;
@@ -135,7 +133,7 @@
 		position: absolute;
 		top: -10px;
 		left: 12px;
-		background: #FFF;
+		background: #fff;
 		padding: 0 6px;
 		font-size: 0.8125rem;
 		font-weight: 600;
@@ -152,7 +150,7 @@
 		border-radius: 6px;
 		font-size: 0.9375rem;
 		font-weight: 500;
-		background: #FFF;
+		background: #fff;
 		box-shadow: 3px 3px 0 #000;
 		appearance: none;
 		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -171,11 +169,11 @@
 
 	.model-selector select:focus {
 		outline: none;
-		border-color: #FFD700;
+		border-color: #ffd700;
 	}
 
 	.inference-params {
-		background: #F8F8F8;
+		background: #f8f8f8;
 		padding: 1.25rem;
 		border: 2px solid #000;
 		border-radius: 8px;
@@ -259,7 +257,7 @@
 		border-radius: 4px;
 		font-size: 0.9375rem;
 		font-weight: 500;
-		background: #FFF;
+		background: #fff;
 		transition: all 0.2s;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 		box-sizing: border-box;
@@ -268,7 +266,7 @@
 
 	.inference-params input:focus {
 		outline: none;
-		border-color: #FFD700;
+		border-color: #ffd700;
 	}
 
 	.load-button {
@@ -281,8 +279,13 @@
 	}
 
 	@keyframes pulse {
-		0%, 100% { opacity: 1; }
-		50% { opacity: 0.7; }
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.7;
+		}
 	}
 
 	.model-note {

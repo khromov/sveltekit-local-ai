@@ -28,7 +28,7 @@
 
 	.progress-bar {
 		height: 1.25rem;
-		background: #F0F0F0;
+		background: #f0f0f0;
 		border: 2px solid #000;
 		border-radius: 6px;
 		overflow: hidden;
@@ -38,7 +38,7 @@
 
 	.progress-bar-fill {
 		height: 100%;
-		background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
+		background: linear-gradient(90deg, #ffd700 0%, #ffa500 100%);
 		position: relative;
 		transition: width 0.3s ease;
 	}
