@@ -121,11 +121,12 @@
 	}
 
 	.main-menu {
+		margin-top: 1rem;
 		min-height: 100vh;
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: center;
-		padding: 2rem 1rem;
+		padding: 1rem 1rem 2rem;
 		box-sizing: border-box;
 		position: relative;
 		z-index: 2;
@@ -139,7 +140,7 @@
 
 	.menu-header {
 		text-align: center;
-		margin-bottom: 3rem;
+		margin-bottom: 2rem;
 		animation: fadeIn 0.6s ease-out;
 	}
 
