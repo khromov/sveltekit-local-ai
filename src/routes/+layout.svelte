@@ -169,7 +169,7 @@
 
 	.main-nav ul {
 		display: flex;
-		justify-content: center;
+		align-items: center;
 		gap: 1rem;
 		padding: 0;
 		margin: 0;
@@ -182,9 +182,12 @@
 		border-radius: 12px;
 	}
 
+	.main-nav li:first-child {
+		margin-right: auto;
+	}
+
 	.main-nav li {
-		flex: 1;
-		max-width: 200px;
+		flex: none;
 	}
 
 	.main-nav a {
