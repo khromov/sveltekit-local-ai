@@ -172,7 +172,8 @@
 	}
 
 	@keyframes bounce {
-		0%, 100% {
+		0%,
+		100% {
 			transform: translateY(0);
 		}
 		50% {
@@ -181,7 +182,7 @@
 	}
 
 	.select-wrapper {
-		margin-top: 1rem;	
+		margin-top: 1rem;
 		position: relative;
 		transform: rotate(-0.5deg);
 	}
@@ -389,7 +390,8 @@
 	}
 
 	@keyframes pulse {
-		0%, 100% {
+		0%,
+		100% {
 			opacity: 1;
 		}
 		50% {
@@ -397,7 +399,8 @@
 		}
 	}
 
-	.button-icon, .loading-icon {
+	.button-icon,
+	.loading-icon {
 		font-size: 1.5rem;
 	}
 

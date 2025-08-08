@@ -264,9 +264,9 @@
 				<span class="model-emoji">🤖</span>
 				{selectedModel.name}
 			</span>
-			<button onclick={newChat} class="new-chat-btn">
+			<button onclick={newChat} class="new-chat-btn" aria-label="New Chat">
 				<span class="btn-emoji">✨</span>
-				New Chat
+				New <span class="desktop-only">Chat</span>
 			</button>
 			<div class="toolbar-decoration"></div>
 		</div>
@@ -438,6 +438,11 @@
 		.new-chat-btn {
 			padding: 0.375rem 0.75rem;
 			font-size: 0.8125rem;
+		}
+
+		/* Hide the extra word on small screens */
+		.desktop-only {
+			display: none;
 		}
 
 		.decoration-1,
