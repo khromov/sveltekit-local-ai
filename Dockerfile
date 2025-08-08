@@ -3,6 +3,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+ARG PUBLIC_DISABLE_OPFS=false
+ENV PUBLIC_DISABLE_OPFS=$PUBLIC_DISABLE_OPFS
 RUN npm run build
 RUN npm prune --production
 

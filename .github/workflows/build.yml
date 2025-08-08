@@ -43,7 +43,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            PUBLIC_HELLO=world
+            PUBLIC_DISABLE_OPFS=false
 
       # Uncomment and replace with your server
       #- name: Deploy on CapRover
