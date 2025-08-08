@@ -455,9 +455,5 @@
 		.model-selector h2 {
 			font-size: 1.25rem;
 		}
-
-		.subtitle {
-			font-size: 0.875rem;
-		}
 	}
 </style>
