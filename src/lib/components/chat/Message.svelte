@@ -17,7 +17,7 @@
 		{:else}
 			<div class="message-decoration assistant-decoration"></div>
 		{/if}
-		
+
 		<div class="message {message.role}-message">
 			<div class="message-content">
 				{#if message.role === 'assistant' && message.content === '' && isGenerating && isLast}
@@ -86,7 +86,8 @@
 	}
 
 	@keyframes float-deco {
-		0%, 100% {
+		0%,
+		100% {
 			transform: translateY(-50%) rotate(45deg) scale(1);
 		}
 		50% {
@@ -199,7 +200,8 @@
 	}
 
 	@keyframes pulse-emoji {
-		0%, 100% {
+		0%,
+		100% {
 			transform: scale(1);
 		}
 		50% {
@@ -214,7 +216,7 @@
 		border-radius: 50%;
 		display: inline-block;
 		animation: bounce-dot 1.4s infinite ease-in-out both;
-		box-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+		box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
 	}
 
 	.typing-indicator .dot:nth-child(2) {
@@ -230,7 +232,9 @@
 	}
 
 	@keyframes bounce-dot {
-		0%, 80%, 100% {
+		0%,
+		80%,
+		100% {
 			transform: scale(0.8) translateY(0);
 			opacity: 0.5;
 		}

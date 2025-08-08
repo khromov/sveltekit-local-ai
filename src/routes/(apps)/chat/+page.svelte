@@ -258,7 +258,7 @@
 	<div class="card-interface chat-interface">
 		<div class="floating-decoration decoration-1"></div>
 		<div class="floating-decoration decoration-2"></div>
-		
+
 		<div class="toolbar">
 			<span class="model-info">
 				<span class="model-emoji">🤖</span>
@@ -353,7 +353,8 @@
 	}
 
 	@keyframes float1 {
-		0%, 100% {
+		0%,
+		100% {
 			transform: translate(0, 0) rotate(0deg);
 		}
 		50% {
@@ -362,7 +363,8 @@
 	}
 
 	@keyframes float2 {
-		0%, 100% {
+		0%,
+		100% {
 			transform: translate(0, 0) rotate(0deg);
 		}
 		50% {
@@ -376,13 +378,7 @@
 		left: 0;
 		right: 0;
 		height: 3px;
-		background: repeating-linear-gradient(
-			90deg,
-			#000,
-			#000 8px,
-			#98fb98 8px,
-			#98fb98 16px
-		);
+		background: repeating-linear-gradient(90deg, #000, #000 8px, #98fb98 8px, #98fb98 16px);
 	}
 
 	.model-emoji {
@@ -433,7 +429,8 @@
 			font-size: 0.8125rem;
 		}
 
-		.decoration-1, .decoration-2 {
+		.decoration-1,
+		.decoration-2 {
 			display: none;
 		}
 	}

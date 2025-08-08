@@ -34,7 +34,7 @@
 
 <div bind:this={chatContainer} class="chat-messages content-area" id="chat-container">
 	<div class="chat-decoration"></div>
-	
+
 	{#if messages.length === 0 || (messages.length === 1 && messages[0].role === 'system')}
 		<div class="empty-state">
 			<div class="empty-icon">💬</div>
@@ -115,7 +115,8 @@
 	}
 
 	@keyframes float {
-		0%, 100% {
+		0%,
+		100% {
 			transform: translateY(0) rotate(-5deg);
 		}
 		50% {
@@ -170,7 +171,8 @@
 	}
 
 	@keyframes sparkle {
-		0%, 100% {
+		0%,
+		100% {
 			opacity: 0;
 			transform: scale(0) rotate(0deg);
 		}
@@ -195,7 +197,7 @@
 		background: #000;
 		border-radius: 6px;
 		border: 2px solid #fff;
-		box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+		box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
 	}
 
 	.chat-messages::-webkit-scrollbar-thumb:hover {

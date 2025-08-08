@@ -47,7 +47,7 @@
 
 <div class="input-area">
 	<div class="input-decoration"></div>
-	
+
 	{#if isGenerating && onStop}
 		<button onclick={onStop} class="stop-btn">
 			<span class="stop-icon">🛑</span>
@@ -109,13 +109,7 @@
 		left: 0;
 		right: 0;
 		height: 3px;
-		background: repeating-linear-gradient(
-			90deg,
-			#98fb98,
-			#98fb98 8px,
-			#ffd93d 8px,
-			#ffd93d 16px
-		);
+		background: repeating-linear-gradient(90deg, #98fb98, #98fb98 8px, #ffd93d 8px, #ffd93d 16px);
 		animation: slide 2s linear infinite;
 	}
 
@@ -157,7 +151,8 @@
 	}
 
 	@keyframes bounce-emoji {
-		0%, 100% {
+		0%,
+		100% {
 			transform: translateY(0) rotate(-5deg);
 		}
 		50% {
@@ -256,7 +251,8 @@
 	}
 
 	@keyframes shake {
-		0%, 100% {
+		0%,
+		100% {
 			transform: translateX(0) rotate(-1deg);
 		}
 		25% {
@@ -298,7 +294,8 @@
 	}
 
 	@keyframes float-disclaimer {
-		0%, 100% {
+		0%,
+		100% {
 			transform: translateY(0) rotate(0.5deg);
 		}
 		50% {

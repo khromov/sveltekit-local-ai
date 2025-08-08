@@ -8,7 +8,10 @@
 			<h1 class="main-title">
 				<span class="title-line">Local AI Playground</span>
 			</h1>
-			<p class="subtitle">On this page you'll find free, private AI tools that run entirely in your browser - and even offline!</p>
+			<p class="subtitle">
+				On this page you'll find free, private AI tools that run entirely in your browser - and even
+				offline!
+			</p>
 		</header>
 
 		<div class="feature-grid">
@@ -65,7 +68,8 @@
 					</div>
 					<h2>Transcribe Audio</h2>
 					<p class="feature-description">
-						Convert speech to text using Whisper AI. Upload any existing audio file and export as text or a subtitle file.
+						Convert speech to text using Whisper AI. Upload any existing audio file and export as
+						text or a subtitle file.
 					</p>
 					<div class="feature-highlights">
 						<span class="highlight">High Accuracy</span>

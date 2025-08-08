@@ -177,7 +177,8 @@
 	}
 
 	@keyframes bounce {
-		0%, 100% {
+		0%,
+		100% {
 			transform: translateY(0);
 		}
 		50% {
@@ -394,7 +395,8 @@
 	}
 
 	@keyframes pulse {
-		0%, 100% {
+		0%,
+		100% {
 			opacity: 1;
 		}
 		50% {
@@ -402,7 +404,8 @@
 		}
 	}
 
-	.button-icon, .loading-icon {
+	.button-icon,
+	.loading-icon {
 		font-size: 1.5rem;
 	}
 
