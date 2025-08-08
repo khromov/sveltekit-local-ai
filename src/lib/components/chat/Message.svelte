@@ -36,6 +36,8 @@
 		animation: messageSlide 0.3s ease-out;
 		position: relative;
 		padding: 0 0.5rem;
+		box-sizing: border-box;
+		overflow-x: hidden;
 	}
 
 	@keyframes messageSlide {
@@ -60,6 +62,9 @@
 	.message {
 		position: relative;
 		max-width: 70%;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		min-width: 0;
 	}
 
 	.message-content {

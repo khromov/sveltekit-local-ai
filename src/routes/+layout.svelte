@@ -24,7 +24,7 @@
 	<div class="container">
 		<nav class="main-nav">
 			<ul>
-				{#each navLinks as link}
+				{#each navLinks as link (link.path)}
 					{#if link.icon === 'home'}
 						<li class="home-item">
 							<a
@@ -54,7 +54,7 @@
 					{/if}
 				{/each}
 				<div class="center-items">
-					{#each navLinks as link}
+					{#each navLinks as link (link.path)}
 						{#if link.icon !== 'home'}
 							<li>
 								<a href={link.path} class:active={isActive(link.path)}>
@@ -194,7 +194,7 @@
 
 	/* Navigation styles - Refined Neo-Brutalist */
 	.main-nav {
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 		width: 100%;
 	}
 

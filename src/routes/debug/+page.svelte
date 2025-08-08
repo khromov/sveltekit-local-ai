@@ -31,8 +31,6 @@
 		console.log(`\n--- STEP ${stepCount} ---`);
 
 		try {
-			// Save previous text length to track new content
-			const prevLength = fullText.length;
 			console.log('generating starting from ', fullText);
 
 			let newText = '';

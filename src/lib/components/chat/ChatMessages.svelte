@@ -33,7 +33,7 @@
 </script>
 
 <div bind:this={chatContainer} class="chat-messages content-area" id="chat-container">
-	{#each messages as message, i}
+	{#each messages as message, i (i)}
 		<Message {message} {isGenerating} isLast={i === messages.length - 1} />
 	{/each}
 </div>
@@ -42,10 +42,13 @@
 	.chat-messages {
 		height: clamp(350px, calc(100vh - 250px), 600px);
 		overflow-y: auto;
+		overflow-x: hidden;
 		max-height: calc(100vh - 250px);
 		position: relative;
 		background: #fff;
 		padding-top: 1rem;
+		width: 100%;
+		box-sizing: border-box;
 	}
 
 	/* Custom scrollbar styling */

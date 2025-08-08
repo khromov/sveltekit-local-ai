@@ -1,9 +1,5 @@
 <script lang="ts">
-	interface Props {
-		children?: import('svelte').Snippet;
-	}
-
-	let { children }: Props = $props();
+	// No props needed for this component
 </script>
 
 <div class="main-menu">

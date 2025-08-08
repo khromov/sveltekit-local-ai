@@ -34,7 +34,7 @@ async function getCachedModel(fileName: string): Promise<File | null> {
 		const file = await fileHandle.getFile();
 		console.log(`Found cached model: ${fileName}`);
 		return file;
-	} catch (error) {
+	} catch {
 		// File doesn't exist in cache
 		console.log(`Model not cached: ${fileName}`);
 		return null;
@@ -178,7 +178,7 @@ export async function clearModelCache(): Promise<void> {
 		const opfsRoot = await navigator.storage.getDirectory();
 
 		// List all files and remove model files
-		for await (const [name, handle] of (opfsRoot as any).entries()) {
+		for await (const [name, handle] of (opfsRoot as FileSystemDirectoryHandle).entries()) {
 			if (handle.kind === 'file' && name.endsWith('.bin')) {
 				await opfsRoot.removeEntry(name);
 				console.log(`Removed cached model: ${name}`);
@@ -213,7 +213,7 @@ export async function getCacheInfo(): Promise<{ fileName: string; size: number }
 	try {
 		const opfsRoot = await navigator.storage.getDirectory();
 
-		for await (const [name, handle] of (opfsRoot as any).entries()) {
+		for await (const [name, handle] of (opfsRoot as FileSystemDirectoryHandle).entries()) {
 			if (handle.kind === 'file' && name.endsWith('.bin')) {
 				const file = await handle.getFile();
 				cacheInfo.push({

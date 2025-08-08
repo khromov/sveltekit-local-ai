@@ -29,7 +29,15 @@
 	let hasProgressTracking = $state(true);
 
 	// Store full transcription data for formats
-	let transcriptionData = $state<any>(null);
+	let transcriptionData = $state<{
+		transcription: Array<{
+			text: string;
+			timestamps: {
+				from: string;
+				to: string;
+			};
+		}>;
+	} | null>(null);
 
 	// Initialize wake lock functionality
 	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
@@ -111,7 +119,7 @@
 			transcriptionData = result;
 
 			// Extract the transcription text
-			text = result.transcription.map((t: any) => t.text).join(' ');
+			text = result.transcription.map((t) => t.text).join(' ');
 		} catch (err) {
 			console.error('Transcription error:', err);
 			error = true;

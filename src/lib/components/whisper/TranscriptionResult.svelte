@@ -3,7 +3,15 @@
 
 	interface Props {
 		text: string;
-		transcriptionData?: any;
+		transcriptionData?: {
+			transcription: Array<{
+				text: string;
+				timestamps: {
+					from: string;
+					to: string;
+				};
+			}>;
+		};
 	}
 
 	let { text, transcriptionData }: Props = $props();
@@ -16,7 +24,7 @@
 		if (!transcriptionData?.transcription?.length) return '';
 
 		// Transform transcription data to subsrt format
-		const captions = transcriptionData.transcription.map((segment: any) => {
+		const captions = transcriptionData.transcription.map((segment) => {
 			// Convert timestamp format from "hh:mm:ss,mmm" to milliseconds
 			const startMs = timestampToMs(segment.timestamps.from);
 			const endMs = timestampToMs(segment.timestamps.to);

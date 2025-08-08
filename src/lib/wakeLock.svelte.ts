@@ -1,5 +1,3 @@
-import { onMount } from 'svelte';
-
 /**
  * Wake Lock state and functionality for keeping the screen on during active processes
  */

@@ -19,7 +19,7 @@
 	<div class="select-wrapper">
 		<label class="select-label" for="model-select">Choose Model</label>
 		<select id="model-select" bind:value={modelSelection}>
-			{#each AVAILABLE_MODELS as model}
+			{#each AVAILABLE_MODELS as model (model.url)}
 				<option value={model.url}>
 					{model.name} ({formatFileSize(model.size)})
 				</option>
