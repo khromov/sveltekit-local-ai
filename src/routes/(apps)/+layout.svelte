@@ -19,58 +19,64 @@
 	}
 </script>
 
-<div class="container">
-	<nav class="main-nav">
-		<ul>
-			{#each navLinks as link}
-				<li>
-					<a href={link.path} class:active={isActive(link.path)}>
-						{#if link.icon === 'chat'}
-							<svg
-								class="nav-icon"
-								viewBox="0 0 24 24"
-								width="24"
-								height="24"
-								stroke="currentColor"
-								stroke-width="2.5"
-								fill="none"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-							</svg>
-						{:else if link.icon === 'mic'}
-							<svg
-								class="nav-icon"
-								viewBox="0 0 24 24"
-								width="24"
-								height="24"
-								stroke="currentColor"
-								stroke-width="2.5"
-								fill="none"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-								<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-								<line x1="12" y1="19" x2="12" y2="23"></line>
-								<line x1="8" y1="23" x2="16" y2="23"></line>
-							</svg>
-						{/if}
-						<span>{link.label}</span>
-					</a>
-				</li>
-			{/each}
-		</ul>
-	</nav>
+<div class="app-wrapper">
+	<div class="container">
+		<nav class="main-nav">
+			<ul>
+				{#each navLinks as link}
+					<li>
+						<a href={link.path} class:active={isActive(link.path)}>
+							{#if link.icon === 'chat'}
+								<svg
+									class="nav-icon"
+									viewBox="0 0 24 24"
+									width="24"
+									height="24"
+									stroke="currentColor"
+									stroke-width="2.5"
+									fill="none"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+								</svg>
+							{:else if link.icon === 'mic'}
+								<svg
+									class="nav-icon"
+									viewBox="0 0 24 24"
+									width="24"
+									height="24"
+									stroke="currentColor"
+									stroke-width="2.5"
+									fill="none"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+									<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+									<line x1="12" y1="19" x2="12" y2="23"></line>
+									<line x1="8" y1="23" x2="16" y2="23"></line>
+								</svg>
+							{/if}
+							<span>{link.label}</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</nav>
 
-	<div class="content-wrapper">
-		{@render children?.()}
+		<div class="content-wrapper">
+			{@render children?.()}
+		</div>
 	</div>
 </div>
 
 <style>
 	/* Base styles with refined Neo-Brutalist approach */
+	:global(html) {
+		height: 100%;
+	}
+
 	:global(body) {
 		margin: 0;
 		padding: 0;
@@ -79,10 +85,12 @@
 		line-height: 1.5;
 		background: linear-gradient(135deg, #FFE5B4 0%, #E6E6FA 50%, #B4E7CE 100%);
 		background-size: 200% 200%;
+		background-attachment: fixed;
 		animation: gradient-shift 20s ease infinite;
 		color: #000;
 		position: relative;
 		overflow-x: hidden;
+		min-height: 100vh;
 	}
 
 	:global(body)::before {
@@ -104,20 +112,32 @@
 		100% { background-position: 0% 50%; }
 	}
 
+	.app-wrapper {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		z-index: 2;
+	}
+
 	.container {
 		width: 100%;
 		max-width: 900px;
 		margin: 0 auto;
 		padding: 1rem;
 		box-sizing: border-box;
-		position: relative;
-		z-index: 2;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.content-wrapper {
 		width: 100%;
 		position: relative;
 		overflow-x: hidden;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
 	}
 
 	/* Navigation styles - Refined Neo-Brutalist */
@@ -249,6 +269,8 @@
 		animation: fadeIn 0.4s ease-out;
 		width: 100%;
 		box-sizing: border-box;
+		flex: 1;
+		justify-content: center;
 	}
 
 	@keyframes fadeIn {
