@@ -13,11 +13,18 @@
 </script>
 
 <div class="model-selector">
-	<h2>On-device Local Chat</h2>
+	<div class="selector-decoration"></div>
+	<h2>
+		<span class="title-icon">🚀</span>
+		On-device Local Chat
+	</h2>
 	<p class="subtitle">Select a model to start your private AI experience</p>
 
 	<div class="select-wrapper">
-		<label class="select-label" for="model-select">Choose Model</label>
+		<label class="select-label" for="model-select">
+			<span class="label-icon">📦</span>
+			Choose Model
+		</label>
 		<select id="model-select" bind:value={modelSelection}>
 			{#each AVAILABLE_MODELS as model (model.url)}
 				<option value={model.url}>
@@ -29,6 +36,7 @@
 
 	<div class="inference-params">
 		<button class="params-toggle" onclick={() => (showParams = !showParams)}>
+			<span class="toggle-emoji">⚙️</span>
 			<span>Advanced Parameters</span>
 			<svg
 				class="toggle-icon"
@@ -71,13 +79,18 @@
 
 	<button onclick={onLoadModel} class="load-button primary-button" disabled={isLoading}>
 		{#if isLoading}
+			<span class="loading-icon">⏳</span>
 			Loading Model...
 		{:else}
+			<span class="button-icon">⚡</span>
 			Load Model
 		{/if}
 	</button>
 
-	<p class="model-note">Model will be downloaded and run locally in your browser</p>
+	<p class="model-note">
+		<span class="note-icon">💾</span>
+		Model will be downloaded and run locally in your browser
+	</p>
 </div>
 
 <style>
@@ -89,22 +102,50 @@
 		gap: 1.5rem;
 		padding: 2rem;
 		background: #fff;
-		border: 3px solid #000;
-		box-shadow: 6px 6px 0 #000;
+		border: 4px solid #000;
+		box-shadow: 8px 8px 0 #000;
 		margin: 0 auto;
 		border-radius: 12px;
-		animation: fadeIn 0.4s ease-out;
+		animation: bounceIn 0.6s ease-out;
 		box-sizing: border-box;
+		position: relative;
+		transform: rotate(0.5deg);
 	}
 
-	@keyframes fadeIn {
-		from {
+	@keyframes bounceIn {
+		0% {
 			opacity: 0;
-			transform: translateY(20px);
+			transform: scale(0.9) rotate(-1deg);
+		}
+		50% {
+			transform: scale(1.05) rotate(1deg);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1) rotate(0.5deg);
+		}
+	}
+
+	.selector-decoration {
+		position: absolute;
+		top: -15px;
+		left: -15px;
+		width: 100px;
+		height: 100px;
+		background: linear-gradient(135deg, #ffd93d 0%, #98fb98 100%);
+		border: 3px solid #000;
+		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
+		opacity: 0.3;
+		z-index: -1;
+		animation: spin 15s linear infinite;
+	}
+
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
 		}
 		to {
-			opacity: 1;
-			transform: translateY(0);
+			transform: rotate(360deg);
 		}
 	}
 
@@ -115,7 +156,34 @@
 		color: #000;
 		text-align: center;
 		text-transform: uppercase;
-		letter-spacing: 1px;
+		letter-spacing: 2px;
+		font-family: 'Bebas Neue', sans-serif;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		background: linear-gradient(135deg, #ffd93d 0%, #98fb98 100%);
+		padding: 0.75rem 1.5rem;
+		border: 3px solid #000;
+		box-shadow: 5px 5px 0 #000;
+		transform: rotate(-1deg);
+		width: fit-content;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.title-icon {
+		font-size: 1.75rem;
+		animation: bounce 2s ease-in-out infinite;
+	}
+
+	@keyframes bounce {
+		0%, 100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-5px);
+		}
 	}
 
 	.subtitle {
@@ -123,35 +191,46 @@
 		font-size: 1rem;
 		color: #666;
 		margin: -0.5rem 0 0 0;
+		font-weight: 600;
 	}
 
 	.select-wrapper {
 		position: relative;
+		transform: rotate(-0.5deg);
 	}
 
 	.select-label {
 		position: absolute;
 		top: -10px;
 		left: 12px;
-		background: #fff;
-		padding: 0 6px;
+		background: #98fb98;
+		padding: 0 8px;
 		font-size: 0.8125rem;
-		font-weight: 600;
+		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
-		color: #666;
+		color: #000;
 		z-index: 1;
+		border: 2px solid #000;
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	.label-icon {
+		font-size: 0.875rem;
 	}
 
 	.model-selector select {
 		width: 100%;
 		padding: 0.875rem 2.5rem 0.875rem 1rem;
-		border: 2px solid #000;
+		border: 3px solid #000;
 		border-radius: 6px;
 		font-size: 0.9375rem;
-		font-weight: 500;
+		font-weight: 600;
 		background: #fff;
-		box-shadow: 3px 3px 0 #000;
+		box-shadow: 5px 5px 0 #000;
 		appearance: none;
 		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
 		background-repeat: no-repeat;
@@ -164,20 +243,25 @@
 	}
 
 	.model-selector select:hover {
-		box-shadow: 4px 4px 0 #000;
+		transform: translate(-2px, -2px);
+		box-shadow: 7px 7px 0 #000;
+		background: #fffacd;
 	}
 
 	.model-selector select:focus {
 		outline: none;
 		border-color: #ffd700;
+		background: #fffacd;
 	}
 
 	.inference-params {
-		background: #f8f8f8;
+		background: linear-gradient(135deg, rgba(255, 217, 61, 0.1) 0%, rgba(152, 251, 152, 0.1) 100%);
 		padding: 1.25rem;
-		border: 2px solid #000;
+		border: 3px solid #000;
 		border-radius: 8px;
 		box-sizing: border-box;
+		transform: rotate(0.5deg);
+		box-shadow: 3px 3px 0 #000;
 	}
 
 	.params-toggle {
@@ -189,13 +273,32 @@
 		background: none;
 		border: none;
 		font-size: 1rem;
-		font-weight: 600;
+		font-weight: 700;
 		color: #000;
 		cursor: pointer;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 		transition: color 0.2s;
+	}
+
+	.toggle-emoji {
+		font-size: 1.25rem;
+		margin-right: 0.5rem;
+		animation: rotate 3s linear infinite;
+	}
+
+	@keyframes rotate {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.params-toggle:hover .toggle-emoji {
+		animation-duration: 1s;
 	}
 
 	.params-toggle:hover {
@@ -237,8 +340,8 @@
 
 	.param-label {
 		font-size: 0.875rem;
-		font-weight: 600;
-		color: #333;
+		font-weight: 700;
+		color: #000;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
 	}
@@ -256,22 +359,42 @@
 		border: 2px solid #000;
 		border-radius: 4px;
 		font-size: 0.9375rem;
-		font-weight: 500;
+		font-weight: 600;
 		background: #fff;
 		transition: all 0.2s;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 		box-sizing: border-box;
 		width: 100%;
+		box-shadow: 2px 2px 0 #000;
+	}
+
+	.inference-params input:hover {
+		transform: translate(-1px, -1px);
+		box-shadow: 3px 3px 0 #000;
 	}
 
 	.inference-params input:focus {
 		outline: none;
 		border-color: #ffd700;
+		background: #fffacd;
 	}
 
 	.load-button {
 		padding: 1rem 1.5rem;
 		font-size: 1.125rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		margin: 0 auto;
+		background: #98fb98;
+		transform: rotate(-1deg);
+	}
+
+	.load-button:hover:not(:disabled) {
+		background: #ffd93d;
+		transform: translate(-3px, -3px) rotate(0deg);
+		box-shadow: 8px 8px 0 #000;
 	}
 
 	.load-button:disabled {
@@ -279,8 +402,7 @@
 	}
 
 	@keyframes pulse {
-		0%,
-		100% {
+		0%, 100% {
 			opacity: 1;
 		}
 		50% {
@@ -288,11 +410,28 @@
 		}
 	}
 
+	.button-icon, .loading-icon {
+		font-size: 1.5rem;
+	}
+
+	.loading-icon {
+		animation: spin 1s linear infinite;
+	}
+
 	.model-note {
 		font-size: 0.875rem;
 		color: #666;
 		text-align: center;
 		margin: 0;
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.375rem;
+	}
+
+	.note-icon {
+		font-size: 1rem;
 	}
 
 	@media (max-width: 600px) {
@@ -328,6 +467,10 @@
 		.load-button {
 			font-size: 1rem;
 			padding: 0.875rem 1.25rem;
+		}
+
+		.selector-decoration {
+			display: none;
 		}
 	}
 

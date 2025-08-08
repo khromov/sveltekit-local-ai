@@ -46,11 +46,17 @@
 </script>
 
 <div class="input-area">
+	<div class="input-decoration"></div>
+	
 	{#if isGenerating && onStop}
-		<button onclick={onStop} class="stop-btn"> Stop Generation </button>
+		<button onclick={onStop} class="stop-btn">
+			<span class="stop-icon">🛑</span>
+			Stop Generation
+		</button>
 	{/if}
 
 	<div class="message-input" class:is-disabled={isGenerating}>
+		<span class="input-emoji">💭</span>
 		<textarea
 			bind:this={inputElement}
 			bind:value
@@ -83,6 +89,7 @@
 	</div>
 
 	<div class="disclaimer">
+		<span class="disclaimer-icon">🔒</span>
 		Wllama is running locally in your browser. Model responses may not always be accurate.
 	</div>
 </div>
@@ -90,40 +97,93 @@
 <style>
 	.input-area {
 		padding: 1.25rem;
-		background: #f5f5f5;
+		background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
 		border-top: 3px solid #000;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.input-decoration {
+		position: absolute;
+		top: -2px;
+		left: 0;
+		right: 0;
+		height: 3px;
+		background: repeating-linear-gradient(
+			90deg,
+			#98fb98,
+			#98fb98 8px,
+			#ffd93d 8px,
+			#ffd93d 16px
+		);
+		animation: slide 2s linear infinite;
+	}
+
+	@keyframes slide {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(16px);
+		}
 	}
 
 	.message-input {
 		display: flex;
 		align-items: flex-end;
 		background: #fff;
-		border: 2px solid #000;
+		border: 3px solid #000;
 		padding: 0;
-		box-shadow: 3px 3px 0 #000;
-		border-radius: 8px;
+		box-shadow: 5px 5px 0 #000;
+		border-radius: 12px;
 		overflow: hidden;
 		transition: all 0.2s;
 		margin-bottom: 0.75rem;
+		transform: rotate(-0.5deg);
+		position: relative;
+	}
+
+	.input-emoji {
+		position: absolute;
+		top: -10px;
+		left: 10px;
+		font-size: 1.5rem;
+		z-index: 1;
+		background: #98fb98;
+		padding: 0 8px;
+		border: 2px solid #000;
+		border-radius: 4px;
+		animation: bounce-emoji 3s ease-in-out infinite;
+	}
+
+	@keyframes bounce-emoji {
+		0%, 100% {
+			transform: translateY(0) rotate(-5deg);
+		}
+		50% {
+			transform: translateY(-3px) rotate(5deg);
+		}
 	}
 
 	.message-input:hover:not(.is-disabled) {
-		box-shadow: 4px 4px 0 #000;
+		transform: translate(-2px, -2px) rotate(0deg);
+		box-shadow: 7px 7px 0 #000;
 	}
 
 	.message-input.is-disabled {
-		background: #f0f0f0;
+		background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
 		opacity: 0.7;
 	}
 
 	textarea {
 		flex-grow: 1;
 		padding: 0.875rem 1rem;
+		padding-top: 1.25rem;
 		border: none;
 		resize: none;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 		font-size: 1rem;
-		font-weight: 400;
+		font-weight: 500;
 		line-height: 1.4;
 		background: transparent;
 		min-height: 22px;
@@ -134,6 +194,7 @@
 
 	textarea::placeholder {
 		color: #999;
+		font-weight: 400;
 	}
 
 	.send-btn {
@@ -143,52 +204,110 @@
 		width: 44px;
 		height: 44px;
 		margin: 4px;
-		background: #ffd700;
+		background: linear-gradient(135deg, #ffd93d 0%, #ffa500 100%);
 		color: #000;
 		border: 2px solid #000;
-		border-radius: 6px;
+		border-radius: 8px;
 		cursor: pointer;
 		transition: all 0.2s;
+		box-shadow: 2px 2px 0 #000;
+		transform: rotate(5deg);
 	}
 
 	.send-btn:hover:not(:disabled) {
-		background: #ffa500;
-		transform: scale(1.05);
+		background: linear-gradient(135deg, #98fb98 0%, #90ee90 100%);
+		transform: scale(1.1) rotate(0deg);
+		box-shadow: 3px 3px 0 #000;
+	}
+
+	.send-btn:active:not(:disabled) {
+		transform: scale(0.95);
+		box-shadow: 1px 1px 0 #000;
 	}
 
 	.send-btn:disabled {
 		background: #e0e0e0;
 		cursor: not-allowed;
 		opacity: 0.5;
+		transform: rotate(0deg);
 	}
 
 	.stop-btn {
 		padding: 0.75rem 1.25rem;
-		background: #ff6b6b;
+		background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
 		color: #000;
-		border: 2px solid #000;
-		border-radius: 6px;
+		border: 3px solid #000;
+		border-radius: 8px;
 		cursor: pointer;
 		font-size: 0.9375rem;
-		font-weight: 600;
-		display: block;
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
 		margin: 0 auto 1rem;
 		transition: all 0.2s;
-		box-shadow: 3px 3px 0 #000;
+		box-shadow: 5px 5px 0 #000;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		transform: rotate(-1deg);
+		animation: shake 0.5s ease-in-out infinite;
+	}
+
+	@keyframes shake {
+		0%, 100% {
+			transform: translateX(0) rotate(-1deg);
+		}
+		25% {
+			transform: translateX(-2px) rotate(-1deg);
+		}
+		75% {
+			transform: translateX(2px) rotate(-1deg);
+		}
 	}
 
 	.stop-btn:hover {
-		transform: translate(-1px, -1px);
-		box-shadow: 4px 4px 0 #000;
+		transform: translate(-2px, -2px) rotate(0deg);
+		box-shadow: 7px 7px 0 #000;
+		animation: none;
+	}
+
+	.stop-icon {
+		font-size: 1.125rem;
 	}
 
 	.disclaimer {
 		font-size: 0.8125rem;
-		font-weight: 500;
-		color: #666;
+		font-weight: 600;
+		color: #000;
 		text-align: center;
+		background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+		padding: 0.5rem 1rem;
+		border: 2px solid #000;
+		box-shadow: 3px 3px 0 #000;
+		border-radius: 6px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.375rem;
+		margin: 0 auto;
+		width: fit-content;
+		transform: rotate(0.5deg);
+		animation: float-disclaimer 4s ease-in-out infinite;
+	}
+
+	@keyframes float-disclaimer {
+		0%, 100% {
+			transform: translateY(0) rotate(0.5deg);
+		}
+		50% {
+			transform: translateY(-2px) rotate(-0.5deg);
+		}
+	}
+
+	.disclaimer-icon {
+		font-size: 1rem;
 	}
 
 	@media (max-width: 600px) {
@@ -199,6 +318,7 @@
 		textarea {
 			font-size: 0.9375rem;
 			padding: 0.75rem;
+			padding-top: 1.125rem;
 		}
 
 		.send-btn {
@@ -208,6 +328,11 @@
 
 		.disclaimer {
 			font-size: 0.75rem;
+			width: 100%;
+		}
+
+		.input-emoji {
+			font-size: 1.25rem;
 		}
 	}
 </style>

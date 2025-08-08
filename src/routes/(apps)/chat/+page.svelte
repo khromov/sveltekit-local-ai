@@ -255,10 +255,20 @@
 		{/if}
 	</div>
 {:else}
-	<div class="card-interface">
+	<div class="card-interface chat-interface">
+		<div class="floating-decoration decoration-1"></div>
+		<div class="floating-decoration decoration-2"></div>
+		
 		<div class="toolbar">
-			<span class="model-info">Model: {selectedModel.name}</span>
-			<button onclick={newChat} class="new-chat-btn"> New Chat </button>
+			<span class="model-info">
+				<span class="model-emoji">🤖</span>
+				{selectedModel.name}
+			</span>
+			<button onclick={newChat} class="new-chat-btn">
+				<span class="btn-emoji">✨</span>
+				New Chat
+			</button>
+			<div class="toolbar-decoration"></div>
 		</div>
 
 		<ChatMessages bind:this={chatMessagesComponent} messages={$messages} {isGenerating} />
@@ -298,25 +308,117 @@
 		}
 	}
 
+	.chat-interface {
+		position: relative;
+		transform: rotate(-0.5deg);
+		animation: slideInChat 0.5s ease-out;
+	}
+
+	@keyframes slideInChat {
+		from {
+			opacity: 0;
+			transform: translateY(20px) rotate(-1deg);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) rotate(-0.5deg);
+		}
+	}
+
+	.floating-decoration {
+		position: absolute;
+		background: linear-gradient(135deg, #ffd93d 0%, #ff69b4 100%);
+		border: 3px solid #000;
+		opacity: 0.2;
+		z-index: -1;
+		pointer-events: none;
+	}
+
+	.decoration-1 {
+		width: 80px;
+		height: 80px;
+		top: -20px;
+		right: -20px;
+		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
+		animation: float1 8s ease-in-out infinite;
+	}
+
+	.decoration-2 {
+		width: 60px;
+		height: 60px;
+		bottom: 100px;
+		left: -15px;
+		border-radius: 70% 30% 30% 70% / 40% 60% 40% 60%;
+		animation: float2 10s ease-in-out infinite;
+	}
+
+	@keyframes float1 {
+		0%, 100% {
+			transform: translate(0, 0) rotate(0deg);
+		}
+		50% {
+			transform: translate(-10px, 10px) rotate(180deg);
+		}
+	}
+
+	@keyframes float2 {
+		0%, 100% {
+			transform: translate(0, 0) rotate(0deg);
+		}
+		50% {
+			transform: translate(10px, -10px) rotate(-180deg);
+		}
+	}
+
+	.toolbar-decoration {
+		position: absolute;
+		bottom: -6px;
+		left: 0;
+		right: 0;
+		height: 3px;
+		background: repeating-linear-gradient(
+			90deg,
+			#000,
+			#000 8px,
+			#98fb98 8px,
+			#98fb98 16px
+		);
+	}
+
+	.model-emoji {
+		font-size: 1.125rem;
+		margin-right: 0.25rem;
+	}
+
+	.btn-emoji {
+		font-size: 1rem;
+	}
+
 	.new-chat-btn {
 		padding: 0.5rem 1rem;
-		background: #000;
-		color: #fff;
-		border: none;
+		background: #98fb98;
+		color: #000;
+		border: 2px solid #000;
 		border-radius: 6px;
 		cursor: pointer;
 		font-size: 0.875rem;
-		font-weight: 600;
+		font-weight: 700;
 		transition: all 0.2s;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 		white-space: nowrap;
+		box-shadow: 3px 3px 0 #000;
+		display: flex;
+		align-items: center;
+		gap: 0.375rem;
+		transform: rotate(1deg);
 	}
 
 	.new-chat-btn:hover {
-		transform: translateY(-1px);
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		transform: translate(-2px, -2px) rotate(0deg);
+		box-shadow: 5px 5px 0 #000;
+		background: #ffd93d;
 	}
 
 	/* Responsive adjustments for the main page */
@@ -329,6 +431,10 @@
 		.new-chat-btn {
 			padding: 0.375rem 0.75rem;
 			font-size: 0.8125rem;
+		}
+
+		.decoration-1, .decoration-2 {
+			display: none;
 		}
 	}
 

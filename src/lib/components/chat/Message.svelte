@@ -12,13 +12,20 @@
 
 {#if message.role !== 'system'}
 	<div class="message-wrapper {message.role}-wrapper">
+		{#if message.role === 'user'}
+			<div class="message-decoration user-decoration"></div>
+		{:else}
+			<div class="message-decoration assistant-decoration"></div>
+		{/if}
+		
 		<div class="message {message.role}-message">
 			<div class="message-content">
 				{#if message.role === 'assistant' && message.content === '' && isGenerating && isLast}
 					<div class="typing-indicator">
-						<span></span>
-						<span></span>
-						<span></span>
+						<span class="typing-emoji">💭</span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
 					</div>
 				{:else}
 					{message.content}
@@ -33,7 +40,7 @@
 		display: flex;
 		margin-bottom: 1rem;
 		width: 100%;
-		animation: messageSlide 0.3s ease-out;
+		animation: messageSlide 0.4s ease-out;
 		position: relative;
 		padding: 0 0.5rem;
 		box-sizing: border-box;
@@ -43,11 +50,47 @@
 	@keyframes messageSlide {
 		from {
 			opacity: 0;
-			transform: translateY(10px);
+			transform: translateY(15px) scale(0.95);
 		}
 		to {
 			opacity: 1;
-			transform: translateY(0);
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	.message-decoration {
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		border: 2px solid #000;
+		opacity: 0.3;
+		z-index: -1;
+	}
+
+	.user-decoration {
+		right: -5px;
+		top: 50%;
+		transform: translateY(-50%) rotate(45deg);
+		background: #ffd93d;
+		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
+		animation: float-deco 4s ease-in-out infinite;
+	}
+
+	.assistant-decoration {
+		left: -5px;
+		top: 50%;
+		transform: translateY(-50%) rotate(-45deg);
+		background: #98fb98;
+		border-radius: 70% 30% 30% 70% / 40% 60% 40% 60%;
+		animation: float-deco 4s ease-in-out infinite reverse;
+	}
+
+	@keyframes float-deco {
+		0%, 100% {
+			transform: translateY(-50%) rotate(45deg) scale(1);
+		}
+		50% {
+			transform: translateY(-50%) rotate(45deg) scale(1.1);
 		}
 	}
 
@@ -73,50 +116,73 @@
 		line-height: 1.5;
 		white-space: pre-wrap;
 		word-break: break-word;
-		border: 2px solid #000;
+		border: 3px solid #000;
 		position: relative;
 		font-weight: 500;
-		border-radius: 12px;
+		border-radius: 16px;
+		transition: all 0.2s ease;
 	}
 
 	/* User message styling */
 	.user-message .message-content {
-		background: #ffd700;
+		background: linear-gradient(135deg, #ffd93d 0%, #ffa500 100%);
 		color: #000;
-		box-shadow: 3px 3px 0 #000;
+		box-shadow: 5px 5px 0 #000;
 		border-bottom-right-radius: 4px;
+		transform: rotate(1deg);
+	}
+
+	.user-message .message-content:hover {
+		transform: rotate(0deg) translate(-1px, -1px);
+		box-shadow: 6px 6px 0 #000;
 	}
 
 	.user-message .message-content::before {
-		content: 'You';
+		content: '👤 You';
 		position: absolute;
-		top: -20px;
+		top: -22px;
 		right: 0;
 		font-size: 0.75rem;
 		font-weight: 700;
-		color: #666;
+		color: #000;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
+		background: #98fb98;
+		padding: 2px 8px;
+		border: 2px solid #000;
+		border-radius: 4px;
+		box-shadow: 2px 2px 0 #000;
 	}
 
 	/* Assistant message styling */
 	.assistant-message .message-content {
-		background: #f0f0f0;
+		background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
 		color: #000;
-		box-shadow: 3px 3px 0 #000;
+		box-shadow: 5px 5px 0 #000;
 		border-bottom-left-radius: 4px;
+		transform: rotate(-1deg);
+	}
+
+	.assistant-message .message-content:hover {
+		transform: rotate(0deg) translate(-1px, -1px);
+		box-shadow: 6px 6px 0 #000;
 	}
 
 	.assistant-message .message-content::before {
-		content: 'AI';
+		content: '🤖 AI';
 		position: absolute;
-		top: -20px;
+		top: -22px;
 		left: 0;
 		font-size: 0.75rem;
 		font-weight: 700;
-		color: #666;
+		color: #000;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
+		background: #ff69b4;
+		padding: 2px 8px;
+		border: 2px solid #000;
+		border-radius: 4px;
+		box-shadow: 2px 2px 0 #000;
 	}
 
 	/* Typing indicator */
@@ -127,32 +193,49 @@
 		padding: 0.25rem 0;
 	}
 
-	.typing-indicator span {
-		width: 8px;
-		height: 8px;
-		background: #666;
-		border-radius: 50%;
-		display: inline-block;
-		animation: bounce 1.4s infinite ease-in-out both;
+	.typing-emoji {
+		font-size: 1.25rem;
+		animation: pulse-emoji 1.5s ease-in-out infinite;
 	}
 
-	.typing-indicator span:nth-child(1) {
+	@keyframes pulse-emoji {
+		0%, 100% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.2);
+		}
+	}
+
+	.typing-indicator .dot {
+		width: 8px;
+		height: 8px;
+		background: #000;
+		border-radius: 50%;
+		display: inline-block;
+		animation: bounce-dot 1.4s infinite ease-in-out both;
+		box-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+	}
+
+	.typing-indicator .dot:nth-child(2) {
 		animation-delay: -0.32s;
 	}
 
-	.typing-indicator span:nth-child(2) {
+	.typing-indicator .dot:nth-child(3) {
 		animation-delay: -0.16s;
 	}
 
-	@keyframes bounce {
-		0%,
-		80%,
-		100% {
-			transform: scale(0.8);
+	.typing-indicator .dot:nth-child(4) {
+		animation-delay: 0;
+	}
+
+	@keyframes bounce-dot {
+		0%, 80%, 100% {
+			transform: scale(0.8) translateY(0);
 			opacity: 0.5;
 		}
 		40% {
-			transform: scale(1);
+			transform: scale(1.2) translateY(-8px);
 			opacity: 1;
 		}
 	}
@@ -174,6 +257,10 @@
 		.user-message .message-content::before,
 		.assistant-message .message-content::before {
 			font-size: 0.7rem;
+		}
+
+		.message-decoration {
+			display: none;
 		}
 	}
 </style>
