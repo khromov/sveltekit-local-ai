@@ -30,8 +30,8 @@
 	let selectedModel = $state(AVAILABLE_MODELS[0]);
 	let inputText = $state('');
 	let stopSignal = false;
-	let chatMessagesComponent: ChatMessages | undefined;
-	let messageInputComponent: MessageInput | undefined;
+	let chatMessagesComponent: ChatMessages | undefined = $state();
+	let messageInputComponent: MessageInput | undefined = $state();
 
 	// Initialize wake lock functionality
 	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
