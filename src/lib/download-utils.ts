@@ -16,7 +16,7 @@ export function isOPFSSupported(): boolean {
 		console.log('OPFS disabled via PUBLIC_DISABLE_OPFS environment variable');
 		return false;
 	}
-	
+
 	return 'navigator' in globalThis && 'storage' in navigator && 'getDirectory' in navigator.storage;
 }
 
@@ -72,7 +72,7 @@ export async function downloadModelWithProgress(
 	onProgress: (progress: number, cached?: boolean) => void
 ): Promise<File> {
 	const fileName = getModelFileName(url);
-	
+
 	// Check if model is already cached (only if OPFS is supported)
 	const cachedModel = await getCachedModel(fileName);
 	if (cachedModel) {
@@ -90,11 +90,11 @@ export async function downloadModelWithProgress(
 		console.log('OPFS not supported, using simple fetch');
 		onProgress(-1); // Signal no progress tracking available
 		const response = await fetch(url);
-		
+
 		if (!response.ok) {
 			throw new Error(`Failed to download model: ${response.statusText}`);
 		}
-		
+
 		const blob = await response.blob();
 		onProgress(100);
 		console.log(`Downloaded model without progress tracking: ${fileName}`);
@@ -176,7 +176,7 @@ export async function clearModelCache(): Promise<void> {
 
 	try {
 		const opfsRoot = await navigator.storage.getDirectory();
-		
+
 		// List all files and remove model files
 		for await (const [name, handle] of (opfsRoot as any).entries()) {
 			if (handle.kind === 'file' && name.endsWith('.bin')) {
@@ -184,7 +184,7 @@ export async function clearModelCache(): Promise<void> {
 				console.log(`Removed cached model: ${name}`);
 			}
 		}
-		
+
 		console.log('Model cache cleared');
 	} catch (error) {
 		console.error('Failed to clear model cache:', error);
@@ -212,7 +212,7 @@ export async function getCacheInfo(): Promise<{ fileName: string; size: number }
 
 	try {
 		const opfsRoot = await navigator.storage.getDirectory();
-		
+
 		for await (const [name, handle] of (opfsRoot as any).entries()) {
 			if (handle.kind === 'file' && name.endsWith('.bin')) {
 				const file = await handle.getFile();

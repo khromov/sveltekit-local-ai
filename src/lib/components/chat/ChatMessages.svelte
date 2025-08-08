@@ -34,11 +34,7 @@
 
 <div bind:this={chatContainer} class="chat-messages content-area" id="chat-container">
 	{#each messages as message, i}
-		<Message
-			{message}
-			{isGenerating}
-			isLast={i === messages.length - 1}
-		/>
+		<Message {message} {isGenerating} isLast={i === messages.length - 1} />
 	{/each}
 </div>
 

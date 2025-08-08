@@ -8,11 +8,7 @@
 		isLoading?: boolean;
 	}
 
-	let {
-		modelSelection = $bindable(),
-		onLoadModel,
-		isLoading = false
-	}: Props = $props();
+	let { modelSelection = $bindable(), onLoadModel, isLoading = false }: Props = $props();
 </script>
 
 <div class="model-selector">

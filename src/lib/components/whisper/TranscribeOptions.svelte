@@ -68,11 +68,7 @@
 	</div>
 
 	{#if transcribeMode === 'upload'}
-		<FileUpload
-			bind:selectedFile
-			{onFileSelect}
-			{disabled}
-		/>
+		<FileUpload bind:selectedFile {onFileSelect} {disabled} />
 	{/if}
 </div>
 
