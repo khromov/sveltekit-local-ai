@@ -8,7 +8,7 @@
 			<h1 class="main-title">
 				<span class="title-line">Local AI Playground</span>
 			</h1>
-			<p class="subtitle">Private AI tools that run entirely in your browser</p>
+			<p class="subtitle">On this page you'll find free, private AI tools that run entirely in your browser - and even offline!</p>
 		</header>
 
 		<div class="feature-grid">
@@ -117,7 +117,6 @@
 	}
 
 	.main-menu {
-		margin-top: 1rem;
 		min-height: 100vh;
 		display: flex;
 		align-items: flex-start;
