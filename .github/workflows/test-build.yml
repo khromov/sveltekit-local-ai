@@ -28,4 +28,7 @@ jobs:
         run: npm run lint
 
       - name: Build project
+        run: npm run check
+
+      - name: Build project
         run: npm run build
