@@ -26,3 +26,5 @@ jobs:
 
       - name: Build project
         run: npm run build
+        env:
+          PUBLIC_DISABLE_OPFS: false

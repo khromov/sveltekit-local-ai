@@ -26,3 +26,5 @@ jobs:
 
       - name: Run type check
         run: npm run check
+        env:
+          PUBLIC_DISABLE_OPFS: false
