@@ -52,17 +52,16 @@
 			/>
 			<span class="option-content">
 				<strong>Demo Audio</strong>
-				<small>Use the included JFK speech sample (<a href="/jfk.mp3" target="_blank">listen to audio</a>)</small>
+				<small
+					>Use the included JFK speech sample (<a href="/jfk.mp3" target="_blank">listen to audio</a
+					>)</small
+				>
 			</span>
 		</label>
 	</div>
 
 	{#if transcribeMode === 'upload'}
-		<FileUpload
-			bind:selectedFile
-			{onFileSelect}
-			{disabled}
-		/>
+		<FileUpload bind:selectedFile {onFileSelect} {disabled} />
 	{/if}
 </div>
 

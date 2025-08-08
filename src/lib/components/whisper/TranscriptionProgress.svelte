@@ -21,7 +21,7 @@
 <div class="transcribing">
 	<h3>Transcribing Audio</h3>
 	<p class="progress-percentage">{progress}% Complete</p>
-	
+
 	<div class="progress-wrapper">
 		<ProgressBar {progress} {previousProgress} />
 	</div>

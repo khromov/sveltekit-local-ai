@@ -25,7 +25,6 @@ https://ai.stanislav.garden
    ```
 
    Available variables:
-
    - `PUBLIC_DISABLE_OPFS=true` - Disable OPFS caching for testing fallback behavior
 
 4. Start the development server

@@ -6,12 +6,7 @@
 		isRetrying?: boolean;
 	}
 
-	let {
-		message,
-		buttonText = 'Retry',
-		onRetry,
-		isRetrying = false
-	}: Props = $props();
+	let { message, buttonText = 'Retry', onRetry, isRetrying = false }: Props = $props();
 </script>
 
 <div class="error">

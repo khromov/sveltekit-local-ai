@@ -10,7 +10,7 @@
 	} from '$lib/wllama-config';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import { messages, inferenceParams } from '$lib/stores';
-	
+
 	// Import components
 	import LoadingProgress from '$lib/components/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/ErrorDisplay.svelte';
@@ -247,15 +247,11 @@
 			<LoadingProgress
 				title="Loading Model"
 				progress={downloadProgress}
-				previousProgress={previousProgress}
+				{previousProgress}
 				message="This will take a couple of minutes. The chat model is being downloaded to your browser."
 			/>
 		{:else}
-			<ModelSelector
-				bind:modelSelection
-				onLoadModel={loadModel}
-				{isLoading}
-			/>
+			<ModelSelector bind:modelSelection onLoadModel={loadModel} {isLoading} />
 		{/if}
 	</div>
 {:else}
@@ -265,11 +261,7 @@
 			<button onclick={newChat} class="new-chat-btn">New Chat</button>
 		</div>
 
-		<ChatMessages
-			bind:this={chatMessagesComponent}
-			messages={$messages}
-			{isGenerating}
-		/>
+		<ChatMessages bind:this={chatMessagesComponent} messages={$messages} {isGenerating} />
 
 		<MessageInput
 			bind:this={messageInputComponent}

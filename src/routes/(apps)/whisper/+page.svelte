@@ -5,7 +5,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { whisperModel } from '$lib/stores';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
-	
+
 	// Import components
 	import WhisperModelSelector from '$lib/components/whisper/WhisperModelSelector.svelte';
 	import TranscribeOptions from '$lib/components/whisper/TranscribeOptions.svelte';
@@ -189,14 +189,14 @@
 			const modelFile = await downloadModelWithProgress(selectedModel, (progress, cached) => {
 				previousDownloadProgress = downloadProgress;
 				downloadProgress = progress;
-				
+
 				// Check for no progress tracking signal
 				if (progress === -1) {
 					hasProgressTracking = false;
 					downloadProgress = 0;
 					return;
 				}
-				
+
 				// Update cached state
 				if (cached) {
 					usingCachedModel = true;
@@ -250,11 +250,11 @@
 		if (!opfsSupported) {
 			console.log('OPFS not supported - models will not be cached');
 		}
-		
+
 		// If we have a saved model, only load it if it's cached (or if OPFS not supported, don't autoload)
 		if ($whisperModel) {
 			selectedModel = $whisperModel;
-			
+
 			if (opfsSupported) {
 				// Only autoload if the model is already cached
 				const cached = await isModelCached($whisperModel);
@@ -314,16 +314,13 @@
 			{#if isTranscribing}
 				<TranscriptionProgress
 					progress={transcribeProgress}
-					previousProgress={previousProgress}
+					{previousProgress}
 					{currentSegment}
 					{isStuck}
 					onReload={reloadPage}
 				/>
 			{:else if text}
-				<TranscriptionResult
-					{text}
-					{transcriptionData}
-				/>
+				<TranscriptionResult {text} {transcriptionData} />
 			{/if}
 		</div>
 	</div>

@@ -77,17 +77,17 @@
 		/>
 	{:else if isLoading}
 		<LoadingProgress
-			title={usingCachedModel 
-				? 'Loading Cached Model' 
-				: opfsSupported 
-					? 'Downloading Model' 
+			title={usingCachedModel
+				? 'Loading Cached Model'
+				: opfsSupported
+					? 'Downloading Model'
 					: 'Loading Model'}
 			progress={downloadProgress}
 			previousProgress={previousDownloadProgress}
 			percentageText={hasProgressTracking ? `${downloadProgress}% Complete` : 'Loading...'}
 			showPercentage={true}
-			message={usingCachedModel 
-				? 'Loading model from local cache...' 
+			message={usingCachedModel
+				? 'Loading model from local cache...'
 				: opfsSupported
 					? 'The transcription model is being downloaded to your browser.'
 					: 'Loading model... Progress tracking not available in this browser.'}

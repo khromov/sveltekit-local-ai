@@ -8,11 +8,7 @@
 		isLoading?: boolean;
 	}
 
-	let {
-		modelSelection = $bindable(),
-		onLoadModel,
-		isLoading = false
-	}: Props = $props();
+	let { modelSelection = $bindable(), onLoadModel, isLoading = false }: Props = $props();
 </script>
 
 <div class="model-selector">
@@ -38,13 +34,7 @@
 		</label>
 		<label>
 			<span>Temperature</span>
-			<input
-				type="number"
-				bind:value={$inferenceParams.temperature}
-				min="0"
-				max="2"
-				step="0.1"
-			/>
+			<input type="number" bind:value={$inferenceParams.temperature} min="0" max="2" step="0.1" />
 		</label>
 	</div>
 

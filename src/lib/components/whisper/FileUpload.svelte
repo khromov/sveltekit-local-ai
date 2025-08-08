@@ -5,11 +5,7 @@
 		disabled?: boolean;
 	}
 
-	let {
-		selectedFile = $bindable(),
-		onFileSelect,
-		disabled = false
-	}: Props = $props();
+	let { selectedFile = $bindable(), onFileSelect, disabled = false }: Props = $props();
 
 	let fileInputElement: HTMLInputElement | undefined = $state();
 	let isDragging = $state(false);

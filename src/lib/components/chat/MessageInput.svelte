@@ -189,5 +189,4 @@
 		color: #8e8e93;
 		text-align: center;
 	}
-
 </style>

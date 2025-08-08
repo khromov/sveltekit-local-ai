@@ -14,30 +14,30 @@
 	// Convert transcription data to SRT format using subsrt-ts
 	function convertToSRT(): string {
 		if (!transcriptionData?.transcription?.length) return '';
-		
+
 		// Transform transcription data to subsrt format
 		const captions = transcriptionData.transcription.map((segment: any) => {
 			// Convert timestamp format from "hh:mm:ss,mmm" to milliseconds
 			const startMs = timestampToMs(segment.timestamps.from);
 			const endMs = timestampToMs(segment.timestamps.to);
-			
+
 			return {
 				start: startMs,
 				end: endMs,
 				text: segment.text.trim()
 			};
 		});
-		
+
 		// Generate SRT content using subsrt-ts
 		return subsrt.build(captions, { format: 'srt' });
 	}
-	
+
 	// Helper function to convert SRT timestamp format to milliseconds
 	function timestampToMs(timestamp: string): number {
 		// timestamp format: "hh:mm:ss,mmm"
 		const [time, ms] = timestamp.split(',');
 		const [hours, minutes, seconds] = time.split(':').map(Number);
-		
+
 		return (hours * 3600 + minutes * 60 + seconds) * 1000 + Number(ms);
 	}
 
@@ -63,16 +63,10 @@
 				<div class="result-actions">
 					{#if transcriptionData?.transcription?.length}
 						<div class="tab-selectors">
-							<button
-								class:active={activeTab === 'text'}
-								onclick={() => (activeTab = 'text')}
-							>
+							<button class:active={activeTab === 'text'} onclick={() => (activeTab = 'text')}>
 								Text
 							</button>
-							<button
-								class:active={activeTab === 'srt'}
-								onclick={() => (activeTab = 'srt')}
-							>
+							<button class:active={activeTab === 'srt'} onclick={() => (activeTab = 'srt')}>
 								SRT
 							</button>
 						</div>
@@ -110,7 +104,7 @@
 					</button>
 				</div>
 			</div>
-			
+
 			{#if !transcriptionData?.transcription?.length || activeTab === 'text'}
 				<p>{text}</p>
 			{:else if activeTab === 'srt' && transcriptionData?.transcription?.length}
