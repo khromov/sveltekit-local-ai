@@ -43,9 +43,12 @@
 		background: #FFF;
 		border: 3px solid #000;
 		box-shadow: 5px 5px 0 #000;
-		width: 100%;
+		width: calc(100% - 4rem);
+		max-width: 500px;
 		text-align: center;
 		border-radius: 12px;
+		margin: 0 auto;
+		box-sizing: border-box;
 	}
 
 	.loading-progress h3 {
@@ -73,12 +76,17 @@
 		font-weight: 500;
 		color: #666;
 		margin: 0;
-		max-width: 400px;
+		max-width: 100%;
+		padding: 0 1rem;
+		word-wrap: break-word;
 	}
 
 	@media (max-width: 600px) {
 		.loading-progress {
-			padding: 1.5rem;
+			width: calc(100% - 2rem);
+			padding: 1.5rem 1rem;
+			max-width: none;
+			margin: 0 1rem;
 		}
 
 		.loading-progress h3 {
@@ -87,6 +95,28 @@
 
 		.download-percentage {
 			font-size: 1.125rem;
+			padding: 0.25rem 0.75rem;
+		}
+
+		.loading-message {
+			font-size: 0.875rem;
+			padding: 0 0.5rem;
+		}
+	}
+
+	@media (max-width: 400px) {
+		.loading-progress {
+			width: calc(100% - 1rem);
+			margin: 0 0.5rem;
+			padding: 1.25rem 0.75rem;
+		}
+
+		.loading-progress h3 {
+			font-size: 1.25rem;
+		}
+
+		.download-percentage {
+			font-size: 1rem;
 		}
 	}
 </style>

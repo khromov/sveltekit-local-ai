@@ -32,9 +32,11 @@
 		border: 3px solid #000;
 		text-align: center;
 		box-shadow: 5px 5px 0 #000;
-		width: 100%;
+		width: calc(100% - 4rem);
 		max-width: 500px;
 		border-radius: 12px;
+		margin: 0 auto;
+		box-sizing: border-box;
 	}
 
 	.error h3 {
@@ -52,6 +54,7 @@
 		margin-bottom: 1.25rem;
 		line-height: 1.5;
 		color: #000;
+		word-wrap: break-word;
 	}
 
 	.retry-button {
@@ -82,12 +85,26 @@
 
 	@media (max-width: 600px) {
 		.error {
+			width: calc(100% - 2rem);
 			max-width: none;
-			padding: 1.25rem;
+			padding: 1.25rem 1rem;
+			margin: 0 1rem;
 		}
 
 		.error h3 {
 			font-size: 1.25rem;
+		}
+
+		.error p {
+			font-size: 0.9375rem;
+		}
+	}
+
+	@media (max-width: 400px) {
+		.error {
+			width: calc(100% - 1rem);
+			margin: 0 0.5rem;
+			padding: 1rem 0.75rem;
 		}
 	}
 </style>

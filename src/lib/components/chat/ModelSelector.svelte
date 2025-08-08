@@ -69,7 +69,7 @@
 
 <style>
 	.model-selector {
-		width: 100%;
+		width: calc(100% - 4rem);
 		max-width: 500px;
 		display: flex;
 		flex-direction: column;
@@ -81,6 +81,7 @@
 		margin: 0 auto;
 		border-radius: 12px;
 		animation: fadeIn 0.4s ease-out;
+		box-sizing: border-box;
 	}
 
 	@keyframes fadeIn {
@@ -126,11 +127,12 @@
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
 		color: #666;
+		z-index: 1;
 	}
 
 	.model-selector select {
 		width: 100%;
-		padding: 0.875rem 1rem;
+		padding: 0.875rem 2.5rem 0.875rem 1rem;
 		border: 2px solid #000;
 		border-radius: 6px;
 		font-size: 0.9375rem;
@@ -142,10 +144,10 @@
 		background-repeat: no-repeat;
 		background-position: right 0.875rem center;
 		background-size: 1.25em;
-		padding-right: 2.5rem;
 		transition: all 0.2s;
 		cursor: pointer;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
+		box-sizing: border-box;
 	}
 
 	.model-selector select:hover {
@@ -162,6 +164,7 @@
 		padding: 1.25rem;
 		border: 2px solid #000;
 		border-radius: 8px;
+		box-sizing: border-box;
 	}
 
 	.inference-params h3 {
@@ -208,6 +211,8 @@
 		background: #FFF;
 		transition: all 0.2s;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
+		box-sizing: border-box;
+		width: 100%;
 	}
 
 	.inference-params input:focus {
@@ -238,12 +243,57 @@
 
 	@media (max-width: 600px) {
 		.model-selector {
-			padding: 1.5rem;
+			width: calc(100% - 2rem);
+			padding: 1.5rem 1rem;
 			max-width: none;
+			margin: 0 1rem;
 		}
 
 		.model-selector h2 {
 			font-size: 1.5rem;
+		}
+
+		.model-selector select {
+			font-size: 0.875rem;
+			padding: 0.75rem 2.25rem 0.75rem 0.875rem;
+		}
+
+		.inference-params {
+			padding: 1rem;
+		}
+
+		.inference-params h3 {
+			font-size: 1rem;
+		}
+
+		.param-label {
+			font-size: 0.8125rem;
+		}
+
+		.inference-params input {
+			padding: 0.5rem 0.625rem;
+			font-size: 0.875rem;
+		}
+
+		.load-button {
+			font-size: 1rem;
+			padding: 0.875rem 1.25rem;
+		}
+	}
+
+	@media (max-width: 400px) {
+		.model-selector {
+			width: calc(100% - 1rem);
+			margin: 0 0.5rem;
+			padding: 1.25rem 0.75rem;
+		}
+
+		.model-selector h2 {
+			font-size: 1.25rem;
+		}
+
+		.subtitle {
+			font-size: 0.875rem;
 		}
 	}
 </style>
