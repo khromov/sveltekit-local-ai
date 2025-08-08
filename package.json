@@ -42,6 +42,8 @@
 		"vitest": "^3.2.3"
 	},
 	"dependencies": {
-		"express": "^5.1.0"
+		"express": "^5.1.0",
+		"@fontsource/space-grotesk": "^5.0.20",
+		"@fontsource/bebas-neue": "^5.0.20"
 	}
 }

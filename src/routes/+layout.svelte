@@ -1,5 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import '@fontsource/space-grotesk/400.css';
+	import '@fontsource/space-grotesk/500.css';
+	import '@fontsource/space-grotesk/700.css';
+	import '@fontsource/bebas-neue';
 
 	interface Props {
 		children?: import('svelte').Snippet;
