@@ -9,6 +9,7 @@
 	}
 
 	let { modelSelection = $bindable(), onLoadModel, isLoading = false }: Props = $props();
+	let showParams = $state(false);
 </script>
 
 <div class="model-selector">
@@ -27,27 +28,45 @@
 	</div>
 
 	<div class="inference-params">
-		<h3>Inference Parameters</h3>
-		<div class="params-grid">
-			<label class="param-item">
-				<span class="param-label">Threads <span class="param-hint">(-1 auto)</span></span>
-				<input type="number" bind:value={$inferenceParams.nThreads} min="-1" max="32" />
-			</label>
-			<label class="param-item">
-				<span class="param-label">Context Size</span>
-				<input type="number" bind:value={$inferenceParams.nContext} min="512" max="8192" />
-			</label>
-			<label class="param-item">
-				<span class="param-label">Temperature</span>
-				<input
-					type="number"
-					bind:value={$inferenceParams.temperature}
-					min="0"
-					max="2"
-					step="0.1"
-				/>
-			</label>
-		</div>
+		<button class="params-toggle" onclick={() => showParams = !showParams}>
+			<span>Advanced Parameters</span>
+			<svg 
+				class="toggle-icon" 
+				class:rotated={showParams}
+				viewBox="0 0 24 24" 
+				width="20" 
+				height="20" 
+				stroke="currentColor" 
+				stroke-width="2" 
+				fill="none" 
+				stroke-linecap="round" 
+				stroke-linejoin="round"
+			>
+				<polyline points="6 9 12 15 18 9"></polyline>
+			</svg>
+		</button>
+		{#if showParams}
+			<div class="params-grid">
+				<label class="param-item">
+					<span class="param-label">Threads <span class="param-hint">(-1 auto)</span></span>
+					<input type="number" bind:value={$inferenceParams.nThreads} min="-1" max="32" />
+				</label>
+				<label class="param-item">
+					<span class="param-label">Context Size</span>
+					<input type="number" bind:value={$inferenceParams.nContext} min="512" max="8192" />
+				</label>
+				<label class="param-item">
+					<span class="param-label">Temperature</span>
+					<input
+						type="number"
+						bind:value={$inferenceParams.temperature}
+						min="0"
+						max="2"
+						step="0.1"
+					/>
+				</label>
+			</div>
+		{/if}
 	</div>
 
 	<button onclick={onLoadModel} class="load-button primary-button" disabled={isLoading}>
@@ -163,17 +182,53 @@
 		box-sizing: border-box;
 	}
 
-	.inference-params h3 {
-		font-size: 1.125rem;
-		margin: 0 0 1rem 0;
-		color: #000;
-		text-align: center;
+	.params-toggle {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.75rem 0;
+		background: none;
+		border: none;
+		font-size: 1rem;
 		font-weight: 600;
+		color: #000;
+		cursor: pointer;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		transition: color 0.2s;
+	}
+
+	.params-toggle:hover {
+		color: #666;
+	}
+
+	.toggle-icon {
+		transition: transform 0.3s ease;
+		flex-shrink: 0;
+	}
+
+	.toggle-icon.rotated {
+		transform: rotate(180deg);
 	}
 
 	.params-grid {
 		display: grid;
 		gap: 1rem;
+		margin-top: 1rem;
+		animation: slideDown 0.3s ease-out;
+	}
+
+	@keyframes slideDown {
+		from {
+			opacity: 0;
+			transform: translateY(-10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
 	.param-item {
