@@ -10,7 +10,7 @@
 	<div class="menu-container">
 		<header class="menu-header">
 			<h1 class="main-title">
-				<span class="title-line">LOCAL AI CHAT</span>
+				<span class="title-line">LOCAL AI Playground</span>
 			</h1>
 			<p class="subtitle">Private AI tools that run entirely in your browser</p>
 		</header>
