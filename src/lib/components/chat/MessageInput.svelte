@@ -89,8 +89,8 @@
 	</div>
 
 	<div class="disclaimer">
-		<span class="disclaimer-icon">🔒</span>
-		Wllama is running locally in your browser. Model responses may not always be accurate.
+		<span class="disclaimer-icon">�</span>
+		Model responses may not always be accurate.
 	</div>
 </div>
 
@@ -274,37 +274,25 @@
 	}
 
 	.disclaimer {
-		font-size: 0.8125rem;
-		font-weight: 600;
-		color: #000;
+		font-size: 0.75rem;
+		font-weight: 400;
+		color: #666;
 		text-align: center;
-		background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
-		padding: 0.5rem 1rem;
-		border: 2px solid #000;
-		box-shadow: 3px 3px 0 #000;
-		border-radius: 6px;
-		display: inline-flex;
+		background: #f8f8f8;
+		padding: 0.5rem 0.75rem;
+		border: 1px solid #e0e0e0;
+		border-radius: 4px;
+		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.375rem;
+		gap: 0.25rem;
 		margin: 0 auto;
 		width: fit-content;
-		transform: rotate(0.5deg);
-		animation: float-disclaimer 4s ease-in-out infinite;
-	}
-
-	@keyframes float-disclaimer {
-		0%,
-		100% {
-			transform: translateY(0) rotate(0.5deg);
-		}
-		50% {
-			transform: translateY(-2px) rotate(-0.5deg);
-		}
+		max-width: 300px;
 	}
 
 	.disclaimer-icon {
-		font-size: 1rem;
+		font-size: 0.875rem;
 	}
 
 	@media (max-width: 600px) {

@@ -247,7 +247,7 @@
 		border: 3px solid #000;
 		border-radius: 8px;
 		box-sizing: border-box;
-		transform: rotate(0.5deg);
+		transform: rotate(0.2deg);
 		box-shadow: 3px 3px 0 #000;
 	}
 
