@@ -89,7 +89,7 @@
 	</div>
 
 	<div class="disclaimer">
-		<span class="disclaimer-icon">�</span>
+		<span class="disclaimer-icon">💡</span>
 		Model responses may not always be accurate.
 	</div>
 </div>
