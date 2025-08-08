@@ -309,11 +309,11 @@
 	:global(.content-area) {
 		padding: 1.5rem;
 		background: #fff;
-		min-height: 300px;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
 		box-sizing: border-box;
+		min-height: 0; /* allow children like chat list to control their own height */
 	}
 
 	:global(.input-area) {
@@ -321,6 +321,7 @@
 		border-top: 3px solid #000;
 		background: #f5f5f5;
 		box-sizing: border-box;
+		flex: 0 0 auto;
 	}
 
 	:global(.disclaimer) {
@@ -420,7 +421,7 @@
 
 		:global(.content-area) {
 			padding: 1rem;
-			min-height: 250px;
+			min-height: 0;
 		}
 
 		:global(.input-area) {

@@ -53,10 +53,10 @@
 
 <style>
 	.chat-messages {
-		height: clamp(350px, calc(100vh - 250px), 600px);
-		overflow-y: auto;
-		overflow-x: hidden;
-		max-height: calc(100vh - 250px);
+		/* Let this area flex to fill available space in the chat card and scroll internally */
+		flex: 1 1 auto;
+		min-height: 0; /* critical to allow proper scrolling in flex containers */
+		overflow: auto;
 		position: relative;
 		background: linear-gradient(135deg, rgba(255, 229, 180, 0.1) 0%, rgba(230, 230, 250, 0.1) 100%);
 		padding-top: 1rem;
@@ -205,9 +205,10 @@
 	}
 
 	@media (max-width: 600px) {
+		/* On small screens, inherit the same flexible behavior */
 		.chat-messages {
-			height: clamp(250px, calc(100vh - 220px), 400px);
-			max-height: calc(100vh - 220px);
+			flex: 1 1 auto;
+			min-height: 0;
 		}
 
 		.empty-icon {

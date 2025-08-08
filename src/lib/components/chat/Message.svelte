@@ -44,7 +44,6 @@
 		position: relative;
 		padding: 0 0.5rem;
 		box-sizing: border-box;
-		overflow-x: hidden;
 	}
 
 	@keyframes messageSlide {
@@ -109,6 +108,7 @@
 		word-wrap: break-word;
 		overflow-wrap: break-word;
 		min-width: 0;
+		overflow: visible;
 	}
 
 	.message-content {
@@ -122,6 +122,7 @@
 		font-weight: 500;
 		border-radius: 16px;
 		transition: all 0.2s ease;
+		overflow: visible;
 	}
 
 	/* User message styling */

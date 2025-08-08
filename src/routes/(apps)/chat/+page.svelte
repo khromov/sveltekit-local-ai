@@ -312,6 +312,17 @@
 		position: relative;
 		transform: rotate(0deg);
 		animation: slideInChat 0.5s ease-out;
+		display: flex;
+		flex-direction: column;
+		/* Fix the card height relative to the viewport so only the messages list scrolls */
+		height: clamp(520px, 85vh, 920px);
+		min-height: 0; /* important for inner flex child scrolling */
+	}
+
+	@media (max-width: 600px) {
+		.chat-interface {
+			height: 85vh;
+		}
 	}
 
 	@keyframes slideInChat {
