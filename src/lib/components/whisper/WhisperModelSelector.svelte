@@ -33,11 +33,7 @@
 		onRetry
 	}: Props = $props();
 
-	let opfsSupported = $state(true);
-
-	$effect(() => {
-		opfsSupported = isOPFSSupported();
-	});
+	let opfsSupported = isOPFSSupported();
 </script>
 
 <div class="model-selection">
