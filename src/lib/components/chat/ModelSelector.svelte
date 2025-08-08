@@ -27,7 +27,7 @@
 		<select id="model-select" bind:value={modelSelection}>
 			{#each AVAILABLE_MODELS as model (model.url)}
 				<option value={model.url}>
-					{model.name} ({formatFileSize(model.size)})
+					{model.longName ?? model.name} ({formatFileSize(model.size)})
 				</option>
 			{/each}
 		</select>

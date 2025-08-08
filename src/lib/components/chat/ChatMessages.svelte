@@ -59,7 +59,7 @@
 		overflow: auto;
 		position: relative;
 		background: linear-gradient(135deg, rgba(255, 229, 180, 0.1) 0%, rgba(230, 230, 250, 0.1) 100%);
-		padding-top: 1rem;
+		padding-top: 3rem;
 		width: 100%;
 		box-sizing: border-box;
 		border-left: 3px solid #000;
