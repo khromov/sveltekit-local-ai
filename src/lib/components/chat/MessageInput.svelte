@@ -14,7 +14,7 @@
 		isGenerating = false,
 		onSend,
 		onStop,
-		placeholder = 'Message'
+		placeholder = 'Type your message...'
 	}: Props = $props();
 
 	let inputElement: HTMLTextAreaElement | undefined = $state();
@@ -47,7 +47,10 @@
 
 <div class="input-area">
 	{#if isGenerating && onStop}
-		<button onclick={onStop} class="stop-btn">Stop Generation</button>
+		<button onclick={onStop} class="stop-btn">
+			<span class="stop-icon">■</span>
+			STOP GENERATION
+		</button>
 	{/if}
 
 	<div class="message-input" class:is-disabled={isGenerating}>
@@ -66,12 +69,13 @@
 			class="send-btn"
 			aria-label="Send message"
 		>
+			<span class="send-text">SEND</span>
 			<svg
 				viewBox="0 0 24 24"
 				width="24"
 				height="24"
 				stroke="currentColor"
-				stroke-width="2"
+				stroke-width="3"
 				fill="none"
 				stroke-linecap="round"
 				stroke-linejoin="round"
@@ -83,115 +87,217 @@
 	</div>
 
 	<div class="disclaimer">
+		<span class="disclaimer-icon">⚡</span>
 		Wllama is running locally in your browser. Model responses may not always be accurate.
 	</div>
 </div>
 
 <style>
 	.input-area {
-		padding: 1rem 1.25rem;
-		border-top: 1px solid #e5e5e5;
-		background-color: white;
+		padding: 1.5rem;
+		background: linear-gradient(135deg, #98FB98 0%, #87CEEB 100%);
+		border-top: 4px solid #000;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.input-area::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: repeating-linear-gradient(
+			90deg,
+			#000,
+			#000 10px,
+			#FFD93D 10px,
+			#FFD93D 20px
+		);
 	}
 
 	.message-input {
 		display: flex;
 		align-items: flex-end;
-		background-color: #f0f0f0;
-		border-radius: 18px;
-		padding: 0.625rem 1.125rem 0.625rem 0.875rem;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+		background: #FFF;
+		border: 4px solid #000;
+		padding: 0;
+		box-shadow: 6px 6px 0 #000;
 		position: relative;
-		transition: background-color 0.2s;
-		margin-bottom: 0.5rem;
+		transition: all 0.15s;
+		margin-bottom: 1rem;
+		border-radius: 0;
+		overflow: hidden;
+		transform: rotate(-0.5deg);
+	}
+
+	.message-input:hover:not(.is-disabled) {
+		transform: translate(-2px, -2px) rotate(0deg);
+		box-shadow: 8px 8px 0 #000;
 	}
 
 	.message-input.is-disabled {
-		background-color: #dfdfdf;
+		background: #E0E0E0;
+		opacity: 0.7;
+		transform: rotate(0deg);
+		box-shadow: 4px 4px 0 #666;
 	}
 
 	.message-input.is-disabled textarea {
-		color: #777;
+		color: #666;
 		cursor: not-allowed;
 	}
 
 	textarea {
 		flex-grow: 1;
-		padding: 0.625rem;
+		padding: 1rem 1.25rem;
 		border: none;
-		border-radius: 12px;
 		resize: none;
-		font-family: inherit;
-		font-size: 1.0625rem;
+		font-family: 'Space Grotesk', monospace;
+		font-size: 1.125rem;
+		font-weight: 500;
 		line-height: 1.4;
-		background-color: transparent;
-		min-height: 20px;
+		background: transparent;
+		min-height: 24px;
 		max-height: 120px;
 		outline: none;
-		width: calc(100% - 50px);
+		width: calc(100% - 100px);
 		transition: color 0.2s;
 		overflow: hidden;
+		color: #000;
+	}
+
+	textarea::placeholder {
+		color: #999;
+		font-weight: 400;
 	}
 
 	.send-btn {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 36px;
-		height: 36px;
-		background-color: #0071e3;
-		color: white;
+		gap: 0.5rem;
+		min-width: 100px;
+		padding: 1rem 1.5rem;
+		background: #FFD93D;
+		color: #000;
 		border: none;
-		border-radius: 50%;
+		border-left: 4px solid #000;
 		cursor: pointer;
-		transition: background-color 0.2s;
-		padding: 0;
-		position: absolute;
-		right: 8px;
-		bottom: 8px;
+		transition: all 0.15s;
+		font-family: 'Space Grotesk', monospace;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1px;
 	}
 
-	.send-btn:hover {
-		background-color: #0062cc;
+	.send-btn:hover:not(:disabled) {
+		background: #FF69B4;
 	}
 
 	.send-btn svg {
-		width: 18px;
-		height: 18px;
+		width: 20px;
+		height: 20px;
 	}
 
 	.send-btn:disabled {
-		background-color: #b0b0b0;
+		background: #CCC;
 		cursor: not-allowed;
+		opacity: 0.5;
+	}
+
+	.send-text {
+		font-size: 0.875rem;
 	}
 
 	.stop-btn {
-		padding: 0.625rem 1rem;
-		background-color: #ff3b30;
-		color: white;
-		border: none;
-		border-radius: 12px;
+		padding: 1rem 1.5rem;
+		background: #FF6B6B;
+		color: #000;
+		border: 4px solid #000;
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 500;
-		display: block;
-		margin: 0 auto 0.75rem;
-		transition: background-color 0.2s;
+		font-size: 1.125rem;
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		margin: 0 auto 1.25rem;
+		transition: all 0.15s;
+		box-shadow: 6px 6px 0 #000;
+		font-family: 'Space Grotesk', monospace;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		animation: pulse 2s ease-in-out infinite;
+	}
+
+	@keyframes pulse {
+		0%, 100% { transform: scale(1); }
+		50% { transform: scale(1.05); }
+	}
+
+	.stop-icon {
+		font-size: 1.5rem;
 	}
 
 	.stop-btn:hover {
-		background-color: #e0352b;
+		transform: translate(-3px, -3px);
+		box-shadow: 9px 9px 0 #000;
+		animation: none;
 	}
 
 	.disclaimer {
-		margin-top: 0.375rem;
-		font-size: 0.8125rem;
-		color: #8e8e93;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #000;
 		text-align: center;
+		background: #FFD93D;
+		padding: 0.625rem 1rem;
+		border: 3px solid #000;
+		box-shadow: 4px 4px 0 #000;
+		transform: rotate(-1deg);
+		margin: 0 auto;
+		width: fit-content;
+	}
+
+	.disclaimer-icon {
+		font-size: 1.25rem;
+		animation: flash 2s ease-in-out infinite;
+	}
+
+	@keyframes flash {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.5; }
 	}
 
 	.input-area.disabled {
 		opacity: 0.3;
 		pointer-events: none;
+	}
+
+	@media (max-width: 600px) {
+		.send-btn {
+			min-width: 80px;
+			padding: 1rem;
+		}
+
+		.send-text {
+			display: none;
+		}
+
+		textarea {
+			font-size: 1rem;
+			width: calc(100% - 80px);
+		}
+
+		.disclaimer {
+			font-size: 0.8125rem;
+			padding: 0.5rem 0.75rem;
+		}
 	}
 </style>

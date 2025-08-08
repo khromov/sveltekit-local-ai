@@ -261,8 +261,11 @@
 {:else}
 	<div class="card-interface">
 		<div class="toolbar">
-			<span class="model-info">Model: {selectedModel.name}</span>
-			<button onclick={newChat} class="new-chat-btn">New Chat</button>
+			<span class="model-info">MODEL: {selectedModel.name.toUpperCase()}</span>
+			<button onclick={newChat} class="new-chat-btn">
+				<span class="btn-icon">✨</span>
+				NEW CHAT
+			</button>
 		</div>
 
 		<ChatMessages
@@ -286,44 +289,65 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 1.75rem;
-		margin: 1rem 0;
-		animation: fadeIn 0.4s ease-out;
+		gap: 2rem;
+		margin: 2rem 0;
+		animation: fadeIn 0.5s ease-out;
 		width: 100%;
 	}
 
-	.new-chat-btn {
-		padding: 0.5rem 1rem;
-		background-color: #0071e3;
-		color: white;
-		border: none;
-		border-radius: 12px;
-		cursor: pointer;
-		font-size: 0.95rem;
-		font-weight: 500;
-		transition: background-color 0.2s;
-	}
-
-	.new-chat-btn:hover {
-		background-color: #0062cc;
-	}
-
-	/* Animations */
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
-			transform: translateY(10px);
+			transform: translateY(20px) rotate(-2deg);
 		}
 		to {
 			opacity: 1;
-			transform: translateY(0);
+			transform: translateY(0) rotate(0);
 		}
+	}
+
+	.new-chat-btn {
+		padding: 0.75rem 1.25rem;
+		background: #FFD93D;
+		color: #000;
+		border: 3px solid #000;
+		cursor: pointer;
+		font-size: 1rem;
+		font-weight: 700;
+		transition: all 0.15s;
+		box-shadow: 4px 4px 0 #000;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-family: 'Space Grotesk', monospace;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.new-chat-btn:hover {
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 #000;
+		background: #FF69B4;
+	}
+
+	.new-chat-btn:active {
+		transform: translate(0);
+		box-shadow: 2px 2px 0 #000;
+	}
+
+	.btn-icon {
+		font-size: 1.25rem;
 	}
 
 	/* Responsive adjustments for the main page */
 	@media (max-width: 600px) {
 		.loading {
 			align-items: stretch;
+		}
+
+		.new-chat-btn {
+			padding: 0.625rem 1rem;
+			font-size: 0.875rem;
 		}
 	}
 </style>
