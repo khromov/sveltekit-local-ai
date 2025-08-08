@@ -53,7 +53,7 @@ async function cacheModel(fileName: string, data: Uint8Array): Promise<void> {
 		const opfsRoot = await navigator.storage.getDirectory();
 		const fileHandle = await opfsRoot.getFileHandle(fileName, { create: true });
 		const writable = await fileHandle.createWritable();
-		await writable.write(data);
+		await writable.write(new Uint8Array(data));
 		await writable.close();
 		console.log(`Cached model: ${fileName}`);
 	} catch (error) {

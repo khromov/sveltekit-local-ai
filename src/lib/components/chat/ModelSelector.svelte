@@ -17,8 +17,8 @@
 	<p class="subtitle">Select a model to start your private AI experience</p>
 
 	<div class="select-wrapper">
-		<label class="select-label">Choose Model</label>
-		<select bind:value={modelSelection}>
+		<label class="select-label" for="model-select">Choose Model</label>
+		<select id="model-select" bind:value={modelSelection}>
 			{#each AVAILABLE_MODELS as model}
 				<option value={model.url}>
 					{model.name} ({formatFileSize(model.size)})
@@ -316,9 +316,6 @@
 			padding: 1rem;
 		}
 
-		.inference-params h3 {
-			font-size: 1rem;
-		}
 
 		.param-label {
 			font-size: 0.8125rem;

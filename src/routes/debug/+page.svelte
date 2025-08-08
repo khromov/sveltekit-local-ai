@@ -48,7 +48,7 @@
 			// Append the new text to the full text
 			fullText = fullText + newText;
 		} catch (err) {
-			log('Error: ' + err);
+			console.log('Error: ' + err);
 		} finally {
 			isGenerating = false;
 		}
