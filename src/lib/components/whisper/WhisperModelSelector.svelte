@@ -174,6 +174,7 @@
 		padding: 0.5rem 1rem;
 		border: 2px solid #000;
 		border-radius: 6px;
+		text-transform: uppercase;
 	}
 
 	.checkmark {

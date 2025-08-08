@@ -10,14 +10,14 @@
 	<div class="menu-container">
 		<header class="menu-header">
 			<h1 class="main-title">
-				<span class="title-line">LOCAL AI Playground</span>
+				<span class="title-line">Local AI Playground</span>
 			</h1>
 			<p class="subtitle">Private AI tools that run entirely in your browser</p>
 		</header>
 
 		<div class="feature-grid">
 			<a href="/chat" class="feature-card chat-card">
-				<div class="card-number">TOOL #01</div>
+				<div class="card-number">Tool #01</div>
 				<div class="card-content">
 					<div class="icon-container">
 						<svg
@@ -48,7 +48,7 @@
 			</a>
 
 			<a href="/transcribe" class="feature-card transcribe-card">
-				<div class="card-number">TOOL #02</div>
+				<div class="card-number">Tool #02</div>
 				<div class="card-content">
 					<div class="icon-container">
 						<svg
@@ -169,6 +169,7 @@
 		border: 3px solid #000;
 		box-shadow: 5px 5px 0 #000;
 		letter-spacing: 2px;
+		text-transform: uppercase;
 	}
 
 	.subtitle {
@@ -237,6 +238,7 @@
 		font-size: 0.875rem;
 		letter-spacing: 1px;
 		border-radius: 4px;
+		text-transform: uppercase;
 	}
 
 	.feature-card:hover {

@@ -176,6 +176,7 @@
 		transition: all 0.2s;
 		box-shadow: 3px 3px 0 #000;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
+		text-transform: uppercase;
 	}
 
 	.stop-btn:hover {
@@ -189,7 +190,6 @@
 		color: #666;
 		text-align: center;
 	}
-
 
 	@media (max-width: 600px) {
 		.input-area {

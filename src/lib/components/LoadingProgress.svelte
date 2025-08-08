@@ -69,6 +69,7 @@
 		padding: 0.375rem 1rem;
 		border: 2px solid #000;
 		border-radius: 6px;
+		text-transform: uppercase;
 	}
 
 	.loading-message {

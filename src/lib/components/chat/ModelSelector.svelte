@@ -316,7 +316,6 @@
 			padding: 1rem;
 		}
 
-
 		.param-label {
 			font-size: 0.8125rem;
 		}

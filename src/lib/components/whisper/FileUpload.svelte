@@ -93,7 +93,7 @@
 					<span class="file-icon">📎</span>
 					{selectedFile.name}
 				{:else}
-					DROP YOUR AUDIO FILE HERE
+					Drop your audio file here
 				{/if}
 			</p>
 			<p class="upload-hint">

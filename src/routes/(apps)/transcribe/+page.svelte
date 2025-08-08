@@ -281,7 +281,7 @@
 
 <div class="card-interface" style="animation: fadeIn 0.5s ease-out;">
 	<div class="toolbar">
-		<span class="model-info">WHISPER AUDIO TRANSCRIPTION</span>
+		<span class="model-info">Whisper Audio Transcription</span>
 		<div class="toolbar-decoration"></div>
 	</div>
 
@@ -334,10 +334,10 @@
 		>
 			{#if isTranscribing}
 				<span class="loading-spinner">◐</span>
-				TRANSCRIBING...
+				Transcribing...
 			{:else}
 				<span class="button-icon">▶</span>
-				START TRANSCRIPTION
+				Start Transcription
 			{/if}
 		</button>
 
@@ -379,6 +379,7 @@
 		text-align: center;
 		position: relative;
 		overflow: hidden;
+		text-transform: uppercase;
 	}
 
 	.transcribe-btn::before {

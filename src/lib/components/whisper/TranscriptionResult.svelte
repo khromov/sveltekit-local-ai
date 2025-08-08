@@ -62,13 +62,13 @@
 			<div class="result-header">
 				<h3>
 					<span class="header-icon">📝</span>
-					TRANSCRIPTION RESULT
+					Transcription Result
 				</h3>
 				<div class="result-actions">
 					{#if transcriptionData?.transcription?.length}
 						<div class="tab-selectors">
 							<button class:active={activeTab === 'text'} onclick={() => (activeTab = 'text')}>
-								TEXT
+								Text
 							</button>
 							<button class:active={activeTab === 'srt'} onclick={() => (activeTab = 'srt')}>
 								SRT
@@ -79,10 +79,10 @@
 					<button class="copy-btn" onclick={copyToClipboard} class:copied={hasCopied}>
 						{#if hasCopied}
 							<span class="copy-icon">✅</span>
-							COPIED!
+							Copied!
 						{:else}
 							<span class="copy-icon">📋</span>
-							COPY
+							Copy
 						{/if}
 					</button>
 				</div>
@@ -171,6 +171,7 @@
 		border: 3px solid #000;
 		box-shadow: 4px 4px 0 #000;
 		transform: rotate(-1deg);
+		text-transform: uppercase;
 	}
 
 	.header-icon {

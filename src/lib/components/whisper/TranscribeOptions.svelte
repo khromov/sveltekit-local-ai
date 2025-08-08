@@ -26,7 +26,7 @@
 	<div class="options-decoration"></div>
 	<h3>
 		<span class="title-icon">🎵</span>
-		CHOOSE AUDIO SOURCE
+		Choose Audio Source
 	</h3>
 
 	<div class="option-group">
@@ -42,7 +42,7 @@
 			<div class="option-content">
 				<div class="option-header">
 					<span class="option-icon">📁</span>
-					<strong>LOCAL FILE</strong>
+					<strong>Local File</strong>
 				</div>
 				<small>Select an audio file from your device (.mp3, .wav, .m4a)</small>
 			</div>
@@ -60,7 +60,7 @@
 			<div class="option-content">
 				<div class="option-header">
 					<span class="option-icon">🎤</span>
-					<strong>DEMO AUDIO</strong>
+					<strong>Demo Audio</strong>
 				</div>
 				<small>Use the JFK speech sample (<a href="/jfk.mp3" target="_blank">listen →</a>)</small>
 			</div>
@@ -129,6 +129,7 @@
 		width: fit-content;
 		margin-left: auto;
 		margin-right: auto;
+		text-transform: uppercase;
 	}
 
 	.title-icon {

@@ -22,9 +22,9 @@
 	<div class="transcribing-decoration"></div>
 	<h3>
 		<span class="title-icon">🎧</span>
-		TRANSCRIBING AUDIO
+		Transcribing Audio
 	</h3>
-	<p class="progress-percentage">{progress}% COMPLETE</p>
+	<p class="progress-percentage">{progress}% Complete</p>
 
 	<div class="progress-wrapper">
 		<ProgressBar {progress} {previousProgress} />
@@ -32,7 +32,7 @@
 
 	{#if currentSegment}
 		<div class="segment-preview">
-			<h4>CURRENT SEGMENT</h4>
+			<h4>Current Segment</h4>
 			<p>"{currentSegment}"</p>
 			<div class="segment-decoration"></div>
 		</div>
@@ -41,13 +41,13 @@
 	{#if isStuck}
 		<div class="stuck-message">
 			<span class="warning-icon">⚠️</span>
-			TRANSCRIPTION SEEMS STUCK
-			<button class="reload-link" onclick={onReload}> RELOAD PAGE → </button>
+			Transcription seems stuck
+			<button class="reload-link" onclick={onReload}> Reload Page → </button>
 		</div>
 	{:else}
 		<div class="transcribing-message">
 			<span class="pulse-icon">⚡</span>
-			KEEP THIS TAB ACTIVE DURING TRANSCRIPTION
+			Keep this tab active during transcription
 		</div>
 	{/if}
 </div>
@@ -121,6 +121,7 @@
 		border: 3px solid #000;
 		box-shadow: 6px 6px 0 #000;
 		transform: rotate(-2deg);
+		text-transform: uppercase;
 	}
 
 	.title-icon {
@@ -149,6 +150,7 @@
 		box-shadow: 5px 5px 0 #000;
 		transform: rotate(1deg);
 		animation: pulse 2s ease-in-out infinite;
+		text-transform: uppercase;
 	}
 
 	@keyframes pulse {
@@ -278,6 +280,7 @@
 		gap: 0.75rem;
 		animation: shake 0.5s ease-in-out;
 		transform: rotate(-1deg);
+		text-transform: uppercase;
 	}
 
 	@keyframes shake {
