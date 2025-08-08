@@ -190,10 +190,6 @@
 		text-align: center;
 	}
 
-	.input-area.disabled {
-		opacity: 0.3;
-		pointer-events: none;
-	}
 
 	@media (max-width: 600px) {
 		.input-area {
