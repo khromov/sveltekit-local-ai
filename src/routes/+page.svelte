@@ -30,10 +30,9 @@
 							<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
 						</svg>
 					</div>
-					<h2>Chat with AI</h2>
+					<h2>Chat</h2>
 					<p class="feature-description">
-						Have conversations with AI models that run completely offline. Your data never leaves
-						your device.
+						Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp
 					</p>
 					<div class="feature-highlights">
 						<span class="highlight">Private & Secure</span>
@@ -66,8 +65,7 @@
 					</div>
 					<h2>Transcribe Audio</h2>
 					<p class="feature-description">
-						Convert speech to text using Whisper AI. Upload audio files or use the demo to see it in
-						action.
+						Convert speech to text using Whisper AI. Upload any existing audio file and export as text or a subtitle file.
 					</p>
 					<div class="feature-highlights">
 						<span class="highlight">High Accuracy</span>
