@@ -6,4 +6,12 @@
 	let { children }: Props = $props();
 </script>
 
-{@render children?.()}
+<div class="app-layout">
+	{@render children?.()}
+</div>
+
+<style>
+	.app-layout {
+		padding: 1rem;
+	}
+</style>
