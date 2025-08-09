@@ -340,7 +340,9 @@
 	<div class="input-area" class:disabled={!isReady}>
 		<button
 			onclick={transcribe}
-			disabled={!isReady || isTranscribing || ((transcribeMode === 'upload' || transcribeMode === 'record') && !selectedFile)}
+			disabled={!isReady ||
+				isTranscribing ||
+				((transcribeMode === 'upload' || transcribeMode === 'record') && !selectedFile)}
 			class="transcribe-btn primary-button"
 		>
 			{#if isTranscribing}
