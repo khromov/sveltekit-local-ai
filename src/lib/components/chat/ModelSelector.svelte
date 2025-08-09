@@ -13,14 +13,14 @@
 </script>
 
 <div
-	class="shadow-neo-3xl animate-bounce-in relative mx-auto box-border flex w-[calc(100%-4rem)] max-w-[500px] rotate-[0.5deg] flex-col gap-6 rounded-xl border-4 border-black bg-white p-8"
+	class="relative mx-auto box-border flex w-[calc(100%-4rem)] max-w-[500px] rotate-[0.5deg] animate-bounce-in flex-col gap-6 rounded-xl border-4 border-black bg-white p-8 shadow-neo-3xl"
 >
 	<div
-		class="bg-gradient-green animate-spin-slow absolute -top-[15px] -left-[15px] z-[-1] h-[100px] w-[100px] rounded-[30%_70%_70%_30%/60%_40%_60%_40%] border-[3px] border-black opacity-30"
+		class="absolute -top-[15px] -left-[15px] z-[-1] h-[100px] w-[100px] animate-spin-slow rounded-[30%_70%_70%_30%/60%_40%_60%_40%] border-[3px] border-black bg-gradient-green opacity-30"
 	></div>
 
 	<h2
-		class="font-bebas bg-gradient-green shadow-neo-lg m-0 mx-auto flex w-fit -rotate-1 items-center justify-center gap-2 border-[3px] border-black px-6 py-3 text-center text-[2rem] font-bold tracking-[2px] text-black uppercase"
+		class="font-bebas m-0 mx-auto flex w-fit -rotate-1 items-center justify-center gap-2 border-[3px] border-black bg-gradient-green px-6 py-3 text-center text-[2rem] font-bold tracking-[2px] text-black uppercase shadow-neo-lg"
 	>
 		<span class="animate-[bounce_2s_ease-in-out_infinite] text-[1.75rem]">🚀</span>
 		Chat
@@ -28,7 +28,7 @@
 
 	<div class="relative mt-4 -rotate-[0.5deg]">
 		<label
-			class="bg-neo-green absolute -top-[10px] left-[12px] z-[1] flex items-center gap-1 rounded border-2 border-black px-2 text-[0.8125rem] font-bold tracking-[0.5px] text-black uppercase"
+			class="absolute -top-[10px] left-[12px] z-[1] flex items-center gap-1 rounded border-2 border-black bg-neo-green px-2 text-[0.8125rem] font-bold tracking-[0.5px] text-black uppercase"
 			for="model-select"
 		>
 			<span class="text-[0.875rem]">📦</span>
@@ -37,7 +37,7 @@
 		<select
 			id="model-select"
 			bind:value={modelSelection}
-			class="shadow-neo-lg font-space hover:shadow-neo-2xl box-border w-full cursor-pointer appearance-none rounded-md border-[3px] border-black bg-white bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%20fill=%27none%27%20stroke=%27%23000%27%20stroke-width=%272%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%3e%3cpolyline%20points=%276%209%2012%2015%2018%209%27%3e%3c/polyline%3e%3c/svg%3e')] bg-[length:1.25em] bg-[right_0.875rem_center] bg-no-repeat px-4 py-[0.875rem] pr-10 text-[0.9375rem] font-semibold transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-[#fffacd] focus:border-yellow-400 focus:bg-[#fffacd] focus:outline-none"
+			class="font-space box-border w-full cursor-pointer appearance-none rounded-md border-[3px] border-black bg-white bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%20fill=%27none%27%20stroke=%27%23000%27%20stroke-width=%272%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%3e%3cpolyline%20points=%276%209%2012%2015%2018%209%27%3e%3c/polyline%3e%3c/svg%3e')] bg-[length:1.25em] bg-[right_0.875rem_center] bg-no-repeat px-4 py-[0.875rem] pr-10 text-[0.9375rem] font-semibold shadow-neo-lg transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-[#fffacd] hover:shadow-neo-2xl focus:border-yellow-400 focus:bg-[#fffacd] focus:outline-none"
 		>
 			{#each AVAILABLE_MODELS as model (model.url)}
 				<option value={model.url}>
@@ -48,7 +48,7 @@
 	</div>
 
 	<div
-		class="bg-gradient-subtle shadow-neo box-border rotate-[0.2deg] rounded-lg border-[3px] border-black p-5"
+		class="box-border rotate-[0.2deg] rounded-lg border-[3px] border-black bg-gradient-subtle p-5 shadow-neo"
 	>
 		<button
 			class="font-space flex w-full cursor-pointer items-center justify-between border-none bg-transparent py-3 text-base font-bold tracking-[0.5px] text-black uppercase transition-colors duration-200 hover:text-gray-600"
@@ -86,7 +86,7 @@
 						bind:value={$inferenceParams.nThreads}
 						min="-1"
 						max="32"
-						class="font-space shadow-neo-sm hover:shadow-neo box-border w-full rounded border-2 border-black bg-white px-3 py-2.5 text-[0.9375rem] font-semibold transition-all duration-200 hover:-translate-x-[1px] hover:-translate-y-[1px] focus:border-yellow-400 focus:bg-[#fffacd] focus:outline-none"
+						class="font-space box-border w-full rounded border-2 border-black bg-white px-3 py-2.5 text-[0.9375rem] font-semibold shadow-neo-sm transition-all duration-200 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-neo focus:border-yellow-400 focus:bg-[#fffacd] focus:outline-none"
 					/>
 				</label>
 				<label class="flex flex-col gap-1.5">
@@ -98,7 +98,7 @@
 						bind:value={$inferenceParams.nContext}
 						min="512"
 						max="8192"
-						class="font-space shadow-neo-sm hover:shadow-neo box-border w-full rounded border-2 border-black bg-white px-3 py-2.5 text-[0.9375rem] font-semibold transition-all duration-200 hover:-translate-x-[1px] hover:-translate-y-[1px] focus:border-yellow-400 focus:bg-[#fffacd] focus:outline-none"
+						class="font-space box-border w-full rounded border-2 border-black bg-white px-3 py-2.5 text-[0.9375rem] font-semibold shadow-neo-sm transition-all duration-200 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-neo focus:border-yellow-400 focus:bg-[#fffacd] focus:outline-none"
 					/>
 				</label>
 				<label class="flex flex-col gap-1.5">
@@ -111,7 +111,7 @@
 						min="0"
 						max="2"
 						step="0.1"
-						class="font-space shadow-neo-sm hover:shadow-neo box-border w-full rounded border-2 border-black bg-white px-3 py-2.5 text-[0.9375rem] font-semibold transition-all duration-200 hover:-translate-x-[1px] hover:-translate-y-[1px] focus:border-yellow-400 focus:bg-[#fffacd] focus:outline-none"
+						class="font-space box-border w-full rounded border-2 border-black bg-white px-3 py-2.5 text-[0.9375rem] font-semibold shadow-neo-sm transition-all duration-200 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-neo focus:border-yellow-400 focus:bg-[#fffacd] focus:outline-none"
 					/>
 				</label>
 			</div>
@@ -120,7 +120,7 @@
 
 	<button
 		onclick={onLoadModel}
-		class="bg-neo-green shadow-neo-xl font-space hover:enabled:bg-neo-yellow hover:enabled:shadow-neo-3xl mx-auto flex -rotate-1 cursor-pointer items-center justify-center gap-2 rounded-lg border-[3px] border-black px-6 py-4 text-[1.125rem] font-bold tracking-[0.5px] uppercase transition-all duration-200 hover:enabled:-translate-x-[3px] hover:enabled:-translate-y-[3px] hover:enabled:rotate-0 disabled:animate-pulse"
+		class="font-space mx-auto flex -rotate-1 cursor-pointer items-center justify-center gap-2 rounded-lg border-[3px] border-black bg-neo-green px-6 py-4 text-[1.125rem] font-bold tracking-[0.5px] uppercase shadow-neo-xl transition-all duration-200 hover:enabled:-translate-x-[3px] hover:enabled:-translate-y-[3px] hover:enabled:rotate-0 hover:enabled:bg-neo-yellow hover:enabled:shadow-neo-3xl disabled:animate-pulse"
 		disabled={isLoading}
 	>
 		{#if isLoading}

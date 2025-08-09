@@ -34,34 +34,34 @@
 
 <div
 	bind:this={chatContainer}
-	class="bg-gradient-subtle-2 [&::-webkit-scrollbar-track]:from-neo-yellow [&::-webkit-scrollbar-track]:via-neo-green [&::-webkit-scrollbar-track]:to-neo-pink relative box-border min-h-0 w-full flex-1 overflow-auto border-r-[3px] border-l-[3px] border-black pt-12 [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-thumb]:rounded-md [&::-webkit-scrollbar-thumb]:border-2 [&::-webkit-scrollbar-thumb]:border-white [&::-webkit-scrollbar-thumb]:bg-black [&::-webkit-scrollbar-thumb]:shadow-[inset_0_0_3px_rgba(0,0,0,0.3)] [&::-webkit-scrollbar-thumb:hover]:bg-gray-800 [&::-webkit-scrollbar-track]:rounded-md [&::-webkit-scrollbar-track]:border-2 [&::-webkit-scrollbar-track]:border-black [&::-webkit-scrollbar-track]:bg-gradient-to-b"
+	class="relative box-border min-h-0 w-full flex-1 overflow-auto border-r-[3px] border-l-[3px] border-black bg-gradient-subtle-2 pt-12 [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-thumb]:rounded-md [&::-webkit-scrollbar-thumb]:border-2 [&::-webkit-scrollbar-thumb]:border-white [&::-webkit-scrollbar-thumb]:bg-black [&::-webkit-scrollbar-thumb]:shadow-[inset_0_0_3px_rgba(0,0,0,0.3)] [&::-webkit-scrollbar-thumb:hover]:bg-gray-800 [&::-webkit-scrollbar-track]:rounded-md [&::-webkit-scrollbar-track]:border-2 [&::-webkit-scrollbar-track]:border-black [&::-webkit-scrollbar-track]:bg-gradient-to-b [&::-webkit-scrollbar-track]:from-neo-yellow [&::-webkit-scrollbar-track]:via-neo-green [&::-webkit-scrollbar-track]:to-neo-pink"
 	id="chat-container"
 >
-	<div class="bg-repeating-stripes absolute top-0 right-0 left-0 z-[1] h-[3px]"></div>
+	<div class="absolute top-0 right-0 left-0 z-[1] h-[3px] bg-repeating-stripes"></div>
 
 	{#if messages.length === 0 || (messages.length === 1 && messages[0].role === 'system')}
 		<div
 			class="relative flex h-full min-h-[300px] animate-[fadeIn_0.5s_ease-out] flex-col items-center justify-center p-8 text-center"
 		>
-			<div class="animate-float mb-4 text-[4rem]">💬</div>
+			<div class="mb-4 animate-float text-[4rem]">💬</div>
 			<h3
-				class="bg-neo-yellow shadow-neo-md m-0 mb-2 inline-block -rotate-1 border-[3px] border-black px-6 py-2 text-[1.75rem] font-bold tracking-wider text-black uppercase"
+				class="m-0 mb-2 inline-block -rotate-1 border-[3px] border-black bg-neo-yellow px-6 py-2 text-[1.75rem] font-bold tracking-wider text-black uppercase shadow-neo-md"
 			>
 				Start a Conversation
 			</h3>
 			<p class="mt-2 mb-0 text-[1.125rem] font-medium text-gray-600">
 				Type a message below to begin chatting with AI
 			</p>
-			<div class="animate-sparkle absolute top-[20%] left-[15%] text-[1.5rem] [animation-delay:0s]">
+			<div class="absolute top-[20%] left-[15%] animate-sparkle text-[1.5rem] [animation-delay:0s]">
 				✨
 			</div>
 			<div
-				class="animate-sparkle absolute top-[30%] right-[20%] text-[1.5rem] [animation-delay:1s]"
+				class="absolute top-[30%] right-[20%] animate-sparkle text-[1.5rem] [animation-delay:1s]"
 			>
 				⭐
 			</div>
 			<div
-				class="animate-sparkle absolute bottom-[25%] left-[25%] text-[1.5rem] [animation-delay:2s]"
+				class="absolute bottom-[25%] left-[25%] animate-sparkle text-[1.5rem] [animation-delay:2s]"
 			>
 				🌟
 			</div>

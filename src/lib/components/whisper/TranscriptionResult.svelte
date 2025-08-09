@@ -67,18 +67,18 @@
 	}
 </script>
 
-<div class="animate-result-slide my-6 flex w-full">
+<div class="my-6 flex w-full animate-result-slide">
 	<div class="relative w-full max-w-full rotate-[0.5deg]">
 		<div
-			class="from-neo-green absolute -top-[10px] -right-[10px] -bottom-[10px] -left-[10px] z-[-1] -rotate-1 rounded-[30%_70%_70%_30%/60%_40%_60%_40%] bg-gradient-to-br to-[#87ceeb] opacity-30"
+			class="absolute -top-[10px] -right-[10px] -bottom-[10px] -left-[10px] z-[-1] -rotate-1 rounded-[30%_70%_70%_30%/60%_40%_60%_40%] bg-gradient-to-br from-neo-green to-[#87ceeb] opacity-30"
 		></div>
 
-		<div class="shadow-neo-3xl relative border-4 border-black bg-white p-8">
+		<div class="relative border-4 border-black bg-white p-8 shadow-neo-3xl">
 			<div
 				class="mb-6 flex flex-wrap items-center justify-between gap-4 border-b-[3px] border-black pb-4"
 			>
 				<h3
-					class="font-bebas bg-neo-green shadow-neo-md m-0 flex -rotate-1 items-center gap-2 border-[3px] border-black px-4 py-2 text-[1.75rem] tracking-[2px] text-black uppercase"
+					class="font-bebas m-0 flex -rotate-1 items-center gap-2 border-[3px] border-black bg-neo-green px-4 py-2 text-[1.75rem] tracking-[2px] text-black uppercase shadow-neo-md"
 				>
 					<span class="text-2xl">📝</span>
 					Transcription Result
@@ -86,7 +86,7 @@
 
 				<div class="flex items-center gap-4">
 					{#if transcriptionData?.transcription?.length}
-						<div class="shadow-neo-md flex border-[3px] border-black bg-white">
+						<div class="flex border-[3px] border-black bg-white shadow-neo-md">
 							<button
 								class="font-space cursor-pointer border-r-[3px] border-none border-black bg-white px-4 py-2.5 text-base font-bold tracking-wider text-black uppercase transition-all duration-150 ease-in-out hover:bg-[#fffacd] {activeTab ===
 								'text'
@@ -111,8 +111,8 @@
 					{/if}
 
 					<button
-						class="bg-neo-pink shadow-neo-md font-space hover:shadow-neo-xl hover:bg-neo-yellow flex cursor-pointer items-center gap-2 border-[3px] border-black px-5 py-2.5 text-base font-bold tracking-wider text-black uppercase transition-all duration-150 ease-in-out hover:-translate-x-0.5 hover:-translate-y-0.5 {hasCopied
-							? 'bg-neo-green animate-copy-success'
+						class="font-space flex cursor-pointer items-center gap-2 border-[3px] border-black bg-neo-pink px-5 py-2.5 text-base font-bold tracking-wider text-black uppercase shadow-neo-md transition-all duration-150 ease-in-out hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-neo-yellow hover:shadow-neo-xl {hasCopied
+							? 'animate-copy-success bg-neo-green'
 							: ''}"
 						onclick={copyToClipboard}
 					>
@@ -128,7 +128,7 @@
 			</div>
 
 			<div
-				class="bg-gradient-subtle-3 shadow-neo-inset [&::-webkit-scrollbar-thumb]:bg-neo-yellow [&::-webkit-scrollbar-thumb:hover]:bg-neo-pink max-h-[400px] min-h-[100px] overflow-y-auto border-[3px] border-black p-6 [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-thumb]:border-2 [&::-webkit-scrollbar-thumb]:border-black [&::-webkit-scrollbar-track]:border-l-[3px] [&::-webkit-scrollbar-track]:border-black [&::-webkit-scrollbar-track]:bg-white"
+				class="max-h-[400px] min-h-[100px] overflow-y-auto border-[3px] border-black bg-gradient-subtle-3 p-6 shadow-neo-inset [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-thumb]:border-2 [&::-webkit-scrollbar-thumb]:border-black [&::-webkit-scrollbar-thumb]:bg-neo-yellow [&::-webkit-scrollbar-thumb:hover]:bg-neo-pink [&::-webkit-scrollbar-track]:border-l-[3px] [&::-webkit-scrollbar-track]:border-black [&::-webkit-scrollbar-track]:bg-white"
 			>
 				{#if !transcriptionData?.transcription?.length || activeTab === 'text'}
 					<p

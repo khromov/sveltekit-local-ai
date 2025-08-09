@@ -62,11 +62,11 @@
 		class="hidden"
 	/>
 	<div
-		class="shadow-neo-lg hover:enabled:shadow-neo-2xl relative block min-h-[140px] -rotate-[0.5deg] cursor-pointer overflow-hidden border-4 border-dashed border-black bg-white transition-all duration-150 ease-in-out hover:enabled:-translate-x-0.5 hover:enabled:-translate-y-0.5 hover:enabled:rotate-0 hover:enabled:bg-[#fffacd] {disabled
+		class="relative block min-h-[140px] -rotate-[0.5deg] cursor-pointer overflow-hidden border-4 border-dashed border-black bg-white shadow-neo-lg transition-all duration-150 ease-in-out hover:enabled:-translate-x-0.5 hover:enabled:-translate-y-0.5 hover:enabled:rotate-0 hover:enabled:bg-[#fffacd] hover:enabled:shadow-neo-2xl {disabled
 			? 'cursor-not-allowed bg-gray-200 opacity-60'
 			: ''} {isDragging
-			? 'bg-neo-yellow shadow-neo-3xl -translate-x-[3px] -translate-y-[3px] rotate-0 border-solid border-black'
-			: ''} {selectedFile ? 'bg-neo-green border-solid' : ''}"
+			? '-translate-x-[3px] -translate-y-[3px] rotate-0 border-solid border-black bg-neo-yellow shadow-neo-3xl'
+			: ''} {selectedFile ? 'border-solid bg-neo-green' : ''}"
 		ondragover={handleDragOver}
 		ondragleave={handleDragLeave}
 		ondrop={handleDrop}
@@ -76,11 +76,11 @@
 		tabindex="0"
 	>
 		<div
-			class="bg-neo-pink absolute top-[10px] right-[10px] h-[60px] w-[60px] rotate-45 rounded-[30%_70%_70%_30%/60%_40%_60%_40%] border-[3px] border-black opacity-30"
+			class="absolute top-[10px] right-[10px] h-[60px] w-[60px] rotate-45 rounded-[30%_70%_70%_30%/60%_40%_60%_40%] border-[3px] border-black bg-neo-pink opacity-30"
 		></div>
 		<div class="relative z-[1] flex h-full min-h-[140px] flex-col items-center justify-center p-8">
 			<svg
-				class="animate-float mb-4 text-black"
+				class="mb-4 animate-float text-black"
 				viewBox="0 0 24 24"
 				width="48"
 				height="48"
@@ -103,7 +103,7 @@
 				{/if}
 			</p>
 			<p
-				class="bg-neo-yellow shadow-neo m-0 border-2 border-black px-3 py-1 text-center text-[0.9375rem] font-semibold text-gray-800 {selectedFile
+				class="m-0 border-2 border-black bg-neo-yellow px-3 py-1 text-center text-[0.9375rem] font-semibold text-gray-800 shadow-neo {selectedFile
 					? 'bg-white'
 					: ''}"
 			>

@@ -7,13 +7,13 @@
 		<header class="mb-8 animate-[fadeIn_0.6s_ease-out] text-center">
 			<h1 class="m-0 mb-6 text-[3.5rem] leading-tight font-extrabold">
 				<span
-					class="text-neo-yellow-light shadow-neo-lg inline-block border-[3px] border-black bg-black px-8 py-2 tracking-[2px] uppercase"
+					class="inline-block border-[3px] border-black bg-black px-8 py-2 tracking-[2px] text-neo-yellow-light uppercase shadow-neo-lg"
 				>
 					Local AI Playground
 				</span>
 			</h1>
 			<p
-				class="shadow-neo m-0 inline-block border-2 border-black bg-white px-6 py-2 text-xl font-medium text-black"
+				class="m-0 inline-block border-2 border-black bg-white px-6 py-2 text-xl font-medium text-black shadow-neo"
 			>
 				On this page you'll find free, private AI tools that run entirely in your browser - and even
 				offline!
@@ -23,15 +23,15 @@
 		<div class="mb-12 grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-8 px-4">
 			<a
 				href="/chat"
-				class="shadow-neo-lg animate-card-fade hover:shadow-neo-3xl relative block overflow-hidden rounded-xl border-[3px] border-black bg-white p-0 text-black no-underline transition-all duration-200 ease-in-out [animation-delay:0.2s] [animation-fill-mode:both] hover:-translate-x-[3px] hover:-translate-y-[3px]"
+				class="relative block animate-card-fade overflow-hidden rounded-xl border-[3px] border-black bg-white p-0 text-black no-underline shadow-neo-lg transition-all duration-200 ease-in-out [animation-delay:0.2s] [animation-fill-mode:both] hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-neo-3xl"
 			>
 				<div
-					class="text-neo-yellow-light absolute top-4 right-4 rounded bg-black px-3 py-1 text-[0.875rem] font-bold tracking-wider uppercase"
+					class="absolute top-4 right-4 rounded bg-black px-3 py-1 text-[0.875rem] font-bold tracking-wider text-neo-yellow-light uppercase"
 				>
 					Tool #01
 				</div>
 				<div class="p-8">
-					<div class="bg-neo-peach mb-6 w-fit rounded-lg border-2 border-black p-3">
+					<div class="mb-6 w-fit rounded-lg border-2 border-black bg-neo-peach p-3">
 						<svg
 							class="block text-black"
 							viewBox="0 0 24 24"
@@ -52,17 +52,17 @@
 					</p>
 					<div class="flex flex-wrap gap-2">
 						<span
-							class="hover:bg-neo-peach rounded border-2 border-black bg-gray-100 px-3 py-1.5 text-[0.875rem] font-semibold text-black transition-all duration-200 ease-in-out"
+							class="rounded border-2 border-black bg-gray-100 px-3 py-1.5 text-[0.875rem] font-semibold text-black transition-all duration-200 ease-in-out hover:bg-neo-peach"
 						>
 							Private & Secure
 						</span>
 						<span
-							class="hover:bg-neo-peach rounded border-2 border-black bg-gray-100 px-3 py-1.5 text-[0.875rem] font-semibold text-black transition-all duration-200 ease-in-out"
+							class="rounded border-2 border-black bg-gray-100 px-3 py-1.5 text-[0.875rem] font-semibold text-black transition-all duration-200 ease-in-out hover:bg-neo-peach"
 						>
 							Works Offline
 						</span>
 						<span
-							class="hover:bg-neo-peach rounded border-2 border-black bg-gray-100 px-3 py-1.5 text-[0.875rem] font-semibold text-black transition-all duration-200 ease-in-out"
+							class="rounded border-2 border-black bg-gray-100 px-3 py-1.5 text-[0.875rem] font-semibold text-black transition-all duration-200 ease-in-out hover:bg-neo-peach"
 						>
 							No Data Sharing
 						</span>
@@ -72,15 +72,15 @@
 
 			<a
 				href="/transcribe"
-				class="shadow-neo-lg animate-card-fade hover:shadow-neo-3xl relative block overflow-hidden rounded-xl border-[3px] border-black bg-white p-0 text-black no-underline transition-all duration-200 ease-in-out [animation-delay:0.3s] [animation-fill-mode:both] hover:-translate-x-[3px] hover:-translate-y-[3px]"
+				class="relative block animate-card-fade overflow-hidden rounded-xl border-[3px] border-black bg-white p-0 text-black no-underline shadow-neo-lg transition-all duration-200 ease-in-out [animation-delay:0.3s] [animation-fill-mode:both] hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-neo-3xl"
 			>
 				<div
-					class="text-neo-yellow-light absolute top-4 right-4 rounded bg-black px-3 py-1 text-[0.875rem] font-bold tracking-wider uppercase"
+					class="absolute top-4 right-4 rounded bg-black px-3 py-1 text-[0.875rem] font-bold tracking-wider text-neo-yellow-light uppercase"
 				>
 					Tool #02
 				</div>
 				<div class="p-8">
-					<div class="bg-neo-peach mb-6 w-fit rounded-lg border-2 border-black p-3">
+					<div class="mb-6 w-fit rounded-lg border-2 border-black bg-neo-peach p-3">
 						<svg
 							class="block text-black"
 							viewBox="0 0 24 24"
@@ -105,17 +105,17 @@
 					</p>
 					<div class="flex flex-wrap gap-2">
 						<span
-							class="hover:bg-neo-mint rounded border-2 border-black bg-gray-100 px-3 py-1.5 text-[0.875rem] font-semibold text-black transition-all duration-200 ease-in-out"
+							class="rounded border-2 border-black bg-gray-100 px-3 py-1.5 text-[0.875rem] font-semibold text-black transition-all duration-200 ease-in-out hover:bg-neo-mint"
 						>
 							High Accuracy
 						</span>
 						<span
-							class="hover:bg-neo-mint rounded border-2 border-black bg-gray-100 px-3 py-1.5 text-[0.875rem] font-semibold text-black transition-all duration-200 ease-in-out"
+							class="rounded border-2 border-black bg-gray-100 px-3 py-1.5 text-[0.875rem] font-semibold text-black transition-all duration-200 ease-in-out hover:bg-neo-mint"
 						>
 							Multiple Formats
 						</span>
 						<span
-							class="hover:bg-neo-mint rounded border-2 border-black bg-gray-100 px-3 py-1.5 text-[0.875rem] font-semibold text-black transition-all duration-200 ease-in-out"
+							class="rounded border-2 border-black bg-gray-100 px-3 py-1.5 text-[0.875rem] font-semibold text-black transition-all duration-200 ease-in-out hover:bg-neo-mint"
 						>
 							Local Processing
 						</span>

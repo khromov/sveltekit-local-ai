@@ -100,10 +100,10 @@
 	});
 </script>
 
-<div class="shadow-neo-lg mt-4 -rotate-[0.5deg] border-[3px] border-black bg-[#f0f8ff] p-6">
+<div class="mt-4 -rotate-[0.5deg] border-[3px] border-black bg-[#f0f8ff] p-6 shadow-neo-lg">
 	{#if recordingError}
 		<div
-			class="border-neo-red mb-4 flex items-center gap-2 border-2 bg-[#ffe4e1] p-4 font-medium text-[#d62828]"
+			class="mb-4 flex items-center gap-2 border-2 border-neo-red bg-[#ffe4e1] p-4 font-medium text-[#d62828]"
 		>
 			<span class="text-xl">⚠️</span>
 			{recordingError}
@@ -112,7 +112,7 @@
 
 	{#if !isRecording && !audioUrl}
 		<button
-			class="bg-neo-green shadow-neo-md hover:enabled:shadow-neo-xl inline-flex cursor-pointer items-center gap-2 border-[3px] border-black px-6 py-3 text-base font-bold tracking-wider uppercase transition-all duration-150 hover:enabled:-translate-x-0.5 hover:enabled:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
+			class="inline-flex cursor-pointer items-center gap-2 border-[3px] border-black bg-neo-green px-6 py-3 text-base font-bold tracking-wider uppercase shadow-neo-md transition-all duration-150 hover:enabled:-translate-x-0.5 hover:enabled:-translate-y-0.5 hover:enabled:shadow-neo-xl disabled:cursor-not-allowed disabled:opacity-50"
 			onclick={startRecording}
 			{disabled}
 		>
@@ -128,7 +128,7 @@
 				Recording... {formatTime(recordingTime)}
 			</div>
 			<button
-				class="bg-neo-red shadow-neo-md hover:enabled:shadow-neo-xl inline-flex cursor-pointer items-center gap-2 border-[3px] border-black px-6 py-3 text-base font-bold tracking-wider text-white uppercase transition-all duration-150 hover:enabled:-translate-x-0.5 hover:enabled:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
+				class="inline-flex cursor-pointer items-center gap-2 border-[3px] border-black bg-neo-red px-6 py-3 text-base font-bold tracking-wider text-white uppercase shadow-neo-md transition-all duration-150 hover:enabled:-translate-x-0.5 hover:enabled:-translate-y-0.5 hover:enabled:shadow-neo-xl disabled:cursor-not-allowed disabled:opacity-50"
 				onclick={stopRecording}
 			>
 				<span class="text-xl">⏹️</span>
@@ -147,7 +147,7 @@
 				>
 			</div>
 			<button
-				class="bg-neo-yellow shadow-neo-md hover:enabled:shadow-neo-xl mt-4 inline-flex cursor-pointer items-center gap-2 border-[3px] border-black px-6 py-3 text-base font-bold tracking-wider uppercase transition-all duration-150 hover:enabled:-translate-x-0.5 hover:enabled:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
+				class="mt-4 inline-flex cursor-pointer items-center gap-2 border-[3px] border-black bg-neo-yellow px-6 py-3 text-base font-bold tracking-wider uppercase shadow-neo-md transition-all duration-150 hover:enabled:-translate-x-0.5 hover:enabled:-translate-y-0.5 hover:enabled:shadow-neo-xl disabled:cursor-not-allowed disabled:opacity-50"
 				onclick={clearRecording}
 				{disabled}
 			>

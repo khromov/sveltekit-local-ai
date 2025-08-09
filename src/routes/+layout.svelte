@@ -30,12 +30,12 @@
 </script>
 
 <div
-	class="before:bg-repeating-stripes-4 relative z-[2] flex min-h-screen flex-col before:pointer-events-none before:fixed before:inset-0 before:z-[1] before:content-['']"
+	class="relative z-[2] flex min-h-screen flex-col before:pointer-events-none before:fixed before:inset-0 before:z-[1] before:bg-repeating-stripes-4 before:content-['']"
 >
 	<div class="mx-auto box-border flex w-full max-w-[900px] flex-1 flex-col p-4">
 		<nav class="mb-4 w-full">
 			<ul
-				class="shadow-neo-lg m-0 box-border flex list-none items-center justify-start gap-4 rounded-xl border-[3px] border-black bg-white p-0 p-3"
+				class="m-0 box-border flex list-none items-center justify-start gap-4 rounded-xl border-[3px] border-black bg-white p-0 p-3 shadow-neo-lg"
 			>
 				<div class="flex gap-4">
 					{#each navLinks as link (link.path)}
@@ -43,10 +43,10 @@
 							<li class="flex-none">
 								<a
 									href={link.path}
-									class="hover:bg-neo-peach relative flex flex-row items-center justify-center gap-2 rounded-lg border-2 border-transparent bg-white px-5 py-3 text-base font-semibold tracking-[0.5px] text-black uppercase no-underline transition-all duration-200 ease-in-out hover:-translate-y-0.5 {isActive(
+									class="relative flex flex-row items-center justify-center gap-2 rounded-lg border-2 border-transparent bg-white px-5 py-3 text-base font-semibold tracking-[0.5px] text-black uppercase no-underline transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:bg-neo-peach {isActive(
 										link.path
 									)
-										? 'bg-neo-yellow-light shadow-neo border-black'
+										? 'border-black bg-neo-yellow-light shadow-neo'
 										: ''} {link.icon === 'home' ? 'max-w-auto flex-none !p-3' : ''}"
 								>
 									<svg
@@ -75,10 +75,10 @@
 							<li class="list-none">
 								<a
 									href={link.path}
-									class="hover:bg-neo-peach relative flex flex-row items-center justify-center gap-2 rounded-lg border-2 border-transparent bg-white px-5 py-3 text-base font-semibold tracking-[0.5px] text-black uppercase no-underline transition-all duration-200 ease-in-out hover:-translate-y-0.5 {isActive(
+									class="relative flex flex-row items-center justify-center gap-2 rounded-lg border-2 border-transparent bg-white px-5 py-3 text-base font-semibold tracking-[0.5px] text-black uppercase no-underline transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:bg-neo-peach {isActive(
 										link.path
 									)
-										? 'bg-neo-yellow-light shadow-neo border-black'
+										? 'border-black bg-neo-yellow-light shadow-neo'
 										: ''}"
 								>
 									{#if link.icon === 'chat'}

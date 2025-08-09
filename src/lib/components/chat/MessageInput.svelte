@@ -45,15 +45,15 @@
 	});
 </script>
 
-<div class="bg-gradient-light relative overflow-hidden border-t-[3px] border-black p-5">
+<div class="relative overflow-hidden border-t-[3px] border-black bg-gradient-light p-5">
 	<div
-		class="bg-repeating-stripes-2 animate-slide absolute -top-[2px] right-0 left-0 h-[3px]"
+		class="absolute -top-[2px] right-0 left-0 h-[3px] animate-slide bg-repeating-stripes-2"
 	></div>
 
 	{#if isGenerating && onStop}
 		<button
 			onclick={onStop}
-			class="bg-gradient-red shadow-neo-lg font-space animate-shake hover:shadow-neo-2xl mx-auto mb-4 flex -rotate-1 cursor-pointer items-center justify-center gap-2 rounded-lg border-[3px] border-black px-5 py-3 text-[0.9375rem] font-bold tracking-[0.5px] text-black uppercase transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-0 hover:animate-none"
+			class="font-space mx-auto mb-4 flex -rotate-1 animate-shake cursor-pointer items-center justify-center gap-2 rounded-lg border-[3px] border-black bg-gradient-red px-5 py-3 text-[0.9375rem] font-bold tracking-[0.5px] text-black uppercase shadow-neo-lg transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-0 hover:animate-none hover:shadow-neo-2xl"
 		>
 			<span class="text-[1.125rem]">🛑</span>
 			Stop Generation
@@ -61,12 +61,12 @@
 	{/if}
 
 	<div
-		class="shadow-neo-lg hover:enabled:shadow-neo-2xl relative mb-3 flex -rotate-[0.5deg] items-end overflow-hidden rounded-xl border-[3px] border-black bg-white p-0 transition-all duration-200 hover:enabled:-translate-x-0.5 hover:enabled:-translate-y-0.5 hover:enabled:rotate-0 {isGenerating
+		class="relative mb-3 flex -rotate-[0.5deg] items-end overflow-hidden rounded-xl border-[3px] border-black bg-white p-0 shadow-neo-lg transition-all duration-200 hover:enabled:-translate-x-0.5 hover:enabled:-translate-y-0.5 hover:enabled:rotate-0 hover:enabled:shadow-neo-2xl {isGenerating
 			? 'bg-gradient-gray opacity-70'
 			: ''}"
 	>
 		<span
-			class="bg-neo-green absolute -top-[15px] left-[10px] z-[1] animate-[bounce_3s_ease-in-out_infinite] rounded border-2 border-black px-2 text-[1.5rem]"
+			class="absolute -top-[15px] left-[10px] z-[1] animate-[bounce_3s_ease-in-out_infinite] rounded border-2 border-black bg-neo-green px-2 text-[1.5rem]"
 			>💭</span
 		>
 		<textarea
@@ -83,7 +83,7 @@
 		<button
 			onclick={onSend}
 			disabled={isGenerating || !value.trim()}
-			class="bg-gradient-yellow shadow-neo-sm hover:enabled:bg-gradient-green hover:enabled:shadow-neo active:enabled:shadow-neo-sm m-2 flex h-11 w-11 rotate-[5deg] cursor-pointer items-center justify-center self-center rounded-lg border-2 border-black text-black transition-all duration-200 hover:enabled:scale-110 hover:enabled:rotate-0 active:enabled:scale-95 disabled:rotate-0 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:opacity-50"
+			class="m-2 flex h-11 w-11 rotate-[5deg] cursor-pointer items-center justify-center self-center rounded-lg border-2 border-black bg-gradient-yellow text-black shadow-neo-sm transition-all duration-200 hover:enabled:scale-110 hover:enabled:rotate-0 hover:enabled:bg-gradient-green hover:enabled:shadow-neo active:enabled:scale-95 active:enabled:shadow-neo-sm disabled:rotate-0 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:opacity-50"
 			aria-label="Send message"
 		>
 			<svg

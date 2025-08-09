@@ -10,7 +10,7 @@
 </script>
 
 <div
-	class="bg-neo-coral shadow-neo-lg mx-auto box-border w-[calc(100%-4rem)] max-w-[500px] rounded-xl border-[3px] border-black p-6 text-center text-black"
+	class="mx-auto box-border w-[calc(100%-4rem)] max-w-[500px] rounded-xl border-[3px] border-black bg-neo-coral p-6 text-center text-black shadow-neo-lg"
 >
 	<h3 class="mb-3 text-2xl font-bold tracking-wider text-black uppercase">Error</h3>
 	<p class="mb-5 text-base leading-relaxed font-medium break-words text-black">{message}</p>

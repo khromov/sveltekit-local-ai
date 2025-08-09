@@ -271,17 +271,17 @@
 	</div>
 {:else}
 	<div
-		class="animate-slide-in-chat shadow-neo-xl relative box-border flex h-[clamp(520px,85vh,920px)] min-h-0 w-full rotate-0 flex-col overflow-hidden rounded-xl border-[3px] border-black bg-white"
+		class="relative box-border flex h-[clamp(520px,85vh,920px)] min-h-0 w-full rotate-0 animate-slide-in-chat flex-col overflow-hidden rounded-xl border-[3px] border-black bg-white shadow-neo-xl"
 	>
 		<div
-			class="bg-gradient-pink animate-float-1 pointer-events-none absolute -top-5 -right-5 z-[-1] h-20 w-20 rounded-[30%_70%_70%_30%/60%_40%_60%_40%] border-[3px] border-black opacity-20"
+			class="pointer-events-none absolute -top-5 -right-5 z-[-1] h-20 w-20 animate-float-1 rounded-[30%_70%_70%_30%/60%_40%_60%_40%] border-[3px] border-black bg-gradient-pink opacity-20"
 		></div>
 		<div
-			class="bg-gradient-pink animate-float-2 pointer-events-none absolute bottom-[100px] -left-[15px] z-[-1] h-[60px] w-[60px] rounded-[70%_30%_30%_70%/40%_60%_40%_60%] border-[3px] border-black opacity-20"
+			class="pointer-events-none absolute bottom-[100px] -left-[15px] z-[-1] h-[60px] w-[60px] animate-float-2 rounded-[70%_30%_30%_70%/40%_60%_40%_60%] border-[3px] border-black bg-gradient-pink opacity-20"
 		></div>
 
 		<div
-			class="bg-gradient-gold relative flex flex-wrap items-center justify-between gap-2 border-b-[3px] border-black px-5 py-4"
+			class="relative flex flex-wrap items-center justify-between gap-2 border-b-[3px] border-black bg-gradient-gold px-5 py-4"
 		>
 			<span
 				class="max-w-full text-[0.875rem] font-bold tracking-[0.5px] break-words text-black uppercase"
@@ -291,13 +291,13 @@
 			</span>
 			<button
 				onclick={newChat}
-				class="bg-neo-green font-space shadow-neo hover:shadow-neo-lg hover:bg-neo-yellow flex rotate-0 cursor-pointer items-center gap-1.5 rounded-md border-2 border-black px-4 py-2 text-[0.875rem] font-bold tracking-[0.5px] whitespace-nowrap text-black uppercase transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-0"
+				class="font-space flex rotate-0 cursor-pointer items-center gap-1.5 rounded-md border-2 border-black bg-neo-green px-4 py-2 text-[0.875rem] font-bold tracking-[0.5px] whitespace-nowrap text-black uppercase shadow-neo transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-0 hover:bg-neo-yellow hover:shadow-neo-lg"
 				aria-label="New Chat"
 			>
 				<span class="text-base">✨</span>
 				New <span class="hidden sm:inline">Chat</span>
 			</button>
-			<div class="bg-repeating-stripes-3 absolute right-0 -bottom-[6px] left-0 h-[3px]"></div>
+			<div class="absolute right-0 -bottom-[6px] left-0 h-[3px] bg-repeating-stripes-3"></div>
 		</div>
 
 		<ChatMessages bind:this={chatMessagesComponent} messages={$messages} {isGenerating} />

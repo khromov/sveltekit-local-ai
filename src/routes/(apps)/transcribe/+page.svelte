@@ -291,18 +291,18 @@
 </script>
 
 <div
-	class="shadow-neo-xl relative box-border w-full overflow-hidden rounded-xl border-[3px] border-black bg-white"
+	class="relative box-border w-full overflow-hidden rounded-xl border-[3px] border-black bg-white shadow-neo-xl"
 	style="animation: fadeIn 0.5s ease-out;"
 >
 	<div
-		class="bg-gradient-gold flex flex-wrap items-center justify-between gap-2 border-b-[3px] border-black px-5 py-4"
+		class="flex flex-wrap items-center justify-between gap-2 border-b-[3px] border-black bg-gradient-gold px-5 py-4"
 	>
 		<span
 			class="max-w-full text-[0.875rem] font-bold tracking-[0.5px] break-words text-black uppercase"
 		>
 			Whisper Audio Transcription
 		</span>
-		<div class="bg-repeating-stripes-3 absolute right-0 -bottom-2 left-0 h-1"></div>
+		<div class="absolute right-0 -bottom-2 left-0 h-1 bg-repeating-stripes-3"></div>
 	</div>
 
 	<div class="box-border flex min-h-0 flex-col gap-4 bg-white p-6">
@@ -360,10 +360,10 @@
 			disabled={!isReady ||
 				isTranscribing ||
 				((transcribeMode === 'upload' || transcribeMode === 'record') && !selectedFile)}
-			class="bg-neo-green shadow-neo-3xl font-space hover:enabled:shadow-neo-5xl hover:enabled:bg-neo-yellow active:enabled:shadow-neo-md relative mx-auto flex min-w-[280px] cursor-pointer items-center justify-center gap-3 overflow-hidden border-4 border-black px-8 py-5 text-center text-2xl font-bold tracking-[2px] text-black uppercase transition-all duration-150 before:absolute before:top-0 before:-left-full before:h-full before:w-full before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:transition-[left] before:duration-500 before:content-[''] hover:enabled:-translate-x-1 hover:enabled:-translate-y-1 hover:enabled:before:left-full active:enabled:translate-x-0 disabled:transform-none disabled:cursor-not-allowed disabled:bg-gray-300 disabled:opacity-70 disabled:shadow-none"
+			class="font-space relative mx-auto flex min-w-[280px] cursor-pointer items-center justify-center gap-3 overflow-hidden border-4 border-black bg-neo-green px-8 py-5 text-center text-2xl font-bold tracking-[2px] text-black uppercase shadow-neo-3xl transition-all duration-150 before:absolute before:top-0 before:-left-full before:h-full before:w-full before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:transition-[left] before:duration-500 before:content-[''] hover:enabled:-translate-x-1 hover:enabled:-translate-y-1 hover:enabled:bg-neo-yellow hover:enabled:shadow-neo-5xl hover:enabled:before:left-full active:enabled:translate-x-0 active:enabled:shadow-neo-md disabled:transform-none disabled:cursor-not-allowed disabled:bg-gray-300 disabled:opacity-70 disabled:shadow-none"
 		>
 			{#if isTranscribing}
-				<span class="animate-spin-fast inline-block text-2xl">◐</span>
+				<span class="inline-block animate-spin-fast text-2xl">◐</span>
 				Transcribing...
 			{:else}
 				<span class="text-2xl">▶</span>
@@ -372,7 +372,7 @@
 		</button>
 
 		<div
-			class="bg-neo-pink shadow-neo-lg mx-auto mt-4 flex w-fit rotate-1 items-center justify-center gap-2 border-[3px] border-black px-4 py-3 text-center text-[0.9375rem] font-semibold text-black"
+			class="mx-auto mt-4 flex w-fit rotate-1 items-center justify-center gap-2 border-[3px] border-black bg-neo-pink px-4 py-3 text-center text-[0.9375rem] font-semibold text-black shadow-neo-lg"
 		>
 			<span class="text-xl">🔒</span>
 			Transcription is performed locally in your browser. Results may not always be accurate.

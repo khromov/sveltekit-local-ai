@@ -23,7 +23,7 @@
 </script>
 
 <div
-	class="shadow-neo-lg mx-auto box-border flex w-[calc(100%-4rem)] max-w-[500px] flex-col items-center gap-5 rounded-xl border-[3px] border-black bg-white p-8 text-center"
+	class="mx-auto box-border flex w-[calc(100%-4rem)] max-w-[500px] flex-col items-center gap-5 rounded-xl border-[3px] border-black bg-white p-8 text-center shadow-neo-lg"
 >
 	<h3 class="m-0 text-[1.75rem] font-bold tracking-wider text-black uppercase">{title}</h3>
 	{#if showPercentage}
