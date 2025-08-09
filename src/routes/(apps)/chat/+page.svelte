@@ -118,17 +118,22 @@
 			let formattedChat = await formatChatHistory($messages.slice(0, -1));
 			console.log('Formatted chat:', formattedChat);
 
-			// Generate completion
-			await wllama.createCompletion(formattedChat, {
+			// Generate completion with streaming via onNewToken callback
+			const result = await wllama.createCompletion(formattedChat, {
 				nPredict: $inferenceParams.nPredict,
 				sampling: {
 					temp: $inferenceParams.temperature
 				},
 				useCache: true,
-				onNewToken: (token, piece, currentText, optionals) => {
-					// Update the last message with the current generated text
-					$messages[$messages.length - 1].content = currentText;
-					$messages = [...$messages];
+				onNewToken: (_token, _piece, currentText, optionals) => {
+					console.log('New token received, current text length:', currentText.length);
+					// Create a new array with updated last message to trigger reactivity
+					const updatedMessages = [...$messages];
+					updatedMessages[updatedMessages.length - 1] = {
+						...updatedMessages[updatedMessages.length - 1],
+						content: currentText
+					};
+					$messages = updatedMessages;
 
 					// Scroll to bottom with each new token when generating
 					chatMessagesComponent?.scrollToBottom();
@@ -139,6 +144,14 @@
 					}
 				}
 			});
+
+			// Final update with complete result
+			const finalMessages = [...$messages];
+			finalMessages[finalMessages.length - 1] = {
+				...finalMessages[finalMessages.length - 1],
+				content: result
+			};
+			$messages = finalMessages;
 		} catch (err) {
 			console.error('Generation error:', err);
 		} finally {
