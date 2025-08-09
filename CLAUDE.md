@@ -30,7 +30,7 @@ This is a browser-based AI chat and transcription application that runs entirely
 - **Routes**: Main pages in `src/routes/` with route groups for apps `(apps)/`
 - **Components**: Reusable UI components in `src/lib/components/`
 - **State Management**: Persisted stores using `svelte-persisted-store` in `src/lib/stores.ts`
-- **AI Integration**: Wllama configuration and models in `src/lib/wllama-config.ts`
+- **AI Integration**: Chat models configuration in `src/lib/chat-config.ts`
 
 ### WebAssembly Integration
 
@@ -47,7 +47,7 @@ This is a browser-based AI chat and transcription application that runs entirely
 
 ### Model Management
 
-- Available models configured in `AVAILABLE_MODELS` array in `src/lib/wllama-config.ts`
+- Available models configured in `WLLAMA_MODELS` and `TRANSFORMERS_MODELS` arrays in `src/lib/chat-config.ts`
 - Models are downloaded with progress tracking and cached locally
 - Support for both single-threaded and multi-threaded WebAssembly builds
 

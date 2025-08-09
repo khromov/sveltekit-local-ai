@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount, tick } from 'svelte';
-	import type { Message as MessageType } from '$lib/wllama-config';
+	import type { Message as MessageType } from '$lib/chat-config';
 	import Message from './Message.svelte';
 
 	interface Props {

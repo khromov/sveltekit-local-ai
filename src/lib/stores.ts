@@ -1,5 +1,5 @@
 import { persisted } from 'svelte-persisted-store';
-import { DEFAULT_INFERENCE_PARAMS, type Message } from './wllama-config';
+import { DEFAULT_INFERENCE_PARAMS, type Message } from './chat-config';
 
 export const messages = persisted<Message[]>('messages', []);
 export const inferenceParams = persisted<{

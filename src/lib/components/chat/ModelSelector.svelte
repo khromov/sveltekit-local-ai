@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { AVAILABLE_MODELS, formatFileSize } from '$lib/wllama-config';
+	import { WLLAMA_MODELS as AVAILABLE_MODELS, formatFileSize } from '$lib/chat-config';
 	import { inferenceParams } from '$lib/stores';
 
 	interface Props {
