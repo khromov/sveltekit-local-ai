@@ -1,7 +1,14 @@
 <script lang="ts">
 	import { Wllama } from '@wllama/wllama';
 	import { onMount } from 'svelte';
-	import { WLLAMA_CONFIG_PATHS, AVAILABLE_MODELS } from '$lib/wllama-config';
+	import { WLLAMA_MODELS as AVAILABLE_MODELS } from '$lib/chat-config';
+	import singleThreaded from '@wllama/wllama/src/single-thread/wllama.wasm?url';
+	import multiThreaded from '@wllama/wllama/src/multi-thread/wllama.wasm?url';
+
+	export const WLLAMA_CONFIG_PATHS = {
+		'single-thread/wllama.wasm': singleThreaded,
+		'multi-thread/wllama.wasm': multiThreaded
+	};
 
 	let wllama: Wllama;
 	let isModelLoaded = $state(false);

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Message } from '$lib/wllama-config';
+	import type { Message } from '$lib/chat-config';
 
 	interface Props {
 		message: Message;
