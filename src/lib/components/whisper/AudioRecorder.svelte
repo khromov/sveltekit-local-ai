@@ -1,11 +1,21 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	interface Props {
+		transcribeMode: 'demo' | 'upload' | 'record';
 		selectedFile: File | null;
 		onFileSelect: (file: File) => void;
+		onModeChange: (mode: 'demo' | 'upload' | 'record') => void;
 		disabled?: boolean;
 	}
 
-	let { selectedFile = $bindable(), onFileSelect, disabled = false }: Props = $props();
+	let {
+		transcribeMode = $bindable(),
+		selectedFile = $bindable(),
+		onFileSelect,
+		onModeChange,
+		disabled = false
+	}: Props = $props();
 
 	let mediaRecorder: MediaRecorder | null = null;
 	let audioChunks: Blob[] = [];
@@ -31,14 +41,12 @@
 				const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
 				audioUrl = URL.createObjectURL(audioBlob);
 
-				// Convert blob to File
 				const fileName = `recording-${Date.now()}.webm`;
 				const audioFile = new File([audioBlob], fileName, { type: 'audio/webm' });
 
 				selectedFile = audioFile;
 				onFileSelect(audioFile);
 
-				// Stop all tracks
 				stream.getTracks().forEach((track) => track.stop());
 			};
 
@@ -46,7 +54,6 @@
 			isRecording = true;
 			recordingTime = 0;
 
-			// Start timer
 			recordingInterval = setInterval(() => {
 				recordingTime++;
 			}, 1000);
@@ -86,7 +93,6 @@
 
 	$effect(() => {
 		return () => {
-			// Cleanup on unmount
 			if (recordingInterval) {
 				clearInterval(recordingInterval);
 			}

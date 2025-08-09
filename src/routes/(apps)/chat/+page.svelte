@@ -11,14 +11,12 @@
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import { messages, inferenceParams } from '$lib/stores';
 
-	// Import components
 	import LoadingProgress from '$lib/components/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/ErrorDisplay.svelte';
 	import ModelSelector from '$lib/components/chat/ModelSelector.svelte';
 	import ChatMessages from '$lib/components/chat/ChatMessages.svelte';
 	import MessageInput from '$lib/components/chat/MessageInput.svelte';
 
-	// State variables
 	let wllama: Wllama;
 	let isLoading = $state(false);
 	let isModelLoaded = $state(false);
@@ -33,12 +31,9 @@
 	let chatMessagesComponent: ChatMessages | undefined = $state();
 	let messageInputComponent: MessageInput | undefined = $state();
 
-	// Initialize wake lock functionality
 	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
 
-	// Set up event listeners
 	onMount(() => {
-		// Set up wake lock management
 		return setupWakeLock(() => isGenerating);
 	});
 
@@ -79,13 +74,11 @@
 		}
 	}
 
-	// Function to generate chat completion
 	async function sendMessage() {
 		if (!isModelLoaded || isGenerating || !inputText.trim()) {
 			return;
 		}
 
-		// Add user message to chat
 		const userMessage: Message = {
 			role: 'user',
 			content: inputText
@@ -93,10 +86,8 @@
 
 		$messages = [...$messages, userMessage];
 
-		// After adding user message, scroll to bottom
 		chatMessagesComponent?.scrollToBottom();
 
-		// Add empty assistant message
 		const assistantMessage: Message = {
 			role: 'assistant',
 			content: ''
@@ -104,22 +95,18 @@
 
 		$messages = [...$messages, assistantMessage];
 
-		// Scroll to see empty assistant message with typing indicator
 		chatMessagesComponent?.scrollToBottom();
 
 		inputText = '';
 		isGenerating = true;
 		stopSignal = false;
 
-		// Request wake lock to keep screen on during generation
 		await requestWakeLock();
 
 		try {
-			// Format chat history for the model
 			let formattedChat = await formatChatHistory($messages.slice(0, -1));
 			console.log('Formatted chat:', formattedChat);
 
-			// Generate completion with streaming via onNewToken callback
 			const result = await wllama.createCompletion(formattedChat, {
 				nPredict: $inferenceParams.nPredict,
 				sampling: {
@@ -128,7 +115,6 @@
 				useCache: true,
 				onNewToken: (_token, _piece, currentText, optionals) => {
 					console.log('New token received, current text length:', currentText.length);
-					// Create a new array with updated last message to trigger reactivity
 					const updatedMessages = [...$messages];
 					updatedMessages[updatedMessages.length - 1] = {
 						...updatedMessages[updatedMessages.length - 1],
@@ -136,17 +122,14 @@
 					};
 					$messages = updatedMessages;
 
-					// Scroll to bottom with each new token when generating
 					chatMessagesComponent?.scrollToBottom();
 
-					// If stop requested, abort generation
 					if (stopSignal) {
 						optionals.abortSignal();
 					}
 				}
 			});
 
-			// Final update with complete result
 			const finalMessages = [...$messages];
 			finalMessages[finalMessages.length - 1] = {
 				...finalMessages[finalMessages.length - 1],
@@ -158,23 +141,18 @@
 		} finally {
 			isGenerating = false;
 
-			// Release wake lock when generation is complete
 			await releaseWakeLock();
 
-			// Focus the input field when generation is complete
 			messageInputComponent?.focus();
 		}
 	}
 
-	// Function to stop text generation
 	async function stopGeneration() {
 		stopSignal = true;
 
-		// Release wake lock when generation is stopped
 		await releaseWakeLock();
 	}
 
-	// Function to format chat history
 	async function formatChatHistory(msgs: Message[]): Promise<string> {
 		try {
 			const templateStr = wllama.getChatTemplate() || DEFAULT_CHAT_TEMPLATE;
@@ -199,7 +177,6 @@
 				return result + '<｜Assistant｜>';
 			}
 
-			// Standard template rendering with jinja
 			const template = new Template(templateStr);
 			const bos_token = await wllama.detokenize([wllama.getBOS()], true);
 			const eos_token = await wllama.detokenize([wllama.getEOS()], true);
@@ -212,26 +189,21 @@
 			});
 		} catch (err) {
 			console.error('Error formatting chat:', err);
-			// Fallback to basic formatting
 			return msgs.map((m) => `${m.role}: ${m.content}`).join('\n\n') + '\n\nassistant: ';
 		}
 	}
 
-	// Start fresh chat
 	function newChat() {
 		if (isGenerating) {
 			stopGeneration();
 		}
 		$messages = [];
 
-		// Focus the input field after clearing chat
 		messageInputComponent?.focus();
 	}
 
-	// Initialize on component mount
 	onMount(() => {
 		if ($messages.length === 0) {
-			// Add a system message for first-time users
 			$messages = [
 				{
 					role: 'system',
@@ -241,7 +213,6 @@
 			];
 		}
 
-		// Focus input when already loaded
 		if (isModelLoaded) {
 			messageInputComponent?.focus();
 		}
@@ -442,7 +413,6 @@
 		background: #ffd93d;
 	}
 
-	/* Responsive adjustments for the main page */
 	@media (max-width: 600px) {
 		.loading {
 			align-items: stretch;
@@ -454,7 +424,6 @@
 			font-size: 0.8125rem;
 		}
 
-		/* Hide the extra word on small screens */
 		.desktop-only {
 			display: none;
 		}

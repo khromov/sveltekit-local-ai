@@ -1,4 +1,3 @@
-// Configuration for Wllama
 import singleThreaded from '@wllama/wllama/src/single-thread/wllama.wasm?url';
 import multiThreaded from '@wllama/wllama/src/multi-thread/wllama.wasm?url';
 
@@ -18,7 +17,6 @@ export const DEFAULT_INFERENCE_PARAMS = {
 export const DEFAULT_CHAT_TEMPLATE =
 	"{% for message in messages %}{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}";
 
-// Models available for download
 export const AVAILABLE_MODELS = [
 	{
 		url: 'https://files.khromov.se/models/google_gemma-3-1b-it-qat-Q4_0.gguf',
@@ -39,7 +37,6 @@ export interface Message {
 	content: string;
 }
 
-// Helper to format human readable file sizes
 export function formatFileSize(bytes: number): string {
 	const units = ['B', 'KB', 'MB', 'GB', 'TB'];
 	let size = bytes;

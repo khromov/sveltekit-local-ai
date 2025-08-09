@@ -130,7 +130,6 @@
 		overflow: visible;
 	}
 
-	/* User message styling */
 	.user-message .message-content {
 		background: linear-gradient(135deg, #ffd93d 0%, #ffa500 100%);
 		color: #000;
@@ -161,7 +160,6 @@
 		box-shadow: 2px 2px 0 #000;
 	}
 
-	/* Assistant message styling */
 	.assistant-message .message-content {
 		background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
 		color: #000;
@@ -192,7 +190,6 @@
 		box-shadow: 2px 2px 0 #000;
 	}
 
-	/* Typing indicator */
 	.typing-indicator {
 		display: inline-flex;
 		align-items: center;
@@ -200,7 +197,6 @@
 		padding: 0.25rem 0;
 	}
 
-	/* Blinking cursor for streaming text */
 	.cursor-blink {
 		display: inline-block;
 		animation: blink 1s infinite;

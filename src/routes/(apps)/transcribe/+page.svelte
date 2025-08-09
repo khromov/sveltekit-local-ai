@@ -6,13 +6,11 @@
 	import { whisperModel } from '$lib/stores';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 
-	// Import components
 	import WhisperModelSelector from '$lib/components/whisper/WhisperModelSelector.svelte';
 	import TranscribeOptions from '$lib/components/whisper/TranscribeOptions.svelte';
 	import TranscriptionProgress from '$lib/components/whisper/TranscriptionProgress.svelte';
 	import TranscriptionResult from '$lib/components/whisper/TranscriptionResult.svelte';
 
-	// State variables
 	let isReady = $state(false);
 	let isLoading = $state(false);
 	let isTranscribing = $state(false);
@@ -28,7 +26,6 @@
 	let opfsSupported = $state(true);
 	let hasProgressTracking = $state(true);
 
-	// Store full transcription data for formats
 	let transcriptionData = $state<
 		| {
 				transcription: Array<{
@@ -42,27 +39,21 @@
 		| undefined
 	>(undefined);
 
-	// Initialize wake lock functionality
 	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
 
-	// Set up event listeners
 	onMount(() => {
-		// Set up wake lock management
 		return setupWakeLock(() => isTranscribing);
 	});
 
-	// File upload state
 	let selectedFile: File | null = $state(null);
 	let transcribeMode = $state<'demo' | 'upload' | 'record'>('upload');
 
-	// Timeout tracking for stuck transcription
 	let lastSegmentTime = $state(0);
 	let stuckCheckInterval: number | null = null;
 	let isStuck = $state(false);
 
 	const DEFAULT_MODEL = 'https://files.khromov.se/whisper/ggml-tiny-q5_1.bin';
 
-	// Model selection state
 	let selectedModel = $state($whisperModel || DEFAULT_MODEL);
 	const availableModels = [
 		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' },
@@ -102,26 +93,20 @@
 		lastSegmentTime = Date.now();
 		transcriptionData = undefined;
 
-		// Start checking for stuck transcription
 		startStuckCheck();
 
-		// Request wake lock to keep screen on during transcription
 		await requestWakeLock();
 
 		try {
 			let result;
 			if (transcribeMode === 'demo') {
-				// Transcribe the demo file
 				result = await transcriber.transcribe('/rich.mp3', { lang: 'en' });
 			} else {
-				// Transcribe the uploaded file
 				result = await transcriber.transcribe(selectedFile!, { lang: 'en' });
 			}
 
-			// Store the full result for different formats
 			transcriptionData = result;
 
-			// Extract the transcription text
 			text = result.transcription.map((t) => t.text).join(' ');
 		} catch (err) {
 			console.error('Transcription error:', err);
@@ -133,7 +118,6 @@
 			currentSegment = '';
 			stopStuckCheck();
 
-			// Release wake lock when done
 			await releaseWakeLock();
 		}
 	}
@@ -180,41 +164,34 @@
 			isLoading = true;
 			error = false;
 
-			// If there's already a transcriber loaded, clean it up first
 			if (transcriber) {
 				transcriber.destroy();
 				isReady = false;
 			}
 
-			// Save the selected model to the store
 			$whisperModel = selectedModel;
 
 			console.log(`Loading model from: ${selectedModel}`);
 
-			// Reset state
 			usingCachedModel = false;
 			downloadProgress = 0;
 			hasProgressTracking = true;
 
-			// Download the model with real progress tracking
 			const modelFile = await downloadModelWithProgress(selectedModel, (progress, cached) => {
 				previousDownloadProgress = downloadProgress;
 				downloadProgress = progress;
 
-				// Check for no progress tracking signal
 				if (progress === -1) {
 					hasProgressTracking = false;
 					downloadProgress = 0;
 					return;
 				}
 
-				// Update cached state
 				if (cached) {
 					usingCachedModel = true;
 				}
 			});
 
-			// Create new instance with progress tracking
 			transcriber = new FileTranscriber({
 				createModule,
 				model: modelFile, // Pass the downloaded File object instead of URL
@@ -226,7 +203,6 @@
 				},
 				onSegment: (segment) => {
 					console.log('New segment:', segment);
-					// Update the current segment preview and reset timer
 					currentSegment = segment.segment.text.trim();
 					lastSegmentTime = Date.now();
 					isStuck = false;
@@ -235,7 +211,6 @@
 				onCanceled: () => console.log('Transcription canceled')
 			});
 
-			// Initialize the transcriber
 			await transcriber.init();
 
 			isReady = true;
@@ -247,22 +222,17 @@
 		}
 	}
 
-	// Function to change the model once one is already loaded
 	function changeModel() {
-		// This will trigger the loadModel function with the currently selected model
 		isReady = false;
 		loadModel();
 	}
 
-	// Load saved model on mount
 	onMount(async () => {
-		// Check OPFS support
 		opfsSupported = isOPFSSupported();
 		if (!opfsSupported) {
 			console.log('OPFS not supported - models will not be cached');
 		}
 
-		// If we have a saved model, only load it if it's cached (or if OPFS not supported, don't autoload)
 		if ($whisperModel) {
 			selectedModel = $whisperModel;
 
@@ -281,7 +251,6 @@
 		}
 	});
 
-	// Clean up resources when component is destroyed
 	onDestroy(() => {
 		if (transcriber) {
 			transcriber.destroy();
@@ -297,7 +266,6 @@
 	</div>
 
 	<div class="content-area">
-		<!-- Model Selection Section -->
 		<WhisperModelSelector
 			bind:selectedModel
 			{availableModels}
@@ -313,7 +281,6 @@
 			onRetry={retry}
 		/>
 
-		<!-- Main Content (grayed out when model not ready) -->
 		<div class="main-content" class:disabled={!isReady}>
 			<TranscribeOptions
 				bind:transcribeMode
@@ -487,7 +454,6 @@
 		font-size: 1.25rem;
 	}
 
-	/* Fade-in animation */
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
@@ -499,7 +465,6 @@
 		}
 	}
 
-	/* Responsive adjustments */
 	@media (max-width: 600px) {
 		.main-content.disabled,
 		.input-area.disabled {

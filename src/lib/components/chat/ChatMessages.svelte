@@ -12,7 +12,6 @@
 
 	let chatContainer: HTMLElement | undefined = $state();
 
-	// Scroll to the bottom of the chat
 	export async function scrollToBottom() {
 		await tick();
 		if (chatContainer) {
@@ -20,7 +19,6 @@
 		}
 	}
 
-	// Auto-scroll when messages change
 	$effect(() => {
 		if (messages.length > 0) {
 			scrollToBottom();
@@ -50,7 +48,6 @@
 
 <style>
 	.chat-messages {
-		/* Let this area flex to fill available space in the chat card and scroll internally */
 		flex: 1 1 auto;
 		min-height: 0; /* critical to allow proper scrolling in flex containers */
 		overflow: auto;
@@ -143,8 +140,6 @@
 		font-weight: 500;
 	}
 
-
-	/* Custom scrollbar styling */
 	.chat-messages::-webkit-scrollbar {
 		width: 12px;
 	}
@@ -167,7 +162,6 @@
 	}
 
 	@media (max-width: 600px) {
-		/* On small screens, inherit the same flexible behavior */
 		.chat-messages {
 			flex: 1 1 auto;
 			min-height: 0;

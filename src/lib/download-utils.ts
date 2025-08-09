@@ -1,6 +1,5 @@
 import { PUBLIC_DISABLE_OPFS } from '$env/static/public';
 
-// Extend FileSystem interfaces to include missing methods
 declare global {
 	interface FileSystemDirectoryHandle {
 		entries(): AsyncIterableIterator<[string, FileSystemHandle]>;
@@ -10,18 +9,11 @@ declare global {
 	}
 }
 
-/**
- * Gets the model file name from URL
- */
 function getModelFileName(url: string): string {
 	return url.split('/').pop() || 'downloaded-model';
 }
 
-/**
- * Checks if OPFS is supported in the current browser
- */
 export function isOPFSSupported(): boolean {
-	// Check if OPFS is disabled via environment variable
 	if (PUBLIC_DISABLE_OPFS === 'true') {
 		console.log('OPFS disabled via PUBLIC_DISABLE_OPFS environment variable');
 		return false;
@@ -30,9 +22,6 @@ export function isOPFSSupported(): boolean {
 	return 'navigator' in globalThis && 'storage' in navigator && 'getDirectory' in navigator.storage;
 }
 
-/**
- * Gets a cached model from OPFS
- */
 async function getCachedModel(fileName: string): Promise<File | null> {
 	if (!isOPFSSupported()) {
 		return null;
@@ -45,15 +34,11 @@ async function getCachedModel(fileName: string): Promise<File | null> {
 		console.log(`Found cached model: ${fileName}`);
 		return file;
 	} catch {
-		// File doesn't exist in cache
 		console.log(`Model not cached: ${fileName}`);
 		return null;
 	}
 }
 
-/**
- * Saves a model to OPFS cache
- */
 async function cacheModel(fileName: string, data: Uint8Array): Promise<void> {
 	if (!isOPFSSupported()) {
 		return;
@@ -91,7 +76,6 @@ export async function downloadModelWithProgress(
 		return cachedModel;
 	}
 
-	// Reset progress tracking
 	onProgress(0);
 	console.log(`Downloading model from: ${url}`);
 
@@ -111,7 +95,6 @@ export async function downloadModelWithProgress(
 		return new File([blob], fileName);
 	}
 
-	// Fetch the model with progress tracking
 	const response = await fetch(url);
 
 	if (!response.ok) {
@@ -122,18 +105,15 @@ export async function downloadModelWithProgress(
 	const contentLength = response.headers.get('Content-Length');
 	const total = contentLength ? parseInt(contentLength, 10) : 0;
 
-	// Create a reader from the response body stream
 	const reader = response.body?.getReader();
 
 	if (!reader) {
 		throw new Error('Failed to read response body');
 	}
 
-	// Create an array to hold the chunks
 	const chunks: Uint8Array[] = [];
 	let receivedLength = 0;
 
-	// Process the data stream
 	while (true) {
 		const { done, value } = await reader.read();
 
@@ -141,11 +121,9 @@ export async function downloadModelWithProgress(
 			break;
 		}
 
-		// Add the chunk to our array
 		chunks.push(value);
 		receivedLength += value.length;
 
-		// Update the progress (as a percentage)
 		if (total) {
 			const progress = Math.round((receivedLength / total) * 100);
 			onProgress(progress);
@@ -153,7 +131,6 @@ export async function downloadModelWithProgress(
 		}
 	}
 
-	// Combine the chunks into a single Uint8Array
 	const allChunks = new Uint8Array(receivedLength);
 	let position = 0;
 
@@ -162,22 +139,15 @@ export async function downloadModelWithProgress(
 		position += chunk.length;
 	}
 
-	// Cache the model for future use
 	await cacheModel(fileName, allChunks);
 
-	// Convert the downloaded data to a Blob and then to a File
 	const blob = new Blob([allChunks]);
 
-	// Set progress to 100% when download is complete
 	onProgress(100);
 
-	// Return the File object that can be used by Transcribe.js
 	return new File([blob], fileName);
 }
 
-/**
- * Clears all cached models from OPFS
- */
 export async function clearModelCache(): Promise<void> {
 	if (!isOPFSSupported()) {
 		console.log('OPFS not supported, cannot clear cache');
@@ -187,7 +157,6 @@ export async function clearModelCache(): Promise<void> {
 	try {
 		const opfsRoot = await navigator.storage.getDirectory();
 
-		// List all files and remove model files
 		for await (const [name, handle] of opfsRoot.entries()) {
 			if (handle.kind === 'file' && name.endsWith('.bin')) {
 				await opfsRoot.removeEntry(name);
@@ -201,18 +170,12 @@ export async function clearModelCache(): Promise<void> {
 	}
 }
 
-/**
- * Checks if a model is cached locally
- */
 export async function isModelCached(url: string): Promise<boolean> {
 	const fileName = getModelFileName(url);
 	const cachedModel = await getCachedModel(fileName);
 	return cachedModel !== null;
 }
 
-/**
- * Gets information about cached models
- */
 export async function getCacheInfo(): Promise<{ fileName: string; size: number }[]> {
 	if (!isOPFSSupported()) {
 		return [];
