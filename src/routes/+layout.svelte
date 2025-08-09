@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '../app.css';
 	import { page } from '$app/stores';
 	import '@fontsource/space-grotesk/400.css';
 	import '@fontsource/space-grotesk/500.css';
@@ -15,7 +16,11 @@
 	const navLinks = [
 		{ path: '/', label: '', icon: 'home' },
 		{ path: '/chat', label: 'Chat', icon: 'chat' },
-		{ path: '/transcribe', label: 'Transcribe', icon: 'mic' }
+		{
+			path: '/transcribe',
+			label: 'Transcribe',
+			icon: 'mic'
+		}
 	];
 
 	// Check if a path is active
