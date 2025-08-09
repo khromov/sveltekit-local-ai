@@ -41,7 +41,7 @@ export function useWakeLock() {
 			try {
 				await wakeLock.release();
 				wakeLock = null;
-				console.log('Wake lock released');
+				// console.log('Wake lock released');
 			} catch (err) {
 				console.error('Error releasing wake lock:', err);
 			}

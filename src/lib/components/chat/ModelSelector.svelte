@@ -16,7 +16,7 @@
 	<div class="selector-decoration"></div>
 	<h2>
 		<span class="title-icon">🚀</span>
-		Local Chat
+		Chat
 	</h2>
 
 	<div class="select-wrapper">
