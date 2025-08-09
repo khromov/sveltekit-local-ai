@@ -283,6 +283,7 @@
 		border-radius: 12px;
 		overflow: hidden;
 		box-sizing: border-box;
+		border-bottom-right-radius: 16px;
 	}
 
 	:global(.toolbar) {
