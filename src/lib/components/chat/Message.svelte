@@ -20,13 +20,18 @@
 
 		<div class="message {message.role}-message">
 			<div class="message-content">
-				{#if message.role === 'assistant' && message.content === '' && isGenerating && isLast}
-					<div class="typing-indicator">
-						<span class="typing-emoji">💭</span>
-						<span class="dot"></span>
-						<span class="dot"></span>
-						<span class="dot"></span>
-					</div>
+				{#if message.role === 'assistant' && isGenerating && isLast}
+					{#if message.content === ''}
+						<div class="typing-indicator">
+							<span class="typing-emoji">💭</span>
+							<span class="dot"></span>
+							<span class="dot"></span>
+							<span class="dot"></span>
+						</div>
+					{:else}
+						{message.content}
+						<span class="cursor-blink">▊</span>
+					{/if}
 				{:else}
 					{message.content}
 				{/if}
@@ -193,6 +198,26 @@
 		align-items: center;
 		gap: 0.375rem;
 		padding: 0.25rem 0;
+	}
+
+	/* Blinking cursor for streaming text */
+	.cursor-blink {
+		display: inline-block;
+		animation: blink 1s infinite;
+		color: #000;
+		font-weight: normal;
+		margin-left: 2px;
+	}
+
+	@keyframes blink {
+		0%,
+		50% {
+			opacity: 1;
+		}
+		51%,
+		100% {
+			opacity: 0;
+		}
 	}
 
 	.typing-emoji {

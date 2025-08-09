@@ -53,7 +53,7 @@
 
 	// File upload state
 	let selectedFile: File | null = $state(null);
-	let transcribeMode = $state<'demo' | 'upload'>('upload');
+	let transcribeMode = $state<'demo' | 'upload' | 'record'>('upload');
 
 	// Timeout tracking for stuck transcription
 	let lastSegmentTime = $state(0);
@@ -91,7 +91,7 @@
 
 	async function transcribe() {
 		if (!transcriber?.isReady) return;
-		if (transcribeMode === 'upload' && !selectedFile) return;
+		if ((transcribeMode === 'upload' || transcribeMode === 'record') && !selectedFile) return;
 
 		text = '';
 		currentSegment = '';
@@ -112,7 +112,7 @@
 			let result;
 			if (transcribeMode === 'demo') {
 				// Transcribe the demo file
-				result = await transcriber.transcribe('/jfk.mp3', { lang: 'en' });
+				result = await transcriber.transcribe('/rich.mp3', { lang: 'en' });
 			} else {
 				// Transcribe the uploaded file
 				result = await transcriber.transcribe(selectedFile!, { lang: 'en' });
@@ -168,7 +168,7 @@
 		transcribeMode = 'upload';
 	}
 
-	function handleModeChange(mode: 'demo' | 'upload') {
+	function handleModeChange(mode: 'demo' | 'upload' | 'record') {
 		transcribeMode = mode;
 		if (mode === 'demo') {
 			selectedFile = null;
@@ -340,7 +340,9 @@
 	<div class="input-area" class:disabled={!isReady}>
 		<button
 			onclick={transcribe}
-			disabled={!isReady || isTranscribing || (transcribeMode === 'upload' && !selectedFile)}
+			disabled={!isReady ||
+				isTranscribing ||
+				((transcribeMode === 'upload' || transcribeMode === 'record') && !selectedFile)}
 			class="transcribe-btn primary-button"
 		>
 			{#if isTranscribing}

@@ -19,11 +19,11 @@ export function useWakeLock() {
 
 				// Request a new wake lock
 				wakeLock = await navigator.wakeLock.request('screen');
-				console.log('Wake lock acquired');
+				// console.log('Wake lock acquired');
 
 				// Add event listener for when wake lock is released
 				wakeLock.addEventListener('release', () => {
-					console.log('Wake lock released');
+					// console.log('Wake lock released');
 					wakeLock = null;
 				});
 			}
@@ -41,7 +41,7 @@ export function useWakeLock() {
 			try {
 				await wakeLock.release();
 				wakeLock = null;
-				console.log('Wake lock released');
+				// console.log('Wake lock released');
 			} catch (err) {
 				console.error('Error releasing wake lock:', err);
 			}
