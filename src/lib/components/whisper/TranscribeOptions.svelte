@@ -1,11 +1,12 @@
 <script lang="ts">
 	import FileUpload from './FileUpload.svelte';
+	import AudioRecorder from './AudioRecorder.svelte';
 
 	interface Props {
-		transcribeMode: 'demo' | 'upload';
+		transcribeMode: 'demo' | 'upload' | 'record';
 		selectedFile: File | null;
 		onFileSelect: (file: File) => void;
-		onModeChange: (mode: 'demo' | 'upload') => void;
+		onModeChange: (mode: 'demo' | 'upload' | 'record') => void;
 		disabled?: boolean;
 	}
 
@@ -17,7 +18,7 @@
 		disabled = false
 	}: Props = $props();
 
-	function handleModeChange(mode: 'demo' | 'upload') {
+	function handleModeChange(mode: 'demo' | 'upload' | 'record') {
 		onModeChange(mode);
 	}
 </script>
@@ -48,6 +49,24 @@
 			</div>
 		</label>
 
+		<label class="option-label" class:selected={transcribeMode === 'record'}>
+			<input
+				type="radio"
+				name="transcribeMode"
+				value="record"
+				checked={transcribeMode === 'record'}
+				onchange={() => handleModeChange('record')}
+				{disabled}
+			/>
+			<div class="option-content">
+				<div class="option-header">
+					<span class="option-icon">🎙️</span>
+					<strong>Record Audio</strong>
+				</div>
+				<small>Record audio directly from your microphone</small>
+			</div>
+		</label>
+
 		<div class="or-divider">
 			<span>OR</span>
 		</div>
@@ -62,14 +81,16 @@
 				{disabled}
 			/>
 			<div class="option-content">
-				<strong>Demo</strong>
-				<small>JFK (<a href="/jfk.mp3" target="_blank">→</a>)</small>
+				<strong>Demo File</strong>
+				<small><a href="/rich.mp3" target="_blank">Listen →</a></small>
 			</div>
 		</label>
 	</div>
 
 	{#if transcribeMode === 'upload'}
 		<FileUpload bind:selectedFile {onFileSelect} {disabled} />
+	{:else if transcribeMode === 'record'}
+		<AudioRecorder bind:selectedFile {onFileSelect} {disabled} />
 	{/if}
 </div>
 
