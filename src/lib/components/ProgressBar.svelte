@@ -8,63 +8,13 @@
 	let { progress = 0, previousProgress = 0, animated = true }: Props = $props();
 </script>
 
-<div class="progress-container">
-	<div class="progress-bar">
+<div class="my-2 w-full">
+	<div class="relative h-5 w-full overflow-hidden rounded-md border-2 border-black bg-gray-100">
 		<div
-			class="progress-bar-fill"
-			class:animated
+			class="relative h-full bg-gradient-to-r from-yellow-400 to-orange-500 transition-all duration-300 ease-in-out {animated ? 'after:animate-shimmer after:absolute after:inset-0 after:bg-gradient-to-r after:from-transparent after:via-white/30 after:to-transparent' : ''}"
 			style="width: {progress}%; transition: width {animated && progress > previousProgress
 				? '0.3s'
 				: '0s'} ease"
 		></div>
 	</div>
 </div>
-
-<style>
-	.progress-container {
-		width: 100%;
-		margin: 0.5rem 0;
-	}
-
-	.progress-bar {
-		height: 1.25rem;
-		background: #f0f0f0;
-		border: 2px solid #000;
-		border-radius: 6px;
-		overflow: hidden;
-		width: 100%;
-		position: relative;
-	}
-
-	.progress-bar-fill {
-		height: 100%;
-		background: linear-gradient(90deg, #ffd700 0%, #ffa500 100%);
-		position: relative;
-		transition: width 0.3s ease;
-	}
-
-	.progress-bar-fill.animated::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: linear-gradient(
-			90deg,
-			transparent 0%,
-			rgba(255, 255, 255, 0.3) 50%,
-			transparent 100%
-		);
-		animation: shimmer 1.5s infinite;
-	}
-
-	@keyframes shimmer {
-		0% {
-			transform: translateX(-100%);
-		}
-		100% {
-			transform: translateX(100%);
-		}
-	}
-</style>

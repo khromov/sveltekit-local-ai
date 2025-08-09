@@ -11,26 +11,44 @@
 </script>
 
 {#if message.role !== 'system'}
-	<div class="message-wrapper {message.role}-wrapper">
+	<div
+		class="animate-message-slide relative mb-4 box-border flex w-full px-2 {message.role === 'user'
+			? 'justify-end'
+			: 'justify-start'}"
+	>
 		{#if message.role === 'user'}
-			<div class="message-decoration user-decoration"></div>
+			<div
+				class="bg-neo-yellow animate-float-deco absolute top-1/2 -right-[5px] z-[-1] h-[30px] w-[30px] -translate-y-1/2 rotate-45 rounded-[30%_70%_70%_30%/60%_40%_60%_40%] border-2 border-black opacity-30"
+			></div>
 		{:else}
-			<div class="message-decoration assistant-decoration"></div>
+			<div
+				class="bg-neo-green animate-float-deco absolute top-1/2 -left-[5px] z-[-1] h-[30px] w-[30px] -translate-y-1/2 -rotate-45 rounded-[70%_30%_30%_70%/40%_60%_40%_60%] border-2 border-black opacity-30"
+			></div>
 		{/if}
 
-		<div class="message {message.role}-message">
-			<div class="message-content">
+		<div class="relative max-w-[70%] min-w-0 overflow-visible break-words">
+			<div
+				class={message.role === 'user'
+					? 'bg-gradient-yellow shadow-neo-lg hover:shadow-neo-xl before:bg-neo-green before:shadow-neo-sm relative rotate-0 overflow-visible rounded-2xl rounded-br-[4px] border-[3px] border-black px-[1.125rem] py-[0.875rem] text-base leading-relaxed font-medium break-words whitespace-pre-wrap text-black transition-all duration-200 before:absolute before:-top-[22px] before:right-0 before:rounded before:border-2 before:border-black before:px-2 before:py-[2px] before:text-xs before:font-bold before:tracking-[0.5px] before:text-black before:uppercase before:content-["You"] hover:-translate-x-[1px] hover:-translate-y-[1px] hover:rotate-0'
+					: 'bg-gradient-gray shadow-neo-lg hover:shadow-neo-xl before:bg-neo-pink before:shadow-neo-sm relative rotate-0 overflow-visible rounded-2xl rounded-bl-[4px] border-[3px] border-black px-[1.125rem] py-[0.875rem] text-base leading-relaxed font-medium break-words whitespace-pre-wrap text-black transition-all duration-200 before:absolute before:-top-[22px] before:left-0 before:rounded before:border-2 before:border-black before:px-2 before:py-[2px] before:text-xs before:font-bold before:tracking-[0.5px] before:text-black before:uppercase before:content-["AI"] hover:-translate-x-[1px] hover:-translate-y-[1px] hover:rotate-0'}
+			>
 				{#if message.role === 'assistant' && isGenerating && isLast}
 					{#if message.content === ''}
-						<div class="typing-indicator">
-							<span class="typing-emoji">💭</span>
-							<span class="dot"></span>
-							<span class="dot"></span>
-							<span class="dot"></span>
+						<div
+							class="inline-flex items-center gap-1.5 py-1"
+						>
+							<span class="animate-pulse-emoji text-xl">💭</span>
+							<span class="animate-bounce-dot inline-block h-2 w-2 rounded-full bg-black"></span>
+							<span
+								class="animate-bounce-dot inline-block h-2 w-2 rounded-full bg-black [animation-delay:-0.32s]"
+							></span>
+							<span
+								class="animate-bounce-dot inline-block h-2 w-2 rounded-full bg-black [animation-delay:-0.16s]"
+							></span>
 						</div>
 					{:else}
 						{message.content}
-						<span class="cursor-blink">▊</span>
+						<span class="ml-0.5 inline-block animate-pulse font-normal text-black">▊</span>
 					{/if}
 				{:else}
 					{message.content}
@@ -39,258 +57,3 @@
 		</div>
 	</div>
 {/if}
-
-<style>
-	.message-wrapper {
-		display: flex;
-		margin-bottom: 1rem;
-		width: 100%;
-		animation: messageSlide 0.4s ease-out;
-		position: relative;
-		padding: 0 0.5rem;
-		box-sizing: border-box;
-	}
-
-	@keyframes messageSlide {
-		from {
-			opacity: 0;
-			transform: translateY(15px) scale(0.95);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0) scale(1);
-		}
-	}
-
-	.message-decoration {
-		position: absolute;
-		width: 30px;
-		height: 30px;
-		border: 2px solid #000;
-		opacity: 0.3;
-		z-index: -1;
-	}
-
-	.user-decoration {
-		right: -5px;
-		top: 50%;
-		transform: translateY(-50%) rotate(45deg);
-		background: #ffd93d;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		animation: float-deco 4s ease-in-out infinite;
-	}
-
-	.assistant-decoration {
-		left: -5px;
-		top: 50%;
-		transform: translateY(-50%) rotate(-45deg);
-		background: #98fb98;
-		border-radius: 70% 30% 30% 70% / 40% 60% 40% 60%;
-		animation: float-deco 4s ease-in-out infinite reverse;
-	}
-
-	@keyframes float-deco {
-		0%,
-		100% {
-			transform: translateY(-50%) rotate(45deg) scale(1);
-		}
-		50% {
-			transform: translateY(-50%) rotate(45deg) scale(1.1);
-		}
-	}
-
-	.user-wrapper {
-		justify-content: flex-end;
-	}
-
-	.assistant-wrapper {
-		justify-content: flex-start;
-	}
-
-	.message {
-		position: relative;
-		max-width: 70%;
-		word-wrap: break-word;
-		overflow-wrap: break-word;
-		min-width: 0;
-		overflow: visible;
-	}
-
-	.message-content {
-		padding: 0.875rem 1.125rem;
-		font-size: 1rem;
-		line-height: 1.5;
-		white-space: pre-wrap;
-		word-break: break-word;
-		border: 3px solid #000;
-		position: relative;
-		font-weight: 500;
-		border-radius: 16px;
-		transition: all 0.2s ease;
-		overflow: visible;
-	}
-
-	/* User message styling */
-	.user-message .message-content {
-		background: linear-gradient(135deg, #ffd93d 0%, #ffa500 100%);
-		color: #000;
-		box-shadow: 5px 5px 0 #000;
-		border-bottom-right-radius: 4px;
-		transform: rotate(0deg);
-	}
-
-	.user-message .message-content:hover {
-		transform: rotate(0deg) translate(-1px, -1px);
-		box-shadow: 6px 6px 0 #000;
-	}
-
-	.user-message .message-content::before {
-		content: '👤 You';
-		position: absolute;
-		top: -22px;
-		right: 0;
-		font-size: 0.75rem;
-		font-weight: 700;
-		color: #000;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		background: #98fb98;
-		padding: 2px 8px;
-		border: 2px solid #000;
-		border-radius: 4px;
-		box-shadow: 2px 2px 0 #000;
-	}
-
-	/* Assistant message styling */
-	.assistant-message .message-content {
-		background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
-		color: #000;
-		box-shadow: 5px 5px 0 #000;
-		border-bottom-left-radius: 4px;
-		transform: rotate(0deg);
-	}
-
-	.assistant-message .message-content:hover {
-		transform: rotate(0deg) translate(-1px, -1px);
-		box-shadow: 6px 6px 0 #000;
-	}
-
-	.assistant-message .message-content::before {
-		content: '🤖 AI';
-		position: absolute;
-		top: -22px;
-		left: 0;
-		font-size: 0.75rem;
-		font-weight: 700;
-		color: #000;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		background: #ff69b4;
-		padding: 2px 8px;
-		border: 2px solid #000;
-		border-radius: 4px;
-		box-shadow: 2px 2px 0 #000;
-	}
-
-	/* Typing indicator */
-	.typing-indicator {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.375rem;
-		padding: 0.25rem 0;
-	}
-
-	/* Blinking cursor for streaming text */
-	.cursor-blink {
-		display: inline-block;
-		animation: blink 1s infinite;
-		color: #000;
-		font-weight: normal;
-		margin-left: 2px;
-	}
-
-	@keyframes blink {
-		0%,
-		50% {
-			opacity: 1;
-		}
-		51%,
-		100% {
-			opacity: 0;
-		}
-	}
-
-	.typing-emoji {
-		font-size: 1.25rem;
-		animation: pulse-emoji 1.5s ease-in-out infinite;
-	}
-
-	@keyframes pulse-emoji {
-		0%,
-		100% {
-			transform: scale(1);
-		}
-		50% {
-			transform: scale(1.2);
-		}
-	}
-
-	.typing-indicator .dot {
-		width: 8px;
-		height: 8px;
-		background: #000;
-		border-radius: 50%;
-		display: inline-block;
-		animation: bounce-dot 1.4s infinite ease-in-out both;
-		box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
-	}
-
-	.typing-indicator .dot:nth-child(2) {
-		animation-delay: -0.32s;
-	}
-
-	.typing-indicator .dot:nth-child(3) {
-		animation-delay: -0.16s;
-	}
-
-	.typing-indicator .dot:nth-child(4) {
-		animation-delay: 0;
-	}
-
-	@keyframes bounce-dot {
-		0%,
-		80%,
-		100% {
-			transform: scale(0.8) translateY(0);
-			opacity: 0.5;
-		}
-		40% {
-			transform: scale(1.2) translateY(-8px);
-			opacity: 1;
-		}
-	}
-
-	@media (max-width: 600px) {
-		.message {
-			max-width: 85%;
-		}
-
-		.message-wrapper {
-			padding: 0 0.25rem;
-		}
-
-		.message-content {
-			padding: 0.75rem 1rem;
-			font-size: 0.9375rem;
-		}
-
-		.user-message .message-content::before,
-		.assistant-message .message-content::before {
-			font-size: 0.7rem;
-		}
-
-		.message-decoration {
-			display: none;
-		}
-	}
-</style>

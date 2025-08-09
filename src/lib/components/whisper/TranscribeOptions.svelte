@@ -23,15 +23,27 @@
 	}
 </script>
 
-<div class="transcribe-options">
-	<div class="options-decoration"></div>
-	<h3>
-		<span class="title-icon">🎵</span>
+<div
+	class="shadow-neo-3xl relative mb-6 rotate-[0.5deg] animate-[slideIn_0.4s_ease-out] border-4 border-black bg-white p-8 [animation-delay:0.1s] [animation-fill-mode:both]"
+>
+	<div
+		class="bg-gradient-pink absolute -top-2 -right-2 -bottom-2 -left-2 z-[-1] rounded-[5%_20%_5%_20%/20%_5%_20%_5%] opacity-30"
+	></div>
+
+	<h3
+		class="font-bebas bg-neo-yellow shadow-neo-lg mx-auto mt-0 mb-6 flex w-fit rotate-1 items-center justify-center gap-3 border-[3px] border-black px-6 py-2 text-center text-[2rem] tracking-[2px] text-black uppercase"
+	>
+		<span class="text-[1.75rem]">🎵</span>
 		Choose Audio Source
 	</h3>
 
-	<div class="option-group">
-		<label class="option-label" class:selected={transcribeMode === 'upload'}>
+	<div class="mb-5 flex flex-col gap-4">
+		<label
+			class="shadow-neo-md hover:shadow-neo-xl relative flex -rotate-[0.5deg] cursor-pointer items-center gap-4 border-[3px] border-black bg-white p-5 transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-0 hover:bg-[#fffacd] {transcribeMode ===
+			'upload'
+				? 'bg-neo-green shadow-neo-2xl -translate-x-[3px] -translate-y-[3px] rotate-0'
+				: ''}"
+		>
 			<input
 				type="radio"
 				name="transcribeMode"
@@ -39,17 +51,25 @@
 				checked={transcribeMode === 'upload'}
 				onchange={() => handleModeChange('upload')}
 				{disabled}
+				class="m-0 h-5 w-5 cursor-pointer border-2 border-black accent-black"
 			/>
-			<div class="option-content">
-				<div class="option-header">
-					<span class="option-icon">📁</span>
-					<strong>Local File</strong>
+			<div class="flex flex-1 flex-col gap-1.5">
+				<div class="flex items-center gap-2">
+					<span class="text-2xl">📁</span>
+					<strong class="text-[1.125rem] tracking-wider text-black uppercase">Local File</strong>
 				</div>
-				<small>Select an audio file from your device (.mp3, .wav, .m4a)</small>
+				<small class="ml-8 text-[0.9375rem] font-medium text-gray-800"
+					>Select an audio file from your device (.mp3, .wav, .m4a)</small
+				>
 			</div>
 		</label>
 
-		<label class="option-label" class:selected={transcribeMode === 'record'}>
+		<label
+			class="shadow-neo-md hover:shadow-neo-xl relative flex rotate-[0.5deg] cursor-pointer items-center gap-4 border-[3px] border-black bg-white p-5 transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-0 hover:bg-[#fffacd] {transcribeMode ===
+			'record'
+				? 'bg-neo-green shadow-neo-2xl -translate-x-[3px] -translate-y-[3px] rotate-0'
+				: ''}"
+		>
 			<input
 				type="radio"
 				name="transcribeMode"
@@ -57,21 +77,35 @@
 				checked={transcribeMode === 'record'}
 				onchange={() => handleModeChange('record')}
 				{disabled}
+				class="m-0 h-5 w-5 cursor-pointer border-2 border-black accent-black"
 			/>
-			<div class="option-content">
-				<div class="option-header">
-					<span class="option-icon">🎙️</span>
-					<strong>Record Audio</strong>
+			<div class="flex flex-1 flex-col gap-1.5">
+				<div class="flex items-center gap-2">
+					<span class="text-2xl">🎙️</span>
+					<strong class="text-[1.125rem] tracking-wider text-black uppercase">Record Audio</strong>
 				</div>
-				<small>Record audio directly from your microphone</small>
+				<small class="ml-8 text-[0.9375rem] font-medium text-gray-800"
+					>Record audio directly from your microphone</small
+				>
 			</div>
 		</label>
 
-		<div class="or-divider">
-			<span>OR</span>
+		<div class="relative my-2 flex items-center justify-center">
+			<span
+				class="relative bg-white px-4 text-[0.875rem] font-bold tracking-[2px] text-gray-600 uppercase"
+				>OR</span
+			>
+			<div
+				class="absolute top-1/2 right-0 left-0 z-[-1] h-[2px] -translate-y-1/2 bg-gray-300"
+			></div>
 		</div>
 
-		<label class="option-label demo-option" class:selected={transcribeMode === 'demo'}>
+		<label
+			class="shadow-neo-md hover:shadow-neo-xl relative flex cursor-pointer items-center gap-4 border-[3px] border-black bg-white px-4 py-3 transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-0 hover:bg-[#fffacd] {transcribeMode ===
+			'demo'
+				? 'bg-neo-green shadow-neo-2xl -translate-x-[3px] -translate-y-[3px] rotate-0'
+				: ''}"
+		>
 			<input
 				type="radio"
 				name="transcribeMode"
@@ -79,10 +113,19 @@
 				checked={transcribeMode === 'demo'}
 				onchange={() => handleModeChange('demo')}
 				{disabled}
+				class="m-0 h-5 w-5 cursor-pointer border-2 border-black accent-black"
 			/>
-			<div class="option-content">
-				<strong>Demo File</strong>
-				<small><a href="/rich.mp3" target="_blank">Listen →</a></small>
+			<div class="flex items-center gap-2">
+				<strong class="text-base uppercase">Demo File</strong>
+				<small>
+					<a
+						href="/rich.mp3"
+						target="_blank"
+						class="bg-neo-yellow shadow-neo-sm hover:shadow-neo hover:bg-neo-pink inline-block border-2 border-black px-1.5 py-0.5 font-bold text-black no-underline transition-all duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px]"
+					>
+						Listen →
+					</a>
+				</small>
 			</div>
 		</label>
 	</div>
@@ -93,233 +136,3 @@
 		<AudioRecorder bind:selectedFile {onFileSelect} {disabled} />
 	{/if}
 </div>
-
-<style>
-	.transcribe-options {
-		background: #fff;
-		border: 4px solid #000;
-		padding: 2rem;
-		box-shadow: 8px 8px 0 #000;
-		margin-bottom: 1.5rem;
-		position: relative;
-		transform: rotate(0.5deg);
-		animation: slideIn 0.4s ease-out;
-		animation-delay: 0.1s;
-		animation-fill-mode: both;
-	}
-
-	@keyframes slideIn {
-		from {
-			transform: translateX(20px) rotate(1deg);
-			opacity: 0;
-		}
-		to {
-			transform: translateX(0) rotate(0.5deg);
-			opacity: 1;
-		}
-	}
-
-	.options-decoration {
-		position: absolute;
-		top: -8px;
-		left: -8px;
-		right: -8px;
-		bottom: -8px;
-		background: linear-gradient(135deg, #ffd93d 0%, #ff69b4 100%);
-		z-index: -1;
-		opacity: 0.3;
-		border-radius: 5% 20% 5% 20% / 20% 5% 20% 5%;
-	}
-
-	.transcribe-options h3 {
-		margin-top: 0;
-		margin-bottom: 1.5rem;
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: 2rem;
-		color: #000;
-		text-align: center;
-		letter-spacing: 2px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.75rem;
-		background: #ffd93d;
-		padding: 0.5rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(1deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
-		text-transform: uppercase;
-	}
-
-	.title-icon {
-		font-size: 1.75rem;
-	}
-
-	.option-group {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		margin-bottom: 1.25rem;
-	}
-
-	.option-label {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		padding: 1.25rem;
-		border: 3px solid #000;
-		background: #fff;
-		cursor: pointer;
-		transition: all 0.15s ease;
-		box-shadow: 4px 4px 0 #000;
-		position: relative;
-		transform: rotate(-0.5deg);
-	}
-
-	.option-label:nth-child(2) {
-		transform: rotate(0.5deg);
-	}
-
-	.option-label:hover {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 6px 6px 0 #000;
-		background: #fffacd;
-	}
-
-	.option-label.selected {
-		background: #98fb98;
-		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 7px 7px 0 #000;
-	}
-
-	.option-label input[type='radio'] {
-		width: 20px;
-		height: 20px;
-		margin: 0;
-		accent-color: #000;
-		cursor: pointer;
-		border: 2px solid #000;
-	}
-
-	.option-content {
-		display: flex;
-		flex-direction: column;
-		gap: 0.375rem;
-		flex: 1;
-	}
-
-	.option-header {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.option-icon {
-		font-size: 1.5rem;
-	}
-
-	.option-content strong {
-		font-size: 1.125rem;
-		color: #000;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-	}
-
-	.option-content small {
-		font-size: 0.9375rem;
-		color: #333;
-		font-weight: 500;
-		margin-left: 2rem;
-	}
-
-	.option-content small a {
-		color: #000;
-		font-weight: 700;
-		text-decoration: none;
-		padding: 2px 6px;
-		background: #ffd93d;
-		border: 2px solid #000;
-		transition: all 0.15s;
-		display: inline-block;
-		box-shadow: 2px 2px 0 #000;
-	}
-
-	.option-content small a:hover {
-		transform: translate(-1px, -1px);
-		box-shadow: 3px 3px 0 #000;
-		background: #ff69b4;
-	}
-
-	.or-divider {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin: 0.5rem 0;
-		position: relative;
-	}
-
-	.or-divider span {
-		background: #fff;
-		padding: 0 1rem;
-		font-weight: 700;
-		font-size: 0.875rem;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		color: #666;
-		position: relative;
-	}
-
-	.or-divider::before {
-		content: '';
-		position: absolute;
-		left: 0;
-		right: 0;
-		height: 2px;
-		background: #ddd;
-		top: 50%;
-		transform: translateY(-50%);
-	}
-
-	.demo-option {
-		padding: 0.75rem 1rem !important;
-	}
-
-	.demo-option .option-content {
-		flex-direction: row !important;
-		align-items: center;
-		gap: 0.5rem !important;
-	}
-
-	.demo-option strong {
-		font-size: 1rem !important;
-	}
-
-	.demo-option small {
-		margin-left: 0 !important;
-		font-size: 0.875rem !important;
-	}
-
-	@media (max-width: 600px) {
-		.transcribe-options {
-			padding: 1.25rem;
-		}
-
-		.option-group {
-			gap: 0.75rem;
-		}
-
-		.option-label {
-			padding: 1rem;
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 0.75rem;
-		}
-
-		.option-content small {
-			margin-left: 0;
-		}
-	}
-</style>

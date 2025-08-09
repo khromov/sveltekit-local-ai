@@ -29,47 +29,61 @@
 	}
 </script>
 
-<div class="app-wrapper">
-	<div class="container">
-		<nav class="main-nav">
-			<ul>
-				{#each navLinks as link (link.path)}
-					{#if link.icon === 'home'}
-						<li class="home-item">
-							<a
-								href={link.path}
-								class:active={isActive(link.path)}
-								class:home-link={link.icon === 'home'}
-							>
-								<svg
-									class="nav-icon"
-									viewBox="0 0 24 24"
-									width="24"
-									height="24"
-									stroke="currentColor"
-									stroke-width="2.5"
-									fill="none"
-									stroke-linecap="round"
-									stroke-linejoin="round"
+<div
+	class="before:bg-repeating-stripes-4 relative z-[2] flex min-h-screen flex-col before:pointer-events-none before:fixed before:inset-0 before:z-[1] before:content-['']"
+>
+	<div class="mx-auto box-border flex w-full max-w-[900px] flex-1 flex-col p-4">
+		<nav class="mb-4 w-full">
+			<ul
+				class="shadow-neo-lg m-0 box-border flex list-none items-center justify-start gap-4 rounded-xl border-[3px] border-black bg-white p-0 p-3"
+			>
+				<div class="flex gap-4">
+					{#each navLinks as link (link.path)}
+						{#if link.icon === 'home'}
+							<li class="flex-none">
+								<a
+									href={link.path}
+									class="hover:bg-neo-peach relative flex flex-row items-center justify-center gap-2 rounded-lg border-2 border-transparent bg-white px-5 py-3 text-base font-semibold tracking-[0.5px] text-black uppercase no-underline transition-all duration-200 ease-in-out hover:-translate-y-0.5 {isActive(
+										link.path
+									)
+										? 'bg-neo-yellow-light shadow-neo border-black'
+										: ''} {link.icon === 'home' ? 'max-w-auto flex-none !p-3' : ''}"
 								>
-									<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-									<polyline points="9,22 9,12 15,12 15,22"></polyline>
-								</svg>
-								{#if link.label}
-									<span>{link.label}</span>
-								{/if}
-							</a>
-						</li>
-					{/if}
-				{/each}
-				<div class="center-items">
+									<svg
+										class="h-5 w-5"
+										viewBox="0 0 24 24"
+										width="24"
+										height="24"
+										stroke="currentColor"
+										stroke-width="2.5"
+										fill="none"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+										<polyline points="9,22 9,12 15,12 15,22"></polyline>
+									</svg>
+									{#if link.label}
+										<span>{link.label}</span>
+									{/if}
+								</a>
+							</li>
+						{/if}
+					{/each}
 					{#each navLinks as link (link.path)}
 						{#if link.icon !== 'home'}
-							<li>
-								<a href={link.path} class:active={isActive(link.path)}>
+							<li class="list-none">
+								<a
+									href={link.path}
+									class="hover:bg-neo-peach relative flex flex-row items-center justify-center gap-2 rounded-lg border-2 border-transparent bg-white px-5 py-3 text-base font-semibold tracking-[0.5px] text-black uppercase no-underline transition-all duration-200 ease-in-out hover:-translate-y-0.5 {isActive(
+										link.path
+									)
+										? 'bg-neo-yellow-light shadow-neo border-black'
+										: ''}"
+								>
 									{#if link.icon === 'chat'}
 										<svg
-											class="nav-icon"
+											class="h-5 w-5"
 											viewBox="0 0 24 24"
 											width="24"
 											height="24"
@@ -84,7 +98,7 @@
 										</svg>
 									{:else if link.icon === 'mic'}
 										<svg
-											class="nav-icon"
+											class="h-5 w-5"
 											viewBox="0 0 24 24"
 											width="24"
 											height="24"
@@ -111,14 +125,14 @@
 			</ul>
 		</nav>
 
-		<div class="content-wrapper">
+		<div class="relative flex w-full flex-1 flex-col overflow-x-hidden">
 			{@render children?.()}
 		</div>
 	</div>
 </div>
 
 <style>
-	/* Base styles with refined Neo-Brutalist approach */
+	/* Global styles */
 	:global(html) {
 		height: 100%;
 	}
@@ -143,142 +157,7 @@
 		min-height: 100vh;
 	}
 
-	:global(body)::before {
-		content: '';
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-image: repeating-linear-gradient(
-			0deg,
-			transparent,
-			transparent 40px,
-			rgba(0, 0, 0, 0.02) 40px,
-			rgba(0, 0, 0, 0.02) 41px
-		);
-		pointer-events: none;
-		z-index: 1;
-	}
-
-	@keyframes gradient-shift {
-		0% {
-			background-position: 0% 50%;
-		}
-		50% {
-			background-position: 100% 50%;
-		}
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	.app-wrapper {
-		min-height: 100vh;
-		display: flex;
-		flex-direction: column;
-		position: relative;
-		z-index: 2;
-	}
-
-	.container {
-		width: 100%;
-		max-width: 900px;
-		margin: 0 auto;
-		padding: 1rem;
-		box-sizing: border-box;
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.content-wrapper {
-		width: 100%;
-		position: relative;
-		overflow-x: hidden;
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-	}
-
-	/* Navigation styles - Refined Neo-Brutalist */
-	.main-nav {
-		margin-bottom: 1rem;
-		width: 100%;
-	}
-
-	.main-nav ul {
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		gap: 1rem;
-		padding: 0;
-		margin: 0;
-		list-style: none;
-		background: #fff;
-		padding: 0.75rem;
-		box-sizing: border-box;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		border-radius: 12px;
-	}
-
-	.center-items {
-		display: flex;
-		gap: 1rem;
-	}
-
-	.center-items li {
-		list-style: none;
-	}
-
-	.main-nav li {
-		flex: none;
-	}
-
-	.main-nav a {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
-		padding: 0.75rem 1.25rem;
-		text-decoration: none;
-		color: #000;
-		font-weight: 600;
-		font-size: 1rem;
-		transition: all 0.2s ease;
-		background: #fff;
-		border: 2px solid transparent;
-		border-radius: 8px;
-		position: relative;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-	}
-
-	.main-nav a:hover {
-		background: #ffe5b4;
-		transform: translateY(-2px);
-	}
-
-	.main-nav a.active {
-		background: #ffd700;
-		border-color: #000;
-		box-shadow: 3px 3px 0 #000;
-	}
-
-	.nav-icon {
-		width: 20px;
-		height: 20px;
-	}
-
-	.home-link {
-		max-width: auto;
-		flex: none;
-		padding: 0.75rem !important;
-	}
-
-	/* Shared component styling - Refined Neo-Brutalist */
+	/* Shared component styling */
 	:global(.card-interface) {
 		border: 3px solid #000;
 		background: #fff;
@@ -318,7 +197,7 @@
 		flex-direction: column;
 		gap: 1rem;
 		box-sizing: border-box;
-		min-height: 0; /* allow children like chat list to control their own height */
+		min-height: 0;
 	}
 
 	:global(.input-area) {
@@ -329,93 +208,8 @@
 		flex: 0 0 auto;
 	}
 
-	:global(.disclaimer) {
-		margin-top: 0.5rem;
-		font-size: 0.8125rem;
-		font-weight: 500;
-		color: #666;
-		text-align: center;
-	}
-
-	:global(.loading) {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 2rem;
-		margin: 2rem 0;
-		animation: fadeIn 0.4s ease-out;
-		width: 100%;
-		box-sizing: border-box;
-		flex: 1;
-		justify-content: center;
-	}
-
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	:global(.primary-button) {
-		padding: 0.875rem 1.75rem;
-		background: #ffd700;
-		color: #000;
-		border: 3px solid #000;
-		border-radius: 8px;
-		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
-		transition: all 0.2s;
-		box-shadow: 4px 4px 0 #000;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
-		box-sizing: border-box;
-	}
-
-	:global(.primary-button:hover) {
-		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
-	}
-
-	:global(.primary-button:active) {
-		transform: translate(0);
-		box-shadow: 2px 2px 0 #000;
-	}
-
-	:global(.primary-button:disabled) {
-		background: #e0e0e0;
-		color: #999;
-		cursor: not-allowed;
-		transform: none;
-		box-shadow: none;
-	}
-
 	/* Responsive adjustments */
 	@media (max-width: 600px) {
-		.container {
-			padding: 0.75rem;
-		}
-
-		.main-nav ul {
-			gap: 0.5rem;
-			padding: 0.5rem;
-		}
-
-		.main-nav a {
-			padding: 0.625rem 0.875rem;
-			font-size: 0.875rem;
-		}
-
-		.home-link {
-			padding: 0.625rem !important;
-		}
-
 		:global(.toolbar) {
 			padding: 0.875rem 1rem;
 		}
@@ -431,17 +225,6 @@
 
 		:global(.input-area) {
 			padding: 0.875rem 1rem;
-		}
-
-		:global(.loading) {
-			align-items: stretch;
-			padding: 0;
-		}
-	}
-
-	@media (max-width: 400px) {
-		.container {
-			padding: 0.5rem;
 		}
 	}
 </style>

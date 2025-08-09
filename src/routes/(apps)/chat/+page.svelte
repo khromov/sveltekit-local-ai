@@ -248,7 +248,9 @@
 </script>
 
 {#if !isModelLoaded}
-	<div class="loading">
+	<div
+		class="my-8 box-border flex w-full animate-[fadeIn_0.4s_ease-out] flex-col items-center gap-8 overflow-x-hidden p-0"
+	>
 		{#if downloadError}
 			<ErrorDisplay
 				message="Failed to load model. Please check your connection and try again."
@@ -268,20 +270,34 @@
 		{/if}
 	</div>
 {:else}
-	<div class="card-interface chat-interface">
-		<div class="floating-decoration decoration-1"></div>
-		<div class="floating-decoration decoration-2"></div>
+	<div
+		class="animate-slide-in-chat shadow-neo-xl relative box-border flex h-[clamp(520px,85vh,920px)] min-h-0 w-full rotate-0 flex-col overflow-hidden rounded-xl border-[3px] border-black bg-white"
+	>
+		<div
+			class="bg-gradient-pink animate-float-1 pointer-events-none absolute -top-5 -right-5 z-[-1] h-20 w-20 rounded-[30%_70%_70%_30%/60%_40%_60%_40%] border-[3px] border-black opacity-20"
+		></div>
+		<div
+			class="bg-gradient-pink animate-float-2 pointer-events-none absolute bottom-[100px] -left-[15px] z-[-1] h-[60px] w-[60px] rounded-[70%_30%_30%_70%/40%_60%_40%_60%] border-[3px] border-black opacity-20"
+		></div>
 
-		<div class="toolbar">
-			<span class="model-info">
-				<span class="model-emoji">🤖</span>
+		<div
+			class="bg-gradient-gold relative flex flex-wrap items-center justify-between gap-2 border-b-[3px] border-black px-5 py-4"
+		>
+			<span
+				class="max-w-full text-[0.875rem] font-bold tracking-[0.5px] break-words text-black uppercase"
+			>
+				<span class="mr-1 text-[1.125rem]">🤖</span>
 				{selectedModel.name}
 			</span>
-			<button onclick={newChat} class="new-chat-btn" aria-label="New Chat">
-				<span class="btn-emoji">✨</span>
-				New <span class="desktop-only">Chat</span>
+			<button
+				onclick={newChat}
+				class="bg-neo-green font-space shadow-neo hover:shadow-neo-lg hover:bg-neo-yellow flex rotate-0 cursor-pointer items-center gap-1.5 rounded-md border-2 border-black px-4 py-2 text-[0.875rem] font-bold tracking-[0.5px] whitespace-nowrap text-black uppercase transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-0"
+				aria-label="New Chat"
+			>
+				<span class="text-base">✨</span>
+				New <span class="hidden sm:inline">Chat</span>
 			</button>
-			<div class="toolbar-decoration"></div>
+			<div class="bg-repeating-stripes-3 absolute right-0 -bottom-[6px] left-0 h-[3px]"></div>
 		</div>
 
 		<ChatMessages bind:this={chatMessagesComponent} messages={$messages} {isGenerating} />
@@ -295,178 +311,3 @@
 		/>
 	</div>
 {/if}
-
-<style>
-	.loading {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 2rem;
-		margin: 2rem 0;
-		animation: fadeIn 0.4s ease-out;
-		width: 100%;
-		box-sizing: border-box;
-		overflow-x: hidden;
-		padding: 0;
-	}
-
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	.chat-interface {
-		position: relative;
-		transform: rotate(0deg);
-		animation: slideInChat 0.5s ease-out;
-		display: flex;
-		flex-direction: column;
-		/* Fix the card height relative to the viewport so only the messages list scrolls */
-		height: clamp(520px, 85vh, 920px);
-		min-height: 0; /* important for inner flex child scrolling */
-	}
-
-	@media (max-width: 600px) {
-		.chat-interface {
-			height: 85vh;
-		}
-	}
-
-	@keyframes slideInChat {
-		from {
-			opacity: 0;
-			transform: translateY(20px) rotate(0deg);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0) rotate(0deg);
-		}
-	}
-
-	.floating-decoration {
-		position: absolute;
-		background: linear-gradient(135deg, #ffd93d 0%, #ff69b4 100%);
-		border: 3px solid #000;
-		opacity: 0.2;
-		z-index: -1;
-		pointer-events: none;
-	}
-
-	.decoration-1 {
-		width: 80px;
-		height: 80px;
-		top: -20px;
-		right: -20px;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		animation: float1 8s ease-in-out infinite;
-	}
-
-	.decoration-2 {
-		width: 60px;
-		height: 60px;
-		bottom: 100px;
-		left: -15px;
-		border-radius: 70% 30% 30% 70% / 40% 60% 40% 60%;
-		animation: float2 10s ease-in-out infinite;
-	}
-
-	@keyframes float1 {
-		0%,
-		100% {
-			transform: translate(0, 0) rotate(0deg);
-		}
-		50% {
-			transform: translate(-10px, 10px) rotate(180deg);
-		}
-	}
-
-	@keyframes float2 {
-		0%,
-		100% {
-			transform: translate(0, 0) rotate(0deg);
-		}
-		50% {
-			transform: translate(10px, -10px) rotate(-180deg);
-		}
-	}
-
-	.toolbar-decoration {
-		position: absolute;
-		bottom: -6px;
-		left: 0;
-		right: 0;
-		height: 3px;
-		background: repeating-linear-gradient(90deg, #000, #000 8px, #98fb98 8px, #98fb98 16px);
-	}
-
-	.model-emoji {
-		font-size: 1.125rem;
-		margin-right: 0.25rem;
-	}
-
-	.btn-emoji {
-		font-size: 1rem;
-	}
-
-	.new-chat-btn {
-		padding: 0.5rem 1rem;
-		background: #98fb98;
-		color: #000;
-		border: 2px solid #000;
-		border-radius: 6px;
-		cursor: pointer;
-		font-size: 0.875rem;
-		font-weight: 700;
-		transition: all 0.2s;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
-		white-space: nowrap;
-		box-shadow: 3px 3px 0 #000;
-		display: flex;
-		align-items: center;
-		gap: 0.375rem;
-		transform: rotate(0deg);
-	}
-
-	.new-chat-btn:hover {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 5px 5px 0 #000;
-		background: #ffd93d;
-	}
-
-	/* Responsive adjustments for the main page */
-	@media (max-width: 600px) {
-		.loading {
-			align-items: stretch;
-			margin: 1rem 0;
-		}
-
-		.new-chat-btn {
-			padding: 0.375rem 0.75rem;
-			font-size: 0.8125rem;
-		}
-
-		/* Hide the extra word on small screens */
-		.desktop-only {
-			display: none;
-		}
-
-		.decoration-1,
-		.decoration-2 {
-			display: none;
-		}
-	}
-
-	@media (max-width: 400px) {
-		.loading {
-			margin: 0.5rem 0;
-		}
-	}
-</style>

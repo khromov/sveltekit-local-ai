@@ -290,13 +290,22 @@
 	});
 </script>
 
-<div class="card-interface" style="animation: fadeIn 0.5s ease-out;">
-	<div class="toolbar">
-		<span class="model-info">Whisper Audio Transcription</span>
-		<div class="toolbar-decoration"></div>
+<div
+	class="shadow-neo-xl relative box-border w-full overflow-hidden rounded-xl border-[3px] border-black bg-white"
+	style="animation: fadeIn 0.5s ease-out;"
+>
+	<div
+		class="bg-gradient-gold flex flex-wrap items-center justify-between gap-2 border-b-[3px] border-black px-5 py-4"
+	>
+		<span
+			class="max-w-full text-[0.875rem] font-bold tracking-[0.5px] break-words text-black uppercase"
+		>
+			Whisper Audio Transcription
+		</span>
+		<div class="bg-repeating-stripes-3 absolute right-0 -bottom-2 left-0 h-1"></div>
 	</div>
 
-	<div class="content-area">
+	<div class="box-border flex min-h-0 flex-col gap-4 bg-white p-6">
 		<!-- Model Selection Section -->
 		<WhisperModelSelector
 			bind:selectedModel
@@ -314,7 +323,11 @@
 		/>
 
 		<!-- Main Content (grayed out when model not ready) -->
-		<div class="main-content" class:disabled={!isReady}>
+		<div
+			class="transition-all duration-300 {!isReady
+				? 'pointer-events-none opacity-30 grayscale-[50%]'
+				: ''}"
+		>
 			<TranscribeOptions
 				bind:transcribeMode
 				bind:selectedFile
@@ -337,186 +350,32 @@
 		</div>
 	</div>
 
-	<div class="input-area" class:disabled={!isReady}>
+	<div
+		class="box-border flex-[0_0_auto] border-t-[3px] border-black bg-gray-100 px-5 py-4 {!isReady
+			? 'pointer-events-none opacity-30 grayscale-[50%]'
+			: ''}"
+	>
 		<button
 			onclick={transcribe}
 			disabled={!isReady ||
 				isTranscribing ||
 				((transcribeMode === 'upload' || transcribeMode === 'record') && !selectedFile)}
-			class="transcribe-btn primary-button"
+			class="bg-neo-green shadow-neo-3xl font-space hover:enabled:shadow-neo-5xl hover:enabled:bg-neo-yellow active:enabled:shadow-neo-md relative mx-auto flex min-w-[280px] cursor-pointer items-center justify-center gap-3 overflow-hidden border-4 border-black px-8 py-5 text-center text-2xl font-bold tracking-[2px] text-black uppercase transition-all duration-150 before:absolute before:top-0 before:-left-full before:h-full before:w-full before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:transition-[left] before:duration-500 before:content-[''] hover:enabled:-translate-x-1 hover:enabled:-translate-y-1 hover:enabled:before:left-full active:enabled:translate-x-0 disabled:transform-none disabled:cursor-not-allowed disabled:bg-gray-300 disabled:opacity-70 disabled:shadow-none"
 		>
 			{#if isTranscribing}
-				<span class="loading-spinner">◐</span>
+				<span class="animate-spin-fast inline-block text-2xl">◐</span>
 				Transcribing...
 			{:else}
-				<span class="button-icon">▶</span>
+				<span class="text-2xl">▶</span>
 				Start Transcription
 			{/if}
 		</button>
 
-		<div class="disclaimer">
-			<span class="disclaimer-icon">🔒</span>
+		<div
+			class="bg-neo-pink shadow-neo-lg mx-auto mt-4 flex w-fit rotate-1 items-center justify-center gap-2 border-[3px] border-black px-4 py-3 text-center text-[0.9375rem] font-semibold text-black"
+		>
+			<span class="text-xl">🔒</span>
 			Transcription is performed locally in your browser. Results may not always be accurate.
 		</div>
 	</div>
 </div>
-
-<style>
-	.toolbar-decoration {
-		position: absolute;
-		bottom: -8px;
-		left: 0;
-		right: 0;
-		height: 4px;
-		background: repeating-linear-gradient(90deg, #000, #000 10px, #98fb98 10px, #98fb98 20px);
-	}
-
-	.main-content {
-		transition: all 0.3s ease;
-	}
-
-	.main-content.disabled,
-	.input-area.disabled {
-		opacity: 0.3;
-		pointer-events: none;
-		filter: grayscale(50%);
-	}
-
-	.transcribe-btn {
-		margin: 0 auto;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.75rem;
-		min-width: 280px;
-		text-align: center;
-		position: relative;
-		overflow: hidden;
-		text-transform: uppercase;
-	}
-
-	.transcribe-btn::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -100%;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-		transition: left 0.5s;
-	}
-
-	.transcribe-btn:hover:not(:disabled)::before {
-		left: 100%;
-	}
-
-	.transcribe-btn:disabled {
-		background: #e0e0e0;
-		cursor: not-allowed;
-		transform: none;
-		box-shadow: none;
-		opacity: 0.7;
-	}
-
-	.button-icon {
-		font-size: 1.5rem;
-	}
-
-	.loading-spinner {
-		font-size: 1.5rem;
-		animation: spin 1s linear infinite;
-		display: inline-block;
-	}
-
-	@keyframes spin {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-
-	.primary-button {
-		padding: 1.25rem 2rem;
-		background: #98fb98;
-		color: #000;
-		border: 4px solid #000;
-		cursor: pointer;
-		font-size: 1.5rem;
-		font-weight: 700;
-		transition: all 0.15s;
-		box-shadow: 8px 8px 0 #000;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		font-family: 'Space Grotesk', monospace;
-	}
-
-	.primary-button:hover:not(:disabled) {
-		transform: translate(-4px, -4px);
-		box-shadow: 12px 12px 0 #000;
-		background: #ffd93d;
-	}
-
-	.primary-button:active:not(:disabled) {
-		transform: translate(0);
-		box-shadow: 4px 4px 0 #000;
-	}
-
-	.disclaimer {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
-		margin-top: 1rem;
-		font-size: 0.9375rem;
-		font-weight: 600;
-		color: #000;
-		text-align: center;
-		background: #ff69b4;
-		padding: 0.75rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(1deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.disclaimer-icon {
-		font-size: 1.25rem;
-	}
-
-	/* Fade-in animation */
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(20px) rotate(-1deg);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0) rotate(-0.5deg);
-		}
-	}
-
-	/* Responsive adjustments */
-	@media (max-width: 600px) {
-		.main-content.disabled,
-		.input-area.disabled {
-			opacity: 0.3;
-			pointer-events: none;
-		}
-
-		.transcribe-btn {
-			min-width: auto;
-			width: 100%;
-			font-size: 1.25rem;
-			padding: 1rem 1.5rem;
-		}
-
-		.disclaimer {
-			font-size: 0.875rem;
-			padding: 0.625rem 0.875rem;
-		}
-	}
-</style>

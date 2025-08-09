@@ -51,7 +51,7 @@
 	}
 </script>
 
-<div class="file-upload">
+<div class="mt-4">
 	<input
 		bind:this={fileInputElement}
 		type="file"
@@ -59,12 +59,14 @@
 		onchange={handleFileSelect}
 		id="audio-file"
 		{disabled}
+		class="hidden"
 	/>
 	<div
-		class="file-upload-label"
-		class:disabled
-		class:dragging={isDragging}
-		class:has-file={selectedFile}
+		class="shadow-neo-lg hover:enabled:shadow-neo-2xl relative block min-h-[140px] -rotate-[0.5deg] cursor-pointer overflow-hidden border-4 border-dashed border-black bg-white transition-all duration-150 ease-in-out hover:enabled:-translate-x-0.5 hover:enabled:-translate-y-0.5 hover:enabled:rotate-0 hover:enabled:bg-[#fffacd] {disabled
+			? 'cursor-not-allowed bg-gray-200 opacity-60'
+			: ''} {isDragging
+			? 'bg-neo-yellow shadow-neo-3xl -translate-x-[3px] -translate-y-[3px] rotate-0 border-solid border-black'
+			: ''} {selectedFile ? 'bg-neo-green border-solid' : ''}"
 		ondragover={handleDragOver}
 		ondragleave={handleDragLeave}
 		ondrop={handleDrop}
@@ -73,10 +75,12 @@
 		role="button"
 		tabindex="0"
 	>
-		<div class="upload-decoration"></div>
-		<div class="upload-content">
+		<div
+			class="bg-neo-pink absolute top-[10px] right-[10px] h-[60px] w-[60px] rotate-45 rounded-[30%_70%_70%_30%/60%_40%_60%_40%] border-[3px] border-black opacity-30"
+		></div>
+		<div class="relative z-[1] flex h-full min-h-[140px] flex-col items-center justify-center p-8">
 			<svg
-				class="upload-icon"
+				class="animate-float mb-4 text-black"
 				viewBox="0 0 24 24"
 				width="48"
 				height="48"
@@ -88,15 +92,21 @@
 				<polyline points="7,10 12,15 17,10"></polyline>
 				<line x1="12" y1="15" x2="12" y2="3"></line>
 			</svg>
-			<p class="upload-text">
+			<p
+				class="m-0 mb-2 flex items-center gap-2 text-center text-[1.125rem] font-bold tracking-wider text-black uppercase"
+			>
 				{#if selectedFile}
-					<span class="file-icon">📎</span>
+					<span class="text-xl">📎</span>
 					{selectedFile.name}
 				{:else}
 					Drop your audio file here
 				{/if}
 			</p>
-			<p class="upload-hint">
+			<p
+				class="bg-neo-yellow shadow-neo m-0 border-2 border-black px-3 py-1 text-center text-[0.9375rem] font-semibold text-gray-800 {selectedFile
+					? 'bg-white'
+					: ''}"
+			>
 				{#if selectedFile}
 					Click to change file
 				{:else}
@@ -106,140 +116,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	.file-upload {
-		margin-top: 1rem;
-	}
-
-	.file-upload input[type='file'] {
-		display: none;
-	}
-
-	.file-upload-label {
-		display: block;
-		position: relative;
-		min-height: 140px;
-		background: #fff;
-		border: 4px dashed #000;
-		cursor: pointer;
-		transition: all 0.15s ease;
-		overflow: hidden;
-		transform: rotate(-0.5deg);
-		box-shadow: 5px 5px 0 #000;
-	}
-
-	.file-upload-label:hover:not(.disabled) {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 7px 7px 0 #000;
-		background: #fffacd;
-	}
-
-	.file-upload-label.has-file {
-		background: #98fb98;
-		border-style: solid;
-	}
-
-	.file-upload-label.disabled {
-		cursor: not-allowed;
-		opacity: 0.6;
-		background: #e0e0e0;
-	}
-
-	.file-upload-label.dragging {
-		background: #ffd93d;
-		border-style: solid;
-		border-color: #000;
-		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 8px 8px 0 #000;
-	}
-
-	.upload-decoration {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		width: 60px;
-		height: 60px;
-		background: #ff69b4;
-		border: 3px solid #000;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		opacity: 0.3;
-		transform: rotate(45deg);
-	}
-
-	.upload-content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		padding: 2rem;
-		height: 100%;
-		min-height: 140px;
-		position: relative;
-		z-index: 1;
-	}
-
-	.upload-icon {
-		color: #000;
-		margin-bottom: 1rem;
-		animation: float 3s ease-in-out infinite;
-	}
-
-	@keyframes float {
-		0%,
-		100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-10px);
-		}
-	}
-
-	.upload-text {
-		font-size: 1.125rem;
-		color: #000;
-		margin: 0 0 0.5rem 0;
-		text-align: center;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.file-icon {
-		font-size: 1.25rem;
-	}
-
-	.upload-hint {
-		font-size: 0.9375rem;
-		color: #333;
-		margin: 0;
-		text-align: center;
-		font-weight: 600;
-		background: #ffd93d;
-		padding: 4px 12px;
-		border: 2px solid #000;
-		box-shadow: 3px 3px 0 #000;
-	}
-
-	.file-upload-label.has-file .upload-hint {
-		background: #fff;
-	}
-
-	@media (max-width: 600px) {
-		.upload-content {
-			padding: 1.5rem;
-			min-height: 120px;
-		}
-
-		.upload-text {
-			font-size: 1rem;
-		}
-
-		.upload-hint {
-			font-size: 0.875rem;
-		}
-	}
-</style>

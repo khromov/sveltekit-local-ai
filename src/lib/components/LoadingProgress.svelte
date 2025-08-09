@@ -22,102 +22,21 @@
 	let displayPercentage = $derived(percentageText || `${progress}% Complete`);
 </script>
 
-<div class="loading-progress">
-	<h3>{title}</h3>
+<div
+	class="shadow-neo-lg mx-auto box-border flex w-[calc(100%-4rem)] max-w-[500px] flex-col items-center gap-5 rounded-xl border-[3px] border-black bg-white p-8 text-center"
+>
+	<h3 class="m-0 text-[1.75rem] font-bold tracking-wider text-black uppercase">{title}</h3>
 	{#if showPercentage}
-		<p class="download-percentage">{displayPercentage}</p>
+		<p
+			class="m-0 rounded-md border-2 border-black bg-[#ffe5b4] px-4 py-1.5 text-xl font-semibold text-black uppercase"
+		>
+			{displayPercentage}
+		</p>
 	{/if}
 	<ProgressBar {progress} {previousProgress} />
 	{#if message}
-		<p class="loading-message">{message}</p>
+		<p class="m-0 max-w-full px-4 text-[0.9375rem] font-medium break-words text-gray-600">
+			{message}
+		</p>
 	{/if}
 </div>
-
-<style>
-	.loading-progress {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1.25rem;
-		padding: 2rem;
-		background: #fff;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		width: calc(100% - 4rem);
-		max-width: 500px;
-		text-align: center;
-		border-radius: 12px;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	.loading-progress h3 {
-		font-size: 1.75rem;
-		font-weight: 700;
-		margin: 0;
-		color: #000;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-	}
-
-	.download-percentage {
-		font-size: 1.25rem;
-		font-weight: 600;
-		color: #000;
-		margin: 0;
-		background: #ffe5b4;
-		padding: 0.375rem 1rem;
-		border: 2px solid #000;
-		border-radius: 6px;
-		text-transform: uppercase;
-	}
-
-	.loading-message {
-		font-size: 0.9375rem;
-		font-weight: 500;
-		color: #666;
-		margin: 0;
-		max-width: 100%;
-		padding: 0 1rem;
-		word-wrap: break-word;
-	}
-
-	@media (max-width: 600px) {
-		.loading-progress {
-			width: calc(100% - 2rem);
-			padding: 1.5rem 1rem;
-			max-width: none;
-			margin: 0 1rem;
-		}
-
-		.loading-progress h3 {
-			font-size: 1.5rem;
-		}
-
-		.download-percentage {
-			font-size: 1.125rem;
-			padding: 0.25rem 0.75rem;
-		}
-
-		.loading-message {
-			font-size: 0.875rem;
-			padding: 0 0.5rem;
-		}
-	}
-
-	@media (max-width: 400px) {
-		.loading-progress {
-			width: calc(100% - 1rem);
-			margin: 0 0.5rem;
-			padding: 1.25rem 0.75rem;
-		}
-
-		.loading-progress h3 {
-			font-size: 1.25rem;
-		}
-
-		.download-percentage {
-			font-size: 1rem;
-		}
-	}
-</style>

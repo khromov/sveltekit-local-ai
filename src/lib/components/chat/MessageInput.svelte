@@ -45,18 +45,30 @@
 	});
 </script>
 
-<div class="input-area">
-	<div class="input-decoration"></div>
+<div class="bg-gradient-light relative overflow-hidden border-t-[3px] border-black p-5">
+	<div
+		class="bg-repeating-stripes-2 animate-slide absolute -top-[2px] right-0 left-0 h-[3px]"
+	></div>
 
 	{#if isGenerating && onStop}
-		<button onclick={onStop} class="stop-btn">
-			<span class="stop-icon">🛑</span>
+		<button
+			onclick={onStop}
+			class="bg-gradient-red shadow-neo-lg font-space animate-shake hover:shadow-neo-2xl mx-auto mb-4 flex -rotate-1 cursor-pointer items-center justify-center gap-2 rounded-lg border-[3px] border-black px-5 py-3 text-[0.9375rem] font-bold tracking-[0.5px] text-black uppercase transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-0 hover:animate-none"
+		>
+			<span class="text-[1.125rem]">🛑</span>
 			Stop Generation
 		</button>
 	{/if}
 
-	<div class="message-input" class:is-disabled={isGenerating}>
-		<span class="input-emoji">💭</span>
+	<div
+		class="shadow-neo-lg hover:enabled:shadow-neo-2xl relative mb-3 flex -rotate-[0.5deg] items-end overflow-hidden rounded-xl border-[3px] border-black bg-white p-0 transition-all duration-200 hover:enabled:-translate-x-0.5 hover:enabled:-translate-y-0.5 hover:enabled:rotate-0 {isGenerating
+			? 'bg-gradient-gray opacity-70'
+			: ''}"
+	>
+		<span
+			class="bg-neo-green absolute -top-[15px] left-[10px] z-[1] animate-[bounce_3s_ease-in-out_infinite] rounded border-2 border-black px-2 text-[1.5rem]"
+			>💭</span
+		>
 		<textarea
 			id="chat"
 			bind:this={inputElement}
@@ -66,11 +78,12 @@
 			disabled={isGenerating}
 			use:focusAfterMount
 			onkeydown={handleKeyDown}
+			class="font-space max-h-[120px] min-h-[22px] flex-grow resize-none border-none bg-transparent px-4 py-[0.875rem] pt-5 text-base leading-[1.4] font-medium text-black outline-none placeholder:font-normal placeholder:text-gray-400"
 		></textarea>
 		<button
 			onclick={onSend}
 			disabled={isGenerating || !value.trim()}
-			class="send-btn"
+			class="bg-gradient-yellow shadow-neo-sm hover:enabled:bg-gradient-green hover:enabled:shadow-neo active:enabled:shadow-neo-sm m-2 flex h-11 w-11 rotate-[5deg] cursor-pointer items-center justify-center self-center rounded-lg border-2 border-black text-black transition-all duration-200 hover:enabled:scale-110 hover:enabled:rotate-0 active:enabled:scale-95 disabled:rotate-0 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:opacity-50"
 			aria-label="Send message"
 		>
 			<svg
@@ -89,237 +102,10 @@
 		</button>
 	</div>
 
-	<div class="disclaimer">
-		<span class="disclaimer-icon">💡</span>
+	<div
+		class="mx-auto flex w-fit max-w-[300px] items-center justify-center gap-1 rounded border border-gray-300 bg-gray-100 px-3 py-2 text-center text-xs font-normal text-gray-600"
+	>
+		<span class="text-[0.875rem]">💡</span>
 		Model responses may not always be accurate.
 	</div>
 </div>
-
-<style>
-	.input-area {
-		padding: 1.25rem;
-		background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
-		border-top: 3px solid #000;
-		position: relative;
-		overflow: hidden;
-	}
-
-	.input-decoration {
-		position: absolute;
-		top: -2px;
-		left: 0;
-		right: 0;
-		height: 3px;
-		background: repeating-linear-gradient(90deg, #98fb98, #98fb98 8px, #ffd93d 8px, #ffd93d 16px);
-		animation: slide 2s linear infinite;
-	}
-
-	@keyframes slide {
-		from {
-			transform: translateX(0);
-		}
-		to {
-			transform: translateX(16px);
-		}
-	}
-
-	.message-input {
-		display: flex;
-		align-items: flex-end;
-		background: #fff;
-		border: 3px solid #000;
-		padding: 0;
-		box-shadow: 5px 5px 0 #000;
-		border-radius: 12px;
-		overflow: hidden;
-		transition: all 0.2s;
-		margin-bottom: 0.75rem;
-		transform: rotate(-0.5deg);
-		position: relative;
-	}
-
-	.input-emoji {
-		position: absolute;
-		top: -15px;
-		left: 10px;
-		font-size: 1.5rem;
-		z-index: 1;
-		background: #98fb98;
-		padding: 0 8px;
-		border: 2px solid #000;
-		border-radius: 4px;
-		animation: bounce-emoji 3s ease-in-out infinite;
-	}
-
-	@keyframes bounce-emoji {
-		0%,
-		100% {
-			transform: translateY(0) rotate(-5deg);
-		}
-		50% {
-			transform: translateY(-3px) rotate(5deg);
-		}
-	}
-
-	.message-input:hover:not(.is-disabled) {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 7px 7px 0 #000;
-	}
-
-	.message-input.is-disabled {
-		background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
-		opacity: 0.7;
-	}
-
-	textarea {
-		flex-grow: 1;
-		padding: 0.875rem 1rem;
-		padding-top: 1.25rem;
-		border: none;
-		resize: none;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
-		font-size: 1rem;
-		font-weight: 500;
-		line-height: 1.4;
-		background: transparent;
-		min-height: 22px;
-		max-height: 120px;
-		outline: none;
-		color: #000;
-	}
-
-	textarea::placeholder {
-		color: #999;
-		font-weight: 400;
-	}
-
-	.send-btn {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 44px;
-		height: 44px;
-		margin: 8px;
-		align-self: center;
-		background: linear-gradient(135deg, #ffd93d 0%, #ffa500 100%);
-		color: #000;
-		border: 2px solid #000;
-		border-radius: 8px;
-		cursor: pointer;
-		transition: all 0.2s;
-		box-shadow: 2px 2px 0 #000;
-		transform: rotate(5deg);
-	}
-
-	.send-btn:hover:not(:disabled) {
-		background: linear-gradient(135deg, #98fb98 0%, #90ee90 100%);
-		transform: scale(1.1) rotate(0deg);
-		box-shadow: 3px 3px 0 #000;
-	}
-
-	.send-btn:active:not(:disabled) {
-		transform: scale(0.95);
-		box-shadow: 1px 1px 0 #000;
-	}
-
-	.send-btn:disabled {
-		background: #e0e0e0;
-		cursor: not-allowed;
-		opacity: 0.5;
-		transform: rotate(0deg);
-	}
-
-	.stop-btn {
-		padding: 0.75rem 1.25rem;
-		background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
-		color: #000;
-		border: 3px solid #000;
-		border-radius: 8px;
-		cursor: pointer;
-		font-size: 0.9375rem;
-		font-weight: 700;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
-		margin: 0 auto 1rem;
-		transition: all 0.2s;
-		box-shadow: 5px 5px 0 #000;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		transform: rotate(-1deg);
-		animation: shake 0.5s ease-in-out infinite;
-	}
-
-	@keyframes shake {
-		0%,
-		100% {
-			transform: translateX(0) rotate(-1deg);
-		}
-		25% {
-			transform: translateX(-2px) rotate(-1deg);
-		}
-		75% {
-			transform: translateX(2px) rotate(-1deg);
-		}
-	}
-
-	.stop-btn:hover {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 7px 7px 0 #000;
-		animation: none;
-	}
-
-	.stop-icon {
-		font-size: 1.125rem;
-	}
-
-	.disclaimer {
-		font-size: 0.75rem;
-		font-weight: 400;
-		color: #666;
-		text-align: center;
-		background: #f8f8f8;
-		padding: 0.5rem 0.75rem;
-		border: 1px solid #e0e0e0;
-		border-radius: 4px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.25rem;
-		margin: 0 auto;
-		width: fit-content;
-		max-width: 300px;
-	}
-
-	.disclaimer-icon {
-		font-size: 0.875rem;
-	}
-
-	@media (max-width: 600px) {
-		.input-area {
-			padding: 1rem;
-		}
-
-		textarea {
-			font-size: 0.9375rem;
-			padding: 0.75rem;
-			padding-top: 1.125rem;
-		}
-
-		.send-btn {
-			width: 40px;
-			height: 40px;
-		}
-
-		.disclaimer {
-			font-size: 0.75rem;
-			width: 100%;
-		}
-
-		.input-emoji {
-			font-size: 1.25rem;
-		}
-	}
-</style>

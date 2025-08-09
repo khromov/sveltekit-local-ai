@@ -32,17 +32,39 @@
 	});
 </script>
 
-<div bind:this={chatContainer} class="chat-messages content-area" id="chat-container">
-	<div class="chat-decoration"></div>
+<div
+	bind:this={chatContainer}
+	class="bg-gradient-subtle-2 [&::-webkit-scrollbar-track]:from-neo-yellow [&::-webkit-scrollbar-track]:via-neo-green [&::-webkit-scrollbar-track]:to-neo-pink relative box-border min-h-0 w-full flex-1 overflow-auto border-r-[3px] border-l-[3px] border-black pt-12 [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-thumb]:rounded-md [&::-webkit-scrollbar-thumb]:border-2 [&::-webkit-scrollbar-thumb]:border-white [&::-webkit-scrollbar-thumb]:bg-black [&::-webkit-scrollbar-thumb]:shadow-[inset_0_0_3px_rgba(0,0,0,0.3)] [&::-webkit-scrollbar-thumb:hover]:bg-gray-800 [&::-webkit-scrollbar-track]:rounded-md [&::-webkit-scrollbar-track]:border-2 [&::-webkit-scrollbar-track]:border-black [&::-webkit-scrollbar-track]:bg-gradient-to-b"
+	id="chat-container"
+>
+	<div class="bg-repeating-stripes absolute top-0 right-0 left-0 z-[1] h-[3px]"></div>
 
 	{#if messages.length === 0 || (messages.length === 1 && messages[0].role === 'system')}
-		<div class="empty-state">
-			<div class="empty-icon">💬</div>
-			<h3>Start a Conversation</h3>
-			<p>Type a message below to begin chatting with AI</p>
-			<div class="sparkle sparkle-1">✨</div>
-			<div class="sparkle sparkle-2">⭐</div>
-			<div class="sparkle sparkle-3">🌟</div>
+		<div
+			class="relative flex h-full min-h-[300px] animate-[fadeIn_0.5s_ease-out] flex-col items-center justify-center p-8 text-center"
+		>
+			<div class="animate-float mb-4 text-[4rem]">💬</div>
+			<h3
+				class="bg-neo-yellow shadow-neo-md m-0 mb-2 inline-block -rotate-1 border-[3px] border-black px-6 py-2 text-[1.75rem] font-bold tracking-wider text-black uppercase"
+			>
+				Start a Conversation
+			</h3>
+			<p class="mt-2 mb-0 text-[1.125rem] font-medium text-gray-600">
+				Type a message below to begin chatting with AI
+			</p>
+			<div class="animate-sparkle absolute top-[20%] left-[15%] text-[1.5rem] [animation-delay:0s]">
+				✨
+			</div>
+			<div
+				class="animate-sparkle absolute top-[30%] right-[20%] text-[1.5rem] [animation-delay:1s]"
+			>
+				⭐
+			</div>
+			<div
+				class="animate-sparkle absolute bottom-[25%] left-[25%] text-[1.5rem] [animation-delay:2s]"
+			>
+				🌟
+			</div>
 		</div>
 	{:else}
 		{#each messages as message, i (i)}
@@ -50,181 +72,3 @@
 		{/each}
 	{/if}
 </div>
-
-<style>
-	.chat-messages {
-		/* Let this area flex to fill available space in the chat card and scroll internally */
-		flex: 1 1 auto;
-		min-height: 0; /* critical to allow proper scrolling in flex containers */
-		overflow: auto;
-		position: relative;
-		background: linear-gradient(135deg, rgba(255, 229, 180, 0.1) 0%, rgba(230, 230, 250, 0.1) 100%);
-		padding-top: 3rem;
-		width: 100%;
-		box-sizing: border-box;
-		border-left: 3px solid #000;
-		border-right: 3px solid #000;
-	}
-
-	.chat-decoration {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 3px;
-		background: repeating-linear-gradient(
-			90deg,
-			#ffd93d,
-			#ffd93d 10px,
-			#98fb98 10px,
-			#98fb98 20px,
-			#ff69b4 20px,
-			#ff69b4 30px
-		);
-		z-index: 1;
-	}
-
-	.empty-state {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
-		min-height: 300px;
-		text-align: center;
-		padding: 2rem;
-		position: relative;
-		animation: fadeIn 0.5s ease-out;
-	}
-
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	.empty-icon {
-		font-size: 4rem;
-		margin-bottom: 1rem;
-		animation: float 3s ease-in-out infinite;
-	}
-
-	@keyframes float {
-		0%,
-		100% {
-			transform: translateY(0) rotate(-5deg);
-		}
-		50% {
-			transform: translateY(-15px) rotate(5deg);
-		}
-	}
-
-	.empty-state h3 {
-		font-size: 1.75rem;
-		font-weight: 700;
-		color: #000;
-		margin: 0 0 0.5rem 0;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		background: #ffd93d;
-		padding: 0.5rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
-		display: inline-block;
-		transform: rotate(-1deg);
-	}
-
-	.empty-state p {
-		font-size: 1.125rem;
-		color: #666;
-		margin: 0.5rem 0 0 0;
-		font-weight: 500;
-	}
-
-	.sparkle {
-		position: absolute;
-		font-size: 1.5rem;
-		animation: sparkle 3s ease-in-out infinite;
-	}
-
-	.sparkle-1 {
-		top: 20%;
-		left: 15%;
-		animation-delay: 0s;
-	}
-
-	.sparkle-2 {
-		top: 30%;
-		right: 20%;
-		animation-delay: 1s;
-	}
-
-	.sparkle-3 {
-		bottom: 25%;
-		left: 25%;
-		animation-delay: 2s;
-	}
-
-	@keyframes sparkle {
-		0%,
-		100% {
-			opacity: 0;
-			transform: scale(0) rotate(0deg);
-		}
-		50% {
-			opacity: 1;
-			transform: scale(1) rotate(180deg);
-		}
-	}
-
-	/* Custom scrollbar styling */
-	.chat-messages::-webkit-scrollbar {
-		width: 12px;
-	}
-
-	.chat-messages::-webkit-scrollbar-track {
-		background: linear-gradient(180deg, #ffd93d 0%, #98fb98 50%, #ff69b4 100%);
-		border: 2px solid #000;
-		border-radius: 6px;
-	}
-
-	.chat-messages::-webkit-scrollbar-thumb {
-		background: #000;
-		border-radius: 6px;
-		border: 2px solid #fff;
-		box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-	}
-
-	.chat-messages::-webkit-scrollbar-thumb:hover {
-		background: #333;
-	}
-
-	@media (max-width: 600px) {
-		/* On small screens, inherit the same flexible behavior */
-		.chat-messages {
-			flex: 1 1 auto;
-			min-height: 0;
-		}
-
-		.empty-icon {
-			font-size: 3rem;
-		}
-
-		.empty-state h3 {
-			font-size: 1.5rem;
-		}
-
-		.empty-state p {
-			font-size: 1rem;
-		}
-
-		.sparkle {
-			display: none;
-		}
-	}
-</style>
