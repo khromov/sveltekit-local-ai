@@ -56,23 +56,22 @@
 			bind:value
 			{placeholder}
 			rows="1"
-			disabled={isGenerating}
 			use:focusAfterMount
 			onkeydown={handleKeyDown}
 		></textarea>
 		{#if isGenerating && onStop}
 			<button onclick={onStop} class="stop-btn-inline" aria-label="Stop generation">
-				<svg
-					viewBox="0 0 24 24"
-					width="20"
-					height="20"
-					fill="currentColor"
-				>
+				<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
 					<rect x="4" y="4" width="16" height="16" />
 				</svg>
 			</button>
 		{:else}
-			<button onclick={onSend} disabled={!value.trim()} class="send-btn" aria-label="Send message">
+			<button
+				onclick={onSend}
+				disabled={isGenerating || !value.trim()}
+				class="send-btn"
+				aria-label="Send message"
+			>
 				<svg
 					viewBox="0 0 24 24"
 					width="20"
@@ -270,7 +269,6 @@
 		transform: scale(0.95) rotate(0deg);
 		box-shadow: 1px 1px 0 #000;
 	}
-
 
 	.disclaimer {
 		font-size: 0.75rem;

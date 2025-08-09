@@ -99,3 +99,5 @@ Key persisted stores:
 - Maintain responsive design patterns with mobile-first approach
 - Include loading states and error handling for async operations
 - Follow existing component structure and prop patterns
+
+IMPORTANT: Run "npm run checks" after you finish a task to make sure there are no issues.
