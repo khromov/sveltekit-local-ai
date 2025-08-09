@@ -48,13 +48,6 @@
 <div class="input-area">
 	<div class="input-decoration"></div>
 
-	{#if isGenerating && onStop}
-		<button onclick={onStop} class="stop-btn">
-			<span class="stop-icon">🛑</span>
-			Stop Generation
-		</button>
-	{/if}
-
 	<div class="message-input" class:is-disabled={isGenerating}>
 		<span class="input-emoji">💭</span>
 		<textarea
@@ -67,26 +60,34 @@
 			use:focusAfterMount
 			onkeydown={handleKeyDown}
 		></textarea>
-		<button
-			onclick={onSend}
-			disabled={isGenerating || !value.trim()}
-			class="send-btn"
-			aria-label="Send message"
-		>
-			<svg
-				viewBox="0 0 24 24"
-				width="20"
-				height="20"
-				stroke="currentColor"
-				stroke-width="2.5"
-				fill="none"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<line x1="22" y1="2" x2="11" y2="13"></line>
-				<polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-			</svg>
-		</button>
+		{#if isGenerating && onStop}
+			<button onclick={onStop} class="stop-btn-inline" aria-label="Stop generation">
+				<svg
+					viewBox="0 0 24 24"
+					width="20"
+					height="20"
+					fill="currentColor"
+				>
+					<rect x="4" y="4" width="16" height="16" />
+				</svg>
+			</button>
+		{:else}
+			<button onclick={onSend} disabled={!value.trim()} class="send-btn" aria-label="Send message">
+				<svg
+					viewBox="0 0 24 24"
+					width="20"
+					height="20"
+					stroke="currentColor"
+					stroke-width="2.5"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="22" y1="2" x2="11" y2="13"></line>
+					<polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+				</svg>
+			</button>
+		{/if}
 	</div>
 
 	<div class="disclaimer">
@@ -229,51 +230,47 @@
 		transform: rotate(0deg);
 	}
 
-	.stop-btn {
-		padding: 0.75rem 1.25rem;
-		background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
-		color: #000;
-		border: 3px solid #000;
-		border-radius: 8px;
-		cursor: pointer;
-		font-size: 0.9375rem;
-		font-weight: 700;
+	.stop-btn-inline {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
-		margin: 0 auto 1rem;
+		width: 44px;
+		height: 44px;
+		margin: 8px;
+		align-self: center;
+		background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+		color: #000;
+		border: 2px solid #000;
+		border-radius: 8px;
+		cursor: pointer;
 		transition: all 0.2s;
-		box-shadow: 5px 5px 0 #000;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		transform: rotate(-1deg);
-		animation: shake 0.5s ease-in-out infinite;
+		box-shadow: 2px 2px 0 #000;
+		transform: rotate(-2deg);
+		animation: pulse-stop 1s ease-in-out infinite;
 	}
 
-	@keyframes shake {
+	@keyframes pulse-stop {
 		0%,
 		100% {
-			transform: translateX(0) rotate(-1deg);
+			transform: rotate(-2deg) scale(1);
 		}
-		25% {
-			transform: translateX(-2px) rotate(-1deg);
-		}
-		75% {
-			transform: translateX(2px) rotate(-1deg);
+		50% {
+			transform: rotate(-2deg) scale(1.05);
 		}
 	}
 
-	.stop-btn:hover {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 7px 7px 0 #000;
+	.stop-btn-inline:hover {
+		background: linear-gradient(135deg, #ff8a80 0%, #ff6b6b 100%);
+		transform: scale(1.1) rotate(0deg);
+		box-shadow: 3px 3px 0 #000;
 		animation: none;
 	}
 
-	.stop-icon {
-		font-size: 1.125rem;
+	.stop-btn-inline:active {
+		transform: scale(0.95) rotate(0deg);
+		box-shadow: 1px 1px 0 #000;
 	}
+
 
 	.disclaimer {
 		font-size: 0.75rem;
@@ -308,7 +305,8 @@
 			padding-top: 1.125rem;
 		}
 
-		.send-btn {
+		.send-btn,
+		.stop-btn-inline {
 			width: 40px;
 			height: 40px;
 		}
