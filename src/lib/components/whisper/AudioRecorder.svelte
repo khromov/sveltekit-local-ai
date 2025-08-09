@@ -11,7 +11,7 @@
 	let audioChunks: Blob[] = [];
 	let isRecording = $state(false);
 	let recordingTime = $state(0);
-	let recordingInterval: NodeJS.Timeout | null = null;
+	let recordingInterval: number | null = null;
 	let audioUrl = $state<string | null>(null);
 	let recordingError = $state<string | null>(null);
 

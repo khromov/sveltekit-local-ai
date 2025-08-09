@@ -168,7 +168,7 @@
 		transcribeMode = 'upload';
 	}
 
-	function handleModeChange(mode: 'demo' | 'upload') {
+	function handleModeChange(mode: 'demo' | 'upload' | 'record') {
 		transcribeMode = mode;
 		if (mode === 'demo') {
 			selectedFile = null;
