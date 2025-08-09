@@ -54,6 +54,7 @@
 				selectedModel = model;
 			}
 
+			// TODO: Cleanup
 			wllama = new Wllama(WLLAMA_CONFIG_PATHS);
 
 			const progressCallback: DownloadProgressCallback = ({ loaded, total }) => {
