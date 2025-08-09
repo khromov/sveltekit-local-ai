@@ -48,7 +48,11 @@
 			</div>
 		</label>
 
-		<label class="option-label" class:selected={transcribeMode === 'demo'}>
+		<div class="or-divider">
+			<span>OR</span>
+		</div>
+
+		<label class="option-label demo-option" class:selected={transcribeMode === 'demo'}>
 			<input
 				type="radio"
 				name="transcribeMode"
@@ -58,11 +62,8 @@
 				{disabled}
 			/>
 			<div class="option-content">
-				<div class="option-header">
-					<span class="option-icon">🎤</span>
-					<strong>Demo Audio</strong>
-				</div>
-				<small>Use the JFK speech sample (<a href="/jfk.mp3" target="_blank">listen →</a>)</small>
+				<strong>Demo</strong>
+				<small>JFK (<a href="/jfk.mp3" target="_blank">→</a>)</small>
 			</div>
 		</label>
 	</div>
@@ -229,6 +230,55 @@
 		transform: translate(-1px, -1px);
 		box-shadow: 3px 3px 0 #000;
 		background: #ff69b4;
+	}
+
+	.or-divider {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0.5rem 0;
+		position: relative;
+	}
+
+	.or-divider span {
+		background: #fff;
+		padding: 0 1rem;
+		font-weight: 700;
+		font-size: 0.875rem;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: #666;
+		position: relative;
+	}
+
+	.or-divider::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: #ddd;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.demo-option {
+		padding: 0.75rem 1rem !important;
+	}
+
+	.demo-option .option-content {
+		flex-direction: row !important;
+		align-items: center;
+		gap: 0.5rem !important;
+	}
+
+	.demo-option strong {
+		font-size: 1rem !important;
+	}
+
+	.demo-option small {
+		margin-left: 0 !important;
+		font-size: 0.875rem !important;
 	}
 
 	@media (max-width: 600px) {
