@@ -40,9 +40,6 @@
 			<div class="empty-icon">💬</div>
 			<h3>Start a Conversation</h3>
 			<p>Type a message below to begin chatting with AI</p>
-			<div class="sparkle sparkle-1">✨</div>
-			<div class="sparkle sparkle-2">⭐</div>
-			<div class="sparkle sparkle-3">🌟</div>
 		</div>
 	{:else}
 		{#each messages as message, i (i)}
@@ -146,41 +143,6 @@
 		font-weight: 500;
 	}
 
-	.sparkle {
-		position: absolute;
-		font-size: 1.5rem;
-		animation: sparkle 3s ease-in-out infinite;
-	}
-
-	.sparkle-1 {
-		top: 20%;
-		left: 15%;
-		animation-delay: 0s;
-	}
-
-	.sparkle-2 {
-		top: 30%;
-		right: 20%;
-		animation-delay: 1s;
-	}
-
-	.sparkle-3 {
-		bottom: 25%;
-		left: 25%;
-		animation-delay: 2s;
-	}
-
-	@keyframes sparkle {
-		0%,
-		100% {
-			opacity: 0;
-			transform: scale(0) rotate(0deg);
-		}
-		50% {
-			opacity: 1;
-			transform: scale(1) rotate(180deg);
-		}
-	}
 
 	/* Custom scrollbar styling */
 	.chat-messages::-webkit-scrollbar {
@@ -221,10 +183,6 @@
 
 		.empty-state p {
 			font-size: 1rem;
-		}
-
-		.sparkle {
-			display: none;
 		}
 	}
 </style>
