@@ -26,8 +26,8 @@
 
 	// Model selection
 	const AVAILABLE_MODELS = [
-		{ id: 'RMBG-1.4', name: 'RMBG v1.4', description: 'Original background removal model' },
-		{ id: 'RMBG-2.0', name: 'RMBG v2.0', description: 'Improved background removal model' }
+		{ id: 'RMBG-1.4', name: 'RMBG v1.4', description: 'Smaller and faster, runs on most devices' },
+		{ id: 'RMBG-2.0', name: 'RMBG v2.0', description: 'Larger with potentially better results' }
 	];
 	let selectedModelId = $state('RMBG-1.4');
 
@@ -372,7 +372,7 @@
 			<!-- Model Selection -->
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
 				<div class="model-selection">
-					<h3>Model Selection</h3>
+					<h3><span class="step-number">Step 1:</span> Model Selection</h3>
 					<div class="model-buttons">
 						{#each AVAILABLE_MODELS as modelOption (modelOption.id)}
 							<button
@@ -392,7 +392,7 @@
 			<!-- Mode Selection -->
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
 				<div class="mode-selection">
-					<h3>Processing Mode</h3>
+					<h3><span class="step-number">Step 2:</span> Processing Mode</h3>
 					<div class="mode-buttons">
 						<button
 							class="mode-btn"
@@ -408,27 +408,30 @@
 							onclick={() => switchMode('batch')}
 						>
 							<span class="mode-icon">📁</span>
-							Batch Processing
+							Multiple images
 						</button>
 					</div>
 				</div>
 			{/if}
 
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
-				{#if processingMode === 'single'}
-					<BackgroundRemoverFileUpload
-						{selectedFile}
-						onFileSelect={handleSingleFileSelect}
-						onExampleUse={handleExampleUse}
-						disabled={isProcessing}
-					/>
-				{:else}
-					<BackgroundRemoverBatchUpload
-						{selectedFiles}
-						onFilesSelect={handleBatchFileSelect}
-						disabled={isProcessing}
-					/>
-				{/if}
+				<div class="upload-selection">
+					<h3><span class="step-number">Step 3:</span> Upload Images</h3>
+					{#if processingMode === 'single'}
+						<BackgroundRemoverFileUpload
+							{selectedFile}
+							onFileSelect={handleSingleFileSelect}
+							onExampleUse={handleExampleUse}
+							disabled={isProcessing}
+						/>
+					{:else}
+						<BackgroundRemoverBatchUpload
+							{selectedFiles}
+							onFilesSelect={handleBatchFileSelect}
+							disabled={isProcessing}
+						/>
+					{/if}
+				</div>
 			{/if}
 
 			{#if isProcessing}
@@ -780,6 +783,50 @@
 		letter-spacing: 0;
 		font-weight: 400;
 		line-height: 1.2;
+	}
+
+	/* Step Numbers */
+	.step-number {
+		background: #000;
+		color: #fff;
+		padding: 0.25rem 0.5rem;
+		border-radius: 4px;
+		font-size: 0.875rem;
+		font-weight: 700;
+		margin-right: 0.5rem;
+		display: inline-block;
+		transform: rotate(0deg);
+	}
+
+	/* Upload Selection */
+	.upload-selection {
+		background: #fff;
+		border: 4px solid #000;
+		padding: 1.5rem;
+		box-shadow: 6px 6px 0 #000;
+		margin-bottom: 1.5rem;
+		position: relative;
+		transform: rotate(-0.1deg);
+		animation: slideIn 0.4s ease-out;
+	}
+
+	.upload-selection h3 {
+		margin-top: 0;
+		margin-bottom: 1rem;
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.5rem;
+		color: #000;
+		text-align: center;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		background: #98fb98;
+		padding: 0.5rem 1rem;
+		border: 3px solid #000;
+		box-shadow: 4px 4px 0 #000;
+		transform: rotate(0.5deg);
+		width: fit-content;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	@media (max-width: 600px) {
