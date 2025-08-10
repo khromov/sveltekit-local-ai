@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SvelteLogo from 'virtual:icons/logos/svelte-icon'
+	import SvelteLogo from 'virtual:icons/logos/svelte-icon';
 	import AArrowDown from 'virtual:icons/lucide/a-arrow-down';
 
 	import { Wllama } from '@wllama/wllama';
@@ -71,7 +71,7 @@
 <div class="container">
 	<h1>KV Cache Test</h1>
 	<SvelteLogo />
-	<AArrowDown style={"color: red;"} />
+	<AArrowDown style={'color: red;'} />
 
 	{#if !isModelLoaded}
 		<div class="loading">

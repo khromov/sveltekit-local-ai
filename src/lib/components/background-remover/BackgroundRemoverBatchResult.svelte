@@ -1,4 +1,11 @@
 <script lang="ts">
+	import SparklesIcon from 'virtual:icons/lucide/sparkles';
+	import CheckCircleIcon from 'virtual:icons/lucide/check-circle';
+	import XCircleIcon from 'virtual:icons/lucide/x-circle';
+	import PackageIcon from 'virtual:icons/lucide/package';
+	import RotateCwIcon from 'virtual:icons/lucide/rotate-cw';
+	import SaveIcon from 'virtual:icons/lucide/save';
+
 	interface BatchResult {
 		file: File;
 		originalUrl: string;
@@ -35,17 +42,17 @@
 		<div class="results-content">
 			<div class="results-header">
 				<h3>
-					<span class="header-icon">✨</span>
+					<span class="header-icon"><SparklesIcon /></span>
 					Batch Processing Complete!
 				</h3>
 				<div class="results-summary">
 					<div class="summary-item success">
-						<span class="summary-icon">✅</span>
+						<span class="summary-icon"><CheckCircleIcon /></span>
 						<span>{successfulResults.length} Successful</span>
 					</div>
 					{#if failedResults.length > 0}
 						<div class="summary-item failed">
-							<span class="summary-icon">❌</span>
+							<span class="summary-icon"><XCircleIcon /></span>
 							<span>{failedResults.length} Failed</span>
 						</div>
 					{/if}
@@ -55,13 +62,13 @@
 			<div class="batch-actions">
 				{#if successfulResults.length > 1}
 					<button class="download-zip-btn" onclick={onDownloadZip}>
-						<span class="btn-icon">📦</span>
+						<span class="btn-icon"><PackageIcon /></span>
 						Download All as ZIP
 					</button>
 				{/if}
 
 				<button class="process-another-btn" onclick={onProcessAnother}>
-					<span class="btn-icon">🔄</span>
+					<span class="btn-icon"><RotateCwIcon /></span>
 					Process More Images
 				</button>
 			</div>
@@ -98,7 +105,7 @@
 											onclick={() => downloadIndividualImage(result)}
 											title="Download this image"
 										>
-											💾
+											<SaveIcon />
 										</button>
 									</div>
 								</div>
@@ -117,7 +124,7 @@
 								<div class="failed-preview">
 									<img src={result.originalUrl} alt="Failed {result.file.name}" />
 									<div class="failed-overlay">
-										<span class="failed-icon">❌</span>
+										<span class="failed-icon"><XCircleIcon /></span>
 									</div>
 								</div>
 								<div class="failed-info">
@@ -208,7 +215,15 @@
 
 	.header-icon {
 		font-size: 1.5rem;
+		display: flex;
+		align-items: center;
+		color: #000;
 		animation: sparkle 2s ease-in-out infinite;
+	}
+
+	.header-icon :global(svg) {
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	@keyframes sparkle {
@@ -252,6 +267,14 @@
 
 	.summary-icon {
 		font-size: 1.125rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.summary-icon :global(svg) {
+		width: 1.125rem;
+		height: 1.125rem;
 	}
 
 	.batch-actions {
@@ -306,6 +329,14 @@
 
 	.btn-icon {
 		font-size: 1.25rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.btn-icon :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.results-section,
@@ -457,6 +488,12 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		color: #000;
+	}
+
+	.download-individual-btn :global(svg) {
+		width: 1rem;
+		height: 1rem;
 	}
 
 	.download-individual-btn:hover {
@@ -507,6 +544,13 @@
 	.failed-icon {
 		font-size: 2rem;
 		color: #fff;
+		display: flex;
+		align-items: center;
+	}
+
+	.failed-icon :global(svg) {
+		width: 2rem;
+		height: 2rem;
 	}
 
 	.failed-info {

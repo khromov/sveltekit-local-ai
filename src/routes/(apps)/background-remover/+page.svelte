@@ -24,7 +24,6 @@
 	env.remoteHost = `${BASE_MODEL_URL}/bgremoval/`;
 	env.remotePathTemplate = '{model}/';
 
-
 	// Mode selection
 	let processingMode = $state<'single' | 'batch'>('single');
 
@@ -61,8 +60,7 @@
 
 	let segmenter: any = null;
 
-	const EXAMPLE_URL =
-		'/pexels-photo-5965592.jpeg';
+	const EXAMPLE_URL = '/pexels-photo-5965592.jpeg';
 
 	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
 

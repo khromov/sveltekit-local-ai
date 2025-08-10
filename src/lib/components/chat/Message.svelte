@@ -1,5 +1,8 @@
 <script lang="ts">
 	import type { Message } from '$lib/wllama-config';
+	import UserIcon from 'virtual:icons/lucide/user';
+	import BotIcon from 'virtual:icons/lucide/bot';
+	import MessageCircleIcon from 'virtual:icons/lucide/message-circle';
 
 	interface Props {
 		message: Message;
@@ -23,7 +26,7 @@
 				{#if message.role === 'assistant' && isGenerating && isLast}
 					{#if message.content === ''}
 						<div class="typing-indicator">
-							<span class="typing-emoji">💭</span>
+							<span class="typing-emoji"><MessageCircleIcon /></span>
 							<span class="dot"></span>
 							<span class="dot"></span>
 							<span class="dot"></span>
@@ -34,6 +37,15 @@
 					{/if}
 				{:else}
 					{message.content}
+				{/if}
+			</div>
+			<div class="message-label">
+				{#if message.role === 'user'}
+					<UserIcon />
+					<span>You</span>
+				{:else}
+					<BotIcon />
+					<span>AI</span>
 				{/if}
 			</div>
 		</div>
@@ -128,6 +140,7 @@
 		border-radius: 16px;
 		transition: all 0.2s ease;
 		overflow: visible;
+		margin-top: 22px;
 	}
 
 	.user-message .message-content {
@@ -143,11 +156,9 @@
 		box-shadow: 6px 6px 0 #000;
 	}
 
-	.user-message .message-content::before {
-		content: '👤 You';
+	.message-label {
 		position: absolute;
 		top: -22px;
-		right: 0;
 		font-size: 0.75rem;
 		font-weight: 700;
 		color: #000;
@@ -158,6 +169,19 @@
 		border: 2px solid #000;
 		border-radius: 4px;
 		box-shadow: 2px 2px 0 #000;
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	.message-label :global(svg) {
+		width: 0.875rem;
+		height: 0.875rem;
+	}
+
+	.user-message .message-label {
+		right: 0;
+		background: #98fb98;
 	}
 
 	.assistant-message .message-content {
@@ -173,21 +197,9 @@
 		box-shadow: 6px 6px 0 #000;
 	}
 
-	.assistant-message .message-content::before {
-		content: '🤖 AI';
-		position: absolute;
-		top: -22px;
+	.assistant-message .message-label {
 		left: 0;
-		font-size: 0.75rem;
-		font-weight: 700;
-		color: #000;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
 		background: #ff69b4;
-		padding: 2px 8px;
-		border: 2px solid #000;
-		border-radius: 4px;
-		box-shadow: 2px 2px 0 #000;
 	}
 
 	.typing-indicator {
@@ -218,7 +230,15 @@
 
 	.typing-emoji {
 		font-size: 1.25rem;
+		display: flex;
+		align-items: center;
+		color: #000;
 		animation: pulse-emoji 1.5s ease-in-out infinite;
+	}
+
+	.typing-emoji :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	@keyframes pulse-emoji {
@@ -280,8 +300,7 @@
 			font-size: 0.9375rem;
 		}
 
-		.user-message .message-content::before,
-		.assistant-message .message-content::before {
+		.message-label {
 			font-size: 0.7rem;
 		}
 

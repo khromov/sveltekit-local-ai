@@ -1,4 +1,6 @@
 <script lang="ts">
+	import PaperclipIcon from 'virtual:icons/lucide/paperclip';
+
 	interface Props {
 		selectedFile: File | null;
 		onFileSelect: (file: File) => void;
@@ -90,7 +92,7 @@
 			</svg>
 			<p class="upload-text">
 				{#if selectedFile}
-					<span class="file-icon">📎</span>
+					<span class="file-icon"><PaperclipIcon /></span>
 					{selectedFile.name}
 				{:else}
 					Drop your audio file here
@@ -210,6 +212,14 @@
 
 	.file-icon {
 		font-size: 1.25rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.file-icon :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.upload-hint {

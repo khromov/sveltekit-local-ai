@@ -18,7 +18,7 @@ export default defineConfig({
 		},
 		sveltekit(),
 		Icons({
-			compiler: 'svelte',
+			compiler: 'svelte'
 		}),
 		devtoolsJson()
 	],

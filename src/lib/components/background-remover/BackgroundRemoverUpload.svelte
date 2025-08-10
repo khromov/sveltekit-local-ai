@@ -1,4 +1,10 @@
 <script lang="ts">
+	import FolderIcon from 'virtual:icons/lucide/folder';
+	import ImageIcon from 'virtual:icons/lucide/image';
+	import StarIcon from 'virtual:icons/lucide/star';
+	import Trash2Icon from 'virtual:icons/lucide/trash-2';
+	import ZapIcon from 'virtual:icons/lucide/zap';
+
 	interface Props {
 		mode: 'single' | 'batch';
 		selectedFile?: File | null;
@@ -111,7 +117,7 @@
 <div class="background-remover-upload" class:batch-mode={mode === 'batch'}>
 	<div class="upload-decoration"></div>
 	<h3>
-		<span class="title-icon">{mode === 'single' ? '📁' : '📁'}</span>
+		<span class="title-icon"><FolderIcon /></span>
 		{mode === 'single' ? 'Choose Image' : 'Batch Processing'}
 	</h3>
 
@@ -155,13 +161,13 @@
 			<p class="upload-text">
 				{#if mode === 'single'}
 					{#if selectedFile}
-						<span class="file-icon">🖼️</span>
+						<span class="file-icon"><ImageIcon /></span>
 						{selectedFile.name}
 					{:else}
 						Drop your image here
 					{/if}
 				{:else if selectedFiles.length > 0}
-					<span class="file-icon">📁</span>
+					<span class="file-icon"><FolderIcon /></span>
 					{selectedFiles.length} image{selectedFiles.length === 1 ? '' : 's'} selected
 				{:else}
 					Drop multiple images here
@@ -185,7 +191,7 @@
 		</div>
 
 		<button class="example-button" onclick={onExampleUse} {disabled}>
-			<span class="example-icon">🌟</span>
+			<span class="example-icon"><StarIcon /></span>
 			Try Example Image
 		</button>
 	{/if}
@@ -195,7 +201,7 @@
 			<div class="files-header">
 				<h4>Selected Images ({selectedFiles.length})</h4>
 				<button class="clear-all-btn" onclick={clearAllFiles} {disabled}>
-					<span class="clear-icon">🗑️</span>
+					<span class="clear-icon"><Trash2Icon /></span>
 					Clear All
 				</button>
 			</div>
@@ -228,7 +234,7 @@
 					onclick={() => onFilesSelect?.(selectedFiles)}
 					{disabled}
 				>
-					<span class="btn-icon">⚡</span>
+					<span class="btn-icon"><ZapIcon /></span>
 					Process {selectedFiles.length} Image{selectedFiles.length === 1 ? '' : 's'}
 				</button>
 			</div>
@@ -306,6 +312,14 @@
 
 	.title-icon {
 		font-size: 1.75rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.title-icon :global(svg) {
+		width: 1.75rem;
+		height: 1.75rem;
 	}
 
 	.background-remover-upload input[type='file'] {
@@ -401,6 +415,14 @@
 
 	.file-icon {
 		font-size: 1.25rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.file-icon :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.upload-hint {
@@ -485,6 +507,14 @@
 
 	.example-icon {
 		font-size: 1.25rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.example-icon :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	/* Batch Mode Specific Styles */
@@ -541,6 +571,14 @@
 
 	.clear-icon {
 		font-size: 1rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.clear-icon :global(svg) {
+		width: 1rem;
+		height: 1rem;
 	}
 
 	.files-grid {
@@ -654,6 +692,14 @@
 
 	.btn-icon {
 		font-size: 1.5rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.btn-icon :global(svg) {
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	@media (max-width: 768px) {

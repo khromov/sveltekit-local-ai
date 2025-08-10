@@ -2,6 +2,7 @@
 	import LoadingProgress from '../LoadingProgress.svelte';
 	import ErrorDisplay from '../ErrorDisplay.svelte';
 	import { isOPFSSupported } from '$lib/download-utils';
+	import CheckIcon from 'virtual:icons/lucide/check';
 
 	interface Props {
 		selectedModel: string;
@@ -52,7 +53,7 @@
 		{:else}
 			<div class="model-controls-loaded">
 				<div class="model-ready">
-					<span class="checkmark">✓</span>
+					<span class="checkmark"><CheckIcon /></span>
 					<span>Model Ready</span>
 				</div>
 				{#if selectedModel !== availableModels[0].path}
@@ -176,6 +177,13 @@
 	.checkmark {
 		font-size: 1.25rem;
 		color: #000;
+		display: flex;
+		align-items: center;
+	}
+
+	.checkmark :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.model-controls-loaded {

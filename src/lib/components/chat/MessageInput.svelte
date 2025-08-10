@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import MessageCircleIcon from 'virtual:icons/lucide/message-circle';
+	import LightbulbIcon from 'virtual:icons/lucide/lightbulb';
 
 	interface Props {
 		value: string;
@@ -49,7 +51,7 @@
 	<div class="input-decoration"></div>
 
 	<div class="message-input" class:is-disabled={isGenerating}>
-		<span class="input-emoji">💭</span>
+		<span class="input-emoji"><MessageCircleIcon /></span>
 		<textarea
 			id="chat"
 			bind:this={inputElement}
@@ -90,7 +92,7 @@
 	</div>
 
 	<div class="disclaimer">
-		<span class="disclaimer-icon">💡</span>
+		<span class="disclaimer-icon"><LightbulbIcon /></span>
 		Model responses may not always be accurate.
 	</div>
 </div>
@@ -149,6 +151,14 @@
 		border: 2px solid #000;
 		border-radius: 4px;
 		animation: bounce-emoji 3s ease-in-out infinite;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.input-emoji :global(svg) {
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	@keyframes bounce-emoji {
@@ -290,6 +300,14 @@
 
 	.disclaimer-icon {
 		font-size: 0.875rem;
+		display: flex;
+		align-items: center;
+		color: #666;
+	}
+
+	.disclaimer-icon :global(svg) {
+		width: 0.875rem;
+		height: 0.875rem;
 	}
 
 	@media (max-width: 600px) {
@@ -316,6 +334,11 @@
 
 		.input-emoji {
 			font-size: 1.25rem;
+		}
+
+		.input-emoji :global(svg) {
+			width: 1.25rem;
+			height: 1.25rem;
 		}
 	}
 </style>

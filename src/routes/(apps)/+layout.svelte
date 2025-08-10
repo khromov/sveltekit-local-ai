@@ -9,12 +9,10 @@
 </script>
 
 <svelte:head>
-	<title>
-		Local AI
-	</title>
+	<title>Local AI</title>
 
 	{#if !dev}
-	<script
+		<script
 			defer
 			src="https://u.khromov.se/u.js"
 			data-website-id="8b61040a-306f-4d99-95b3-0e925d631ec3"

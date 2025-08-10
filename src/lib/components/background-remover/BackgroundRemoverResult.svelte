@@ -1,4 +1,10 @@
 <script lang="ts">
+	import SparklesIcon from 'virtual:icons/lucide/sparkles';
+	import ImageIcon from 'virtual:icons/lucide/image';
+	import ScaleIcon from 'virtual:icons/lucide/scale';
+	import SaveIcon from 'virtual:icons/lucide/save';
+	import RotateCwIcon from 'virtual:icons/lucide/rotate-cw';
+
 	interface Props {
 		originalImageUrl: string;
 		processedImageUrl: string;
@@ -26,12 +32,18 @@
 		<div class="result-content">
 			<div class="result-header">
 				<h3>
-					<span class="header-icon">✨</span>
+					<span class="header-icon"><SparklesIcon /></span>
 					Background Removed!
 				</h3>
 				<div class="result-actions">
 					<button class="comparison-toggle" onclick={() => (showComparison = !showComparison)}>
-						{showComparison ? '🖼️ Processed' : '⚖️ Compare'}
+						{#if showComparison}
+							<ImageIcon />
+							Processed
+						{:else}
+							<ScaleIcon />
+							Compare
+						{/if}
 					</button>
 				</div>
 			</div>
@@ -58,12 +70,12 @@
 
 			<div class="action-buttons">
 				<button class="download-btn" onclick={downloadImage}>
-					<span class="btn-icon">💾</span>
+					<span class="btn-icon"><SaveIcon /></span>
 					Download
 				</button>
 
 				<button class="process-another-btn" onclick={onProcessAnother}>
-					<span class="btn-icon">🔄</span>
+					<span class="btn-icon"><RotateCwIcon /></span>
 					Process Another
 				</button>
 			</div>
@@ -148,7 +160,15 @@
 
 	.header-icon {
 		font-size: 1.5rem;
+		display: flex;
+		align-items: center;
+		color: #000;
 		animation: sparkle 2s ease-in-out infinite;
+	}
+
+	.header-icon :global(svg) {
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	@keyframes sparkle {
@@ -175,6 +195,14 @@
 		letter-spacing: 0.5px;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 		box-shadow: 3px 3px 0 #000;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.comparison-toggle :global(svg) {
+		width: 1.125rem;
+		height: 1.125rem;
 	}
 
 	.comparison-toggle:hover {
@@ -319,6 +347,14 @@
 
 	.btn-icon {
 		font-size: 1.25rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.btn-icon :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	@media (max-width: 768px) {
