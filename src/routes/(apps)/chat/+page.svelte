@@ -241,19 +241,63 @@
 	</div>
 {:else}
 	<div class="card-interface chat-interface">
-		<div class="floating-decoration decoration-1"></div>
-		<div class="floating-decoration decoration-2"></div>
+		<!-- Natural organic decorations -->
+		<div class="natural-decoration leaf-decoration-1">
+			<svg viewBox="0 0 30 40" width="30" height="40">
+				<ellipse
+					cx="15"
+					cy="20"
+					rx="8"
+					ry="18"
+					fill="#5a8c69"
+					opacity="0.6"
+					transform="rotate(-15 15 20)"
+				/>
+				<path d="M15,2 Q12,20 15,38" stroke="#4a7c59" stroke-width="2" opacity="0.4" />
+			</svg>
+		</div>
+		<div class="natural-decoration leaf-decoration-2">
+			<svg viewBox="0 0 25 35" width="25" height="35">
+				<ellipse
+					cx="12"
+					cy="17"
+					rx="6"
+					ry="15"
+					fill="#3a6e4a"
+					opacity="0.5"
+					transform="rotate(20 12 17)"
+				/>
+				<path d="M12,3 Q15,17 12,31" stroke="#2d5d3a" stroke-width="1.5" opacity="0.3" />
+			</svg>
+		</div>
 
 		<div class="toolbar">
 			<span class="model-info">
-				<span class="model-emoji">🤖</span>
+				<svg class="model-icon" viewBox="0 0 20 20" width="16" height="16">
+					<circle cx="10" cy="10" r="8" fill="#faf8f5" stroke="#4a7c59" stroke-width="1.5" />
+					<circle cx="7" cy="8" r="1.5" fill="#4a7c59" />
+					<circle cx="13" cy="8" r="1.5" fill="#4a7c59" />
+					<path d="M6,13 Q10,16 14,13" stroke="#4a7c59" stroke-width="1.5" fill="none" />
+				</svg>
 				{selectedModel.name}
 			</span>
 			<button onclick={newChat} class="new-chat-btn" aria-label="New Chat">
-				<span class="btn-emoji">✨</span>
-				New <span class="desktop-only">Chat</span>
+				<svg class="btn-icon" viewBox="0 0 16 16" width="14" height="14">
+					<path
+						d="M8,2 L12,6 L8,10 M4,6 L12,6"
+						stroke="currentColor"
+						stroke-width="2"
+						fill="none"
+						stroke-linecap="round"
+					/>
+				</svg>
+				New <span class="desktop-only">Conversation</span>
 			</button>
-			<div class="toolbar-decoration"></div>
+			<div class="toolbar-decoration">
+				<svg viewBox="0 0 100 4" width="100%" height="4">
+					<path d="M0,2 Q25,1 50,2 T100,2" stroke="#3a6e4a" stroke-width="1" opacity="0.4" />
+				</svg>
+			</div>
 		</div>
 
 		<ChatMessages bind:this={chatMessagesComponent} messages={$messages} {isGenerating} />
@@ -321,96 +365,104 @@
 		}
 	}
 
-	.floating-decoration {
+	.natural-decoration {
 		position: absolute;
-		background: linear-gradient(135deg, #ffd93d 0%, #ff69b4 100%);
-		border: 3px solid #000;
-		opacity: 0.2;
 		z-index: -1;
 		pointer-events: none;
 	}
 
-	.decoration-1 {
-		width: 80px;
-		height: 80px;
-		top: -20px;
-		right: -20px;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		animation: float1 8s ease-in-out infinite;
+	.leaf-decoration-1 {
+		top: -10px;
+		right: 15px;
+		animation: naturalFloat1 12s ease-in-out infinite;
 	}
 
-	.decoration-2 {
-		width: 60px;
-		height: 60px;
-		bottom: 100px;
-		left: -15px;
-		border-radius: 70% 30% 30% 70% / 40% 60% 40% 60%;
-		animation: float2 10s ease-in-out infinite;
+	.leaf-decoration-2 {
+		bottom: 120px;
+		left: 10px;
+		animation: naturalFloat2 15s ease-in-out infinite;
 	}
 
-	@keyframes float1 {
+	@keyframes naturalFloat1 {
 		0%,
 		100% {
-			transform: translate(0, 0) rotate(0deg);
+			transform: translate(0, 0) rotate(-5deg) scale(1);
+			opacity: 0.6;
 		}
-		50% {
-			transform: translate(-10px, 10px) rotate(180deg);
+		33% {
+			transform: translate(-3px, 8px) rotate(2deg) scale(1.05);
+			opacity: 0.8;
+		}
+		66% {
+			transform: translate(5px, -5px) rotate(-2deg) scale(0.95);
+			opacity: 0.5;
 		}
 	}
 
-	@keyframes float2 {
+	@keyframes naturalFloat2 {
 		0%,
 		100% {
-			transform: translate(0, 0) rotate(0deg);
+			transform: translate(0, 0) rotate(10deg) scale(1);
+			opacity: 0.5;
 		}
-		50% {
-			transform: translate(10px, -10px) rotate(-180deg);
+		40% {
+			transform: translate(8px, -3px) rotate(-5deg) scale(1.1);
+			opacity: 0.7;
+		}
+		80% {
+			transform: translate(-5px, 6px) rotate(8deg) scale(0.9);
+			opacity: 0.4;
 		}
 	}
 
 	.toolbar-decoration {
 		position: absolute;
-		bottom: -6px;
+		bottom: -2px;
 		left: 0;
 		right: 0;
-		height: 3px;
-		background: repeating-linear-gradient(90deg, #000, #000 8px, #98fb98 8px, #98fb98 16px);
+		height: 4px;
+		opacity: 0.7;
 	}
 
-	.model-emoji {
-		font-size: 1.125rem;
-		margin-right: 0.25rem;
+	.model-icon {
+		margin-right: 0.5rem;
+		opacity: 0.8;
 	}
 
-	.btn-emoji {
-		font-size: 1rem;
+	.btn-icon {
+		margin-right: 0.375rem;
+		opacity: 0.9;
 	}
 
 	.new-chat-btn {
-		padding: 0.5rem 1rem;
-		background: #98fb98;
-		color: #000;
-		border: 2px solid #000;
-		border-radius: 6px;
+		padding: 0.75rem 1.25rem;
+		background: rgba(90, 140, 105, 0.9);
+		color: #faf8f5;
+		border: 1px solid rgba(58, 110, 74, 0.3);
+		border-radius: 12px;
 		cursor: pointer;
-		font-size: 0.875rem;
-		font-weight: 700;
-		transition: all 0.2s;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-size: 0.9rem;
+		font-weight: 600;
+		font-family: 'Caveat', cursive;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		letter-spacing: 0.3px;
 		white-space: nowrap;
-		box-shadow: 3px 3px 0 #000;
+		box-shadow:
+			0 6px 16px rgba(58, 110, 74, 0.2),
+			inset 0 1px 0 rgba(255, 255, 255, 0.2);
+		backdrop-filter: blur(5px);
 		display: flex;
 		align-items: center;
-		gap: 0.375rem;
-		transform: rotate(0deg);
+		gap: 0.5rem;
 	}
 
 	.new-chat-btn:hover {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 5px 5px 0 #000;
-		background: #ffd93d;
+		transform: translateY(-2px);
+		box-shadow:
+			0 8px 20px rgba(58, 110, 74, 0.3),
+			inset 0 1px 0 rgba(255, 255, 255, 0.3);
+		background: rgba(107, 157, 122, 0.95);
+		border-color: rgba(74, 124, 89, 0.4);
 	}
 
 	@media (max-width: 600px) {
@@ -420,17 +472,17 @@
 		}
 
 		.new-chat-btn {
-			padding: 0.375rem 0.75rem;
-			font-size: 0.8125rem;
+			padding: 0.625rem 1rem;
+			font-size: 0.85rem;
 		}
 
 		.desktop-only {
 			display: none;
 		}
 
-		.decoration-1,
-		.decoration-2 {
-			display: none;
+		.natural-decoration {
+			opacity: 0.5;
+			transform: scale(0.8);
 		}
 	}
 

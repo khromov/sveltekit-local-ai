@@ -261,8 +261,14 @@
 
 <div class="card-interface" style="animation: fadeIn 0.5s ease-out;">
 	<div class="toolbar">
-		<span class="model-info">Whisper Audio Transcription</span>
-		<div class="toolbar-decoration"></div>
+		<span class="model-info">Natural Audio Transcription</span>
+		<div class="toolbar-decoration">
+			<svg viewBox="0 0 100 4" width="100%" height="4">
+				<path d="M0,2 Q25,1 50,2 T100,2" stroke="#3a6e4a" stroke-width="1" opacity="0.5" />
+				<circle cx="25" cy="1.5" r="0.8" fill="#2d5d3a" opacity="0.4" />
+				<circle cx="75" cy="2.5" r="0.6" fill="#4a7c59" opacity="0.3" />
+			</svg>
+		</div>
 	</div>
 
 	<div class="content-area">
@@ -313,17 +319,49 @@
 			class="transcribe-btn primary-button"
 		>
 			{#if isTranscribing}
-				<span class="loading-spinner">◐</span>
-				Transcribing...
+				<svg class="loading-spinner" viewBox="0 0 20 20" width="18" height="18">
+					<circle
+						cx="10"
+						cy="10"
+						r="8"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						opacity="0.3"
+					/>
+					<circle
+						cx="10"
+						cy="10"
+						r="8"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-dasharray="16 8"
+						transform="rotate(-90 10 10)"
+					/>
+				</svg>
+				Harvesting Audio...
 			{:else}
-				<span class="button-icon">▶</span>
-				Start Transcription
+				<svg class="button-icon" viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
+					<!-- Natural seed/sprout icon -->
+					<path
+						d="M10,16 L10,8 Q8,6 6,8 Q4,10 6,12 Q8,14 10,12"
+						fill="currentColor"
+						opacity="0.7"
+					/>
+					<path d="M10,8 Q12,6 14,8 Q16,10 14,12 Q12,14 10,12" fill="currentColor" opacity="0.5" />
+					<circle cx="10" cy="16" r="2" fill="currentColor" opacity="0.8" />
+				</svg>
+				Begin Natural Transcription
 			{/if}
 		</button>
 
 		<div class="disclaimer">
-			<span class="disclaimer-icon">🔒</span>
-			Transcription is performed locally in your browser. Results may not always be accurate.
+			<svg class="disclaimer-icon" viewBox="0 0 16 16" width="12" height="12">
+				<path d="M8,2 L12,6 L8,10 L4,6 Z" fill="#6b4c3a" opacity="0.6" />
+				<circle cx="8" cy="12" r="2" fill="#8b5a3c" opacity="0.5" />
+			</svg>
+			Audio processing grows naturally within your browser's garden. Quality may vary like nature itself.
 		</div>
 	</div>
 </div>
@@ -331,11 +369,13 @@
 <style>
 	.toolbar-decoration {
 		position: absolute;
-		bottom: -8px;
+		bottom: -3px;
 		left: 0;
 		right: 0;
 		height: 4px;
-		background: repeating-linear-gradient(90deg, #000, #000 10px, #98fb98 10px, #98fb98 20px);
+		padding: 0 1rem;
+		box-sizing: border-box;
+		opacity: 0.7;
 	}
 
 	.main-content {
@@ -390,12 +430,11 @@
 	}
 
 	.loading-spinner {
-		font-size: 1.5rem;
-		animation: spin 1s linear infinite;
+		animation: naturalSpin 2s linear infinite;
 		display: inline-block;
 	}
 
-	@keyframes spin {
+	@keyframes naturalSpin {
 		from {
 			transform: rotate(0deg);
 		}
@@ -404,54 +443,37 @@
 		}
 	}
 
-	.primary-button {
-		padding: 1.25rem 2rem;
-		background: #98fb98;
-		color: #000;
-		border: 4px solid #000;
-		cursor: pointer;
-		font-size: 1.5rem;
-		font-weight: 700;
-		transition: all 0.15s;
-		box-shadow: 8px 8px 0 #000;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		font-family: 'Space Grotesk', monospace;
-	}
-
-	.primary-button:hover:not(:disabled) {
-		transform: translate(-4px, -4px);
-		box-shadow: 12px 12px 0 #000;
-		background: #ffd93d;
-	}
-
-	.primary-button:active:not(:disabled) {
-		transform: translate(0);
-		box-shadow: 4px 4px 0 #000;
-	}
+	/* Primary button styles handled by global layout styles */
 
 	.disclaimer {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 0.5rem;
-		margin-top: 1rem;
-		font-size: 0.9375rem;
-		font-weight: 600;
-		color: #000;
+		margin-top: 1.5rem;
+		font-size: 0.9rem;
+		font-weight: 400;
+		font-family: 'Inter', sans-serif;
+		color: rgba(107, 76, 58, 0.8);
 		text-align: center;
-		background: #ff69b4;
-		padding: 0.75rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(1deg);
+		background: rgba(139, 90, 60, 0.08);
+		padding: 1rem 1.5rem;
+		border: 1px solid rgba(107, 76, 58, 0.2);
+		border-radius: 16px;
+		box-shadow:
+			0 4px 12px rgba(107, 76, 58, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.6);
+		backdrop-filter: blur(5px);
 		width: fit-content;
 		margin-left: auto;
 		margin-right: auto;
+		max-width: 400px;
+		line-height: 1.5;
 	}
 
 	.disclaimer-icon {
-		font-size: 1.25rem;
+		opacity: 0.7;
+		flex-shrink: 0;
 	}
 
 	@keyframes fadeIn {

@@ -43,8 +43,10 @@
 		"vitest": "^3.2.3"
 	},
 	"dependencies": {
-		"express": "^5.1.0",
+		"@fontsource/bebas-neue": "^5.0.20",
+		"@fontsource/caveat": "^5.2.6",
+		"@fontsource/inter": "^5.2.6",
 		"@fontsource/space-grotesk": "^5.0.20",
-		"@fontsource/bebas-neue": "^5.0.20"
+		"express": "^5.1.0"
 	}
 }

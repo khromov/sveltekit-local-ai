@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
 	interface Props {
 		transcribeMode: 'demo' | 'upload' | 'record';
 		selectedFile: File | null;
@@ -13,7 +11,7 @@
 		transcribeMode = $bindable(),
 		selectedFile = $bindable(),
 		onFileSelect,
-		onModeChange,
+		onModeChange, // eslint-disable-line @typescript-eslint/no-unused-vars
 		disabled = false
 	}: Props = $props();
 
@@ -151,10 +149,13 @@
 	.audio-recorder {
 		margin-top: 1rem;
 		padding: 1.5rem;
-		background: #f0f8ff;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(-0.5deg);
+		background: rgba(245, 242, 236, 0.9);
+		border: 1px solid rgba(74, 124, 89, 0.2);
+		box-shadow:
+			0 8px 20px rgba(45, 93, 58, 0.08),
+			inset 0 1px 0 rgba(255, 255, 255, 0.7);
+		border-radius: 16px;
+		backdrop-filter: blur(5px);
 	}
 
 	.error-message {
@@ -162,11 +163,13 @@
 		align-items: center;
 		gap: 0.5rem;
 		padding: 1rem;
-		background: #ffe4e1;
-		border: 2px solid #ff6b6b;
+		background: rgba(139, 90, 60, 0.1);
+		border: 1px solid rgba(139, 90, 60, 0.3);
 		margin-bottom: 1rem;
 		font-weight: 500;
-		color: #d62828;
+		color: #8b5a3c;
+		border-radius: 12px;
+		backdrop-filter: blur(3px);
 	}
 
 	.error-icon {
@@ -178,38 +181,47 @@
 	.clear-button {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.5rem;
-		padding: 0.75rem 1.5rem;
-		background: #fff;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
+		gap: 0.75rem;
+		padding: 0.875rem 1.75rem;
+		background: rgba(250, 248, 245, 0.9);
+		border: 1px solid rgba(74, 124, 89, 0.2);
+		box-shadow:
+			0 4px 12px rgba(58, 110, 74, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.6);
 		font-size: 1rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		font-weight: 600;
+		letter-spacing: 0.3px;
 		cursor: pointer;
-		transition: all 0.15s;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		border-radius: 14px;
+		font-family: 'Caveat', cursive;
+		backdrop-filter: blur(5px);
+		color: #4a7c59;
 	}
 
 	.record-button {
-		background: #90ee90;
+		background: linear-gradient(135deg, rgba(90, 140, 105, 0.9) 0%, rgba(74, 124, 89, 0.85) 100%);
+		color: #faf8f5;
 	}
 
 	.stop-button {
-		background: #ff6b6b;
-		color: #fff;
+		background: linear-gradient(135deg, rgba(139, 90, 60, 0.9) 0%, rgba(107, 76, 58, 0.85) 100%);
+		color: #faf8f5;
 	}
 
 	.clear-button {
-		background: #ffd93d;
+		background: linear-gradient(135deg, rgba(166, 124, 90, 0.9) 0%, rgba(139, 90, 60, 0.85) 100%);
+		color: #faf8f5;
 		margin-top: 1rem;
 	}
 
 	.record-button:hover:not(:disabled),
 	.stop-button:hover:not(:disabled),
 	.clear-button:hover:not(:disabled) {
-		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
+		transform: translateY(-2px);
+		box-shadow:
+			0 6px 16px rgba(58, 110, 74, 0.15),
+			inset 0 2px 0 rgba(255, 255, 255, 0.3);
 	}
 
 	.record-button:disabled,
