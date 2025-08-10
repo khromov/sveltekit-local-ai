@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { pipeline } from '@huggingface/transformers';
+	import { pipeline, env } from '@huggingface/transformers';
 	import { onMount, onDestroy } from 'svelte';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import JSZip from 'jszip';
@@ -10,6 +10,7 @@
 	import BackgroundRemoverBatchResult from '$lib/components/background-remover/BackgroundRemoverBatchResult.svelte';
 	import LoadingProgress from '$lib/components/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/ErrorDisplay.svelte';
+	import { BASE_MODEL_URL } from '$lib/config';
 
 	let isModelLoaded = $state(false);
 	let isLoadingModel = $state(false);
@@ -19,23 +20,28 @@
 	let modelLoadProgress = $state(0);
 	let processingProgress = $state(0);
 
+	// Configure custom model URL
+	env.remoteHost = `${BASE_MODEL_URL}/bgremoval/`;
+	env.remotePathTemplate = '{model}/';
+
+
 	// Mode selection
 	let processingMode = $state<'single' | 'batch'>('single');
 
 	// Model selection
 	const AVAILABLE_MODELS = [
 		{
-			id: 'briaai/RMBG-1.4',
+			id: 'RMBG-1.4', //briaai/
 			name: 'RMBG v1.4',
 			description: 'Smaller and faster, runs on most devices'
 		},
 		{
-			id: 'briaai/RMBG-2.0',
-			name: 'RMBG v2.0',
+			id: 'BEN2-ONNX', //briaai/
+			name: 'BEN2',
 			description: 'Larger with potentially better results'
 		}
 	];
-	let selectedModelId = $state('briaai/RMBG-1.4');
+	let selectedModelId = $state('RMBG-1.4');
 
 	// Single image mode
 	let selectedFile: File | null = $state(null);
@@ -56,7 +62,7 @@
 	let segmenter: any = null;
 
 	const EXAMPLE_URL =
-		'https://images.pexels.com/photos/5965592/pexels-photo-5965592.jpeg?auto=compress&cs=tinysrgb&w=1024';
+		'/pexels-photo-5965592.jpeg';
 
 	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
 
@@ -110,9 +116,18 @@
 
 			// The pipeline returns an array with the processed image
 			if (output && output.length > 0) {
-				// The output is already a RawImage, convert it to canvas first
+				// The output is a RawImage, create a proper HTML canvas
 				const rawImage = output[0];
-				const canvas = rawImage.toCanvas();
+				const tempCanvas = rawImage.toCanvas();
+
+				// Create a new HTML canvas element
+				const canvas = document.createElement('canvas');
+				canvas.width = rawImage.width;
+				canvas.height = rawImage.height;
+				const ctx = canvas.getContext('2d');
+
+				// Draw the image onto the HTML canvas
+				ctx?.drawImage(tempCanvas, 0, 0);
 
 				return new Promise((resolve) => {
 					canvas.toBlob((blob) => {

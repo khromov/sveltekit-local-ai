@@ -18,36 +18,6 @@
 		link.click();
 		document.body.removeChild(link);
 	}
-
-	function shareImage() {
-		if ('share' in navigator && typeof navigator.share === 'function') {
-			fetch(processedImageUrl)
-				.then((response) => response.blob())
-				.then((blob) => {
-					const file = new File([blob], downloadName, { type: 'image/png' });
-					return navigator.share({
-						title: 'Background Removed Image',
-						files: [file]
-					});
-				})
-				.catch(console.error);
-		} else {
-			// Fallback: copy to clipboard
-			copyImageToClipboard();
-		}
-	}
-
-	async function copyImageToClipboard() {
-		try {
-			const response = await fetch(processedImageUrl);
-			const blob = await response.blob();
-			const item = new ClipboardItem({ 'image/png': blob });
-			await navigator.clipboard.write([item]);
-			alert('Image copied to clipboard!');
-		} catch (err) {
-			console.error('Failed to copy image:', err);
-		}
-	}
 </script>
 
 <div class="result-wrapper">
@@ -91,13 +61,6 @@
 					<span class="btn-icon">💾</span>
 					Download
 				</button>
-
-				{#if 'share' in navigator || 'clipboard' in navigator}
-					<button class="share-btn" onclick={shareImage}>
-						<span class="btn-icon">📤</span>
-						Share
-					</button>
-				{/if}
 
 				<button class="process-another-btn" onclick={onProcessAnother}>
 					<span class="btn-icon">🔄</span>
@@ -313,7 +276,6 @@
 	}
 
 	.download-btn,
-	.share-btn,
 	.process-another-btn {
 		display: flex;
 		align-items: center;
@@ -336,18 +298,12 @@
 		color: #000;
 	}
 
-	.share-btn {
-		background: #87ceeb;
-		color: #000;
-	}
-
 	.process-another-btn {
 		background: #ffd93d;
 		color: #000;
 	}
 
 	.download-btn:hover,
-	.share-btn:hover,
 	.process-another-btn:hover {
 		transform: translate(-2px, -2px);
 		box-shadow: 6px 6px 0 #000;
@@ -355,10 +311,6 @@
 
 	.download-btn:hover {
 		background: #90ee90;
-	}
-
-	.share-btn:hover {
-		background: #87cefa;
 	}
 
 	.process-another-btn:hover {
@@ -391,7 +343,6 @@
 		}
 
 		.download-btn,
-		.share-btn,
 		.process-another-btn {
 			flex: 1;
 			min-width: 120px;
@@ -409,7 +360,6 @@
 		}
 
 		.download-btn,
-		.share-btn,
 		.process-another-btn {
 			width: 100%;
 		}

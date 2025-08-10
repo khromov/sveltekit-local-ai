@@ -27,39 +27,6 @@
 		link.click();
 		document.body.removeChild(link);
 	}
-
-	function shareIndividualImage(result: BatchResult) {
-		if (!result.processedUrl) return;
-
-		if ('share' in navigator && typeof navigator.share === 'function') {
-			fetch(result.processedUrl)
-				.then((response) => response.blob())
-				.then((blob) => {
-					const fileName = `${result.file.name.split('.')[0]}_bg_removed.png`;
-					const file = new File([blob], fileName, { type: 'image/png' });
-					return navigator.share({
-						title: 'Background Removed Image',
-						files: [file]
-					});
-				})
-				.catch(console.error);
-		} else {
-			// Fallback: copy to clipboard
-			copyImageToClipboard(result.processedUrl);
-		}
-	}
-
-	async function copyImageToClipboard(imageUrl: string) {
-		try {
-			const response = await fetch(imageUrl);
-			const blob = await response.blob();
-			const item = new ClipboardItem({ 'image/png': blob });
-			await navigator.clipboard.write([item]);
-			alert('Image copied to clipboard!');
-		} catch (err) {
-			console.error('Failed to copy image:', err);
-		}
-	}
 </script>
 
 <div class="batch-results-wrapper">
@@ -133,15 +100,6 @@
 										>
 											💾
 										</button>
-										{#if 'share' in navigator || 'clipboard' in navigator}
-											<button
-												class="share-individual-btn"
-												onclick={() => shareIndividualImage(result)}
-												title="Share this image"
-											>
-												📤
-											</button>
-										{/if}
 									</div>
 								</div>
 							</div>
@@ -487,8 +445,7 @@
 		gap: 0.5rem;
 	}
 
-	.download-individual-btn,
-	.share-individual-btn {
+	.download-individual-btn {
 		width: 32px;
 		height: 32px;
 		background: #fff;
@@ -504,11 +461,6 @@
 
 	.download-individual-btn:hover {
 		background: #98fb98;
-		transform: scale(1.1);
-	}
-
-	.share-individual-btn:hover {
-		background: #87ceeb;
 		transform: scale(1.1);
 	}
 
