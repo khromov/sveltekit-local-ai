@@ -320,7 +320,8 @@
 	}
 
 	.github-item .home-link {
-		border-color: #000;
+		border: 3px solid #000;
+		box-shadow: 3px 3px 0 #000;
 	}
 
 	/* Shared component styling - Refined Neo-Brutalist */
