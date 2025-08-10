@@ -71,7 +71,7 @@
 <div class="container">
 	<h1>KV Cache Test</h1>
 	<SvelteLogo />
-	<AArrowDown style={'color: red;'} />
+	<AArrowDown style="color: red;" />
 
 	{#if !isModelLoaded}
 		<div class="loading">
