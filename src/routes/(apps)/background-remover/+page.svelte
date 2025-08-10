@@ -3,6 +3,10 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import JSZip from 'jszip';
+	import ImageIcon from 'virtual:icons/lucide/image';
+	import Trash2Icon from 'virtual:icons/lucide/trash-2';
+	import FolderIcon from 'virtual:icons/lucide/folder';
+	import ZapIcon from 'virtual:icons/lucide/zap';
 
 	import BackgroundRemoverUpload from '$lib/components/background-remover/BackgroundRemoverUpload.svelte';
 	import BackgroundRemoverProgress from '$lib/components/background-remover/BackgroundRemoverProgress.svelte';
@@ -354,11 +358,11 @@
 
 		<div class="toolbar">
 			<span class="model-info">
-				<span class="model-emoji">🖼️</span>
+				<span class="model-emoji"><ImageIcon /></span>
 				Background Remover ({AVAILABLE_MODELS.find((m) => m.id === selectedModelId)?.name})
 			</span>
 			<button onclick={clearResults} class="clear-btn" aria-label="Clear Results">
-				<span class="btn-emoji">🗑️</span>
+				<span class="btn-emoji"><Trash2Icon /></span>
 				Clear
 			</button>
 			<div class="toolbar-decoration"></div>
@@ -395,7 +399,7 @@
 							class:active={processingMode === 'single'}
 							onclick={() => switchMode('single')}
 						>
-							<span class="mode-icon">🖼️</span>
+							<span class="mode-icon"><ImageIcon /></span>
 							Single Image
 						</button>
 						<button
@@ -403,7 +407,7 @@
 							class:active={processingMode === 'batch'}
 							onclick={() => switchMode('batch')}
 						>
-							<span class="mode-icon">📁</span>
+							<span class="mode-icon"><FolderIcon /></span>
 							Multiple images
 						</button>
 					</div>
@@ -561,10 +565,26 @@
 	.model-emoji {
 		font-size: 1.125rem;
 		margin-right: 0.25rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.model-emoji :global(svg) {
+		width: 1.125rem;
+		height: 1.125rem;
 	}
 
 	.btn-emoji {
 		font-size: 1rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.btn-emoji :global(svg) {
+		width: 1rem;
+		height: 1rem;
 	}
 
 	.clear-btn {
@@ -680,6 +700,14 @@
 
 	.mode-icon {
 		font-size: 2rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.mode-icon :global(svg) {
+		width: 2rem;
+		height: 2rem;
 	}
 
 	/* Model Selection */
