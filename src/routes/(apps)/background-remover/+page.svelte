@@ -1,12 +1,10 @@
 <script lang="ts">
-	import { AutoModel, AutoProcessor, RawImage, env } from '@huggingface/transformers';
+	import { pipeline } from '@huggingface/transformers';
 	import { onMount, onDestroy } from 'svelte';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
-	import { BASE_MODEL_URL } from '$lib/config';
 	import JSZip from 'jszip';
 
-	import BackgroundRemoverFileUpload from '$lib/components/background-remover/BackgroundRemoverFileUpload.svelte';
-	import BackgroundRemoverBatchUpload from '$lib/components/background-remover/BackgroundRemoverBatchUpload.svelte';
+	import BackgroundRemoverUpload from '$lib/components/background-remover/BackgroundRemoverUpload.svelte';
 	import BackgroundRemoverProgress from '$lib/components/background-remover/BackgroundRemoverProgress.svelte';
 	import BackgroundRemoverResult from '$lib/components/background-remover/BackgroundRemoverResult.svelte';
 	import BackgroundRemoverBatchResult from '$lib/components/background-remover/BackgroundRemoverBatchResult.svelte';
@@ -26,10 +24,18 @@
 
 	// Model selection
 	const AVAILABLE_MODELS = [
-		{ id: 'RMBG-1.4', name: 'RMBG v1.4', description: 'Smaller and faster, runs on most devices' },
-		{ id: 'RMBG-2.0', name: 'RMBG v2.0', description: 'Larger with potentially better results' }
+		{
+			id: 'briaai/RMBG-1.4',
+			name: 'RMBG v1.4',
+			description: 'Smaller and faster, runs on most devices'
+		},
+		{
+			id: 'briaai/RMBG-2.0',
+			name: 'RMBG v2.0',
+			description: 'Larger with potentially better results'
+		}
 	];
-	let selectedModelId = $state('RMBG-1.4');
+	let selectedModelId = $state('briaai/RMBG-1.4');
 
 	// Single image mode
 	let selectedFile: File | null = $state(null);
@@ -47,8 +53,7 @@
 	let currentBatchIndex = $state(0);
 	let totalBatchCount = $state(0);
 
-	let model: any = null;
-	let processor: any = null;
+	let segmenter: any = null;
 
 	const EXAMPLE_URL =
 		'https://images.pexels.com/photos/5965592/pexels-photo-5965592.jpeg?auto=compress&cs=tinysrgb&w=1024';
@@ -70,29 +75,16 @@
 
 			await requestWakeLock();
 
-			// Configure custom model URL
-			env.remoteHost = `${BASE_MODEL_URL}/bgremoval/`;
-			env.remotePathTemplate = '{model}/';
-
-			// Load model and processor
+			// Load the background removal pipeline
 			modelLoadProgress = 25;
-			model = await AutoModel.from_pretrained(selectedModelId, {
-				config: { model_type: 'custom' } as any
-			});
-
-			modelLoadProgress = 75;
-			processor = await AutoProcessor.from_pretrained(selectedModelId, {
-				config: {
-					do_normalize: true,
-					do_pad: false,
-					do_rescale: true,
-					do_resize: true,
-					image_mean: [0.5, 0.5, 0.5],
-					feature_extractor_type: 'ImageFeatureExtractor',
-					image_std: [1, 1, 1],
-					resample: 2,
-					rescale_factor: 0.00392156862745098,
-					size: { width: 1024, height: 1024 }
+			segmenter = await pipeline('background-removal', selectedModelId, {
+				progress_callback: (progress: any) => {
+					// Update progress based on pipeline loading
+					if (progress.status === 'downloading') {
+						modelLoadProgress = Math.round(25 + (progress.progress || 0) * 0.5);
+					} else if (progress.status === 'ready') {
+						modelLoadProgress = 100;
+					}
 				}
 			});
 
@@ -102,7 +94,7 @@
 			console.error('Model loading error:', err);
 			error = true;
 			errorMessage =
-				'Failed to load background removal model from custom server. Please check your connection and try again.';
+				'Failed to load background removal model. Please check your connection and try again.';
 		} finally {
 			isLoadingModel = false;
 			await releaseWakeLock();
@@ -110,41 +102,33 @@
 	}
 
 	async function processImage(imageUrl: string): Promise<string | null> {
-		if (!model || !processor) return null;
+		if (!segmenter) return null;
 
-		// Read image
-		const image = await RawImage.fromURL(imageUrl);
+		try {
+			// Process the image using the pipeline
+			const output = await segmenter(imageUrl);
 
-		// Preprocess image
-		const { pixel_values } = await processor(image);
+			// The pipeline returns an array with the processed image
+			if (output && output.length > 0) {
+				// The output is already a RawImage, convert it to canvas first
+				const rawImage = output[0];
+				const canvas = rawImage.toCanvas();
 
-		// Predict alpha matte
-		const { output } = await model({ input: pixel_values });
-
-		// Resize mask back to original size
-		const mask = await RawImage.fromTensor(output[0].mul(255).to('uint8')).resize(
-			image.width,
-			image.height
-		);
-		image.putAlpha(mask);
-
-		// Create new canvas
-		const canvas = document.createElement('canvas');
-		canvas.width = image.width;
-		canvas.height = image.height;
-		const ctx = canvas.getContext('2d');
-		ctx?.drawImage(image.toCanvas(), 0, 0);
-
-		// Convert to blob URL
-		return new Promise((resolve) => {
-			canvas.toBlob((blob) => {
-				if (blob) {
-					resolve(URL.createObjectURL(blob));
-				} else {
-					resolve(null);
-				}
-			}, 'image/png');
-		});
+				return new Promise((resolve) => {
+					canvas.toBlob((blob) => {
+						if (blob) {
+							resolve(URL.createObjectURL(blob));
+						} else {
+							resolve(null);
+						}
+					}, 'image/png');
+				});
+			}
+			return null;
+		} catch (err) {
+			console.error('Error processing image:', err);
+			return null;
+		}
 	}
 
 	async function handleSingleImageProcessing(imageUrl: string) {
@@ -310,8 +294,7 @@
 			clearResults();
 			// Reset model state
 			isModelLoaded = false;
-			model = null;
-			processor = null;
+			segmenter = null;
 			// Load new model
 			loadModel();
 		}
@@ -417,20 +400,15 @@
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
 				<div class="upload-selection">
 					<h3><span class="step-number">Step 3:</span> Upload Images</h3>
-					{#if processingMode === 'single'}
-						<BackgroundRemoverFileUpload
-							{selectedFile}
-							onFileSelect={handleSingleFileSelect}
-							onExampleUse={handleExampleUse}
-							disabled={isProcessing}
-						/>
-					{:else}
-						<BackgroundRemoverBatchUpload
-							{selectedFiles}
-							onFilesSelect={handleBatchFileSelect}
-							disabled={isProcessing}
-						/>
-					{/if}
+					<BackgroundRemoverUpload
+						mode={processingMode}
+						{selectedFile}
+						{selectedFiles}
+						onFileSelect={handleSingleFileSelect}
+						onFilesSelect={handleBatchFileSelect}
+						onExampleUse={handleExampleUse}
+						disabled={isProcessing}
+					/>
 				</div>
 			{/if}
 
