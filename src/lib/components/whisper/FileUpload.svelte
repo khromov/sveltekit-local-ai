@@ -73,29 +73,88 @@
 		role="button"
 		tabindex="0"
 	>
-		<div class="upload-decoration"></div>
+		<!-- Nature decoration -->
+		<svg
+			class="upload-decoration"
+			width="100%"
+			height="100%"
+			style="position: absolute; top: 0; left: 0; opacity: 0.05; pointer-events: none;"
+		>
+			<pattern id="upload-pattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+				<circle
+					cx="20"
+					cy="20"
+					r="15"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1"
+					stroke-dasharray="2 3"
+					opacity="0.3"
+				/>
+				<circle
+					cx="60"
+					cy="60"
+					r="10"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1"
+					stroke-dasharray="1 2"
+					opacity="0.3"
+				/>
+				<path d="M40,30 Q35,35 35,40 Q40,40 45,35 Q40,35 40,30" fill="currentColor" opacity="0.2" />
+			</pattern>
+			<rect width="100%" height="100%" fill="url(#upload-pattern)" />
+		</svg>
+
 		<div class="upload-content">
-			<svg
-				class="upload-icon"
-				viewBox="0 0 24 24"
-				width="48"
-				height="48"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="3"
-			>
-				<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-				<polyline points="7,10 12,15 17,10"></polyline>
-				<line x1="12" y1="15" x2="12" y2="3"></line>
+			<svg class="upload-icon" viewBox="0 0 48 48" width="48" height="48" fill="none">
+				<circle
+					cx="24"
+					cy="24"
+					r="20"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-dasharray="2 3"
+					opacity="0.3"
+				/>
+				<path d="M24 32V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+				<path
+					d="M16 24L24 16L32 24"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path d="M32 32H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+				<!-- Decorative elements -->
+				<circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.2" />
+				<circle cx="36" cy="12" r="2" fill="currentColor" opacity="0.2" />
 			</svg>
+
 			<p class="upload-text">
 				{#if selectedFile}
-					<span class="file-icon">📎</span>
+					<svg
+						width="16"
+						height="16"
+						viewBox="0 0 16 16"
+						fill="none"
+						style="display: inline-block; vertical-align: middle; margin-right: 4px;"
+					>
+						<circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" />
+						<path
+							d="M5 8L7 10L11 6"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
 					{selectedFile.name}
 				{:else}
 					Drop your audio file here
 				{/if}
 			</p>
+
 			<p class="upload-hint">
 				{#if selectedFile}
 					Click to change file
@@ -120,51 +179,60 @@
 		display: block;
 		position: relative;
 		min-height: 140px;
-		background: #fff;
-		border: 4px dashed #000;
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.8) 0%,
+			rgba(250, 248, 243, 0.85) 100%
+		);
+		border: 2px dashed rgba(139, 111, 71, 0.25);
 		cursor: pointer;
-		transition: all 0.15s ease;
+		transition: all 0.3s ease;
 		overflow: hidden;
-		transform: rotate(-0.5deg);
-		box-shadow: 5px 5px 0 #000;
+		border-radius: 16px;
+		backdrop-filter: blur(5px);
 	}
 
 	.file-upload-label:hover:not(.disabled) {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 7px 7px 0 #000;
-		background: #fffacd;
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.95) 0%,
+			rgba(250, 248, 243, 0.98) 100%
+		);
+		border-color: rgba(46, 90, 61, 0.3);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 20px rgba(46, 90, 61, 0.08);
 	}
 
 	.file-upload-label.has-file {
-		background: #98fb98;
+		background: linear-gradient(
+			135deg,
+			rgba(136, 179, 120, 0.1) 0%,
+			rgba(168, 185, 159, 0.08) 100%
+		);
 		border-style: solid;
+		border-color: rgba(46, 90, 61, 0.2);
 	}
 
 	.file-upload-label.disabled {
 		cursor: not-allowed;
 		opacity: 0.6;
-		background: #e0e0e0;
+		background: rgba(240, 240, 240, 0.5);
 	}
 
 	.file-upload-label.dragging {
-		background: #ffd93d;
+		background: linear-gradient(
+			135deg,
+			rgba(136, 179, 120, 0.15) 0%,
+			rgba(168, 185, 159, 0.12) 100%
+		);
 		border-style: solid;
-		border-color: #000;
-		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 8px 8px 0 #000;
+		border-color: var(--forest-primary);
+		transform: scale(1.02);
+		box-shadow: 0 6px 24px rgba(46, 90, 61, 0.12);
 	}
 
 	.upload-decoration {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		width: 60px;
-		height: 60px;
-		background: #ff69b4;
-		border: 3px solid #000;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		opacity: 0.3;
-		transform: rotate(45deg);
+		color: var(--forest-primary);
 	}
 
 	.upload-content {
@@ -180,52 +248,63 @@
 	}
 
 	.upload-icon {
-		color: #000;
+		color: var(--forest-primary);
 		margin-bottom: 1rem;
-		animation: float 3s ease-in-out infinite;
+		opacity: 0.7;
+		transition: all 0.3s ease;
 	}
 
-	@keyframes float {
+	.file-upload-label:hover .upload-icon {
+		opacity: 1;
+		transform: translateY(-3px);
+	}
+
+	.file-upload-label.dragging .upload-icon {
+		animation: pulse 1s ease-in-out infinite;
+	}
+
+	@keyframes pulse {
 		0%,
 		100% {
-			transform: translateY(0);
+			transform: scale(1);
 		}
 		50% {
-			transform: translateY(-10px);
+			transform: scale(1.1);
 		}
 	}
 
 	.upload-text {
-		font-size: 1.125rem;
-		color: #000;
+		font-size: 1rem;
+		color: var(--text-primary);
 		margin: 0 0 0.5rem 0;
 		text-align: center;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		font-weight: 600;
+		letter-spacing: 0.01em;
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.file-icon {
-		font-size: 1.25rem;
+		gap: 0.25rem;
 	}
 
 	.upload-hint {
-		font-size: 0.9375rem;
-		color: #333;
+		font-size: 0.875rem;
+		color: var(--text-secondary);
 		margin: 0;
 		text-align: center;
-		font-weight: 600;
-		background: #ffd93d;
-		padding: 4px 12px;
-		border: 2px solid #000;
-		box-shadow: 3px 3px 0 #000;
+		font-weight: 400;
+		padding: 0.375rem 0.875rem;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(250, 248, 243, 0.9) 100%);
+		border: 1px solid rgba(139, 111, 71, 0.15);
+		border-radius: 8px;
+		letter-spacing: 0.02em;
 	}
 
 	.file-upload-label.has-file .upload-hint {
-		background: #fff;
+		background: linear-gradient(
+			135deg,
+			rgba(136, 179, 120, 0.1) 0%,
+			rgba(168, 185, 159, 0.08) 100%
+		);
+		border-color: rgba(46, 90, 61, 0.15);
 	}
 
 	@media (max-width: 600px) {
@@ -235,11 +314,12 @@
 		}
 
 		.upload-text {
-			font-size: 1rem;
+			font-size: 0.9375rem;
 		}
 
 		.upload-hint {
-			font-size: 0.875rem;
+			font-size: 0.8125rem;
+			padding: 0.25rem 0.625rem;
 		}
 	}
 </style>

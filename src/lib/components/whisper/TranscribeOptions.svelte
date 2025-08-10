@@ -24,9 +24,40 @@
 </script>
 
 <div class="transcribe-options">
-	<div class="options-decoration"></div>
+	<!-- Nature decoration -->
+	<svg
+		class="options-decoration"
+		width="100%"
+		height="60"
+		style="position: absolute; top: -30px; left: 0; opacity: 0.1; pointer-events: none;"
+	>
+		<defs>
+			<pattern id="wave-pattern" x="0" y="0" width="200" height="60" patternUnits="userSpaceOnUse">
+				<path
+					d="M0,30 Q50,10 100,30 T200,30"
+					stroke="currentColor"
+					stroke-width="1"
+					fill="none"
+					opacity="0.5"
+				/>
+				<circle cx="50" cy="20" r="2" fill="currentColor" opacity="0.3" />
+				<circle cx="150" cy="40" r="3" fill="currentColor" opacity="0.3" />
+			</pattern>
+		</defs>
+		<rect width="100%" height="100%" fill="url(#wave-pattern)" />
+	</svg>
+
 	<h3>
-		<span class="title-icon">🎵</span>
+		<svg
+			width="20"
+			height="20"
+			viewBox="0 0 20 20"
+			fill="none"
+			style="display: inline-block; vertical-align: middle; margin-right: 6px;"
+		>
+			<path d="M10 2Q8 6 8 10Q8 14 10 18Q12 14 12 10Q12 6 10 2" fill="currentColor" opacity="0.3" />
+			<circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" />
+		</svg>
 		Choose Audio Source
 	</h3>
 
@@ -42,10 +73,26 @@
 			/>
 			<div class="option-content">
 				<div class="option-header">
-					<span class="option-icon">📁</span>
+					<svg class="option-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<path
+							d="M13 2H6C5 2 4 3 4 4V20C4 21 5 22 6 22H18C19 22 20 21 20 20V9L13 2Z"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+						<path
+							d="M13 2V9H20"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+						<circle cx="12" cy="15" r="2" fill="currentColor" opacity="0.3" />
+					</svg>
 					<strong>Local File</strong>
 				</div>
-				<small>Select an audio file from your device (.mp3, .wav, .m4a)</small>
+				<small>Upload an audio file from your device</small>
 			</div>
 		</label>
 
@@ -60,15 +107,24 @@
 			/>
 			<div class="option-content">
 				<div class="option-header">
-					<span class="option-icon">🎙️</span>
+					<svg class="option-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.3" />
+						<circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" />
+						<path
+							d="M12 2V6M12 18V22M2 12H6M18 12H22"
+							stroke="currentColor"
+							stroke-width="1"
+							opacity="0.3"
+						/>
+					</svg>
 					<strong>Record Audio</strong>
 				</div>
-				<small>Record audio directly from your microphone</small>
+				<small>Record directly from your microphone</small>
 			</div>
 		</label>
 
 		<div class="or-divider">
-			<span>OR</span>
+			<span>or try</span>
 		</div>
 
 		<label class="option-label demo-option" class:selected={transcribeMode === 'demo'}>
@@ -81,8 +137,18 @@
 				{disabled}
 			/>
 			<div class="option-content">
+				<svg class="demo-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+					<polygon
+						points="5,3 15,10 5,17"
+						fill="currentColor"
+						opacity="0.3"
+						stroke="currentColor"
+						stroke-width="1.5"
+						stroke-linejoin="round"
+					/>
+				</svg>
 				<strong>Demo File</strong>
-				<small><a href="/rich.mp3" target="_blank">Listen →</a></small>
+				<a href="/rich.mp3" target="_blank" class="demo-link">Listen →</a>
 			</div>
 		</label>
 	</div>
@@ -96,72 +162,58 @@
 
 <style>
 	.transcribe-options {
-		background: #fff;
-		border: 4px solid #000;
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.95) 0%,
+			rgba(250, 248, 243, 0.98) 100%
+		);
+		border: 1px solid rgba(139, 111, 71, 0.15);
 		padding: 2rem;
-		box-shadow: 8px 8px 0 #000;
+		box-shadow:
+			0 4px 20px rgba(46, 90, 61, 0.08),
+			0 1px 3px rgba(139, 111, 71, 0.08);
 		margin-bottom: 1.5rem;
 		position: relative;
-		transform: rotate(0.5deg);
-		animation: slideIn 0.4s ease-out;
+		border-radius: 16px;
+		animation: fadeIn 0.4s ease-out;
 		animation-delay: 0.1s;
 		animation-fill-mode: both;
+		backdrop-filter: blur(10px);
+		overflow: visible;
 	}
 
-	@keyframes slideIn {
+	@keyframes fadeIn {
 		from {
-			transform: translateX(20px) rotate(1deg);
 			opacity: 0;
+			transform: translateY(15px);
 		}
 		to {
-			transform: translateX(0) rotate(0.5deg);
 			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 
 	.options-decoration {
-		position: absolute;
-		top: -8px;
-		left: -8px;
-		right: -8px;
-		bottom: -8px;
-		background: linear-gradient(135deg, #ffd93d 0%, #ff69b4 100%);
-		z-index: -1;
-		opacity: 0.3;
-		border-radius: 5% 20% 5% 20% / 20% 5% 20% 5%;
+		color: var(--forest-primary);
 	}
 
 	.transcribe-options h3 {
 		margin-top: 0;
 		margin-bottom: 1.5rem;
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: 2rem;
-		color: #000;
+		font-size: 1.25rem;
+		color: var(--forest-primary);
 		text-align: center;
-		letter-spacing: 2px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.75rem;
-		background: #ffd93d;
-		padding: 0.5rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(1deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
-		text-transform: uppercase;
-	}
-
-	.title-icon {
-		font-size: 1.75rem;
+		font-weight: 600;
+		letter-spacing: -0.01em;
 	}
 
 	.option-group {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: 0.75rem;
 		margin-bottom: 1.25rem;
 	}
 
@@ -169,45 +221,48 @@
 		display: flex;
 		align-items: center;
 		gap: 1rem;
-		padding: 1.25rem;
-		border: 3px solid #000;
-		background: #fff;
+		padding: 1rem 1.25rem;
+		border: 1px solid rgba(139, 111, 71, 0.15);
+		background: rgba(255, 255, 255, 0.6);
 		cursor: pointer;
-		transition: all 0.15s ease;
-		box-shadow: 4px 4px 0 #000;
+		transition: all 0.3s ease;
+		border-radius: 12px;
 		position: relative;
-		transform: rotate(-0.5deg);
-	}
-
-	.option-label:nth-child(2) {
-		transform: rotate(0.5deg);
+		backdrop-filter: blur(5px);
 	}
 
 	.option-label:hover {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 6px 6px 0 #000;
-		background: #fffacd;
+		background: rgba(255, 255, 255, 0.9);
+		border-color: rgba(46, 90, 61, 0.2);
+		transform: translateX(2px);
+		box-shadow: 0 2px 12px rgba(46, 90, 61, 0.08);
 	}
 
 	.option-label.selected {
-		background: #98fb98;
-		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 7px 7px 0 #000;
+		background: linear-gradient(
+			135deg,
+			rgba(136, 179, 120, 0.15) 0%,
+			rgba(168, 185, 159, 0.1) 100%
+		);
+		border-color: rgba(46, 90, 61, 0.3);
+		box-shadow:
+			0 3px 16px rgba(46, 90, 61, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.5);
 	}
 
 	.option-label input[type='radio'] {
-		width: 20px;
-		height: 20px;
+		width: 16px;
+		height: 16px;
 		margin: 0;
-		accent-color: #000;
+		accent-color: var(--forest-primary);
 		cursor: pointer;
-		border: 2px solid #000;
+		flex-shrink: 0;
 	}
 
 	.option-content {
 		display: flex;
 		flex-direction: column;
-		gap: 0.375rem;
+		gap: 0.25rem;
 		flex: 1;
 	}
 
@@ -218,58 +273,53 @@
 	}
 
 	.option-icon {
-		font-size: 1.5rem;
+		color: var(--forest-primary);
+		opacity: 0.7;
+		transition: opacity 0.3s ease;
+	}
+
+	.option-label:hover .option-icon,
+	.option-label.selected .option-icon {
+		opacity: 1;
 	}
 
 	.option-content strong {
-		font-size: 1.125rem;
-		color: #000;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		font-size: 0.975rem;
+		color: var(--text-primary);
+		font-weight: 600;
+		letter-spacing: 0.01em;
 	}
 
 	.option-content small {
-		font-size: 0.9375rem;
-		color: #333;
-		font-weight: 500;
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		font-weight: 400;
 		margin-left: 2rem;
-	}
-
-	.option-content small a {
-		color: #000;
-		font-weight: 700;
-		text-decoration: none;
-		padding: 2px 6px;
-		background: #ffd93d;
-		border: 2px solid #000;
-		transition: all 0.15s;
-		display: inline-block;
-		box-shadow: 2px 2px 0 #000;
-	}
-
-	.option-content small a:hover {
-		transform: translate(-1px, -1px);
-		box-shadow: 3px 3px 0 #000;
-		background: #ff69b4;
+		letter-spacing: 0.01em;
 	}
 
 	.or-divider {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin: 0.5rem 0;
+		margin: 0.75rem 0;
 		position: relative;
 	}
 
 	.or-divider span {
-		background: #fff;
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.95) 0%,
+			rgba(250, 248, 243, 0.98) 100%
+		);
 		padding: 0 1rem;
-		font-weight: 700;
-		font-size: 0.875rem;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		color: #666;
+		font-weight: 500;
+		font-size: 0.8125rem;
+		text-transform: lowercase;
+		letter-spacing: 0.05em;
+		color: var(--text-muted);
 		position: relative;
+		z-index: 1;
 	}
 
 	.or-divider::before {
@@ -277,29 +327,66 @@
 		position: absolute;
 		left: 0;
 		right: 0;
-		height: 2px;
-		background: #ddd;
+		height: 1px;
+		background: linear-gradient(90deg, transparent, rgba(139, 111, 71, 0.15), transparent);
 		top: 50%;
 		transform: translateY(-50%);
 	}
 
 	.demo-option {
-		padding: 0.75rem 1rem !important;
+		padding: 0.875rem 1.125rem;
+		background: linear-gradient(
+			135deg,
+			rgba(212, 165, 116, 0.08) 0%,
+			rgba(168, 185, 159, 0.05) 100%
+		);
 	}
 
 	.demo-option .option-content {
-		flex-direction: row !important;
+		flex-direction: row;
 		align-items: center;
-		gap: 0.5rem !important;
+		gap: 0.75rem;
+	}
+
+	.demo-icon {
+		color: var(--forest-primary);
+		opacity: 0.7;
 	}
 
 	.demo-option strong {
-		font-size: 1rem !important;
+		font-size: 0.9375rem;
 	}
 
 	.demo-option small {
-		margin-left: 0 !important;
-		font-size: 0.875rem !important;
+		margin-left: 0;
+	}
+
+	.demo-link {
+		color: var(--forest-primary);
+		font-weight: 600;
+		text-decoration: none;
+		padding: 0.25rem 0.625rem;
+		background: linear-gradient(
+			135deg,
+			rgba(136, 179, 120, 0.15) 0%,
+			rgba(168, 185, 159, 0.1) 100%
+		);
+		border: 1px solid rgba(46, 90, 61, 0.2);
+		transition: all 0.3s ease;
+		border-radius: 6px;
+		font-size: 0.875rem;
+		letter-spacing: 0.02em;
+		margin-left: auto;
+	}
+
+	.demo-link:hover {
+		background: linear-gradient(
+			135deg,
+			rgba(136, 179, 120, 0.25) 0%,
+			rgba(168, 185, 159, 0.2) 100%
+		);
+		transform: translateX(2px);
+		box-shadow: 0 2px 8px rgba(46, 90, 61, 0.1);
 	}
 
 	@media (max-width: 600px) {
@@ -308,11 +395,11 @@
 		}
 
 		.option-group {
-			gap: 0.75rem;
+			gap: 0.625rem;
 		}
 
 		.option-label {
-			padding: 1rem;
+			padding: 0.875rem 1rem;
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 0.75rem;
@@ -320,6 +407,17 @@
 
 		.option-content small {
 			margin-left: 0;
+			font-size: 0.8125rem;
+		}
+
+		.demo-option .option-content {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.demo-link {
+			margin-left: 0;
+			margin-top: 0.5rem;
 		}
 	}
 </style>

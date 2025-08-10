@@ -259,10 +259,33 @@
 	});
 </script>
 
-<div class="card-interface" style="animation: fadeIn 0.5s ease-out;">
+<div class="card-interface transcribe-interface">
+	<!-- Nature decorations -->
+	<svg class="page-decoration top-left" width="100" height="100" viewBox="0 0 100 100">
+		<g opacity="0.1">
+			<circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 5"/>
+			<path d="M50,20 Q40,30 40,50 Q40,70 50,80 Q60,70 60,50 Q60,30 50,20" fill="currentColor" opacity="0.3"/>
+		</g>
+	</svg>
+	
+	<svg class="page-decoration bottom-right" width="80" height="80" viewBox="0 0 80 80">
+		<g opacity="0.1">
+			<path d="M20,40 Q30,30 40,40 T60,40" stroke="currentColor" stroke-width="1" fill="none"/>
+			<circle cx="20" cy="40" r="3" fill="currentColor" opacity="0.3"/>
+			<circle cx="40" cy="40" r="3" fill="currentColor" opacity="0.3"/>
+			<circle cx="60" cy="40" r="3" fill="currentColor" opacity="0.3"/>
+		</g>
+	</svg>
+
 	<div class="toolbar">
-		<span class="model-info">Whisper Audio Transcription</span>
-		<div class="toolbar-decoration"></div>
+		<span class="toolbar-title">
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="display: inline-block; vertical-align: middle; margin-right: 6px;">
+				<circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.2"/>
+				<circle cx="10" cy="10" r="3" fill="currentColor"/>
+				<path d="M10 2V5M10 15V18M2 10H5M15 10H18" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+			</svg>
+			Audio Transcription
+		</span>
 	</div>
 
 	<div class="content-area">
@@ -313,40 +336,156 @@
 			class="transcribe-btn primary-button"
 		>
 			{#if isTranscribing}
-				<span class="loading-spinner">◐</span>
-				Transcribing...
+				<svg class="loading-spinner" width="24" height="24" viewBox="0 0 24 24" fill="none">
+					<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+					<path d="M12 2C17.5 2 22 6.5 22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+				</svg>
+				Transcribing Audio...
 			{:else}
-				<span class="button-icon">▶</span>
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+					<polygon points="5,3 19,12 5,21" fill="currentColor" fill-opacity="0.3" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+				</svg>
 				Start Transcription
 			{/if}
 		</button>
 
-		<div class="disclaimer">
-			<span class="disclaimer-icon">🔒</span>
-			Transcription is performed locally in your browser. Results may not always be accurate.
+		<div class="feature-badges">
+			<span class="badge">
+				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+					<circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/>
+					<path d="M5 7L6.5 8.5L9 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+				100% Local Processing
+			</span>
+			<span class="badge">
+				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+					<path d="M7 2L8.5 5.5L12 6L9.5 8.5L10 12L7 10L4 12L4.5 8.5L2 6L5.5 5.5L7 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+				</svg>
+				Privacy First
+			</span>
 		</div>
 	</div>
 </div>
 
 <style>
-	.toolbar-decoration {
+	.transcribe-interface {
+		position: relative;
+		animation: fadeIn 0.5s ease-out;
+		overflow: visible;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(15px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.page-decoration {
 		position: absolute;
-		bottom: -8px;
+		color: var(--forest-primary);
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.page-decoration.top-left {
+		top: -30px;
+		left: -30px;
+		animation: gentle-rotate 15s linear infinite;
+	}
+
+	.page-decoration.bottom-right {
+		bottom: -20px;
+		right: -20px;
+		animation: gentle-rotate 20s linear infinite reverse;
+	}
+
+	@keyframes gentle-rotate {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.toolbar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.25rem 1.5rem;
+		background: linear-gradient(135deg, var(--forest-light) 0%, var(--forest-primary) 100%);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.toolbar::before {
+		content: '';
+		position: absolute;
+		top: 0;
 		left: 0;
 		right: 0;
-		height: 4px;
-		background: repeating-linear-gradient(90deg, #000, #000 10px, #98fb98 10px, #98fb98 20px);
+		bottom: 0;
+		background: repeating-linear-gradient(
+			90deg,
+			transparent,
+			transparent 100px,
+			rgba(255, 255, 255, 0.05) 100px,
+			rgba(255, 255, 255, 0.05) 200px
+		);
+		pointer-events: none;
+	}
+
+	.toolbar-title {
+		font-size: 0.975rem;
+		font-weight: 600;
+		color: rgba(255, 255, 255, 0.95);
+		letter-spacing: 0.02em;
+		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+		display: flex;
+		align-items: center;
+		z-index: 1;
+		position: relative;
+	}
+
+	.content-area {
+		padding: 2rem;
+		background: transparent;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		box-sizing: border-box;
+		position: relative;
+		z-index: 1;
 	}
 
 	.main-content {
 		transition: all 0.3s ease;
 	}
 
-	.main-content.disabled,
-	.input-area.disabled {
+	.main-content.disabled {
 		opacity: 0.3;
 		pointer-events: none;
 		filter: grayscale(50%);
+	}
+
+	.input-area {
+		padding: 1.75rem;
+		border-top: 1px solid rgba(139, 111, 71, 0.15);
+		background: linear-gradient(180deg, transparent 0%, rgba(250, 248, 243, 0.5) 100%);
+		box-sizing: border-box;
+		position: relative;
+		z-index: 1;
+	}
+
+	.input-area.disabled {
+		opacity: 0.4;
+		pointer-events: none;
 	}
 
 	.transcribe-btn {
@@ -355,11 +494,16 @@
 		align-items: center;
 		justify-content: center;
 		gap: 0.75rem;
-		min-width: 280px;
+		min-width: 250px;
 		text-align: center;
 		position: relative;
 		overflow: hidden;
-		text-transform: uppercase;
+		padding: 1.125rem 2rem;
+		font-size: 1.0625rem;
+		background: linear-gradient(135deg, var(--forest-light) 0%, var(--forest-primary) 100%);
+		border-radius: 14px;
+		letter-spacing: 0.02em;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.transcribe-btn::before {
@@ -369,30 +513,39 @@
 		left: -100%;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-		transition: left 0.5s;
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+		transition: left 0.6s;
 	}
 
 	.transcribe-btn:hover:not(:disabled)::before {
 		left: 100%;
 	}
 
+	.transcribe-btn:hover:not(:disabled) {
+		transform: translateY(-3px);
+		box-shadow: 
+			0 8px 32px rgba(45, 90, 61, 0.25),
+			inset 0 1px 0 rgba(255, 255, 255, 0.2);
+		background: linear-gradient(135deg, var(--moss-green) 0%, var(--forest-light) 100%);
+	}
+
+	.transcribe-btn:active:not(:disabled) {
+		transform: translateY(-1px);
+		box-shadow: 
+			0 4px 16px rgba(45, 90, 61, 0.2),
+			inset 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
 	.transcribe-btn:disabled {
-		background: #e0e0e0;
+		background: linear-gradient(135deg, var(--earth-stone) 0%, var(--text-muted) 100%);
 		cursor: not-allowed;
 		transform: none;
 		box-shadow: none;
-		opacity: 0.7;
-	}
-
-	.button-icon {
-		font-size: 1.5rem;
+		opacity: 0.6;
 	}
 
 	.loading-spinner {
-		font-size: 1.5rem;
 		animation: spin 1s linear infinite;
-		display: inline-block;
 	}
 
 	@keyframes spin {
@@ -404,84 +557,72 @@
 		}
 	}
 
-	.primary-button {
-		padding: 1.25rem 2rem;
-		background: #98fb98;
-		color: #000;
-		border: 4px solid #000;
-		cursor: pointer;
-		font-size: 1.5rem;
-		font-weight: 700;
-		transition: all 0.15s;
-		box-shadow: 8px 8px 0 #000;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		font-family: 'Space Grotesk', monospace;
-	}
-
-	.primary-button:hover:not(:disabled) {
-		transform: translate(-4px, -4px);
-		box-shadow: 12px 12px 0 #000;
-		background: #ffd93d;
-	}
-
-	.primary-button:active:not(:disabled) {
-		transform: translate(0);
-		box-shadow: 4px 4px 0 #000;
-	}
-
-	.disclaimer {
+	.feature-badges {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
-		margin-top: 1rem;
-		font-size: 0.9375rem;
-		font-weight: 600;
-		color: #000;
-		text-align: center;
-		background: #ff69b4;
-		padding: 0.75rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(1deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
+		gap: 1rem;
+		margin-top: 1.25rem;
+		flex-wrap: wrap;
 	}
 
-	.disclaimer-icon {
-		font-size: 1.25rem;
+	.badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		padding: 0.5rem 0.875rem;
+		font-size: 0.8125rem;
+		color: var(--forest-primary);
+		background: linear-gradient(135deg, rgba(136, 179, 120, 0.1) 0%, rgba(168, 185, 159, 0.08) 100%);
+		border: 1px solid rgba(46, 90, 61, 0.2);
+		border-radius: 20px;
+		font-weight: 500;
+		letter-spacing: 0.02em;
+		transition: all 0.3s ease;
 	}
 
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(20px) rotate(-1deg);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0) rotate(-0.5deg);
-		}
+	.badge:hover {
+		background: linear-gradient(135deg, rgba(136, 179, 120, 0.15) 0%, rgba(168, 185, 159, 0.12) 100%);
+		transform: translateY(-1px);
+		box-shadow: 0 2px 8px rgba(46, 90, 61, 0.1);
 	}
 
 	@media (max-width: 600px) {
-		.main-content.disabled,
-		.input-area.disabled {
-			opacity: 0.3;
-			pointer-events: none;
+		.toolbar {
+			padding: 1rem 1.25rem;
+		}
+
+		.toolbar-title {
+			font-size: 0.9375rem;
+		}
+
+		.content-area {
+			padding: 1.25rem;
+		}
+
+		.input-area {
+			padding: 1.25rem;
 		}
 
 		.transcribe-btn {
 			min-width: auto;
 			width: 100%;
-			font-size: 1.25rem;
+			font-size: 1rem;
 			padding: 1rem 1.5rem;
 		}
 
-		.disclaimer {
-			font-size: 0.875rem;
-			padding: 0.625rem 0.875rem;
+		.feature-badges {
+			margin-top: 1rem;
+			gap: 0.75rem;
+		}
+
+		.badge {
+			font-size: 0.75rem;
+			padding: 0.375rem 0.625rem;
+		}
+
+		.page-decoration {
+			display: none;
 		}
 	}
 </style>

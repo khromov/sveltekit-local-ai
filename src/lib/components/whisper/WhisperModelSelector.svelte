@@ -37,27 +37,112 @@
 </script>
 
 <div class="model-selection">
-	<h3>Select Model</h3>
+	<!-- Nature decoration -->
+	<svg class="model-decoration" width="60" height="60" viewBox="0 0 60 60">
+		<g opacity="0.15">
+			<path
+				d="M30,10 Q20,20 20,30 Q20,40 30,50 Q40,40 40,30 Q40,20 30,10"
+				fill="currentColor"
+				opacity="0.3"
+			/>
+			<circle
+				cx="30"
+				cy="30"
+				r="25"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1"
+				stroke-dasharray="1 3"
+				opacity="0.5"
+			/>
+			<circle cx="15" cy="15" r="2" fill="currentColor" />
+			<circle cx="45" cy="15" r="2" fill="currentColor" />
+			<circle cx="15" cy="45" r="2" fill="currentColor" />
+			<circle cx="45" cy="45" r="2" fill="currentColor" />
+		</g>
+	</svg>
+
+	<h3>
+		<svg
+			width="20"
+			height="20"
+			viewBox="0 0 20 20"
+			fill="none"
+			style="display: inline-block; vertical-align: middle; margin-right: 6px;"
+		>
+			<circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" />
+			<path d="M10 6V10L13 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+		</svg>
+		Select Whisper Model
+	</h3>
+
 	<div class="model-controls">
-		<select bind:value={selectedModel} disabled={isLoading}>
-			{#each availableModels as model (model.path)}
-				<option value={model.path}>{model.name}</option>
-			{/each}
-		</select>
+		<div class="select-wrapper">
+			<select bind:value={selectedModel} disabled={isLoading}>
+				{#each availableModels as model (model.path)}
+					<option value={model.path}>{model.name}</option>
+				{/each}
+			</select>
+			<svg class="select-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+				<path
+					d="M4 6L8 10L12 6"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			</svg>
+		</div>
 
 		{#if !isReady}
 			<button onclick={onLoadModel} disabled={isLoading} class="load-model-btn primary-button">
-				{isLoading ? 'Loading Model...' : 'Load Model'}
+				{#if isLoading}
+					<svg class="loading-spinner" width="18" height="18" viewBox="0 0 18 18" fill="none">
+						<circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5" opacity="0.3" />
+						<path
+							d="M9 2C13 2 16 5 16 9"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+						/>
+					</svg>
+					Loading Model...
+				{:else}
+					<svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+						<path
+							d="M9 3V9L12 12"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+						<circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5" />
+					</svg>
+					Load Model
+				{/if}
 			</button>
 		{:else}
 			<div class="model-controls-loaded">
 				<div class="model-ready">
-					<span class="checkmark">✓</span>
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+						<circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" />
+						<path
+							d="M5 8L7 10L11 6"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
 					<span>Model Ready</span>
 				</div>
 				{#if selectedModel !== availableModels[0].path}
 					<button onclick={onChangeModel} disabled={isLoading} class="change-model-btn">
-						{isLoading ? 'Changing...' : 'Change Model'}
+						{#if isLoading}
+							Changing...
+						{:else}
+							Change Model
+						{/if}
 					</button>
 				{/if}
 			</div>
@@ -93,23 +178,53 @@
 
 <style>
 	.model-selection {
-		background: #fff;
-		border: 3px solid #000;
-		padding: 1.5rem;
-		box-shadow: 5px 5px 0 #000;
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.95) 0%,
+			rgba(250, 248, 243, 0.98) 100%
+		);
+		border: 1px solid rgba(139, 111, 71, 0.15);
+		padding: 1.75rem;
+		box-shadow:
+			0 4px 20px rgba(46, 90, 61, 0.08),
+			0 1px 3px rgba(139, 111, 71, 0.08);
 		margin-bottom: 1.5rem;
-		border-radius: 12px;
+		border-radius: 16px;
+		backdrop-filter: blur(10px);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.model-decoration {
+		position: absolute;
+		top: -5px;
+		right: -5px;
+		color: var(--forest-primary);
+		animation: gentle-float 8s ease-in-out infinite;
+		pointer-events: none;
+	}
+
+	@keyframes gentle-float {
+		0%,
+		100% {
+			transform: translateY(0) rotate(0deg);
+		}
+		50% {
+			transform: translateY(-5px) rotate(5deg);
+		}
 	}
 
 	.model-selection h3 {
 		margin-top: 0;
-		margin-bottom: 1rem;
-		font-size: 1.25rem;
-		color: #000;
+		margin-bottom: 1.25rem;
+		font-size: 1.125rem;
+		color: var(--forest-primary);
 		text-align: center;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-weight: 600;
+		letter-spacing: -0.01em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.model-controls {
@@ -119,35 +234,53 @@
 		align-items: center;
 	}
 
-	.model-controls select {
+	.select-wrapper {
+		position: relative;
 		width: 100%;
 		max-width: 400px;
-		padding: 0.75rem;
-		border: 2px solid #000;
-		border-radius: 6px;
+	}
+
+	.model-controls select {
+		width: 100%;
+		padding: 0.75rem 2.5rem 0.75rem 1rem;
+		border: 1px solid rgba(139, 111, 71, 0.2);
+		border-radius: 10px;
 		font-size: 0.9375rem;
 		font-weight: 500;
-		background: #fff;
-		text-align: center;
-		box-shadow: 3px 3px 0 #000;
+		background: rgba(255, 255, 255, 0.8);
+		text-align: left;
+		box-shadow:
+			0 2px 8px rgba(46, 90, 61, 0.05),
+			inset 0 1px 0 rgba(255, 255, 255, 0.5);
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 		cursor: pointer;
-		transition: all 0.2s;
+		transition: all 0.3s ease;
 		appearance: none;
-		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-		background-repeat: no-repeat;
-		background-position: right 0.75rem center;
-		background-size: 1.25em;
-		padding-right: 2.5rem;
+		color: var(--text-primary);
+	}
+
+	.select-arrow {
+		position: absolute;
+		right: 0.875rem;
+		top: 50%;
+		transform: translateY(-50%);
+		pointer-events: none;
+		color: var(--forest-primary);
+		opacity: 0.6;
 	}
 
 	.model-controls select:hover:not(:disabled) {
-		box-shadow: 4px 4px 0 #000;
+		border-color: rgba(46, 90, 61, 0.3);
+		background: rgba(255, 255, 255, 0.95);
 	}
 
 	.model-controls select:focus {
 		outline: none;
-		border-color: #ffd700;
+		border-color: var(--forest-primary);
+		box-shadow:
+			0 4px 16px rgba(46, 90, 61, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.5);
+		background: white;
 	}
 
 	.model-controls select:disabled {
@@ -157,25 +290,41 @@
 
 	.load-model-btn {
 		min-width: 180px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+	}
+
+	.loading-spinner {
+		animation: spin 1s linear infinite;
+	}
+
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
 	}
 
 	.model-ready {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		color: #000;
+		color: var(--forest-primary);
 		font-weight: 600;
-		font-size: 1rem;
-		background: #b4e7ce;
-		padding: 0.5rem 1rem;
-		border: 2px solid #000;
-		border-radius: 6px;
-		text-transform: uppercase;
-	}
-
-	.checkmark {
-		font-size: 1.25rem;
-		color: #000;
+		font-size: 0.975rem;
+		background: linear-gradient(
+			135deg,
+			rgba(136, 179, 120, 0.15) 0%,
+			rgba(168, 185, 159, 0.1) 100%
+		);
+		padding: 0.625rem 1.125rem;
+		border: 1px solid rgba(46, 90, 61, 0.2);
+		border-radius: 10px;
+		letter-spacing: 0.02em;
 	}
 
 	.model-controls-loaded {
@@ -187,22 +336,22 @@
 
 	.change-model-btn {
 		padding: 0.5rem 1rem;
-		background: #f0f0f0;
-		color: #000;
-		border: 2px solid #000;
-		border-radius: 6px;
+		background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(139, 111, 71, 0.15) 100%);
+		color: var(--earth-soil);
+		border: 1px solid rgba(139, 111, 71, 0.2);
+		border-radius: 8px;
 		cursor: pointer;
 		font-size: 0.875rem;
 		font-weight: 600;
-		transition: all 0.2s;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		transition: all 0.3s ease;
+		letter-spacing: 0.02em;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 	}
 
-	.change-model-btn:hover {
-		background: #e0e0e0;
-		box-shadow: 2px 2px 0 #000;
+	.change-model-btn:hover:not(:disabled) {
+		background: linear-gradient(135deg, rgba(212, 165, 116, 0.2) 0%, rgba(139, 111, 71, 0.25) 100%);
+		transform: translateY(-1px);
+		box-shadow: 0 2px 8px rgba(139, 111, 71, 0.15);
 	}
 
 	.change-model-btn:disabled {
@@ -212,43 +361,63 @@
 
 	.primary-button {
 		padding: 0.875rem 1.75rem;
-		background: #ffd700;
-		color: #000;
-		border: 3px solid #000;
-		border-radius: 8px;
+		background: linear-gradient(135deg, var(--forest-light) 0%, var(--forest-primary) 100%);
+		color: white;
+		border: 1px solid rgba(46, 90, 61, 0.3);
+		border-radius: 12px;
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
-		transition: all 0.2s;
-		box-shadow: 4px 4px 0 #000;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		box-shadow:
+			0 4px 16px rgba(45, 90, 61, 0.2),
+			inset 0 1px 0 rgba(255, 255, 255, 0.1);
+		letter-spacing: 0.03em;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 	}
 
 	.primary-button:hover:not(:disabled) {
-		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
+		transform: translateY(-2px);
+		box-shadow:
+			0 6px 24px rgba(45, 90, 61, 0.25),
+			inset 0 1px 0 rgba(255, 255, 255, 0.15);
+		background: linear-gradient(135deg, var(--moss-green) 0%, var(--forest-light) 100%);
 	}
 
 	.primary-button:active:not(:disabled) {
-		transform: translate(0);
-		box-shadow: 2px 2px 0 #000;
+		transform: translateY(0);
+		box-shadow:
+			0 2px 8px rgba(45, 90, 61, 0.2),
+			inset 0 1px 2px rgba(0, 0, 0, 0.1);
 	}
 
 	.primary-button:disabled {
-		background: #e0e0e0;
-		color: #999;
+		background: linear-gradient(135deg, var(--earth-stone) 0%, var(--text-muted) 100%);
+		color: rgba(255, 255, 255, 0.6);
 		cursor: not-allowed;
+		opacity: 0.7;
 	}
 
 	@media (max-width: 600px) {
+		.model-selection {
+			padding: 1.25rem;
+		}
+
+		.model-selection h3 {
+			font-size: 1rem;
+		}
+
 		.model-controls {
 			align-items: stretch;
 		}
 
 		.model-controls select {
 			max-width: none;
+		}
+
+		.model-decoration {
+			width: 50px;
+			height: 50px;
 		}
 	}
 </style>

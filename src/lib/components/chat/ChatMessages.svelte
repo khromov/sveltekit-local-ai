@@ -31,13 +31,39 @@
 </script>
 
 <div bind:this={chatContainer} class="chat-messages content-area" id="chat-container">
-	<div class="chat-decoration"></div>
-
 	{#if messages.length === 0 || (messages.length === 1 && messages[0].role === 'system')}
 		<div class="empty-state">
-			<div class="empty-icon">💬</div>
-			<h3>Start a Conversation</h3>
-			<p>Type a message below to begin chatting with AI</p>
+			<!-- Nature-inspired empty state illustration -->
+			<svg class="empty-illustration" width="120" height="120" viewBox="0 0 120 120">
+				<g opacity="0.3">
+					<!-- Tree trunk -->
+					<rect x="55" y="70" width="10" height="30" fill="var(--bark-brown)" rx="2" />
+					<!-- Tree crown -->
+					<circle cx="60" cy="50" r="25" fill="var(--moss-green)" opacity="0.5" />
+					<circle cx="50" cy="55" r="20" fill="var(--sage-green)" opacity="0.4" />
+					<circle cx="70" cy="55" r="20" fill="var(--forest-light)" opacity="0.3" />
+					<!-- Birds -->
+					<path
+						d="M20,30 Q25,25 30,30"
+						stroke="var(--forest-primary)"
+						stroke-width="2"
+						fill="none"
+						stroke-linecap="round"
+					/>
+					<path
+						d="M35,25 Q40,20 45,25"
+						stroke="var(--forest-primary)"
+						stroke-width="2"
+						fill="none"
+						stroke-linecap="round"
+					/>
+					<!-- Sun -->
+					<circle cx="90" cy="30" r="8" fill="var(--leaf-gold)" opacity="0.4" />
+				</g>
+			</svg>
+
+			<h3>Begin Your Conversation</h3>
+			<p>Share your thoughts and I'll respond naturally</p>
 		</div>
 	{:else}
 		{#each messages as message, i (i)}
@@ -49,33 +75,34 @@
 <style>
 	.chat-messages {
 		flex: 1 1 auto;
-		min-height: 0; /* critical to allow proper scrolling in flex containers */
+		min-height: 0;
 		overflow: auto;
 		position: relative;
-		background: linear-gradient(135deg, rgba(255, 229, 180, 0.1) 0%, rgba(230, 230, 250, 0.1) 100%);
-		padding-top: 3rem;
+		background: transparent;
+		padding: 1.5rem;
 		width: 100%;
 		box-sizing: border-box;
-		border-left: 3px solid #000;
-		border-right: 3px solid #000;
+		scroll-behavior: smooth;
 	}
 
-	.chat-decoration {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 3px;
-		background: repeating-linear-gradient(
-			90deg,
-			#ffd93d,
-			#ffd93d 10px,
-			#98fb98 10px,
-			#98fb98 20px,
-			#ff69b4 20px,
-			#ff69b4 30px
-		);
-		z-index: 1;
+	/* Subtle scrollbar styling */
+	.chat-messages::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	.chat-messages::-webkit-scrollbar-track {
+		background: rgba(139, 111, 71, 0.05);
+		border-radius: 4px;
+	}
+
+	.chat-messages::-webkit-scrollbar-thumb {
+		background: linear-gradient(180deg, var(--forest-light) 0%, var(--forest-primary) 100%);
+		border-radius: 4px;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.chat-messages::-webkit-scrollbar-thumb:hover {
+		background: linear-gradient(180deg, var(--moss-green) 0%, var(--forest-light) 100%);
 	}
 
 	.empty-state {
@@ -88,7 +115,7 @@
 		text-align: center;
 		padding: 2rem;
 		position: relative;
-		animation: fadeIn 0.5s ease-out;
+		animation: fadeIn 0.8s ease-out;
 	}
 
 	@keyframes fadeIn {
@@ -102,81 +129,52 @@
 		}
 	}
 
-	.empty-icon {
-		font-size: 4rem;
-		margin-bottom: 1rem;
-		animation: float 3s ease-in-out infinite;
+	.empty-illustration {
+		margin-bottom: 1.5rem;
+		animation: gentle-sway 4s ease-in-out infinite;
 	}
 
-	@keyframes float {
+	@keyframes gentle-sway {
 		0%,
 		100% {
-			transform: translateY(0) rotate(-5deg);
+			transform: translateX(0) rotate(0deg);
 		}
 		50% {
-			transform: translateY(-15px) rotate(5deg);
+			transform: translateX(5px) rotate(2deg);
 		}
 	}
 
 	.empty-state h3 {
-		font-size: 1.75rem;
-		font-weight: 700;
-		color: #000;
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: var(--forest-primary);
 		margin: 0 0 0.5rem 0;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		background: #ffd93d;
-		padding: 0.5rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
-		display: inline-block;
-		transform: rotate(-1deg);
+		letter-spacing: -0.01em;
 	}
 
 	.empty-state p {
-		font-size: 1.125rem;
-		color: #666;
-		margin: 0.5rem 0 0 0;
-		font-weight: 500;
-	}
-
-	.chat-messages::-webkit-scrollbar {
-		width: 12px;
-	}
-
-	.chat-messages::-webkit-scrollbar-track {
-		background: linear-gradient(180deg, #ffd93d 0%, #98fb98 50%, #ff69b4 100%);
-		border: 2px solid #000;
-		border-radius: 6px;
-	}
-
-	.chat-messages::-webkit-scrollbar-thumb {
-		background: #000;
-		border-radius: 6px;
-		border: 2px solid #fff;
-		box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-	}
-
-	.chat-messages::-webkit-scrollbar-thumb:hover {
-		background: #333;
+		font-size: 1rem;
+		color: var(--text-secondary);
+		margin: 0;
+		font-weight: 400;
 	}
 
 	@media (max-width: 600px) {
 		.chat-messages {
-			flex: 1 1 auto;
-			min-height: 0;
+			padding: 1rem;
 		}
 
-		.empty-icon {
-			font-size: 3rem;
+		.empty-illustration {
+			width: 100px;
+			height: 100px;
 		}
 
 		.empty-state h3 {
-			font-size: 1.5rem;
+			font-size: 1.25rem;
 		}
 
 		.empty-state p {
-			font-size: 1rem;
+			font-size: 0.9375rem;
 		}
 	}
 </style>

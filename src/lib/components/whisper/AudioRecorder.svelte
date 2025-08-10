@@ -109,24 +109,34 @@
 <div class="audio-recorder">
 	{#if recordingError}
 		<div class="error-message">
-			<span class="error-icon">⚠️</span>
+			<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+				<circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" />
+				<path d="M8 5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+				<circle cx="8" cy="11" r="0.5" fill="currentColor" />
+			</svg>
 			{recordingError}
 		</div>
 	{/if}
 
 	{#if !isRecording && !audioUrl}
 		<button class="record-button" onclick={startRecording} {disabled}>
-			<span class="button-icon">🎙️</span>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+				<circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" />
+				<circle cx="10" cy="10" r="4" fill="currentColor" opacity="0.3" />
+				<circle cx="10" cy="10" r="3" fill="currentColor" />
+			</svg>
 			Start Recording
 		</button>
 	{:else if isRecording}
 		<div class="recording-status">
 			<div class="recording-indicator">
 				<span class="recording-dot"></span>
-				Recording... {formatTime(recordingTime)}
+				<span class="recording-time">Recording... {formatTime(recordingTime)}</span>
 			</div>
 			<button class="stop-button" onclick={stopRecording}>
-				<span class="button-icon">⏹️</span>
+				<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+					<rect x="6" y="6" width="8" height="8" rx="2" fill="currentColor" />
+				</svg>
 				Stop Recording
 			</button>
 		</div>
@@ -140,7 +150,22 @@
 				<small>{formatTime(recordingTime)} • {selectedFile?.name}</small>
 			</div>
 			<button class="clear-button" onclick={clearRecording} {disabled}>
-				<span class="button-icon">🗑️</span>
+				<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+					<path
+						d="M2 8C2 4.7 4.7 2 8 2C10.2 2 12.1 3.1 13.3 4.7L14 6"
+						stroke="currentColor"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+					<path
+						d="M14 2V6H10"
+						stroke="currentColor"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+				</svg>
 				Clear Recording
 			</button>
 		</div>
@@ -151,26 +176,32 @@
 	.audio-recorder {
 		margin-top: 1rem;
 		padding: 1.5rem;
-		background: #f0f8ff;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(-0.5deg);
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.8) 0%,
+			rgba(250, 248, 243, 0.85) 100%
+		);
+		border: 1px solid rgba(139, 111, 71, 0.15);
+		box-shadow:
+			0 2px 12px rgba(46, 90, 61, 0.06),
+			inset 0 1px 0 rgba(255, 255, 255, 0.5);
+		border-radius: 12px;
+		backdrop-filter: blur(5px);
 	}
 
 	.error-message {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 1rem;
-		background: #ffe4e1;
-		border: 2px solid #ff6b6b;
+		padding: 0.875rem;
+		background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(139, 111, 71, 0.08) 100%);
+		border: 1px solid rgba(212, 165, 116, 0.3);
 		margin-bottom: 1rem;
 		font-weight: 500;
-		color: #d62828;
-	}
-
-	.error-icon {
-		font-size: 1.25rem;
+		color: var(--earth-soil);
+		border-radius: 8px;
+		font-size: 0.875rem;
+		letter-spacing: 0.01em;
 	}
 
 	.record-button,
@@ -179,37 +210,40 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 0.75rem 1.5rem;
-		background: #fff;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
-		font-size: 1rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		padding: 0.75rem 1.25rem;
+		background: linear-gradient(135deg, var(--forest-light) 0%, var(--forest-primary) 100%);
+		color: white;
+		border: 1px solid rgba(46, 90, 61, 0.3);
+		box-shadow:
+			0 4px 16px rgba(45, 90, 61, 0.15),
+			inset 0 1px 0 rgba(255, 255, 255, 0.1);
+		font-size: 0.9375rem;
+		font-weight: 600;
 		cursor: pointer;
-		transition: all 0.15s;
-	}
-
-	.record-button {
-		background: #90ee90;
+		transition: all 0.3s ease;
+		border-radius: 10px;
+		letter-spacing: 0.02em;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
 	}
 
 	.stop-button {
-		background: #ff6b6b;
-		color: #fff;
+		background: linear-gradient(135deg, var(--earth-clay) 0%, var(--earth-soil) 100%);
 	}
 
 	.clear-button {
-		background: #ffd93d;
-		margin-top: 1rem;
+		background: linear-gradient(135deg, rgba(168, 185, 159, 0.2) 0%, rgba(139, 111, 71, 0.15) 100%);
+		color: var(--text-primary);
+		border-color: rgba(139, 111, 71, 0.2);
+		margin-top: 0.75rem;
 	}
 
 	.record-button:hover:not(:disabled),
 	.stop-button:hover:not(:disabled),
 	.clear-button:hover:not(:disabled) {
-		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
+		transform: translateY(-2px);
+		box-shadow:
+			0 6px 24px rgba(45, 90, 61, 0.2),
+			inset 0 1px 0 rgba(255, 255, 255, 0.15);
 	}
 
 	.record-button:disabled,
@@ -217,10 +251,6 @@
 	.clear-button:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
-	}
-
-	.button-icon {
-		font-size: 1.25rem;
 	}
 
 	.recording-status {
@@ -234,67 +264,82 @@
 		align-items: center;
 		gap: 0.75rem;
 		padding: 1rem;
-		background: #fff;
-		border: 2px solid #000;
-		font-weight: 700;
-		font-size: 1.125rem;
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.9) 0%,
+			rgba(250, 248, 243, 0.95) 100%
+		);
+		border: 1px solid rgba(212, 165, 116, 0.2);
+		font-weight: 600;
+		font-size: 1rem;
+		border-radius: 10px;
+		color: var(--text-primary);
+		letter-spacing: 0.01em;
 	}
 
 	.recording-dot {
-		width: 12px;
-		height: 12px;
-		background: #ff0000;
+		width: 10px;
+		height: 10px;
+		background: var(--earth-clay);
 		border-radius: 50%;
-		animation: pulse 1.5s infinite;
+		animation: pulse-dot 1.5s infinite;
+		box-shadow: 0 0 0 0 rgba(212, 165, 116, 0.4);
 	}
 
-	@keyframes pulse {
+	@keyframes pulse-dot {
 		0% {
-			opacity: 1;
-			transform: scale(1);
+			box-shadow: 0 0 0 0 rgba(212, 165, 116, 0.4);
 		}
-		50% {
-			opacity: 0.7;
-			transform: scale(1.2);
+		70% {
+			box-shadow: 0 0 0 6px rgba(212, 165, 116, 0);
 		}
 		100% {
-			opacity: 1;
-			transform: scale(1);
+			box-shadow: 0 0 0 0 rgba(212, 165, 116, 0);
 		}
 	}
 
 	.recorded-audio {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: 0.75rem;
 	}
 
 	.audio-player {
-		background: #fff;
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.9) 0%,
+			rgba(250, 248, 243, 0.95) 100%
+		);
 		padding: 1rem;
-		border: 2px solid #000;
+		border: 1px solid rgba(139, 111, 71, 0.15);
+		border-radius: 10px;
+		box-shadow: 0 2px 8px rgba(46, 90, 61, 0.05);
 	}
 
 	.audio-player audio {
 		width: 100%;
 		outline: none;
+		filter: sepia(0.2) hue-rotate(70deg);
 	}
 
 	.audio-info {
 		display: flex;
 		flex-direction: column;
 		gap: 0.25rem;
+		color: var(--text-primary);
 	}
 
 	.audio-info strong {
-		font-size: 1.125rem;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		font-size: 1rem;
+		font-weight: 600;
+		letter-spacing: 0.01em;
 	}
 
 	.audio-info small {
-		color: #666;
-		font-weight: 500;
+		color: var(--text-secondary);
+		font-weight: 400;
+		font-size: 0.875rem;
+		letter-spacing: 0.02em;
 	}
 
 	@media (max-width: 600px) {
@@ -307,6 +352,8 @@
 		.clear-button {
 			width: 100%;
 			justify-content: center;
+			padding: 0.625rem 1rem;
+			font-size: 0.875rem;
 		}
 	}
 </style>

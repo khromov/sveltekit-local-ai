@@ -46,10 +46,7 @@
 </script>
 
 <div class="input-area">
-	<div class="input-decoration"></div>
-
 	<div class="message-input" class:is-disabled={isGenerating}>
-		<span class="input-emoji">💭</span>
 		<textarea
 			id="chat"
 			bind:this={inputElement}
@@ -59,237 +56,175 @@
 			use:focusAfterMount
 			onkeydown={handleKeyDown}
 		></textarea>
+
 		{#if isGenerating && onStop}
-			<button onclick={onStop} class="stop-btn-inline" aria-label="Stop generation">
+			<button onclick={onStop} class="action-btn stop-btn" aria-label="Stop generation">
 				<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-					<rect x="4" y="4" width="16" height="16" />
+					<rect x="6" y="6" width="12" height="12" rx="2" />
 				</svg>
 			</button>
 		{:else}
 			<button
 				onclick={onSend}
 				disabled={isGenerating || !value.trim()}
-				class="send-btn"
+				class="action-btn send-btn"
 				aria-label="Send message"
 			>
 				<svg
 					viewBox="0 0 24 24"
 					width="20"
 					height="20"
-					stroke="currentColor"
-					stroke-width="2.5"
 					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
 					stroke-linecap="round"
 					stroke-linejoin="round"
 				>
-					<line x1="22" y1="2" x2="11" y2="13"></line>
-					<polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+					<path d="M22 2L11 13" />
+					<path d="M22 2L15 22L11 13L2 9L22 2Z" />
 				</svg>
 			</button>
 		{/if}
 	</div>
 
-	<div class="disclaimer">
-		<span class="disclaimer-icon">💡</span>
-		Model responses may not always be accurate.
+	<div class="input-hints">
+		<svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="opacity: 0.5;">
+			<circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1" />
+			<path d="M8 11V8M8 5V5.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+		</svg>
+		<span>AI responses are generated locally • May not always be accurate</span>
 	</div>
 </div>
 
 <style>
 	.input-area {
-		padding: 1.25rem;
-		background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
-		border-top: 3px solid #000;
+		padding: 1.5rem;
+		background: linear-gradient(180deg, transparent 0%, rgba(250, 248, 243, 0.5) 100%);
+		border-top: 1px solid rgba(139, 111, 71, 0.15);
 		position: relative;
-		overflow: hidden;
-	}
-
-	.input-decoration {
-		position: absolute;
-		top: -2px;
-		left: 0;
-		right: 0;
-		height: 3px;
-		background: repeating-linear-gradient(90deg, #98fb98, #98fb98 8px, #ffd93d 8px, #ffd93d 16px);
-		animation: slide 2s linear infinite;
-	}
-
-	@keyframes slide {
-		from {
-			transform: translateX(0);
-		}
-		to {
-			transform: translateX(16px);
-		}
 	}
 
 	.message-input {
 		display: flex;
 		align-items: flex-end;
-		background: #fff;
-		border: 3px solid #000;
+		background: rgba(255, 255, 255, 0.8);
+		border: 1px solid rgba(139, 111, 71, 0.2);
 		padding: 0;
-		box-shadow: 5px 5px 0 #000;
-		border-radius: 12px;
+		border-radius: 16px;
 		overflow: hidden;
-		transition: all 0.2s;
+		transition: all 0.3s ease;
 		margin-bottom: 0.75rem;
-		transform: rotate(-0.5deg);
-		position: relative;
+		backdrop-filter: blur(10px);
+		box-shadow:
+			0 2px 12px rgba(46, 90, 61, 0.06),
+			inset 0 1px 0 rgba(255, 255, 255, 0.5);
 	}
 
-	.input-emoji {
-		position: absolute;
-		top: -15px;
-		left: 10px;
-		font-size: 1.5rem;
-		z-index: 1;
-		background: #98fb98;
-		padding: 0 8px;
-		border: 2px solid #000;
-		border-radius: 4px;
-		animation: bounce-emoji 3s ease-in-out infinite;
-	}
-
-	@keyframes bounce-emoji {
-		0%,
-		100% {
-			transform: translateY(0) rotate(-5deg);
-		}
-		50% {
-			transform: translateY(-3px) rotate(5deg);
-		}
-	}
-
-	.message-input:hover:not(.is-disabled) {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 7px 7px 0 #000;
+	.message-input:focus-within {
+		border-color: rgba(46, 90, 61, 0.3);
+		box-shadow:
+			0 4px 20px rgba(46, 90, 61, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.5);
+		background: rgba(255, 255, 255, 0.95);
 	}
 
 	.message-input.is-disabled {
-		background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
 		opacity: 0.7;
+		background: rgba(240, 240, 240, 0.8);
 	}
 
 	textarea {
 		flex-grow: 1;
-		padding: 0.875rem 1rem;
-		padding-top: 1.25rem;
+		padding: 1rem 1.25rem;
 		border: none;
 		resize: none;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
-		font-size: 1rem;
-		font-weight: 500;
-		line-height: 1.4;
+		font-size: 0.975rem;
+		font-weight: 400;
+		line-height: 1.5;
 		background: transparent;
-		min-height: 22px;
+		min-height: 24px;
 		max-height: 120px;
 		outline: none;
-		color: #000;
+		color: var(--text-primary);
+		letter-spacing: 0.01em;
 	}
 
 	textarea::placeholder {
-		color: #999;
+		color: var(--text-muted);
 		font-weight: 400;
 	}
 
-	.send-btn {
+	.action-btn {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 44px;
-		height: 44px;
+		width: 40px;
+		height: 40px;
 		margin: 8px;
 		align-self: center;
-		background: linear-gradient(135deg, #ffd93d 0%, #ffa500 100%);
-		color: #000;
-		border: 2px solid #000;
-		border-radius: 8px;
+		background: linear-gradient(135deg, var(--forest-light) 0%, var(--forest-primary) 100%);
+		color: white;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		border-radius: 12px;
 		cursor: pointer;
-		transition: all 0.2s;
-		box-shadow: 2px 2px 0 #000;
-		transform: rotate(5deg);
+		transition: all 0.3s ease;
+		box-shadow:
+			0 2px 8px rgba(45, 90, 61, 0.15),
+			inset 0 1px 0 rgba(255, 255, 255, 0.1);
 	}
 
-	.send-btn:hover:not(:disabled) {
-		background: linear-gradient(135deg, #98fb98 0%, #90ee90 100%);
-		transform: scale(1.1) rotate(0deg);
-		box-shadow: 3px 3px 0 #000;
+	.action-btn:hover:not(:disabled) {
+		transform: scale(1.1);
+		box-shadow:
+			0 4px 12px rgba(45, 90, 61, 0.2),
+			inset 0 1px 0 rgba(255, 255, 255, 0.15);
 	}
 
-	.send-btn:active:not(:disabled) {
+	.action-btn:active:not(:disabled) {
 		transform: scale(0.95);
-		box-shadow: 1px 1px 0 #000;
+		box-shadow:
+			0 1px 4px rgba(45, 90, 61, 0.15),
+			inset 0 1px 2px rgba(0, 0, 0, 0.1);
 	}
 
-	.send-btn:disabled {
-		background: #e0e0e0;
+	.action-btn:disabled {
+		background: linear-gradient(135deg, var(--earth-stone) 0%, var(--text-muted) 100%);
 		cursor: not-allowed;
 		opacity: 0.5;
-		transform: rotate(0deg);
 	}
 
-	.stop-btn-inline {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 44px;
-		height: 44px;
-		margin: 8px;
-		align-self: center;
-		background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
-		color: #000;
-		border: 2px solid #000;
-		border-radius: 8px;
-		cursor: pointer;
-		transition: all 0.2s;
-		box-shadow: 2px 2px 0 #000;
-		transform: rotate(-2deg);
-		animation: pulse-stop 1s ease-in-out infinite;
+	.stop-btn {
+		background: linear-gradient(135deg, var(--earth-clay) 0%, var(--earth-soil) 100%);
+		animation: pulse 2s ease-in-out infinite;
 	}
 
-	@keyframes pulse-stop {
+	@keyframes pulse {
 		0%,
 		100% {
-			transform: rotate(-2deg) scale(1);
+			transform: scale(1);
 		}
 		50% {
-			transform: rotate(-2deg) scale(1.05);
+			transform: scale(1.05);
 		}
 	}
 
-	.stop-btn-inline:hover {
-		background: linear-gradient(135deg, #ff8a80 0%, #ff6b6b 100%);
-		transform: scale(1.1) rotate(0deg);
-		box-shadow: 3px 3px 0 #000;
-		animation: none;
-	}
-
-	.stop-btn-inline:active {
-		transform: scale(0.95) rotate(0deg);
-		box-shadow: 1px 1px 0 #000;
-	}
-
-	.disclaimer {
-		font-size: 0.75rem;
-		font-weight: 400;
-		color: #666;
-		text-align: center;
-		background: #f8f8f8;
-		padding: 0.5rem 0.75rem;
-		border: 1px solid #e0e0e0;
-		border-radius: 4px;
+	.input-hints {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.25rem;
+		gap: 0.5rem;
+		font-size: 0.8125rem;
+		color: var(--text-muted);
+		text-align: center;
+		padding: 0.5rem;
+		background: rgba(168, 185, 159, 0.08);
+		border: 1px solid rgba(139, 111, 71, 0.1);
+		border-radius: 8px;
+		letter-spacing: 0.02em;
 		margin: 0 auto;
 		width: fit-content;
-		max-width: 300px;
-	}
-
-	.disclaimer-icon {
-		font-size: 0.875rem;
+		max-width: 100%;
 	}
 
 	@media (max-width: 600px) {
@@ -299,23 +234,18 @@
 
 		textarea {
 			font-size: 0.9375rem;
-			padding: 0.75rem;
-			padding-top: 1.125rem;
+			padding: 0.875rem 1rem;
 		}
 
-		.send-btn,
-		.stop-btn-inline {
-			width: 40px;
-			height: 40px;
+		.action-btn {
+			width: 36px;
+			height: 36px;
 		}
 
-		.disclaimer {
+		.input-hints {
 			font-size: 0.75rem;
 			width: 100%;
-		}
-
-		.input-emoji {
-			font-size: 1.25rem;
+			padding: 0.375rem 0.5rem;
 		}
 	}
 </style>

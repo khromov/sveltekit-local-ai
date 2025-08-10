@@ -69,12 +69,39 @@
 
 <div class="result-wrapper">
 	<div class="result">
-		<div class="result-decoration"></div>
+		<!-- Nature decoration -->
+		<svg class="result-decoration" width="80" height="80" viewBox="0 0 80 80">
+			<g opacity="0.1">
+				<path d="M40,10 L40,70" stroke="currentColor" stroke-width="1" />
+				<path d="M40,20 Q30,15 25,20 Q30,25 40,20" fill="currentColor" />
+				<path d="M40,35 Q50,30 55,35 Q50,40 40,35" fill="currentColor" />
+				<path d="M40,50 Q30,45 25,50 Q30,55 40,50" fill="currentColor" />
+				<path d="M40,65 Q50,60 55,65 Q50,70 40,65" fill="currentColor" />
+			</g>
+		</svg>
+
 		<div class="result-content">
 			<div class="result-header">
 				<h3>
-					<span class="header-icon">📝</span>
-					Transcription Result
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+						<rect
+							x="3"
+							y="3"
+							width="14"
+							height="14"
+							rx="2"
+							stroke="currentColor"
+							stroke-width="1.5"
+						/>
+						<path
+							d="M7 10L9 12L13 8"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+					Transcription Complete
 				</h3>
 				<div class="result-actions">
 					{#if transcriptionData?.transcription?.length}
@@ -90,10 +117,34 @@
 
 					<button class="copy-btn" onclick={copyToClipboard} class:copied={hasCopied}>
 						{#if hasCopied}
-							<span class="copy-icon">✅</span>
+							<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+								<circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" />
+								<path
+									d="M5 8L7 10L11 6"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
 							Copied!
 						{:else}
-							<span class="copy-icon">📋</span>
+							<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+								<rect
+									x="5"
+									y="5"
+									width="9"
+									height="9"
+									rx="1"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+								<path
+									d="M11 5V3C11 2.5 10.5 2 10 2H3C2.5 2 2 2.5 2 3V10C2 10.5 2.5 11 3 11H5"
+									stroke="currentColor"
+									stroke-width="1.5"
+								/>
+							</svg>
 							Copy
 						{/if}
 					</button>
@@ -116,16 +167,16 @@
 		display: flex;
 		margin: 1.5rem 0;
 		width: 100%;
-		animation: resultSlide 0.5s ease-out;
+		animation: fadeIn 0.5s ease-out;
 	}
 
-	@keyframes resultSlide {
+	@keyframes fadeIn {
 		from {
-			transform: translateY(20px) rotate(-1deg);
+			transform: translateY(20px);
 			opacity: 0;
 		}
 		to {
-			transform: translateY(0) rotate(0.5deg);
+			transform: translateY(0);
 			opacity: 1;
 		}
 	}
@@ -134,28 +185,44 @@
 		position: relative;
 		width: 100%;
 		max-width: 100%;
-		transform: rotate(0.5deg);
 	}
 
 	.result-decoration {
 		position: absolute;
-		top: -10px;
-		left: -10px;
-		right: -10px;
-		bottom: -10px;
-		background: linear-gradient(135deg, #98fb98 0%, #87ceeb 100%);
-		z-index: -1;
-		opacity: 0.3;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		transform: rotate(-1deg);
+		top: -20px;
+		right: -20px;
+		color: var(--forest-primary);
+		animation: gentle-sway 10s ease-in-out infinite;
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	@keyframes gentle-sway {
+		0%,
+		100% {
+			transform: translateX(0) rotate(0deg);
+		}
+		50% {
+			transform: translateX(5px) rotate(3deg);
+		}
 	}
 
 	.result-content {
 		padding: 2rem;
-		background: #fff;
-		border: 4px solid #000;
-		box-shadow: 8px 8px 0 #000;
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.95) 0%,
+			rgba(250, 248, 243, 0.98) 100%
+		);
+		border: 1px solid rgba(139, 111, 71, 0.15);
+		box-shadow:
+			0 8px 32px rgba(46, 90, 61, 0.1),
+			0 2px 8px rgba(139, 111, 71, 0.08);
 		position: relative;
+		border-radius: 20px;
+		backdrop-filter: blur(10px);
+		overflow: hidden;
+		z-index: 1;
 	}
 
 	.result-header {
@@ -166,28 +233,18 @@
 		flex-wrap: wrap;
 		gap: 1rem;
 		padding-bottom: 1rem;
-		border-bottom: 3px solid #000;
+		border-bottom: 1px solid rgba(139, 111, 71, 0.1);
 	}
 
 	.result-content h3 {
 		margin: 0;
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: 1.75rem;
-		color: #000;
-		letter-spacing: 2px;
+		font-size: 1.375rem;
+		color: var(--forest-primary);
+		letter-spacing: -0.01em;
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		background: #98fb98;
-		padding: 0.5rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
-		transform: rotate(-1deg);
-		text-transform: uppercase;
-	}
-
-	.header-icon {
-		font-size: 1.5rem;
+		font-weight: 600;
 	}
 
 	.result-actions {
@@ -199,104 +256,119 @@
 	/* Tab selectors */
 	.tab-selectors {
 		display: flex;
-		border: 3px solid #000;
-		background: #fff;
-		box-shadow: 4px 4px 0 #000;
+		border: 1px solid rgba(139, 111, 71, 0.2);
+		background: rgba(255, 255, 255, 0.8);
+		border-radius: 8px;
+		overflow: hidden;
 	}
 
 	.tab-selectors button {
-		padding: 0.625rem 1rem;
-		background: #fff;
+		padding: 0.5rem 1rem;
+		background: transparent;
 		border: none;
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
-		color: #000;
-		transition: all 0.15s ease;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--text-secondary);
+		transition: all 0.3s ease;
+		letter-spacing: 0.02em;
 		font-family: 'Space Grotesk', monospace;
 	}
 
 	.tab-selectors button:not(:last-child) {
-		border-right: 3px solid #000;
+		border-right: 1px solid rgba(139, 111, 71, 0.2);
 	}
 
 	.tab-selectors button:hover:not(.active) {
-		background: #fffacd;
+		background: rgba(136, 179, 120, 0.08);
+		color: var(--forest-primary);
 	}
 
 	.tab-selectors button.active {
-		background: #ffd93d;
+		background: linear-gradient(135deg, var(--forest-light) 0%, var(--forest-primary) 100%);
+		color: white;
 	}
 
 	/* Result text container */
 	.result-text-container {
 		background: linear-gradient(
 			135deg,
-			rgba(255, 217, 61, 0.05) 0%,
-			rgba(152, 251, 152, 0.05) 100%
+			rgba(255, 255, 255, 0.8) 0%,
+			rgba(250, 248, 243, 0.85) 100%
 		);
-		border: 3px solid #000;
+		border: 1px solid rgba(139, 111, 71, 0.1);
 		padding: 1.5rem;
-		box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.1);
+		border-radius: 12px;
 		min-height: 100px;
 		max-height: 400px;
 		overflow-y: auto;
+		box-shadow: inset 0 1px 3px rgba(139, 111, 71, 0.05);
 	}
 
 	.result-text {
 		margin: 0;
-		font-size: 1.0625rem;
-		line-height: 1.6;
-		color: #000;
-		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.7;
+		color: var(--text-primary);
+		font-weight: 400;
 		white-space: pre-wrap;
 		word-break: break-word;
+		letter-spacing: 0.01em;
 	}
 
 	/* SRT Preview */
 	.srt-preview {
-		font-family: monospace;
-		font-size: 0.9375rem;
-		line-height: 1.5;
+		font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+		font-size: 0.875rem;
+		line-height: 1.6;
 		white-space: pre-wrap;
-		background: #fff;
+		background: rgba(255, 255, 255, 0.6);
 		padding: 1rem;
-		border: 2px dashed #000;
+		border: 1px dashed rgba(139, 111, 71, 0.2);
+		border-radius: 8px;
 		overflow-x: auto;
 		margin: 0;
-		color: #000;
-		font-weight: 600;
+		color: var(--text-primary);
+		font-weight: 500;
+		letter-spacing: 0.02em;
 	}
 
 	.copy-btn {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		padding: 0.625rem 1.25rem;
-		background: #ff69b4;
-		color: #000;
-		border: 3px solid #000;
+		gap: 0.375rem;
+		padding: 0.5rem 1rem;
+		background: linear-gradient(
+			135deg,
+			rgba(136, 179, 120, 0.15) 0%,
+			rgba(168, 185, 159, 0.1) 100%
+		);
+		color: var(--forest-primary);
+		border: 1px solid rgba(46, 90, 61, 0.2);
 		cursor: pointer;
-		font-size: 1rem;
-		font-weight: 700;
-		transition: all 0.15s ease;
-		box-shadow: 4px 4px 0 #000;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		font-size: 0.875rem;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		border-radius: 8px;
+		letter-spacing: 0.02em;
 		font-family: 'Space Grotesk', monospace;
 	}
 
 	.copy-btn:hover {
-		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
-		background: #ffd93d;
+		background: linear-gradient(
+			135deg,
+			rgba(136, 179, 120, 0.25) 0%,
+			rgba(168, 185, 159, 0.2) 100%
+		);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(46, 90, 61, 0.1);
 	}
 
 	.copy-btn.copied {
-		background: #98fb98;
+		background: linear-gradient(135deg, var(--forest-light) 0%, var(--forest-primary) 100%);
+		color: white;
 		animation: copySuccess 0.3s ease-out;
+		border-color: transparent;
 	}
 
 	@keyframes copySuccess {
@@ -304,49 +376,46 @@
 			transform: scale(1);
 		}
 		50% {
-			transform: scale(1.1);
+			transform: scale(1.05);
 		}
 		100% {
 			transform: scale(1);
 		}
 	}
 
-	.copy-icon {
-		font-size: 1.25rem;
-	}
-
 	/* Custom scrollbar */
 	.result-text-container::-webkit-scrollbar {
-		width: 12px;
+		width: 8px;
 	}
 
 	.result-text-container::-webkit-scrollbar-track {
-		background: #fff;
-		border-left: 3px solid #000;
+		background: rgba(139, 111, 71, 0.05);
+		border-radius: 4px;
 	}
 
 	.result-text-container::-webkit-scrollbar-thumb {
-		background: #ffd93d;
-		border: 2px solid #000;
+		background: linear-gradient(180deg, var(--forest-light) 0%, var(--forest-primary) 100%);
+		border-radius: 4px;
+		border: 1px solid rgba(255, 255, 255, 0.2);
 	}
 
 	.result-text-container::-webkit-scrollbar-thumb:hover {
-		background: #ff69b4;
+		background: linear-gradient(180deg, var(--moss-green) 0%, var(--forest-light) 100%);
 	}
 
 	@media (max-width: 600px) {
 		.result-content {
-			padding: 1.25rem;
+			padding: 1.5rem 1.25rem;
 		}
 
 		.result-header {
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 1rem;
+			gap: 0.75rem;
 		}
 
 		.result-content h3 {
-			font-size: 1.5rem;
+			font-size: 1.25rem;
 		}
 
 		.result-actions {
@@ -371,6 +440,11 @@
 
 		.result-text-container {
 			padding: 1rem;
+		}
+
+		.result-decoration {
+			width: 60px;
+			height: 60px;
 		}
 	}
 </style>
