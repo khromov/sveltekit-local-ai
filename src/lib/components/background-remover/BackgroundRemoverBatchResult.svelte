@@ -14,12 +14,12 @@
 
 	let { batchResults, onProcessAnother, onDownloadZip }: Props = $props();
 
-	let successfulResults = $derived(batchResults.filter((r) => r.processedUrl && !r.error));
-	let failedResults = $derived(batchResults.filter((r) => r.error || !r.processedUrl));
+	let successfulResults = $derived(batchResults.filter(r => r.processedUrl && !r.error));
+	let failedResults = $derived(batchResults.filter(r => r.error || !r.processedUrl));
 
 	function downloadIndividualImage(result: BatchResult) {
 		if (!result.processedUrl) return;
-
+		
 		const link = document.createElement('a');
 		link.href = result.processedUrl;
 		link.download = `${result.file.name.split('.')[0]}_bg_removed.png`;
@@ -31,10 +31,10 @@
 	function shareIndividualImage(result: BatchResult) {
 		if (!result.processedUrl) return;
 
-		if (navigator.share && navigator.canShare) {
+		if ('share' in navigator && typeof navigator.share === 'function') {
 			fetch(result.processedUrl)
-				.then((response) => response.blob())
-				.then((blob) => {
+				.then(response => response.blob())
+				.then(blob => {
 					const fileName = `${result.file.name.split('.')[0]}_bg_removed.png`;
 					const file = new File([blob], fileName, { type: 'image/png' });
 					return navigator.share({
@@ -92,7 +92,7 @@
 						Download All as ZIP
 					</button>
 				{/if}
-
+				
 				<button class="process-another-btn" onclick={onProcessAnother}>
 					<span class="btn-icon">🔄</span>
 					Process More Images
@@ -120,21 +120,21 @@
 										</div>
 									</div>
 								</div>
-
+								
 								<div class="result-info">
 									<div class="result-name" title={result.file.name}>
 										{result.file.name}
 									</div>
 									<div class="result-actions">
-										<button
+										<button 
 											class="download-individual-btn"
 											onclick={() => downloadIndividualImage(result)}
 											title="Download this image"
 										>
 											💾
 										</button>
-										{#if navigator.share || navigator.clipboard}
-											<button
+										{#if 'share' in navigator || 'clipboard' in navigator}
+											<button 
 												class="share-individual-btn"
 												onclick={() => shareIndividualImage(result)}
 												title="Share this image"
@@ -254,8 +254,7 @@
 	}
 
 	@keyframes sparkle {
-		0%,
-		100% {
+		0%, 100% {
 			transform: scale(1) rotate(0deg);
 		}
 		50% {
@@ -445,17 +444,13 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-image:
-			linear-gradient(45deg, #e0e0e0 25%, transparent 25%),
-			linear-gradient(-45deg, #e0e0e0 25%, transparent 25%),
-			linear-gradient(45deg, transparent 75%, #e0e0e0 75%),
+		background-image: 
+			linear-gradient(45deg, #e0e0e0 25%, transparent 25%), 
+			linear-gradient(-45deg, #e0e0e0 25%, transparent 25%), 
+			linear-gradient(45deg, transparent 75%, #e0e0e0 75%), 
 			linear-gradient(-45deg, transparent 75%, #e0e0e0 75%);
 		background-size: 12px 12px;
-		background-position:
-			0 0,
-			0 6px,
-			6px -6px,
-			-6px 0px;
+		background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
 		z-index: 0;
 	}
 

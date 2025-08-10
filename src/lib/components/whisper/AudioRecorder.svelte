@@ -1,11 +1,8 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
 	interface Props {
 		transcribeMode: 'demo' | 'upload' | 'record';
 		selectedFile: File | null;
 		onFileSelect: (file: File) => void;
-		onModeChange: (mode: 'demo' | 'upload' | 'record') => void;
 		disabled?: boolean;
 	}
 
@@ -13,7 +10,6 @@
 		transcribeMode = $bindable(),
 		selectedFile = $bindable(),
 		onFileSelect,
-		onModeChange,
 		disabled = false
 	}: Props = $props();
 
