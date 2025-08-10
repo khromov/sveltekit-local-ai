@@ -1,4 +1,7 @@
 <script lang="ts">
+	import SvelteLogo from 'virtual:icons/logos/svelte-icon'
+	import AArrowDown from 'virtual:icons/lucide/a-arrow-down';
+
 	import { Wllama } from '@wllama/wllama';
 	import { onMount } from 'svelte';
 	import { WLLAMA_CONFIG_PATHS, AVAILABLE_MODELS } from '$lib/wllama-config';
@@ -67,6 +70,8 @@
 
 <div class="container">
 	<h1>KV Cache Test</h1>
+	<SvelteLogo />
+	<AArrowDown style={"color: red;"} />
 
 	{#if !isModelLoaded}
 		<div class="loading">
