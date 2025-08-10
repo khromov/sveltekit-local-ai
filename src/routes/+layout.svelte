@@ -455,8 +455,12 @@
 		}
 
 		.main-nav a {
-			padding: 0.625rem 0.875rem;
+			padding: 0.625rem;
 			font-size: 0.875rem;
+		}
+
+		.main-nav a span {
+			display: none;
 		}
 
 		.home-link {
@@ -488,6 +492,11 @@
 		.center-items {
 			gap: 0.5rem;
 		}
+
+		.github-item .home-link {
+			border: 2px solid #000;
+			box-shadow: 2px 2px 0 #000;
+		}
 	}
 
 	@media (max-width: 400px) {
@@ -502,6 +511,11 @@
 
 		.center-items {
 			gap: 0.375rem;
+		}
+
+		.github-item .home-link {
+			border: 2px solid #000;
+			box-shadow: 2px 2px 0 #000;
 		}
 	}
 
