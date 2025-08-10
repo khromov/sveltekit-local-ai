@@ -93,23 +93,24 @@
 
 <style>
 	.model-selection {
-		background: #fff;
-		border: 3px solid #000;
-		padding: 1.5rem;
-		box-shadow: 5px 5px 0 #000;
+		background: rgba(255, 255, 255, 0.95);
+		border: 1px solid rgba(82, 121, 82, 0.2);
+		padding: 2rem;
+		box-shadow: 0 16px 64px rgba(82, 121, 82, 0.12);
 		margin-bottom: 1.5rem;
-		border-radius: 12px;
+		border-radius: 20px;
+		backdrop-filter: blur(16px);
 	}
 
 	.model-selection h3 {
 		margin-top: 0;
-		margin-bottom: 1rem;
+		margin-bottom: 1.5rem;
 		font-size: 1.25rem;
-		color: #000;
+		color: #2e4a2e;
 		text-align: center;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-weight: 600;
+		text-transform: none;
+		letter-spacing: 0.01em;
 	}
 
 	.model-controls {
@@ -122,32 +123,37 @@
 	.model-controls select {
 		width: 100%;
 		max-width: 400px;
-		padding: 0.75rem;
-		border: 2px solid #000;
-		border-radius: 6px;
-		font-size: 0.9375rem;
+		padding: 1rem 3rem 1rem 1.25rem;
+		border: 1px solid rgba(82, 121, 82, 0.3);
+		border-radius: 12px;
+		font-size: 0.9rem;
 		font-weight: 500;
-		background: #fff;
+		background: rgba(255, 255, 255, 0.9);
 		text-align: center;
-		box-shadow: 3px 3px 0 #000;
+		box-shadow: 0 4px 16px rgba(82, 121, 82, 0.1);
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 		cursor: pointer;
-		transition: all 0.2s;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 		appearance: none;
-		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23527952' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
 		background-repeat: no-repeat;
-		background-position: right 0.75rem center;
+		background-position: right 1rem center;
 		background-size: 1.25em;
-		padding-right: 2.5rem;
+		color: #2e4a2e;
+		backdrop-filter: blur(8px);
 	}
 
 	.model-controls select:hover:not(:disabled) {
-		box-shadow: 4px 4px 0 #000;
+		transform: translateY(-2px);
+		box-shadow: 0 8px 32px rgba(82, 121, 82, 0.2);
+		background: rgba(255, 255, 255, 1);
+		border-color: rgba(82, 121, 82, 0.4);
 	}
 
 	.model-controls select:focus {
 		outline: none;
-		border-color: #ffd700;
+		border-color: rgba(82, 121, 82, 0.6);
+		box-shadow: 0 0 0 3px rgba(82, 121, 82, 0.1);
 	}
 
 	.model-controls select:disabled {
@@ -162,20 +168,22 @@
 	.model-ready {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		color: #000;
-		font-weight: 600;
+		gap: 0.75rem;
+		color: #2e4a2e;
+		font-weight: 500;
 		font-size: 1rem;
-		background: #b4e7ce;
-		padding: 0.5rem 1rem;
-		border: 2px solid #000;
-		border-radius: 6px;
-		text-transform: uppercase;
+		background: rgba(82, 121, 82, 0.1);
+		padding: 0.75rem 1.25rem;
+		border: 1px solid rgba(82, 121, 82, 0.2);
+		border-radius: 12px;
+		text-transform: none;
+		backdrop-filter: blur(8px);
 	}
 
 	.checkmark {
-		font-size: 1.25rem;
-		color: #000;
+		font-size: 1.125rem;
+		color: #527952;
+		filter: drop-shadow(0 1px 3px rgba(82, 121, 82, 0.3));
 	}
 
 	.model-controls-loaded {
@@ -186,23 +194,28 @@
 	}
 
 	.change-model-btn {
-		padding: 0.5rem 1rem;
-		background: #f0f0f0;
-		color: #000;
-		border: 2px solid #000;
-		border-radius: 6px;
+		padding: 0.625rem 1.25rem;
+		background: rgba(255, 255, 255, 0.9);
+		color: #527952;
+		border: 1px solid rgba(82, 121, 82, 0.3);
+		border-radius: 12px;
 		cursor: pointer;
 		font-size: 0.875rem;
-		font-weight: 600;
-		transition: all 0.2s;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-weight: 500;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		text-transform: none;
+		letter-spacing: 0.01em;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
+		box-shadow: 0 2px 8px rgba(82, 121, 82, 0.1);
+		backdrop-filter: blur(8px);
 	}
 
 	.change-model-btn:hover {
-		background: #e0e0e0;
-		box-shadow: 2px 2px 0 #000;
+		background: rgba(255, 255, 255, 1);
+		transform: translateY(-1px);
+		box-shadow: 0 4px 16px rgba(82, 121, 82, 0.2);
+		border-color: rgba(82, 121, 82, 0.4);
+		color: #2e4a2e;
 	}
 
 	.change-model-btn:disabled {

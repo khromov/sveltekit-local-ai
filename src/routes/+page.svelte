@@ -16,6 +16,48 @@
 
 		<div class="feature-grid">
 			<a href="/chat" class="feature-card chat-card">
+				<svg class="card-decoration" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+					<defs>
+						<linearGradient id="leafGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+							<stop offset="0%" style="stop-color:rgba(82,121,82,0.1);stop-opacity:1" />
+							<stop offset="100%" style="stop-color:rgba(107,142,107,0.05);stop-opacity:1" />
+						</linearGradient>
+					</defs>
+					<path
+						d="M20,80 Q40,20 80,30 Q120,40 150,15 Q170,10 190,25"
+						stroke="url(#leafGradient1)"
+						stroke-width="2"
+						fill="none"
+						opacity="0.6"
+					/>
+					<ellipse
+						cx="35"
+						cy="45"
+						rx="8"
+						ry="12"
+						fill="url(#leafGradient1)"
+						transform="rotate(45 35 45)"
+						opacity="0.4"
+					/>
+					<ellipse
+						cx="75"
+						cy="60"
+						rx="6"
+						ry="10"
+						fill="url(#leafGradient1)"
+						transform="rotate(-30 75 60)"
+						opacity="0.3"
+					/>
+					<ellipse
+						cx="135"
+						cy="40"
+						rx="7"
+						ry="11"
+						fill="url(#leafGradient1)"
+						transform="rotate(60 135 40)"
+						opacity="0.35"
+					/>
+				</svg>
 				<div class="card-number">Tool #01</div>
 				<div class="card-content">
 					<div class="icon-container">
@@ -46,6 +88,31 @@
 			</a>
 
 			<a href="/transcribe" class="feature-card transcribe-card">
+				<svg class="card-decoration" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+					<defs>
+						<linearGradient id="leafGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+							<stop offset="0%" style="stop-color:rgba(82,121,82,0.08);stop-opacity:1" />
+							<stop offset="100%" style="stop-color:rgba(107,142,107,0.04);stop-opacity:1" />
+						</linearGradient>
+					</defs>
+					<path
+						d="M30,85 Q50,25 90,35 Q130,45 160,20"
+						stroke="url(#leafGradient2)"
+						stroke-width="2"
+						fill="none"
+						opacity="0.5"
+					/>
+					<circle cx="45" cy="50" r="5" fill="url(#leafGradient2)" opacity="0.3" />
+					<circle cx="85" cy="65" r="4" fill="url(#leafGradient2)" opacity="0.25" />
+					<circle cx="125" cy="45" r="6" fill="url(#leafGradient2)" opacity="0.3" />
+					<path
+						d="M170,30 Q175,35 180,30 Q185,25 190,30"
+						stroke="url(#leafGradient2)"
+						stroke-width="1.5"
+						fill="none"
+						opacity="0.4"
+					/>
+				</svg>
 				<div class="card-number">Tool #02</div>
 				<div class="card-content">
 					<div class="icon-container">
@@ -88,35 +155,7 @@
 </div>
 
 <style>
-	/* Base styles */
-	:global(body) {
-		margin: 0;
-		padding: 0;
-		font-family:
-			'Space Grotesk',
-			system-ui,
-			-apple-system,
-			sans-serif;
-		font-size: 16px;
-		line-height: 1.5;
-		background: linear-gradient(135deg, #ffe5b4 0%, #e6e6fa 50%, #b4e7ce 100%);
-		background-size: 200% 200%;
-		animation: gradient-shift 20s ease infinite;
-		color: #000;
-		overflow-x: hidden;
-	}
-
-	@keyframes gradient-shift {
-		0% {
-			background-position: 0% 50%;
-		}
-		50% {
-			background-position: 100% 50%;
-		}
-		100% {
-			background-position: 0% 50%;
-		}
-	}
+	/* Removed duplicate body styles - already handled in layout */
 
 	.main-menu {
 		min-height: 100vh;
@@ -154,32 +193,39 @@
 
 	.main-title {
 		font-size: 3.5rem;
-		line-height: 1.1;
-		margin: 0 0 1.5rem 0;
-		font-weight: 800;
+		line-height: 1.2;
+		margin: 0 0 2rem 0;
+		font-weight: 600;
+		position: relative;
 	}
 
 	.title-line {
-		background: #000;
-		color: #ffd700;
-		padding: 0.5rem 2rem;
+		background: linear-gradient(135deg, #527952 0%, #6b8e6b 100%);
+		color: #ffffff;
+		padding: 1rem 2rem;
 		display: inline-block;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		letter-spacing: 2px;
-		text-transform: uppercase;
+		border: 1px solid rgba(82, 121, 82, 0.3);
+		box-shadow: 0 16px 64px rgba(82, 121, 82, 0.2);
+		letter-spacing: 0.02em;
+		text-transform: none;
+		border-radius: 16px;
+		position: relative;
+		overflow: hidden;
 	}
 
 	.subtitle {
 		font-size: 1.25rem;
-		color: #000;
+		color: rgba(46, 74, 46, 0.8);
 		margin: 0;
-		font-weight: 500;
-		background: #fff;
+		font-weight: 400;
+		background: rgba(255, 255, 255, 0.9);
 		display: inline-block;
-		padding: 0.5rem 1.5rem;
-		border: 2px solid #000;
-		box-shadow: 3px 3px 0 #000;
+		padding: 0.75rem 2rem;
+		border: 1px solid rgba(82, 121, 82, 0.2);
+		box-shadow: 0 8px 32px rgba(82, 121, 82, 0.1);
+		border-radius: 12px;
+		backdrop-filter: blur(8px);
+		line-height: 1.5;
 	}
 
 	.feature-grid {
@@ -193,17 +239,18 @@
 	.feature-card {
 		display: block;
 		text-decoration: none;
-		color: #000;
-		background: #fff;
-		border: 3px solid #000;
+		color: #2e4a2e;
+		background: rgba(255, 255, 255, 0.95);
+		border: 1px solid rgba(82, 121, 82, 0.2);
 		padding: 0;
-		box-shadow: 5px 5px 0 #000;
-		transition: all 0.2s ease;
+		box-shadow: 0 16px 64px rgba(82, 121, 82, 0.12);
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 		position: relative;
 		overflow: hidden;
-		border-radius: 12px;
-		animation: cardFade 0.6s ease-out;
+		border-radius: 20px;
+		animation: cardFade 0.8s ease-out;
 		animation-fill-mode: both;
+		backdrop-filter: blur(16px);
 	}
 
 	.feature-card:nth-child(1) {
@@ -227,53 +274,76 @@
 
 	.card-number {
 		position: absolute;
-		top: 1rem;
-		right: 1rem;
-		background: #000;
-		color: #ffd700;
-		padding: 0.25rem 0.75rem;
-		font-weight: 700;
-		font-size: 0.875rem;
-		letter-spacing: 1px;
-		border-radius: 4px;
-		text-transform: uppercase;
+		top: 1.5rem;
+		right: 1.5rem;
+		background: linear-gradient(135deg, #527952 0%, #6b8e6b 100%);
+		color: #ffffff;
+		padding: 0.5rem 1rem;
+		font-weight: 500;
+		font-size: 0.8rem;
+		letter-spacing: 0.02em;
+		border-radius: 12px;
+		text-transform: none;
+		box-shadow: 0 4px 16px rgba(82, 121, 82, 0.25);
 	}
 
 	.feature-card:hover {
-		transform: translate(-3px, -3px);
-		box-shadow: 8px 8px 0 #000;
+		transform: translateY(-8px);
+		box-shadow: 0 24px 96px rgba(82, 121, 82, 0.2);
+		border-color: rgba(82, 121, 82, 0.3);
+	}
+
+	.card-decoration {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 200px;
+		height: 100px;
+		pointer-events: none;
+		opacity: 0.6;
+		transition: opacity 0.3s ease;
+	}
+
+	.feature-card:hover .card-decoration {
+		opacity: 0.8;
 	}
 
 	.card-content {
 		padding: 2rem;
+		position: relative;
+		z-index: 1;
 	}
 
 	.icon-container {
-		margin-bottom: 1.5rem;
+		margin-bottom: 2rem;
 		width: fit-content;
-		padding: 0.75rem;
-		background: #ffe5b4;
-		border: 2px solid #000;
-		border-radius: 8px;
+		padding: 1rem;
+		background: linear-gradient(135deg, rgba(82, 121, 82, 0.1) 0%, rgba(107, 142, 107, 0.15) 100%);
+		border: 1px solid rgba(82, 121, 82, 0.2);
+		border-radius: 16px;
+		position: relative;
 	}
 
 	.feature-icon {
-		color: #000;
+		color: #527952;
 		display: block;
+		filter: drop-shadow(0 2px 8px rgba(82, 121, 82, 0.2));
 	}
 
 	.feature-card h2 {
 		font-size: 1.75rem;
-		font-weight: 700;
-		margin: 0 0 1rem 0;
-		color: #000;
+		font-weight: 600;
+		margin: 0 0 1.25rem 0;
+		color: #2e4a2e;
+		line-height: 1.3;
 	}
 
 	.feature-description {
 		font-size: 1rem;
-		color: #333;
+		color: rgba(46, 74, 46, 0.7);
 		line-height: 1.6;
-		margin: 0 0 1.5rem 0;
+		margin: 0 0 2rem 0;
+		font-weight: 400;
 	}
 
 	.feature-highlights {
@@ -283,32 +353,35 @@
 	}
 
 	.highlight {
-		font-size: 0.875rem;
-		color: #000;
-		padding: 0.375rem 0.75rem;
-		background: #f0f0f0;
-		border: 2px solid #000;
-		font-weight: 600;
-		border-radius: 4px;
-		transition: all 0.2s ease;
+		font-size: 0.8rem;
+		color: #527952;
+		padding: 0.5rem 1rem;
+		background: rgba(82, 121, 82, 0.08);
+		border: 1px solid rgba(82, 121, 82, 0.2);
+		font-weight: 500;
+		border-radius: 12px;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		white-space: nowrap;
 	}
 
-	.chat-card:hover .highlight {
-		background: #ffe5b4;
-	}
-
+	.chat-card:hover .highlight,
 	.transcribe-card:hover .highlight {
-		background: #b4e7ce;
+		background: rgba(82, 121, 82, 0.15);
+		color: #2e4a2e;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 16px rgba(82, 121, 82, 0.15);
 	}
 
 	.menu-footer {
 		text-align: center;
-		color: #666;
-		font-size: 0.9375rem;
-		margin-top: 3rem;
-		animation: fadeIn 0.6s ease-out;
-		animation-delay: 0.5s;
+		color: rgba(82, 121, 82, 0.6);
+		font-size: 0.9rem;
+		margin-top: 4rem;
+		animation: fadeIn 0.8s ease-out;
+		animation-delay: 0.6s;
 		animation-fill-mode: both;
+		font-weight: 400;
+		line-height: 1.6;
 	}
 
 	.menu-footer p {

@@ -96,66 +96,75 @@
 
 <style>
 	.transcribe-options {
-		background: #fff;
-		border: 4px solid #000;
-		padding: 2rem;
-		box-shadow: 8px 8px 0 #000;
+		background: rgba(255, 255, 255, 0.95);
+		border: 1px solid rgba(82, 121, 82, 0.2);
+		padding: 2.5rem;
+		box-shadow: 0 16px 64px rgba(82, 121, 82, 0.15);
 		margin-bottom: 1.5rem;
 		position: relative;
-		transform: rotate(0.5deg);
-		animation: slideIn 0.4s ease-out;
+		animation: gentle-slide-in 0.6s ease-out;
 		animation-delay: 0.1s;
 		animation-fill-mode: both;
+		border-radius: 20px;
+		backdrop-filter: blur(16px);
 	}
 
-	@keyframes slideIn {
+	@keyframes gentle-slide-in {
 		from {
-			transform: translateX(20px) rotate(1deg);
+			transform: translateY(20px);
 			opacity: 0;
 		}
 		to {
-			transform: translateX(0) rotate(0.5deg);
+			transform: translateY(0);
 			opacity: 1;
 		}
 	}
 
 	.options-decoration {
 		position: absolute;
-		top: -8px;
-		left: -8px;
-		right: -8px;
-		bottom: -8px;
-		background: linear-gradient(135deg, #ffd93d 0%, #ff69b4 100%);
+		top: -15px;
+		left: -15px;
+		right: -15px;
+		bottom: -15px;
+		background: radial-gradient(
+			circle at 30% 70%,
+			rgba(82, 121, 82, 0.08) 0%,
+			rgba(107, 142, 107, 0.04) 50%,
+			transparent 100%
+		);
 		z-index: -1;
-		opacity: 0.3;
-		border-radius: 5% 20% 5% 20% / 20% 5% 20% 5%;
+		opacity: 0.6;
+		border-radius: 30px;
 	}
 
 	.transcribe-options h3 {
 		margin-top: 0;
-		margin-bottom: 1.5rem;
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: 2rem;
-		color: #000;
+		margin-bottom: 2rem;
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 1.75rem;
+		color: #2e4a2e;
 		text-align: center;
-		letter-spacing: 2px;
+		letter-spacing: 0.01em;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.75rem;
-		background: #ffd93d;
-		padding: 0.5rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(1deg);
+		gap: 1rem;
+		background: linear-gradient(135deg, rgba(82, 121, 82, 0.1) 0%, rgba(107, 142, 107, 0.08) 100%);
+		padding: 1rem 2rem;
+		border: 1px solid rgba(82, 121, 82, 0.2);
+		box-shadow: 0 8px 32px rgba(82, 121, 82, 0.1);
 		width: fit-content;
 		margin-left: auto;
 		margin-right: auto;
-		text-transform: uppercase;
+		text-transform: none;
+		border-radius: 16px;
+		backdrop-filter: blur(8px);
+		font-weight: 600;
 	}
 
 	.title-icon {
-		font-size: 1.75rem;
+		font-size: 1.5rem;
+		filter: drop-shadow(0 2px 4px rgba(82, 121, 82, 0.3));
 	}
 
 	.option-group {
@@ -168,40 +177,43 @@
 	.option-label {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
-		padding: 1.25rem;
-		border: 3px solid #000;
-		background: #fff;
+		gap: 1.25rem;
+		padding: 1.5rem;
+		border: 1px solid rgba(82, 121, 82, 0.2);
+		background: rgba(255, 255, 255, 0.9);
 		cursor: pointer;
-		transition: all 0.15s ease;
-		box-shadow: 4px 4px 0 #000;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		box-shadow: 0 4px 16px rgba(82, 121, 82, 0.08);
 		position: relative;
-		transform: rotate(-0.5deg);
+		border-radius: 16px;
+		backdrop-filter: blur(8px);
 	}
 
 	.option-label:nth-child(2) {
-		transform: rotate(0.5deg);
+		/* Remove individual transforms */
 	}
 
 	.option-label:hover {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 6px 6px 0 #000;
-		background: #fffacd;
+		transform: translateY(-3px);
+		box-shadow: 0 8px 32px rgba(82, 121, 82, 0.15);
+		background: rgba(255, 255, 255, 1);
+		border-color: rgba(82, 121, 82, 0.3);
 	}
 
 	.option-label.selected {
-		background: #98fb98;
-		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 7px 7px 0 #000;
+		background: rgba(82, 121, 82, 0.1);
+		transform: translateY(-3px);
+		box-shadow: 0 12px 48px rgba(82, 121, 82, 0.2);
+		border-color: rgba(82, 121, 82, 0.4);
 	}
 
 	.option-label input[type='radio'] {
-		width: 20px;
-		height: 20px;
+		width: 18px;
+		height: 18px;
 		margin: 0;
-		accent-color: #000;
+		accent-color: #527952;
 		cursor: pointer;
-		border: 2px solid #000;
+		border: 1px solid rgba(82, 121, 82, 0.3);
 	}
 
 	.option-content {
@@ -223,34 +235,40 @@
 
 	.option-content strong {
 		font-size: 1.125rem;
-		color: #000;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		color: #2e4a2e;
+		text-transform: none;
+		letter-spacing: 0.01em;
+		font-weight: 600;
 	}
 
 	.option-content small {
-		font-size: 0.9375rem;
-		color: #333;
-		font-weight: 500;
+		font-size: 0.9rem;
+		color: rgba(82, 121, 82, 0.7);
+		font-weight: 400;
 		margin-left: 2rem;
+		line-height: 1.4;
 	}
 
 	.option-content small a {
-		color: #000;
-		font-weight: 700;
+		color: #527952;
+		font-weight: 500;
 		text-decoration: none;
-		padding: 2px 6px;
-		background: #ffd93d;
-		border: 2px solid #000;
-		transition: all 0.15s;
+		padding: 0.25rem 0.75rem;
+		background: rgba(82, 121, 82, 0.1);
+		border: 1px solid rgba(82, 121, 82, 0.2);
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 		display: inline-block;
-		box-shadow: 2px 2px 0 #000;
+		box-shadow: 0 2px 8px rgba(82, 121, 82, 0.1);
+		border-radius: 8px;
+		backdrop-filter: blur(4px);
 	}
 
 	.option-content small a:hover {
-		transform: translate(-1px, -1px);
-		box-shadow: 3px 3px 0 #000;
-		background: #ff69b4;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 16px rgba(82, 121, 82, 0.2);
+		background: rgba(82, 121, 82, 0.15);
+		border-color: rgba(82, 121, 82, 0.3);
+		color: #2e4a2e;
 	}
 
 	.or-divider {
@@ -262,14 +280,17 @@
 	}
 
 	.or-divider span {
-		background: #fff;
-		padding: 0 1rem;
-		font-weight: 700;
-		font-size: 0.875rem;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		color: #666;
+		background: rgba(255, 255, 255, 0.9);
+		padding: 0 1.25rem;
+		font-weight: 500;
+		font-size: 0.8rem;
+		text-transform: none;
+		letter-spacing: 0.02em;
+		color: rgba(82, 121, 82, 0.6);
 		position: relative;
+		border-radius: 12px;
+		border: 1px solid rgba(82, 121, 82, 0.15);
+		backdrop-filter: blur(8px);
 	}
 
 	.or-divider::before {
@@ -277,8 +298,8 @@
 		position: absolute;
 		left: 0;
 		right: 0;
-		height: 2px;
-		background: #ddd;
+		height: 1px;
+		background: rgba(82, 121, 82, 0.2);
 		top: 50%;
 		transform: translateY(-50%);
 	}

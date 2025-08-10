@@ -27,20 +27,22 @@
 	}
 
 	.progress-bar {
-		height: 1.25rem;
-		background: #f0f0f0;
-		border: 2px solid #000;
-		border-radius: 6px;
+		height: 1rem;
+		background: rgba(82, 121, 82, 0.1);
+		border: 1px solid rgba(82, 121, 82, 0.2);
+		border-radius: 12px;
 		overflow: hidden;
 		width: 100%;
 		position: relative;
+		backdrop-filter: blur(4px);
 	}
 
 	.progress-bar-fill {
 		height: 100%;
-		background: linear-gradient(90deg, #ffd700 0%, #ffa500 100%);
+		background: linear-gradient(90deg, #527952 0%, #6b8e6b 100%);
 		position: relative;
 		transition: width 0.3s ease;
+		border-radius: 12px;
 	}
 
 	.progress-bar-fill.animated::after {
@@ -53,13 +55,13 @@
 		background: linear-gradient(
 			90deg,
 			transparent 0%,
-			rgba(255, 255, 255, 0.3) 50%,
+			rgba(255, 255, 255, 0.2) 50%,
 			transparent 100%
 		);
-		animation: shimmer 1.5s infinite;
+		animation: gentle-shimmer 2s infinite;
 	}
 
-	@keyframes shimmer {
+	@keyframes gentle-shimmer {
 		0% {
 			transform: translateX(-100%);
 		}

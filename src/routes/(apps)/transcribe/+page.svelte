@@ -331,11 +331,16 @@
 <style>
 	.toolbar-decoration {
 		position: absolute;
-		bottom: -8px;
+		bottom: 0;
 		left: 0;
 		right: 0;
-		height: 4px;
-		background: repeating-linear-gradient(90deg, #000, #000 10px, #98fb98 10px, #98fb98 20px);
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			rgba(82, 121, 82, 0.3) 0%,
+			rgba(107, 142, 107, 0.2) 50%,
+			rgba(82, 121, 82, 0.3) 100%
+		);
 	}
 
 	.main-content {
@@ -344,9 +349,9 @@
 
 	.main-content.disabled,
 	.input-area.disabled {
-		opacity: 0.3;
+		opacity: 0.4;
 		pointer-events: none;
-		filter: grayscale(50%);
+		filter: grayscale(40%);
 	}
 
 	.transcribe-btn {
@@ -354,12 +359,16 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.75rem;
+		gap: 1rem;
 		min-width: 280px;
 		text-align: center;
 		position: relative;
 		overflow: hidden;
-		text-transform: uppercase;
+		text-transform: none;
+		padding: 1.5rem 2.5rem;
+		font-size: 1.25rem;
+		background: linear-gradient(135deg, #527952 0%, #6b8e6b 100%);
+		color: #ffffff;
 	}
 
 	.transcribe-btn::before {
@@ -369,8 +378,8 @@
 		left: -100%;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-		transition: left 0.5s;
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+		transition: left 0.6s;
 	}
 
 	.transcribe-btn:hover:not(:disabled)::before {
@@ -378,24 +387,25 @@
 	}
 
 	.transcribe-btn:disabled {
-		background: #e0e0e0;
+		background: linear-gradient(135deg, #a0a0a0 0%, #b0b0b0 100%);
 		cursor: not-allowed;
 		transform: none;
 		box-shadow: none;
-		opacity: 0.7;
+		opacity: 0.6;
 	}
 
 	.button-icon {
-		font-size: 1.5rem;
+		font-size: 1.25rem;
+		filter: drop-shadow(0 1px 3px rgba(255, 255, 255, 0.3));
 	}
 
 	.loading-spinner {
-		font-size: 1.5rem;
-		animation: spin 1s linear infinite;
+		font-size: 1.25rem;
+		animation: gentle-spin 1.5s linear infinite;
 		display: inline-block;
 	}
 
-	@keyframes spin {
+	@keyframes gentle-spin {
 		from {
 			transform: rotate(0deg);
 		}
@@ -406,62 +416,66 @@
 
 	.primary-button {
 		padding: 1.25rem 2rem;
-		background: #98fb98;
-		color: #000;
-		border: 4px solid #000;
+		background: linear-gradient(135deg, #527952 0%, #6b8e6b 100%);
+		color: #ffffff;
+		border: 1px solid rgba(82, 121, 82, 0.3);
 		cursor: pointer;
 		font-size: 1.5rem;
-		font-weight: 700;
-		transition: all 0.15s;
-		box-shadow: 8px 8px 0 #000;
-		text-transform: uppercase;
-		letter-spacing: 2px;
+		font-weight: 500;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		box-shadow: 0 8px 32px rgba(82, 121, 82, 0.2);
+		text-transform: none;
+		letter-spacing: 0.02em;
 		font-family: 'Space Grotesk', monospace;
+		border-radius: 16px;
 	}
 
 	.primary-button:hover:not(:disabled) {
-		transform: translate(-4px, -4px);
-		box-shadow: 12px 12px 0 #000;
-		background: #ffd93d;
+		transform: translateY(-4px);
+		box-shadow: 0 16px 64px rgba(82, 121, 82, 0.3);
+		background: linear-gradient(135deg, #6b8e6b 0%, #7da47d 100%);
 	}
 
 	.primary-button:active:not(:disabled) {
-		transform: translate(0);
-		box-shadow: 4px 4px 0 #000;
+		transform: translateY(0);
+		box-shadow: 0 4px 16px rgba(82, 121, 82, 0.2);
 	}
 
 	.disclaimer {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
-		margin-top: 1rem;
-		font-size: 0.9375rem;
-		font-weight: 600;
-		color: #000;
+		gap: 0.75rem;
+		margin-top: 1.25rem;
+		font-size: 0.9rem;
+		font-weight: 400;
+		color: rgba(82, 121, 82, 0.7);
 		text-align: center;
-		background: #ff69b4;
-		padding: 0.75rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(1deg);
+		background: rgba(255, 255, 255, 0.8);
+		padding: 1rem 1.5rem;
+		border: 1px solid rgba(82, 121, 82, 0.2);
+		box-shadow: 0 4px 16px rgba(82, 121, 82, 0.1);
 		width: fit-content;
 		margin-left: auto;
 		margin-right: auto;
+		border-radius: 12px;
+		backdrop-filter: blur(8px);
+		line-height: 1.5;
 	}
 
 	.disclaimer-icon {
-		font-size: 1.25rem;
+		font-size: 1.125rem;
+		filter: drop-shadow(0 1px 3px rgba(82, 121, 82, 0.2));
 	}
 
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
-			transform: translateY(20px) rotate(-1deg);
+			transform: translateY(15px);
 		}
 		to {
 			opacity: 1;
-			transform: translateY(0) rotate(-0.5deg);
+			transform: translateY(0);
 		}
 	}
 
