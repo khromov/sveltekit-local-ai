@@ -259,10 +259,32 @@
 	});
 </script>
 
-<div class="card-interface" style="animation: fadeIn 0.5s ease-out;">
+<div class="card-interface" style="animation: fadeIn 0.6s ease-out;">
 	<div class="toolbar">
-		<span class="model-info">Whisper Audio Transcription</span>
-		<div class="toolbar-decoration"></div>
+		<span class="model-info">
+			<svg viewBox="0 0 16 16" width="16" height="16" class="model-icon">
+				<path
+					d="M8,2 L14,6 L8,10 L2,6 Z"
+					fill="var(--cream)"
+					stroke="var(--earth-dark)"
+					stroke-width="1"
+					opacity="0.8"
+				/>
+				<ellipse cx="8" cy="10" rx="6" ry="2" fill="var(--earth-dark)" opacity="0.4" />
+			</svg>
+			Audio Transcription
+		</span>
+		<div class="toolbar-decoration">
+			<svg viewBox="0 0 40 6" width="40" height="6">
+				<path
+					d="M0,3 Q10,1 20,3 T40,3"
+					stroke="var(--cream)"
+					stroke-width="1"
+					fill="none"
+					opacity="0.6"
+				/>
+			</svg>
+		</div>
 	</div>
 
 	<div class="content-area">
@@ -313,40 +335,75 @@
 			class="transcribe-btn primary-button"
 		>
 			{#if isTranscribing}
-				<span class="loading-spinner">◐</span>
+				<svg viewBox="0 0 20 20" width="20" height="20" class="loading-spinner">
+					<circle
+						cx="10"
+						cy="10"
+						r="6"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						opacity="0.3"
+					/>
+					<path d="M10 4 A 6 6 0 0 1 16 10" stroke="currentColor" stroke-width="2" fill="none">
+						<animateTransform
+							attributeName="transform"
+							type="rotate"
+							values="0 10 10;360 10 10"
+							dur="1s"
+							repeatCount="indefinite"
+						/>
+					</path>
+				</svg>
 				Transcribing...
 			{:else}
-				<span class="button-icon">▶</span>
-				Start Transcription
+				<svg viewBox="0 0 20 20" width="20" height="20" class="button-icon">
+					<polygon points="8,5 8,15 15,10" fill="currentColor" />
+				</svg>
+				Begin Transcription
 			{/if}
 		</button>
 
 		<div class="disclaimer">
-			<span class="disclaimer-icon">🔒</span>
-			Transcription is performed locally in your browser. Results may not always be accurate.
+			<svg viewBox="0 0 12 12" width="12" height="12" class="disclaimer-icon">
+				<circle
+					cx="6"
+					cy="6"
+					r="4"
+					fill="none"
+					stroke="var(--earth-dark)"
+					stroke-width="1"
+					opacity="0.6"
+				/>
+				<path d="M4,6 L8,6 M6,4 L6,8" stroke="var(--earth-dark)" stroke-width="1" opacity="0.6" />
+			</svg>
+			Transcription happens locally in your browser. Audio never leaves your device.
 		</div>
 	</div>
 </div>
 
 <style>
+	.model-icon {
+		margin-right: 0.5rem;
+		filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+	}
+
 	.toolbar-decoration {
 		position: absolute;
-		bottom: -8px;
-		left: 0;
-		right: 0;
-		height: 4px;
-		background: repeating-linear-gradient(90deg, #000, #000 10px, #98fb98 10px, #98fb98 20px);
+		bottom: -3px;
+		right: 1rem;
+		opacity: 0.8;
 	}
 
 	.main-content {
-		transition: all 0.3s ease;
+		transition: all 0.4s ease;
 	}
 
 	.main-content.disabled,
 	.input-area.disabled {
-		opacity: 0.3;
+		opacity: 0.4;
 		pointer-events: none;
-		filter: grayscale(50%);
+		filter: grayscale(30%);
 	}
 
 	.transcribe-btn {
@@ -355,11 +412,12 @@
 		align-items: center;
 		justify-content: center;
 		gap: 0.75rem;
-		min-width: 280px;
+		min-width: 240px;
 		text-align: center;
 		position: relative;
 		overflow: hidden;
-		text-transform: uppercase;
+		font-size: 1.1rem;
+		padding: 1.25rem 2rem;
 	}
 
 	.transcribe-btn::before {
@@ -369,8 +427,8 @@
 		left: -100%;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-		transition: left 0.5s;
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+		transition: left 0.6s ease;
 	}
 
 	.transcribe-btn:hover:not(:disabled)::before {
@@ -378,56 +436,16 @@
 	}
 
 	.transcribe-btn:disabled {
-		background: #e0e0e0;
+		background: var(--stone);
 		cursor: not-allowed;
 		transform: none;
 		box-shadow: none;
-		opacity: 0.7;
+		opacity: 0.6;
 	}
 
-	.button-icon {
-		font-size: 1.5rem;
-	}
-
+	.button-icon,
 	.loading-spinner {
-		font-size: 1.5rem;
-		animation: spin 1s linear infinite;
-		display: inline-block;
-	}
-
-	@keyframes spin {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-
-	.primary-button {
-		padding: 1.25rem 2rem;
-		background: #98fb98;
-		color: #000;
-		border: 4px solid #000;
-		cursor: pointer;
-		font-size: 1.5rem;
-		font-weight: 700;
-		transition: all 0.15s;
-		box-shadow: 8px 8px 0 #000;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		font-family: 'Space Grotesk', monospace;
-	}
-
-	.primary-button:hover:not(:disabled) {
-		transform: translate(-4px, -4px);
-		box-shadow: 12px 12px 0 #000;
-		background: #ffd93d;
-	}
-
-	.primary-button:active:not(:disabled) {
-		transform: translate(0);
-		box-shadow: 4px 4px 0 #000;
+		filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 	}
 
 	.disclaimer {
@@ -436,52 +454,47 @@
 		justify-content: center;
 		gap: 0.5rem;
 		margin-top: 1rem;
-		font-size: 0.9375rem;
-		font-weight: 600;
-		color: #000;
+		font-size: 0.85rem;
+		font-weight: 400;
+		color: var(--text-light);
 		text-align: center;
-		background: #ff69b4;
-		padding: 0.75rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(1deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
+		font-style: italic;
+		line-height: 1.4;
+		letter-spacing: 0.01em;
 	}
 
 	.disclaimer-icon {
-		font-size: 1.25rem;
+		flex-shrink: 0;
+		opacity: 0.7;
 	}
 
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
-			transform: translateY(20px) rotate(-1deg);
+			transform: translateY(20px);
 		}
 		to {
 			opacity: 1;
-			transform: translateY(0) rotate(-0.5deg);
+			transform: translateY(0);
 		}
 	}
 
 	@media (max-width: 600px) {
 		.main-content.disabled,
 		.input-area.disabled {
-			opacity: 0.3;
+			opacity: 0.4;
 			pointer-events: none;
 		}
 
 		.transcribe-btn {
 			min-width: auto;
 			width: 100%;
-			font-size: 1.25rem;
-			padding: 1rem 1.5rem;
+			font-size: 1rem;
+			padding: 1rem 1.75rem;
 		}
 
 		.disclaimer {
-			font-size: 0.875rem;
-			padding: 0.625rem 0.875rem;
+			font-size: 0.8rem;
 		}
 	}
 </style>

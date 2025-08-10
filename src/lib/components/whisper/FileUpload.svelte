@@ -73,16 +73,28 @@
 		role="button"
 		tabindex="0"
 	>
-		<div class="upload-decoration"></div>
+		<div class="upload-decoration">
+			<svg viewBox="0 0 80 80" width="80" height="80">
+				<path
+					d="M20,40 Q40,20 60,40 Q40,60 20,40"
+					fill="none"
+					stroke="var(--clay)"
+					stroke-width="2"
+					opacity="0.3"
+				/>
+				<circle cx="30" cy="30" r="2" fill="var(--sage)" opacity="0.5" />
+				<circle cx="50" cy="50" r="1.5" fill="var(--earth-dark)" opacity="0.6" />
+			</svg>
+		</div>
 		<div class="upload-content">
 			<svg
 				class="upload-icon"
 				viewBox="0 0 24 24"
-				width="48"
-				height="48"
+				width="40"
+				height="40"
 				fill="none"
 				stroke="currentColor"
-				stroke-width="3"
+				stroke-width="1.5"
 			>
 				<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
 				<polyline points="7,10 12,15 17,10"></polyline>
@@ -90,7 +102,24 @@
 			</svg>
 			<p class="upload-text">
 				{#if selectedFile}
-					<span class="file-icon">📎</span>
+					<svg viewBox="0 0 16 16" width="16" height="16" class="file-icon">
+						<rect
+							x="3"
+							y="2"
+							width="10"
+							height="12"
+							rx="2"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.5"
+						/>
+						<path
+							d="M6,6 L10,6 M6,8 L10,8 M6,10 L8,10"
+							stroke="currentColor"
+							stroke-width="1"
+							opacity="0.7"
+						/>
+					</svg>
 					{selectedFile.name}
 				{:else}
 					Drop your audio file here
@@ -109,7 +138,7 @@
 
 <style>
 	.file-upload {
-		margin-top: 1rem;
+		margin-top: 1.25rem;
 	}
 
 	.file-upload input[type='file'] {
@@ -120,51 +149,66 @@
 		display: block;
 		position: relative;
 		min-height: 140px;
-		background: #fff;
-		border: 4px dashed #000;
+		background: rgba(245, 241, 235, 0.6);
+		backdrop-filter: blur(10px);
+		border: 2px dashed var(--earth-medium);
 		cursor: pointer;
-		transition: all 0.15s ease;
+		transition: all 0.3s ease;
 		overflow: hidden;
-		transform: rotate(-0.5deg);
-		box-shadow: 5px 5px 0 #000;
+		border-radius: 1.5rem;
+		box-shadow:
+			0 4px 15px rgba(139, 111, 71, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.6);
 	}
 
 	.file-upload-label:hover:not(.disabled) {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 7px 7px 0 #000;
-		background: #fffacd;
+		transform: translateY(-2px);
+		box-shadow:
+			0 6px 20px rgba(139, 111, 71, 0.15),
+			inset 0 1px 0 rgba(255, 255, 255, 0.8);
+		background: rgba(245, 241, 235, 0.8);
+		border-color: var(--mocha-mousse);
 	}
 
 	.file-upload-label.has-file {
-		background: #98fb98;
+		background: linear-gradient(135deg, rgba(156, 175, 136, 0.2) 0%, rgba(245, 241, 235, 0.8) 100%);
 		border-style: solid;
+		border-color: var(--sage);
 	}
 
 	.file-upload-label.disabled {
 		cursor: not-allowed;
 		opacity: 0.6;
-		background: #e0e0e0;
+		background: rgba(168, 160, 144, 0.3);
 	}
 
 	.file-upload-label.dragging {
-		background: #ffd93d;
+		background: linear-gradient(135deg, rgba(193, 154, 107, 0.2) 0%, rgba(245, 241, 235, 0.9) 100%);
 		border-style: solid;
-		border-color: #000;
-		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 8px 8px 0 #000;
+		border-color: var(--clay);
+		transform: translateY(-3px);
+		box-shadow:
+			0 8px 25px rgba(139, 111, 71, 0.2),
+			inset 0 1px 0 rgba(255, 255, 255, 0.9);
 	}
 
 	.upload-decoration {
 		position: absolute;
-		top: 10px;
-		right: 10px;
-		width: 60px;
-		height: 60px;
-		background: #ff69b4;
-		border: 3px solid #000;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		opacity: 0.3;
-		transform: rotate(45deg);
+		top: -15px;
+		right: -15px;
+		opacity: 0.6;
+		z-index: 0;
+		animation: gentleFloat 8s ease-in-out infinite;
+	}
+
+	@keyframes gentleFloat {
+		0%,
+		100% {
+			transform: translateY(0) rotate(0deg);
+		}
+		50% {
+			transform: translateY(-8px) rotate(10deg);
+		}
 	}
 
 	.upload-content {
@@ -180,52 +224,67 @@
 	}
 
 	.upload-icon {
-		color: #000;
+		color: var(--text-primary);
 		margin-bottom: 1rem;
-		animation: float 3s ease-in-out infinite;
+		animation: gentleBounce 3s ease-in-out infinite;
+		opacity: 0.8;
 	}
 
-	@keyframes float {
+	@keyframes gentleBounce {
 		0%,
 		100% {
 			transform: translateY(0);
 		}
 		50% {
-			transform: translateY(-10px);
+			transform: translateY(-5px);
 		}
 	}
 
 	.upload-text {
-		font-size: 1.125rem;
-		color: #000;
-		margin: 0 0 0.5rem 0;
+		font-size: 1rem;
+		color: var(--text-primary);
+		margin: 0 0 0.75rem 0;
 		text-align: center;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 1px;
+		font-weight: 600;
+		letter-spacing: 0.02em;
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: 0.75rem;
+		line-height: 1.4;
 	}
 
 	.file-icon {
-		font-size: 1.25rem;
+		color: var(--mocha-mousse);
+		opacity: 0.8;
+		flex-shrink: 0;
 	}
 
 	.upload-hint {
-		font-size: 0.9375rem;
-		color: #333;
+		font-size: 0.9rem;
+		color: var(--text-secondary);
 		margin: 0;
 		text-align: center;
-		font-weight: 600;
-		background: #ffd93d;
-		padding: 4px 12px;
-		border: 2px solid #000;
-		box-shadow: 3px 3px 0 #000;
+		font-weight: 400;
+		background: rgba(245, 241, 235, 0.8);
+		backdrop-filter: blur(5px);
+		padding: 0.5rem 1rem;
+		border: 1px solid var(--earth-medium);
+		border-radius: 1rem;
+		box-shadow:
+			0 2px 8px rgba(139, 111, 71, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.6);
+		letter-spacing: 0.01em;
+		line-height: 1.3;
 	}
 
 	.file-upload-label.has-file .upload-hint {
-		background: #fff;
+		background: rgba(156, 175, 136, 0.2);
+		border-color: var(--sage);
+	}
+
+	.file-upload-label.dragging .upload-hint {
+		background: rgba(193, 154, 107, 0.2);
+		border-color: var(--clay);
 	}
 
 	@media (max-width: 600px) {
@@ -235,11 +294,17 @@
 		}
 
 		.upload-text {
-			font-size: 1rem;
+			font-size: 0.95rem;
+			flex-direction: column;
+			gap: 0.5rem;
 		}
 
 		.upload-hint {
-			font-size: 0.875rem;
+			font-size: 0.85rem;
+		}
+
+		.upload-decoration {
+			display: none;
 		}
 	}
 </style>

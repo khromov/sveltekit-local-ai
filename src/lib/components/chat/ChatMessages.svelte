@@ -31,13 +31,44 @@
 </script>
 
 <div bind:this={chatContainer} class="chat-messages content-area" id="chat-container">
-	<div class="chat-decoration"></div>
+	<div class="chat-decoration">
+		<svg viewBox="0 0 100 6" width="100%" height="6">
+			<path
+				d="M0,3 Q25,1 50,3 T100,3"
+				stroke="var(--earth-medium)"
+				stroke-width="1"
+				fill="none"
+				opacity="0.4"
+			/>
+		</svg>
+	</div>
 
 	{#if messages.length === 0 || (messages.length === 1 && messages[0].role === 'system')}
 		<div class="empty-state">
-			<div class="empty-icon">💬</div>
-			<h3>Start a Conversation</h3>
-			<p>Type a message below to begin chatting with AI</p>
+			<div class="empty-decoration">
+				<svg viewBox="0 0 120 120" width="120" height="120">
+					<circle
+						cx="60"
+						cy="60"
+						r="40"
+						fill="none"
+						stroke="var(--sage)"
+						stroke-width="2"
+						opacity="0.3"
+					/>
+					<circle cx="45" cy="50" r="3" fill="var(--clay)" opacity="0.6" />
+					<circle cx="75" cy="50" r="3" fill="var(--clay)" opacity="0.6" />
+					<path
+						d="M50,75 Q60,85 70,75"
+						stroke="var(--earth-dark)"
+						stroke-width="2"
+						fill="none"
+						opacity="0.5"
+					/>
+				</svg>
+			</div>
+			<h3>Begin Your Conversation</h3>
+			<p>Share your thoughts, ask questions, or explore ideas together</p>
 		</div>
 	{:else}
 		{#each messages as message, i (i)}
@@ -49,15 +80,20 @@
 <style>
 	.chat-messages {
 		flex: 1 1 auto;
-		min-height: 0; /* critical to allow proper scrolling in flex containers */
+		min-height: 0;
 		overflow: auto;
 		position: relative;
-		background: linear-gradient(135deg, rgba(255, 229, 180, 0.1) 0%, rgba(230, 230, 250, 0.1) 100%);
-		padding-top: 3rem;
+		background: linear-gradient(
+			135deg,
+			rgba(245, 241, 235, 0.4) 0%,
+			rgba(230, 221, 212, 0.3) 50%,
+			rgba(245, 241, 235, 0.4) 100%
+		);
+		padding-top: 2rem;
 		width: 100%;
 		box-sizing: border-box;
-		border-left: 3px solid #000;
-		border-right: 3px solid #000;
+		border-left: 1px solid var(--earth-medium);
+		border-right: 1px solid var(--earth-medium);
 	}
 
 	.chat-decoration {
@@ -65,17 +101,10 @@
 		top: 0;
 		left: 0;
 		right: 0;
-		height: 3px;
-		background: repeating-linear-gradient(
-			90deg,
-			#ffd93d,
-			#ffd93d 10px,
-			#98fb98 10px,
-			#98fb98 20px,
-			#ff69b4 20px,
-			#ff69b4 30px
-		);
+		height: 6px;
 		z-index: 1;
+		padding: 0 1rem;
+		box-sizing: border-box;
 	}
 
 	.empty-state {
@@ -86,9 +115,9 @@
 		height: 100%;
 		min-height: 300px;
 		text-align: center;
-		padding: 2rem;
+		padding: 3rem 2rem;
 		position: relative;
-		animation: fadeIn 0.5s ease-out;
+		animation: fadeIn 0.8s ease-out;
 	}
 
 	@keyframes fadeIn {
@@ -102,81 +131,86 @@
 		}
 	}
 
-	.empty-icon {
-		font-size: 4rem;
-		margin-bottom: 1rem;
-		animation: float 3s ease-in-out infinite;
+	.empty-decoration {
+		margin-bottom: 2rem;
+		animation: gentleFloat 4s ease-in-out infinite;
 	}
 
-	@keyframes float {
+	@keyframes gentleFloat {
 		0%,
 		100% {
-			transform: translateY(0) rotate(-5deg);
+			transform: translateY(0);
 		}
 		50% {
-			transform: translateY(-15px) rotate(5deg);
+			transform: translateY(-8px);
 		}
 	}
 
 	.empty-state h3 {
-		font-size: 1.75rem;
-		font-weight: 700;
-		color: #000;
-		margin: 0 0 0.5rem 0;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		background: #ffd93d;
-		padding: 0.5rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
-		display: inline-block;
-		transform: rotate(-1deg);
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: var(--text-primary);
+		margin: 0 0 0.75rem 0;
+		letter-spacing: 0.02em;
 	}
 
 	.empty-state p {
-		font-size: 1.125rem;
-		color: #666;
-		margin: 0.5rem 0 0 0;
-		font-weight: 500;
+		font-size: 1rem;
+		color: var(--text-secondary);
+		margin: 0;
+		font-weight: 400;
+		max-width: 300px;
+		line-height: 1.6;
+		letter-spacing: 0.01em;
 	}
 
 	.chat-messages::-webkit-scrollbar {
-		width: 12px;
+		width: 8px;
 	}
 
 	.chat-messages::-webkit-scrollbar-track {
-		background: linear-gradient(180deg, #ffd93d 0%, #98fb98 50%, #ff69b4 100%);
-		border: 2px solid #000;
-		border-radius: 6px;
+		background: linear-gradient(
+			180deg,
+			var(--earth-light) 0%,
+			var(--sand) 50%,
+			var(--earth-light) 100%
+		);
+		border-radius: 4px;
+		margin: 4px;
 	}
 
 	.chat-messages::-webkit-scrollbar-thumb {
-		background: #000;
-		border-radius: 6px;
-		border: 2px solid #fff;
-		box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+		background: linear-gradient(180deg, var(--mocha-mousse), var(--clay));
+		border-radius: 4px;
+		border: 1px solid var(--earth-medium);
 	}
 
 	.chat-messages::-webkit-scrollbar-thumb:hover {
-		background: #333;
+		background: linear-gradient(180deg, var(--clay), var(--mocha-mousse));
 	}
 
 	@media (max-width: 600px) {
 		.chat-messages {
 			flex: 1 1 auto;
 			min-height: 0;
+			padding-top: 1.5rem;
 		}
 
-		.empty-icon {
-			font-size: 3rem;
+		.empty-state {
+			padding: 2rem 1.5rem;
+			min-height: 250px;
+		}
+
+		.empty-decoration {
+			margin-bottom: 1.5rem;
 		}
 
 		.empty-state h3 {
-			font-size: 1.5rem;
+			font-size: 1.25rem;
 		}
 
 		.empty-state p {
-			font-size: 1rem;
+			font-size: 0.95rem;
 		}
 	}
 </style>

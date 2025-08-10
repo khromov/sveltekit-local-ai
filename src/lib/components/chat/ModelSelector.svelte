@@ -13,16 +13,48 @@
 </script>
 
 <div class="model-selector">
-	<div class="selector-decoration"></div>
+	<div class="selector-decoration">
+		<svg viewBox="0 0 80 80" width="80" height="80">
+			<circle
+				cx="40"
+				cy="40"
+				r="25"
+				fill="none"
+				stroke="var(--sage)"
+				stroke-width="2"
+				opacity="0.3"
+			/>
+			<circle cx="30" cy="30" r="3" fill="var(--clay)" opacity="0.5" />
+			<circle cx="50" cy="30" r="3" fill="var(--clay)" opacity="0.5" />
+			<circle cx="40" cy="50" r="2" fill="var(--earth-dark)" opacity="0.6" />
+		</svg>
+	</div>
 	<h2>
-		<span class="title-icon">🚀</span>
-		Chat
+		<svg viewBox="0 0 20 20" width="20" height="20" class="title-icon">
+			<circle cx="10" cy="10" r="6" fill="var(--mocha-mousse)" opacity="0.7" />
+			<circle cx="10" cy="10" r="3" fill="var(--cream)" opacity="0.9" />
+		</svg>
+		Conversational AI
 	</h2>
 
 	<div class="select-wrapper">
 		<label class="select-label" for="model-select">
-			<span class="label-icon">📦</span>
-			Choose Model
+			<svg viewBox="0 0 16 16" width="14" height="14" class="label-icon">
+				<rect
+					x="2"
+					y="3"
+					width="12"
+					height="10"
+					rx="2"
+					fill="none"
+					stroke="var(--earth-dark)"
+					stroke-width="1.5"
+				/>
+				<rect x="4" y="6" width="8" height="1" fill="var(--earth-dark)" opacity="0.6" />
+				<rect x="4" y="8" width="6" height="1" fill="var(--earth-dark)" opacity="0.6" />
+				<rect x="4" y="10" width="4" height="1" fill="var(--earth-dark)" opacity="0.6" />
+			</svg>
+			Select Model
 		</label>
 		<select id="model-select" bind:value={modelSelection}>
 			{#each AVAILABLE_MODELS as model (model.url)}
@@ -35,21 +67,25 @@
 
 	<div class="inference-params">
 		<button class="params-toggle" onclick={() => (showParams = !showParams)}>
-			<span class="toggle-emoji">⚙️</span>
-			<span>Advanced Parameters</span>
+			<svg viewBox="0 0 16 16" width="16" height="16" class="toggle-emoji">
+				<circle cx="4" cy="8" r="2" fill="var(--earth-dark)" opacity="0.6" />
+				<circle cx="8" cy="8" r="2" fill="var(--earth-dark)" opacity="0.6" />
+				<circle cx="12" cy="8" r="2" fill="var(--earth-dark)" opacity="0.6" />
+			</svg>
+			<span>Advanced Settings</span>
 			<svg
 				class="toggle-icon"
 				class:rotated={showParams}
-				viewBox="0 0 24 24"
-				width="20"
-				height="20"
+				viewBox="0 0 20 20"
+				width="16"
+				height="16"
 				stroke="currentColor"
 				stroke-width="2"
 				fill="none"
 				stroke-linecap="round"
 				stroke-linejoin="round"
 			>
-				<polyline points="6 9 12 15 18 9"></polyline>
+				<polyline points="6 9 10 13 14 9"></polyline>
 			</svg>
 		</button>
 		{#if showParams}
@@ -78,10 +114,38 @@
 
 	<button onclick={onLoadModel} class="load-button primary-button" disabled={isLoading}>
 		{#if isLoading}
-			<span class="loading-icon">⏳</span>
+			<svg viewBox="0 0 20 20" width="18" height="18" class="loading-icon">
+				<circle
+					cx="10"
+					cy="10"
+					r="6"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					opacity="0.3"
+				/>
+				<path d="M10 4 A 6 6 0 0 1 16 10" stroke="currentColor" stroke-width="2" fill="none">
+					<animateTransform
+						attributeName="transform"
+						type="rotate"
+						values="0 10 10;360 10 10"
+						dur="1s"
+						repeatCount="indefinite"
+					/>
+				</path>
+			</svg>
 			Loading Model...
 		{:else}
-			<span class="button-icon">⚡</span>
+			<svg viewBox="0 0 20 20" width="18" height="18" class="button-icon">
+				<path
+					d="M4,10 L16,10 M12,6 L16,10 L12,14"
+					stroke="currentColor"
+					stroke-width="2"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			</svg>
 			Load Model
 		{/if}
 	</button>
@@ -94,47 +158,41 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
-		padding: 2rem;
-		background: #fff;
-		border: 4px solid #000;
-		box-shadow: 8px 8px 0 #000;
+		padding: 2.5rem;
+		background: rgba(245, 241, 235, 0.9);
+		backdrop-filter: blur(15px);
+		border: 1px solid var(--earth-medium);
+		box-shadow:
+			0 8px 32px rgba(139, 111, 71, 0.15),
+			inset 0 1px 0 rgba(255, 255, 255, 0.8);
 		margin: 0 auto;
-		border-radius: 12px;
-		animation: bounceIn 0.6s ease-out;
+		border-radius: 1.5rem;
+		animation: fadeInUp 0.8s ease-out;
 		box-sizing: border-box;
 		position: relative;
-		transform: rotate(0.5deg);
 	}
 
-	@keyframes bounceIn {
+	@keyframes fadeInUp {
 		0% {
 			opacity: 0;
-			transform: scale(0.9) rotate(-1deg);
-		}
-		50% {
-			transform: scale(1.05) rotate(1deg);
+			transform: translateY(30px);
 		}
 		100% {
 			opacity: 1;
-			transform: scale(1) rotate(0.5deg);
+			transform: translateY(0);
 		}
 	}
 
 	.selector-decoration {
 		position: absolute;
-		top: -15px;
-		left: -15px;
-		width: 100px;
-		height: 100px;
-		background: linear-gradient(135deg, #ffd93d 0%, #98fb98 100%);
-		border: 3px solid #000;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		opacity: 0.3;
-		z-index: -1;
-		animation: spin 15s linear infinite;
+		top: -20px;
+		left: -20px;
+		opacity: 0.6;
+		z-index: 0;
+		animation: gentleRotate 20s linear infinite;
 	}
 
-	@keyframes spin {
+	@keyframes gentleRotate {
 		from {
 			transform: rotate(0deg);
 		}
@@ -144,112 +202,104 @@
 	}
 
 	.model-selector h2 {
-		font-size: 2rem;
-		font-weight: 700;
+		font-size: 1.75rem;
+		font-weight: 600;
 		margin: 0;
-		color: #000;
+		color: var(--text-primary);
 		text-align: center;
-		text-transform: uppercase;
-		letter-spacing: 2px;
+		letter-spacing: 0.02em;
 		font-family: 'Bebas Neue', sans-serif;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
-		background: linear-gradient(135deg, #ffd93d 0%, #98fb98 100%);
-		padding: 0.75rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(-1deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
+		gap: 0.75rem;
+		position: relative;
+		z-index: 1;
 	}
 
 	.title-icon {
-		font-size: 1.75rem;
-		animation: bounce 2s ease-in-out infinite;
-	}
-
-	@keyframes bounce {
-		0%,
-		100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-5px);
-		}
+		filter: drop-shadow(0 2px 4px rgba(139, 111, 71, 0.2));
 	}
 
 	.select-wrapper {
-		margin-top: 1rem;
+		margin-top: 0.5rem;
 		position: relative;
-		transform: rotate(-0.5deg);
 	}
 
 	.select-label {
 		position: absolute;
-		top: -10px;
-		left: 12px;
-		background: #98fb98;
-		padding: 0 8px;
-		font-size: 0.8125rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		color: #000;
+		top: -12px;
+		left: 16px;
+		background: rgba(245, 241, 235, 0.95);
+		padding: 4px 8px;
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.03em;
+		color: var(--text-secondary);
 		z-index: 1;
-		border: 2px solid #000;
-		border-radius: 4px;
+		border: 1px solid var(--earth-medium);
+		border-radius: 0.75rem;
 		display: flex;
 		align-items: center;
-		gap: 0.25rem;
+		gap: 0.375rem;
+		backdrop-filter: blur(5px);
 	}
 
 	.label-icon {
-		font-size: 0.875rem;
+		opacity: 0.7;
 	}
 
 	.model-selector select {
 		width: 100%;
-		padding: 0.875rem 2.5rem 0.875rem 1rem;
-		border: 3px solid #000;
-		border-radius: 6px;
-		font-size: 0.9375rem;
-		font-weight: 600;
-		background: #fff;
-		box-shadow: 5px 5px 0 #000;
+		padding: 1rem 3rem 1rem 1.25rem;
+		border: 1px solid var(--earth-medium);
+		border-radius: 1rem;
+		font-size: 0.95rem;
+		font-weight: 500;
+		background: rgba(245, 241, 235, 0.8);
+		backdrop-filter: blur(10px);
+		box-shadow:
+			0 4px 15px rgba(139, 111, 71, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.8);
 		appearance: none;
-		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%238b6f47' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 8 10 12 14 8'%3e%3c/polyline%3e%3c/svg%3e");
 		background-repeat: no-repeat;
-		background-position: right 0.875rem center;
+		background-position: right 1rem center;
 		background-size: 1.25em;
-		transition: all 0.2s;
+		transition: all 0.3s ease;
 		cursor: pointer;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-family: 'Space Grotesk', 'Georgia', serif;
 		box-sizing: border-box;
+		color: var(--text-primary);
 	}
 
 	.model-selector select:hover {
-		transform: translate(-2px, -2px);
-		box-shadow: 7px 7px 0 #000;
-		background: #fffacd;
+		transform: translateY(-1px);
+		box-shadow:
+			0 6px 20px rgba(139, 111, 71, 0.15),
+			inset 0 1px 0 rgba(255, 255, 255, 0.9);
+		background: rgba(245, 241, 235, 0.95);
 	}
 
 	.model-selector select:focus {
 		outline: none;
-		border-color: #ffd700;
-		background: #fffacd;
+		border-color: var(--mocha-mousse);
+		box-shadow:
+			0 6px 20px rgba(139, 111, 71, 0.2),
+			inset 0 1px 0 rgba(255, 255, 255, 0.9),
+			0 0 0 3px rgba(167, 132, 106, 0.1);
 	}
 
 	.inference-params {
-		background: linear-gradient(135deg, rgba(255, 217, 61, 0.1) 0%, rgba(152, 251, 152, 0.1) 100%);
-		padding: 1.25rem;
-		border: 3px solid #000;
-		border-radius: 8px;
+		background: linear-gradient(135deg, rgba(156, 175, 136, 0.1) 0%, rgba(193, 154, 107, 0.1) 100%);
+		padding: 1.5rem;
+		border: 1px solid var(--earth-medium);
+		border-radius: 1rem;
 		box-sizing: border-box;
-		transform: rotate(0.2deg);
-		box-shadow: 3px 3px 0 #000;
+		box-shadow:
+			inset 0 2px 8px rgba(139, 111, 71, 0.05),
+			0 2px 8px rgba(139, 111, 71, 0.05);
+		backdrop-filter: blur(5px);
 	}
 
 	.params-toggle {
@@ -260,42 +310,28 @@
 		padding: 0.75rem 0;
 		background: none;
 		border: none;
-		font-size: 1rem;
-		font-weight: 700;
-		color: #000;
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: var(--text-primary);
 		cursor: pointer;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
-		transition: color 0.2s;
+		letter-spacing: 0.02em;
+		font-family: 'Space Grotesk', 'Georgia', serif;
+		transition: color 0.3s ease;
 	}
 
 	.toggle-emoji {
-		font-size: 1.25rem;
-		margin-right: 0.5rem;
-		animation: rotate 3s linear infinite;
-	}
-
-	@keyframes rotate {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-
-	.params-toggle:hover .toggle-emoji {
-		animation-duration: 1s;
+		margin-right: 0.75rem;
+		opacity: 0.7;
 	}
 
 	.params-toggle:hover {
-		color: #666;
+		color: var(--mocha-mousse);
 	}
 
 	.toggle-icon {
 		transition: transform 0.3s ease;
 		flex-shrink: 0;
+		opacity: 0.7;
 	}
 
 	.toggle-icon.rotated {
@@ -304,9 +340,9 @@
 
 	.params-grid {
 		display: grid;
-		gap: 1rem;
-		margin-top: 1rem;
-		animation: slideDown 0.3s ease-out;
+		gap: 1.25rem;
+		margin-top: 1.25rem;
+		animation: slideDown 0.4s ease-out;
 	}
 
 	@keyframes slideDown {
@@ -323,95 +359,92 @@
 	.param-item {
 		display: flex;
 		flex-direction: column;
-		gap: 0.375rem;
+		gap: 0.5rem;
 	}
 
 	.param-label {
-		font-size: 0.875rem;
-		font-weight: 700;
-		color: #000;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--text-primary);
+		letter-spacing: 0.02em;
 	}
 
 	.param-hint {
 		font-size: 0.75rem;
-		color: #666;
+		color: var(--text-light);
 		font-weight: 400;
-		text-transform: none;
-		letter-spacing: 0;
+		font-style: italic;
 	}
 
 	.inference-params input {
-		padding: 0.625rem 0.75rem;
-		border: 2px solid #000;
-		border-radius: 4px;
-		font-size: 0.9375rem;
-		font-weight: 600;
-		background: #fff;
-		transition: all 0.2s;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
+		padding: 0.75rem 1rem;
+		border: 1px solid var(--earth-medium);
+		border-radius: 0.75rem;
+		font-size: 0.95rem;
+		font-weight: 500;
+		background: rgba(245, 241, 235, 0.8);
+		backdrop-filter: blur(5px);
+		transition: all 0.3s ease;
+		font-family: 'Space Grotesk', 'Georgia', serif;
 		box-sizing: border-box;
 		width: 100%;
-		box-shadow: 2px 2px 0 #000;
+		box-shadow:
+			inset 0 2px 4px rgba(139, 111, 71, 0.05),
+			0 1px 3px rgba(139, 111, 71, 0.1);
+		color: var(--text-primary);
 	}
 
 	.inference-params input:hover {
-		transform: translate(-1px, -1px);
-		box-shadow: 3px 3px 0 #000;
+		transform: translateY(-1px);
+		box-shadow:
+			inset 0 2px 4px rgba(139, 111, 71, 0.05),
+			0 2px 8px rgba(139, 111, 71, 0.15);
+		background: rgba(245, 241, 235, 0.95);
 	}
 
 	.inference-params input:focus {
 		outline: none;
-		border-color: #ffd700;
-		background: #fffacd;
+		border-color: var(--mocha-mousse);
+		box-shadow:
+			inset 0 2px 4px rgba(139, 111, 71, 0.05),
+			0 2px 8px rgba(139, 111, 71, 0.2),
+			0 0 0 3px rgba(167, 132, 106, 0.1);
 	}
 
 	.load-button {
-		padding: 1rem 1.5rem;
-		font-size: 1.125rem;
+		padding: 1.25rem 2rem;
+		font-size: 1.1rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
-		margin: 0 auto;
-		background: #98fb98;
-		transform: rotate(-1deg);
-	}
-
-	.load-button:hover:not(:disabled) {
-		background: #ffd93d;
-		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 8px 8px 0 #000;
+		gap: 0.75rem;
+		margin: 0.5rem auto 0;
+		min-width: 200px;
 	}
 
 	.load-button:disabled {
-		animation: pulse 2s ease-in-out infinite;
+		animation: gentlePulse 2s ease-in-out infinite;
 	}
 
-	@keyframes pulse {
+	@keyframes gentlePulse {
 		0%,
 		100% {
 			opacity: 1;
 		}
 		50% {
-			opacity: 0.7;
+			opacity: 0.8;
 		}
 	}
 
 	.button-icon,
 	.loading-icon {
-		font-size: 1.5rem;
-	}
-
-	.loading-icon {
-		animation: spin 1s linear infinite;
+		filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 	}
 
 	@media (max-width: 600px) {
 		.model-selector {
 			width: calc(100% - 2rem);
-			padding: 1.5rem 1rem;
+			padding: 1.75rem 1.5rem;
 			max-width: none;
 			margin: 0 1rem;
 		}
@@ -421,26 +454,27 @@
 		}
 
 		.model-selector select {
-			font-size: 0.875rem;
-			padding: 0.75rem 2.25rem 0.75rem 0.875rem;
+			font-size: 0.9rem;
+			padding: 0.875rem 2.5rem 0.875rem 1rem;
 		}
 
 		.inference-params {
-			padding: 1rem;
+			padding: 1.25rem;
 		}
 
 		.param-label {
-			font-size: 0.8125rem;
+			font-size: 0.8rem;
 		}
 
 		.inference-params input {
-			padding: 0.5rem 0.625rem;
-			font-size: 0.875rem;
+			padding: 0.625rem 0.875rem;
+			font-size: 0.9rem;
 		}
 
 		.load-button {
 			font-size: 1rem;
-			padding: 0.875rem 1.25rem;
+			padding: 1rem 1.75rem;
+			min-width: 180px;
 		}
 
 		.selector-decoration {
@@ -452,7 +486,7 @@
 		.model-selector {
 			width: calc(100% - 1rem);
 			margin: 0 0.5rem;
-			padding: 1.25rem 0.75rem;
+			padding: 1.5rem 1rem;
 		}
 
 		.model-selector h2 {

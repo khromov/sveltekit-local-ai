@@ -14,33 +14,44 @@
 			class="progress-bar-fill"
 			class:animated
 			style="width: {progress}%; transition: width {animated && progress > previousProgress
-				? '0.3s'
-				: '0s'} ease"
+				? '0.4s'
+				: '0s'} ease-out"
 		></div>
+		<div class="progress-bar-glow"></div>
 	</div>
 </div>
 
 <style>
 	.progress-container {
 		width: 100%;
-		margin: 0.5rem 0;
+		margin: 0.75rem 0;
 	}
 
 	.progress-bar {
-		height: 1.25rem;
-		background: #f0f0f0;
-		border: 2px solid #000;
-		border-radius: 6px;
+		height: 1rem;
+		background: linear-gradient(
+			90deg,
+			rgba(168, 160, 144, 0.2) 0%,
+			rgba(230, 221, 212, 0.3) 50%,
+			rgba(168, 160, 144, 0.2) 100%
+		);
+		border: 1px solid var(--earth-medium);
+		border-radius: 1rem;
 		overflow: hidden;
 		width: 100%;
 		position: relative;
+		box-shadow:
+			inset 0 2px 4px rgba(139, 111, 71, 0.1),
+			0 1px 3px rgba(139, 111, 71, 0.1);
 	}
 
 	.progress-bar-fill {
 		height: 100%;
-		background: linear-gradient(90deg, #ffd700 0%, #ffa500 100%);
+		background: linear-gradient(90deg, var(--mocha-mousse) 0%, var(--clay) 50%, var(--sage) 100%);
 		position: relative;
-		transition: width 0.3s ease;
+		transition: width 0.4s ease-out;
+		border-radius: 1rem;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
 	}
 
 	.progress-bar-fill.animated::after {
@@ -53,10 +64,33 @@
 		background: linear-gradient(
 			90deg,
 			transparent 0%,
-			rgba(255, 255, 255, 0.3) 50%,
+			rgba(255, 255, 255, 0.4) 50%,
 			transparent 100%
 		);
-		animation: shimmer 1.5s infinite;
+		animation: shimmer 2s ease-in-out infinite;
+		border-radius: 1rem;
+	}
+
+	.progress-bar-glow {
+		position: absolute;
+		top: -2px;
+		left: -2px;
+		right: -2px;
+		bottom: -2px;
+		background: linear-gradient(
+			90deg,
+			transparent 0%,
+			rgba(167, 132, 106, 0.3) 50%,
+			transparent 100%
+		);
+		border-radius: 1rem;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+		z-index: -1;
+	}
+
+	.progress-bar:hover .progress-bar-glow {
+		opacity: 1;
 	}
 
 	@keyframes shimmer {
