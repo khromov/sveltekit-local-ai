@@ -1,5 +1,6 @@
 import singleThreaded from '@wllama/wllama/src/single-thread/wllama.wasm?url';
 import multiThreaded from '@wllama/wllama/src/multi-thread/wllama.wasm?url';
+import { BASE_MODEL_URL } from './config';
 
 export const WLLAMA_CONFIG_PATHS = {
 	'single-thread/wllama.wasm': singleThreaded,
@@ -19,13 +20,13 @@ export const DEFAULT_CHAT_TEMPLATE =
 
 export const AVAILABLE_MODELS = [
 	{
-		url: 'https://files.khromov.se/models/google_gemma-3-1b-it-qat-Q4_0.gguf',
+		url: `${BASE_MODEL_URL}/models/google_gemma-3-1b-it-qat-Q4_0.gguf`,
 		name: 'Gemma3 1B',
 		longName: 'Gemma3 1B (bartowski/google_gemma-3-1b-it-qat-GGUF q4_0)',
 		size: 757071872
 	},
 	{
-		url: 'https://files.khromov.se/models/smollm2-360m-instruct-q8_0.gguf',
+		url: `${BASE_MODEL_URL}/models/smollm2-360m-instruct-q8_0.gguf`,
 		name: 'SmolLM2 360M',
 		longName: 'SmolLM2 360M (ngxson/SmolLM2-360M-Instruct-Q8_0-GGUF q8_0)',
 		size: 386404992

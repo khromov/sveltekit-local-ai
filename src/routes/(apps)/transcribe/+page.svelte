@@ -5,6 +5,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { whisperModel } from '$lib/stores';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
+	import { BASE_MODEL_URL } from '$lib/config';
 
 	import WhisperModelSelector from '$lib/components/whisper/WhisperModelSelector.svelte';
 	import TranscribeOptions from '$lib/components/whisper/TranscribeOptions.svelte';
@@ -52,30 +53,30 @@
 	let stuckCheckInterval: number | null = null;
 	let isStuck = $state(false);
 
-	const DEFAULT_MODEL = 'https://files.khromov.se/whisper/ggml-tiny-q5_1.bin';
+	const DEFAULT_MODEL = `${BASE_MODEL_URL}/whisper/ggml-tiny-q5_1.bin`;
 
 	let selectedModel = $state($whisperModel || DEFAULT_MODEL);
 	const availableModels = [
 		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' },
 		{
-			path: 'https://files.khromov.se/whisper/ggml-tiny.en-q5_1.bin',
+			path: `${BASE_MODEL_URL}/whisper/ggml-tiny.en-q5_1.bin`,
 			name: 'Whisper Tiny English (q5_1)'
 		},
-		{ path: 'https://files.khromov.se/whisper/ggml-small-q5_1.bin', name: 'Whisper Small (q5_1)' },
+		{ path: `${BASE_MODEL_URL}/whisper/ggml-small-q5_1.bin`, name: 'Whisper Small (q5_1)' },
 		{
-			path: 'https://files.khromov.se/whisper/ggml-small.en-q5_1.bin',
+			path: `${BASE_MODEL_URL}/whisper/ggml-small.en-q5_1.bin`,
 			name: 'Whisper Small English (q5_1)'
 		},
 		{
-			path: 'https://files.khromov.se/whisper/ggml-medium-q5_0.bin',
+			path: `${BASE_MODEL_URL}/whisper/ggml-medium-q5_0.bin`,
 			name: 'Whisper Medium (q5_0)'
 		},
 		{
-			path: 'https://files.khromov.se/whisper/ggml-medium.en-q5_0.bin',
+			path: `${BASE_MODEL_URL}/whisper/ggml-medium.en-q5_0.bin`,
 			name: 'Whisper Medium English (q5_0)'
 		},
 		{
-			path: 'https://files.khromov.se/whisper/ggml-large-v2-q5_0.bin',
+			path: `${BASE_MODEL_URL}/whisper/ggml-large-v2-q5_0.bin`,
 			name: 'Whisper Large (q5_0)'
 		}
 	];

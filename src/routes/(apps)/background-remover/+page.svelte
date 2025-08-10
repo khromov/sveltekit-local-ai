@@ -2,6 +2,7 @@
 	import { AutoModel, AutoProcessor, RawImage, env } from '@huggingface/transformers';
 	import { onMount, onDestroy } from 'svelte';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
+	import { BASE_MODEL_URL } from '$lib/config';
 	import JSZip from 'jszip';
 
 	import BackgroundRemoverFileUpload from '$lib/components/background-remover/BackgroundRemoverFileUpload.svelte';
@@ -63,7 +64,7 @@
 			await requestWakeLock();
 
 			// Configure custom model URL
-			env.remoteHost = 'https://files.khromov.se/bgremoval/';
+			env.remoteHost = `${BASE_MODEL_URL}/bgremoval/`;
 			env.remotePathTemplate = '{model}/';
 
 			// Load model and processor

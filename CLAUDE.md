@@ -71,7 +71,7 @@ Key persisted stores:
 
 - Default chat template uses ChatML format (`<|im_start|>` tokens)
 - Inference parameters: 4096 context, temperature 0.2, auto-threading
-- Models served from external CDN (https://files.khromov.se/models/)
+- Models served from external CDN (configured via BASE_MODEL_URL in src/lib/config.ts)
 
 ### Browser Compatibility
 
