@@ -24,6 +24,13 @@
 	// Mode selection
 	let processingMode = $state<'single' | 'batch'>('single');
 
+	// Model selection
+	const AVAILABLE_MODELS = [
+		{ id: 'RMBG-1.4', name: 'RMBG v1.4', description: 'Original background removal model' },
+		{ id: 'RMBG-2.0', name: 'RMBG v2.0', description: 'Improved background removal model' }
+	];
+	let selectedModelId = $state('RMBG-1.4');
+
 	// Single image mode
 	let selectedFile: File | null = $state(null);
 	let processedImageUrl = $state<string | null>(null);
@@ -69,12 +76,12 @@
 
 			// Load model and processor
 			modelLoadProgress = 25;
-			model = await AutoModel.from_pretrained('RMBG-1.4', {
+			model = await AutoModel.from_pretrained(selectedModelId, {
 				config: { model_type: 'custom' } as any
 			});
 
 			modelLoadProgress = 75;
-			processor = await AutoProcessor.from_pretrained('RMBG-1.4', {
+			processor = await AutoProcessor.from_pretrained(selectedModelId, {
 				config: {
 					do_normalize: true,
 					do_pad: false,
@@ -296,6 +303,20 @@
 		}
 	}
 
+	function handleModelChange(newModelId: string) {
+		if (newModelId !== selectedModelId) {
+			selectedModelId = newModelId;
+			// Clear existing results
+			clearResults();
+			// Reset model state
+			isModelLoaded = false;
+			model = null;
+			processor = null;
+			// Load new model
+			loadModel();
+		}
+	}
+
 	onDestroy(() => {
 		if (processedImageUrl) {
 			URL.revokeObjectURL(processedImageUrl);
@@ -338,7 +359,7 @@
 		<div class="toolbar">
 			<span class="model-info">
 				<span class="model-emoji">🖼️</span>
-				Background Remover (RMBG v1.4)
+				Background Remover ({AVAILABLE_MODELS.find((m) => m.id === selectedModelId)?.name})
 			</span>
 			<button onclick={clearResults} class="clear-btn" aria-label="Clear Results">
 				<span class="btn-emoji">🗑️</span>
@@ -348,6 +369,26 @@
 		</div>
 
 		<div class="content-area">
+			<!-- Model Selection -->
+			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
+				<div class="model-selection">
+					<h3>Model Selection</h3>
+					<div class="model-buttons">
+						{#each AVAILABLE_MODELS as modelOption (modelOption.id)}
+							<button
+								class="model-btn"
+								class:active={selectedModelId === modelOption.id}
+								onclick={() => handleModelChange(modelOption.id)}
+								disabled={isLoadingModel}
+							>
+								<span class="model-name">{modelOption.name}</span>
+								<span class="model-description">{modelOption.description}</span>
+							</button>
+						{/each}
+					</div>
+				</div>
+			{/if}
+
 			<!-- Mode Selection -->
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
 				<div class="mode-selection">
@@ -647,6 +688,100 @@
 		font-size: 2rem;
 	}
 
+	/* Model Selection */
+	.model-selection {
+		background: #fff;
+		border: 4px solid #000;
+		padding: 1.5rem;
+		box-shadow: 6px 6px 0 #000;
+		margin-bottom: 1.5rem;
+		position: relative;
+		transform: rotate(0.2deg);
+		animation: slideIn 0.4s ease-out;
+	}
+
+	.model-selection h3 {
+		margin-top: 0;
+		margin-bottom: 1rem;
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.5rem;
+		color: #000;
+		text-align: center;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		background: #ff69b4;
+		padding: 0.5rem 1rem;
+		border: 3px solid #000;
+		box-shadow: 4px 4px 0 #000;
+		transform: rotate(-1deg);
+		width: fit-content;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.model-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+	}
+
+	.model-btn {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 1.5rem;
+		background: #f8f8f8;
+		border: 3px solid #000;
+		border-radius: 8px;
+		cursor: pointer;
+		font-size: 0.875rem;
+		font-weight: 600;
+		transition: all 0.2s;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		box-shadow: 4px 4px 0 #000;
+		min-width: 160px;
+		text-align: center;
+	}
+
+	.model-btn:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
+	}
+
+	.model-btn:not(:disabled):hover {
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 #000;
+		background: #e8e8e8;
+	}
+
+	.model-btn.active {
+		background: #ffd93d;
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 #000;
+	}
+
+	.model-btn.active:not(:disabled):hover {
+		background: #ffcc00;
+	}
+
+	.model-name {
+		font-size: 1rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		color: #000;
+	}
+
+	.model-description {
+		font-size: 0.75rem;
+		color: #666;
+		text-transform: none;
+		letter-spacing: 0;
+		font-weight: 400;
+		line-height: 1.2;
+	}
+
 	@media (max-width: 600px) {
 		.loading {
 			align-items: stretch;
@@ -663,12 +798,14 @@
 			display: none;
 		}
 
-		.mode-buttons {
+		.mode-buttons,
+		.model-buttons {
 			flex-direction: column;
 			gap: 0.75rem;
 		}
 
-		.mode-btn {
+		.mode-btn,
+		.model-btn {
 			min-width: auto;
 			width: 100%;
 		}
