@@ -241,19 +241,68 @@
 	</div>
 {:else}
 	<div class="card-interface chat-interface">
-		<div class="floating-decoration decoration-1"></div>
-		<div class="floating-decoration decoration-2"></div>
+		<!-- Nature decorations -->
+		<svg class="floating-decoration decoration-1" width="60" height="60" viewBox="0 0 60 60">
+			<g opacity="0.1">
+				<circle
+					cx="30"
+					cy="30"
+					r="25"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1"
+					stroke-dasharray="2 4"
+				/>
+				<path
+					d="M30,10 Q25,20 25,30 Q25,40 30,50 Q35,40 35,30 Q35,20 30,10"
+					fill="currentColor"
+					opacity="0.3"
+				/>
+			</g>
+		</svg>
+
+		<svg class="floating-decoration decoration-2" width="50" height="50" viewBox="0 0 50 50">
+			<g opacity="0.1">
+				<circle cx="25" cy="25" r="20" fill="currentColor" opacity="0.2" />
+				<circle cx="25" cy="25" r="15" fill="none" stroke="currentColor" stroke-width="1" />
+				<circle cx="25" cy="25" r="5" fill="currentColor" opacity="0.3" />
+			</g>
+		</svg>
 
 		<div class="toolbar">
 			<span class="model-info">
-				<span class="model-emoji">🤖</span>
+				<svg
+					width="18"
+					height="18"
+					viewBox="0 0 18 18"
+					fill="none"
+					style="display: inline-block; vertical-align: middle; margin-right: 6px;"
+				>
+					<circle
+						cx="9"
+						cy="9"
+						r="7"
+						stroke="currentColor"
+						stroke-width="1.5"
+						fill="currentColor"
+						fill-opacity="0.2"
+					/>
+					<path d="M9 3Q7 6 7 9Q7 12 9 15Q11 12 11 9Q11 6 9 3" fill="currentColor" opacity="0.5" />
+				</svg>
 				{selectedModel.name}
 			</span>
 			<button onclick={newChat} class="new-chat-btn" aria-label="New Chat">
-				<span class="btn-emoji">✨</span>
-				New <span class="desktop-only">Chat</span>
+				<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+					<circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" />
+					<path
+						d="M8 5V11M5 8H11"
+						stroke="currentColor"
+						stroke-width="1.5"
+						stroke-linecap="round"
+					/>
+				</svg>
+				<span class="desktop-only">New Chat</span>
 			</button>
-			<div class="toolbar-decoration"></div>
 		</div>
 
 		<ChatMessages bind:this={chatMessagesComponent} messages={$messages} {isGenerating} />
@@ -295,13 +344,12 @@
 
 	.chat-interface {
 		position: relative;
-		transform: rotate(0deg);
 		animation: slideInChat 0.5s ease-out;
 		display: flex;
 		flex-direction: column;
-		/* Fix the card height relative to the viewport so only the messages list scrolls */
 		height: clamp(520px, 85vh, 920px);
-		min-height: 0; /* important for inner flex child scrolling */
+		min-height: 0;
+		overflow: visible;
 	}
 
 	@media (max-width: 600px) {
@@ -313,39 +361,32 @@
 	@keyframes slideInChat {
 		from {
 			opacity: 0;
-			transform: translateY(20px) rotate(0deg);
+			transform: translateY(20px);
 		}
 		to {
 			opacity: 1;
-			transform: translateY(0) rotate(0deg);
+			transform: translateY(0);
 		}
 	}
 
 	.floating-decoration {
 		position: absolute;
-		background: linear-gradient(135deg, #ffd93d 0%, #ff69b4 100%);
-		border: 3px solid #000;
-		opacity: 0.2;
-		z-index: -1;
+		color: var(--forest-primary);
+		opacity: 0.15;
+		z-index: 0;
 		pointer-events: none;
 	}
 
 	.decoration-1 {
-		width: 80px;
-		height: 80px;
 		top: -20px;
 		right: -20px;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		animation: float1 8s ease-in-out infinite;
+		animation: float1 12s ease-in-out infinite;
 	}
 
 	.decoration-2 {
-		width: 60px;
-		height: 60px;
 		bottom: 100px;
 		left: -15px;
-		border-radius: 70% 30% 30% 70% / 40% 60% 40% 60%;
-		animation: float2 10s ease-in-out infinite;
+		animation: float2 15s ease-in-out infinite;
 	}
 
 	@keyframes float1 {
@@ -354,7 +395,7 @@
 			transform: translate(0, 0) rotate(0deg);
 		}
 		50% {
-			transform: translate(-10px, 10px) rotate(180deg);
+			transform: translate(-10px, 10px) rotate(90deg);
 		}
 	}
 
@@ -364,53 +405,81 @@
 			transform: translate(0, 0) rotate(0deg);
 		}
 		50% {
-			transform: translate(10px, -10px) rotate(-180deg);
+			transform: translate(10px, -10px) rotate(-90deg);
 		}
 	}
 
-	.toolbar-decoration {
+	.toolbar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.125rem 1.5rem;
+		background: linear-gradient(135deg, var(--forest-light) 0%, var(--forest-primary) 100%);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		position: relative;
+		overflow: hidden;
+		z-index: 1;
+	}
+
+	.toolbar::before {
+		content: '';
 		position: absolute;
-		bottom: -6px;
+		top: 0;
 		left: 0;
 		right: 0;
-		height: 3px;
-		background: repeating-linear-gradient(90deg, #000, #000 8px, #98fb98 8px, #98fb98 16px);
+		bottom: 0;
+		background: repeating-linear-gradient(
+			90deg,
+			transparent,
+			transparent 100px,
+			rgba(255, 255, 255, 0.05) 100px,
+			rgba(255, 255, 255, 0.05) 200px
+		);
+		pointer-events: none;
 	}
 
-	.model-emoji {
-		font-size: 1.125rem;
-		margin-right: 0.25rem;
-	}
-
-	.btn-emoji {
-		font-size: 1rem;
+	.model-info {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: rgba(255, 255, 255, 0.95);
+		letter-spacing: 0.02em;
+		word-break: break-word;
+		max-width: 100%;
+		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+		display: flex;
+		align-items: center;
 	}
 
 	.new-chat-btn {
 		padding: 0.5rem 1rem;
-		background: #98fb98;
-		color: #000;
-		border: 2px solid #000;
-		border-radius: 6px;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+		color: white;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		border-radius: 10px;
 		cursor: pointer;
 		font-size: 0.875rem;
-		font-weight: 700;
-		transition: all 0.2s;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		letter-spacing: 0.02em;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 		white-space: nowrap;
-		box-shadow: 3px 3px 0 #000;
 		display: flex;
 		align-items: center;
 		gap: 0.375rem;
-		transform: rotate(0deg);
+		backdrop-filter: blur(10px);
 	}
 
 	.new-chat-btn:hover {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 5px 5px 0 #000;
-		background: #ffd93d;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+	}
+
+	.new-chat-btn:active {
+		transform: translateY(0);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 	}
 
 	@media (max-width: 600px) {
@@ -419,8 +488,16 @@
 			margin: 1rem 0;
 		}
 
+		.toolbar {
+			padding: 1rem 1.25rem;
+		}
+
+		.model-info {
+			font-size: 0.875rem;
+		}
+
 		.new-chat-btn {
-			padding: 0.375rem 0.75rem;
+			padding: 0.425rem 0.75rem;
 			font-size: 0.8125rem;
 		}
 

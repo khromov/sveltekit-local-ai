@@ -263,26 +263,57 @@
 	<!-- Nature decorations -->
 	<svg class="page-decoration top-left" width="100" height="100" viewBox="0 0 100 100">
 		<g opacity="0.1">
-			<circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 5"/>
-			<path d="M50,20 Q40,30 40,50 Q40,70 50,80 Q60,70 60,50 Q60,30 50,20" fill="currentColor" opacity="0.3"/>
+			<circle
+				cx="50"
+				cy="50"
+				r="40"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1"
+				stroke-dasharray="3 5"
+			/>
+			<path
+				d="M50,20 Q40,30 40,50 Q40,70 50,80 Q60,70 60,50 Q60,30 50,20"
+				fill="currentColor"
+				opacity="0.3"
+			/>
 		</g>
 	</svg>
-	
+
 	<svg class="page-decoration bottom-right" width="80" height="80" viewBox="0 0 80 80">
 		<g opacity="0.1">
-			<path d="M20,40 Q30,30 40,40 T60,40" stroke="currentColor" stroke-width="1" fill="none"/>
-			<circle cx="20" cy="40" r="3" fill="currentColor" opacity="0.3"/>
-			<circle cx="40" cy="40" r="3" fill="currentColor" opacity="0.3"/>
-			<circle cx="60" cy="40" r="3" fill="currentColor" opacity="0.3"/>
+			<path d="M20,40 Q30,30 40,40 T60,40" stroke="currentColor" stroke-width="1" fill="none" />
+			<circle cx="20" cy="40" r="3" fill="currentColor" opacity="0.3" />
+			<circle cx="40" cy="40" r="3" fill="currentColor" opacity="0.3" />
+			<circle cx="60" cy="40" r="3" fill="currentColor" opacity="0.3" />
 		</g>
 	</svg>
 
 	<div class="toolbar">
 		<span class="toolbar-title">
-			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="display: inline-block; vertical-align: middle; margin-right: 6px;">
-				<circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.2"/>
-				<circle cx="10" cy="10" r="3" fill="currentColor"/>
-				<path d="M10 2V5M10 15V18M2 10H5M15 10H18" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+			<svg
+				width="20"
+				height="20"
+				viewBox="0 0 20 20"
+				fill="none"
+				style="display: inline-block; vertical-align: middle; margin-right: 6px;"
+			>
+				<circle
+					cx="10"
+					cy="10"
+					r="8"
+					stroke="currentColor"
+					stroke-width="1.5"
+					fill="currentColor"
+					fill-opacity="0.2"
+				/>
+				<circle cx="10" cy="10" r="3" fill="currentColor" />
+				<path
+					d="M10 2V5M10 15V18M2 10H5M15 10H18"
+					stroke="currentColor"
+					stroke-width="1"
+					opacity="0.5"
+				/>
 			</svg>
 			Audio Transcription
 		</span>
@@ -337,13 +368,25 @@
 		>
 			{#if isTranscribing}
 				<svg class="loading-spinner" width="24" height="24" viewBox="0 0 24 24" fill="none">
-					<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" opacity="0.3"/>
-					<path d="M12 2C17.5 2 22 6.5 22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" opacity="0.3" />
+					<path
+						d="M12 2C17.5 2 22 6.5 22 12"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+					/>
 				</svg>
 				Transcribing Audio...
 			{:else}
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-					<polygon points="5,3 19,12 5,21" fill="currentColor" fill-opacity="0.3" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+					<polygon
+						points="5,3 19,12 5,21"
+						fill="currentColor"
+						fill-opacity="0.3"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linejoin="round"
+					/>
 				</svg>
 				Start Transcription
 			{/if}
@@ -352,14 +395,25 @@
 		<div class="feature-badges">
 			<span class="badge">
 				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-					<circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/>
-					<path d="M5 7L6.5 8.5L9 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					<circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5" />
+					<path
+						d="M5 7L6.5 8.5L9 5.5"
+						stroke="currentColor"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
 				</svg>
 				100% Local Processing
 			</span>
 			<span class="badge">
 				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-					<path d="M7 2L8.5 5.5L12 6L9.5 8.5L10 12L7 10L4 12L4.5 8.5L2 6L5.5 5.5L7 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+					<path
+						d="M7 2L8.5 5.5L12 6L9.5 8.5L10 12L7 10L4 12L4.5 8.5L2 6L5.5 5.5L7 2Z"
+						stroke="currentColor"
+						stroke-width="1.5"
+						stroke-linejoin="round"
+					/>
 				</svg>
 				Privacy First
 			</span>
@@ -523,7 +577,7 @@
 
 	.transcribe-btn:hover:not(:disabled) {
 		transform: translateY(-3px);
-		box-shadow: 
+		box-shadow:
 			0 8px 32px rgba(45, 90, 61, 0.25),
 			inset 0 1px 0 rgba(255, 255, 255, 0.2);
 		background: linear-gradient(135deg, var(--moss-green) 0%, var(--forest-light) 100%);
@@ -531,7 +585,7 @@
 
 	.transcribe-btn:active:not(:disabled) {
 		transform: translateY(-1px);
-		box-shadow: 
+		box-shadow:
 			0 4px 16px rgba(45, 90, 61, 0.2),
 			inset 0 2px 4px rgba(0, 0, 0, 0.1);
 	}
@@ -573,7 +627,11 @@
 		padding: 0.5rem 0.875rem;
 		font-size: 0.8125rem;
 		color: var(--forest-primary);
-		background: linear-gradient(135deg, rgba(136, 179, 120, 0.1) 0%, rgba(168, 185, 159, 0.08) 100%);
+		background: linear-gradient(
+			135deg,
+			rgba(136, 179, 120, 0.1) 0%,
+			rgba(168, 185, 159, 0.08) 100%
+		);
 		border: 1px solid rgba(46, 90, 61, 0.2);
 		border-radius: 20px;
 		font-weight: 500;
@@ -582,7 +640,11 @@
 	}
 
 	.badge:hover {
-		background: linear-gradient(135deg, rgba(136, 179, 120, 0.15) 0%, rgba(168, 185, 159, 0.12) 100%);
+		background: linear-gradient(
+			135deg,
+			rgba(136, 179, 120, 0.15) 0%,
+			rgba(168, 185, 159, 0.12) 100%
+		);
 		transform: translateY(-1px);
 		box-shadow: 0 2px 8px rgba(46, 90, 61, 0.1);
 	}
