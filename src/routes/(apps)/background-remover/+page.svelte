@@ -2,10 +2,13 @@
 	import { AutoModel, AutoProcessor, RawImage } from '@huggingface/transformers';
 	import { onMount, onDestroy } from 'svelte';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
+	import JSZip from 'jszip';
 
 	import BackgroundRemoverFileUpload from '$lib/components/background-remover/BackgroundRemoverFileUpload.svelte';
+	import BackgroundRemoverBatchUpload from '$lib/components/background-remover/BackgroundRemoverBatchUpload.svelte';
 	import BackgroundRemoverProgress from '$lib/components/background-remover/BackgroundRemoverProgress.svelte';
 	import BackgroundRemoverResult from '$lib/components/background-remover/BackgroundRemoverResult.svelte';
+	import BackgroundRemoverBatchResult from '$lib/components/background-remover/BackgroundRemoverBatchResult.svelte';
 	import LoadingProgress from '$lib/components/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/ErrorDisplay.svelte';
 
@@ -16,9 +19,25 @@
 	let errorMessage = $state('');
 	let modelLoadProgress = $state(0);
 	let processingProgress = $state(0);
+
+	// Mode selection
+	let processingMode = $state<'single' | 'batch'>('single');
+
+	// Single image mode
 	let selectedFile: File | null = $state(null);
 	let processedImageUrl = $state<string | null>(null);
 	let originalImageUrl = $state<string | null>(null);
+
+	// Batch mode
+	let selectedFiles: File[] = $state([]);
+	let batchResults: Array<{
+		file: File;
+		originalUrl: string;
+		processedUrl: string | null;
+		error?: string;
+	}> = $state([]);
+	let currentBatchIndex = $state(0);
+	let totalBatchCount = $state(0);
 
 	let model: any = null;
 	let processor: any = null;
@@ -29,7 +48,10 @@
 	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
 
 	onMount(() => {
-		return setupWakeLock(() => isProcessing || isLoadingModel);
+		const cleanup = setupWakeLock(() => isProcessing || isLoadingModel);
+		// Auto-load model when page loads
+		loadModel();
+		return cleanup;
 	});
 
 	async function loadModel() {
@@ -75,55 +97,65 @@
 		}
 	}
 
-	async function processImage(imageUrl: string) {
-		if (!model || !processor) return;
+	async function processImage(imageUrl: string): Promise<string | null> {
+		if (!model || !processor) return null;
 
+		// Read image
+		const image = await RawImage.fromURL(imageUrl);
+
+		// Preprocess image
+		const { pixel_values } = await processor(image);
+
+		// Predict alpha matte
+		const { output } = await model({ input: pixel_values });
+
+		// Resize mask back to original size
+		const mask = await RawImage.fromTensor(output[0].mul(255).to('uint8')).resize(
+			image.width,
+			image.height
+		);
+		image.putAlpha(mask);
+
+		// Create new canvas
+		const canvas = document.createElement('canvas');
+		canvas.width = image.width;
+		canvas.height = image.height;
+		const ctx = canvas.getContext('2d');
+		ctx?.drawImage(image.toCanvas(), 0, 0);
+
+		// Convert to blob URL
+		return new Promise((resolve) => {
+			canvas.toBlob((blob) => {
+				if (blob) {
+					resolve(URL.createObjectURL(blob));
+				} else {
+					resolve(null);
+				}
+			}, 'image/png');
+		});
+	}
+
+	async function handleSingleImageProcessing(imageUrl: string) {
 		try {
 			isProcessing = true;
 			processingProgress = 0;
+			originalImageUrl = imageUrl;
 
 			await requestWakeLock();
 
-			// Read image
-			processingProgress = 20;
-			const image = await RawImage.fromURL(imageUrl);
-			originalImageUrl = imageUrl;
+			// Simulate progress steps
+			processingProgress = 25;
+			await new Promise((resolve) => setTimeout(resolve, 100));
 
-			// Preprocess image
-			processingProgress = 40;
-			const { pixel_values } = await processor(image);
-
-			// Predict alpha matte
-			processingProgress = 70;
-			const { output } = await model({ input: pixel_values });
-
-			// Resize mask back to original size
-			processingProgress = 85;
-			const mask = await RawImage.fromTensor(output[0].mul(255).to('uint8')).resize(
-				image.width,
-				image.height
-			);
-			image.putAlpha(mask);
-
-			// Create new canvas
-			processingProgress = 95;
-			const canvas = document.createElement('canvas');
-			canvas.width = image.width;
-			canvas.height = image.height;
-			const ctx = canvas.getContext('2d');
-			ctx?.drawImage(image.toCanvas(), 0, 0);
-
-			// Convert to blob URL
-			canvas.toBlob((blob) => {
-				if (blob) {
-					if (processedImageUrl) {
-						URL.revokeObjectURL(processedImageUrl);
-					}
-					processedImageUrl = URL.createObjectURL(blob);
-				}
-			}, 'image/png');
+			processingProgress = 50;
+			const result = await processImage(imageUrl);
 
 			processingProgress = 100;
+
+			if (processedImageUrl) {
+				URL.revokeObjectURL(processedImageUrl);
+			}
+			processedImageUrl = result;
 		} catch (err) {
 			console.error('Processing error:', err);
 			error = true;
@@ -134,27 +166,122 @@
 		}
 	}
 
-	function handleFileSelect(file: File) {
+	async function handleBatchProcessing(files: File[]) {
+		try {
+			isProcessing = true;
+			processingProgress = 0;
+			currentBatchIndex = 0;
+			totalBatchCount = files.length;
+
+			// Initialize batch results
+			batchResults = files.map((file) => ({
+				file,
+				originalUrl: URL.createObjectURL(file),
+				processedUrl: null
+			}));
+
+			await requestWakeLock();
+
+			// Process each image
+			for (let i = 0; i < files.length; i++) {
+				currentBatchIndex = i + 1;
+				processingProgress = Math.round((i / files.length) * 100);
+
+				try {
+					const result = await processImage(batchResults[i].originalUrl);
+					batchResults[i].processedUrl = result;
+				} catch (err) {
+					console.error(`Error processing image ${i + 1}:`, err);
+					batchResults[i].error = 'Processing failed';
+				}
+
+				// Update reactivity
+				batchResults = [...batchResults];
+			}
+
+			processingProgress = 100;
+		} catch (err) {
+			console.error('Batch processing error:', err);
+			error = true;
+			errorMessage = 'Failed to process batch. Please try again.';
+		} finally {
+			isProcessing = false;
+			await releaseWakeLock();
+		}
+	}
+
+	function handleSingleFileSelect(file: File) {
 		selectedFile = file;
 		const url = URL.createObjectURL(file);
-		processImage(url);
+		handleSingleImageProcessing(url);
+	}
+
+	function handleBatchFileSelect(files: File[]) {
+		selectedFiles = files;
+		handleBatchProcessing(files);
 	}
 
 	function handleExampleUse() {
-		processImage(EXAMPLE_URL);
+		if (processingMode === 'single') {
+			handleSingleImageProcessing(EXAMPLE_URL);
+		}
 	}
 
 	function clearResults() {
-		if (processedImageUrl) {
-			URL.revokeObjectURL(processedImageUrl);
-			processedImageUrl = null;
+		if (processingMode === 'single') {
+			if (processedImageUrl) {
+				URL.revokeObjectURL(processedImageUrl);
+				processedImageUrl = null;
+			}
+			if (originalImageUrl && originalImageUrl.startsWith('blob:')) {
+				URL.revokeObjectURL(originalImageUrl);
+			}
+			originalImageUrl = null;
+			selectedFile = null;
+		} else {
+			// Clear batch results
+			batchResults.forEach((result) => {
+				URL.revokeObjectURL(result.originalUrl);
+				if (result.processedUrl) {
+					URL.revokeObjectURL(result.processedUrl);
+				}
+			});
+			batchResults = [];
+			selectedFiles = [];
 		}
-		if (originalImageUrl && originalImageUrl.startsWith('blob:')) {
-			URL.revokeObjectURL(originalImageUrl);
-		}
-		originalImageUrl = null;
-		selectedFile = null;
 		error = false;
+	}
+
+	function switchMode(mode: 'single' | 'batch') {
+		clearResults();
+		processingMode = mode;
+	}
+
+	async function downloadBatchAsZip() {
+		const zip = new JSZip();
+		const successfulResults = batchResults.filter((r) => r.processedUrl && !r.error);
+
+		for (let i = 0; i < successfulResults.length; i++) {
+			const result = successfulResults[i];
+			try {
+				const response = await fetch(result.processedUrl!);
+				const blob = await response.blob();
+				const fileName = `${result.file.name.split('.')[0]}_bg_removed.png`;
+				zip.file(fileName, blob);
+			} catch (err) {
+				console.error(`Failed to add ${result.file.name} to zip:`, err);
+			}
+		}
+
+		const zipBlob = await zip.generateAsync({ type: 'blob' });
+		const url = URL.createObjectURL(zipBlob);
+		const link = document.createElement('a');
+		link.href = url;
+		link.download = 'background_removed_images.zip';
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+		URL.revokeObjectURL(url);
 	}
 
 	function retry() {
@@ -171,6 +298,13 @@
 		if (originalImageUrl && originalImageUrl.startsWith('blob:')) {
 			URL.revokeObjectURL(originalImageUrl);
 		}
+		// Clean up batch results
+		batchResults.forEach((result) => {
+			URL.revokeObjectURL(result.originalUrl);
+			if (result.processedUrl) {
+				URL.revokeObjectURL(result.processedUrl);
+			}
+		});
 	});
 </script>
 
@@ -189,21 +323,6 @@
 				progress={modelLoadProgress}
 				message="The AI model is being downloaded and initialized. This may take a few moments."
 			/>
-		{:else}
-			<div class="model-selector">
-				<div class="selector-decoration"></div>
-				<h2>
-					<span class="title-icon">🖼️</span>
-					Background Remover
-				</h2>
-				<p class="description">
-					Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI.
-				</p>
-				<button onclick={loadModel} class="load-button primary-button">
-					<span class="button-icon">⚡</span>
-					Load Model
-				</button>
-			</div>
 		{/if}
 	</div>
 {:else}
@@ -224,19 +343,54 @@
 		</div>
 
 		<div class="content-area">
-			{#if !isProcessing && !processedImageUrl}
-				<BackgroundRemoverFileUpload
-					{selectedFile}
-					onFileSelect={handleFileSelect}
-					onExampleUse={handleExampleUse}
-					disabled={isProcessing}
-				/>
+			<!-- Mode Selection -->
+			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
+				<div class="mode-selection">
+					<h3>Processing Mode</h3>
+					<div class="mode-buttons">
+						<button
+							class="mode-btn"
+							class:active={processingMode === 'single'}
+							onclick={() => switchMode('single')}
+						>
+							<span class="mode-icon">🖼️</span>
+							Single Image
+						</button>
+						<button
+							class="mode-btn"
+							class:active={processingMode === 'batch'}
+							onclick={() => switchMode('batch')}
+						>
+							<span class="mode-icon">📁</span>
+							Batch Processing
+						</button>
+					</div>
+				</div>
+			{/if}
+
+			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
+				{#if processingMode === 'single'}
+					<BackgroundRemoverFileUpload
+						{selectedFile}
+						onFileSelect={handleSingleFileSelect}
+						onExampleUse={handleExampleUse}
+						disabled={isProcessing}
+					/>
+				{:else}
+					<BackgroundRemoverBatchUpload
+						{selectedFiles}
+						onFilesSelect={handleBatchFileSelect}
+						disabled={isProcessing}
+					/>
+				{/if}
 			{/if}
 
 			{#if isProcessing}
 				<BackgroundRemoverProgress
 					progress={processingProgress}
-					message="Processing image and removing background..."
+					message={processingMode === 'single'
+						? 'Processing image and removing background...'
+						: `Processing image ${currentBatchIndex} of ${totalBatchCount}...`}
 				/>
 			{/if}
 
@@ -244,11 +398,19 @@
 				<ErrorDisplay message={errorMessage} buttonText="Try Again" onRetry={retry} />
 			{/if}
 
-			{#if processedImageUrl && originalImageUrl && !isProcessing}
+			{#if processingMode === 'single' && processedImageUrl && originalImageUrl && !isProcessing}
 				<BackgroundRemoverResult
 					{originalImageUrl}
 					{processedImageUrl}
 					onProcessAnother={clearResults}
+				/>
+			{/if}
+
+			{#if processingMode === 'batch' && batchResults.length > 0 && !isProcessing}
+				<BackgroundRemoverBatchResult
+					{batchResults}
+					onProcessAnother={clearResults}
+					onDownloadZip={downloadBatchAsZip}
 				/>
 			{/if}
 		</div>
@@ -278,133 +440,6 @@
 			opacity: 1;
 			transform: translateY(0);
 		}
-	}
-
-	.model-selector {
-		width: calc(100% - 4rem);
-		max-width: 500px;
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-		padding: 2rem;
-		background: #fff;
-		border: 4px solid #000;
-		box-shadow: 8px 8px 0 #000;
-		margin: 0 auto;
-		border-radius: 12px;
-		animation: bounceIn 0.6s ease-out;
-		box-sizing: border-box;
-		position: relative;
-		transform: rotate(0.5deg);
-	}
-
-	@keyframes bounceIn {
-		0% {
-			opacity: 0;
-			transform: scale(0.9) rotate(-1deg);
-		}
-		50% {
-			transform: scale(1.05) rotate(1deg);
-		}
-		100% {
-			opacity: 1;
-			transform: scale(1) rotate(0.5deg);
-		}
-	}
-
-	.selector-decoration {
-		position: absolute;
-		top: -15px;
-		left: -15px;
-		width: 100px;
-		height: 100px;
-		background: linear-gradient(135deg, #ffd93d 0%, #98fb98 100%);
-		border: 3px solid #000;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		opacity: 0.3;
-		z-index: -1;
-		animation: spin 15s linear infinite;
-	}
-
-	@keyframes spin {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-
-	.model-selector h2 {
-		font-size: 2rem;
-		font-weight: 700;
-		margin: 0;
-		color: #000;
-		text-align: center;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		font-family: 'Bebas Neue', sans-serif;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
-		background: linear-gradient(135deg, #ffd93d 0%, #98fb98 100%);
-		padding: 0.75rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		transform: rotate(-1deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.title-icon {
-		font-size: 1.75rem;
-		animation: bounce 2s ease-in-out infinite;
-	}
-
-	@keyframes bounce {
-		0%,
-		100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-5px);
-		}
-	}
-
-	.description {
-		text-align: center;
-		font-size: 1rem;
-		color: #333;
-		line-height: 1.5;
-		margin: 0;
-		background: linear-gradient(135deg, rgba(255, 217, 61, 0.1) 0%, rgba(152, 251, 152, 0.1) 100%);
-		padding: 1rem;
-		border: 2px dashed #000;
-		border-radius: 8px;
-	}
-
-	.load-button {
-		padding: 1rem 1.5rem;
-		font-size: 1.125rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
-		margin: 0 auto;
-		background: #98fb98;
-		transform: rotate(-1deg);
-	}
-
-	.load-button:hover:not(:disabled) {
-		background: #ffd93d;
-		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 8px 8px 0 #000;
-	}
-
-	.button-icon {
-		font-size: 1.5rem;
 	}
 
 	.background-remover-interface {
@@ -519,17 +554,98 @@
 		background: #ffd93d;
 	}
 
+	/* Mode Selection */
+	.mode-selection {
+		background: #fff;
+		border: 4px solid #000;
+		padding: 1.5rem;
+		box-shadow: 6px 6px 0 #000;
+		margin-bottom: 1.5rem;
+		position: relative;
+		transform: rotate(-0.3deg);
+		animation: slideIn 0.4s ease-out;
+	}
+
+	@keyframes slideIn {
+		from {
+			transform: translateY(10px) rotate(-0.3deg);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0) rotate(-0.3deg);
+			opacity: 1;
+		}
+	}
+
+	.mode-selection h3 {
+		margin-top: 0;
+		margin-bottom: 1rem;
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.5rem;
+		color: #000;
+		text-align: center;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		background: #ffd93d;
+		padding: 0.5rem 1rem;
+		border: 3px solid #000;
+		box-shadow: 4px 4px 0 #000;
+		transform: rotate(1deg);
+		width: fit-content;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.mode-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+	}
+
+	.mode-btn {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 1.5rem;
+		background: #f0f0f0;
+		border: 3px solid #000;
+		border-radius: 8px;
+		cursor: pointer;
+		font-size: 1rem;
+		font-weight: 700;
+		transition: all 0.2s;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		box-shadow: 4px 4px 0 #000;
+		min-width: 140px;
+	}
+
+	.mode-btn:hover {
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 #000;
+		background: #e0e0e0;
+	}
+
+	.mode-btn.active {
+		background: #98fb98;
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 #000;
+	}
+
+	.mode-btn.active:hover {
+		background: #90ee90;
+	}
+
+	.mode-icon {
+		font-size: 2rem;
+	}
+
 	@media (max-width: 600px) {
 		.loading {
 			align-items: stretch;
 			margin: 1rem 0;
-		}
-
-		.model-selector {
-			width: calc(100% - 2rem);
-			padding: 1.5rem 1rem;
-			max-width: none;
-			margin: 0 1rem;
 		}
 
 		.clear-btn {
@@ -541,21 +657,21 @@
 		.decoration-2 {
 			display: none;
 		}
+
+		.mode-buttons {
+			flex-direction: column;
+			gap: 0.75rem;
+		}
+
+		.mode-btn {
+			min-width: auto;
+			width: 100%;
+		}
 	}
 
 	@media (max-width: 400px) {
 		.loading {
 			margin: 0.5rem 0;
-		}
-
-		.model-selector {
-			width: calc(100% - 1rem);
-			margin: 0 0.5rem;
-			padding: 1.25rem 0.75rem;
-		}
-
-		.model-selector h2 {
-			font-size: 1.5rem;
 		}
 	}
 </style>
