@@ -3,6 +3,7 @@
 	import ImageIcon from 'virtual:icons/lucide/image';
 	import StarIcon from 'virtual:icons/lucide/star';
 	import Trash2Icon from 'virtual:icons/lucide/trash-2';
+	import UploadIcon from 'virtual:icons/lucide/upload';
 	import ZapIcon from 'virtual:icons/lucide/zap';
 
 	interface Props {
@@ -145,19 +146,9 @@
 		tabindex="0"
 	>
 		<div class="upload-content">
-			<svg
-				class="upload-icon"
-				viewBox="0 0 24 24"
-				width="48"
-				height="48"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="3"
-			>
-				<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-				<polyline points="7,10 12,15 17,10"></polyline>
-				<line x1="12" y1="15" x2="12" y2="3"></line>
-			</svg>
+			<span class="upload-icon">
+				<UploadIcon />
+			</span>
 			<p class="upload-text">
 				{#if mode === 'single'}
 					{#if selectedFile}
@@ -388,6 +379,13 @@
 		color: #000;
 		margin-bottom: 1rem;
 		animation: float 3s ease-in-out infinite;
+		display: flex;
+		font-size: 48px;
+	}
+
+	.upload-icon :global(svg) {
+		width: 48px;
+		height: 48px;
 	}
 
 	@keyframes float {
