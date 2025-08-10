@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { AutoModel, AutoProcessor, RawImage } from '@huggingface/transformers';
+	import { AutoModel, AutoProcessor, RawImage, env } from '@huggingface/transformers';
 	import { onMount, onDestroy } from 'svelte';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import JSZip from 'jszip';
@@ -62,14 +62,18 @@
 
 			await requestWakeLock();
 
+			// Configure custom model URL
+			env.remoteHost = 'https://files.khromov.se/bgremoval/';
+			env.remotePathTemplate = '{model}/';
+
 			// Load model and processor
 			modelLoadProgress = 25;
-			model = await AutoModel.from_pretrained('briaai/RMBG-1.4', {
+			model = await AutoModel.from_pretrained('RMBG-1.4', {
 				config: { model_type: 'custom' } as any
 			});
 
 			modelLoadProgress = 75;
-			processor = await AutoProcessor.from_pretrained('briaai/RMBG-1.4', {
+			processor = await AutoProcessor.from_pretrained('RMBG-1.4', {
 				config: {
 					do_normalize: true,
 					do_pad: false,
@@ -90,7 +94,7 @@
 			console.error('Model loading error:', err);
 			error = true;
 			errorMessage =
-				'Failed to load background removal model. Please check your connection and try again.';
+				'Failed to load background removal model from custom server. Please check your connection and try again.';
 		} finally {
 			isLoadingModel = false;
 			await releaseWakeLock();
