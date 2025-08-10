@@ -1,0 +1,633 @@
+<script lang="ts">
+	interface BatchResult {
+		file: File;
+		originalUrl: string;
+		processedUrl: string | null;
+		error?: string;
+	}
+
+	interface Props {
+		batchResults: BatchResult[];
+		onProcessAnother: () => void;
+		onDownloadZip: () => void;
+	}
+
+	let { batchResults, onProcessAnother, onDownloadZip }: Props = $props();
+
+	let successfulResults = $derived(batchResults.filter((r) => r.processedUrl && !r.error));
+	let failedResults = $derived(batchResults.filter((r) => r.error || !r.processedUrl));
+
+	function downloadIndividualImage(result: BatchResult) {
+		if (!result.processedUrl) return;
+
+		const link = document.createElement('a');
+		link.href = result.processedUrl;
+		link.download = `${result.file.name.split('.')[0]}_bg_removed.png`;
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	}
+
+	function shareIndividualImage(result: BatchResult) {
+		if (!result.processedUrl) return;
+
+		if (navigator.share && navigator.canShare) {
+			fetch(result.processedUrl)
+				.then((response) => response.blob())
+				.then((blob) => {
+					const fileName = `${result.file.name.split('.')[0]}_bg_removed.png`;
+					const file = new File([blob], fileName, { type: 'image/png' });
+					return navigator.share({
+						title: 'Background Removed Image',
+						files: [file]
+					});
+				})
+				.catch(console.error);
+		} else {
+			// Fallback: copy to clipboard
+			copyImageToClipboard(result.processedUrl);
+		}
+	}
+
+	async function copyImageToClipboard(imageUrl: string) {
+		try {
+			const response = await fetch(imageUrl);
+			const blob = await response.blob();
+			const item = new ClipboardItem({ 'image/png': blob });
+			await navigator.clipboard.write([item]);
+			alert('Image copied to clipboard!');
+		} catch (err) {
+			console.error('Failed to copy image:', err);
+		}
+	}
+</script>
+
+<div class="batch-results-wrapper">
+	<div class="batch-results">
+		<div class="results-decoration"></div>
+		<div class="results-content">
+			<div class="results-header">
+				<h3>
+					<span class="header-icon">✨</span>
+					Batch Processing Complete!
+				</h3>
+				<div class="results-summary">
+					<div class="summary-item success">
+						<span class="summary-icon">✅</span>
+						<span>{successfulResults.length} Successful</span>
+					</div>
+					{#if failedResults.length > 0}
+						<div class="summary-item failed">
+							<span class="summary-icon">❌</span>
+							<span>{failedResults.length} Failed</span>
+						</div>
+					{/if}
+				</div>
+			</div>
+
+			<div class="batch-actions">
+				{#if successfulResults.length > 1}
+					<button class="download-zip-btn" onclick={onDownloadZip}>
+						<span class="btn-icon">📦</span>
+						Download All as ZIP
+					</button>
+				{/if}
+
+				<button class="process-another-btn" onclick={onProcessAnother}>
+					<span class="btn-icon">🔄</span>
+					Process More Images
+				</button>
+			</div>
+
+			{#if successfulResults.length > 0}
+				<div class="results-section">
+					<h4>Successfully Processed Images</h4>
+					<div class="results-grid">
+						{#each successfulResults as result (result.file.name)}
+							<div class="result-item">
+								<div class="result-preview">
+									<div class="before-after">
+										<div class="image-side">
+											<div class="image-label">Before</div>
+											<img src={result.originalUrl} alt="Original {result.file.name}" />
+										</div>
+										<div class="image-side">
+											<div class="image-label">After</div>
+											<div class="processed-image-container">
+												<div class="transparent-bg-pattern"></div>
+												<img src={result.processedUrl} alt="Processed {result.file.name}" />
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="result-info">
+									<div class="result-name" title={result.file.name}>
+										{result.file.name}
+									</div>
+									<div class="result-actions">
+										<button
+											class="download-individual-btn"
+											onclick={() => downloadIndividualImage(result)}
+											title="Download this image"
+										>
+											💾
+										</button>
+										{#if navigator.share || navigator.clipboard}
+											<button
+												class="share-individual-btn"
+												onclick={() => shareIndividualImage(result)}
+												title="Share this image"
+											>
+												📤
+											</button>
+										{/if}
+									</div>
+								</div>
+							</div>
+						{/each}
+					</div>
+				</div>
+			{/if}
+
+			{#if failedResults.length > 0}
+				<div class="failed-section">
+					<h4>Failed to Process</h4>
+					<div class="failed-list">
+						{#each failedResults as result (result.file.name)}
+							<div class="failed-item">
+								<div class="failed-preview">
+									<img src={result.originalUrl} alt="Failed {result.file.name}" />
+									<div class="failed-overlay">
+										<span class="failed-icon">❌</span>
+									</div>
+								</div>
+								<div class="failed-info">
+									<div class="failed-name">{result.file.name}</div>
+									<div class="failed-reason">{result.error || 'Processing failed'}</div>
+								</div>
+							</div>
+						{/each}
+					</div>
+				</div>
+			{/if}
+		</div>
+	</div>
+</div>
+
+<style>
+	.batch-results-wrapper {
+		display: flex;
+		margin: 1.5rem 0;
+		width: 100%;
+		animation: resultSlide 0.5s ease-out;
+	}
+
+	@keyframes resultSlide {
+		from {
+			transform: translateY(20px) rotate(-1deg);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0) rotate(0.5deg);
+			opacity: 1;
+		}
+	}
+
+	.batch-results {
+		position: relative;
+		width: 100%;
+		max-width: 100%;
+		transform: rotate(0.5deg);
+	}
+
+	.results-decoration {
+		position: absolute;
+		top: -10px;
+		left: -10px;
+		right: -10px;
+		bottom: -10px;
+		background: linear-gradient(135deg, #98fb98 0%, #87ceeb 100%);
+		z-index: -1;
+		opacity: 0.3;
+		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
+		transform: rotate(-1deg);
+	}
+
+	.results-content {
+		padding: 2rem;
+		background: #fff;
+		border: 4px solid #000;
+		box-shadow: 8px 8px 0 #000;
+		position: relative;
+	}
+
+	.results-header {
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+
+	.results-content h3 {
+		margin: 0 0 1rem 0;
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 2rem;
+		color: #000;
+		letter-spacing: 2px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		background: #98fb98;
+		padding: 0.5rem 1rem;
+		border: 3px solid #000;
+		box-shadow: 4px 4px 0 #000;
+		transform: rotate(-1deg);
+		text-transform: uppercase;
+		width: fit-content;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.header-icon {
+		font-size: 1.5rem;
+		animation: sparkle 2s ease-in-out infinite;
+	}
+
+	@keyframes sparkle {
+		0%,
+		100% {
+			transform: scale(1) rotate(0deg);
+		}
+		50% {
+			transform: scale(1.2) rotate(180deg);
+		}
+	}
+
+	.results-summary {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.summary-item {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 1rem;
+		border: 2px solid #000;
+		border-radius: 6px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+
+	.summary-item.success {
+		background: #98fb98;
+		color: #000;
+	}
+
+	.summary-item.failed {
+		background: #ff6b6b;
+		color: #000;
+	}
+
+	.summary-icon {
+		font-size: 1.125rem;
+	}
+
+	.batch-actions {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		margin-bottom: 2rem;
+		flex-wrap: wrap;
+	}
+
+	.download-zip-btn,
+	.process-another-btn {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1.5rem;
+		border: 3px solid #000;
+		cursor: pointer;
+		font-size: 1rem;
+		font-weight: 700;
+		transition: all 0.2s;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		box-shadow: 4px 4px 0 #000;
+		border-radius: 6px;
+	}
+
+	.download-zip-btn {
+		background: #87ceeb;
+		color: #000;
+	}
+
+	.process-another-btn {
+		background: #ffd93d;
+		color: #000;
+	}
+
+	.download-zip-btn:hover,
+	.process-another-btn:hover {
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 #000;
+	}
+
+	.download-zip-btn:hover {
+		background: #87cefa;
+	}
+
+	.process-another-btn:hover {
+		background: #ffa500;
+	}
+
+	.btn-icon {
+		font-size: 1.25rem;
+	}
+
+	.results-section,
+	.failed-section {
+		margin-bottom: 2rem;
+	}
+
+	.results-section h4,
+	.failed-section h4 {
+		margin: 0 0 1rem 0;
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: #000;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		padding: 0.5rem 1rem;
+		background: #ffd93d;
+		border: 2px solid #000;
+		box-shadow: 3px 3px 0 #000;
+		width: fit-content;
+	}
+
+	.results-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.result-item {
+		background: #f5f5f5;
+		border: 3px solid #000;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 4px 4px 0 #000;
+		transition: all 0.2s;
+	}
+
+	.result-item:hover {
+		transform: translate(-1px, -1px);
+		box-shadow: 5px 5px 0 #000;
+	}
+
+	.result-preview {
+		background: #fff;
+		border-bottom: 3px solid #000;
+	}
+
+	.before-after {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0;
+	}
+
+	.image-side {
+		position: relative;
+		border-right: 2px solid #000;
+	}
+
+	.image-side:last-child {
+		border-right: none;
+	}
+
+	.image-label {
+		position: absolute;
+		top: 0.5rem;
+		left: 0.5rem;
+		background: #000;
+		color: #fff;
+		padding: 0.25rem 0.5rem;
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		z-index: 2;
+		border-radius: 2px;
+	}
+
+	.image-side img {
+		width: 100%;
+		height: 120px;
+		object-fit: cover;
+		display: block;
+	}
+
+	.processed-image-container {
+		position: relative;
+		width: 100%;
+		height: 120px;
+		overflow: hidden;
+	}
+
+	.transparent-bg-pattern {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image:
+			linear-gradient(45deg, #e0e0e0 25%, transparent 25%),
+			linear-gradient(-45deg, #e0e0e0 25%, transparent 25%),
+			linear-gradient(45deg, transparent 75%, #e0e0e0 75%),
+			linear-gradient(-45deg, transparent 75%, #e0e0e0 75%);
+		background-size: 12px 12px;
+		background-position:
+			0 0,
+			0 6px,
+			6px -6px,
+			-6px 0px;
+		z-index: 0;
+	}
+
+	.processed-image-container img {
+		position: relative;
+		z-index: 1;
+	}
+
+	.result-info {
+		padding: 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.result-name {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #000;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		flex: 1;
+	}
+
+	.result-actions {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.download-individual-btn,
+	.share-individual-btn {
+		width: 32px;
+		height: 32px;
+		background: #fff;
+		border: 2px solid #000;
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 1rem;
+		transition: all 0.2s;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.download-individual-btn:hover {
+		background: #98fb98;
+		transform: scale(1.1);
+	}
+
+	.share-individual-btn:hover {
+		background: #87ceeb;
+		transform: scale(1.1);
+	}
+
+	.failed-list {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		gap: 1rem;
+	}
+
+	.failed-item {
+		background: #ffe4e1;
+		border: 2px solid #ff6b6b;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 3px 3px 0 #ff6b6b;
+	}
+
+	.failed-preview {
+		position: relative;
+		width: 100%;
+		height: 100px;
+		overflow: hidden;
+	}
+
+	.failed-preview img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: grayscale(50%);
+	}
+
+	.failed-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(255, 107, 107, 0.8);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.failed-icon {
+		font-size: 2rem;
+		color: #fff;
+	}
+
+	.failed-info {
+		padding: 0.75rem;
+	}
+
+	.failed-name {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #000;
+		margin-bottom: 0.25rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.failed-reason {
+		font-size: 0.75rem;
+		color: #666;
+		font-style: italic;
+	}
+
+	@media (max-width: 768px) {
+		.results-content {
+			padding: 1.5rem;
+		}
+
+		.results-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.batch-actions {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.download-zip-btn,
+		.process-another-btn {
+			width: 100%;
+			max-width: 300px;
+			justify-content: center;
+		}
+
+		.failed-list {
+			grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+		}
+	}
+
+	@media (max-width: 600px) {
+		.results-content {
+			padding: 1.25rem;
+		}
+
+		.results-content h3 {
+			font-size: 1.5rem;
+		}
+
+		.results-summary {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.before-after {
+			grid-template-columns: 1fr;
+		}
+
+		.image-side {
+			border-right: none;
+			border-bottom: 2px solid #000;
+		}
+
+		.image-side:last-child {
+			border-bottom: none;
+		}
+	}
+</style>

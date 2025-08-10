@@ -26,25 +26,6 @@
 		<span class="pulse-icon">✨</span>
 		{message}
 	</div>
-
-	<div class="processing-steps">
-		<div class="step" class:active={progress >= 20} class:complete={progress > 20}>
-			<span class="step-number">1</span>
-			<span class="step-text">Loading Image</span>
-		</div>
-		<div class="step" class:active={progress >= 40} class:complete={progress > 40}>
-			<span class="step-number">2</span>
-			<span class="step-text">Preprocessing</span>
-		</div>
-		<div class="step" class:active={progress >= 70} class:complete={progress > 70}>
-			<span class="step-number">3</span>
-			<span class="step-text">AI Processing</span>
-		</div>
-		<div class="step" class:active={progress >= 85} class:complete={progress > 85}>
-			<span class="step-number">4</span>
-			<span class="step-text">Finalizing</span>
-		</div>
-	</div>
 </div>
 
 <style>
@@ -195,84 +176,6 @@
 		}
 	}
 
-	.processing-steps {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-		justify-content: center;
-		margin-top: 1.5rem;
-		width: 100%;
-		max-width: 500px;
-	}
-
-	.step {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 1rem;
-		background: #f0f0f0;
-		border: 2px solid #000;
-		border-radius: 8px;
-		transition: all 0.3s ease;
-		min-width: 100px;
-		opacity: 0.5;
-	}
-
-	.step.active {
-		background: #ffd93d;
-		opacity: 1;
-		animation: stepPulse 1s ease-in-out infinite;
-	}
-
-	.step.complete {
-		background: #98fb98;
-		opacity: 1;
-		animation: none;
-	}
-
-	@keyframes stepPulse {
-		0%,
-		100% {
-			transform: scale(1);
-		}
-		50% {
-			transform: scale(1.05);
-		}
-	}
-
-	.step-number {
-		width: 30px;
-		height: 30px;
-		background: #000;
-		color: #fff;
-		border-radius: 50%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-weight: 700;
-		font-size: 0.875rem;
-	}
-
-	.step.active .step-number {
-		background: #fff;
-		color: #000;
-		border: 2px solid #000;
-	}
-
-	.step.complete .step-number {
-		background: #000;
-		color: #98fb98;
-	}
-
-	.step-text {
-		font-size: 0.8125rem;
-		font-weight: 600;
-		text-align: center;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-	}
-
 	@media (max-width: 600px) {
 		.processing {
 			padding: 1.75rem;
@@ -280,15 +183,6 @@
 
 		.processing h3 {
 			font-size: 2rem;
-		}
-
-		.processing-steps {
-			gap: 0.75rem;
-		}
-
-		.step {
-			min-width: 80px;
-			padding: 0.75rem;
 		}
 
 		.processing-message {
