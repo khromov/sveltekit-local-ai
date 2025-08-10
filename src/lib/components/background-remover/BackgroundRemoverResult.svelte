@@ -20,7 +20,7 @@
 	}
 
 	function shareImage() {
-		if (navigator.share && navigator.canShare) {
+		if ('share' in navigator && typeof navigator.share === 'function') {
 			fetch(processedImageUrl)
 				.then((response) => response.blob())
 				.then((blob) => {
@@ -92,7 +92,7 @@
 					Download
 				</button>
 
-				{#if navigator.share || navigator.clipboard}
+				{#if 'share' in navigator || 'clipboard' in navigator}
 					<button class="share-btn" onclick={shareImage}>
 						<span class="btn-icon">📤</span>
 						Share

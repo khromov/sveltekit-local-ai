@@ -65,7 +65,7 @@
 			// Load model and processor
 			modelLoadProgress = 25;
 			model = await AutoModel.from_pretrained('briaai/RMBG-1.4', {
-				config: { model_type: 'custom' }
+				config: { model_type: 'custom' } as any
 			});
 
 			modelLoadProgress = 75;

@@ -43,7 +43,7 @@
 
 		const files = event.dataTransfer?.files;
 		if (files && files.length > 0) {
-			const filesArray = Array.from(files).filter(file => file.type.startsWith('image/'));
+			const filesArray = Array.from(files).filter((file) => file.type.startsWith('image/'));
 			if (filesArray.length > 0) {
 				onFilesSelect(filesArray);
 			}
@@ -144,23 +144,19 @@
 					Clear All
 				</button>
 			</div>
-			
+
 			<div class="files-grid">
 				{#each selectedFiles as file, index (file.name + file.size)}
 					<div class="file-item">
 						<div class="file-preview">
-							<img 
-								src={URL.createObjectURL(file)} 
-								alt={file.name}
-								onload={handleImageLoad}
-							/>
+							<img src={URL.createObjectURL(file)} alt={file.name} onload={handleImageLoad} />
 						</div>
 						<div class="file-info">
 							<div class="file-name" title={file.name}>{file.name}</div>
 							<div class="file-size">{(file.size / 1024 / 1024).toFixed(1)} MB</div>
 						</div>
-						<button 
-							class="remove-file-btn" 
+						<button
+							class="remove-file-btn"
 							onclick={() => removeFile(index)}
 							{disabled}
 							aria-label={`Remove ${file.name}`}
@@ -172,7 +168,11 @@
 			</div>
 
 			<div class="batch-actions">
-				<button class="start-batch-btn primary-button" onclick={() => onFilesSelect(selectedFiles)} {disabled}>
+				<button
+					class="start-batch-btn primary-button"
+					onclick={() => onFilesSelect(selectedFiles)}
+					{disabled}
+				>
 					<span class="btn-icon">⚡</span>
 					Process {selectedFiles.length} Image{selectedFiles.length === 1 ? '' : 's'}
 				</button>

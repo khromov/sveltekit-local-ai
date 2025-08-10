@@ -90,7 +90,7 @@
 	{#if transcribeMode === 'upload'}
 		<FileUpload bind:selectedFile {onFileSelect} {disabled} />
 	{:else if transcribeMode === 'record'}
-		<AudioRecorder bind:selectedFile {onFileSelect} {disabled} />
+		<AudioRecorder bind:transcribeMode bind:selectedFile {onFileSelect} {disabled} />
 	{/if}
 </div>
 
