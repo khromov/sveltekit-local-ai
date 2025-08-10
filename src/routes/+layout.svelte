@@ -15,7 +15,8 @@
 	const navLinks = [
 		{ path: '/', label: '', icon: 'home' },
 		{ path: '/chat', label: 'Chat', icon: 'chat' },
-		{ path: '/transcribe', label: 'Transcribe', icon: 'mic' }
+		{ path: '/transcribe', label: 'Transcribe', icon: 'mic' },
+		{ path: '/background-remover', label: 'BG Remover', icon: 'image' }
 	];
 
 	// Check if a path is active
@@ -93,6 +94,22 @@
 											<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
 											<line x1="12" y1="19" x2="12" y2="23"></line>
 											<line x1="8" y1="23" x2="16" y2="23"></line>
+										</svg>
+									{:else if link.icon === 'image'}
+										<svg
+											class="nav-icon"
+											viewBox="0 0 24 24"
+											width="24"
+											height="24"
+											stroke="currentColor"
+											stroke-width="2.5"
+											fill="none"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										>
+											<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+											<circle cx="8.5" cy="8.5" r="1.5"></circle>
+											<polyline points="21,15 16,10 5,21"></polyline>
 										</svg>
 									{/if}
 									{#if link.label}
@@ -221,6 +238,7 @@
 	.center-items {
 		display: flex;
 		gap: 1rem;
+		flex-wrap: wrap;
 	}
 
 	.center-items li {
@@ -433,11 +451,24 @@
 			align-items: stretch;
 			padding: 0;
 		}
+
+		.center-items {
+			gap: 0.5rem;
+		}
 	}
 
 	@media (max-width: 400px) {
 		.container {
 			padding: 0.5rem;
+		}
+
+		.main-nav a {
+			padding: 0.5rem 0.75rem;
+			font-size: 0.8125rem;
+		}
+
+		.center-items {
+			gap: 0.375rem;
 		}
 	}
 </style>
