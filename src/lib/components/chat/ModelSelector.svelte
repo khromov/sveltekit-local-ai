@@ -6,6 +6,7 @@
 	import SettingsIcon from 'virtual:icons/lucide/settings';
 	import ZapIcon from 'virtual:icons/lucide/zap';
 	import HourglassIcon from 'virtual:icons/lucide/hourglass';
+	import ChevronDownIcon from 'virtual:icons/lucide/chevron-down';
 
 	interface Props {
 		modelSelection: string;
@@ -29,33 +30,25 @@
 			<span class="label-icon"><PackageIcon /></span>
 			Choose Model
 		</label>
-		<select id="model-select" bind:value={modelSelection}>
-			{#each AVAILABLE_MODELS as model (model.url)}
-				<option value={model.url}>
-					{model.longName ?? model.name} ({formatFileSize(model.size)})
-				</option>
-			{/each}
-		</select>
+		<div class="select-container">
+			<select id="model-select" bind:value={modelSelection}>
+				{#each AVAILABLE_MODELS as model (model.url)}
+					<option value={model.url}>
+						{model.longName ?? model.name} ({formatFileSize(model.size)})
+					</option>
+				{/each}
+			</select>
+			<span class="select-arrow"><ChevronDownIcon /></span>
+		</div>
 	</div>
 
 	<div class="inference-params">
 		<button class="params-toggle" onclick={() => (showParams = !showParams)}>
 			<span class="toggle-emoji"><SettingsIcon /></span>
 			<span>Advanced Parameters</span>
-			<svg
-				class="toggle-icon"
-				class:rotated={showParams}
-				viewBox="0 0 24 24"
-				width="20"
-				height="20"
-				stroke="currentColor"
-				stroke-width="2"
-				fill="none"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<polyline points="6 9 12 15 18 9"></polyline>
-			</svg>
+			<span class="toggle-icon" class:rotated={showParams}>
+				<ChevronDownIcon />
+			</span>
 		</button>
 		{#if showParams}
 			<div class="params-grid">
@@ -231,6 +224,11 @@
 		height: 0.875rem;
 	}
 
+	.select-container {
+		position: relative;
+		width: 100%;
+	}
+
 	.model-selector select {
 		width: 100%;
 		padding: 0.875rem 2.5rem 0.875rem 1rem;
@@ -241,14 +239,26 @@
 		background: #fff;
 		box-shadow: 5px 5px 0 #000;
 		appearance: none;
-		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-		background-repeat: no-repeat;
-		background-position: right 0.875rem center;
-		background-size: 1.25em;
 		transition: all 0.2s;
 		cursor: pointer;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 		box-sizing: border-box;
+	}
+
+	.select-arrow {
+		position: absolute;
+		right: 0.875rem;
+		top: 50%;
+		transform: translateY(-50%);
+		pointer-events: none;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.select-arrow :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.model-selector select:hover {
@@ -325,6 +335,14 @@
 	.toggle-icon {
 		transition: transform 0.3s ease;
 		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.toggle-icon :global(svg) {
+		width: 20px;
+		height: 20px;
 	}
 
 	.toggle-icon.rotated {

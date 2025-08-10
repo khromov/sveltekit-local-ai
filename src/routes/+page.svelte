@@ -1,4 +1,7 @@
 <script lang="ts">
+	import MessageSquareIcon from 'virtual:icons/lucide/message-square';
+	import MicIcon from 'virtual:icons/lucide/mic';
+	import ImageIcon from 'virtual:icons/lucide/image';
 	// No props needed for this component
 </script>
 
@@ -19,19 +22,7 @@
 				<div class="card-number">Tool #01</div>
 				<div class="card-content">
 					<div class="icon-container">
-						<svg
-							class="feature-icon"
-							viewBox="0 0 24 24"
-							width="48"
-							height="48"
-							stroke="currentColor"
-							stroke-width="2.5"
-							fill="none"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-						</svg>
+						<MessageSquareIcon class="feature-icon" />
 					</div>
 					<h2>Chat</h2>
 					<p class="feature-description">
@@ -49,22 +40,7 @@
 				<div class="card-number">Tool #02</div>
 				<div class="card-content">
 					<div class="icon-container">
-						<svg
-							class="feature-icon"
-							viewBox="0 0 24 24"
-							width="48"
-							height="48"
-							stroke="currentColor"
-							stroke-width="2.5"
-							fill="none"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-							<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-							<line x1="12" y1="19" x2="12" y2="23"></line>
-							<line x1="8" y1="23" x2="16" y2="23"></line>
-						</svg>
+						<MicIcon class="feature-icon" />
 					</div>
 					<h2>Transcribe Audio</h2>
 					<p class="feature-description">
@@ -83,21 +59,7 @@
 				<div class="card-number">Tool #03</div>
 				<div class="card-content">
 					<div class="icon-container">
-						<svg
-							class="feature-icon"
-							viewBox="0 0 24 24"
-							width="48"
-							height="48"
-							stroke="currentColor"
-							stroke-width="2.5"
-							fill="none"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-							<circle cx="8.5" cy="8.5" r="1.5"></circle>
-							<polyline points="21,15 16,10 5,21"></polyline>
-						</svg>
+						<ImageIcon class="feature-icon" />
 					</div>
 					<h2>Remove Background</h2>
 					<p class="feature-description">
@@ -297,6 +259,12 @@
 	.feature-icon {
 		color: #000;
 		display: block;
+	}
+
+	:global(.feature-icon) {
+		width: 48px;
+		height: 48px;
+		stroke-width: 2.5;
 	}
 
 	.feature-card h2 {
