@@ -24,6 +24,9 @@
 	let processingProgress = $state(0);
 
 	// Configure custom model URL
+	if (env.backends?.onnx?.wasm) {
+		env.backends.onnx.wasm.wasmPaths = '/transformers/';
+	}
 	env.remoteHost = `${BASE_MODEL_URL}/bgremoval/`;
 	env.remotePathTemplate = '{model}/';
 
