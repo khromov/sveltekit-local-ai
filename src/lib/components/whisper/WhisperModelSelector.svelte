@@ -2,6 +2,8 @@
 	import LoadingProgress from '../LoadingProgress.svelte';
 	import ErrorDisplay from '../ErrorDisplay.svelte';
 	import { isOPFSSupported } from '$lib/download-utils';
+	import CheckIcon from 'virtual:icons/lucide/check';
+	import ChevronDownIcon from 'virtual:icons/lucide/chevron-down';
 
 	interface Props {
 		selectedModel: string;
@@ -39,11 +41,14 @@
 <div class="model-selection">
 	<h3>Select Model</h3>
 	<div class="model-controls">
-		<select bind:value={selectedModel} disabled={isLoading}>
-			{#each availableModels as model (model.path)}
-				<option value={model.path}>{model.name}</option>
-			{/each}
-		</select>
+		<div class="select-container">
+			<select bind:value={selectedModel} disabled={isLoading}>
+				{#each availableModels as model (model.path)}
+					<option value={model.path}>{model.name}</option>
+				{/each}
+			</select>
+			<span class="select-arrow"><ChevronDownIcon /></span>
+		</div>
 
 		{#if !isReady}
 			<button onclick={onLoadModel} disabled={isLoading} class="load-model-btn primary-button">
@@ -52,7 +57,7 @@
 		{:else}
 			<div class="model-controls-loaded">
 				<div class="model-ready">
-					<span class="checkmark">✓</span>
+					<span class="checkmark"><CheckIcon /></span>
 					<span>Model Ready</span>
 				</div>
 				{#if selectedModel !== availableModels[0].path}
@@ -119,10 +124,16 @@
 		align-items: center;
 	}
 
-	.model-controls select {
+	.select-container {
+		position: relative;
 		width: 100%;
 		max-width: 400px;
+	}
+
+	.model-controls select {
+		width: 100%;
 		padding: 0.75rem;
+		padding-right: 2.5rem;
 		border: 2px solid #000;
 		border-radius: 6px;
 		font-size: 0.9375rem;
@@ -134,11 +145,22 @@
 		cursor: pointer;
 		transition: all 0.2s;
 		appearance: none;
-		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-		background-repeat: no-repeat;
-		background-position: right 0.75rem center;
-		background-size: 1.25em;
-		padding-right: 2.5rem;
+	}
+
+	.select-arrow {
+		position: absolute;
+		right: 0.75rem;
+		top: 50%;
+		transform: translateY(-50%);
+		pointer-events: none;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.select-arrow :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.model-controls select:hover:not(:disabled) {
@@ -176,6 +198,13 @@
 	.checkmark {
 		font-size: 1.25rem;
 		color: #000;
+		display: flex;
+		align-items: center;
+	}
+
+	.checkmark :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.model-controls-loaded {
@@ -247,7 +276,7 @@
 			align-items: stretch;
 		}
 
-		.model-controls select {
+		.select-container {
 			max-width: none;
 		}
 	}

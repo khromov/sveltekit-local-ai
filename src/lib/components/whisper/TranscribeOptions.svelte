@@ -1,6 +1,9 @@
 <script lang="ts">
 	import FileUpload from './FileUpload.svelte';
 	import AudioRecorder from './AudioRecorder.svelte';
+	import MusicIcon from 'virtual:icons/lucide/music';
+	import FolderIcon from 'virtual:icons/lucide/folder';
+	import MicIcon from 'virtual:icons/lucide/mic';
 
 	interface Props {
 		transcribeMode: 'demo' | 'upload' | 'record';
@@ -26,7 +29,7 @@
 <div class="transcribe-options">
 	<div class="options-decoration"></div>
 	<h3>
-		<span class="title-icon">🎵</span>
+		<span class="title-icon"><MusicIcon /></span>
 		Choose Audio Source
 	</h3>
 
@@ -42,7 +45,7 @@
 			/>
 			<div class="option-content">
 				<div class="option-header">
-					<span class="option-icon">📁</span>
+					<span class="option-icon"><FolderIcon /></span>
 					<strong>Local File</strong>
 				</div>
 				<small>Select an audio file from your device (.mp3, .wav, .m4a)</small>
@@ -60,7 +63,7 @@
 			/>
 			<div class="option-content">
 				<div class="option-header">
-					<span class="option-icon">🎙️</span>
+					<span class="option-icon"><MicIcon /></span>
 					<strong>Record Audio</strong>
 				</div>
 				<small>Record audio directly from your microphone</small>
@@ -156,6 +159,14 @@
 
 	.title-icon {
 		font-size: 1.75rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.title-icon :global(svg) {
+		width: 1.75rem;
+		height: 1.75rem;
 	}
 
 	.option-group {
@@ -219,6 +230,14 @@
 
 	.option-icon {
 		font-size: 1.5rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.option-icon :global(svg) {
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	.option-content strong {

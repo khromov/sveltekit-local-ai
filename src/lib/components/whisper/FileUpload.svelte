@@ -1,4 +1,8 @@
 <script lang="ts">
+	import FileAudioIcon from 'virtual:icons/lucide/file-audio';
+	import UploadIcon from 'virtual:icons/lucide/upload';
+	import XIcon from 'virtual:icons/lucide/x';
+
 	interface Props {
 		selectedFile: File | null;
 		onFileSelect: (file: File) => void;
@@ -7,104 +11,82 @@
 
 	let { selectedFile = $bindable(), onFileSelect, disabled = false }: Props = $props();
 
-	let fileInputElement: HTMLInputElement | undefined = $state();
-	let isDragging = $state(false);
+	let fileInput: HTMLInputElement | undefined = $state();
+	let dragOver = $state(false);
 
 	function handleFileSelect(event: Event) {
-		const target = event.target as HTMLInputElement;
-		if (target.files && target.files.length > 0) {
-			onFileSelect(target.files[0]);
-		}
-	}
-
-	function handleDragOver(event: DragEvent) {
-		event.preventDefault();
-		if (disabled) return;
-		isDragging = true;
-	}
-
-	function handleDragLeave(event: DragEvent) {
-		event.preventDefault();
-		const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
-		const x = event.clientX;
-		const y = event.clientY;
-
-		if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) {
-			isDragging = false;
+		const input = event.target as HTMLInputElement;
+		if (input.files && input.files[0]) {
+			selectedFile = input.files[0];
+			onFileSelect(input.files[0]);
 		}
 	}
 
 	function handleDrop(event: DragEvent) {
 		event.preventDefault();
-		isDragging = false;
-
-		if (disabled) return;
-
-		const files = event.dataTransfer?.files;
-		if (files && files.length > 0) {
-			onFileSelect(files[0]);
+		dragOver = false;
+		if (event.dataTransfer?.files && event.dataTransfer.files[0]) {
+			selectedFile = event.dataTransfer.files[0];
+			onFileSelect(event.dataTransfer.files[0]);
 		}
 	}
 
-	function openFileDialog() {
-		fileInputElement?.click();
+	function handleDragOver(event: DragEvent) {
+		event.preventDefault();
+		dragOver = true;
+	}
+
+	function handleDragLeave() {
+		dragOver = false;
+	}
+
+	function clearFile() {
+		selectedFile = null;
+		if (fileInput) {
+			fileInput.value = '';
+		}
 	}
 </script>
 
 <div class="file-upload">
-	<input
-		bind:this={fileInputElement}
-		type="file"
-		accept="audio/*"
-		onchange={handleFileSelect}
-		id="audio-file"
-		{disabled}
-	/>
-	<div
-		class="file-upload-label"
-		class:disabled
-		class:dragging={isDragging}
-		class:has-file={selectedFile}
-		ondragover={handleDragOver}
-		ondragleave={handleDragLeave}
-		ondrop={handleDrop}
-		onclick={openFileDialog}
-		onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && openFileDialog()}
-		role="button"
-		tabindex="0"
-	>
-		<div class="upload-decoration"></div>
-		<div class="upload-content">
-			<svg
-				class="upload-icon"
-				viewBox="0 0 24 24"
-				width="48"
-				height="48"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="3"
-			>
-				<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-				<polyline points="7,10 12,15 17,10"></polyline>
-				<line x1="12" y1="15" x2="12" y2="3"></line>
-			</svg>
-			<p class="upload-text">
-				{#if selectedFile}
-					<span class="file-icon">📎</span>
-					{selectedFile.name}
-				{:else}
-					Drop your audio file here
-				{/if}
-			</p>
-			<p class="upload-hint">
-				{#if selectedFile}
-					Click to change file
-				{:else}
-					or click to browse • MP3, WAV, M4A supported
-				{/if}
-			</p>
+	{#if selectedFile}
+		<div class="file-selected">
+			<div class="file-info">
+				<span class="file-icon"><FileAudioIcon /></span>
+				<div class="file-details">
+					<strong>{selectedFile.name}</strong>
+					<small>{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</small>
+				</div>
+			</div>
+			<button class="clear-button" onclick={clearFile} {disabled}>
+				<XIcon />
+			</button>
 		</div>
-	</div>
+	{:else}
+		<div
+			class="upload-area"
+			class:drag-over={dragOver}
+			ondrop={handleDrop}
+			ondragover={handleDragOver}
+			ondragleave={handleDragLeave}
+			role="button"
+			tabindex="0"
+		>
+			<span class="upload-icon"><UploadIcon /></span>
+			<p><strong>Drag & Drop Audio File</strong></p>
+			<p class="upload-hint">or</p>
+			<button onclick={() => fileInput?.click()} {disabled} class="browse-button">
+				Browse Files
+			</button>
+			<input
+				bind:this={fileInput}
+				type="file"
+				accept="audio/*,.mp3,.wav,.m4a,.ogg,.webm"
+				onchange={handleFileSelect}
+				style="display: none;"
+			/>
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -112,134 +94,183 @@
 		margin-top: 1rem;
 	}
 
-	.file-upload input[type='file'] {
-		display: none;
+	.upload-area {
+		border: 3px dashed #000;
+		padding: 2rem;
+		text-align: center;
+		background: linear-gradient(135deg, rgba(255, 229, 180, 0.1) 0%, rgba(230, 230, 250, 0.1) 100%);
+		cursor: pointer;
+		transition: all 0.3s;
+		position: relative;
+		transform: rotate(-0.5deg);
 	}
 
-	.file-upload-label {
-		display: block;
-		position: relative;
-		min-height: 140px;
-		background: #fff;
-		border: 4px dashed #000;
-		cursor: pointer;
-		transition: all 0.15s ease;
-		overflow: hidden;
-		transform: rotate(-0.5deg);
+	.upload-area.drag-over {
+		background: #fff9e6;
+		border-color: #ffd700;
+		transform: rotate(0deg) scale(1.02);
 		box-shadow: 5px 5px 0 #000;
 	}
 
-	.file-upload-label:hover:not(.disabled) {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 7px 7px 0 #000;
-		background: #fffacd;
-	}
-
-	.file-upload-label.has-file {
-		background: #98fb98;
-		border-style: solid;
-	}
-
-	.file-upload-label.disabled {
-		cursor: not-allowed;
-		opacity: 0.6;
-		background: #e0e0e0;
-	}
-
-	.file-upload-label.dragging {
-		background: #ffd93d;
-		border-style: solid;
-		border-color: #000;
-		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 8px 8px 0 #000;
-	}
-
-	.upload-decoration {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		width: 60px;
-		height: 60px;
-		background: #ff69b4;
-		border: 3px solid #000;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		opacity: 0.3;
-		transform: rotate(45deg);
-	}
-
-	.upload-content {
+	.upload-icon {
+		font-size: 3rem;
+		display: block;
+		margin-bottom: 1rem;
 		display: flex;
-		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		padding: 2rem;
-		height: 100%;
-		min-height: 140px;
-		position: relative;
-		z-index: 1;
-	}
-
-	.upload-icon {
 		color: #000;
-		margin-bottom: 1rem;
-		animation: float 3s ease-in-out infinite;
 	}
 
-	@keyframes float {
-		0%,
-		100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-10px);
-		}
+	.upload-icon :global(svg) {
+		width: 3rem;
+		height: 3rem;
 	}
 
-	.upload-text {
-		font-size: 1.125rem;
-		color: #000;
-		margin: 0 0 0.5rem 0;
-		text-align: center;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.file-icon {
-		font-size: 1.25rem;
+	.upload-area p {
+		margin: 0.5rem 0;
+		font-weight: 500;
 	}
 
 	.upload-hint {
-		font-size: 0.9375rem;
-		color: #333;
-		margin: 0;
-		text-align: center;
-		font-weight: 600;
-		background: #ffd93d;
-		padding: 4px 12px;
-		border: 2px solid #000;
-		box-shadow: 3px 3px 0 #000;
+		color: #666;
+		font-size: 0.875rem;
 	}
 
-	.file-upload-label.has-file .upload-hint {
-		background: #fff;
+	.browse-button {
+		margin-top: 1rem;
+		padding: 0.75rem 1.5rem;
+		background: #98fb98;
+		border: 3px solid #000;
+		box-shadow: 4px 4px 0 #000;
+		font-size: 1rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		cursor: pointer;
+		transition: all 0.15s;
+	}
+
+	.browse-button:hover:not(:disabled) {
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 #000;
+		background: #ffd93d;
+	}
+
+	.browse-button:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	.file-selected {
+		background: #f0f8ff;
+		border: 3px solid #000;
+		box-shadow: 5px 5px 0 #000;
+		padding: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		transform: rotate(0.5deg);
+		animation: slideIn 0.3s ease-out;
+	}
+
+	@keyframes slideIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px) rotate(0.5deg);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) rotate(0.5deg);
+		}
+	}
+
+	.file-info {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.file-icon {
+		font-size: 2rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.file-icon :global(svg) {
+		width: 2rem;
+		height: 2rem;
+	}
+
+	.file-details {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.file-details strong {
+		font-size: 1.125rem;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+
+	.file-details small {
+		color: #666;
+		font-weight: 500;
+	}
+
+	.clear-button {
+		padding: 0.5rem;
+		background: #ff6b6b;
+		border: 2px solid #000;
+		box-shadow: 3px 3px 0 #000;
+		cursor: pointer;
+		transition: all 0.15s;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 4px;
+		color: #000;
+	}
+
+	.clear-button :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	.clear-button:hover:not(:disabled) {
+		transform: translate(-2px, -2px);
+		box-shadow: 5px 5px 0 #000;
+	}
+
+	.clear-button:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
 	}
 
 	@media (max-width: 600px) {
-		.upload-content {
+		.upload-area {
 			padding: 1.5rem;
-			min-height: 120px;
 		}
 
-		.upload-text {
-			font-size: 1rem;
+		.upload-icon {
+			font-size: 2.5rem;
 		}
 
-		.upload-hint {
-			font-size: 0.875rem;
+		.upload-icon :global(svg) {
+			width: 2.5rem;
+			height: 2.5rem;
+		}
+
+		.file-selected {
+			flex-direction: column;
+			gap: 1rem;
+			align-items: stretch;
+		}
+
+		.clear-button {
+			width: 100%;
+			padding: 0.75rem;
 		}
 	}
 </style>

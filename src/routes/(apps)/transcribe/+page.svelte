@@ -6,6 +6,9 @@
 	import { whisperModel } from '$lib/stores';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import { BASE_MODEL_URL } from '$lib/config';
+	import LockIcon from 'virtual:icons/lucide/lock';
+	import PlayIcon from 'virtual:icons/lucide/play';
+	import LoaderIcon from 'virtual:icons/lucide/loader';
 
 	import WhisperModelSelector from '$lib/components/whisper/WhisperModelSelector.svelte';
 	import TranscribeOptions from '$lib/components/whisper/TranscribeOptions.svelte';
@@ -314,16 +317,16 @@
 			class="transcribe-btn primary-button"
 		>
 			{#if isTranscribing}
-				<span class="loading-spinner">◐</span>
+				<span class="loading-spinner"><LoaderIcon /></span>
 				Transcribing...
 			{:else}
-				<span class="button-icon">▶</span>
+				<span class="button-icon"><PlayIcon /></span>
 				Start Transcription
 			{/if}
 		</button>
 
 		<div class="disclaimer">
-			<span class="disclaimer-icon">🔒</span>
+			<span class="disclaimer-icon"><LockIcon /></span>
 			Transcription is performed locally in your browser. Results may not always be accurate.
 		</div>
 	</div>
@@ -388,12 +391,27 @@
 
 	.button-icon {
 		font-size: 1.5rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.button-icon :global(svg) {
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	.loading-spinner {
 		font-size: 1.5rem;
 		animation: spin 1s linear infinite;
 		display: inline-block;
+		color: #000;
+	}
+
+	.loading-spinner :global(svg) {
+		width: 1.5rem;
+		height: 1.5rem;
+		animation: spin 1s linear infinite;
 	}
 
 	@keyframes spin {
@@ -453,6 +471,14 @@
 
 	.disclaimer-icon {
 		font-size: 1.25rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.disclaimer-icon :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	@keyframes fadeIn {

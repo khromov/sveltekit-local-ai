@@ -1,17 +1,19 @@
 <script lang="ts">
-	import { AutoModel, AutoProcessor, RawImage, env } from '@huggingface/transformers';
+	import { pipeline, env } from '@huggingface/transformers';
 	import { onMount, onDestroy } from 'svelte';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
-	import { BASE_MODEL_URL } from '$lib/config';
 	import JSZip from 'jszip';
+	import ImageIcon from 'virtual:icons/lucide/image';
+	import Trash2Icon from 'virtual:icons/lucide/trash-2';
+	import FolderIcon from 'virtual:icons/lucide/folder';
 
-	import BackgroundRemoverFileUpload from '$lib/components/background-remover/BackgroundRemoverFileUpload.svelte';
-	import BackgroundRemoverBatchUpload from '$lib/components/background-remover/BackgroundRemoverBatchUpload.svelte';
+	import BackgroundRemoverUpload from '$lib/components/background-remover/BackgroundRemoverUpload.svelte';
 	import BackgroundRemoverProgress from '$lib/components/background-remover/BackgroundRemoverProgress.svelte';
 	import BackgroundRemoverResult from '$lib/components/background-remover/BackgroundRemoverResult.svelte';
 	import BackgroundRemoverBatchResult from '$lib/components/background-remover/BackgroundRemoverBatchResult.svelte';
 	import LoadingProgress from '$lib/components/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/ErrorDisplay.svelte';
+	import { BASE_MODEL_URL } from '$lib/config';
 
 	let isModelLoaded = $state(false);
 	let isLoadingModel = $state(false);
@@ -21,13 +23,28 @@
 	let modelLoadProgress = $state(0);
 	let processingProgress = $state(0);
 
+	// Configure custom model URL
+	if (env.backends?.onnx?.wasm) {
+		env.backends.onnx.wasm.wasmPaths = '/transformers/';
+	}
+	env.remoteHost = `${BASE_MODEL_URL}/bgremoval/`;
+	env.remotePathTemplate = '{model}/';
+
 	// Mode selection
 	let processingMode = $state<'single' | 'batch'>('single');
 
 	// Model selection
 	const AVAILABLE_MODELS = [
-		{ id: 'RMBG-1.4', name: 'RMBG v1.4', description: 'Original background removal model' },
-		{ id: 'RMBG-2.0', name: 'RMBG v2.0', description: 'Improved background removal model' }
+		{
+			id: 'RMBG-1.4', //briaai/
+			name: 'RMBG v1.4',
+			description: 'Smaller and faster, runs on most devices'
+		},
+		{
+			id: 'BEN2-ONNX', //briaai/
+			name: 'BEN2',
+			description: 'Larger with potentially better results'
+		}
 	];
 	let selectedModelId = $state('RMBG-1.4');
 
@@ -47,11 +64,9 @@
 	let currentBatchIndex = $state(0);
 	let totalBatchCount = $state(0);
 
-	let model: any = null;
-	let processor: any = null;
+	let segmenter: any = null;
 
-	const EXAMPLE_URL =
-		'https://images.pexels.com/photos/5965592/pexels-photo-5965592.jpeg?auto=compress&cs=tinysrgb&w=1024';
+	const EXAMPLE_URL = '/pexels-photo-5965592.jpeg';
 
 	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
 
@@ -70,29 +85,16 @@
 
 			await requestWakeLock();
 
-			// Configure custom model URL
-			env.remoteHost = `${BASE_MODEL_URL}/bgremoval/`;
-			env.remotePathTemplate = '{model}/';
-
-			// Load model and processor
+			// Load the background removal pipeline
 			modelLoadProgress = 25;
-			model = await AutoModel.from_pretrained(selectedModelId, {
-				config: { model_type: 'custom' } as any
-			});
-
-			modelLoadProgress = 75;
-			processor = await AutoProcessor.from_pretrained(selectedModelId, {
-				config: {
-					do_normalize: true,
-					do_pad: false,
-					do_rescale: true,
-					do_resize: true,
-					image_mean: [0.5, 0.5, 0.5],
-					feature_extractor_type: 'ImageFeatureExtractor',
-					image_std: [1, 1, 1],
-					resample: 2,
-					rescale_factor: 0.00392156862745098,
-					size: { width: 1024, height: 1024 }
+			segmenter = await pipeline('background-removal', selectedModelId, {
+				progress_callback: (progress: any) => {
+					// Update progress based on pipeline loading
+					if (progress.status === 'downloading') {
+						modelLoadProgress = Math.round(25 + (progress.progress || 0) * 0.5);
+					} else if (progress.status === 'ready') {
+						modelLoadProgress = 100;
+					}
 				}
 			});
 
@@ -102,7 +104,7 @@
 			console.error('Model loading error:', err);
 			error = true;
 			errorMessage =
-				'Failed to load background removal model from custom server. Please check your connection and try again.';
+				'Failed to load background removal model. Please check your connection and try again.';
 		} finally {
 			isLoadingModel = false;
 			await releaseWakeLock();
@@ -110,41 +112,42 @@
 	}
 
 	async function processImage(imageUrl: string): Promise<string | null> {
-		if (!model || !processor) return null;
+		if (!segmenter) return null;
 
-		// Read image
-		const image = await RawImage.fromURL(imageUrl);
+		try {
+			// Process the image using the pipeline
+			const output = await segmenter(imageUrl);
 
-		// Preprocess image
-		const { pixel_values } = await processor(image);
+			// The pipeline returns an array with the processed image
+			if (output && output.length > 0) {
+				// The output is a RawImage, create a proper HTML canvas
+				const rawImage = output[0];
+				const tempCanvas = rawImage.toCanvas();
 
-		// Predict alpha matte
-		const { output } = await model({ input: pixel_values });
+				// Create a new HTML canvas element
+				const canvas = document.createElement('canvas');
+				canvas.width = rawImage.width;
+				canvas.height = rawImage.height;
+				const ctx = canvas.getContext('2d');
 
-		// Resize mask back to original size
-		const mask = await RawImage.fromTensor(output[0].mul(255).to('uint8')).resize(
-			image.width,
-			image.height
-		);
-		image.putAlpha(mask);
+				// Draw the image onto the HTML canvas
+				ctx?.drawImage(tempCanvas, 0, 0);
 
-		// Create new canvas
-		const canvas = document.createElement('canvas');
-		canvas.width = image.width;
-		canvas.height = image.height;
-		const ctx = canvas.getContext('2d');
-		ctx?.drawImage(image.toCanvas(), 0, 0);
-
-		// Convert to blob URL
-		return new Promise((resolve) => {
-			canvas.toBlob((blob) => {
-				if (blob) {
-					resolve(URL.createObjectURL(blob));
-				} else {
-					resolve(null);
-				}
-			}, 'image/png');
-		});
+				return new Promise((resolve) => {
+					canvas.toBlob((blob) => {
+						if (blob) {
+							resolve(URL.createObjectURL(blob));
+						} else {
+							resolve(null);
+						}
+					}, 'image/png');
+				});
+			}
+			return null;
+		} catch (err) {
+			console.error('Error processing image:', err);
+			return null;
+		}
 	}
 
 	async function handleSingleImageProcessing(imageUrl: string) {
@@ -310,8 +313,7 @@
 			clearResults();
 			// Reset model state
 			isModelLoaded = false;
-			model = null;
-			processor = null;
+			segmenter = null;
 			// Load new model
 			loadModel();
 		}
@@ -358,11 +360,11 @@
 
 		<div class="toolbar">
 			<span class="model-info">
-				<span class="model-emoji">🖼️</span>
+				<span class="model-emoji"><ImageIcon /></span>
 				Background Remover ({AVAILABLE_MODELS.find((m) => m.id === selectedModelId)?.name})
 			</span>
 			<button onclick={clearResults} class="clear-btn" aria-label="Clear Results">
-				<span class="btn-emoji">🗑️</span>
+				<span class="btn-emoji"><Trash2Icon /></span>
 				Clear
 			</button>
 			<div class="toolbar-decoration"></div>
@@ -372,7 +374,7 @@
 			<!-- Model Selection -->
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
 				<div class="model-selection">
-					<h3>Model Selection</h3>
+					<h3><span class="step-number">Step 1:</span> Model Selection</h3>
 					<div class="model-buttons">
 						{#each AVAILABLE_MODELS as modelOption (modelOption.id)}
 							<button
@@ -392,14 +394,14 @@
 			<!-- Mode Selection -->
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
 				<div class="mode-selection">
-					<h3>Processing Mode</h3>
+					<h3><span class="step-number">Step 2:</span> Processing Mode</h3>
 					<div class="mode-buttons">
 						<button
 							class="mode-btn"
 							class:active={processingMode === 'single'}
 							onclick={() => switchMode('single')}
 						>
-							<span class="mode-icon">🖼️</span>
+							<span class="mode-icon"><ImageIcon /></span>
 							Single Image
 						</button>
 						<button
@@ -407,28 +409,26 @@
 							class:active={processingMode === 'batch'}
 							onclick={() => switchMode('batch')}
 						>
-							<span class="mode-icon">📁</span>
-							Batch Processing
+							<span class="mode-icon"><FolderIcon /></span>
+							Multiple images
 						</button>
 					</div>
 				</div>
 			{/if}
 
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
-				{#if processingMode === 'single'}
-					<BackgroundRemoverFileUpload
+				<div class="upload-selection">
+					<h3><span class="step-number">Step 3:</span> Upload Images</h3>
+					<BackgroundRemoverUpload
+						mode={processingMode}
 						{selectedFile}
+						{selectedFiles}
 						onFileSelect={handleSingleFileSelect}
+						onFilesSelect={handleBatchFileSelect}
 						onExampleUse={handleExampleUse}
 						disabled={isProcessing}
 					/>
-				{:else}
-					<BackgroundRemoverBatchUpload
-						{selectedFiles}
-						onFilesSelect={handleBatchFileSelect}
-						disabled={isProcessing}
-					/>
-				{/if}
+				</div>
 			{/if}
 
 			{#if isProcessing}
@@ -567,10 +567,26 @@
 	.model-emoji {
 		font-size: 1.125rem;
 		margin-right: 0.25rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.model-emoji :global(svg) {
+		width: 1.125rem;
+		height: 1.125rem;
 	}
 
 	.btn-emoji {
 		font-size: 1rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.btn-emoji :global(svg) {
+		width: 1rem;
+		height: 1rem;
 	}
 
 	.clear-btn {
@@ -686,6 +702,14 @@
 
 	.mode-icon {
 		font-size: 2rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.mode-icon :global(svg) {
+		width: 2rem;
+		height: 2rem;
 	}
 
 	/* Model Selection */
@@ -780,6 +804,50 @@
 		letter-spacing: 0;
 		font-weight: 400;
 		line-height: 1.2;
+	}
+
+	/* Step Numbers */
+	.step-number {
+		background: #000;
+		color: #fff;
+		padding: 0.25rem 0.5rem;
+		border-radius: 4px;
+		font-size: 0.875rem;
+		font-weight: 700;
+		margin-right: 0.5rem;
+		display: inline-block;
+		transform: rotate(0deg);
+	}
+
+	/* Upload Selection */
+	.upload-selection {
+		background: #fff;
+		border: 4px solid #000;
+		padding: 1.5rem;
+		box-shadow: 6px 6px 0 #000;
+		margin-bottom: 1.5rem;
+		position: relative;
+		transform: rotate(-0.1deg);
+		animation: slideIn 0.4s ease-out;
+	}
+
+	.upload-selection h3 {
+		margin-top: 0;
+		margin-bottom: 1rem;
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 1.5rem;
+		color: #000;
+		text-align: center;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		background: #98fb98;
+		padding: 0.5rem 1rem;
+		border: 3px solid #000;
+		box-shadow: 4px 4px 0 #000;
+		transform: rotate(0.5deg);
+		width: fit-content;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	@media (max-width: 600px) {

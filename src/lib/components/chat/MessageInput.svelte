@@ -1,5 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import MessageCircleIcon from 'virtual:icons/lucide/message-circle';
+	import LightbulbIcon from 'virtual:icons/lucide/lightbulb';
+	import SendIcon from 'virtual:icons/lucide/send';
+	import SquareIcon from 'virtual:icons/lucide/square';
 
 	interface Props {
 		value: string;
@@ -49,7 +53,7 @@
 	<div class="input-decoration"></div>
 
 	<div class="message-input" class:is-disabled={isGenerating}>
-		<span class="input-emoji">💭</span>
+		<span class="input-emoji"><MessageCircleIcon /></span>
 		<textarea
 			id="chat"
 			bind:this={inputElement}
@@ -61,9 +65,7 @@
 		></textarea>
 		{#if isGenerating && onStop}
 			<button onclick={onStop} class="stop-btn-inline" aria-label="Stop generation">
-				<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-					<rect x="4" y="4" width="16" height="16" />
-				</svg>
+				<SquareIcon />
 			</button>
 		{:else}
 			<button
@@ -72,25 +74,13 @@
 				class="send-btn"
 				aria-label="Send message"
 			>
-				<svg
-					viewBox="0 0 24 24"
-					width="20"
-					height="20"
-					stroke="currentColor"
-					stroke-width="2.5"
-					fill="none"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				>
-					<line x1="22" y1="2" x2="11" y2="13"></line>
-					<polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-				</svg>
+				<SendIcon />
 			</button>
 		{/if}
 	</div>
 
 	<div class="disclaimer">
-		<span class="disclaimer-icon">💡</span>
+		<span class="disclaimer-icon"><LightbulbIcon /></span>
 		Model responses may not always be accurate.
 	</div>
 </div>
@@ -149,6 +139,14 @@
 		border: 2px solid #000;
 		border-radius: 4px;
 		animation: bounce-emoji 3s ease-in-out infinite;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.input-emoji :global(svg) {
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	@keyframes bounce-emoji {
@@ -211,6 +209,11 @@
 		transform: rotate(5deg);
 	}
 
+	.send-btn :global(svg) {
+		width: 20px;
+		height: 20px;
+	}
+
 	.send-btn:hover:not(:disabled) {
 		background: linear-gradient(135deg, #98fb98 0%, #90ee90 100%);
 		transform: scale(1.1) rotate(0deg);
@@ -246,6 +249,11 @@
 		box-shadow: 2px 2px 0 #000;
 		transform: rotate(-2deg);
 		animation: pulse-stop 1s ease-in-out infinite;
+	}
+
+	.stop-btn-inline :global(svg) {
+		width: 20px;
+		height: 20px;
 	}
 
 	@keyframes pulse-stop {
@@ -290,6 +298,14 @@
 
 	.disclaimer-icon {
 		font-size: 0.875rem;
+		display: flex;
+		align-items: center;
+		color: #666;
+	}
+
+	.disclaimer-icon :global(svg) {
+		width: 0.875rem;
+		height: 0.875rem;
 	}
 
 	@media (max-width: 600px) {
@@ -316,6 +332,11 @@
 
 		.input-emoji {
 			font-size: 1.25rem;
+		}
+
+		.input-emoji :global(svg) {
+			width: 1.25rem;
+			height: 1.25rem;
 		}
 	}
 </style>
