@@ -58,7 +58,7 @@
 
 	const DEFAULT_MODEL = `${BASE_MODEL_URL}/whisper/ggml-tiny-q5_1.bin`;
 
-	let selectedModel = $derived($whisperModel || DEFAULT_MODEL);
+	let selectedModel = $state($whisperModel || DEFAULT_MODEL);
 	const availableModels = [
 		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' },
 		{
