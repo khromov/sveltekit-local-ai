@@ -6,7 +6,6 @@
 	import ImageIcon from 'virtual:icons/lucide/image';
 	import Trash2Icon from 'virtual:icons/lucide/trash-2';
 	import FolderIcon from 'virtual:icons/lucide/folder';
-	import ZapIcon from 'virtual:icons/lucide/zap';
 
 	import BackgroundRemoverUpload from '$lib/components/background-remover/BackgroundRemoverUpload.svelte';
 	import BackgroundRemoverProgress from '$lib/components/background-remover/BackgroundRemoverProgress.svelte';
