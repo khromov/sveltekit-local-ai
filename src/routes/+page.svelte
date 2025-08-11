@@ -256,11 +256,6 @@
 		border-radius: 8px;
 	}
 
-	.feature-icon {
-		color: #000;
-		display: block;
-	}
-
 	:global(.feature-icon) {
 		width: 48px;
 		height: 48px;
