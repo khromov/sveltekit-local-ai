@@ -69,6 +69,8 @@
 			ondrop={handleDrop}
 			ondragover={handleDragOver}
 			ondragleave={handleDragLeave}
+			role="button"
+			tabindex="0"
 		>
 			<span class="upload-icon"><UploadIcon /></span>
 			<p><strong>Drag & Drop Audio File</strong></p>

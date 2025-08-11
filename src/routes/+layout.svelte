@@ -250,11 +250,6 @@
 		box-shadow: 3px 3px 0 #000;
 	}
 
-	.nav-icon {
-		width: 20px;
-		height: 20px;
-	}
-
 	:global(.nav-icon) {
 		width: 20px;
 		height: 20px;
