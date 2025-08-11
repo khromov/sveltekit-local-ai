@@ -1,6 +1,12 @@
 <script lang="ts">
 	import { AVAILABLE_MODELS, formatFileSize } from '$lib/wllama-config';
 	import { inferenceParams } from '$lib/stores';
+	import RocketIcon from 'virtual:icons/lucide/rocket';
+	import PackageIcon from 'virtual:icons/lucide/package';
+	import SettingsIcon from 'virtual:icons/lucide/settings';
+	import ZapIcon from 'virtual:icons/lucide/zap';
+	import HourglassIcon from 'virtual:icons/lucide/hourglass';
+	import ChevronDownIcon from 'virtual:icons/lucide/chevron-down';
 
 	interface Props {
 		modelSelection: string;
@@ -15,42 +21,34 @@
 <div class="model-selector">
 	<div class="selector-decoration"></div>
 	<h2>
-		<span class="title-icon">🚀</span>
+		<span class="title-icon"><RocketIcon /></span>
 		Chat
 	</h2>
 
 	<div class="select-wrapper">
 		<label class="select-label" for="model-select">
-			<span class="label-icon">📦</span>
+			<span class="label-icon"><PackageIcon /></span>
 			Choose Model
 		</label>
-		<select id="model-select" bind:value={modelSelection}>
-			{#each AVAILABLE_MODELS as model (model.url)}
-				<option value={model.url}>
-					{model.longName ?? model.name} ({formatFileSize(model.size)})
-				</option>
-			{/each}
-		</select>
+		<div class="select-container">
+			<select id="model-select" bind:value={modelSelection}>
+				{#each AVAILABLE_MODELS as model (model.url)}
+					<option value={model.url}>
+						{model.longName ?? model.name} ({formatFileSize(model.size)})
+					</option>
+				{/each}
+			</select>
+			<span class="select-arrow"><ChevronDownIcon /></span>
+		</div>
 	</div>
 
 	<div class="inference-params">
 		<button class="params-toggle" onclick={() => (showParams = !showParams)}>
-			<span class="toggle-emoji">⚙️</span>
+			<span class="toggle-emoji"><SettingsIcon /></span>
 			<span>Advanced Parameters</span>
-			<svg
-				class="toggle-icon"
-				class:rotated={showParams}
-				viewBox="0 0 24 24"
-				width="20"
-				height="20"
-				stroke="currentColor"
-				stroke-width="2"
-				fill="none"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<polyline points="6 9 12 15 18 9"></polyline>
-			</svg>
+			<span class="toggle-icon" class:rotated={showParams}>
+				<ChevronDownIcon />
+			</span>
 		</button>
 		{#if showParams}
 			<div class="params-grid">
@@ -78,10 +76,10 @@
 
 	<button onclick={onLoadModel} class="load-button primary-button" disabled={isLoading}>
 		{#if isLoading}
-			<span class="loading-icon">⏳</span>
+			<span class="loading-icon"><HourglassIcon /></span>
 			Loading Model...
 		{:else}
-			<span class="button-icon">⚡</span>
+			<span class="button-icon"><ZapIcon /></span>
 			Load Model
 		{/if}
 	</button>
@@ -168,7 +166,15 @@
 
 	.title-icon {
 		font-size: 1.75rem;
+		display: flex;
+		align-items: center;
+		color: #000;
 		animation: bounce 2s ease-in-out infinite;
+	}
+
+	.title-icon :global(svg) {
+		width: 1.75rem;
+		height: 1.75rem;
 	}
 
 	@keyframes bounce {
@@ -208,6 +214,19 @@
 
 	.label-icon {
 		font-size: 0.875rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.label-icon :global(svg) {
+		width: 0.875rem;
+		height: 0.875rem;
+	}
+
+	.select-container {
+		position: relative;
+		width: 100%;
 	}
 
 	.model-selector select {
@@ -220,14 +239,26 @@
 		background: #fff;
 		box-shadow: 5px 5px 0 #000;
 		appearance: none;
-		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-		background-repeat: no-repeat;
-		background-position: right 0.875rem center;
-		background-size: 1.25em;
 		transition: all 0.2s;
 		cursor: pointer;
 		font-family: 'Space Grotesk', system-ui, sans-serif;
 		box-sizing: border-box;
+	}
+
+	.select-arrow {
+		position: absolute;
+		right: 0.875rem;
+		top: 50%;
+		transform: translateY(-50%);
+		pointer-events: none;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.select-arrow :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.model-selector select:hover {
@@ -273,7 +304,15 @@
 	.toggle-emoji {
 		font-size: 1.25rem;
 		margin-right: 0.5rem;
+		display: flex;
+		align-items: center;
+		color: #000;
 		animation: rotate 3s linear infinite;
+	}
+
+	.toggle-emoji :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	@keyframes rotate {
@@ -296,6 +335,14 @@
 	.toggle-icon {
 		transition: transform 0.3s ease;
 		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.toggle-icon :global(svg) {
+		width: 20px;
+		height: 20px;
 	}
 
 	.toggle-icon.rotated {
@@ -402,6 +449,15 @@
 	.button-icon,
 	.loading-icon {
 		font-size: 1.5rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.button-icon :global(svg),
+	.loading-icon :global(svg) {
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	.loading-icon {

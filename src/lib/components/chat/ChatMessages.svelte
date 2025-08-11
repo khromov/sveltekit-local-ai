@@ -2,6 +2,7 @@
 	import { onMount, tick } from 'svelte';
 	import type { Message as MessageType } from '$lib/wllama-config';
 	import Message from './Message.svelte';
+	import MessageCircleIcon from 'virtual:icons/lucide/message-circle';
 
 	interface Props {
 		messages: MessageType[];
@@ -35,7 +36,7 @@
 
 	{#if messages.length === 0 || (messages.length === 1 && messages[0].role === 'system')}
 		<div class="empty-state">
-			<div class="empty-icon">💬</div>
+			<div class="empty-icon"><MessageCircleIcon /></div>
 			<h3>Start a Conversation</h3>
 			<p>Type a message below to begin chatting with AI</p>
 		</div>
@@ -106,6 +107,15 @@
 		font-size: 4rem;
 		margin-bottom: 1rem;
 		animation: float 3s ease-in-out infinite;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #000;
+	}
+
+	.empty-icon :global(svg) {
+		width: 4rem;
+		height: 4rem;
 	}
 
 	@keyframes float {
@@ -169,6 +179,11 @@
 
 		.empty-icon {
 			font-size: 3rem;
+		}
+
+		.empty-icon :global(svg) {
+			width: 3rem;
+			height: 3rem;
 		}
 
 		.empty-state h3 {

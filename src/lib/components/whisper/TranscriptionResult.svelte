@@ -1,5 +1,8 @@
 <script lang="ts">
 	import subsrt from 'subsrt-ts';
+	import FileTextIcon from 'virtual:icons/lucide/file-text';
+	import CheckCircleIcon from 'virtual:icons/lucide/check-circle';
+	import ClipboardIcon from 'virtual:icons/lucide/clipboard';
 
 	interface Props {
 		text: string;
@@ -73,7 +76,7 @@
 		<div class="result-content">
 			<div class="result-header">
 				<h3>
-					<span class="header-icon">📝</span>
+					<span class="header-icon"><FileTextIcon /></span>
 					Transcription Result
 				</h3>
 				<div class="result-actions">
@@ -90,10 +93,10 @@
 
 					<button class="copy-btn" onclick={copyToClipboard} class:copied={hasCopied}>
 						{#if hasCopied}
-							<span class="copy-icon">✅</span>
+							<span class="copy-icon"><CheckCircleIcon /></span>
 							Copied!
 						{:else}
-							<span class="copy-icon">📋</span>
+							<span class="copy-icon"><ClipboardIcon /></span>
 							Copy
 						{/if}
 					</button>
@@ -188,6 +191,14 @@
 
 	.header-icon {
 		font-size: 1.5rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.header-icon :global(svg) {
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	.result-actions {
@@ -313,6 +324,14 @@
 
 	.copy-icon {
 		font-size: 1.25rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.copy-icon :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	/* Custom scrollbar */

@@ -10,6 +10,8 @@
 	} from '$lib/wllama-config';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import { messages, inferenceParams } from '$lib/stores';
+	import BotIcon from 'virtual:icons/lucide/bot';
+	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 
 	import LoadingProgress from '$lib/components/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/ErrorDisplay.svelte';
@@ -246,11 +248,11 @@
 
 		<div class="toolbar">
 			<span class="model-info">
-				<span class="model-emoji">🤖</span>
+				<span class="model-emoji"><BotIcon /></span>
 				{selectedModel.name}
 			</span>
 			<button onclick={newChat} class="new-chat-btn" aria-label="New Chat">
-				<span class="btn-emoji">✨</span>
+				<span class="btn-emoji"><SparklesIcon /></span>
 				New <span class="desktop-only">Chat</span>
 			</button>
 			<div class="toolbar-decoration"></div>
@@ -380,10 +382,26 @@
 	.model-emoji {
 		font-size: 1.125rem;
 		margin-right: 0.25rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.model-emoji :global(svg) {
+		width: 1.125rem;
+		height: 1.125rem;
 	}
 
 	.btn-emoji {
 		font-size: 1rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.btn-emoji :global(svg) {
+		width: 1rem;
+		height: 1rem;
 	}
 
 	.new-chat-btn {

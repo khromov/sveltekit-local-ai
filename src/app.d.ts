@@ -25,6 +25,13 @@ declare global {
 	interface Navigator {
 		wakeLock?: WakeLock;
 	}
+
+	// Unplugin Icons type declarations
+	declare module 'virtual:icons/*' {
+		import { SvelteComponent } from 'svelte';
+		const component: typeof SvelteComponent;
+		export default component;
+	}
 }
 
 export {};

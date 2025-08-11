@@ -1,389 +1,396 @@
 <script lang="ts">
-	// No props needed for this component
+	import MessageSquareIcon from 'virtual:icons/lucide/message-square';
+	import MicIcon from 'virtual:icons/lucide/mic';
+	import ImageIcon from 'virtual:icons/lucide/image';
 </script>
 
-<div class="main-menu">
-	<div class="menu-container">
-		<header class="menu-header">
-			<h1 class="main-title">
-				<span class="title-line">Local AI Playground</span>
-			</h1>
-			<p class="subtitle">
-				On this page you'll find free, private AI tools that run entirely in your browser - and even
-				offline!
-			</p>
-		</header>
-
-		<div class="feature-grid">
-			<a href="/chat" class="feature-card chat-card">
-				<div class="card-number">Tool #01</div>
-				<div class="card-content">
-					<div class="icon-container">
-						<svg
-							class="feature-icon"
-							viewBox="0 0 24 24"
-							width="48"
-							height="48"
-							stroke="currentColor"
-							stroke-width="2.5"
-							fill="none"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-						</svg>
-					</div>
-					<h2>Chat</h2>
-					<p class="feature-description">
-						Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp
-					</p>
-					<div class="feature-highlights">
-						<span class="highlight">Private & Secure</span>
-						<span class="highlight">Works Offline</span>
-						<span class="highlight">No Data Sharing</span>
-					</div>
-				</div>
-			</a>
-
-			<a href="/transcribe" class="feature-card transcribe-card">
-				<div class="card-number">Tool #02</div>
-				<div class="card-content">
-					<div class="icon-container">
-						<svg
-							class="feature-icon"
-							viewBox="0 0 24 24"
-							width="48"
-							height="48"
-							stroke="currentColor"
-							stroke-width="2.5"
-							fill="none"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-							<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-							<line x1="12" y1="19" x2="12" y2="23"></line>
-							<line x1="8" y1="23" x2="16" y2="23"></line>
-						</svg>
-					</div>
-					<h2>Transcribe Audio</h2>
-					<p class="feature-description">
-						Convert speech to text using Whisper AI. Upload any existing audio file and export as
-						text or a subtitle file.
-					</p>
-					<div class="feature-highlights">
-						<span class="highlight">High Accuracy</span>
-						<span class="highlight">Multiple Formats</span>
-						<span class="highlight">Local Processing</span>
-					</div>
-				</div>
-			</a>
-
-			<a href="/background-remover" class="feature-card background-card">
-				<div class="card-number">Tool #03</div>
-				<div class="card-content">
-					<div class="icon-container">
-						<svg
-							class="feature-icon"
-							viewBox="0 0 24 24"
-							width="48"
-							height="48"
-							stroke="currentColor"
-							stroke-width="2.5"
-							fill="none"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-							<circle cx="8.5" cy="8.5" r="1.5"></circle>
-							<polyline points="21,15 16,10 5,21"></polyline>
-						</svg>
-					</div>
-					<h2>Remove Background</h2>
-					<p class="feature-description">
-						Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for
-						professional results.
-					</p>
-					<div class="feature-highlights">
-						<span class="highlight">AI-Powered</span>
-						<span class="highlight">High Quality</span>
-						<span class="highlight">Easy Download</span>
-					</div>
-				</div>
-			</a>
+<div class="bauhaus-container">
+	<!-- Header Section -->
+	<header class="header">
+		<div class="title-block">
+			<h1 class="main-title">LOCAL AI</h1>
 		</div>
+		<div class="subtitle-block">
+			<p class="subtitle">Private AI tools that run in your browser</p>
+		</div>
+	</header>
 
-		<footer class="menu-footer">
-			<p>All processing happens locally in your browser using WebAssembly.</p>
-			<p>No data is sent to external servers.</p>
-		</footer>
+	<!-- Main Grid -->
+	<main class="main-grid">
+		<!-- Chat Tool -->
+		<a href="/chat" class="tool-card chat">
+			<div class="geometric-icon">
+				<div class="shape circle blue"></div>
+			</div>
+			<div class="tool-content">
+				<h2>CHAT</h2>
+				<p>Talk with AI models</p>
+			</div>
+		</a>
+
+		<!-- Transcribe Tool -->
+		<a href="/transcribe" class="tool-card transcribe">
+			<div class="geometric-icon">
+				<div class="shape triangle red"></div>
+			</div>
+			<div class="tool-content">
+				<h2>TRANSCRIBE</h2>
+				<p>Audio to text</p>
+			</div>
+		</a>
+
+		<!-- Background Remover Tool -->
+		<a href="/background-remover" class="tool-card background">
+			<div class="geometric-icon">
+				<div class="shape square yellow"></div>
+			</div>
+			<div class="tool-content">
+				<h2>REMOVE BG</h2>
+				<p>Delete backgrounds</p>
+			</div>
+		</a>
+
+		<!-- Info Block -->
+		<div class="info-block">
+			<div class="info-line"></div>
+			<p>100% PRIVATE</p>
+			<p>NO DATA SENT</p>
+			<p>OFFLINE READY</p>
+		</div>
+	</main>
+
+	<!-- Decorative Elements -->
+	<div class="floating-shapes">
+		<div class="float-shape rect-1"></div>
+		<div class="float-shape rect-2"></div>
+		<div class="float-shape circle-1"></div>
 	</div>
 </div>
 
 <style>
-	/* Base styles */
+	/* Reset and base */
 	:global(body) {
 		margin: 0;
 		padding: 0;
-		font-family:
-			'Space Grotesk',
-			system-ui,
-			-apple-system,
-			sans-serif;
-		font-size: 16px;
-		line-height: 1.5;
-		background: linear-gradient(135deg, #ffe5b4 0%, #e6e6fa 50%, #b4e7ce 100%);
-		background-size: 200% 200%;
-		animation: gradient-shift 20s ease infinite;
+		font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+		background: #f5f5f5;
 		color: #000;
 		overflow-x: hidden;
 	}
 
-	@keyframes gradient-shift {
-		0% {
-			background-position: 0% 50%;
-		}
-		50% {
-			background-position: 100% 50%;
-		}
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	.main-menu {
+	/* Container */
+	.bauhaus-container {
 		min-height: 100vh;
-		display: flex;
-		align-items: flex-start;
-		justify-content: center;
-		padding: 1rem 1rem 2rem;
+		padding: 2rem;
 		box-sizing: border-box;
 		position: relative;
-		z-index: 2;
-	}
-
-	.menu-container {
-		width: 100%;
 		max-width: 1200px;
 		margin: 0 auto;
 	}
 
-	.menu-header {
-		text-align: center;
-		margin-bottom: 2rem;
-		animation: fadeIn 0.6s ease-out;
+	/* Header */
+	.header {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		margin-bottom: 4rem;
+		position: relative;
 	}
 
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
+	.title-block {
+		background: #000;
+		color: #fff;
+		padding: 2rem 3rem;
+		width: fit-content;
+		position: relative;
+		transform: rotate(-1deg);
+	}
+
+	.title-block::after {
+		content: '';
+		position: absolute;
+		top: 0.5rem;
+		left: 0.5rem;
+		right: 0.5rem;
+		bottom: 0.5rem;
+		border: 3px solid #ff0000;
+		pointer-events: none;
 	}
 
 	.main-title {
+		margin: 0;
 		font-size: 3.5rem;
-		line-height: 1.1;
-		margin: 0 0 1.5rem 0;
-		font-weight: 800;
+		font-weight: 900;
+		letter-spacing: 0.05em;
+		line-height: 0.9;
 	}
 
-	.title-line {
-		background: #000;
-		color: #ffd700;
-		padding: 0.5rem 2rem;
-		display: inline-block;
+	.subtitle-block {
+		background: #ffffff;
 		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
-		letter-spacing: 2px;
-		text-transform: uppercase;
+		padding: 1rem 2rem;
+		width: fit-content;
+		margin-left: auto;
+		margin-right: 2rem;
+		transform: rotate(1deg);
 	}
 
 	.subtitle {
-		font-size: 1.25rem;
-		color: #000;
 		margin: 0;
-		font-weight: 500;
-		background: #fff;
-		display: inline-block;
-		padding: 0.5rem 1.5rem;
-		border: 2px solid #000;
-		box-shadow: 3px 3px 0 #000;
+		font-size: 1.2rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.02em;
 	}
 
-	.feature-grid {
+	/* Main Grid */
+	.main-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: auto auto;
 		gap: 2rem;
-		margin-bottom: 3rem;
-		padding: 0 1rem;
+		position: relative;
 	}
 
-	.feature-card {
-		display: block;
+	/* Tool Cards */
+	.tool-card {
+		background: #fff;
+		border: 4px solid #000;
+		padding: 2rem;
 		text-decoration: none;
 		color: #000;
-		background: #fff;
-		border: 3px solid #000;
-		padding: 0;
-		box-shadow: 5px 5px 0 #000;
-		transition: all 0.2s ease;
-		position: relative;
-		overflow: hidden;
-		border-radius: 12px;
-		animation: cardFade 0.6s ease-out;
-		animation-fill-mode: both;
-	}
-
-	.feature-card:nth-child(1) {
-		animation-delay: 0.2s;
-	}
-
-	.feature-card:nth-child(2) {
-		animation-delay: 0.3s;
-	}
-
-	.feature-card:nth-child(3) {
-		animation-delay: 0.4s;
-	}
-
-	@keyframes cardFade {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	.card-number {
-		position: absolute;
-		top: 1rem;
-		right: 1rem;
-		background: #000;
-		color: #ffd700;
-		padding: 0.25rem 0.75rem;
-		font-weight: 700;
-		font-size: 0.875rem;
-		letter-spacing: 1px;
-		border-radius: 4px;
-		text-transform: uppercase;
-	}
-
-	.feature-card:hover {
-		transform: translate(-3px, -3px);
-		box-shadow: 8px 8px 0 #000;
-	}
-
-	.card-content {
-		padding: 2rem;
-	}
-
-	.icon-container {
-		margin-bottom: 1.5rem;
-		width: fit-content;
-		padding: 0.75rem;
-		background: #ffe5b4;
-		border: 2px solid #000;
-		border-radius: 8px;
-	}
-
-	.feature-icon {
-		color: #000;
-		display: block;
-	}
-
-	.feature-card h2 {
-		font-size: 1.75rem;
-		font-weight: 700;
-		margin: 0 0 1rem 0;
-		color: #000;
-	}
-
-	.feature-description {
-		font-size: 1rem;
-		color: #333;
-		line-height: 1.6;
-		margin: 0 0 1.5rem 0;
-	}
-
-	.feature-highlights {
 		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+		transition:
+			transform 0.2s ease,
+			box-shadow 0.2s ease;
+		position: relative;
+		min-height: 200px;
+		justify-content: center;
 	}
 
-	.highlight {
-		font-size: 0.875rem;
-		color: #000;
-		padding: 0.375rem 0.75rem;
-		background: #f0f0f0;
-		border: 2px solid #000;
-		font-weight: 600;
-		border-radius: 4px;
-		transition: all 0.2s ease;
+	.tool-card:hover {
+		transform: translate(-3px, -3px);
+		box-shadow: 6px 6px 0 #000;
 	}
 
-	.chat-card:hover .highlight {
-		background: #ffe5b4;
+	.tool-card.chat {
+		transform: rotate(-2deg);
 	}
 
-	.transcribe-card:hover .highlight {
-		background: #b4e7ce;
+	.tool-card.transcribe {
+		transform: rotate(1deg);
 	}
 
-	.background-card:hover .highlight {
-		background: #87ceeb;
+	.tool-card.background {
+		transform: rotate(-1deg);
 	}
 
-	.menu-footer {
+	.tool-card:hover.chat,
+	.tool-card:hover.transcribe,
+	.tool-card:hover.background {
+		transform: translate(-3px, -3px) rotate(0deg);
+	}
+
+	/* Geometric Icons */
+	.geometric-icon {
+		width: 80px;
+		height: 80px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+	}
+
+	.shape {
+		border: 3px solid #000;
+	}
+
+	.circle {
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+	}
+
+	.triangle {
+		width: 0;
+		height: 0;
+		border: none;
+		border-left: 30px solid transparent;
+		border-right: 30px solid transparent;
+		border-bottom: 52px solid #ff0000;
+		background: none;
+	}
+
+	.square {
+		width: 60px;
+		height: 60px;
+	}
+
+	.blue {
+		background: #0066ff;
+	}
+
+	.red {
+		/* Triangle color is set above */
+	}
+
+	.yellow {
+		background: #ffdd00;
+	}
+
+	/* Tool Content */
+	.tool-content {
 		text-align: center;
-		color: #666;
-		font-size: 0.9375rem;
-		margin-top: 3rem;
-		animation: fadeIn 0.6s ease-out;
-		animation-delay: 0.5s;
-		animation-fill-mode: both;
 	}
 
-	.menu-footer p {
+	.tool-content h2 {
+		margin: 0 0 0.5rem 0;
+		font-size: 1.4rem;
+		font-weight: 900;
+		letter-spacing: 0.05em;
+	}
+
+	.tool-content p {
+		margin: 0;
+		font-size: 1rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.02em;
+		opacity: 0.8;
+	}
+
+	/* Info Block */
+	.info-block {
+		grid-column: 1 / -1;
+		background: #ffdd00;
+		border: 4px solid #000;
+		padding: 2rem;
+		text-align: center;
+		position: relative;
+		transform: rotate(0.5deg);
+		margin-top: 2rem;
+	}
+
+	.info-line {
+		width: 100px;
+		height: 4px;
+		background: #000;
+		margin: 0 auto 1rem auto;
+	}
+
+	.info-block p {
 		margin: 0.5rem 0;
+		font-size: 1.1rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
 	}
 
-	/* Responsive adjustments */
+	/* Floating Decorative Shapes */
+	.floating-shapes {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		pointer-events: none;
+		z-index: -1;
+	}
+
+	.float-shape {
+		position: absolute;
+		border: 3px solid #000;
+	}
+
+	.rect-1 {
+		width: 40px;
+		height: 60px;
+		background: #ff0000;
+		top: 20%;
+		right: 10%;
+		transform: rotate(45deg);
+		opacity: 0.3;
+	}
+
+	.rect-2 {
+		width: 30px;
+		height: 80px;
+		background: #0066ff;
+		bottom: 30%;
+		left: 5%;
+		transform: rotate(-20deg);
+		opacity: 0.3;
+	}
+
+	.circle-1 {
+		width: 50px;
+		height: 50px;
+		background: #ffdd00;
+		border-radius: 50%;
+		top: 50%;
+		right: 5%;
+		opacity: 0.3;
+	}
+
+	/* Responsive Design */
 	@media (max-width: 768px) {
-		.main-menu {
-			padding: 1.5rem 1rem;
+		.bauhaus-container {
+			padding: 1rem;
+		}
+
+		.main-grid {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
 		}
 
 		.main-title {
 			font-size: 2.5rem;
 		}
 
-		.title-line {
-			padding: 0.375rem 1.25rem;
-			font-size: 2rem;
+		.title-block {
+			padding: 1.5rem 2rem;
 		}
 
-		.subtitle {
-			font-size: 1.125rem;
-			padding: 0.375rem 1rem;
+		.subtitle-block {
+			margin-left: 0;
+			margin-right: 0;
 		}
 
-		.feature-grid {
-			grid-template-columns: 1fr;
-			gap: 1.5rem;
-			padding: 0;
+		.tool-card {
+			min-height: 160px;
+			padding: 1.5rem;
 		}
 
-		.feature-card h2 {
-			font-size: 1.5rem;
+		.geometric-icon {
+			width: 60px;
+			height: 60px;
+		}
+
+		.circle,
+		.square {
+			width: 45px;
+			height: 45px;
+		}
+
+		.triangle {
+			border-left: 22px solid transparent;
+			border-right: 22px solid transparent;
+			border-bottom: 38px solid #ff0000;
+		}
+
+		.tool-content h2 {
+			font-size: 1.2rem;
+		}
+
+		.tool-content p {
+			font-size: 0.9rem;
+		}
+
+		/* Simplify floating shapes on mobile */
+		.floating-shapes {
+			display: none;
 		}
 	}
 
@@ -392,17 +399,25 @@
 			font-size: 2rem;
 		}
 
-		.card-content {
+		.title-block {
+			padding: 1rem 1.5rem;
+		}
+
+		.subtitle {
+			font-size: 1rem;
+		}
+
+		.tool-card {
+			min-height: 140px;
+			padding: 1rem;
+		}
+
+		.info-block {
 			padding: 1.5rem;
 		}
 
-		.feature-highlights {
-			gap: 0.375rem;
-		}
-
-		.highlight {
-			font-size: 0.8125rem;
-			padding: 0.25rem 0.5rem;
+		.info-block p {
+			font-size: 1rem;
 		}
 	}
 </style>

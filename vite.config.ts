@@ -1,6 +1,7 @@
 import devtoolsJson from 'vite-plugin-devtools-json';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
+import Icons from 'unplugin-icons/vite';
 
 export default defineConfig({
 	plugins: [
@@ -16,6 +17,9 @@ export default defineConfig({
 			}
 		},
 		sveltekit(),
+		Icons({
+			compiler: 'svelte'
+		}),
 		devtoolsJson()
 	],
 	optimizeDeps: { exclude: ['@transcribe/shout'] },

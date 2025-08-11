@@ -1,4 +1,9 @@
 <script lang="ts">
+	import AlertTriangleIcon from 'virtual:icons/lucide/alert-triangle';
+	import MicIcon from 'virtual:icons/lucide/mic';
+	import SquareIcon from 'virtual:icons/lucide/square';
+	import Trash2Icon from 'virtual:icons/lucide/trash-2';
+
 	interface Props {
 		transcribeMode: 'demo' | 'upload' | 'record';
 		selectedFile: File | null;
@@ -105,14 +110,14 @@
 <div class="audio-recorder">
 	{#if recordingError}
 		<div class="error-message">
-			<span class="error-icon">⚠️</span>
+			<span class="error-icon"><AlertTriangleIcon /></span>
 			{recordingError}
 		</div>
 	{/if}
 
 	{#if !isRecording && !audioUrl}
 		<button class="record-button" onclick={startRecording} {disabled}>
-			<span class="button-icon">🎙️</span>
+			<span class="button-icon"><MicIcon /></span>
 			Start Recording
 		</button>
 	{:else if isRecording}
@@ -122,7 +127,7 @@
 				Recording... {formatTime(recordingTime)}
 			</div>
 			<button class="stop-button" onclick={stopRecording}>
-				<span class="button-icon">⏹️</span>
+				<span class="button-icon"><SquareIcon /></span>
 				Stop Recording
 			</button>
 		</div>
@@ -136,7 +141,7 @@
 				<small>{formatTime(recordingTime)} • {selectedFile?.name}</small>
 			</div>
 			<button class="clear-button" onclick={clearRecording} {disabled}>
-				<span class="button-icon">🗑️</span>
+				<span class="button-icon"><Trash2Icon /></span>
 				Clear Recording
 			</button>
 		</div>
@@ -167,6 +172,14 @@
 
 	.error-icon {
 		font-size: 1.25rem;
+		display: flex;
+		align-items: center;
+		color: #d62828;
+	}
+
+	.error-icon :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.record-button,
@@ -217,6 +230,13 @@
 
 	.button-icon {
 		font-size: 1.25rem;
+		display: flex;
+		align-items: center;
+	}
+
+	.button-icon :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.recording-status {

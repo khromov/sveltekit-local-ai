@@ -1,5 +1,8 @@
 <script lang="ts">
 	import ProgressBar from '../ProgressBar.svelte';
+	import HeadphonesIcon from 'virtual:icons/lucide/headphones';
+	import ZapIcon from 'virtual:icons/lucide/zap';
+	import AlertTriangleIcon from 'virtual:icons/lucide/alert-triangle';
 
 	interface Props {
 		progress: number;
@@ -21,7 +24,7 @@
 <div class="transcribing">
 	<div class="transcribing-decoration"></div>
 	<h3>
-		<span class="title-icon">🎧</span>
+		<span class="title-icon"><HeadphonesIcon /></span>
 		Transcribing Audio
 	</h3>
 	<p class="progress-percentage">{progress}% Complete</p>
@@ -40,13 +43,13 @@
 
 	{#if isStuck}
 		<div class="stuck-message">
-			<span class="warning-icon">⚠️</span>
+			<span class="warning-icon"><AlertTriangleIcon /></span>
 			Transcription seems stuck
 			<button class="reload-link" onclick={onReload}> Reload Page → </button>
 		</div>
 	{:else}
 		<div class="transcribing-message">
-			<span class="pulse-icon">⚡</span>
+			<span class="pulse-icon"><ZapIcon /></span>
 			Keep this tab active during transcription
 		</div>
 	{/if}
@@ -126,7 +129,15 @@
 
 	.title-icon {
 		font-size: 2rem;
+		display: flex;
+		align-items: center;
+		color: #000;
 		animation: bounce 2s ease-in-out infinite;
+	}
+
+	.title-icon :global(svg) {
+		width: 2rem;
+		height: 2rem;
 	}
 
 	@keyframes bounce {
@@ -252,7 +263,15 @@
 
 	.pulse-icon {
 		font-size: 1.5rem;
+		display: flex;
+		align-items: center;
+		color: #000;
 		animation: flash 1s ease-in-out infinite;
+	}
+
+	.pulse-icon :global(svg) {
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	@keyframes flash {
@@ -298,6 +317,14 @@
 
 	.warning-icon {
 		font-size: 2rem;
+		display: flex;
+		align-items: center;
+		color: #000;
+	}
+
+	.warning-icon :global(svg) {
+		width: 2rem;
+		height: 2rem;
 	}
 
 	.reload-link {
