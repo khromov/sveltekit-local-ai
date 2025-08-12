@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { dev } from '$app/environment';
 	import { page } from '$app/state';
 	import '@fontsource/space-grotesk/400.css';
 	import '@fontsource/space-grotesk/500.css';
