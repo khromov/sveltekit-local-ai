@@ -31,30 +31,32 @@
 	});
 </script>
 
-<div bind:this={chatContainer} class="chat-messages content-area" id="chat-container">
+<div bind:this={chatContainer} class="chat-messages" id="chat-container">
 	<div class="chat-decoration"></div>
 
-	{#if messages.length === 0 || (messages.length === 1 && messages[0].role === 'system')}
-		<div class="empty-state">
-			<div class="empty-icon"><MessageCircleIcon /></div>
-			<h3>Start a Conversation</h3>
-			<p>Type a message below to begin chatting with AI</p>
-		</div>
-	{:else}
-		{#each messages as message, i (i)}
-			<Message {message} {isGenerating} isLast={i === messages.length - 1} />
-		{/each}
-	{/if}
+	<div class="messages-content">
+		{#if messages.length === 0 || (messages.length === 1 && messages[0].role === 'system')}
+			<div class="empty-state">
+				<div class="empty-icon"><MessageCircleIcon /></div>
+				<h3>Start a Conversation</h3>
+				<p>Type a message below to begin chatting with AI</p>
+			</div>
+		{:else}
+			{#each messages as message, i (i)}
+				<Message {message} {isGenerating} isLast={i === messages.length - 1} />
+			{/each}
+		{/if}
+	</div>
 </div>
 
 <style>
 	.chat-messages {
-		flex: 1 1 auto;
-		min-height: 0; /* critical to allow proper scrolling in flex containers */
-		overflow: auto;
+		flex: 1 1 0; /* Take remaining space but don't grow beyond container */
+		min-height: 0; /* Critical for flex scrolling */
+		overflow-y: auto;
+		overflow-x: hidden;
 		position: relative;
 		background: linear-gradient(135deg, rgba(255, 229, 180, 0.1) 0%, rgba(230, 230, 250, 0.1) 100%);
-		padding-top: 3rem;
 		width: 100%;
 		box-sizing: border-box;
 		border-left: var(--border-brutalist-thick);
@@ -62,7 +64,7 @@
 	}
 
 	.chat-decoration {
-		position: absolute;
+		position: sticky;
 		top: 0;
 		left: 0;
 		right: 0;
@@ -76,7 +78,14 @@
 			var(--color-accent-pink) 20px,
 			var(--color-accent-pink) 30px
 		);
-		z-index: 1;
+		z-index: 10;
+	}
+
+	.messages-content {
+		padding: 1.5rem;
+		min-height: 100%;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.empty-state {
@@ -84,7 +93,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		height: 100%;
+		flex: 1;
 		min-height: 300px;
 		text-align: center;
 		padding: 2rem;
@@ -177,9 +186,8 @@
 	}
 
 	@media (max-width: 600px) {
-		.chat-messages {
-			flex: 1 1 auto;
-			min-height: 0;
+		.messages-content {
+			padding: 1rem;
 		}
 
 		.empty-icon {

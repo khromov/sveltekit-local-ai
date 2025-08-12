@@ -20,6 +20,9 @@
 		animation: slideInChat 0.5s ease-out;
 		display: flex;
 		flex-direction: column;
+		height: calc(100vh - 4rem); /* Fixed height to constrain content */
+		min-height: 500px; /* Minimum height for usability */
+		max-height: calc(100vh - 2rem); /* Prevent growing too large */
 	}
 
 	@keyframes slideInChat {
@@ -35,8 +38,12 @@
 
 	.floating-decoration {
 		position: absolute;
-		background: linear-gradient(135deg, #ffd93d 0%, #ff69b4 100%);
-		border: 3px solid #000;
+		background: linear-gradient(
+			135deg,
+			var(--color-primary-dark) 0%,
+			var(--color-accent-pink) 100%
+		);
+		border: var(--border-brutalist-thick);
 		opacity: 0.2;
 		z-index: -1;
 		pointer-events: none;
@@ -81,6 +88,11 @@
 	}
 
 	@media (max-width: 600px) {
+		.card-interface {
+			height: calc(100vh - 3rem);
+			min-height: 400px;
+		}
+
 		.decoration-1,
 		.decoration-2 {
 			display: none;

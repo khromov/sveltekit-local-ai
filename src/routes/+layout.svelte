@@ -254,21 +254,24 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
+		height: 100vh; /* Full viewport height */
 	}
 
 	.content-wrapper {
 		width: 100%;
 		position: relative;
-		overflow-x: hidden;
+		overflow: hidden; /* Prevent overall page scroll when chat scrolls */
 		flex: 1;
 		display: flex;
 		flex-direction: column;
+		min-height: 0; /* Critical for nested flex scrolling */
 	}
 
 	/* Navigation styles - Refined Neo-Brutalist */
 	.main-nav {
 		margin-bottom: 1rem;
 		width: 100%;
+		flex: 0 0 auto; /* Don't grow/shrink */
 	}
 
 	.main-nav ul {
@@ -373,6 +376,10 @@
 		overflow: hidden;
 		box-sizing: border-box;
 		border-bottom-right-radius: 16px;
+		flex: 1; /* Take remaining space */
+		display: flex;
+		flex-direction: column;
+		min-height: 0; /* Critical for flex scrolling */
 	}
 
 	:global(.toolbar) {
@@ -384,6 +391,7 @@
 		border-bottom: var(--border-brutalist-thick);
 		flex-wrap: wrap;
 		gap: 0.5rem;
+		flex: 0 0 auto; /* Don't grow/shrink */
 	}
 
 	:global(.model-info) {
@@ -403,7 +411,9 @@
 		flex-direction: column;
 		gap: 1rem;
 		box-sizing: border-box;
-		min-height: 0; /* allow children like chat list to control their own height */
+		flex: 1; /* Take remaining space */
+		min-height: 0; /* Critical for flex scrolling */
+		overflow-y: auto; /* Allow scrolling when needed */
 	}
 
 	:global(.input-area) {
@@ -411,7 +421,7 @@
 		border-top: var(--border-brutalist-thick);
 		background: var(--color-background-secondary);
 		box-sizing: border-box;
-		flex: 0 0 auto;
+		flex: 0 0 auto; /* Don't grow/shrink */
 	}
 
 	:global(.disclaimer) {
@@ -484,6 +494,7 @@
 	@media (max-width: 600px) {
 		.container {
 			padding: 0.75rem;
+			height: 100vh; /* Full height on mobile */
 		}
 
 		.main-nav ul {
