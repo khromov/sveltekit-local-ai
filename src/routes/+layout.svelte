@@ -28,8 +28,6 @@
 	function isActive(path: string): boolean {
 		return page.url.pathname === path;
 	}
-
-	console.log('hello', page.url.pathname);
 </script>
 
 <svelte:head>
