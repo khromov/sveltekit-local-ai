@@ -185,7 +185,11 @@
 	}
 
 	.assistant-message .message-content {
-		background: linear-gradient(135deg, var(--color-background-tertiary) 0%, #e8e8e8 100%);
+		background: linear-gradient(
+			135deg,
+			var(--color-background-tertiary) 0%,
+			var(--color-background-pattern) 100%
+		);
 		color: var(--color-text-primary);
 		box-shadow: 5px 5px 0 var(--color-border-primary);
 		border-bottom-left-radius: 4px;

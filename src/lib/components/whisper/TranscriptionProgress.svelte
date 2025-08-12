@@ -61,9 +61,9 @@
 		flex-direction: column;
 		align-items: center;
 		padding: 2.5rem;
-		background: #fff;
-		border: 4px solid #000;
-		box-shadow: 10px 10px 0 #000;
+		background: var(--color-background-main);
+		border: var(--border-brutalist-extra-thick);
+		box-shadow: var(--shadow-brutalist-xlarge);
 		margin: 1.5rem 0;
 		animation: wobbleIn 0.5s ease-out;
 		position: relative;
@@ -89,12 +89,12 @@
 		height: 100px;
 		background: repeating-linear-gradient(
 			45deg,
-			#98fb98,
-			#98fb98 10px,
+			var(--color-success),
+			var(--color-success) 10px,
 			transparent 10px,
 			transparent 20px
 		);
-		border: 3px solid #000;
+		border: var(--border-brutalist-thick);
 		border-radius: 50%;
 		opacity: 0.3;
 		animation: spin 10s linear infinite;
@@ -112,17 +112,17 @@
 	.transcribing h3 {
 		margin-top: 0;
 		margin-bottom: 1rem;
-		font-family: 'Bebas Neue', sans-serif;
+		font-family: var(--font-family-display);
 		font-size: 2.5rem;
-		color: #000;
+		color: var(--color-text-primary);
 		letter-spacing: 3px;
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
-		background: #ffd93d;
+		background: var(--color-primary-dark);
 		padding: 0.5rem 2rem;
-		border: 3px solid #000;
-		box-shadow: 6px 6px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-large);
 		transform: rotate(-2deg);
 		text-transform: uppercase;
 	}
@@ -131,7 +131,7 @@
 		font-size: 2rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 		animation: bounce 2s ease-in-out infinite;
 	}
 
@@ -153,12 +153,12 @@
 	.progress-percentage {
 		font-size: 1.5rem;
 		font-weight: 700;
-		color: #000;
+		color: var(--color-text-primary);
 		margin-bottom: 1.5rem;
-		background: #98fb98;
+		background: var(--color-success);
 		padding: 0.5rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: 5px 5px 0 var(--color-text-primary);
 		transform: rotate(1deg);
 		animation: pulse 2s ease-in-out infinite;
 		text-transform: uppercase;
@@ -183,9 +183,9 @@
 	.segment-preview {
 		margin: 1.5rem 0;
 		padding: 1.5rem;
-		background: #fff;
-		border: 3px solid #000;
-		box-shadow: 6px 6px 0 #000;
+		background: var(--color-background-main);
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-large);
 		width: 100%;
 		max-width: 500px;
 		animation: slideIn 0.3s ease-out;
@@ -210,8 +210,8 @@
 		right: -8px;
 		width: 50px;
 		height: 50px;
-		background: #ff69b4;
-		border: 2px solid #000;
+		background: var(--color-accent-pink);
+		border: var(--border-brutalist-thin);
 		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
 		opacity: 0.4;
 		transform: rotate(-45deg);
@@ -222,37 +222,37 @@
 		margin: 0 0 0.75rem 0;
 		font-size: 1rem;
 		font-weight: 700;
-		color: #000;
+		color: var(--color-text-primary);
 		text-transform: uppercase;
 		letter-spacing: 2px;
-		background: #ffd93d;
+		background: var(--color-primary-dark);
 		padding: 4px 12px;
-		border: 2px solid #000;
+		border: var(--border-brutalist-thin);
 		display: inline-block;
-		box-shadow: 3px 3px 0 #000;
+		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.segment-preview p {
 		margin: 0;
 		font-size: 1.0625rem;
 		line-height: 1.5;
-		color: #000;
+		color: var(--color-text-primary);
 		font-style: italic;
 		font-weight: 500;
 		padding: 0.75rem;
 		background: linear-gradient(135deg, rgba(255, 217, 61, 0.1) 0%, rgba(152, 251, 152, 0.1) 100%);
-		border: 2px dashed #000;
+		border: 2px dashed var(--color-text-primary);
 	}
 
 	.transcribing-message {
 		margin-top: 1rem;
-		color: #000;
+		color: var(--color-text-primary);
 		font-weight: 700;
 		text-align: center;
-		background: #ffd93d;
+		background: var(--color-primary-dark);
 		padding: 1rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: 5px 5px 0 var(--color-text-primary);
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		display: flex;
@@ -265,7 +265,7 @@
 		font-size: 1.5rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 		animation: flash 1s ease-in-out infinite;
 	}
 
@@ -286,13 +286,13 @@
 
 	.stuck-message {
 		margin-top: 1rem;
-		color: #000;
+		color: var(--color-text-primary);
 		font-weight: 700;
 		text-align: center;
-		background: #ff6b6b;
+		background: var(--color-danger);
 		padding: 1rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: 5px 5px 0 var(--color-text-primary);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -319,7 +319,7 @@
 		font-size: 2rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.warning-icon :global(svg) {
@@ -328,24 +328,24 @@
 	}
 
 	.reload-link {
-		background: #ffd93d;
-		border: 3px solid #000;
-		color: #000;
+		background: var(--color-primary-dark);
+		border: var(--border-brutalist-thick);
+		color: var(--color-text-primary);
 		padding: 0.5rem 1rem;
 		cursor: pointer;
 		font-size: 1rem;
 		font-weight: 700;
-		box-shadow: 4px 4px 0 #000;
+		box-shadow: var(--shadow-brutalist-medium);
 		text-transform: uppercase;
 		letter-spacing: 1px;
-		font-family: 'Space Grotesk', monospace;
+		font-family: var(--font-family-primary);
 		transition: all 0.15s;
 	}
 
 	.reload-link:hover {
 		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
-		background: #98fb98;
+		box-shadow: var(--shadow-brutalist-large);
+		background: var(--color-success);
 	}
 
 	@media (max-width: 600px) {

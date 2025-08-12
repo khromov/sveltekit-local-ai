@@ -53,7 +53,11 @@
 </svelte:head>
 
 <div class="app-wrapper">
-	<div class="container" class:fullWidth={page.url.pathname === '/og'} class:chat-layout={isChatPage}>
+	<div
+		class="container"
+		class:fullWidth={page.url.pathname === '/og'}
+		class:chat-layout={isChatPage}
+	>
 		<nav class="main-nav">
 			<ul>
 				<div class="nav-left">
@@ -117,6 +121,19 @@
 <style>
 	/* Neo-Brutalist Design System */
 	:root {
+		/* Colors - Base */
+		--color-black: #000;
+		--color-white: #fff;
+		--color-gray-100: #f5f5f5;
+		--color-gray-200: #e0e0e0;
+		--color-gray-300: #d0d0d0;
+		--color-gray-400: #b0b0b0;
+		--color-gray-500: #888;
+		--color-gray-600: #666;
+		--color-gray-700: #333;
+		--color-gray-800: #222;
+		--color-gray-900: #111;
+
 		/* Colors - Primary */
 		--color-primary: #ffd700;
 		--color-primary-dark: #ffd93d;
@@ -134,6 +151,10 @@
 		--color-accent-pink: #ff69b4;
 		--color-accent-blue: #87ceeb;
 		--color-accent-light-green: #b4e7ce;
+		--color-accent-red: #ff0000;
+		--color-accent-light-blue: #f0f8ff;
+		--color-accent-light-pink: #ffe4e1;
+		--color-accent-light-yellow: #fffacd;
 
 		/* Colors - Background */
 		--color-background-main: #fff;
@@ -144,6 +165,7 @@
 		--color-background-light-blue: #f0f8ff;
 		--color-background-light-green: #f0fff0;
 		--color-background-light-pink: #ffe4e1;
+		--color-background-pattern: #e8e8e8;
 
 		/* Colors - Border */
 		--color-border-primary: #000;
@@ -189,7 +211,12 @@
 		font-family: var(--font-family-primary);
 		font-size: 16px;
 		line-height: 1.5;
-		background: linear-gradient(135deg, var(--color-gradient-gold) 0%, var(--color-gradient-lavender) 50%, var(--color-gradient-mint) 100%);
+		background: linear-gradient(
+			135deg,
+			var(--color-gradient-gold) 0%,
+			var(--color-gradient-lavender) 50%,
+			var(--color-gradient-mint) 100%
+		);
 		background-size: 200% 200%;
 		background-attachment: fixed;
 		animation: gradient-shift 20s ease infinite;

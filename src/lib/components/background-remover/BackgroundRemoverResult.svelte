@@ -115,7 +115,7 @@
 		left: -10px;
 		right: -10px;
 		bottom: -10px;
-		background: linear-gradient(135deg, #98fb98 0%, #87ceeb 100%);
+		background: linear-gradient(135deg, var(--color-success) 0%, var(--color-accent-blue) 100%);
 		z-index: -1;
 		opacity: 0.3;
 		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
@@ -124,9 +124,9 @@
 
 	.result-content {
 		padding: 2rem;
-		background: #fff;
-		border: 4px solid #000;
-		box-shadow: 8px 8px 0 #000;
+		background: var(--color-background-main);
+		border: var(--border-brutalist-extra-thick);
+		box-shadow: var(--shadow-brutalist-xlarge);
 		position: relative;
 	}
 
@@ -138,22 +138,22 @@
 		flex-wrap: wrap;
 		gap: 1rem;
 		padding-bottom: 1rem;
-		border-bottom: 3px solid #000;
+		border-bottom: var(--border-brutalist-thick);
 	}
 
 	.result-content h3 {
 		margin: 0;
-		font-family: 'Bebas Neue', sans-serif;
+		font-family: var(--font-family-display);
 		font-size: 1.75rem;
-		color: #000;
+		color: var(--color-text-primary);
 		letter-spacing: 2px;
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		background: #98fb98;
+		background: var(--color-success);
 		padding: 0.5rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-medium);
 		transform: rotate(-1deg);
 		text-transform: uppercase;
 	}
@@ -162,7 +162,7 @@
 		font-size: 1.5rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 		animation: sparkle 2s ease-in-out infinite;
 	}
 
@@ -183,9 +183,9 @@
 
 	.comparison-toggle {
 		padding: 0.5rem 1rem;
-		background: #ffd93d;
-		color: #000;
-		border: 3px solid #000;
+		background: var(--color-primary-dark);
+		color: var(--color-text-primary);
+		border: var(--border-brutalist-thick);
 		border-radius: 6px;
 		cursor: pointer;
 		font-size: 0.875rem;
@@ -193,8 +193,8 @@
 		transition: all 0.2s;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
-		box-shadow: 3px 3px 0 #000;
+		font-family: var(--font-family-primary);
+		box-shadow: var(--shadow-brutalist-small);
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
@@ -207,8 +207,8 @@
 
 	.comparison-toggle:hover {
 		transform: translate(-1px, -1px);
-		box-shadow: 4px 4px 0 #000;
-		background: #ff69b4;
+		box-shadow: var(--shadow-brutalist-medium);
+		background: var(--color-accent-pink);
 	}
 
 	.image-container {
@@ -222,10 +222,10 @@
 		justify-content: center;
 		align-items: center;
 		min-height: 300px;
-		border: 3px solid #000;
+		border: var(--border-brutalist-thick);
 		border-radius: 8px;
 		overflow: hidden;
-		background: #fff;
+		background: var(--color-background-main);
 	}
 
 	.transparent-bg-pattern {
@@ -235,10 +235,10 @@
 		right: 0;
 		bottom: 0;
 		background-image:
-			linear-gradient(45deg, #e0e0e0 25%, transparent 25%),
-			linear-gradient(-45deg, #e0e0e0 25%, transparent 25%),
-			linear-gradient(45deg, transparent 75%, #e0e0e0 75%),
-			linear-gradient(-45deg, transparent 75%, #e0e0e0 75%);
+			linear-gradient(45deg, var(--color-background-pattern) 25%, transparent 25%),
+			linear-gradient(-45deg, var(--color-background-pattern) 25%, transparent 25%),
+			linear-gradient(45deg, transparent 75%, var(--color-background-pattern) 75%),
+			linear-gradient(-45deg, transparent 75%, var(--color-background-pattern) 75%);
 		background-size: 20px 20px;
 		background-position:
 			0 0,
@@ -261,10 +261,10 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 1.5rem;
-		border: 3px solid #000;
+		border: var(--border-brutalist-thick);
 		border-radius: 8px;
 		padding: 1.5rem;
-		background: #f5f5f5;
+		background: var(--color-background-secondary);
 	}
 
 	.image-side {
@@ -278,21 +278,21 @@
 		margin: 0;
 		font-size: 1rem;
 		font-weight: 700;
-		color: #000;
+		color: var(--color-text-primary);
 		text-transform: uppercase;
 		letter-spacing: 1px;
-		background: #ffd93d;
+		background: var(--color-primary-dark);
 		padding: 0.5rem 1rem;
-		border: 2px solid #000;
-		box-shadow: 3px 3px 0 #000;
+		border: var(--border-brutalist-thin);
+		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.image-side img {
 		max-width: 100%;
 		max-height: 300px;
-		border: 2px solid #000;
+		border: var(--border-brutalist-thin);
 		border-radius: 4px;
-		box-shadow: 3px 3px 0 #000;
+		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.action-buttons {
@@ -309,47 +309,47 @@
 		align-items: center;
 		gap: 0.5rem;
 		padding: 0.75rem 1.25rem;
-		border: 3px solid #000;
+		border: var(--border-brutalist-thick);
 		cursor: pointer;
 		font-size: 1rem;
 		font-weight: 700;
 		transition: all 0.2s;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
-		box-shadow: 4px 4px 0 #000;
+		font-family: var(--font-family-primary);
+		box-shadow: var(--shadow-brutalist-medium);
 		border-radius: 6px;
 	}
 
 	.download-btn {
-		background: #98fb98;
-		color: #000;
+		background: var(--color-success);
+		color: var(--color-text-primary);
 	}
 
 	.process-another-btn {
-		background: #ffd93d;
-		color: #000;
+		background: var(--color-primary-dark);
+		color: var(--color-text-primary);
 	}
 
 	.download-btn:hover,
 	.process-another-btn:hover {
 		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
+		box-shadow: var(--shadow-brutalist-large);
 	}
 
 	.download-btn:hover {
-		background: #90ee90;
+		background: var(--color-success-hover);
 	}
 
 	.process-another-btn:hover {
-		background: #ffa500;
+		background: var(--color-warning);
 	}
 
 	.btn-icon {
 		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.btn-icon :global(svg) {

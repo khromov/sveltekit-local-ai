@@ -170,7 +170,7 @@
 			var(--color-success) 50%,
 			var(--color-accent-pink) 100%
 		);
-		border: var(--border-brutalist-thin);
+		border: var(--border-brutalist-thick);
 		border-radius: 6px;
 	}
 

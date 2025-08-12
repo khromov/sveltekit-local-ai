@@ -171,7 +171,11 @@
 	}
 
 	.message-input.is-disabled {
-		background: linear-gradient(135deg, var(--color-background-tertiary) 0%, #e8e8e8 100%);
+		background: linear-gradient(
+			135deg,
+			var(--color-background-tertiary) 0%,
+			var(--color-background-pattern) 100%
+		);
 		opacity: 0.7;
 	}
 
@@ -289,9 +293,9 @@
 		font-weight: 400;
 		color: var(--color-text-tertiary);
 		text-align: center;
-		background: #f8f8f8;
+		background: var(--color-background-tertiary);
 		padding: 0.5rem 0.75rem;
-		border: 1px solid #e0e0e0;
+		border: 1px solid var(--color-gray-200);
 		border-radius: 4px;
 		display: flex;
 		align-items: center;

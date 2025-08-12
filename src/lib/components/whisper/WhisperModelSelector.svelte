@@ -98,10 +98,10 @@
 
 <style>
 	.model-selection {
-		background: #fff;
-		border: 3px solid #000;
+		background: var(--color-background-main);
+		border: var(--border-brutalist-thick);
 		padding: 1.5rem;
-		box-shadow: 5px 5px 0 #000;
+		box-shadow: 5px 5px 0 var(--color-text-primary);
 		margin-bottom: 1.5rem;
 		border-radius: 12px;
 	}
@@ -110,7 +110,7 @@
 		margin-top: 0;
 		margin-bottom: 1rem;
 		font-size: 1.25rem;
-		color: #000;
+		color: var(--color-text-primary);
 		text-align: center;
 		font-weight: 700;
 		text-transform: uppercase;
@@ -134,14 +134,14 @@
 		width: 100%;
 		padding: 0.75rem;
 		padding-right: 2.5rem;
-		border: 2px solid #000;
+		border: var(--border-brutalist-thin);
 		border-radius: 6px;
 		font-size: 0.9375rem;
 		font-weight: 500;
-		background: #fff;
+		background: var(--color-background-main);
 		text-align: center;
-		box-shadow: 3px 3px 0 #000;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
+		box-shadow: var(--shadow-brutalist-small);
+		font-family: var(--font-family-primary);
 		cursor: pointer;
 		transition: all 0.2s;
 		appearance: none;
@@ -155,7 +155,7 @@
 		pointer-events: none;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.select-arrow :global(svg) {
@@ -164,7 +164,7 @@
 	}
 
 	.model-controls select:hover:not(:disabled) {
-		box-shadow: 4px 4px 0 #000;
+		box-shadow: var(--shadow-brutalist-medium);
 	}
 
 	.model-controls select:focus {
@@ -185,19 +185,19 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		color: #000;
+		color: var(--color-text-primary);
 		font-weight: 600;
 		font-size: 1rem;
-		background: #b4e7ce;
+		background: var(--color-accent-light-green);
 		padding: 0.5rem 1rem;
-		border: 2px solid #000;
+		border: var(--border-brutalist-thin);
 		border-radius: 6px;
 		text-transform: uppercase;
 	}
 
 	.checkmark {
 		font-size: 1.25rem;
-		color: #000;
+		color: var(--color-text-primary);
 		display: flex;
 		align-items: center;
 	}
@@ -216,9 +216,9 @@
 
 	.change-model-btn {
 		padding: 0.5rem 1rem;
-		background: #f0f0f0;
-		color: #000;
-		border: 2px solid #000;
+		background: var(--color-background-tertiary);
+		color: var(--color-text-primary);
+		border: var(--border-brutalist-thin);
 		border-radius: 6px;
 		cursor: pointer;
 		font-size: 0.875rem;
@@ -226,12 +226,12 @@
 		transition: all 0.2s;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-family: var(--font-family-primary);
 	}
 
 	.change-model-btn:hover {
-		background: #e0e0e0;
-		box-shadow: 2px 2px 0 #000;
+		background: var(--color-background-pattern);
+		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.change-model-btn:disabled {
@@ -242,32 +242,32 @@
 	.primary-button {
 		padding: 0.875rem 1.75rem;
 		background: #ffd700;
-		color: #000;
-		border: 3px solid #000;
+		color: var(--color-text-primary);
+		border: var(--border-brutalist-thick);
 		border-radius: 8px;
 		cursor: pointer;
 		font-size: 1rem;
 		font-weight: 700;
 		transition: all 0.2s;
-		box-shadow: 4px 4px 0 #000;
+		box-shadow: var(--shadow-brutalist-medium);
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-family: var(--font-family-primary);
 	}
 
 	.primary-button:hover:not(:disabled) {
 		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
+		box-shadow: var(--shadow-brutalist-large);
 	}
 
 	.primary-button:active:not(:disabled) {
 		transform: translate(0);
-		box-shadow: 2px 2px 0 #000;
+		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.primary-button:disabled {
-		background: #e0e0e0;
-		color: #999;
+		background: var(--color-background-disabled);
+		color: var(--color-text-disabled);
 		cursor: not-allowed;
 	}
 

@@ -172,7 +172,7 @@
 		left: -10px;
 		right: -10px;
 		bottom: -10px;
-		background: linear-gradient(135deg, #98fb98 0%, #87ceeb 100%);
+		background: linear-gradient(135deg, var(--color-success) 0%, var(--color-accent-blue) 100%);
 		z-index: -1;
 		opacity: 0.3;
 		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
@@ -181,9 +181,9 @@
 
 	.results-content {
 		padding: 2rem;
-		background: #fff;
-		border: 4px solid #000;
-		box-shadow: 8px 8px 0 #000;
+		background: var(--color-background-main);
+		border: var(--border-brutalist-extra-thick);
+		box-shadow: var(--shadow-brutalist-xlarge);
 		position: relative;
 	}
 
@@ -194,18 +194,18 @@
 
 	.results-content h3 {
 		margin: 0 0 1rem 0;
-		font-family: 'Bebas Neue', sans-serif;
+		font-family: var(--font-family-display);
 		font-size: 2rem;
-		color: #000;
+		color: var(--color-text-primary);
 		letter-spacing: 2px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 0.5rem;
-		background: #98fb98;
+		background: var(--color-success);
 		padding: 0.5rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-medium);
 		transform: rotate(-1deg);
 		text-transform: uppercase;
 		width: fit-content;
@@ -217,7 +217,7 @@
 		font-size: 1.5rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 		animation: sparkle 2s ease-in-out infinite;
 	}
 
@@ -248,7 +248,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		padding: 0.5rem 1rem;
-		border: 2px solid #000;
+		border: var(--border-brutalist-thin);
 		border-radius: 6px;
 		font-weight: 700;
 		text-transform: uppercase;
@@ -256,20 +256,20 @@
 	}
 
 	.summary-item.success {
-		background: #98fb98;
-		color: #000;
+		background: var(--color-success);
+		color: var(--color-text-primary);
 	}
 
 	.summary-item.failed {
-		background: #ff6b6b;
-		color: #000;
+		background: var(--color-danger);
+		color: var(--color-text-primary);
 	}
 
 	.summary-icon {
 		font-size: 1.125rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.summary-icon :global(svg) {
@@ -291,32 +291,32 @@
 		align-items: center;
 		gap: 0.5rem;
 		padding: 0.75rem 1.5rem;
-		border: 3px solid #000;
+		border: var(--border-brutalist-thick);
 		cursor: pointer;
 		font-size: 1rem;
 		font-weight: 700;
 		transition: all 0.2s;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
-		box-shadow: 4px 4px 0 #000;
+		font-family: var(--font-family-primary);
+		box-shadow: var(--shadow-brutalist-medium);
 		border-radius: 6px;
 	}
 
 	.download-zip-btn {
-		background: #87ceeb;
-		color: #000;
+		background: var(--color-accent-blue);
+		color: var(--color-text-primary);
 	}
 
 	.process-another-btn {
-		background: #ffd93d;
-		color: #000;
+		background: var(--color-primary-dark);
+		color: var(--color-text-primary);
 	}
 
 	.download-zip-btn:hover,
 	.process-another-btn:hover {
 		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
+		box-shadow: var(--shadow-brutalist-large);
 	}
 
 	.download-zip-btn:hover {
@@ -324,14 +324,14 @@
 	}
 
 	.process-another-btn:hover {
-		background: #ffa500;
+		background: var(--color-warning);
 	}
 
 	.btn-icon {
 		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.btn-icon :global(svg) {
@@ -349,13 +349,13 @@
 		margin: 0 0 1rem 0;
 		font-size: 1.25rem;
 		font-weight: 700;
-		color: #000;
+		color: var(--color-text-primary);
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		padding: 0.5rem 1rem;
-		background: #ffd93d;
-		border: 2px solid #000;
-		box-shadow: 3px 3px 0 #000;
+		background: var(--color-primary-dark);
+		border: var(--border-brutalist-thin);
+		box-shadow: var(--shadow-brutalist-small);
 		width: fit-content;
 	}
 
@@ -366,22 +366,22 @@
 	}
 
 	.result-item {
-		background: #f5f5f5;
-		border: 3px solid #000;
+		background: var(--color-background-secondary);
+		border: var(--border-brutalist-thick);
 		border-radius: 8px;
 		overflow: hidden;
-		box-shadow: 4px 4px 0 #000;
+		box-shadow: var(--shadow-brutalist-medium);
 		transition: all 0.2s;
 	}
 
 	.result-item:hover {
 		transform: translate(-1px, -1px);
-		box-shadow: 5px 5px 0 #000;
+		box-shadow: 5px 5px 0 var(--color-border-primary);
 	}
 
 	.result-preview {
-		background: #fff;
-		border-bottom: 3px solid #000;
+		background: var(--color-background-main);
+		border-bottom: var(--border-brutalist-thick);
 	}
 
 	.before-after {
@@ -392,7 +392,7 @@
 
 	.image-side {
 		position: relative;
-		border-right: 2px solid #000;
+		border-right: var(--border-brutalist-thin);
 	}
 
 	.image-side:last-child {
@@ -403,8 +403,8 @@
 		position: absolute;
 		top: 0.5rem;
 		left: 0.5rem;
-		background: #000;
-		color: #fff;
+		background: var(--color-text-primary);
+		color: var(--color-text-inverse);
 		padding: 0.25rem 0.5rem;
 		font-size: 0.75rem;
 		font-weight: 700;
@@ -435,10 +435,10 @@
 		right: 0;
 		bottom: 0;
 		background-image:
-			linear-gradient(45deg, #e0e0e0 25%, transparent 25%),
-			linear-gradient(-45deg, #e0e0e0 25%, transparent 25%),
-			linear-gradient(45deg, transparent 75%, #e0e0e0 75%),
-			linear-gradient(-45deg, transparent 75%, #e0e0e0 75%);
+			linear-gradient(45deg, var(--color-background-pattern) 25%, transparent 25%),
+			linear-gradient(-45deg, var(--color-background-pattern) 25%, transparent 25%),
+			linear-gradient(45deg, transparent 75%, var(--color-background-pattern) 75%),
+			linear-gradient(-45deg, transparent 75%, var(--color-background-pattern) 75%);
 		background-size: 12px 12px;
 		background-position:
 			0 0,
@@ -464,7 +464,7 @@
 	.result-name {
 		font-size: 0.875rem;
 		font-weight: 600;
-		color: #000;
+		color: var(--color-text-primary);
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -479,8 +479,8 @@
 	.download-individual-btn {
 		width: 32px;
 		height: 32px;
-		background: #fff;
-		border: 2px solid #000;
+		background: var(--color-background-main);
+		border: var(--border-brutalist-thin);
 		border-radius: 4px;
 		cursor: pointer;
 		font-size: 1rem;
@@ -488,7 +488,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.download-individual-btn :global(svg) {
@@ -497,7 +497,7 @@
 	}
 
 	.download-individual-btn:hover {
-		background: #98fb98;
+		background: var(--color-success);
 		transform: scale(1.1);
 	}
 
@@ -508,11 +508,12 @@
 	}
 
 	.failed-item {
-		background: #ffe4e1;
-		border: 2px solid #ff6b6b;
+		background: var(--color-background-light-pink);
+		border: var(--border-brutalist-thin);
+		border-color: var(--color-danger);
 		border-radius: 8px;
 		overflow: hidden;
-		box-shadow: 3px 3px 0 #ff6b6b;
+		box-shadow: 3px 3px 0 var(--color-danger);
 	}
 
 	.failed-preview {
@@ -543,7 +544,7 @@
 
 	.failed-icon {
 		font-size: 2rem;
-		color: #fff;
+		color: var(--color-text-inverse);
 		display: flex;
 		align-items: center;
 	}
@@ -560,7 +561,7 @@
 	.failed-name {
 		font-size: 0.875rem;
 		font-weight: 600;
-		color: #000;
+		color: var(--color-text-primary);
 		margin-bottom: 0.25rem;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -569,7 +570,7 @@
 
 	.failed-reason {
 		font-size: 0.75rem;
-		color: #666;
+		color: var(--color-text-tertiary);
 		font-style: italic;
 	}
 
@@ -619,7 +620,7 @@
 
 		.image-side {
 			border-right: none;
-			border-bottom: 2px solid #000;
+			border-bottom: var(--border-brutalist-thin);
 		}
 
 		.image-side:last-child {
