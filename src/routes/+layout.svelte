@@ -208,6 +208,8 @@
 		min-width: 0;
 		scrollbar-width: thin;
 		scrollbar-color: #000 transparent;
+		padding-top: 4px;
+		padding-bottom: 4px;
 	}
 
 	.nav-left::-webkit-scrollbar {
