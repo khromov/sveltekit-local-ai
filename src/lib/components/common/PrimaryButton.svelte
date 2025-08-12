@@ -20,9 +20,9 @@
 	}: Props = $props();
 
 	const variantStyles = {
-		primary: '#ffd700',
-		success: '#98fb98',
-		warning: '#ffd93d'
+		primary: 'var(--color-primary)',
+		success: 'var(--color-success)',
+		warning: 'var(--color-primary-dark)'
 	};
 
 	const sizeStyles = {
@@ -47,17 +47,17 @@
 
 <style>
 	.primary-button {
-		background: #ffd700;
-		color: #000;
-		border: 3px solid #000;
+		background: var(--color-primary);
+		color: var(--color-text-primary);
+		border: var(--border-brutalist-thick);
 		border-radius: 8px;
 		cursor: pointer;
 		font-weight: 700;
 		transition: all 0.2s;
-		box-shadow: 4px 4px 0 #000;
+		box-shadow: var(--shadow-brutalist-medium);
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-family: var(--font-family-primary);
 		box-sizing: border-box;
 		display: flex;
 		align-items: center;
@@ -85,18 +85,18 @@
 
 	.primary-button:hover:not(.disabled):not(.loading) {
 		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
+		box-shadow: var(--shadow-brutalist-large);
 	}
 
 	.primary-button:active:not(.disabled):not(.loading) {
 		transform: translate(0);
-		box-shadow: 2px 2px 0 #000;
+		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.primary-button.disabled,
 	.primary-button.loading {
-		background: #e0e0e0;
-		color: #999;
+		background: var(--color-background-disabled);
+		color: var(--color-text-disabled);
 		cursor: not-allowed;
 		transform: none;
 		box-shadow: none;

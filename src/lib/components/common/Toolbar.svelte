@@ -31,8 +31,8 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 1rem 1.25rem;
-		background: linear-gradient(90deg, #ffd700 0%, #ffa500 100%);
-		border-bottom: 3px solid #000;
+		background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-warning) 100%);
+		border-bottom: var(--border-brutalist-thick);
 		flex-wrap: wrap;
 		gap: 0.5rem;
 		position: relative;
@@ -41,7 +41,7 @@
 	.model-info {
 		font-size: 0.875rem;
 		font-weight: 700;
-		color: #000;
+		color: var(--color-text-primary);
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
 		word-break: break-word;
@@ -55,7 +55,7 @@
 		font-size: 1.125rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.model-emoji :global(svg) {
@@ -76,7 +76,13 @@
 		left: 0;
 		right: 0;
 		height: 3px;
-		background: repeating-linear-gradient(90deg, #000, #000 8px, #98fb98 8px, #98fb98 16px);
+		background: repeating-linear-gradient(
+			90deg,
+			var(--color-border-primary),
+			var(--color-border-primary) 8px,
+			var(--color-success) 8px,
+			var(--color-success) 16px
+		);
 	}
 
 	@media (max-width: 600px) {

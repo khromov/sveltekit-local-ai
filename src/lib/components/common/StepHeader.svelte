@@ -5,7 +5,7 @@
 		backgroundColor?: string;
 	}
 
-	let { stepNumber, title, backgroundColor = '#ffd93d' }: Props = $props();
+	let { stepNumber, title, backgroundColor = 'var(--color-primary-dark)' }: Props = $props();
 </script>
 
 <h3 class="step-header" style="background: {backgroundColor};">
@@ -17,16 +17,16 @@
 	.step-header {
 		margin-top: 0;
 		margin-bottom: 1.25rem;
-		font-family: 'Bebas Neue', sans-serif;
+		font-family: var(--font-family-display);
 		font-size: 1.75rem;
-		color: #000;
+		color: var(--color-text-primary);
 		text-align: center;
 		letter-spacing: 2px;
 		text-transform: uppercase;
-		background: #ffd93d;
+		background: var(--color-primary-dark);
 		padding: 0.5rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-medium);
 		transform: rotate(1deg);
 		width: fit-content;
 		margin-left: auto;
@@ -34,8 +34,8 @@
 	}
 
 	.step-number {
-		background: #000;
-		color: #fff;
+		background: var(--color-text-primary);
+		color: var(--color-text-inverse);
 		padding: 0.25rem 0.5rem;
 		border-radius: 4px;
 		font-size: 0.875rem;

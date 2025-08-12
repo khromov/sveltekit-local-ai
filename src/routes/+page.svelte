@@ -86,17 +86,18 @@
 	:global(body) {
 		margin: 0;
 		padding: 0;
-		font-family:
-			'Space Grotesk',
-			system-ui,
-			-apple-system,
-			sans-serif;
+		font-family: var(--font-family-primary);
 		font-size: 16px;
 		line-height: 1.5;
-		background: linear-gradient(135deg, #ffe5b4 0%, #e6e6fa 50%, #b4e7ce 100%);
+		background: linear-gradient(
+			135deg,
+			var(--color-gradient-gold) 0%,
+			var(--color-gradient-lavender) 50%,
+			var(--color-gradient-mint) 100%
+		);
 		background-size: 200% 200%;
 		animation: gradient-shift 20s ease infinite;
-		color: #000;
+		color: var(--color-text-primary);
 		overflow-x: hidden;
 	}
 
@@ -154,26 +155,26 @@
 	}
 
 	.title-line {
-		background: #000;
-		color: #ffd700;
+		background: var(--color-text-primary);
+		color: var(--color-primary);
 		padding: 0.5rem 2rem;
 		display: inline-block;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: 5px 5px 0 var(--color-border-primary);
 		letter-spacing: 2px;
 		text-transform: uppercase;
 	}
 
 	.subtitle {
 		font-size: 1.25rem;
-		color: #000;
+		color: var(--color-text-primary);
 		margin: 0;
 		font-weight: 500;
-		background: #fff;
+		background: var(--color-background-main);
 		display: inline-block;
 		padding: 0.5rem 1.5rem;
-		border: 2px solid #000;
-		box-shadow: 3px 3px 0 #000;
+		border: var(--border-brutalist-thin);
+		box-shadow: var(--shadow-brutalist-medium);
 	}
 
 	.feature-grid {
@@ -187,11 +188,11 @@
 	.feature-card {
 		display: block;
 		text-decoration: none;
-		color: #000;
-		background: #fff;
-		border: 3px solid #000;
+		color: var(--color-text-primary);
+		background: var(--color-background-main);
+		border: var(--border-brutalist-thick);
 		padding: 0;
-		box-shadow: 5px 5px 0 #000;
+		box-shadow: 5px 5px 0 var(--color-border-primary);
 		transition: all 0.2s ease;
 		position: relative;
 		overflow: hidden;
@@ -227,8 +228,8 @@
 		position: absolute;
 		top: 1rem;
 		right: 1rem;
-		background: #000;
-		color: #ffd700;
+		background: var(--color-text-primary);
+		color: var(--color-primary);
 		padding: 0.25rem 0.75rem;
 		font-weight: 700;
 		font-size: 0.875rem;
@@ -239,7 +240,7 @@
 
 	.feature-card:hover {
 		transform: translate(-3px, -3px);
-		box-shadow: 8px 8px 0 #000;
+		box-shadow: 8px 8px 0 var(--color-border-primary);
 	}
 
 	.card-content {
@@ -250,8 +251,8 @@
 		margin-bottom: 1.5rem;
 		width: fit-content;
 		padding: 0.75rem;
-		background: #ffe5b4;
-		border: 2px solid #000;
+		background: var(--color-gradient-gold);
+		border: var(--border-brutalist-thin);
 		border-radius: 8px;
 	}
 
@@ -259,12 +260,12 @@
 		font-size: 1.75rem;
 		font-weight: 700;
 		margin: 0 0 1rem 0;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.feature-description {
 		font-size: 1rem;
-		color: #333;
+		color: var(--color-text-secondary);
 		line-height: 1.6;
 		margin: 0 0 1.5rem 0;
 	}
@@ -277,30 +278,30 @@
 
 	.highlight {
 		font-size: 0.875rem;
-		color: #000;
+		color: var(--color-text-primary);
 		padding: 0.375rem 0.75rem;
-		background: #f0f0f0;
-		border: 2px solid #000;
+		background: var(--color-background-tertiary);
+		border: var(--border-brutalist-thin);
 		font-weight: 600;
 		border-radius: 4px;
 		transition: all 0.2s ease;
 	}
 
 	.chat-card:hover .highlight {
-		background: #ffe5b4;
+		background: var(--color-gradient-gold);
 	}
 
 	.transcribe-card:hover .highlight {
-		background: #b4e7ce;
+		background: var(--color-gradient-mint);
 	}
 
 	.background-card:hover .highlight {
-		background: #87ceeb;
+		background: var(--color-accent-blue);
 	}
 
 	.menu-footer {
 		text-align: center;
-		color: #666;
+		color: var(--color-text-tertiary);
 		font-size: 0.9375rem;
 		margin-top: 3rem;
 		animation: fadeIn 0.6s ease-out;

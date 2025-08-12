@@ -28,8 +28,8 @@
 
 	.progress-bar {
 		height: 1.25rem;
-		background: #f0f0f0;
-		border: 2px solid #000;
+		background: var(--color-background-tertiary);
+		border: var(--border-brutalist-thin);
 		border-radius: 6px;
 		overflow: hidden;
 		width: 100%;
@@ -38,7 +38,7 @@
 
 	.progress-bar-fill {
 		height: 100%;
-		background: linear-gradient(90deg, #ffd700 0%, #ffa500 100%);
+		background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-warning) 100%);
 		position: relative;
 		transition: width 0.3s ease;
 	}

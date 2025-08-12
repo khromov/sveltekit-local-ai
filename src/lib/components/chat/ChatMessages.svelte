@@ -57,8 +57,8 @@
 		padding-top: 3rem;
 		width: 100%;
 		box-sizing: border-box;
-		border-left: 3px solid #000;
-		border-right: 3px solid #000;
+		border-left: var(--border-brutalist-thick);
+		border-right: var(--border-brutalist-thick);
 	}
 
 	.chat-decoration {
@@ -69,12 +69,12 @@
 		height: 3px;
 		background: repeating-linear-gradient(
 			90deg,
-			#ffd93d,
-			#ffd93d 10px,
-			#98fb98 10px,
-			#98fb98 20px,
-			#ff69b4 20px,
-			#ff69b4 30px
+			var(--color-primary-dark),
+			var(--color-primary-dark) 10px,
+			var(--color-success) 10px,
+			var(--color-success) 20px,
+			var(--color-accent-pink) 20px,
+			var(--color-accent-pink) 30px
 		);
 		z-index: 1;
 	}
@@ -110,7 +110,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.empty-icon :global(svg) {
@@ -131,21 +131,21 @@
 	.empty-state h3 {
 		font-size: 1.75rem;
 		font-weight: 700;
-		color: #000;
+		color: var(--color-text-primary);
 		margin: 0 0 0.5rem 0;
 		text-transform: uppercase;
 		letter-spacing: 1px;
-		background: #ffd93d;
+		background: var(--color-primary-dark);
 		padding: 0.5rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-medium);
 		display: inline-block;
 		transform: rotate(-1deg);
 	}
 
 	.empty-state p {
 		font-size: 1.125rem;
-		color: #666;
+		color: var(--color-text-tertiary);
 		margin: 0.5rem 0 0 0;
 		font-weight: 500;
 	}
@@ -155,20 +155,25 @@
 	}
 
 	.chat-messages::-webkit-scrollbar-track {
-		background: linear-gradient(180deg, #ffd93d 0%, #98fb98 50%, #ff69b4 100%);
-		border: 2px solid #000;
+		background: linear-gradient(
+			180deg,
+			var(--color-primary-dark) 0%,
+			var(--color-success) 50%,
+			var(--color-accent-pink) 100%
+		);
+		border: var(--border-brutalist-thin);
 		border-radius: 6px;
 	}
 
 	.chat-messages::-webkit-scrollbar-thumb {
-		background: #000;
+		background: var(--color-text-primary);
 		border-radius: 6px;
-		border: 2px solid #fff;
+		border: 2px solid var(--color-background-main);
 		box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
 	}
 
 	.chat-messages::-webkit-scrollbar-thumb:hover {
-		background: #333;
+		background: var(--color-text-secondary);
 	}
 
 	@media (max-width: 600px) {

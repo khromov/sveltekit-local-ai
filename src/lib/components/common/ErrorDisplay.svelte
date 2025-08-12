@@ -21,12 +21,12 @@
 
 <style>
 	.error {
-		color: #000;
+		color: var(--color-text-primary);
 		background: #ffb6c1;
 		padding: 1.5rem;
-		border: 3px solid #000;
+		border: var(--border-brutalist-thick);
 		text-align: center;
-		box-shadow: 5px 5px 0 #000;
+		box-shadow: 5px 5px 0 var(--color-border-primary);
 		width: calc(100% - 4rem);
 		max-width: 500px;
 		border-radius: 12px;
@@ -37,7 +37,7 @@
 	.error h3 {
 		font-size: 1.5rem;
 		margin: 0 0 0.75rem 0;
-		color: #000;
+		color: var(--color-text-primary);
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 1px;
@@ -48,21 +48,21 @@
 		font-weight: 500;
 		margin-bottom: 1.25rem;
 		line-height: 1.5;
-		color: #000;
+		color: var(--color-text-primary);
 		word-wrap: break-word;
 	}
 
 	.retry-button {
 		padding: 0.75rem 1.5rem;
-		background: #000;
-		color: #fff;
+		background: var(--color-text-primary);
+		color: var(--color-text-inverse);
 		border: none;
 		border-radius: 8px;
 		cursor: pointer;
 		font-size: 1rem;
 		font-weight: 600;
 		transition: all 0.2s;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-family: var(--font-family-primary);
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
 	}
@@ -73,7 +73,7 @@
 	}
 
 	.retry-button:disabled {
-		background: #666;
+		background: var(--color-text-tertiary);
 		cursor: not-allowed;
 		opacity: 0.7;
 	}

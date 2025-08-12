@@ -40,9 +40,9 @@
 		align-items: center;
 		gap: 1.25rem;
 		padding: 2rem;
-		background: #fff;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
+		background: var(--color-background-main);
+		border: var(--border-brutalist-thick);
+		box-shadow: 5px 5px 0 var(--color-border-primary);
 		width: calc(100% - 4rem);
 		max-width: 500px;
 		text-align: center;
@@ -55,7 +55,7 @@
 		font-size: 1.75rem;
 		font-weight: 700;
 		margin: 0;
-		color: #000;
+		color: var(--color-text-primary);
 		text-transform: uppercase;
 		letter-spacing: 1px;
 	}
@@ -63,11 +63,11 @@
 	.download-percentage {
 		font-size: 1.25rem;
 		font-weight: 600;
-		color: #000;
+		color: var(--color-text-primary);
 		margin: 0;
-		background: #ffe5b4;
+		background: var(--color-gradient-gold);
 		padding: 0.375rem 1rem;
-		border: 2px solid #000;
+		border: var(--border-brutalist-thin);
 		border-radius: 6px;
 		text-transform: uppercase;
 	}
@@ -75,7 +75,7 @@
 	.loading-message {
 		font-size: 0.9375rem;
 		font-weight: 500;
-		color: #666;
+		color: var(--color-text-tertiary);
 		margin: 0;
 		max-width: 100%;
 		padding: 0 1rem;
