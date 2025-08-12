@@ -1,7 +1,7 @@
 FROM node:24-slim AS builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm i
+RUN npm ci
 COPY . .
 ARG PUBLIC_DISABLE_OPFS=false
 ENV PUBLIC_DISABLE_OPFS=$PUBLIC_DISABLE_OPFS
