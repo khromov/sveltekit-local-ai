@@ -61,9 +61,6 @@
 							<h4>{model.name}</h4>
 							<div class="model-size">{formatFileSize(model.size)}</div>
 						</div>
-						<div class="model-description">
-							{model.longName}
-						</div>
 						<div class="model-pros">
 							<span class="pros-icon"><svelte:component this={pros.icon} /></span>
 							<span class="pros-text">{pros.text}</span>
@@ -154,7 +151,7 @@
 
 	.model-selection h3 {
 		margin-top: 0;
-		margin-bottom: 1.5rem;
+		margin-bottom: 1.25rem;
 		font-family: 'Bebas Neue', sans-serif;
 		font-size: 1.75rem;
 		color: #000;
@@ -185,16 +182,16 @@
 
 	.model-cards {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 1.5rem;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
 	}
 
 	.model-card {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 1rem;
-		padding: 2rem 1.5rem;
+		gap: 0.75rem;
+		padding: 1.25rem 1rem;
 		background: #f8f8f8;
 		border: 3px solid #000;
 		border-radius: 12px;
@@ -216,10 +213,10 @@
 
 	.card-decoration {
 		position: absolute;
-		top: -8px;
-		right: -8px;
-		width: 40px;
-		height: 40px;
+		top: -6px;
+		right: -6px;
+		width: 30px;
+		height: 30px;
 		background: #98fb98;
 		border: 2px solid #000;
 		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
@@ -229,7 +226,7 @@
 
 	.model-card:nth-child(2) .card-decoration {
 		background: #ff69b4;
-		left: -8px;
+		left: -6px;
 		right: auto;
 	}
 
@@ -256,47 +253,48 @@
 	}
 
 	.model-icon {
-		font-size: 3rem;
+		font-size: 2rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		color: #000;
 		background: #fff;
 		border: 3px solid #000;
-		border-radius: 12px;
-		padding: 1rem;
+		border-radius: 8px;
+		padding: 0.75rem;
 		box-shadow: 3px 3px 0 #000;
 		position: relative;
 		z-index: 1;
 	}
 
 	.model-icon :global(svg) {
-		width: 3rem;
-		height: 3rem;
+		width: 2rem;
+		height: 2rem;
 	}
 
 	.model-header {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: 0.375rem;
 		position: relative;
 		z-index: 1;
 	}
 
 	.model-header h4 {
 		margin: 0;
-		font-size: 1.25rem;
+		font-size: 1.125rem;
 		font-weight: 700;
 		text-transform: uppercase;
-		letter-spacing: 1px;
+		letter-spacing: 0.5px;
 		color: #000;
+		line-height: 1.2;
 	}
 
 	.model-size {
-		font-size: 0.875rem;
+		font-size: 0.75rem;
 		color: #666;
 		background: #ffd93d;
-		padding: 0.25rem 0.75rem;
+		padding: 0.25rem 0.5rem;
 		border: 2px solid #000;
 		border-radius: 4px;
 		font-weight: 700;
@@ -305,49 +303,43 @@
 		margin: 0 auto;
 	}
 
-	.model-description {
-		font-size: 0.75rem;
-		color: #666;
-		text-transform: none;
-		letter-spacing: 0;
-		font-weight: 400;
-		line-height: 1.3;
-		position: relative;
-		z-index: 1;
-	}
-
 	.model-pros {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: 0.375rem;
 		background: #fff;
-		padding: 0.75rem 1rem;
+		padding: 0.5rem 0.75rem;
 		border: 2px solid #000;
-		border-radius: 8px;
-		box-shadow: 3px 3px 0 #000;
+		border-radius: 6px;
+		box-shadow: 2px 2px 0 #000;
 		position: relative;
 		z-index: 1;
-		margin-top: 0.5rem;
+		width: 100%;
+		box-sizing: border-box;
+		justify-content: center;
 	}
 
 	.pros-icon {
-		font-size: 1.25rem;
+		font-size: 1rem;
 		display: flex;
 		align-items: center;
 		color: #000;
+		flex-shrink: 0;
 	}
 
 	.pros-icon :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
+		width: 1rem;
+		height: 1rem;
 	}
 
 	.pros-text {
-		font-size: 0.875rem;
+		font-size: 0.75rem;
 		font-weight: 700;
 		color: #000;
 		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		letter-spacing: 0.25px;
+		line-height: 1.2;
+		text-align: center;
 	}
 
 	/* Advanced Section */
@@ -667,7 +659,7 @@
 		}
 
 		.model-card {
-			padding: 1.5rem 1rem;
+			padding: 1.25rem 1rem;
 		}
 
 		.advanced-section {
@@ -704,22 +696,26 @@
 		}
 
 		.model-icon {
-			font-size: 2.5rem;
-			padding: 0.75rem;
+			font-size: 1.75rem;
+			padding: 0.625rem;
 		}
 
 		.model-icon :global(svg) {
-			width: 2.5rem;
-			height: 2.5rem;
+			width: 1.75rem;
+			height: 1.75rem;
 		}
 
 		.model-header h4 {
-			font-size: 1.125rem;
+			font-size: 1rem;
 		}
 
 		.load-button {
 			font-size: 0.875rem;
 			padding: 0.875rem 1.25rem;
+		}
+
+		.pros-text {
+			font-size: 0.6875rem;
 		}
 	}
 </style>
