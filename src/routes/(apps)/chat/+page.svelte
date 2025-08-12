@@ -245,9 +245,9 @@
 		{/if}
 	</div>
 {:else}
-	<CardInterface>
-		<Toolbar modelInfo={selectedModel.name} ModelIcon={BotIcon}>
-			<ActionButton onClick={newChat} Icon={SparklesIcon}>
+	<CardInterface fixedHeight={true}>
+		<Toolbar modelInfo={selectedModel.name} modelIcon={BotIcon}>
+			<ActionButton onClick={newChat} icon={SparklesIcon}>
 				New <span class="desktop-only">Chat</span>
 			</ActionButton>
 		</Toolbar>

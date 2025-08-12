@@ -1,12 +1,13 @@
 <script lang="ts">
 	interface Props {
 		children?: import('svelte').Snippet;
+		fixedHeight?: boolean;
 	}
 
-	let { children }: Props = $props();
+	let { children, fixedHeight = false }: Props = $props();
 </script>
 
-<div class="card-interface">
+<div class="card-interface" class:fixed-height={fixedHeight}>
 	<div class="floating-decoration decoration-1"></div>
 	<div class="floating-decoration decoration-2"></div>
 
@@ -20,6 +21,9 @@
 		animation: slideInChat 0.5s ease-out;
 		display: flex;
 		flex-direction: column;
+	}
+
+	.card-interface.fixed-height {
 		height: calc(100vh - 4rem); /* Fixed height to constrain content */
 		min-height: 500px; /* Minimum height for usability */
 		max-height: calc(100vh - 2rem); /* Prevent growing too large */
@@ -88,7 +92,7 @@
 	}
 
 	@media (max-width: 600px) {
-		.card-interface {
+		.card-interface.fixed-height {
 			height: calc(100vh - 3rem);
 			min-height: 400px;
 		}

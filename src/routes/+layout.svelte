@@ -28,6 +28,9 @@
 	function isActive(path: string): boolean {
 		return page.url.pathname === path;
 	}
+
+	// Check if we're on the chat page (which uses fixed height)
+	let isChatPage = $derived(page.url.pathname === '/chat');
 </script>
 
 <svelte:head>
@@ -50,7 +53,7 @@
 </svelte:head>
 
 <div class="app-wrapper">
-	<div class="container" class:fullWidth={page.url.pathname === '/og'}>
+	<div class="container" class:fullWidth={page.url.pathname === '/og'} class:chat-layout={isChatPage}>
 		<nav class="main-nav">
 			<ul>
 				<div class="nav-left">
@@ -186,12 +189,7 @@
 		font-family: var(--font-family-primary);
 		font-size: 16px;
 		line-height: 1.5;
-		background: linear-gradient(
-			135deg,
-			var(--color-gradient-gold) 0%,
-			var(--color-gradient-lavender) 50%,
-			var(--color-gradient-mint) 100%
-		);
+		background: linear-gradient(135deg, var(--color-gradient-gold) 0%, var(--color-gradient-lavender) 50%, var(--color-gradient-mint) 100%);
 		background-size: 200% 200%;
 		background-attachment: fixed;
 		animation: gradient-shift 20s ease infinite;
@@ -253,17 +251,25 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		height: 100vh; /* Full viewport height */
+	}
+
+	/* Only apply height constraints for chat layout */
+	.container.chat-layout {
+		height: 100vh; /* Full viewport height for chat interface */
 	}
 
 	.content-wrapper {
 		width: 100%;
 		position: relative;
-		overflow: hidden; /* Prevent overall page scroll when chat scrolls */
 		flex: 1;
 		display: flex;
 		flex-direction: column;
 		min-height: 0; /* Critical for nested flex scrolling */
+	}
+
+	/* Only apply overflow hidden for chat layout */
+	.container.chat-layout .content-wrapper {
+		overflow: hidden; /* Prevent overall page scroll when chat scrolls */
 	}
 
 	/* Navigation styles - Refined Neo-Brutalist */
@@ -375,9 +381,13 @@
 		overflow: hidden;
 		box-sizing: border-box;
 		border-bottom-right-radius: 16px;
-		flex: 1; /* Take remaining space */
 		display: flex;
 		flex-direction: column;
+	}
+
+	/* Only apply flex and scrolling constraints to fixed-height CardInterfaces */
+	:global(.chat-layout .card-interface.fixed-height) {
+		flex: 1; /* Take remaining space */
 		min-height: 0; /* Critical for flex scrolling */
 	}
 
@@ -410,6 +420,10 @@
 		flex-direction: column;
 		gap: 1rem;
 		box-sizing: border-box;
+	}
+
+	/* Only apply flex and scrolling constraints to content areas in chat layout with fixed-height CardInterfaces */
+	:global(.chat-layout .card-interface.fixed-height .content-area) {
 		flex: 1; /* Take remaining space */
 		min-height: 0; /* Critical for flex scrolling */
 		overflow-y: auto; /* Allow scrolling when needed */
@@ -493,6 +507,9 @@
 	@media (max-width: 600px) {
 		.container {
 			padding: 0.75rem;
+		}
+
+		.container.chat-layout {
 			height: 100vh; /* Full height on mobile */
 		}
 
@@ -524,7 +541,6 @@
 
 		:global(.content-area) {
 			padding: 1rem;
-			min-height: 0;
 		}
 
 		:global(.input-area) {
