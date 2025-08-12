@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ProgressBar from '../ProgressBar.svelte';
+	import ProgressBar from '$lib/components/common/ProgressBar.svelte';
 	import RotateCwIcon from 'virtual:icons/lucide/rotate-cw';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 
@@ -36,9 +36,9 @@
 		flex-direction: column;
 		align-items: center;
 		padding: 2.5rem;
-		background: #fff;
-		border: 4px solid #000;
-		box-shadow: 10px 10px 0 #000;
+		background: var(--color-background-main);
+		border: var(--border-brutalist-extra-thick);
+		box-shadow: var(--shadow-brutalist-xlarge);
 		margin: 1.5rem 0;
 		animation: wobbleIn 0.5s ease-out;
 		position: relative;
@@ -64,12 +64,12 @@
 		height: 100px;
 		background: repeating-linear-gradient(
 			45deg,
-			#98fb98,
-			#98fb98 10px,
+			var(--color-success),
+			var(--color-success) 10px,
 			transparent 10px,
 			transparent 20px
 		);
-		border: 3px solid #000;
+		border: var(--border-brutalist-thick);
 		border-radius: 50%;
 		opacity: 0.3;
 		animation: spin 10s linear infinite;
@@ -87,17 +87,17 @@
 	.processing h3 {
 		margin-top: 0;
 		margin-bottom: 1rem;
-		font-family: 'Bebas Neue', sans-serif;
+		font-family: var(--font-family-display);
 		font-size: 2.5rem;
-		color: #000;
+		color: var(--color-text-primary);
 		letter-spacing: 3px;
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
-		background: #ffd93d;
+		background: var(--color-primary-dark);
 		padding: 0.5rem 2rem;
-		border: 3px solid #000;
-		box-shadow: 6px 6px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-large);
 		transform: rotate(-2deg);
 		text-transform: uppercase;
 	}
@@ -106,7 +106,7 @@
 		font-size: 2rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 		animation: rotate 2s linear infinite;
 	}
 
@@ -127,12 +127,12 @@
 	.progress-percentage {
 		font-size: 1.5rem;
 		font-weight: 700;
-		color: #000;
+		color: var(--color-text-primary);
 		margin-bottom: 1.5rem;
-		background: #98fb98;
+		background: var(--color-success);
 		padding: 0.5rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: 5px 5px 0 var(--color-text-primary);
 		transform: rotate(1deg);
 		animation: pulse 2s ease-in-out infinite;
 		text-transform: uppercase;
@@ -156,13 +156,13 @@
 
 	.processing-message {
 		margin: 1rem 0;
-		color: #000;
+		color: var(--color-text-primary);
 		font-weight: 700;
 		text-align: center;
-		background: #ffd93d;
+		background: var(--color-primary-dark);
 		padding: 1rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: 5px 5px 0 var(--color-text-primary);
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		display: flex;
@@ -175,7 +175,7 @@
 		font-size: 1.5rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 		animation: flash 1s ease-in-out infinite;
 	}
 

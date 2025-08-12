@@ -31,52 +31,61 @@
 	});
 </script>
 
-<div bind:this={chatContainer} class="chat-messages content-area" id="chat-container">
+<div bind:this={chatContainer} class="chat-messages" id="chat-container">
 	<div class="chat-decoration"></div>
 
-	{#if messages.length === 0 || (messages.length === 1 && messages[0].role === 'system')}
-		<div class="empty-state">
-			<div class="empty-icon"><MessageCircleIcon /></div>
-			<h3>Start a Conversation</h3>
-			<p>Type a message below to begin chatting with AI</p>
-		</div>
-	{:else}
-		{#each messages as message, i (i)}
-			<Message {message} {isGenerating} isLast={i === messages.length - 1} />
-		{/each}
-	{/if}
+	<div class="messages-content">
+		{#if messages.length === 0 || (messages.length === 1 && messages[0].role === 'system')}
+			<div class="empty-state">
+				<div class="empty-icon"><MessageCircleIcon /></div>
+				<h3>Start a Conversation</h3>
+				<p>Type a message below to begin chatting with AI</p>
+			</div>
+		{:else}
+			{#each messages as message, i (i)}
+				<Message {message} {isGenerating} isLast={i === messages.length - 1} />
+			{/each}
+		{/if}
+	</div>
 </div>
 
 <style>
 	.chat-messages {
-		flex: 1 1 auto;
-		min-height: 0; /* critical to allow proper scrolling in flex containers */
-		overflow: auto;
+		flex: 1 1 0; /* Take remaining space but don't grow beyond container */
+		min-height: 0; /* Critical for flex scrolling */
+		overflow-y: auto;
+		overflow-x: hidden;
 		position: relative;
 		background: linear-gradient(135deg, rgba(255, 229, 180, 0.1) 0%, rgba(230, 230, 250, 0.1) 100%);
-		padding-top: 3rem;
 		width: 100%;
 		box-sizing: border-box;
-		border-left: 3px solid #000;
-		border-right: 3px solid #000;
+		border-left: var(--border-brutalist-thick);
+		border-right: var(--border-brutalist-thick);
 	}
 
 	.chat-decoration {
-		position: absolute;
+		position: sticky;
 		top: 0;
 		left: 0;
 		right: 0;
 		height: 3px;
 		background: repeating-linear-gradient(
 			90deg,
-			#ffd93d,
-			#ffd93d 10px,
-			#98fb98 10px,
-			#98fb98 20px,
-			#ff69b4 20px,
-			#ff69b4 30px
+			var(--color-primary-dark),
+			var(--color-primary-dark) 10px,
+			var(--color-success) 10px,
+			var(--color-success) 20px,
+			var(--color-accent-pink) 20px,
+			var(--color-accent-pink) 30px
 		);
-		z-index: 1;
+		z-index: 10;
+	}
+
+	.messages-content {
+		padding: 1.5rem;
+		min-height: 100%;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.empty-state {
@@ -84,7 +93,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		height: 100%;
+		flex: 1;
 		min-height: 300px;
 		text-align: center;
 		padding: 2rem;
@@ -110,7 +119,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.empty-icon :global(svg) {
@@ -131,21 +140,21 @@
 	.empty-state h3 {
 		font-size: 1.75rem;
 		font-weight: 700;
-		color: #000;
+		color: var(--color-text-primary);
 		margin: 0 0 0.5rem 0;
 		text-transform: uppercase;
 		letter-spacing: 1px;
-		background: #ffd93d;
+		background: var(--color-primary-dark);
 		padding: 0.5rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-medium);
 		display: inline-block;
 		transform: rotate(-1deg);
 	}
 
 	.empty-state p {
 		font-size: 1.125rem;
-		color: #666;
+		color: var(--color-text-tertiary);
 		margin: 0.5rem 0 0 0;
 		font-weight: 500;
 	}
@@ -155,26 +164,30 @@
 	}
 
 	.chat-messages::-webkit-scrollbar-track {
-		background: linear-gradient(180deg, #ffd93d 0%, #98fb98 50%, #ff69b4 100%);
-		border: 2px solid #000;
+		background: linear-gradient(
+			180deg,
+			var(--color-primary-dark) 0%,
+			var(--color-success) 50%,
+			var(--color-accent-pink) 100%
+		);
+		border: var(--border-brutalist-thick);
 		border-radius: 6px;
 	}
 
 	.chat-messages::-webkit-scrollbar-thumb {
-		background: #000;
+		background: var(--color-text-primary);
 		border-radius: 6px;
-		border: 2px solid #fff;
+		border: 2px solid var(--color-background-main);
 		box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
 	}
 
 	.chat-messages::-webkit-scrollbar-thumb:hover {
-		background: #333;
+		background: var(--color-text-secondary);
 	}
 
 	@media (max-width: 600px) {
-		.chat-messages {
-			flex: 1 1 auto;
-			min-height: 0;
+		.messages-content {
+			padding: 1rem;
 		}
 
 		.empty-icon {

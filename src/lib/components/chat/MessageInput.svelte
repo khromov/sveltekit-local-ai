@@ -88,8 +88,8 @@
 <style>
 	.input-area {
 		padding: 1.25rem;
-		background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
-		border-top: 3px solid #000;
+		background: linear-gradient(135deg, var(--color-background-secondary) 0%, #fafafa 100%);
+		border-top: var(--border-brutalist-thick);
 		position: relative;
 		overflow: hidden;
 	}
@@ -100,7 +100,13 @@
 		left: 0;
 		right: 0;
 		height: 3px;
-		background: repeating-linear-gradient(90deg, #98fb98, #98fb98 8px, #ffd93d 8px, #ffd93d 16px);
+		background: repeating-linear-gradient(
+			90deg,
+			var(--color-success),
+			var(--color-success) 8px,
+			var(--color-primary-dark) 8px,
+			var(--color-primary-dark) 16px
+		);
 		animation: slide 2s linear infinite;
 	}
 
@@ -116,10 +122,10 @@
 	.message-input {
 		display: flex;
 		align-items: flex-end;
-		background: #fff;
-		border: 3px solid #000;
+		background: var(--color-background-main);
+		border: var(--border-brutalist-thick);
 		padding: 0;
-		box-shadow: 5px 5px 0 #000;
+		box-shadow: 5px 5px 0 var(--color-border-primary);
 		border-radius: 12px;
 		overflow: hidden;
 		transition: all 0.2s;
@@ -134,14 +140,14 @@
 		left: 10px;
 		font-size: 1.5rem;
 		z-index: 1;
-		background: #98fb98;
+		background: var(--color-success);
 		padding: 0 8px;
-		border: 2px solid #000;
+		border: var(--border-brutalist-thin);
 		border-radius: 4px;
 		animation: bounce-emoji 3s ease-in-out infinite;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.input-emoji :global(svg) {
@@ -161,11 +167,15 @@
 
 	.message-input:hover:not(.is-disabled) {
 		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 7px 7px 0 #000;
+		box-shadow: 7px 7px 0 var(--color-border-primary);
 	}
 
 	.message-input.is-disabled {
-		background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+		background: linear-gradient(
+			135deg,
+			var(--color-background-tertiary) 0%,
+			var(--color-background-pattern) 100%
+		);
 		opacity: 0.7;
 	}
 
@@ -175,7 +185,7 @@
 		padding-top: 1.25rem;
 		border: none;
 		resize: none;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-family: var(--font-family-primary);
 		font-size: 1rem;
 		font-weight: 500;
 		line-height: 1.4;
@@ -183,11 +193,11 @@
 		min-height: 22px;
 		max-height: 120px;
 		outline: none;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	textarea::placeholder {
-		color: #999;
+		color: var(--color-text-disabled);
 		font-weight: 400;
 	}
 
@@ -199,13 +209,13 @@
 		height: 44px;
 		margin: 8px;
 		align-self: center;
-		background: linear-gradient(135deg, #ffd93d 0%, #ffa500 100%);
-		color: #000;
-		border: 2px solid #000;
+		background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-warning) 100%);
+		color: var(--color-text-primary);
+		border: var(--border-brutalist-thin);
 		border-radius: 8px;
 		cursor: pointer;
 		transition: all 0.2s;
-		box-shadow: 2px 2px 0 #000;
+		box-shadow: var(--shadow-brutalist-small);
 		transform: rotate(5deg);
 	}
 
@@ -215,18 +225,18 @@
 	}
 
 	.send-btn:hover:not(:disabled) {
-		background: linear-gradient(135deg, #98fb98 0%, #90ee90 100%);
+		background: linear-gradient(135deg, var(--color-success) 0%, var(--color-success-hover) 100%);
 		transform: scale(1.1) rotate(0deg);
-		box-shadow: 3px 3px 0 #000;
+		box-shadow: var(--shadow-brutalist-medium);
 	}
 
 	.send-btn:active:not(:disabled) {
 		transform: scale(0.95);
-		box-shadow: 1px 1px 0 #000;
+		box-shadow: 1px 1px 0 var(--color-border-primary);
 	}
 
 	.send-btn:disabled {
-		background: #e0e0e0;
+		background: var(--color-background-disabled);
 		cursor: not-allowed;
 		opacity: 0.5;
 		transform: rotate(0deg);
@@ -240,13 +250,13 @@
 		height: 44px;
 		margin: 8px;
 		align-self: center;
-		background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
-		color: #000;
-		border: 2px solid #000;
+		background: linear-gradient(135deg, var(--color-danger) 0%, var(--color-danger-hover) 100%);
+		color: var(--color-text-primary);
+		border: var(--border-brutalist-thin);
 		border-radius: 8px;
 		cursor: pointer;
 		transition: all 0.2s;
-		box-shadow: 2px 2px 0 #000;
+		box-shadow: var(--shadow-brutalist-small);
 		transform: rotate(-2deg);
 		animation: pulse-stop 1s ease-in-out infinite;
 	}
@@ -267,25 +277,25 @@
 	}
 
 	.stop-btn-inline:hover {
-		background: linear-gradient(135deg, #ff8a80 0%, #ff6b6b 100%);
+		background: linear-gradient(135deg, #ff8a80 0%, var(--color-danger) 100%);
 		transform: scale(1.1) rotate(0deg);
-		box-shadow: 3px 3px 0 #000;
+		box-shadow: var(--shadow-brutalist-medium);
 		animation: none;
 	}
 
 	.stop-btn-inline:active {
 		transform: scale(0.95) rotate(0deg);
-		box-shadow: 1px 1px 0 #000;
+		box-shadow: 1px 1px 0 var(--color-border-primary);
 	}
 
 	.disclaimer {
 		font-size: 0.75rem;
 		font-weight: 400;
-		color: #666;
+		color: var(--color-text-tertiary);
 		text-align: center;
-		background: #f8f8f8;
+		background: var(--color-background-tertiary);
 		padding: 0.5rem 0.75rem;
-		border: 1px solid #e0e0e0;
+		border: 1px solid var(--color-gray-200);
 		border-radius: 4px;
 		display: flex;
 		align-items: center;
@@ -300,7 +310,7 @@
 		font-size: 0.875rem;
 		display: flex;
 		align-items: center;
-		color: #666;
+		color: var(--color-text-tertiary);
 	}
 
 	.disclaimer-icon :global(svg) {

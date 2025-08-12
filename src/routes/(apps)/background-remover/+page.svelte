@@ -11,8 +11,14 @@
 	import BackgroundRemoverProgress from '$lib/components/background-remover/BackgroundRemoverProgress.svelte';
 	import BackgroundRemoverResult from '$lib/components/background-remover/BackgroundRemoverResult.svelte';
 	import BackgroundRemoverBatchResult from '$lib/components/background-remover/BackgroundRemoverBatchResult.svelte';
-	import LoadingProgress from '$lib/components/LoadingProgress.svelte';
-	import ErrorDisplay from '$lib/components/ErrorDisplay.svelte';
+	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
+	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
+	import CardInterface from '$lib/components/common/CardInterface.svelte';
+	import Toolbar from '$lib/components/common/Toolbar.svelte';
+	import ContentArea from '$lib/components/common/ContentArea.svelte';
+	import SectionCard from '$lib/components/common/SectionCard.svelte';
+	import StepHeader from '$lib/components/common/StepHeader.svelte';
+	import ActionButton from '$lib/components/common/ActionButton.svelte';
 	import { BASE_MODEL_URL } from '$lib/config';
 
 	let isModelLoaded = $state(false);
@@ -354,27 +360,20 @@
 		{/if}
 	</div>
 {:else}
-	<div class="card-interface background-remover-interface">
-		<div class="floating-decoration decoration-1"></div>
-		<div class="floating-decoration decoration-2"></div>
+	<CardInterface>
+		<Toolbar
+			modelInfo="Background Remover ({AVAILABLE_MODELS.find((m) => m.id === selectedModelId)
+				?.name})"
+			ModelIcon={ImageIcon}
+		>
+			<ActionButton onClick={clearResults} variant="danger" Icon={Trash2Icon}>Clear</ActionButton>
+		</Toolbar>
 
-		<div class="toolbar">
-			<span class="model-info">
-				<span class="model-emoji"><ImageIcon /></span>
-				Background Remover ({AVAILABLE_MODELS.find((m) => m.id === selectedModelId)?.name})
-			</span>
-			<button onclick={clearResults} class="clear-btn" aria-label="Clear Results">
-				<span class="btn-emoji"><Trash2Icon /></span>
-				Clear
-			</button>
-			<div class="toolbar-decoration"></div>
-		</div>
-
-		<div class="content-area">
+		<ContentArea>
 			<!-- Model Selection -->
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
-				<div class="model-selection">
-					<h3><span class="step-number">Step 1:</span> Model Selection</h3>
+				<SectionCard rotation={0.2} animationDelay={0}>
+					<StepHeader stepNumber={1} title="Model Selection" backgroundColor="#ff69b4" />
 					<div class="model-buttons">
 						{#each AVAILABLE_MODELS as modelOption (modelOption.id)}
 							<button
@@ -388,13 +387,13 @@
 							</button>
 						{/each}
 					</div>
-				</div>
+				</SectionCard>
 			{/if}
 
 			<!-- Mode Selection -->
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
-				<div class="mode-selection">
-					<h3><span class="step-number">Step 2:</span> Processing Mode</h3>
+				<SectionCard rotation={-0.3} animationDelay={0.1}>
+					<StepHeader stepNumber={2} title="Processing Mode" />
 					<div class="mode-buttons">
 						<button
 							class="mode-btn"
@@ -413,12 +412,12 @@
 							Multiple images
 						</button>
 					</div>
-				</div>
+				</SectionCard>
 			{/if}
 
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
-				<div class="upload-selection">
-					<h3><span class="step-number">Step 3:</span> Upload Images</h3>
+				<SectionCard rotation={-0.1} animationDelay={0.2}>
+					<StepHeader stepNumber={3} title="Upload Images" backgroundColor="#98fb98" />
 					<BackgroundRemoverUpload
 						mode={processingMode}
 						{selectedFile}
@@ -428,7 +427,7 @@
 						onExampleUse={handleExampleUse}
 						disabled={isProcessing}
 					/>
-				</div>
+				</SectionCard>
 			{/if}
 
 			{#if isProcessing}
@@ -459,8 +458,8 @@
 					onDownloadZip={downloadBatchAsZip}
 				/>
 			{/if}
-		</div>
-	</div>
+		</ContentArea>
+	</CardInterface>
 {/if}
 
 <style>
@@ -488,176 +487,7 @@
 		}
 	}
 
-	.background-remover-interface {
-		position: relative;
-		transform: rotate(0deg);
-		animation: slideInChat 0.5s ease-out;
-		display: flex;
-		flex-direction: column;
-		min-height: 400px;
-	}
-
-	@keyframes slideInChat {
-		from {
-			opacity: 0;
-			transform: translateY(20px) rotate(0deg);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0) rotate(0deg);
-		}
-	}
-
-	.floating-decoration {
-		position: absolute;
-		background: linear-gradient(135deg, #ffd93d 0%, #ff69b4 100%);
-		border: 3px solid #000;
-		opacity: 0.2;
-		z-index: -1;
-		pointer-events: none;
-	}
-
-	.decoration-1 {
-		width: 80px;
-		height: 80px;
-		top: -20px;
-		right: -20px;
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		animation: float1 8s ease-in-out infinite;
-	}
-
-	.decoration-2 {
-		width: 60px;
-		height: 60px;
-		bottom: 100px;
-		left: -15px;
-		border-radius: 70% 30% 30% 70% / 40% 60% 40% 60%;
-		animation: float2 10s ease-in-out infinite;
-	}
-
-	@keyframes float1 {
-		0%,
-		100% {
-			transform: translate(0, 0) rotate(0deg);
-		}
-		50% {
-			transform: translate(-10px, 10px) rotate(180deg);
-		}
-	}
-
-	@keyframes float2 {
-		0%,
-		100% {
-			transform: translate(0, 0) rotate(0deg);
-		}
-		50% {
-			transform: translate(10px, -10px) rotate(-180deg);
-		}
-	}
-
-	.toolbar-decoration {
-		position: absolute;
-		bottom: -6px;
-		left: 0;
-		right: 0;
-		height: 3px;
-		background: repeating-linear-gradient(90deg, #000, #000 8px, #98fb98 8px, #98fb98 16px);
-	}
-
-	.model-emoji {
-		font-size: 1.125rem;
-		margin-right: 0.25rem;
-		display: flex;
-		align-items: center;
-		color: #000;
-	}
-
-	.model-emoji :global(svg) {
-		width: 1.125rem;
-		height: 1.125rem;
-	}
-
-	.btn-emoji {
-		font-size: 1rem;
-		display: flex;
-		align-items: center;
-		color: #000;
-	}
-
-	.btn-emoji :global(svg) {
-		width: 1rem;
-		height: 1rem;
-	}
-
-	.clear-btn {
-		padding: 0.5rem 1rem;
-		background: #ff6b6b;
-		color: #000;
-		border: 2px solid #000;
-		border-radius: 6px;
-		cursor: pointer;
-		font-size: 0.875rem;
-		font-weight: 700;
-		transition: all 0.2s;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
-		white-space: nowrap;
-		box-shadow: 3px 3px 0 #000;
-		display: flex;
-		align-items: center;
-		gap: 0.375rem;
-		transform: rotate(0deg);
-	}
-
-	.clear-btn:hover {
-		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 5px 5px 0 #000;
-		background: #ffd93d;
-	}
-
 	/* Mode Selection */
-	.mode-selection {
-		background: #fff;
-		border: 4px solid #000;
-		padding: 1.5rem;
-		box-shadow: 6px 6px 0 #000;
-		margin-bottom: 1.5rem;
-		position: relative;
-		transform: rotate(-0.3deg);
-		animation: slideIn 0.4s ease-out;
-	}
-
-	@keyframes slideIn {
-		from {
-			transform: translateY(10px) rotate(-0.3deg);
-			opacity: 0;
-		}
-		to {
-			transform: translateY(0) rotate(-0.3deg);
-			opacity: 1;
-		}
-	}
-
-	.mode-selection h3 {
-		margin-top: 0;
-		margin-bottom: 1rem;
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: 1.5rem;
-		color: #000;
-		text-align: center;
-		letter-spacing: 2px;
-		text-transform: uppercase;
-		background: #ffd93d;
-		padding: 0.5rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
-		transform: rotate(1deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
 	.mode-buttons {
 		display: flex;
 		gap: 1rem;
@@ -713,36 +543,6 @@
 	}
 
 	/* Model Selection */
-	.model-selection {
-		background: #fff;
-		border: 4px solid #000;
-		padding: 1.5rem;
-		box-shadow: 6px 6px 0 #000;
-		margin-bottom: 1.5rem;
-		position: relative;
-		transform: rotate(0.2deg);
-		animation: slideIn 0.4s ease-out;
-	}
-
-	.model-selection h3 {
-		margin-top: 0;
-		margin-bottom: 1rem;
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: 1.5rem;
-		color: #000;
-		text-align: center;
-		letter-spacing: 2px;
-		text-transform: uppercase;
-		background: #ff69b4;
-		padding: 0.5rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
-		transform: rotate(-1deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
 	.model-buttons {
 		display: flex;
 		gap: 1rem;
@@ -806,64 +606,10 @@
 		line-height: 1.2;
 	}
 
-	/* Step Numbers */
-	.step-number {
-		background: #000;
-		color: #fff;
-		padding: 0.25rem 0.5rem;
-		border-radius: 4px;
-		font-size: 0.875rem;
-		font-weight: 700;
-		margin-right: 0.5rem;
-		display: inline-block;
-		transform: rotate(0deg);
-	}
-
-	/* Upload Selection */
-	.upload-selection {
-		background: #fff;
-		border: 4px solid #000;
-		padding: 1.5rem;
-		box-shadow: 6px 6px 0 #000;
-		margin-bottom: 1.5rem;
-		position: relative;
-		transform: rotate(-0.1deg);
-		animation: slideIn 0.4s ease-out;
-	}
-
-	.upload-selection h3 {
-		margin-top: 0;
-		margin-bottom: 1rem;
-		font-family: 'Bebas Neue', sans-serif;
-		font-size: 1.5rem;
-		color: #000;
-		text-align: center;
-		letter-spacing: 2px;
-		text-transform: uppercase;
-		background: #98fb98;
-		padding: 0.5rem 1rem;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
-		transform: rotate(0.5deg);
-		width: fit-content;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
 	@media (max-width: 600px) {
 		.loading {
 			align-items: stretch;
 			margin: 1rem 0;
-		}
-
-		.clear-btn {
-			padding: 0.375rem 0.75rem;
-			font-size: 0.8125rem;
-		}
-
-		.decoration-1,
-		.decoration-2 {
-			display: none;
 		}
 
 		.mode-buttons,

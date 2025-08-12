@@ -1,0 +1,87 @@
+name: 'Bundle Size Comparison'
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build the code
+        run: npm run build
+        env:
+          PUBLIC_DISABLE_OPFS: false
+
+      - name: Get main branch bundle sizes
+        id: main_sizes
+        run: |
+          echo "client_size=$(du -sk ./build/client/_app/immutable 2>/dev/null | cut -f1 || echo "0")" >> $GITHUB_ENV
+          echo "server_size=$(du -sk ./build/server 2>/dev/null | cut -f1 || echo "0")" >> $GITHUB_ENV
+          echo "total_size=$(du -sk ./build 2>/dev/null | cut -f1 || echo "0")" >> $GITHUB_ENV
+
+      - name: Clean up
+        run: rm -rf node_modules/ build/
+
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build the code
+        run: npm run build
+        env:
+          PUBLIC_DISABLE_OPFS: false
+
+      - name: Get PR branch bundle sizes
+        id: pr_sizes
+        run: |
+          echo "pr_client_size=$(du -sk ./build/client/_app/immutable 2>/dev/null | cut -f1 || echo "0")" >> $GITHUB_ENV
+          echo "pr_server_size=$(du -sk ./build/server 2>/dev/null | cut -f1 || echo "0")" >> $GITHUB_ENV
+          echo "pr_total_size=$(du -sk ./build 2>/dev/null | cut -f1 || echo "0")" >> $GITHUB_ENV
+
+      - name: Compute size differences
+        id: size_diffs
+        run: |
+          echo "client_diff=$((${{ env.pr_client_size }} - ${{ env.client_size }}))" >> $GITHUB_ENV
+          echo "server_diff=$((${{ env.pr_server_size }} - ${{ env.server_size }}))" >> $GITHUB_ENV
+          echo "total_diff=$((${{ env.pr_total_size }} - ${{ env.total_size }}))" >> $GITHUB_ENV
+
+      - name: Comment PR
+        uses: mshick/add-pr-comment@v2
+        with:
+          message-id: 'bundle-size-comparison'
+          message: |
+            ## 📦 Bundle Size Comparison
+
+            | Component | Main Branch | PR Branch | Difference |
+            |-----------|-------------|-----------|------------|
+            | 🎨 Client Assets | ${{ env.client_size }} KB | ${{ env.pr_client_size }} KB | ${{ env.client_diff }} KB |
+            | 🖥️ Server Bundle | ${{ env.server_size }} KB | ${{ env.pr_server_size }} KB | ${{ env.server_diff }} KB |
+            | 📊 Total Build | ${{ env.total_size }} KB | ${{ env.pr_total_size }} KB | ${{ env.total_diff }} KB |
+
+            *Bundle sizes measured in kilobytes (KB)*
+          repo-token: '${{ github.token }}'

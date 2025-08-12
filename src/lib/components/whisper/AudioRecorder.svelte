@@ -152,9 +152,9 @@
 	.audio-recorder {
 		margin-top: 1rem;
 		padding: 1.5rem;
-		background: #f0f8ff;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
+		background: var(--color-background-light-blue);
+		border: var(--border-brutalist-thick);
+		box-shadow: 5px 5px 0 var(--color-text-primary);
 		transform: rotate(-0.5deg);
 	}
 
@@ -163,18 +163,19 @@
 		align-items: center;
 		gap: 0.5rem;
 		padding: 1rem;
-		background: #ffe4e1;
-		border: 2px solid #ff6b6b;
+		background: var(--color-background-light-pink);
+		border: var(--border-brutalist-thin);
+		border-color: var(--color-danger);
 		margin-bottom: 1rem;
 		font-weight: 500;
-		color: #d62828;
+		color: var(--color-text-danger);
 	}
 
 	.error-icon {
 		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
-		color: #d62828;
+		color: var(--color-text-danger);
 	}
 
 	.error-icon :global(svg) {
@@ -189,9 +190,9 @@
 		align-items: center;
 		gap: 0.5rem;
 		padding: 0.75rem 1.5rem;
-		background: #fff;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
+		background: var(--color-background-main);
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-medium);
 		font-size: 1rem;
 		font-weight: 700;
 		text-transform: uppercase;
@@ -201,16 +202,16 @@
 	}
 
 	.record-button {
-		background: #90ee90;
+		background: var(--color-success-hover);
 	}
 
 	.stop-button {
-		background: #ff6b6b;
-		color: #fff;
+		background: var(--color-danger);
+		color: var(--color-text-inverse);
 	}
 
 	.clear-button {
-		background: #ffd93d;
+		background: var(--color-primary-dark);
 		margin-top: 1rem;
 	}
 
@@ -218,7 +219,7 @@
 	.stop-button:hover:not(:disabled),
 	.clear-button:hover:not(:disabled) {
 		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
+		box-shadow: var(--shadow-brutalist-large);
 	}
 
 	.record-button:disabled,
@@ -250,8 +251,8 @@
 		align-items: center;
 		gap: 0.75rem;
 		padding: 1rem;
-		background: #fff;
-		border: 2px solid #000;
+		background: var(--color-background-main);
+		border: var(--border-brutalist-thin);
 		font-weight: 700;
 		font-size: 1.125rem;
 	}
@@ -259,7 +260,7 @@
 	.recording-dot {
 		width: 12px;
 		height: 12px;
-		background: #ff0000;
+		background: var(--color-accent-red);
 		border-radius: 50%;
 		animation: pulse 1.5s infinite;
 	}
@@ -286,9 +287,9 @@
 	}
 
 	.audio-player {
-		background: #fff;
+		background: var(--color-background-main);
 		padding: 1rem;
-		border: 2px solid #000;
+		border: var(--border-brutalist-thin);
 	}
 
 	.audio-player audio {
@@ -309,7 +310,7 @@
 	}
 
 	.audio-info small {
-		color: #666;
+		color: var(--color-text-tertiary);
 		font-weight: 500;
 	}
 

@@ -14,6 +14,11 @@
 	import TranscribeOptions from '$lib/components/whisper/TranscribeOptions.svelte';
 	import TranscriptionProgress from '$lib/components/whisper/TranscriptionProgress.svelte';
 	import TranscriptionResult from '$lib/components/whisper/TranscriptionResult.svelte';
+	import CardInterface from '$lib/components/common/CardInterface.svelte';
+	import Toolbar from '$lib/components/common/Toolbar.svelte';
+	import ContentArea from '$lib/components/common/ContentArea.svelte';
+	import InputArea from '$lib/components/common/InputArea.svelte';
+	import PrimaryButton from '$lib/components/common/PrimaryButton.svelte';
 
 	let isReady = $state(false);
 	let isLoading = $state(false);
@@ -263,13 +268,10 @@
 	});
 </script>
 
-<div class="card-interface" style="animation: fadeIn 0.5s ease-out;">
-	<div class="toolbar">
-		<span class="model-info">Whisper Audio Transcription</span>
-		<div class="toolbar-decoration"></div>
-	</div>
+<CardInterface>
+	<Toolbar modelInfo="Whisper Audio Transcription" />
 
-	<div class="content-area">
+	<ContentArea>
 		<WhisperModelSelector
 			bind:selectedModel
 			{availableModels}
@@ -306,15 +308,18 @@
 				<TranscriptionResult {text} {transcriptionData} />
 			{/if}
 		</div>
-	</div>
+	</ContentArea>
 
-	<div class="input-area" class:disabled={!isReady}>
-		<button
-			onclick={transcribe}
+	<InputArea disabled={!isReady}>
+		<PrimaryButton
+			onClick={transcribe}
 			disabled={!isReady ||
 				isTranscribing ||
 				((transcribeMode === 'upload' || transcribeMode === 'record') && !selectedFile)}
-			class="transcribe-btn primary-button"
+			loading={isTranscribing}
+			variant="success"
+			size="large"
+			fullWidth
 		>
 			{#if isTranscribing}
 				<span class="loading-spinner"><LoaderIcon /></span>
@@ -323,70 +328,24 @@
 				<span class="button-icon"><PlayIcon /></span>
 				Start Transcription
 			{/if}
-		</button>
+		</PrimaryButton>
 
 		<div class="disclaimer">
 			<span class="disclaimer-icon"><LockIcon /></span>
 			Transcription is performed locally in your browser. Results may not always be accurate.
 		</div>
-	</div>
-</div>
+	</InputArea>
+</CardInterface>
 
 <style>
-	.toolbar-decoration {
-		position: absolute;
-		bottom: -8px;
-		left: 0;
-		right: 0;
-		height: 4px;
-		background: repeating-linear-gradient(90deg, #000, #000 10px, #98fb98 10px, #98fb98 20px);
-	}
-
 	.main-content {
 		transition: all 0.3s ease;
 	}
 
-	.main-content.disabled,
-	.input-area.disabled {
+	.main-content.disabled {
 		opacity: 0.3;
 		pointer-events: none;
 		filter: grayscale(50%);
-	}
-
-	.transcribe-btn {
-		margin: 0 auto;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.75rem;
-		min-width: 280px;
-		text-align: center;
-		position: relative;
-		overflow: hidden;
-		text-transform: uppercase;
-	}
-
-	.transcribe-btn::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -100%;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-		transition: left 0.5s;
-	}
-
-	.transcribe-btn:hover:not(:disabled)::before {
-		left: 100%;
-	}
-
-	.transcribe-btn:disabled {
-		background: #e0e0e0;
-		cursor: not-allowed;
-		transform: none;
-		box-shadow: none;
-		opacity: 0.7;
 	}
 
 	.button-icon {
@@ -423,32 +382,6 @@
 		}
 	}
 
-	.primary-button {
-		padding: 1.25rem 2rem;
-		background: #98fb98;
-		color: #000;
-		border: 4px solid #000;
-		cursor: pointer;
-		font-size: 1.5rem;
-		font-weight: 700;
-		transition: all 0.15s;
-		box-shadow: 8px 8px 0 #000;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		font-family: 'Space Grotesk', monospace;
-	}
-
-	.primary-button:hover:not(:disabled) {
-		transform: translate(-4px, -4px);
-		box-shadow: 12px 12px 0 #000;
-		background: #ffd93d;
-	}
-
-	.primary-button:active:not(:disabled) {
-		transform: translate(0);
-		box-shadow: 4px 4px 0 #000;
-	}
-
 	.disclaimer {
 		display: flex;
 		align-items: center;
@@ -481,29 +414,10 @@
 		height: 1.25rem;
 	}
 
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(20px) rotate(-1deg);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0) rotate(-0.5deg);
-		}
-	}
-
 	@media (max-width: 600px) {
-		.main-content.disabled,
-		.input-area.disabled {
+		.main-content.disabled {
 			opacity: 0.3;
 			pointer-events: none;
-		}
-
-		.transcribe-btn {
-			min-width: auto;
-			width: 100%;
-			font-size: 1.25rem;
-			padding: 1rem 1.5rem;
 		}
 
 		.disclaimer {

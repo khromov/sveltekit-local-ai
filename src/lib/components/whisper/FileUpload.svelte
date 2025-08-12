@@ -95,7 +95,7 @@
 	}
 
 	.upload-area {
-		border: 3px dashed #000;
+		border: 3px dashed var(--color-text-primary);
 		padding: 2rem;
 		text-align: center;
 		background: linear-gradient(135deg, rgba(255, 229, 180, 0.1) 0%, rgba(230, 230, 250, 0.1) 100%);
@@ -106,10 +106,10 @@
 	}
 
 	.upload-area.drag-over {
-		background: #fff9e6;
-		border-color: #ffd700;
+		background: var(--color-accent-light-yellow);
+		border-color: var(--color-primary);
 		transform: rotate(0deg) scale(1.02);
-		box-shadow: 5px 5px 0 #000;
+		box-shadow: 5px 5px 0 var(--color-text-primary);
 	}
 
 	.upload-icon {
@@ -119,7 +119,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.upload-icon :global(svg) {
@@ -133,16 +133,16 @@
 	}
 
 	.upload-hint {
-		color: #666;
+		color: var(--color-text-tertiary);
 		font-size: 0.875rem;
 	}
 
 	.browse-button {
 		margin-top: 1rem;
 		padding: 0.75rem 1.5rem;
-		background: #98fb98;
-		border: 3px solid #000;
-		box-shadow: 4px 4px 0 #000;
+		background: var(--color-success);
+		border: var(--border-brutalist-thick);
+		box-shadow: var(--shadow-brutalist-medium);
 		font-size: 1rem;
 		font-weight: 700;
 		text-transform: uppercase;
@@ -153,8 +153,8 @@
 
 	.browse-button:hover:not(:disabled) {
 		transform: translate(-2px, -2px);
-		box-shadow: 6px 6px 0 #000;
-		background: #ffd93d;
+		box-shadow: var(--shadow-brutalist-large);
+		background: var(--color-primary-dark);
 	}
 
 	.browse-button:disabled {
@@ -163,9 +163,9 @@
 	}
 
 	.file-selected {
-		background: #f0f8ff;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
+		background: var(--color-background-light-blue);
+		border: var(--border-brutalist-thick);
+		box-shadow: 5px 5px 0 var(--color-text-primary);
 		padding: 1.5rem;
 		display: flex;
 		align-items: center;
@@ -195,7 +195,7 @@
 		font-size: 2rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.file-icon :global(svg) {
@@ -215,22 +215,22 @@
 	}
 
 	.file-details small {
-		color: #666;
+		color: var(--color-text-tertiary);
 		font-weight: 500;
 	}
 
 	.clear-button {
 		padding: 0.5rem;
-		background: #ff6b6b;
-		border: 2px solid #000;
-		box-shadow: 3px 3px 0 #000;
+		background: var(--color-danger);
+		border: var(--border-brutalist-thin);
+		box-shadow: var(--shadow-brutalist-small);
 		cursor: pointer;
 		transition: all 0.15s;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		border-radius: 4px;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.clear-button :global(svg) {
@@ -240,7 +240,7 @@
 
 	.clear-button:hover:not(:disabled) {
 		transform: translate(-2px, -2px);
-		box-shadow: 5px 5px 0 #000;
+		box-shadow: 5px 5px 0 var(--color-text-primary);
 	}
 
 	.clear-button:disabled {

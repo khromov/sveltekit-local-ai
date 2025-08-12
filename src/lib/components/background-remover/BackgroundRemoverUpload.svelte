@@ -235,10 +235,10 @@
 
 <style>
 	.background-remover-upload {
-		background: #fff;
-		border: 4px solid #000;
+		background: var(--color-background-main);
+		border: var(--border-brutalist-extra-thick);
 		padding: 2rem;
-		box-shadow: 8px 8px 0 #000;
+		box-shadow: var(--shadow-brutalist-xlarge);
 		margin-bottom: 1.5rem;
 		position: relative;
 		transform: rotate(0.5deg);
@@ -248,7 +248,7 @@
 	}
 
 	.background-remover-upload.batch-mode .upload-decoration {
-		background: linear-gradient(135deg, #87ceeb 0%, #98fb98 100%);
+		background: linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-success) 100%);
 	}
 
 	@keyframes slideIn {
@@ -268,7 +268,11 @@
 		left: -8px;
 		right: -8px;
 		bottom: -8px;
-		background: linear-gradient(135deg, #ffd93d 0%, #ff69b4 100%);
+		background: linear-gradient(
+			135deg,
+			var(--color-primary-dark) 0%,
+			var(--color-accent-pink) 100%
+		);
 		z-index: -1;
 		opacity: 0.3;
 		border-radius: 5% 20% 5% 20% / 20% 5% 20% 5%;
@@ -277,19 +281,19 @@
 	.background-remover-upload h3 {
 		margin-top: 0;
 		margin-bottom: 1.5rem;
-		font-family: 'Bebas Neue', sans-serif;
+		font-family: var(--font-family-display);
 		font-size: 2rem;
-		color: #000;
+		color: var(--color-text-primary);
 		text-align: center;
 		letter-spacing: 2px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 0.75rem;
-		background: #ffd93d;
+		background: var(--color-primary-dark);
 		padding: 0.5rem 1.5rem;
-		border: 3px solid #000;
-		box-shadow: 5px 5px 0 #000;
+		border: var(--border-brutalist-thick);
+		box-shadow: 5px 5px 0 var(--color-text-primary);
 		transform: rotate(1deg);
 		width: fit-content;
 		margin-left: auto;
@@ -298,14 +302,14 @@
 	}
 
 	.batch-mode h3 {
-		background: #87ceeb;
+		background: var(--color-accent-blue);
 	}
 
 	.title-icon {
 		font-size: 1.75rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.title-icon :global(svg) {
@@ -321,20 +325,20 @@
 		display: block;
 		position: relative;
 		min-height: 180px;
-		background: #fff;
-		border: 4px dashed #000;
+		background: var(--color-background-main);
+		border: 4px dashed var(--color-text-primary);
 		cursor: pointer;
 		transition: all 0.15s ease;
 		overflow: hidden;
 		transform: rotate(-0.5deg);
-		box-shadow: 5px 5px 0 #000;
+		box-shadow: 5px 5px 0 var(--color-text-primary);
 		margin-bottom: 1.5rem;
 	}
 
 	.file-upload-label:hover:not(.disabled) {
 		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 7px 7px 0 #000;
-		background: #fffacd;
+		box-shadow: 7px 7px 0 var(--color-text-primary);
+		background: var(--color-background-cream);
 	}
 
 	.file-upload-label.has-file {
@@ -342,25 +346,25 @@
 	}
 
 	.file-upload-label.has-file {
-		background: #98fb98;
+		background: var(--color-success);
 	}
 
 	.batch-mode .file-upload-label.has-file {
-		background: #87ceeb;
+		background: var(--color-accent-blue);
 	}
 
 	.file-upload-label.disabled {
 		cursor: not-allowed;
 		opacity: 0.6;
-		background: #e0e0e0;
+		background: var(--color-background-disabled);
 	}
 
 	.file-upload-label.dragging {
-		background: #ffd93d;
+		background: var(--color-primary-dark);
 		border-style: solid;
-		border-color: #000;
+		border-color: var(--color-text-primary);
 		transform: translate(-3px, -3px) rotate(0deg);
-		box-shadow: 8px 8px 0 #000;
+		box-shadow: 8px 8px 0 var(--color-text-primary);
 	}
 
 	.upload-content {
@@ -376,7 +380,7 @@
 	}
 
 	.upload-icon {
-		color: #000;
+		color: var(--color-text-primary);
 		margin-bottom: 1rem;
 		animation: float 3s ease-in-out infinite;
 		display: flex;
@@ -400,7 +404,7 @@
 
 	.upload-text {
 		font-size: 1.125rem;
-		color: #000;
+		color: var(--color-text-primary);
 		margin: 0 0 0.5rem 0;
 		text-align: center;
 		font-weight: 700;
@@ -415,7 +419,7 @@
 		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.file-icon :global(svg) {
@@ -425,18 +429,18 @@
 
 	.upload-hint {
 		font-size: 0.9375rem;
-		color: #333;
+		color: var(--color-text-secondary);
 		margin: 0;
 		text-align: center;
 		font-weight: 600;
-		background: #ffd93d;
+		background: var(--color-primary-dark);
 		padding: 4px 12px;
-		border: 2px solid #000;
-		box-shadow: 3px 3px 0 #000;
+		border: var(--border-brutalist-thin);
+		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.file-upload-label.has-file .upload-hint {
-		background: #fff;
+		background: var(--color-background-main);
 	}
 
 	.or-divider {
@@ -448,13 +452,13 @@
 	}
 
 	.or-divider span {
-		background: #fff;
+		background: var(--color-background-main);
 		padding: 0 1rem;
 		font-weight: 700;
 		font-size: 0.875rem;
 		text-transform: uppercase;
 		letter-spacing: 2px;
-		color: #666;
+		color: var(--color-text-tertiary);
 		position: relative;
 	}
 
@@ -464,7 +468,7 @@
 		left: 0;
 		right: 0;
 		height: 2px;
-		background: #ddd;
+		background: var(--color-gray-300);
 		top: 50%;
 		transform: translateY(-50%);
 	}
@@ -476,29 +480,29 @@
 		gap: 0.5rem;
 		width: 100%;
 		padding: 1rem 1.5rem;
-		background: #98fb98;
-		color: #000;
-		border: 3px solid #000;
+		background: var(--color-success);
+		color: var(--color-text-primary);
+		border: var(--border-brutalist-thick);
 		border-radius: 8px;
 		cursor: pointer;
 		font-size: 1rem;
 		font-weight: 700;
 		transition: all 0.2s;
-		box-shadow: 4px 4px 0 #000;
+		box-shadow: var(--shadow-brutalist-medium);
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-family: var(--font-family-primary);
 		transform: rotate(-0.5deg);
 	}
 
 	.example-button:hover:not(:disabled) {
 		transform: translate(-2px, -2px) rotate(0deg);
-		box-shadow: 6px 6px 0 #000;
-		background: #ffd93d;
+		box-shadow: var(--shadow-brutalist-large);
+		background: var(--color-primary-dark);
 	}
 
 	.example-button:disabled {
-		background: #e0e0e0;
+		background: var(--color-background-disabled);
 		cursor: not-allowed;
 		opacity: 0.6;
 	}
@@ -507,7 +511,7 @@
 		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.example-icon :global(svg) {
@@ -526,14 +530,14 @@
 		align-items: center;
 		margin-bottom: 1rem;
 		padding-bottom: 0.5rem;
-		border-bottom: 2px solid #000;
+		border-bottom: var(--border-brutalist-thin);
 	}
 
 	.files-header h4 {
 		margin: 0;
 		font-size: 1.125rem;
 		font-weight: 700;
-		color: #000;
+		color: var(--color-text-primary);
 		text-transform: uppercase;
 		letter-spacing: 1px;
 	}
@@ -543,9 +547,9 @@
 		align-items: center;
 		gap: 0.375rem;
 		padding: 0.375rem 0.75rem;
-		background: #ff6b6b;
-		color: #000;
-		border: 2px solid #000;
+		background: var(--color-danger);
+		color: var(--color-text-primary);
+		border: var(--border-brutalist-thin);
 		border-radius: 4px;
 		cursor: pointer;
 		font-size: 0.8125rem;
@@ -553,13 +557,13 @@
 		transition: all 0.2s;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
-		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-family: var(--font-family-primary);
 	}
 
 	.clear-all-btn:hover:not(:disabled) {
-		background: #ff5252;
+		background: var(--color-danger-hover);
 		transform: translate(-1px, -1px);
-		box-shadow: 2px 2px 0 #000;
+		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.clear-all-btn:disabled {
@@ -571,7 +575,7 @@
 		font-size: 1rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.clear-icon :global(svg) {
@@ -589,26 +593,26 @@
 	.file-item {
 		display: flex;
 		flex-direction: column;
-		background: #f5f5f5;
-		border: 2px solid #000;
+		background: var(--color-background-secondary);
+		border: var(--border-brutalist-thin);
 		border-radius: 8px;
 		overflow: hidden;
 		position: relative;
 		transition: all 0.2s;
-		box-shadow: 3px 3px 0 #000;
+		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.file-item:hover {
 		transform: translate(-1px, -1px);
-		box-shadow: 4px 4px 0 #000;
+		box-shadow: var(--shadow-brutalist-medium);
 	}
 
 	.file-preview {
 		width: 100%;
 		height: 120px;
 		overflow: hidden;
-		background: #fff;
-		border-bottom: 2px solid #000;
+		background: var(--color-background-main);
+		border-bottom: var(--border-brutalist-thin);
 	}
 
 	.file-preview img {
@@ -625,7 +629,7 @@
 	.file-name {
 		font-size: 0.875rem;
 		font-weight: 600;
-		color: #000;
+		color: var(--color-text-primary);
 		margin-bottom: 0.25rem;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -634,7 +638,7 @@
 
 	.file-size {
 		font-size: 0.75rem;
-		color: #666;
+		color: var(--color-text-tertiary);
 		font-weight: 500;
 	}
 
@@ -644,9 +648,9 @@
 		right: 0.5rem;
 		width: 24px;
 		height: 24px;
-		background: #ff6b6b;
-		color: #000;
-		border: 2px solid #000;
+		background: var(--color-danger);
+		color: var(--color-text-primary);
+		border: var(--border-brutalist-thin);
 		border-radius: 50%;
 		cursor: pointer;
 		font-size: 1rem;
@@ -659,7 +663,7 @@
 	}
 
 	.remove-file-btn:hover:not(:disabled) {
-		background: #ff5252;
+		background: var(--color-danger-hover);
 		transform: scale(1.1);
 	}
 
@@ -672,7 +676,7 @@
 		display: flex;
 		justify-content: center;
 		padding-top: 1rem;
-		border-top: 2px solid #000;
+		border-top: var(--border-brutalist-thin);
 	}
 
 	.start-batch-btn {
@@ -681,18 +685,18 @@
 		gap: 0.5rem;
 		padding: 1rem 2rem;
 		font-size: 1.125rem;
-		background: #98fb98;
+		background: var(--color-success);
 	}
 
 	.start-batch-btn:hover:not(:disabled) {
-		background: #90ee90;
+		background: var(--color-success-hover);
 	}
 
 	.btn-icon {
 		font-size: 1.5rem;
 		display: flex;
 		align-items: center;
-		color: #000;
+		color: var(--color-text-primary);
 	}
 
 	.btn-icon :global(svg) {

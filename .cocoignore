@@ -1,2 +1,7 @@
 .*
 eslint*
+CLAUDE.md
+static/transformers
+src/routes/(apps)/og
+src/routes/debug
+icons.txt
