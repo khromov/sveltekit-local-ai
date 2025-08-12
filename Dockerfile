@@ -1,7 +1,7 @@
 FROM node:24-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+RUN npm i
 COPY . .
 ARG PUBLIC_DISABLE_OPFS=false
 ENV PUBLIC_DISABLE_OPFS=$PUBLIC_DISABLE_OPFS
