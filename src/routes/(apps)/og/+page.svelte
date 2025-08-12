@@ -1,8 +1,5 @@
 <script lang="ts">
 	import ImageIcon from 'virtual:icons/lucide/image';
-	import SparklesIcon from 'virtual:icons/lucide/sparkles';
-	import MessageSquareIcon from 'virtual:icons/lucide/message-square';
-	import MicIcon from 'virtual:icons/lucide/mic';
 	import BrainIcon from 'virtual:icons/lucide/brain';
 	import RocketIcon from 'virtual:icons/lucide/rocket';
 	import ShieldIcon from 'virtual:icons/lucide/shield';

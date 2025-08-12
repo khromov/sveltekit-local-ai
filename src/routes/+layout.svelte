@@ -30,8 +30,26 @@
 	}
 
 	console.log('hello', page.url.pathname);
-	$inspect(page.url.pathname);
 </script>
+
+<svelte:head>
+	<title>{page.data.seo.title}</title>
+	<meta name="description" content={page.data.seo.description} />
+
+	<!-- Open Graph meta tags -->
+	<meta property="og:title" content={page.data.seo.title} />
+	<meta property="og:description" content={page.data.seo.description} />
+	<meta property="og:image" content={page.data.seo.ogImage} />
+	<meta property="og:url" content={page.data.seo.url} />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Local AI Tools" />
+
+	<!-- Twitter Card meta tags -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={page.data.seo.title} />
+	<meta name="twitter:description" content={page.data.seo.description} />
+	<meta name="twitter:image" content={page.data.seo.ogImage} />
+</svelte:head>
 
 <div class="app-wrapper">
 	<div class="container" class:fullWidth={page.url.pathname === '/og'}>
