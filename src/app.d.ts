@@ -28,8 +28,7 @@ declare global {
 
 	// Unplugin Icons type declarations
 	declare module 'virtual:icons/*' {
-		import { SvelteComponent } from 'svelte';
-		const component: typeof SvelteComponent;
+		const component: any;
 		export default component;
 	}
 }
