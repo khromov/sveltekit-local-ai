@@ -22,7 +22,7 @@
 				<div class="card-number">Tool #01</div>
 				<div class="card-content">
 					<div class="icon-container">
-						<MessageSquareIcon class="feature-icon" />
+						<MessageSquareIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
 					</div>
 					<h2>Chat</h2>
 					<p class="feature-description">
@@ -40,7 +40,7 @@
 				<div class="card-number">Tool #02</div>
 				<div class="card-content">
 					<div class="icon-container">
-						<MicIcon class="feature-icon" />
+						<MicIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
 					</div>
 					<h2>Transcribe Audio</h2>
 					<p class="feature-description">
@@ -59,7 +59,7 @@
 				<div class="card-number">Tool #03</div>
 				<div class="card-content">
 					<div class="icon-container">
-						<ImageIcon class="feature-icon" />
+						<ImageIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
 					</div>
 					<h2>Remove Background</h2>
 					<p class="feature-description">
@@ -253,12 +253,6 @@
 		background: #ffe5b4;
 		border: 2px solid #000;
 		border-radius: 8px;
-	}
-
-	:global(.feature-icon) {
-		width: 48px;
-		height: 48px;
-		stroke-width: 2.5;
 	}
 
 	.feature-card h2 {

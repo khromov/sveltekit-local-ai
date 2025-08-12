@@ -62,7 +62,7 @@
 									class:active={isActive(link.path)}
 									class:home-link={link.icon === 'home'}
 								>
-									<HomeIcon class="nav-icon" />
+									<HomeIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 									{#if link.label}
 										<span>{link.label}</span>
 									{/if}
@@ -76,11 +76,11 @@
 								<li>
 									<a href={link.path} class:active={isActive(link.path)}>
 										{#if link.icon === 'chat'}
-											<MessageSquareIcon class="nav-icon" />
+											<MessageSquareIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 										{:else if link.icon === 'mic'}
-											<MicIcon class="nav-icon" />
+											<MicIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 										{:else if link.icon === 'image'}
-											<ImageIcon class="nav-icon" />
+											<ImageIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 										{/if}
 										{#if link.label}
 											<span>{link.label}</span>
@@ -99,7 +99,7 @@
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						<GithubIcon class="nav-icon" />
+						<GithubIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 					</a>
 				</li>
 			</ul>
@@ -286,12 +286,6 @@
 		background: #ffd700;
 		border-color: #000;
 		box-shadow: 3px 3px 0 #000;
-	}
-
-	:global(.nav-icon) {
-		width: 20px;
-		height: 20px;
-		stroke-width: 2.5;
 	}
 
 	.home-link {
