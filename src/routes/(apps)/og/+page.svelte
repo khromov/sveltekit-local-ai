@@ -14,7 +14,7 @@
 </svelte:head>
 
 <CardInterface>
-	<Toolbar modelInfo="OpenGraph Image Generator" modelIcon={ImageIcon} />
+	<Toolbar modelInfo="OpenGraph Image Generator" ModelIcon={ImageIcon} />
 
 	<ContentArea>
 		<div class="og-generator">

@@ -6,10 +6,10 @@
 		onClick?: () => void;
 		disabled?: boolean;
 		variant?: 'default' | 'success' | 'warning' | 'danger';
-		icon?: any;
+		Icon?: any;
 	}
 
-	let { children, onClick, disabled = false, variant = 'default', icon }: Props = $props();
+	let { children, onClick, disabled = false, variant = 'default', Icon }: Props = $props();
 
 	const variantStyles = {
 		default: 'var(--color-success)',
@@ -33,9 +33,9 @@
 	onclick={onClick}
 	{disabled}
 >
-	{#if icon}
+	{#if Icon}
 		<span class="btn-icon">
-			<icon></icon>
+			<Icon></Icon>
 		</span>
 	{/if}
 	{@render children?.()}

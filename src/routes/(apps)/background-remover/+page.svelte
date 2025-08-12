@@ -364,9 +364,9 @@
 		<Toolbar
 			modelInfo="Background Remover ({AVAILABLE_MODELS.find((m) => m.id === selectedModelId)
 				?.name})"
-			modelIcon={ImageIcon}
+			ModelIcon={ImageIcon}
 		>
-			<ActionButton onClick={clearResults} variant="danger" icon={Trash2Icon}>Clear</ActionButton>
+			<ActionButton onClick={clearResults} variant="danger" Icon={Trash2Icon}>Clear</ActionButton>
 		</Toolbar>
 
 		<ContentArea>

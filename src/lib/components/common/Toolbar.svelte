@@ -3,17 +3,17 @@
 
 	interface Props {
 		modelInfo: string;
-		modelIcon?: any;
+		ModelIcon?: any;
 		children?: Snippet;
 	}
 
-	let { modelInfo, modelIcon, children }: Props = $props();
+	let { modelInfo, ModelIcon, children }: Props = $props();
 </script>
 
 <div class="toolbar">
 	<span class="model-info">
-		{#if modelIcon}
-			<span class="model-emoji"><modelIcon></modelIcon></span>
+		{#if ModelIcon}
+			<span class="model-emoji"><ModelIcon></ModelIcon></span>
 		{/if}
 		{modelInfo}
 	</span>
