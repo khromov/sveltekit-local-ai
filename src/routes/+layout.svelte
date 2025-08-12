@@ -210,22 +210,12 @@
 		scrollbar-color: #000 transparent;
 	}
 
-	/* Custom scrollbar for nav-left webkit browsers */
 	.nav-left::-webkit-scrollbar {
-		height: 6px;
-	}
-
-	.nav-left::-webkit-scrollbar-track {
-		background: transparent;
+		height: 2px;
 	}
 
 	.nav-left::-webkit-scrollbar-thumb {
-		background-color: #000;
-		border-radius: 3px;
-	}
-
-	.nav-left::-webkit-scrollbar-thumb:hover {
-		background-color: #333;
+		background: #000;
 	}
 
 	.center-items {
