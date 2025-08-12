@@ -202,13 +202,35 @@
 		display: flex;
 		align-items: center;
 		gap: 1rem;
-		flex-wrap: wrap;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		flex: 1;
+		min-width: 0;
+		scrollbar-width: thin;
+		scrollbar-color: #000 transparent;
+	}
+
+	/* Custom scrollbar for nav-left webkit browsers */
+	.nav-left::-webkit-scrollbar {
+		height: 6px;
+	}
+
+	.nav-left::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.nav-left::-webkit-scrollbar-thumb {
+		background-color: #000;
+		border-radius: 3px;
+	}
+
+	.nav-left::-webkit-scrollbar-thumb:hover {
+		background-color: #333;
 	}
 
 	.center-items {
 		display: flex;
 		gap: 1rem;
-		flex-wrap: wrap;
 	}
 
 	.center-items li {
@@ -257,8 +279,6 @@
 	}
 
 	.home-link {
-		max-width: auto;
-		flex: none;
 		padding: 0.75rem !important;
 	}
 
@@ -432,6 +452,10 @@
 			padding: 0;
 		}
 
+		.nav-left {
+			gap: 0.5rem;
+		}
+
 		.center-items {
 			gap: 0.5rem;
 		}
@@ -450,6 +474,10 @@
 		.main-nav a {
 			padding: 0.5rem 0.75rem;
 			font-size: 0.8125rem;
+		}
+
+		.nav-left {
+			gap: 0.375rem;
 		}
 
 		.center-items {
