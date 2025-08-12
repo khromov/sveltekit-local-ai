@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import '@fontsource/space-grotesk/400.css';
 	import '@fontsource/space-grotesk/500.css';
 	import '@fontsource/space-grotesk/700.css';
@@ -26,12 +26,15 @@
 
 	// Check if a path is active
 	function isActive(path: string): boolean {
-		return $page.url.pathname === path;
+		return page.url.pathname === path;
 	}
+
+	console.log('hello', page.url.pathname);
+	$inspect(page.url.pathname);
 </script>
 
 <div class="app-wrapper">
-	<div class="container">
+	<div class="container" class:fullWidth={page.url.pathname === '/og'}>
 		<nav class="main-nav">
 			<ul>
 				<div class="nav-left">
@@ -146,6 +149,11 @@
 		100% {
 			background-position: 0% 50%;
 		}
+	}
+
+	.container.fullWidth {
+		width: 100% !important;
+		max-width: 9000px;
 	}
 
 	.app-wrapper {
