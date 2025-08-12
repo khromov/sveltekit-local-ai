@@ -270,7 +270,6 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 2rem;
-		margin: 2rem 0;
 		animation: fadeIn 0.4s ease-out;
 		width: 100%;
 		box-sizing: border-box;
@@ -292,17 +291,10 @@
 	@media (max-width: 600px) {
 		.loading {
 			align-items: stretch;
-			margin: 1rem 0;
 		}
 
 		.desktop-only {
 			display: none;
-		}
-	}
-
-	@media (max-width: 400px) {
-		.loading {
-			margin: 0.5rem 0;
 		}
 	}
 </style>
