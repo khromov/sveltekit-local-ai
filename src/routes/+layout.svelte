@@ -344,7 +344,6 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 2rem;
-		margin: 2rem 0;
 		animation: fadeIn 0.4s ease-out;
 		width: 100%;
 		box-sizing: border-box;
