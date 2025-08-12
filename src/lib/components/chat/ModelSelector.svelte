@@ -55,14 +55,14 @@
 					>
 						<div class="card-decoration"></div>
 						<div class="model-icon">
-							<svelte:component this={pros.icon} />
+							<pros.icon></pros.icon>
 						</div>
 						<div class="model-header">
 							<h4>{model.name}</h4>
 							<div class="model-size">{formatFileSize(model.size)}</div>
 						</div>
 						<div class="model-pros">
-							<span class="pros-icon"><svelte:component this={pros.icon} /></span>
+							<span class="pros-icon"><pros.icon></pros.icon></span>
 							<span class="pros-text">{pros.text}</span>
 						</div>
 					</button>

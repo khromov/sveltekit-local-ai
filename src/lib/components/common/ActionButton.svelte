@@ -1,10 +1,12 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+
 	interface Props {
-		children?: import('svelte').Snippet;
+		children?: Snippet;
 		onClick?: () => void;
 		disabled?: boolean;
 		variant?: 'default' | 'success' | 'warning' | 'danger';
-		icon?: import('svelte').Component;
+		icon?: any;
 	}
 
 	let { children, onClick, disabled = false, variant = 'default', icon }: Props = $props();
@@ -33,7 +35,7 @@
 >
 	{#if icon}
 		<span class="btn-icon">
-			<svelte:component this={icon} />
+			<icon></icon>
 		</span>
 	{/if}
 	{@render children?.()}

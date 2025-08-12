@@ -1,8 +1,10 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+
 	interface Props {
 		modelInfo: string;
-		modelIcon?: import('svelte').Component;
-		children?: import('svelte').Snippet;
+		modelIcon?: any;
+		children?: Snippet;
 	}
 
 	let { modelInfo, modelIcon, children }: Props = $props();
@@ -11,7 +13,7 @@
 <div class="toolbar">
 	<span class="model-info">
 		{#if modelIcon}
-			<span class="model-emoji"><svelte:component this={modelIcon} /></span>
+			<span class="model-emoji"><modelIcon></modelIcon></span>
 		{/if}
 		{modelInfo}
 	</span>
