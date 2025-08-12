@@ -1,6 +1,7 @@
 import type { PageLoad } from './$types';
 
-export const ssr = false;
+export const ssr = true;
+export const prerender = true;
 
 export const load: PageLoad = ({ parent }) => {
 	return parent().then((data) => ({
@@ -9,7 +10,7 @@ export const load: PageLoad = ({ parent }) => {
 			...data.seo,
 			title: 'Background Remover - Local AI Tools',
 			description:
-				'Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality, easy download.'
+				'Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality.'
 		}
 	}));
 };

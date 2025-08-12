@@ -69,7 +69,6 @@
 					<div class="feature-highlights">
 						<span class="highlight">AI-Powered</span>
 						<span class="highlight">High Quality</span>
-						<span class="highlight">Easy Download</span>
 					</div>
 				</div>
 			</a>

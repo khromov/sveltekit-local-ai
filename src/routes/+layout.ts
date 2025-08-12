@@ -1,8 +1,8 @@
 import { dev } from '$app/environment';
 import type { LayoutLoad } from './$types';
 
-export const ssr = false;
-export const prerender = false;
+export const ssr = true;
+export const prerender = true;
 
 export const load: LayoutLoad = ({ url }) => {
 	const baseUrl = dev ? '' : 'https://ai.stanislav.garden';
