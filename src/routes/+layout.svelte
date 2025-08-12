@@ -112,6 +112,11 @@
 </div>
 
 <style>
+	/* Neo-Brutalist design system */
+	:root {
+		--color-primary: #ffd700;
+	}
+
 	/* Base styles with refined Neo-Brutalist approach */
 	:global(html) {
 		height: 100%;

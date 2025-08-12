@@ -107,7 +107,7 @@
 
 	.upload-area.drag-over {
 		background: #fff9e6;
-		border-color: #ffd700;
+		border-color: var(--color-primary);
 		transform: rotate(0deg) scale(1.02);
 		box-shadow: 5px 5px 0 #000;
 	}
