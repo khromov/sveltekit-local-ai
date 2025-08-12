@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ProgressBar from '../ProgressBar.svelte';
+	import ProgressBar from '$lib/components/common/ProgressBar.svelte';
 	import HeadphonesIcon from 'virtual:icons/lucide/headphones';
 	import ZapIcon from 'virtual:icons/lucide/zap';
 	import AlertTriangleIcon from 'virtual:icons/lucide/alert-triangle';

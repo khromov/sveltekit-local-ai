@@ -11,8 +11,8 @@
 	import BackgroundRemoverProgress from '$lib/components/background-remover/BackgroundRemoverProgress.svelte';
 	import BackgroundRemoverResult from '$lib/components/background-remover/BackgroundRemoverResult.svelte';
 	import BackgroundRemoverBatchResult from '$lib/components/background-remover/BackgroundRemoverBatchResult.svelte';
-	import LoadingProgress from '$lib/components/LoadingProgress.svelte';
-	import ErrorDisplay from '$lib/components/ErrorDisplay.svelte';
+	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
+	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
 	import CardInterface from '$lib/components/common/CardInterface.svelte';
 	import Toolbar from '$lib/components/common/Toolbar.svelte';
 	import ContentArea from '$lib/components/common/ContentArea.svelte';

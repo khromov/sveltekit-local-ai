@@ -13,8 +13,8 @@
 	import BotIcon from 'virtual:icons/lucide/bot';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 
-	import LoadingProgress from '$lib/components/LoadingProgress.svelte';
-	import ErrorDisplay from '$lib/components/ErrorDisplay.svelte';
+	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
+	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
 	import ModelSelector from '$lib/components/chat/ModelSelector.svelte';
 	import ChatMessages from '$lib/components/chat/ChatMessages.svelte';
 	import MessageInput from '$lib/components/chat/MessageInput.svelte';

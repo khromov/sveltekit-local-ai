@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ProgressBar from '../ProgressBar.svelte';
+	import ProgressBar from '$lib/components/common/ProgressBar.svelte';
 	import RotateCwIcon from 'virtual:icons/lucide/rotate-cw';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 

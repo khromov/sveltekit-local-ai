@@ -1,6 +1,6 @@
 <script lang="ts">
-	import LoadingProgress from '../LoadingProgress.svelte';
-	import ErrorDisplay from '../ErrorDisplay.svelte';
+	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
+	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
 	import { isOPFSSupported } from '$lib/download-utils';
 	import CheckIcon from 'virtual:icons/lucide/check';
 	import ChevronDownIcon from 'virtual:icons/lucide/chevron-down';
