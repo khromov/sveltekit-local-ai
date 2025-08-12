@@ -6,7 +6,6 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "PUBLIC_DISABLE_OPFS=false vite build",
-		"build:bundlesize": "PUBLIC_DISABLE_OPFS=false vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
