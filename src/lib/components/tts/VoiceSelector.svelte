@@ -11,7 +11,7 @@
 
 	interface Props {
 		voices: Voice[];
-		selectedVoice: string | number;
+		selectedVoice: string | number | null;
 		modelType: string;
 		onVoiceChange: (voiceId: string | number) => void;
 		onVoicePreview?: (params: {
