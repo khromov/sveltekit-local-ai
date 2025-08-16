@@ -14,7 +14,7 @@
 <div class="model-switcher">
 	<h3>
 		<span class="step-number">Step 1:</span>
-		TTS Model
+		Text-to-speech Model
 	</h3>
 
 	<div class="model-cards">
