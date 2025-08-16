@@ -28,11 +28,7 @@
 <div class="sample-rate-selector">
 	<label for="sample-rate">Sample Rate:</label>
 	<div class="select-wrapper">
-		<select
-			id="sample-rate"
-			value={selectedSampleRate}
-			onchange={handleSampleRateChange}
-		>
+		<select id="sample-rate" value={selectedSampleRate} onchange={handleSampleRateChange}>
 			{#each sampleRates as rate (rate.value)}
 				<option value={rate.value}>{rate.label}</option>
 			{/each}

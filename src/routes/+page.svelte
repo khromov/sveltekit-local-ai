@@ -64,7 +64,8 @@
 					</div>
 					<h2>Text to Speech</h2>
 					<p class="feature-description">
-						Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis.
+						Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,
+						or Kokoro models for high-quality voice synthesis.
 					</p>
 					<div class="feature-highlights">
 						<span class="highlight">Multiple Models</span>

@@ -14,7 +14,11 @@
 		selectedVoice: string | number;
 		modelType: string;
 		onVoiceChange: (voiceId: string | number) => void;
-		onVoicePreview?: (params: { voice: string | number; text?: string; action: 'play' | 'stop' }) => void;
+		onVoicePreview?: (params: {
+			voice: string | number;
+			text?: string;
+			action: 'play' | 'stop';
+		}) => void;
 	}
 
 	let { voices, selectedVoice, modelType, onVoiceChange, onVoicePreview }: Props = $props();
@@ -37,12 +41,12 @@
 			if (previewingVoice) {
 				onVoicePreview?.({ voice: previewingVoice, action: 'stop' });
 			}
-			
+
 			// Start new preview
 			previewingVoice = voiceId;
 			const previewText = getPreviewText(voiceName);
 			onVoicePreview?.({ voice: voiceId, text: previewText, action: 'play' });
-			
+
 			// Auto-reset after a reasonable time if no explicit stop
 			setTimeout(() => {
 				if (previewingVoice === voiceId) {
@@ -61,13 +65,13 @@
 		if (name.includes('sarah')) return "Hello! I'm Sarah, delighted to speak for you.";
 		if (name.includes('adam')) return "Hi! I'm Adam, your reliable voice companion.";
 		if (name.includes('echo')) return "Hello there! I'm Echo, echoing your thoughts perfectly.";
-		
+
 		// Default preview text
 		return `Hi! I'm ${voiceName.replace(/\s*\(.*?\)\s*/g, '')}, nice to meet you!`;
 	}
 
 	function getSelectedVoice() {
-		return voices.find(voice => voice.id == selectedVoice);
+		return voices.find((voice) => voice.id == selectedVoice);
 	}
 
 	function handlePreviewEnded() {
@@ -96,7 +100,7 @@
 	<button
 		class="voice-selector-button"
 		class:expanded={isExpanded}
-		onclick={() => isExpanded = !isExpanded}
+		onclick={() => (isExpanded = !isExpanded)}
 	>
 		<span class="selected-voice">{getSelectedVoice()?.name || 'Select Voice'}</span>
 		<span class="arrow-icon" class:rotated={isExpanded}>
@@ -107,17 +111,11 @@
 	{#if isExpanded}
 		<div class="voice-dropdown">
 			{#each voices as voice (voice.id)}
-				<div 
-					class="voice-option"
-					class:selected={voice.id == selectedVoice}
-				>
-					<button
-						class="voice-name-btn"
-						onclick={() => handleVoiceChange(voice.id)}
-					>
+				<div class="voice-option" class:selected={voice.id == selectedVoice}>
+					<button class="voice-name-btn" onclick={() => handleVoiceChange(voice.id)}>
 						{voice.name}
 					</button>
-					
+
 					{#if onVoicePreview}
 						<button
 							class="preview-btn"

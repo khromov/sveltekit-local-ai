@@ -48,7 +48,7 @@
 		box-shadow: var(--shadow-brutalist-small);
 	}
 
-	input[type="checkbox"] {
+	input[type='checkbox'] {
 		width: 20px;
 		height: 20px;
 		accent-color: var(--color-primary);
@@ -56,7 +56,7 @@
 		border: var(--border-brutalist-thick);
 	}
 
-	input[type="checkbox"]:disabled {
+	input[type='checkbox']:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
 	}

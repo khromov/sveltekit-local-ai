@@ -16,7 +16,7 @@
 		<span class="step-number">Step 1:</span>
 		TTS Model
 	</h3>
-	
+
 	<div class="model-cards">
 		<button
 			class="model-card"
@@ -31,7 +31,7 @@
 				<p>24MB • Best for edge devices</p>
 			</div>
 		</button>
-		
+
 		<button
 			class="model-card"
 			class:active={selectedModel === 'piper'}
@@ -45,7 +45,7 @@
 				<p>75MB • High Quality • Fastest</p>
 			</div>
 		</button>
-		
+
 		<button
 			class="model-card"
 			class:active={selectedModel === 'kokoro'}

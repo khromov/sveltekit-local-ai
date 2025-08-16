@@ -7,13 +7,13 @@
 	import CopyIcon from 'virtual:icons/lucide/copy';
 	import CheckIcon from 'virtual:icons/lucide/check';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
-	
+
 	import CardInterface from '$lib/components/common/CardInterface.svelte';
 	import Toolbar from '$lib/components/common/Toolbar.svelte';
 	import ContentArea from '$lib/components/common/ContentArea.svelte';
 	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
-	
+
 	import AudioChunk from '$lib/components/tts/AudioChunk.svelte';
 	import ModelSwitcher from '$lib/components/tts/ModelSwitcher.svelte';
 	import SampleRateSelector from '$lib/components/tts/SampleRateSelector.svelte';
@@ -24,7 +24,7 @@
 
 	// State variables
 	let text = $state(
-		"Hello there! Welcome to the TTS Studio! Choose your preferred TTS model and start generating high-quality speech from text, all running locally in your browser!"
+		'Hello there! Welcome to the TTS Studio! Choose your preferred TTS model and start generating high-quality speech from text, all running locally in your browser!'
 	);
 	let selectedModel = $state<'kitten' | 'piper' | 'kokoro' | null>(null);
 	let lastGeneration = $state<any>(null);
@@ -45,12 +45,14 @@
 
 	// Computed properties
 	let processed = $derived(() => {
-		return lastGeneration &&
+		return (
+			lastGeneration &&
 			lastGeneration.text === text &&
 			lastGeneration.speed === speed &&
 			lastGeneration.voice === selectedVoice &&
 			(selectedModel === 'kitten' ? lastGeneration.sampleRate === selectedSampleRate : true) &&
-			lastGeneration.model === selectedModel;
+			lastGeneration.model === selectedModel
+		);
 	});
 
 	// Methods
@@ -68,9 +70,9 @@
 
 	function handleModelChange(model: 'kitten' | 'piper' | 'kokoro') {
 		if (selectedModel === model) return;
-		
+
 		selectedModel = model;
-		
+
 		// Reset voice selection and sample rate based on model
 		if (model === 'kitten') {
 			selectedVoice = 'expr-voice-2-m';
@@ -82,7 +84,7 @@
 			selectedVoice = 'af_heart';
 			selectedSampleRate = 24000;
 		}
-		
+
 		// Restart worker with new model
 		restartWorker();
 	}
@@ -97,7 +99,15 @@
 	let previewAudio: HTMLAudioElement | null = null;
 	let isPreviewMode = $state(false);
 
-	async function handleVoicePreview({ voice, text: previewText, action }: { voice: string | number; text?: string; action: 'play' | 'stop' }) {
+	async function handleVoicePreview({
+		voice,
+		text: previewText,
+		action
+	}: {
+		voice: string | number;
+		text?: string;
+		action: 'play' | 'stop';
+	}) {
 		if (action === 'stop') {
 			if (previewAudio) {
 				previewAudio.pause();
@@ -123,7 +133,7 @@
 			try {
 				// Mark as preview mode
 				isPreviewMode = true;
-				
+
 				// Send preview request to worker
 				worker.postMessage({
 					type: 'tts',
@@ -144,13 +154,13 @@
 		if (worker) {
 			worker.terminate();
 		}
-		
+
 		// Don't start worker if no model is selected
 		if (!selectedModel) {
 			status = 'waiting';
 			return;
 		}
-		
+
 		// Reset all audio and UI state
 		status = 'loading';
 		voices = [];
@@ -159,19 +169,19 @@
 		lastGeneration = null;
 		isPlaying = false;
 		currentChunkIndex = -1;
-		
+
 		worker = new Worker(new URL('$lib/workers/tts-worker.js', import.meta.url), {
-			type: 'module',
+			type: 'module'
 		});
-		
+
 		worker.addEventListener('message', onMessageReceived);
 		worker.addEventListener('error', onErrorReceived);
-		
+
 		// Send init message with model type and device preference
-		worker.postMessage({ 
-			type: 'init', 
+		worker.postMessage({
+			type: 'init',
 			model: selectedModel,
-			useWebGPU: webGPUPreference 
+			useWebGPU: webGPUPreference
 		});
 	}
 
@@ -197,14 +207,14 @@
 			status = 'generating';
 			chunks = [];
 			currentChunkIndex = 0;
-			const params = { 
-				text: text, 
+			const params = {
+				text: text,
 				voice: selectedModel === 'piper' ? parseInt(selectedVoice) : selectedVoice,
 				speed: speed,
 				model: selectedModel,
 				sampleRate: selectedSampleRate
 			};
-			
+
 			lastGeneration = params;
 			worker?.postMessage({
 				type: 'tts',
@@ -230,7 +240,9 @@
 	async function handleCopy() {
 		await navigator.clipboard.writeText(text);
 		copied = true;
-		setTimeout(() => { copied = false }, 2000);
+		setTimeout(() => {
+			copied = false;
+		}, 2000);
 	}
 
 	// Worker message handlers
@@ -275,7 +287,7 @@
 								document.dispatchEvent(new CustomEvent('voicePreviewEnded'));
 							};
 
-							previewAudio.play().catch(e => {
+							previewAudio.play().catch((e) => {
 								console.warn('Preview autoplay failed:', e);
 								URL.revokeObjectURL(audioUrl);
 								previewAudio = null;
@@ -325,10 +337,7 @@
 			{/if}
 
 			<!-- Model Selection -->
-			<ModelSwitcher 
-				{selectedModel} 
-				onModelChange={handleModelChange}
-			/>
+			<ModelSwitcher {selectedModel} onModelChange={handleModelChange} />
 
 			{#if status === 'loading'}
 				<LoadingProgress
@@ -350,7 +359,7 @@
 						<h3>Enter Your Text</h3>
 						<TextStatistics {text} />
 					</div>
-					
+
 					<div class="text-input-wrapper">
 						<textarea
 							bind:value={text}
@@ -388,26 +397,18 @@
 							</div>
 
 							<div class="control-item">
-								<SpeedControl
-									{speed}
-									onSpeedChange={setSpeed}
-								/>
+								<SpeedControl {speed} onSpeedChange={setSpeed} />
 							</div>
 
 							{#if selectedModel === 'kitten'}
 								<div class="control-item">
-									<SampleRateSelector
-										onSampleRateChange={setSampleRate}
-									/>
+									<SampleRateSelector onSampleRateChange={setSampleRate} />
 								</div>
 							{/if}
 						</div>
 
 						{#if selectedModel === 'kitten' || selectedModel === 'kokoro'}
-							<WebGPUToggle 
-								modelValue={useWebGPU} 
-								onUpdate={handleWebGPUToggle} 
-							/>
+							<WebGPUToggle modelValue={useWebGPU} onUpdate={handleWebGPUToggle} />
 						{/if}
 					</div>
 
@@ -417,7 +418,8 @@
 							class="primary-action-btn"
 							class:playing={isPlaying}
 							onclick={handlePlayPause}
-							disabled={(status === 'ready' && !isPlaying && !text) || (status !== 'ready' && chunks.length === 0)}
+							disabled={(status === 'ready' && !isPlaying && !text) ||
+								(status !== 'ready' && chunks.length === 0)}
 						>
 							{#if isPlaying}
 								<PauseIcon />
@@ -447,7 +449,9 @@
 									active={currentChunkIndex === index}
 									playing={isPlaying}
 									onStart={() => setCurrentChunkIndex(index)}
-									onPause={() => { if (currentChunkIndex === index) setIsPlaying(false) }}
+									onPause={() => {
+										if (currentChunkIndex === index) setIsPlaying(false);
+									}}
 									onEnd={handleChunkEnd}
 								/>
 							{/each}

@@ -9,8 +9,8 @@
 	let characters = $derived(text.length);
 
 	let stats = $derived([
-		{ label: "Words", value: words },
-		{ label: "Characters", value: characters }
+		{ label: 'Words', value: words },
+		{ label: 'Characters', value: characters }
 	]);
 </script>
 
