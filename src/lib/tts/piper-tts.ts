@@ -101,7 +101,7 @@ export class RawAudio {
 
 // Piper TTS class for local model
 export class PiperTTS {
-	constructor(voiceConfig = null, session = null) {
+	constructor(voiceConfig: any = null, session: any = null) {
 		this.voiceConfig = voiceConfig;
 		this.session = session;
 		this.phonemeIdMap = null;
@@ -128,7 +128,7 @@ export class PiperTTS {
 			]);
 
 			// Create ONNX session with WASM execution provider
-			const session = await ort.InferenceSession.create(modelBuffer, {
+			const session = await ort.InferenceSession.create(new Uint8Array(modelBuffer), {
 				executionProviders: [
 					{
 						name: 'wasm',
@@ -165,7 +165,7 @@ export class PiperTTS {
 			phonemeText = phonemes.join(' ');
 		} else if (phonemes && typeof phonemes === 'object') {
 			// If it's an object, try to extract text property or convert to string
-			phonemeText = phonemes.text || phonemes.phonemes || String(phonemes);
+			phonemeText = (phonemes as any).text || (phonemes as any).phonemes || String(phonemes);
 		} else {
 			console.warn('Unexpected phonemes format:', phonemes);
 			phonemeText = String(phonemes || text);
