@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 
+import { BASE_MODEL_URL } from '$lib/config.js';
 import { cleanTextForTTS, chunkText } from './text-cleaner.js';
 
 // Text splitting stream to break text into chunks
@@ -161,7 +162,9 @@ export class KittenTTS {
 			}
 
 			// Load voices from the local voices.json file (also cached)
-			const voicesResponse = await cachedFetch('/tts-models/kitten-tts/voices.json');
+			const voicesResponse = await cachedFetch(
+				BASE_MODEL_URL + '/tts-models/kitten-tts/voices.json'
+			);
 			const voicesData = await voicesResponse.json();
 
 			// Transform the voices data into the format we need
@@ -188,7 +191,9 @@ export class KittenTTS {
 		if (!this.tokenizer) {
 			try {
 				const { cachedFetch } = await import('./model-cache.js');
-				const response = await cachedFetch('/tts-models/kitten-tts/tokenizer.json');
+				const response = await cachedFetch(
+					BASE_MODEL_URL + '/tts-models/kitten-tts/tokenizer.json'
+				);
 				const tokenizerData = await response.json();
 
 				// Extract the actual vocabulary from the tokenizer
@@ -269,7 +274,7 @@ export class KittenTTS {
 								if (!this.wasmSession) {
 									const ort = await import('onnxruntime-web');
 									this.wasmSession = await ort.InferenceSession.create(
-										'/tts-models/kitten-tts/model_quantized.onnx',
+										BASE_MODEL_URL + '/tts-models/kitten-tts/model_quantized.onnx',
 										{
 											executionProviders: ['wasm']
 										}

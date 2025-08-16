@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 
+import { BASE_MODEL_URL } from '$lib/config.js';
 import { chunkText, cleanTextForTTS } from './text-cleaner.js';
 
 // Text splitting stream to break text into chunks (enhanced for streaming)
@@ -161,7 +162,7 @@ export class KokoroTTS {
 			// Load model and tokenizer
 			const [modelResponse, tokenizerResponse] = await Promise.all([
 				cachedFetch(model_path),
-				cachedFetch('/tts-models/kokoro/tokenizer.json')
+				cachedFetch(BASE_MODEL_URL + '/tts-models/kokoro/tokenizer.json')
 			]);
 
 			const [modelBuffer, tokenizer] = await Promise.all([
@@ -237,7 +238,9 @@ export class KokoroTTS {
 			// Load voice embeddings in parallel
 			const voicePromises = voiceFiles.map(async (voice) => {
 				try {
-					const voiceResponse = await cachedFetch(`/tts-models/kokoro/voices/${voice}.bin`);
+					const voiceResponse = await cachedFetch(
+						`${BASE_MODEL_URL}/tts-models/kokoro/voices/${voice}.bin`
+					);
 					const arrayBuffer = await voiceResponse.arrayBuffer();
 					// Convert binary data to Float32Array (assuming 32-bit floats)
 					const fullArray = new Float32Array(arrayBuffer);

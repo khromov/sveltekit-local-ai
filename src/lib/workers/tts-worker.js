@@ -2,6 +2,7 @@ import { KittenTTS, TextSplitterStream as KittenTextSplitterStream } from '../tt
 import { PiperTTS, TextSplitterStream as PiperTextSplitterStream } from '../tts/piper-tts.js';
 import { KokoroTTS, TextSplitterStream as KokoroTextSplitterStream } from '../tts/kokoro-tts.js';
 import { detectWebGPU } from '../utils.js';
+import { BASE_MODEL_URL } from '$lib/config.js';
 
 let tts = null;
 let device = 'wasm';
@@ -20,7 +21,7 @@ async function initializeModel(modelType, useWebGPU = false) {
 			self.postMessage({ status: 'device', device });
 
 			// Load the Kitten model
-			const model_path = '/tts-models/kitten-tts/model_quantized.onnx';
+			const model_path = BASE_MODEL_URL + '/tts-models/kitten-tts/model_quantized.onnx';
 			tts = await KittenTTS.from_pretrained(model_path, {
 				dtype: 'q8',
 				device
@@ -33,8 +34,8 @@ async function initializeModel(modelType, useWebGPU = false) {
 			self.postMessage({ status: 'device', device });
 
 			// Load the Piper model
-			const model_path = '/tts-models/piper/en_US-libritts_r-medium.onnx';
-			const config_path = '/tts-models/piper/en_US-libritts_r-medium.onnx.json';
+			const model_path = BASE_MODEL_URL + '/tts-models/piper/en_US-libritts_r-medium.onnx';
+			const config_path = BASE_MODEL_URL + '/tts-models/piper/en_US-libritts_r-medium.onnx.json';
 			tts = await PiperTTS.from_pretrained(model_path, config_path);
 
 			// Get speakers for Piper model
@@ -48,7 +49,7 @@ async function initializeModel(modelType, useWebGPU = false) {
 			self.postMessage({ status: 'device', device });
 
 			// Load the Kokoro model
-			const model_path = '/tts-models/kokoro/model_quantized.onnx';
+			const model_path = BASE_MODEL_URL + '/tts-models/kokoro/model_quantized.onnx';
 			tts = await KokoroTTS.from_pretrained(model_path, {
 				dtype: device === 'wasm' ? 'q8' : 'fp32',
 				device
