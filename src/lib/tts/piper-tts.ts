@@ -165,7 +165,8 @@ export class PiperTTS {
 			phonemeText = phonemes.join(' ');
 		} else if (phonemes && typeof phonemes === 'object') {
 			// If it's an object, try to extract text property or convert to string
-			phonemeText = (phonemes as any).text || (phonemes as any).phonemes || String(phonemes);
+			const phonemeObj = phonemes as Record<string, unknown>;
+			phonemeText = phonemeObj.text || phonemeObj.phonemes || String(phonemes);
 		} else {
 			console.warn('Unexpected phonemes format:', phonemes);
 			phonemeText = String(phonemes || text);
