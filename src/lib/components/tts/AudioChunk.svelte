@@ -13,7 +13,7 @@
 	let { audio, active, playing, onStart, onEnd, onPause }: Props = $props();
 
 	let audioElement: HTMLAudioElement | undefined = $state();
-	let url: string;
+	let url = $state<string>('');
 
 	function handlePause() {
 		if (audioElement?.ended) return;
@@ -63,7 +63,7 @@
 	onpause={handlePause}
 	onended={onEnd}
 	hidden
-/>
+></audio>
 
 <style>
 	audio {
