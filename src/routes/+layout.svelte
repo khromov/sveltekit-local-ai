@@ -9,6 +9,7 @@
 	import MicIcon from 'virtual:icons/lucide/mic';
 	import ImageIcon from 'virtual:icons/lucide/image';
 	import GithubIcon from 'virtual:icons/lucide/github';
+	import SpeechIcon from 'virtual:icons/lucide/speech';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -21,6 +22,7 @@
 		{ path: '/', label: '', icon: 'home' },
 		{ path: '/chat', label: 'Chat', icon: 'chat' },
 		{ path: '/transcribe', label: 'Transcribe', icon: 'mic' },
+		{ path: '/text-to-speech', label: 'TTS', icon: 'speech' },
 		{ path: '/background-remover', label: 'BG Remover', icon: 'image' }
 	];
 
@@ -86,6 +88,8 @@
 											<MessageSquareIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 										{:else if link.icon === 'mic'}
 											<MicIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
+										{:else if link.icon === 'speech'}
+											<SpeechIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 										{:else if link.icon === 'image'}
 											<ImageIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 										{/if}
