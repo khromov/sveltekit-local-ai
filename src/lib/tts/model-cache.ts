@@ -1,5 +1,10 @@
 // Simple IndexedDB cache for model files
 class ModelCache {
+	private dbName: string;
+	private storeName: string;
+	private version: number;
+	private db: IDBDatabase | null;
+
 	constructor() {
 		this.dbName = 'tts-cache';
 		this.storeName = 'models';
@@ -7,7 +12,7 @@ class ModelCache {
 		this.db = null;
 	}
 
-	async init() {
+	async init(): Promise<IDBDatabase> {
 		if (this.db) return this.db;
 
 		return new Promise((resolve, reject) => {
@@ -20,19 +25,26 @@ class ModelCache {
 			};
 
 			request.onupgradeneeded = (event) => {
-				const db = event.target.result;
-				if (!db.objectStoreNames.contains(this.storeName)) {
-					const store = db.createObjectStore(this.storeName, { keyPath: 'url' });
-					store.createIndex('timestamp', 'timestamp', { unique: false });
+				const target = event.target as IDBRequest;
+				if (target) {
+					const db = target.result as IDBDatabase;
+					if (!db.objectStoreNames.contains(this.storeName)) {
+						const store = db.createObjectStore(this.storeName, { keyPath: 'url' });
+						store.createIndex('timestamp', 'timestamp', { unique: false });
+					}
 				}
 			};
 		});
 	}
 
-	async get(url) {
+	async get(url: string): Promise<ArrayBuffer | null> {
 		await this.init();
 
 		return new Promise((resolve, reject) => {
+			if (!this.db) {
+				reject(new Error('Database not initialized'));
+				return;
+			}
 			const transaction = this.db.transaction([this.storeName], 'readonly');
 			const store = transaction.objectStore(this.storeName);
 			const request = store.get(url);
@@ -56,10 +68,14 @@ class ModelCache {
 		});
 	}
 
-	async set(url, data) {
+	async set(url: string, data: ArrayBuffer): Promise<void> {
 		await this.init();
 
 		return new Promise((resolve, reject) => {
+			if (!this.db) {
+				reject(new Error('Database not initialized'));
+				return;
+			}
 			const transaction = this.db.transaction([this.storeName], 'readwrite');
 			const store = transaction.objectStore(this.storeName);
 			const request = store.put({
@@ -73,10 +89,14 @@ class ModelCache {
 		});
 	}
 
-	async delete(url) {
+	async delete(url: string): Promise<void> {
 		await this.init();
 
 		return new Promise((resolve, reject) => {
+			if (!this.db) {
+				reject(new Error('Database not initialized'));
+				return;
+			}
 			const transaction = this.db.transaction([this.storeName], 'readwrite');
 			const store = transaction.objectStore(this.storeName);
 			const request = store.delete(url);
@@ -86,10 +106,14 @@ class ModelCache {
 		});
 	}
 
-	async clear() {
+	async clear(): Promise<void> {
 		await this.init();
 
 		return new Promise((resolve, reject) => {
+			if (!this.db) {
+				reject(new Error('Database not initialized'));
+				return;
+			}
 			const transaction = this.db.transaction([this.storeName], 'readwrite');
 			const store = transaction.objectStore(this.storeName);
 			const request = store.clear();
@@ -101,7 +125,7 @@ class ModelCache {
 }
 
 // Cached fetch function for model files
-export async function cachedFetch(url) {
+export async function cachedFetch(url: string): Promise<Response> {
 	const cache = new ModelCache();
 
 	// Try to get from cache first
