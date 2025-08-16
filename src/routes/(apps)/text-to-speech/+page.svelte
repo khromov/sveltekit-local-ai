@@ -36,7 +36,7 @@
 	let error = $state<string | null>(null);
 	let worker: Worker | null = $state(null);
 	let voices = $state<any[]>([]);
-	let selectedVoice = $state('expr-voice-2-m');
+	let selectedVoice = $state<string>('expr-voice-2-m');
 	let selectedSampleRate = $state(24000);
 	let useWebGPU = $state(false);
 	let actualDevice = $state('wasm');
@@ -56,8 +56,8 @@
 	});
 
 	// Methods
-	function setSelectedVoice(voice: string) {
-		selectedVoice = voice;
+	function setSelectedVoice(voice: string | number) {
+		selectedVoice = String(voice);
 	}
 
 	function setSpeed(newSpeed: number) {
@@ -386,11 +386,11 @@
 					<div class="controls-section">
 						<div class="controls-grid">
 							<div class="control-item">
-								<label>Voice:</label>
+								<label for="voice-selector">Voice:</label>
 								<VoiceSelector
 									{voices}
-									{selectedVoice}
-									modelType={selectedModel}
+									selectedVoice={selectedVoice ?? ''}
+									modelType={selectedModel ?? ''}
 									onVoiceChange={setSelectedVoice}
 									onVoicePreview={handleVoicePreview}
 								/>
