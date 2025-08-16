@@ -39,6 +39,8 @@
 		"eslint-plugin-svelte": "^3.11.0",
 		"globals": "^16.3.0",
 		"jszip": "^3.10.1",
+		"onnxruntime-web": "^1.22.0",
+		"phonemizer": "^1.2.1",
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
 		"subsrt-ts": "^2.1.2",
