@@ -1,21 +1,23 @@
-/* eslint-disable no-undef */
 
 import { cleanTextForTTS, chunkText } from './text-cleaner.js';
 
 // Text splitting stream to break text into chunks
 export class TextSplitterStream {
+	chunks: string[];
+	closed: boolean;
+
 	constructor() {
 		this.chunks = [];
 		this.closed = false;
 	}
 
-	chunkText(text) {
+	chunkText(text: string): string[] | null {
 		// Clean the text first, then chunk it
 		const cleanedText = cleanTextForTTS(text);
 		return chunkText(cleanedText);
 	}
 
-	push(text) {
+	push(text: string): void {
 		// Simple sentence splitting for now
 		const sentences = this.chunkText(text) || [text];
 		this.chunks.push(...sentences);
@@ -34,7 +36,10 @@ export class TextSplitterStream {
 
 // RawAudio class to handle audio data
 export class RawAudio {
-	constructor(audio, sampling_rate) {
+	audio: Float32Array;
+	sampling_rate: number;
+
+	constructor(audio: Float32Array, sampling_rate: number) {
 		this.audio = audio;
 		this.sampling_rate = sampling_rate;
 	}
@@ -49,7 +54,7 @@ export class RawAudio {
 		return new Blob([buffer], { type: 'audio/wav' });
 	}
 
-	encodeWAV(samples, sampleRate) {
+	encodeWAV(samples: Float32Array, sampleRate: number): ArrayBuffer {
 		const buffer = new ArrayBuffer(44 + samples.length * 2);
 		const view = new DataView(buffer);
 
@@ -85,13 +90,13 @@ export class RawAudio {
 		return buffer;
 	}
 
-	writeString(view, offset, string) {
+	writeString(view: DataView, offset: number, string: string): void {
 		for (let i = 0; i < string.length; i++) {
 			view.setUint8(offset + i, string.charCodeAt(i));
 		}
 	}
 
-	floatTo16BitPCM(output, offset, input) {
+	floatTo16BitPCM(output: DataView, offset: number, input: Float32Array): void {
 		for (let i = 0; i < input.length; i++, offset += 2) {
 			const s = Math.max(-1, Math.min(1, input[i]));
 			output.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
@@ -101,17 +106,21 @@ export class RawAudio {
 
 // Piper TTS class for local model
 export class PiperTTS {
+	voiceConfig: any;
+	session: any;
+	phonemeIdMap: any;
+
 	constructor(voiceConfig: any = null, session: any = null) {
 		this.voiceConfig = voiceConfig;
 		this.session = session;
 		this.phonemeIdMap = null;
 	}
 
-	static async from_pretrained(modelPath, configPath) {
+	static async from_pretrained(modelPath: string, configPath: string): Promise<PiperTTS> {
 		try {
 			// Import ONNX Runtime Web and caching utility
 			const ort = await import('onnxruntime-web');
-			const { cachedFetch } = await import('./model-cache.ts');
+			const { cachedFetch } = await import('./model-cache');
 
 			// Use local files in public directory with threading enabled
 			ort.env.wasm.wasmPaths = '/onnx-runtime/';
@@ -129,12 +138,7 @@ export class PiperTTS {
 
 			// Create ONNX session with WASM execution provider
 			const session = await ort.InferenceSession.create(new Uint8Array(modelBuffer), {
-				executionProviders: [
-					{
-						name: 'wasm',
-						simd: true
-					}
-				]
+				executionProviders: ['wasm']
 			});
 
 			return new PiperTTS(voiceConfig, session);
@@ -145,7 +149,7 @@ export class PiperTTS {
 	}
 
 	// Convert text to phonemes using the phonemizer package
-	async textToPhonemes(text) {
+	async textToPhonemes(text: string): Promise<string[][]> {
 		if (this.voiceConfig.phoneme_type === 'text') {
 			// Text phonemes - just return normalized characters
 			return [Array.from(text.normalize('NFD'))];
@@ -157,7 +161,7 @@ export class PiperTTS {
 		const phonemes = await phonemize(text, voice);
 
 		// Handle different return types from phonemizer
-		let phonemeText;
+		let phonemeText: string;
 		if (typeof phonemes === 'string') {
 			phonemeText = phonemes;
 		} else if (Array.isArray(phonemes)) {
@@ -166,19 +170,19 @@ export class PiperTTS {
 		} else if (phonemes && typeof phonemes === 'object') {
 			// If it's an object, try to extract text property or convert to string
 			const phonemeObj = phonemes as Record<string, unknown>;
-			phonemeText = phonemeObj.text || phonemeObj.phonemes || String(phonemes);
+			phonemeText = (phonemeObj.text as string) || (phonemeObj.phonemes as string) || String(phonemes);
 		} else {
 			console.warn('Unexpected phonemes format:', phonemes);
 			phonemeText = String(phonemes || text);
 		}
 
 		// Split into sentences and convert to character arrays
-		const sentences = phonemeText.split(/[.!?]+/).filter((s) => s.trim());
-		return sentences.map((sentence) => Array.from(sentence.trim().normalize('NFD')));
+		const sentences = phonemeText.split(/[.!?]+/).filter((s: string) => s.trim());
+		return sentences.map((sentence: string) => Array.from(sentence.trim().normalize('NFD')));
 	}
 
 	// Convert phonemes to IDs using the phoneme ID map
-	phonemesToIds(textPhonemes) {
+	phonemesToIds(textPhonemes: string[][]): number[] {
 		if (!this.voiceConfig || !this.voiceConfig.phoneme_id_map) {
 			throw new Error('Phoneme ID map not available');
 		}
@@ -188,26 +192,26 @@ export class PiperTTS {
 		const EOS = '$';
 		const PAD = '_';
 
-		let phonemeIds = [];
+		const phonemeIds: number[] = [];
 
-		for (let sentencePhonemes of textPhonemes) {
-			phonemeIds.push(idMap[BOS]);
-			phonemeIds.push(idMap[PAD]);
+		for (const sentencePhonemes of textPhonemes) {
+			phonemeIds.push(idMap[BOS] as number);
+			phonemeIds.push(idMap[PAD] as number);
 
-			for (let phoneme of sentencePhonemes) {
+			for (const phoneme of sentencePhonemes) {
 				if (phoneme in idMap) {
-					phonemeIds.push(idMap[phoneme]);
-					phonemeIds.push(idMap[PAD]);
+					phonemeIds.push(idMap[phoneme] as number);
+					phonemeIds.push(idMap[PAD] as number);
 				}
 			}
 
-			phonemeIds.push(idMap[EOS]);
+			phonemeIds.push(idMap[EOS] as number);
 		}
 
 		return phonemeIds;
 	}
 
-	async *stream(textStreamer, options = {}) {
+	async *stream(textStreamer: AsyncIterable<string>, options: { speakerId?: number; lengthScale?: number; noiseScale?: number; noiseWScale?: number } = {}): AsyncGenerator<{ text: string; audio: RawAudio }, void, unknown> {
 		const { speakerId = 0, lengthScale = 1.0, noiseScale = 0.667, noiseWScale = 0.8 } = options;
 
 		// Process the text stream
@@ -282,10 +286,10 @@ export class PiperTTS {
 
 		const speakerIdMap = this.voiceConfig.speaker_id_map || {};
 		return Object.entries(speakerIdMap)
-			.sort(([, a], [, b]) => a - b) // Sort by speaker ID (0, 1, 2, ...)
+			.sort(([, a], [, b]) => (a as number) - (b as number)) // Sort by speaker ID (0, 1, 2, ...)
 			.map(([originalId, id]) => ({
-				id,
-				name: `Voice ${id + 1}`,
+				id: id as number,
+				name: `Voice ${(id as number) + 1}`,
 				originalId
 			}));
 	}
