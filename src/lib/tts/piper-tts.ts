@@ -1,5 +1,7 @@
-
 import { cleanTextForTTS, chunkText } from './text-cleaner.js';
+import * as ort from 'onnxruntime-web';
+import { cachedFetch } from './model-cache.js';
+import { phonemize } from 'phonemizer';
 
 // Text splitting stream to break text into chunks
 export class TextSplitterStream {
@@ -118,9 +120,7 @@ export class PiperTTS {
 
 	static async from_pretrained(modelPath: string, configPath: string): Promise<PiperTTS> {
 		try {
-			// Import ONNX Runtime Web and caching utility
-			const ort = await import('onnxruntime-web');
-			const { cachedFetch } = await import('./model-cache');
+			// Use imported ONNX Runtime Web and caching utility
 
 			// Use local files in public directory with threading enabled
 			ort.env.wasm.wasmPaths = '/onnx-runtime/';
@@ -156,7 +156,6 @@ export class PiperTTS {
 		}
 
 		// Use phonemizer for espeak-style phonemes
-		const { phonemize } = await import('phonemizer');
 		const voice = this.voiceConfig.espeak?.voice || 'en-us';
 		const phonemes = await phonemize(text, voice);
 
@@ -170,7 +169,8 @@ export class PiperTTS {
 		} else if (phonemes && typeof phonemes === 'object') {
 			// If it's an object, try to extract text property or convert to string
 			const phonemeObj = phonemes as Record<string, unknown>;
-			phonemeText = (phonemeObj.text as string) || (phonemeObj.phonemes as string) || String(phonemes);
+			phonemeText =
+				(phonemeObj.text as string) || (phonemeObj.phonemes as string) || String(phonemes);
 		} else {
 			console.warn('Unexpected phonemes format:', phonemes);
 			phonemeText = String(phonemes || text);
@@ -211,7 +211,15 @@ export class PiperTTS {
 		return phonemeIds;
 	}
 
-	async *stream(textStreamer: AsyncIterable<string>, options: { speakerId?: number; lengthScale?: number; noiseScale?: number; noiseWScale?: number } = {}): AsyncGenerator<{ text: string; audio: RawAudio }, void, unknown> {
+	async *stream(
+		textStreamer: AsyncIterable<string>,
+		options: {
+			speakerId?: number;
+			lengthScale?: number;
+			noiseScale?: number;
+			noiseWScale?: number;
+		} = {}
+	): AsyncGenerator<{ text: string; audio: RawAudio }, void, unknown> {
 		const { speakerId = 0, lengthScale = 1.0, noiseScale = 0.667, noiseWScale = 0.8 } = options;
 
 		// Process the text stream
@@ -224,7 +232,6 @@ export class PiperTTS {
 						const phonemeIds = this.phonemesToIds(textPhonemes);
 
 						// Prepare tensors for Piper model
-						const ort = await import('onnxruntime-web');
 
 						const inputs = {
 							input: new ort.Tensor(

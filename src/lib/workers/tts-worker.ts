@@ -120,7 +120,10 @@ self.addEventListener('message', async (e) => {
 			}
 		} catch (error) {
 			console.error('Error during streaming:', error);
-			self.postMessage({ status: 'error', data: error instanceof Error ? error.message : String(error) });
+			self.postMessage({
+				status: 'error',
+				data: error instanceof Error ? error.message : String(error)
+			});
 			return;
 		}
 
@@ -163,7 +166,10 @@ self.addEventListener('message', async (e) => {
 				audio = new (chunks[0].constructor as any)(waveform, targetSampleRate);
 			} catch (error) {
 				console.error('Error processing audio chunks:', error);
-				self.postMessage({ status: 'error', data: error instanceof Error ? error.message : String(error) });
+				self.postMessage({
+					status: 'error',
+					data: error instanceof Error ? error.message : String(error)
+				});
 				return;
 			}
 		}

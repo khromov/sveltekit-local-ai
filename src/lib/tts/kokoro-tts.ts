@@ -1,7 +1,10 @@
-/* eslint-disable no-undef */
+ 
 
 import { BASE_MODEL_URL } from '$lib/config.js';
 import { chunkText, cleanTextForTTS } from './text-cleaner.js';
+import * as ort from 'onnxruntime-web';
+import { cachedFetch } from './model-cache.js';
+import { phonemize } from 'phonemizer';
 
 // Text splitting stream to break text into chunks (enhanced for streaming)
 export class TextSplitterStream {
@@ -153,9 +156,7 @@ export class KokoroTTS {
 
 	static async from_pretrained(model_path, options = {}) {
 		try {
-			// Import ONNX Runtime Web and caching utility
-			const ort = await import('onnxruntime-web');
-			const { cachedFetch } = await import('./model-cache');
+			// Use imported ONNX Runtime Web and caching utility
 
 			// Use local files in public directory with threading enabled
 			ort.env.wasm.wasmPaths = '/onnx-runtime/';
@@ -282,11 +283,10 @@ export class KokoroTTS {
 	// Import and use the proper phonemization function
 	async phonemize(text, language = 'a') {
 		try {
-			// Import the phonemizer package with proper normalization
-			const { phonemize } = await import('phonemizer');
+			// Use imported phonemizer package with proper normalization
 
 			// Normalize text like the reference implementation
-			let normalizedText = text
+			const normalizedText = text
 				.replace(/['']/g, "'")
 				.replace(/[""]/g, '"')
 				.replace(/\(/g, '«')
@@ -362,7 +362,6 @@ export class KokoroTTS {
 							const fullVoiceData = this.voiceEmbeddings[voice];
 							const offset = numTokens * STYLE_DIM;
 							const speakerEmbedding = fullVoiceData.slice(offset, offset + STYLE_DIM);
-							const ort = await import('onnxruntime-web');
 
 							const inputs = {
 								input_ids: new ort.Tensor('int64', inputIds, [1, inputIds.length]),
@@ -380,10 +379,12 @@ export class KokoroTTS {
 							if (audioData.length > 0 && isNaN(audioData[0])) {
 								// Create WASM session if we don't have one
 								if (!this.wasmSession) {
-									const ort = await import('onnxruntime-web');
-									this.wasmSession = await ort.InferenceSession.create(new Uint8Array(this.modelBuffer), {
-										executionProviders: ['wasm']
-									});
+									this.wasmSession = await ort.InferenceSession.create(
+										new Uint8Array(this.modelBuffer),
+										{
+											executionProviders: ['wasm']
+										}
+									);
 								}
 
 								// Retry inference with WASM
@@ -396,7 +397,7 @@ export class KokoroTTS {
 							const sampleRate = 24000;
 
 							// Don't apply additional speed adjustment since we already handled it in the model input
-							let finalAudioData = new Float32Array(audioData);
+							const finalAudioData = new Float32Array(audioData);
 
 							// Clean up NaN values and normalize
 							let hasNaN = false;
@@ -435,7 +436,10 @@ export class KokoroTTS {
 							};
 						} catch (modelError) {
 							console.error('Model inference error:', modelError);
-							console.error('Error details:', modelError instanceof Error ? modelError.message : String(modelError));
+							console.error(
+								'Error details:',
+								modelError instanceof Error ? modelError.message : String(modelError)
+							);
 						}
 					}
 				} catch (error) {

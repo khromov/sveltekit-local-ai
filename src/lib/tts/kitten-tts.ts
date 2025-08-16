@@ -1,7 +1,10 @@
-/* eslint-disable no-undef */
+ 
 
 import { BASE_MODEL_URL } from '$lib/config.js';
 import { cleanTextForTTS, chunkText } from './text-cleaner.js';
+import * as ort from 'onnxruntime-web';
+import { cachedFetch } from './model-cache.js';
+import { phonemize } from 'phonemizer';
 
 // Text splitting stream to break text into chunks
 export class TextSplitterStream {
@@ -111,9 +114,7 @@ export class KittenTTS {
 
 	static async from_pretrained(model_path, options = {}) {
 		try {
-			// Import ONNX Runtime Web and caching utility
-			const ort = await import('onnxruntime-web');
-			const { cachedFetch } = await import('./model-cache');
+			// Use imported ONNX Runtime Web and caching utility
 
 			// Use local files in public directory with threading enabled
 			ort.env.wasm.wasmPaths = '/onnx-runtime/';
@@ -190,7 +191,6 @@ export class KittenTTS {
 	async loadTokenizer() {
 		if (!this.tokenizer) {
 			try {
-				const { cachedFetch } = await import('./model-cache');
 				const response = await cachedFetch(
 					BASE_MODEL_URL + '/tts-models/kitten-tts/tokenizer.json'
 				);
@@ -216,9 +216,6 @@ export class KittenTTS {
 
 	// Convert text to phonemes using the phonemizer package
 	async textToPhonemes(text) {
-		// Import the phonemizer package
-		const { phonemize } = await import('phonemizer');
-
 		return await phonemize(text, 'en-us');
 	}
 
@@ -254,7 +251,6 @@ export class KittenTTS {
 							const tokenIds = await this.tokenizeText(text);
 							const inputIds = new BigInt64Array(tokenIds.map((id) => BigInt(id)));
 							const speakerEmbedding = new Float32Array(this.voiceEmbeddings[voice][0]);
-							const ort = await import('onnxruntime-web');
 
 							const inputs = {
 								input_ids: new ort.Tensor('int64', inputIds, [1, inputIds.length]),
@@ -272,7 +268,6 @@ export class KittenTTS {
 							if (audioData.length > 0 && isNaN(audioData[0])) {
 								// Create WASM session if we don't have one
 								if (!this.wasmSession) {
-									const ort = await import('onnxruntime-web');
 									this.wasmSession = await ort.InferenceSession.create(
 										BASE_MODEL_URL + '/tts-models/kitten-tts/model_quantized.onnx',
 										{
@@ -337,7 +332,10 @@ export class KittenTTS {
 							};
 						} catch (modelError) {
 							console.error('Model inference error:', modelError);
-							console.error('Error details:', modelError instanceof Error ? modelError.message : String(modelError));
+							console.error(
+								'Error details:',
+								modelError instanceof Error ? modelError.message : String(modelError)
+							);
 						}
 					}
 				} catch (error) {
