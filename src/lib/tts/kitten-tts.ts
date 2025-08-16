@@ -113,7 +113,7 @@ export class KittenTTS {
 		try {
 			// Import ONNX Runtime Web and caching utility
 			const ort = await import('onnxruntime-web');
-			const { cachedFetch } = await import('./model-cache.ts');
+			const { cachedFetch } = await import('./model-cache');
 
 			// Use local files in public directory with threading enabled
 			ort.env.wasm.wasmPaths = '/onnx-runtime/';
@@ -190,7 +190,7 @@ export class KittenTTS {
 	async loadTokenizer() {
 		if (!this.tokenizer) {
 			try {
-				const { cachedFetch } = await import('./model-cache.ts');
+				const { cachedFetch } = await import('./model-cache');
 				const response = await cachedFetch(
 					BASE_MODEL_URL + '/tts-models/kitten-tts/tokenizer.json'
 				);
