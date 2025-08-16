@@ -155,7 +155,7 @@ export class KokoroTTS {
 		try {
 			// Import ONNX Runtime Web and caching utility
 			const ort = await import('onnxruntime-web');
-			const { cachedFetch } = await import('./model-cache.js');
+			const { cachedFetch } = await import('./model-cache.ts');
 
 			// Use local files in public directory with threading enabled
 			ort.env.wasm.wasmPaths = '/onnx-runtime/';
