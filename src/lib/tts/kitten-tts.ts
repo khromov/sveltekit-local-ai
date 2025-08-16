@@ -127,7 +127,7 @@ export class KittenTTS {
 			try {
 				if (options.device === 'webgpu') {
 					// Try WebGPU with specific settings for better compatibility
-					session = await ort.InferenceSession.create(modelBuffer, {
+					session = await ort.InferenceSession.create(new Uint8Array(modelBuffer), {
 						executionProviders: [
 							{
 								name: 'webgpu',
@@ -151,7 +151,7 @@ export class KittenTTS {
 				}
 			} catch (webgpuError) {
 				// Fallback to WASM with explicit configuration
-				session = await ort.InferenceSession.create(modelBuffer, {
+				session = await ort.InferenceSession.create(new Uint8Array(modelBuffer), {
 					executionProviders: [
 						{
 							name: 'wasm',
@@ -337,7 +337,7 @@ export class KittenTTS {
 							};
 						} catch (modelError) {
 							console.error('Model inference error:', modelError);
-							console.error('Error details:', modelError.message);
+							console.error('Error details:', modelError instanceof Error ? modelError.message : String(modelError));
 						}
 					}
 				} catch (error) {

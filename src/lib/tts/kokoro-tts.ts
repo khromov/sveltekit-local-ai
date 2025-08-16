@@ -27,7 +27,7 @@ export class TextSplitterStream {
 
 			// Keep the last fragment in case it's incomplete
 			if (sentences.length > 1) {
-				this.pendingText = sentences.pop();
+				this.pendingText = sentences.pop() || '';
 
 				// Process complete sentences
 				for (const sentence of sentences) {
@@ -142,11 +142,12 @@ export class RawAudio {
 
 // Kokoro TTS class for local model
 export class KokoroTTS {
-	constructor(voices, session, voiceEmbeddings, tokenizer) {
+	constructor(voices, session, voiceEmbeddings, tokenizer, modelBuffer) {
 		this.voices = voices || [];
 		this.session = session;
 		this.voiceEmbeddings = voiceEmbeddings || {};
 		this.tokenizer = tokenizer;
+		this.modelBuffer = modelBuffer;
 		this.wasmSession = null; // Fallback WASM session
 	}
 
@@ -175,7 +176,7 @@ export class KokoroTTS {
 			try {
 				if (options.device === 'webgpu') {
 					// Try WebGPU with specific settings for better compatibility
-					session = await ort.InferenceSession.create(modelBuffer, {
+					session = await ort.InferenceSession.create(new Uint8Array(modelBuffer), {
 						executionProviders: [
 							{
 								name: 'webgpu',
@@ -199,7 +200,7 @@ export class KokoroTTS {
 				}
 			} catch (webgpuError) {
 				// Fallback to WASM with explicit configuration
-				session = await ort.InferenceSession.create(modelBuffer, {
+				session = await ort.InferenceSession.create(new Uint8Array(modelBuffer), {
 					executionProviders: [
 						{
 							name: 'wasm',
@@ -270,7 +271,7 @@ export class KokoroTTS {
 					};
 				});
 
-			return new KokoroTTS(voices, session, voiceEmbeddings, tokenizer);
+			return new KokoroTTS(voices, session, voiceEmbeddings, tokenizer, modelBuffer);
 		} catch (error) {
 			console.error('Error loading Kokoro model:', error);
 			// Fallback to default voices without model
@@ -380,7 +381,7 @@ export class KokoroTTS {
 								// Create WASM session if we don't have one
 								if (!this.wasmSession) {
 									const ort = await import('onnxruntime-web');
-									this.wasmSession = await ort.InferenceSession.create(modelBuffer, {
+									this.wasmSession = await ort.InferenceSession.create(new Uint8Array(this.modelBuffer), {
 										executionProviders: ['wasm']
 									});
 								}
@@ -434,7 +435,7 @@ export class KokoroTTS {
 							};
 						} catch (modelError) {
 							console.error('Model inference error:', modelError);
-							console.error('Error details:', modelError.message);
+							console.error('Error details:', modelError instanceof Error ? modelError.message : String(modelError));
 						}
 					}
 				} catch (error) {
