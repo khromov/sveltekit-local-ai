@@ -1,6 +1,6 @@
-import { KittenTTS, TextSplitterStream as KittenTextSplitterStream } from '../tts/kitten-tts.js';
-import { PiperTTS, TextSplitterStream as PiperTextSplitterStream } from '../tts/piper-tts.js';
-import { KokoroTTS, TextSplitterStream as KokoroTextSplitterStream } from '../tts/kokoro-tts.js';
+import { KittenTTS, TextSplitterStream as KittenTextSplitterStream } from '../tts/kitten-tts.ts';
+import { PiperTTS, TextSplitterStream as PiperTextSplitterStream } from '../tts/piper-tts.ts';
+import { KokoroTTS, TextSplitterStream as KokoroTextSplitterStream } from '../tts/kokoro-tts.ts';
 import { detectWebGPU } from '../utils.js';
 import { BASE_MODEL_URL } from '$lib/config.js';
 
@@ -61,7 +61,7 @@ async function initializeModel(modelType, useWebGPU = false) {
 		}
 	} catch (e) {
 		console.error('Error loading model:', e);
-		self.postMessage({ status: 'error', data: e.message });
+		self.postMessage({ status: 'error', data: e instanceof Error ? e.message : String(e) });
 	}
 }
 
@@ -120,7 +120,7 @@ self.addEventListener('message', async (e) => {
 			}
 		} catch (error) {
 			console.error('Error during streaming:', error);
-			self.postMessage({ status: 'error', data: error.message });
+			self.postMessage({ status: 'error', data: error instanceof Error ? error.message : String(error) });
 			return;
 		}
 
@@ -160,11 +160,10 @@ self.addEventListener('message', async (e) => {
 				}
 
 				// Create a new merged RawAudio with the target sample rate
-				// @ts-expect-error - So that we don't need to import RawAudio
-				audio = new chunks[0].constructor(waveform, targetSampleRate);
+				audio = new (chunks[0].constructor as any)(waveform, targetSampleRate);
 			} catch (error) {
 				console.error('Error processing audio chunks:', error);
-				self.postMessage({ status: 'error', data: error.message });
+				self.postMessage({ status: 'error', data: error instanceof Error ? error.message : String(error) });
 				return;
 			}
 		}
