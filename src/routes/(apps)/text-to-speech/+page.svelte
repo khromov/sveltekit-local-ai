@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { toast } from 'svelte-sonner';
-	import { ttsModel, ttsWebGPUKitten, ttsWebGPUKokoro, ttsKittenSampleRate } from '$lib/stores';
+	import { ttsModel, ttsWebGPUKitten, ttsWebGPUKokoro, ttsKittenSampleRate, ttsText } from '$lib/stores';
 	import MicIcon from 'virtual:icons/lucide/mic';
 	import PlayIcon from 'virtual:icons/lucide/play';
 	import PauseIcon from 'virtual:icons/lucide/pause';
@@ -10,6 +10,7 @@
 	import CheckIcon from 'virtual:icons/lucide/check';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 	import DicesIcon from 'virtual:icons/lucide/dices';
+	import TrashIcon from 'virtual:icons/lucide/trash';
 
 	import CardInterface from '$lib/components/common/CardInterface.svelte';
 	import Toolbar from '$lib/components/common/Toolbar.svelte';
@@ -25,8 +26,7 @@
 	import VoiceSelector from '$lib/components/tts/VoiceSelector.svelte';
 	import { getRandomQuote } from '$lib/quotes';
 
-	// State variables
-	let text = $state('');
+	// State variables - using persisted store for text
 	let lastGeneration = $state<any>(null);
 	let isPlaying = $state(false);
 	let currentChunkIndex = $state(-1);
@@ -52,7 +52,7 @@
 	let processed = $derived(() => {
 		return (
 			lastGeneration &&
-			lastGeneration.text === text &&
+			lastGeneration.text === $ttsText &&
 			lastGeneration.speed === speed &&
 			lastGeneration.voice === selectedVoice &&
 			($ttsModel === 'kitten' ? lastGeneration.sampleRate === selectedSampleRate : true) &&
@@ -219,7 +219,7 @@
 			chunks = [];
 			currentChunkIndex = 0;
 			const params = {
-				text: text,
+				text: $ttsText,
 				voice: $ttsModel === 'piper' ? parseInt(selectedVoice) : selectedVoice,
 				speed: speed,
 				model: $ttsModel,
@@ -249,15 +249,20 @@
 	}
 
 	async function handleCopy() {
-		await navigator.clipboard.writeText(text);
+		await navigator.clipboard.writeText($ttsText);
 		copied = true;
+		toast.success('Text copied to clipboard!');
 		setTimeout(() => {
 			copied = false;
 		}, 2000);
 	}
 
 	function handleGetRandomQuote() {
-		text = getRandomQuote();
+		$ttsText = getRandomQuote();
+	}
+
+	function handleClear() {
+		$ttsText = '';
 	}
 
 	// Worker message handlers
@@ -344,8 +349,10 @@
 
 	// Initialize on mount
 	onMount(() => {
-		// Set a random quote as the initial text
-		text = getRandomQuote();
+		// Set a random quote as the initial text if no persisted text exists
+		if (!$ttsText) {
+			$ttsText = getRandomQuote();
+		}
 
 		// If we have a persisted model, initialize with it
 		if ($ttsModel) {
@@ -411,7 +418,7 @@
 					<div class="section-header">
 						<h3>Enter Your Text</h3>
 						<div class="stats-and-buttons">
-							<TextStatistics {text} />
+							<TextStatistics text={$ttsText} />
 							<div class="button-group">
 								<button
 									class="dice-button"
@@ -431,13 +438,20 @@
 										<CopyIcon />
 									{/if}
 								</button>
+								<button
+									class="clear-button"
+									onclick={handleClear}
+									title="Clear text"
+								>
+									<TrashIcon />
+								</button>
 							</div>
 						</div>
 					</div>
 
 					<div class="text-input-wrapper">
 						<textarea
-							bind:value={text}
+							bind:value={$ttsText}
 							placeholder="Type or paste your text here..."
 							class="text-input"
 							disabled={status === 'generating'}
@@ -480,7 +494,7 @@
 							class="primary-action-btn"
 							class:playing={isPlaying}
 							onclick={handlePlayPause}
-							disabled={(status === 'ready' && !isPlaying && !text) ||
+							disabled={(status === 'ready' && !isPlaying && !$ttsText) ||
 								(status !== 'ready' && chunks.length === 0)}
 						>
 							{#if isPlaying}
@@ -636,7 +650,8 @@
 	}
 
 	.dice-button,
-	.copy-button {
+	.copy-button,
+	.clear-button {
 		width: 32px;
 		height: 32px;
 		background: var(--color-background-main);
@@ -650,13 +665,15 @@
 	}
 
 	.dice-button :global(svg),
-	.copy-button :global(svg) {
+	.copy-button :global(svg),
+	.clear-button :global(svg) {
 		width: 16px;
 		height: 16px;
 	}
 
 	.dice-button:hover,
-	.copy-button:hover {
+	.copy-button:hover,
+	.clear-button:hover {
 		background: var(--color-primary);
 		transform: translate(-1px, -1px);
 		box-shadow: var(--shadow-brutalist-small);
