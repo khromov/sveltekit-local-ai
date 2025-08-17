@@ -26,7 +26,8 @@
 	import VoiceSelector from '$lib/components/tts/VoiceSelector.svelte';
 	import { getRandomQuote } from '$lib/quotes';
 
-	// State variables - using persisted store for text
+	// State variables
+	let text = $state('');
 	let lastGeneration = $state<any>(null);
 	let isPlaying = $state(false);
 	let currentChunkIndex = $state(-1);
@@ -52,7 +53,7 @@
 	let processed = $derived(() => {
 		return (
 			lastGeneration &&
-			lastGeneration.text === $ttsText &&
+			lastGeneration.text === text &&
 			lastGeneration.speed === speed &&
 			lastGeneration.voice === selectedVoice &&
 			($ttsModel === 'kitten' ? lastGeneration.sampleRate === selectedSampleRate : true) &&
@@ -219,7 +220,7 @@
 			chunks = [];
 			currentChunkIndex = 0;
 			const params = {
-				text: $ttsText,
+				text: text,
 				voice: $ttsModel === 'piper' ? parseInt(selectedVoice) : selectedVoice,
 				speed: speed,
 				model: $ttsModel,
@@ -249,7 +250,7 @@
 	}
 
 	async function handleCopy() {
-		await navigator.clipboard.writeText($ttsText);
+		await navigator.clipboard.writeText(text);
 		copied = true;
 		toast.success('Text copied to clipboard!');
 		setTimeout(() => {
@@ -258,11 +259,12 @@
 	}
 
 	function handleGetRandomQuote() {
-		$ttsText = getRandomQuote();
+		text = getRandomQuote();
 	}
 
 	function handleClear() {
-		$ttsText = '';
+		text = '';
+		$ttsText = ''; // Clear persisted text too
 	}
 
 	// Worker message handlers
@@ -349,10 +351,8 @@
 
 	// Initialize on mount
 	onMount(() => {
-		// Set a random quote as the initial text if no persisted text exists
-		if (!$ttsText) {
-			$ttsText = getRandomQuote();
-		}
+		// Initialize text with persisted value or random quote
+		text = $ttsText || getRandomQuote();
 
 		// If we have a persisted model, initialize with it
 		if ($ttsModel) {
@@ -418,7 +418,7 @@
 					<div class="section-header">
 						<h3>Enter Your Text</h3>
 						<div class="stats-and-buttons">
-							<TextStatistics text={$ttsText} />
+							<TextStatistics {text} />
 							<div class="button-group">
 								<button
 									class="dice-button"
@@ -451,7 +451,8 @@
 
 					<div class="text-input-wrapper">
 						<textarea
-							bind:value={$ttsText}
+							bind:value={text}
+						oninput={() => { $ttsText = text; }}
 							placeholder="Type or paste your text here..."
 							class="text-input"
 							disabled={status === 'generating'}
@@ -494,7 +495,7 @@
 							class="primary-action-btn"
 							class:playing={isPlaying}
 							onclick={handlePlayPause}
-							disabled={(status === 'ready' && !isPlaying && !$ttsText) ||
+							disabled={(status === 'ready' && !isPlaying && !text) ||
 								(status !== 'ready' && chunks.length === 0)}
 						>
 							{#if isPlaying}
