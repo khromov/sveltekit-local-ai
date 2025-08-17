@@ -1,12 +1,7 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { toast } from 'svelte-sonner';
-	import {
-		ttsModel,
-		ttsWebGPUKitten,
-		ttsWebGPUKokoro,
-		ttsKittenSampleRate
-	} from '$lib/stores';
+	import { ttsModel, ttsWebGPUKitten, ttsWebGPUKokoro, ttsKittenSampleRate } from '$lib/stores';
 	import MicIcon from 'virtual:icons/lucide/mic';
 	import PlayIcon from 'virtual:icons/lucide/play';
 	import PauseIcon from 'virtual:icons/lucide/pause';
@@ -111,7 +106,6 @@
 			restartWorker(enabled);
 		}
 	}
-
 
 	let previewAudio: HTMLAudioElement | null = null;
 	let isPreviewMode = $state(false);
@@ -412,7 +406,29 @@
 				<div class="text-input-section">
 					<div class="section-header">
 						<h3>Enter Your Text</h3>
-						<TextStatistics {text} />
+						<div class="stats-and-buttons">
+							<TextStatistics {text} />
+							<div class="button-group">
+								<button
+									class="dice-button"
+									onclick={handleGetRandomQuote}
+									title="Get random Svelte quote"
+								>
+									<DicesIcon />
+								</button>
+								<button
+									class="copy-button"
+									onclick={handleCopy}
+									title={copied ? 'Copied!' : 'Copy text'}
+								>
+									{#if copied}
+										<CheckIcon />
+									{:else}
+										<CopyIcon />
+									{/if}
+								</button>
+							</div>
+						</div>
 					</div>
 
 					<div class="text-input-wrapper">
@@ -422,24 +438,6 @@
 							class="text-input"
 							disabled={status === 'generating'}
 						></textarea>
-						<button
-							class="dice-button"
-							onclick={handleGetRandomQuote}
-							title="Get random Svelte quote"
-						>
-							<DicesIcon />
-						</button>
-						<button
-							class="copy-button"
-							onclick={handleCopy}
-							title={copied ? 'Copied!' : 'Copy text'}
-						>
-							{#if copied}
-								<CheckIcon />
-							{:else}
-								<CopyIcon />
-							{/if}
-						</button>
 					</div>
 				</div>
 
@@ -602,7 +600,6 @@
 		width: 100%;
 		min-height: 180px;
 		padding: 1rem;
-		padding-top: 2rem;
 		border: var(--border-brutalist-thin);
 		font-family: var(--font-family-primary);
 		font-size: 1rem;
@@ -623,12 +620,21 @@
 		cursor: not-allowed;
 	}
 
+	.stats-and-buttons {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.button-group {
+		display: flex;
+		gap: 0.5rem;
+	}
+
 	.dice-button,
 	.copy-button {
-		position: absolute;
-		top: 0.5rem;
-		width: 36px;
-		height: 36px;
+		width: 32px;
+		height: 32px;
 		background: var(--color-background-main);
 		border: var(--border-brutalist-thin);
 		cursor: pointer;
@@ -639,18 +645,10 @@
 		color: var(--color-text-primary);
 	}
 
-	.dice-button {
-		right: 3rem;
-	}
-
-	.copy-button {
-		right: 0.5rem;
-	}
-
 	.dice-button :global(svg),
 	.copy-button :global(svg) {
-		width: 18px;
-		height: 18px;
+		width: 16px;
+		height: 16px;
 	}
 
 	.dice-button:hover,

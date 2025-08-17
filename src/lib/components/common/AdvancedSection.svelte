@@ -6,15 +6,11 @@
 
 	interface Props {
 		title?: string;
-		icon?: typeof SettingsIcon;
+		Icon?: typeof SettingsIcon;
 		children: Snippet;
 	}
 
-	let {
-		title = 'Advanced Parameters',
-		icon = SettingsIcon,
-		children
-	}: Props = $props();
+	let { title = 'Advanced Parameters', Icon = SettingsIcon, children }: Props = $props();
 
 	function handleToggle() {
 		$advancedExpanded = !$advancedExpanded;
@@ -23,7 +19,7 @@
 
 <div class="advanced-params">
 	<button class="params-toggle" onclick={handleToggle}>
-		<span class="toggle-emoji"><icon></icon></span>
+		<span class="toggle-emoji"><Icon /></span>
 		<span>{title}</span>
 		<span class="toggle-icon" class:rotated={$advancedExpanded}>
 			<ChevronDownIcon />
