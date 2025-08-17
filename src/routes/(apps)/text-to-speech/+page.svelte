@@ -25,7 +25,7 @@
 
 	// State variables
 	let text = $state(
-		'Hello there! Welcome to the TTS Studio! Choose your preferred TTS model and start generating high-quality speech from text, all running locally in your browser!'
+		'Hello there! Welcome to the text to speech page! Choose your preferred TTS model and start generating high-quality speech from text, all running locally in your browser!'
 	);
 	let selectedModel = $state<'kitten' | 'piper' | 'kokoro' | null>(null);
 	let lastGeneration = $state<any>(null);
