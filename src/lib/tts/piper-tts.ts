@@ -2,7 +2,6 @@ import { cleanTextForTTS, chunkText } from './text-cleaner.js';
 import * as ort from 'onnxruntime-web';
 import { cachedFetch } from './model-cache.js';
 import { phonemize } from 'phonemizer';
-
 // Text splitting stream to break text into chunks
 export class TextSplitterStream {
 	chunks: string[];
@@ -122,7 +121,7 @@ export class PiperTTS {
 		try {
 			// Use imported ONNX Runtime Web and caching utility
 
-			// Use local files in public directory with threading enabled
+			// Use ONNX Runtime Web files from npm package in static directory
 			ort.env.wasm.wasmPaths = '/onnx-runtime/';
 
 			// Load model and config

@@ -4,8 +4,8 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
-		"build": "PUBLIC_DISABLE_OPFS=false vite build",
+		"dev": "npm run copy-wasm && vite dev",
+		"build": "npm run copy-wasm && PUBLIC_DISABLE_OPFS=false vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -15,7 +15,8 @@
 		"lint:fix": "prettier --write . && eslint . --fix",
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run",
-		"checks": "npm run format && npm run lint && npm run check"
+		"checks": "npm run format && npm run lint && npm run check",
+		"copy-wasm": "node scripts/copy-wasm-files.js"
 	},
 	"dependencies": {
 		"express": "^5.1.0"
