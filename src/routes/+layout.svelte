@@ -10,6 +10,7 @@
 	import ImageIcon from 'virtual:icons/lucide/image';
 	import GithubIcon from 'virtual:icons/lucide/github';
 	import SpeechIcon from 'virtual:icons/lucide/speech';
+	import { Toaster } from 'svelte-sonner';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -121,6 +122,16 @@
 		</div>
 	</div>
 </div>
+
+<Toaster
+	position="bottom-right"
+	theme="light"
+	richColors
+	toastOptions={{
+		style:
+			'border: 3px solid #000; box-shadow: 4px 4px 0 #000; border-radius: 8px; font-family: Space Grotesk, sans-serif; font-weight: 600;'
+	}}
+/>
 
 <style>
 	/* Neo-Brutalist Design System */
