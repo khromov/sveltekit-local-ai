@@ -35,10 +35,10 @@
 							<WebGPUToggle modelValue={useWebGPU} onUpdate={onWebGPUToggle} />
 						</div>
 					{/if}
-					
+
 					{#if selectedModel === 'kitten'}
 						<div class="param-item">
-							<SampleRateSelector onSampleRateChange={onSampleRateChange} />
+							<SampleRateSelector {onSampleRateChange} />
 						</div>
 					{/if}
 				</div>
