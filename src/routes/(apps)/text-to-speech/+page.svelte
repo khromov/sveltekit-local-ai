@@ -360,6 +360,7 @@
 					progress={0}
 					message="Initializing text-to-speech model..."
 					showPercentage={false}
+					mode="spinner"
 				/>
 			{:else if status === 'error'}
 				<ErrorDisplay
