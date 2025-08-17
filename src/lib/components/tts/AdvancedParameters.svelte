@@ -6,11 +6,13 @@
 	interface Props {
 		selectedModel: 'kitten' | 'piper' | 'kokoro' | null;
 		useWebGPU: boolean;
+		selectedSampleRate: number;
 		onWebGPUToggle: (enabled: boolean) => void;
 		onSampleRateChange: (sampleRate: number) => void;
 	}
 
-	let { selectedModel, useWebGPU, onWebGPUToggle, onSampleRateChange }: Props = $props();
+	let { selectedModel, useWebGPU, selectedSampleRate, onWebGPUToggle, onSampleRateChange }: Props =
+		$props();
 
 	// Show advanced params if model supports WebGPU or other advanced features
 	const hasAdvancedOptions = $derived(selectedModel === 'kitten' || selectedModel === 'kokoro');
@@ -27,7 +29,7 @@
 
 			{#if selectedModel === 'kitten'}
 				<div class="param-item">
-					<SampleRateSelector {onSampleRateChange} />
+					<SampleRateSelector {selectedSampleRate} {onSampleRateChange} />
 				</div>
 			{/if}
 		</AdvancedSection>

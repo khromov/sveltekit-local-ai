@@ -427,6 +427,7 @@
 				<AdvancedParameters
 					selectedModel={$ttsModel}
 					{useWebGPU}
+					{selectedSampleRate}
 					onWebGPUToggle={handleWebGPUToggle}
 					onSampleRateChange={setSampleRate}
 				/>

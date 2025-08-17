@@ -2,12 +2,11 @@
 	import ChevronDownIcon from 'virtual:icons/lucide/chevron-down';
 
 	interface Props {
+		selectedSampleRate: number;
 		onSampleRateChange: (sampleRate: number) => void;
 	}
 
-	let { onSampleRateChange }: Props = $props();
-
-	let selectedSampleRate = $state(24000);
+	let { selectedSampleRate, onSampleRateChange }: Props = $props();
 
 	const sampleRates = [
 		{ value: 8000, label: '8 kHz' },
@@ -20,8 +19,8 @@
 
 	function handleSampleRateChange(event: Event) {
 		const target = event.target as HTMLSelectElement;
-		selectedSampleRate = parseInt(target.value);
-		onSampleRateChange(selectedSampleRate);
+		const newSampleRate = parseInt(target.value);
+		onSampleRateChange(newSampleRate);
 	}
 </script>
 
