@@ -1,8 +1,8 @@
 import { KittenTTS, TextSplitterStream as KittenTextSplitterStream } from '../tts/kitten-tts';
 import { PiperTTS, TextSplitterStream as PiperTextSplitterStream } from '../tts/piper-tts';
 import { KokoroTTS, TextSplitterStream as KokoroTextSplitterStream } from '../tts/kokoro-tts';
-import { detectWebGPU } from '../utils.js';
-import { BASE_MODEL_URL } from '$lib/config.js';
+import { detectWebGPU } from '../utils';
+import { BASE_MODEL_URL } from '$lib/config';
 
 let tts: KittenTTS | PiperTTS | KokoroTTS | null = null;
 let device = 'wasm';
