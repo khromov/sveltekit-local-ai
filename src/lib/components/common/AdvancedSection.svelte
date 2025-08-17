@@ -10,27 +10,31 @@
 		children: Snippet;
 	}
 
-	let { title = 'Advanced Parameters', icon = SettingsIcon, initialOpen = false, children }: Props = $props();
+	let {
+		title = 'Advanced Parameters',
+		icon = SettingsIcon,
+		initialOpen = false,
+		children
+	}: Props = $props();
 	let showParams = $state(initialOpen);
 </script>
 
 <div class="advanced-params">
-		<button class="params-toggle" onclick={() => (showParams = !showParams)}>
-			<span class="toggle-emoji"><icon></icon></span>
-			<span>{title}</span>
-			<span class="toggle-icon" class:rotated={showParams}>
-				<ChevronDownIcon />
-			</span>
-		</button>
-		{#if showParams}
-			<div class="params-grid">
-				{@render children()}
-			</div>
-		{/if}
+	<button class="params-toggle" onclick={() => (showParams = !showParams)}>
+		<span class="toggle-emoji"><icon></icon></span>
+		<span>{title}</span>
+		<span class="toggle-icon" class:rotated={showParams}>
+			<ChevronDownIcon />
+		</span>
+	</button>
+	{#if showParams}
+		<div class="params-grid">
+			{@render children()}
+		</div>
+	{/if}
 </div>
 
 <style>
-
 	.advanced-params {
 		background: linear-gradient(135deg, rgba(255, 217, 61, 0.1) 0%, rgba(152, 251, 152, 0.1) 100%);
 		padding: 1.25rem;

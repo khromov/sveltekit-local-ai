@@ -19,18 +19,18 @@
 {#if hasAdvancedOptions}
 	<div class="advanced-section">
 		<AdvancedSection>
-		{#if selectedModel === 'kitten' || selectedModel === 'kokoro'}
-			<div class="param-item">
-				<WebGPUToggle modelValue={useWebGPU} onUpdate={onWebGPUToggle} />
-			</div>
-		{/if}
+			{#if selectedModel === 'kitten' || selectedModel === 'kokoro'}
+				<div class="param-item">
+					<WebGPUToggle modelValue={useWebGPU} onUpdate={onWebGPUToggle} />
+				</div>
+			{/if}
 
-		{#if selectedModel === 'kitten'}
-			<div class="param-item">
-				<SampleRateSelector {onSampleRateChange} />
-			</div>
-		{/if}
-	</AdvancedSection>
+			{#if selectedModel === 'kitten'}
+				<div class="param-item">
+					<SampleRateSelector {onSampleRateChange} />
+				</div>
+			{/if}
+		</AdvancedSection>
 	</div>
 {/if}
 

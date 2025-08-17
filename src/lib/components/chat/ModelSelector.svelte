@@ -362,7 +362,6 @@
 		margin-right: auto;
 	}
 
-
 	.param-item {
 		display: flex;
 		flex-direction: column;

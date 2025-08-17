@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { onDestroy } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { toast } from 'svelte-sonner';
+	import { ttsModel } from '$lib/stores';
 	import MicIcon from 'virtual:icons/lucide/mic';
 	import PlayIcon from 'virtual:icons/lucide/play';
 	import PauseIcon from 'virtual:icons/lucide/pause';
@@ -26,7 +27,6 @@
 	let text = $state(
 		'Hello there! Welcome to the text to speech page! Choose your preferred TTS model and start generating high-quality speech from text, all running locally in your browser!'
 	);
-	let selectedModel = $state<'kitten' | 'piper' | 'kokoro' | null>(null);
 	let lastGeneration = $state<any>(null);
 	let isPlaying = $state(false);
 	let currentChunkIndex = $state(-1);
@@ -50,8 +50,8 @@
 			lastGeneration.text === text &&
 			lastGeneration.speed === speed &&
 			lastGeneration.voice === selectedVoice &&
-			(selectedModel === 'kitten' ? lastGeneration.sampleRate === selectedSampleRate : true) &&
-			lastGeneration.model === selectedModel
+			($ttsModel === 'kitten' ? lastGeneration.sampleRate === selectedSampleRate : true) &&
+			lastGeneration.model === $ttsModel
 		);
 	});
 
@@ -69,9 +69,9 @@
 	}
 
 	function handleModelChange(model: 'kitten' | 'piper' | 'kokoro') {
-		if (selectedModel === model) return;
+		if ($ttsModel === model) return;
 
-		selectedModel = model;
+		$ttsModel = model;
 
 		// Reset voice selection and sample rate based on model
 		if (model === 'kitten') {
@@ -138,7 +138,7 @@
 				worker.postMessage({
 					type: 'tts',
 					text: previewText,
-					voice: selectedModel === 'piper' ? parseInt(voice as string) : voice,
+					voice: $ttsModel === 'piper' ? parseInt(voice as string) : voice,
 					speed: speed,
 					sampleRate: selectedSampleRate,
 					isPreview: true
@@ -156,7 +156,7 @@
 		}
 
 		// Don't start worker if no model is selected
-		if (!selectedModel) {
+		if (!$ttsModel) {
 			status = 'waiting';
 			return;
 		}
@@ -180,7 +180,7 @@
 		// Send init message with model type and device preference
 		worker.postMessage({
 			type: 'init',
-			model: selectedModel,
+			model: $ttsModel,
 			useWebGPU: webGPUPreference
 		});
 	}
@@ -209,9 +209,9 @@
 			currentChunkIndex = 0;
 			const params = {
 				text: text,
-				voice: selectedModel === 'piper' ? parseInt(selectedVoice) : selectedVoice,
+				voice: $ttsModel === 'piper' ? parseInt(selectedVoice) : selectedVoice,
 				speed: speed,
-				model: selectedModel,
+				model: $ttsModel,
 				sampleRate: selectedSampleRate
 			};
 
@@ -327,6 +327,27 @@
 		error = e.message;
 	}
 
+	// Initialize on mount
+	onMount(() => {
+		// If we have a persisted model, initialize with it
+		if ($ttsModel) {
+			// Set voice and sample rate defaults based on the persisted model
+			if ($ttsModel === 'kitten') {
+				selectedVoice = 'expr-voice-2-m';
+				selectedSampleRate = 24000;
+			} else if ($ttsModel === 'piper') {
+				selectedVoice = '0';
+				selectedSampleRate = 22050;
+			} else if ($ttsModel === 'kokoro') {
+				selectedVoice = 'af_heart';
+				selectedSampleRate = 24000;
+			}
+
+			// Start the worker with the persisted model
+			restartWorker();
+		}
+	});
+
 	// Cleanup
 	onDestroy(() => {
 		if (worker) {
@@ -340,7 +361,7 @@
 
 	<ContentArea>
 		<div class="tts-container">
-			{#if status === 'waiting'}
+
 				<div class="model-selection-intro">
 					<h2>
 						<span class="title-icon"><SparklesIcon /></span>
@@ -348,10 +369,10 @@
 					</h2>
 					<p>Generate high-quality speech from text, all running locally in your browser!</p>
 				</div>
-			{/if}
+	
 
 			<!-- Model Selection -->
-			<ModelSwitcher {selectedModel} onModelChange={handleModelChange} />
+			<ModelSwitcher selectedModel={$ttsModel} onModelChange={handleModelChange} />
 
 			{#if status === 'loading'}
 				<LoadingProgress
@@ -398,7 +419,7 @@
 
 				<!-- Advanced Parameters Section -->
 				<AdvancedParameters
-					{selectedModel}
+					selectedModel={$ttsModel}
 					{useWebGPU}
 					onWebGPUToggle={handleWebGPUToggle}
 					onSampleRateChange={setSampleRate}

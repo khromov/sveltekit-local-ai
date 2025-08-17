@@ -11,6 +11,7 @@
 	import GithubIcon from 'virtual:icons/lucide/github';
 	import SpeechIcon from 'virtual:icons/lucide/speech';
 	import { Toaster } from 'svelte-sonner';
+	import { dev } from '$app/environment';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -53,6 +54,15 @@
 	<meta name="twitter:title" content={page.data.seo.title} />
 	<meta name="twitter:description" content={page.data.seo.description} />
 	<meta name="twitter:image" content={page.data.seo.ogImage} />
+
+
+	{#if !dev}
+		<script
+			defer
+			src="https://u.khromov.se/u.js"
+			data-website-id="8b61040a-306f-4d99-95b3-0e925d631ec3"
+		></script>
+	{/if}
 </svelte:head>
 
 <div class="app-wrapper">

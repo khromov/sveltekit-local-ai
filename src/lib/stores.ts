@@ -10,3 +10,4 @@ export const inferenceParams = persisted<{
 	temperature: number;
 }>('inferenceParams', DEFAULT_INFERENCE_PARAMS);
 export const whisperModel = persisted<string>('whisperModel', '');
+export const ttsModel = persisted<'kitten' | 'piper' | 'kokoro' | null>('ttsModel', null);
