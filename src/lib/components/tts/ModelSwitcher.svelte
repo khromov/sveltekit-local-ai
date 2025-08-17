@@ -6,9 +6,10 @@
 	interface Props {
 		selectedModel: string | null;
 		onModelChange: (model: 'kitten' | 'piper' | 'kokoro') => void;
+		loading?: boolean;
 	}
 
-	let { selectedModel, onModelChange }: Props = $props();
+	let { selectedModel, onModelChange, loading = false }: Props = $props();
 </script>
 
 <div class="model-switcher">
@@ -21,6 +22,8 @@
 		<button
 			class="model-card"
 			class:active={selectedModel === 'kitten'}
+			class:loading={loading}
+			disabled={loading}
 			onclick={() => onModelChange('kitten')}
 		>
 			<div class="model-icon">
@@ -35,6 +38,8 @@
 		<button
 			class="model-card"
 			class:active={selectedModel === 'piper'}
+			class:loading={loading}
+			disabled={loading}
 			onclick={() => onModelChange('piper')}
 		>
 			<div class="model-icon">
@@ -49,6 +54,8 @@
 		<button
 			class="model-card"
 			class:active={selectedModel === 'kokoro'}
+			class:loading={loading}
+			disabled={loading}
 			onclick={() => onModelChange('kokoro')}
 		>
 			<div class="model-icon">
@@ -157,6 +164,18 @@
 		transform: translate(-2px, -2px) rotate(0deg);
 		box-shadow: var(--shadow-brutalist-large);
 		border-color: var(--color-text-primary);
+	}
+
+	.model-card.loading {
+		opacity: 0.5;
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+
+	.model-card.loading:hover {
+		transform: inherit;
+		box-shadow: var(--shadow-brutalist-medium);
+		background: var(--color-background-tertiary);
 	}
 
 	.model-icon {
