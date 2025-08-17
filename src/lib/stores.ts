@@ -11,3 +11,6 @@ export const inferenceParams = persisted<{
 }>('inferenceParams', DEFAULT_INFERENCE_PARAMS);
 export const whisperModel = persisted<string>('whisperModel', '');
 export const ttsModel = persisted<'kitten' | 'piper' | 'kokoro' | null>('ttsModel', null);
+export const ttsWebGPUKitten = persisted<boolean>('ttsWebGPUKitten', false);
+export const ttsWebGPUKokoro = persisted<boolean>('ttsWebGPUKokoro', false);
+export const ttsKittenSampleRate = persisted<number>('ttsKittenSampleRate', 24000);

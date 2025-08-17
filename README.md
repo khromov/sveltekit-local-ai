@@ -54,3 +54,8 @@ docker run -p 3000:3000 sveltekit-local-ai
 ## How It Works
 
 The application downloads compact language models directly to your browser and runs inference using WebAssembly. This approach ensures your conversations stay private and can work offline after the initial model download.
+
+## Acknowledgements
+
+- Thanks to the creator of https://clowerweb.github.io/tts-studio/ for excellent TTS examples!
+- Thanks to the creators of Wllama and Transformers.js

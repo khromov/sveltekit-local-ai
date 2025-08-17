@@ -55,7 +55,6 @@
 	<meta name="twitter:description" content={page.data.seo.description} />
 	<meta name="twitter:image" content={page.data.seo.ogImage} />
 
-
 	{#if !dev}
 		<script
 			defer

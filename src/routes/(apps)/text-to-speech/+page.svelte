@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { toast } from 'svelte-sonner';
-	import { ttsModel } from '$lib/stores';
+	import { ttsModel, ttsWebGPUKitten, ttsWebGPUKokoro, ttsKittenSampleRate } from '$lib/stores';
 	import MicIcon from 'virtual:icons/lucide/mic';
 	import PlayIcon from 'virtual:icons/lucide/play';
 	import PauseIcon from 'virtual:icons/lucide/pause';
@@ -37,8 +37,13 @@
 	let worker: Worker | null = $state(null);
 	let voices = $state<any[]>([]);
 	let selectedVoice = $state<string>('expr-voice-2-m');
-	let selectedSampleRate = $state(24000);
-	let useWebGPU = $state(false);
+	// Computed properties for persisted values
+	let selectedSampleRate = $derived(
+		$ttsModel === 'kitten' ? $ttsKittenSampleRate : $ttsModel === 'piper' ? 22050 : 24000
+	);
+	let useWebGPU = $derived(
+		$ttsModel === 'kitten' ? $ttsWebGPUKitten : $ttsModel === 'kokoro' ? $ttsWebGPUKokoro : false
+	);
 	let actualDevice = $state('wasm');
 	let chunks = $state<any[]>([]);
 	let result = $state<Blob | null>(null);
@@ -65,7 +70,9 @@
 	}
 
 	function setSampleRate(sampleRate: number) {
-		selectedSampleRate = sampleRate;
+		if ($ttsModel === 'kitten') {
+			$ttsKittenSampleRate = sampleRate;
+		}
 	}
 
 	function handleModelChange(model: 'kitten' | 'piper' | 'kokoro') {
@@ -73,16 +80,13 @@
 
 		$ttsModel = model;
 
-		// Reset voice selection and sample rate based on model
+		// Reset voice selection based on model
 		if (model === 'kitten') {
 			selectedVoice = 'expr-voice-2-m';
-			selectedSampleRate = 24000;
 		} else if (model === 'piper') {
 			selectedVoice = '0';
-			selectedSampleRate = 22050;
 		} else if (model === 'kokoro') {
 			selectedVoice = 'af_heart';
-			selectedSampleRate = 24000;
 		}
 
 		// Restart worker with new model
@@ -90,6 +94,13 @@
 	}
 
 	function handleWebGPUToggle(enabled: boolean) {
+		// Update the persisted store based on current model
+		if ($ttsModel === 'kitten') {
+			$ttsWebGPUKitten = enabled;
+		} else if ($ttsModel === 'kokoro') {
+			$ttsWebGPUKokoro = enabled;
+		}
+
 		// Only restart if the value actually changed and it's different from current device
 		if (enabled !== (actualDevice === 'webgpu')) {
 			restartWorker(enabled);
@@ -331,16 +342,13 @@
 	onMount(() => {
 		// If we have a persisted model, initialize with it
 		if ($ttsModel) {
-			// Set voice and sample rate defaults based on the persisted model
+			// Set voice defaults based on the persisted model
 			if ($ttsModel === 'kitten') {
 				selectedVoice = 'expr-voice-2-m';
-				selectedSampleRate = 24000;
 			} else if ($ttsModel === 'piper') {
 				selectedVoice = '0';
-				selectedSampleRate = 22050;
 			} else if ($ttsModel === 'kokoro') {
 				selectedVoice = 'af_heart';
-				selectedSampleRate = 24000;
 			}
 
 			// Start the worker with the persisted model
@@ -361,15 +369,13 @@
 
 	<ContentArea>
 		<div class="tts-container">
-
-				<div class="model-selection-intro">
-					<h2>
-						<span class="title-icon"><SparklesIcon /></span>
-						Welcome to TTS Studio
-					</h2>
-					<p>Generate high-quality speech from text, all running locally in your browser!</p>
-				</div>
-	
+			<div class="model-selection-intro">
+				<h2>
+					<span class="title-icon"><SparklesIcon /></span>
+					Welcome to TTS Studio
+				</h2>
+				<p>Generate high-quality speech from text, all running locally in your browser!</p>
+			</div>
 
 			<!-- Model Selection -->
 			<ModelSwitcher selectedModel={$ttsModel} onModelChange={handleModelChange} />
