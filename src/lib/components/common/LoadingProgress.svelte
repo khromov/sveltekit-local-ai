@@ -152,13 +152,12 @@
 		background: linear-gradient(
 			90deg,
 			var(--color-primary) 0%,
-			var(--color-warning) 25%,
-			var(--color-success) 50%,
-			var(--color-warning) 75%,
+			var(--color-primary) 40%,
+			var(--color-warning) 60%,
 			var(--color-primary) 100%
 		);
-		background-size: 200% 100%;
-		animation: gradientShift 2s ease-in-out infinite;
+		background-size: 300% 100%;
+		animation: gradientShift 3s ease-in-out infinite;
 		position: relative;
 	}
 
@@ -172,10 +171,12 @@
 		background: linear-gradient(
 			90deg,
 			transparent 0%,
-			rgba(255, 255, 255, 0.4) 50%,
+			transparent 30%,
+			rgba(255, 255, 255, 0.2) 50%,
+			transparent 70%,
 			transparent 100%
 		);
-		animation: shimmer 1.5s infinite;
+		animation: shimmer 3s ease-in-out infinite;
 	}
 
 	@keyframes gradientShift {
@@ -192,10 +193,10 @@
 
 	@keyframes shimmer {
 		0% {
-			transform: translateX(-100%);
+			transform: translateX(-150%);
 		}
 		100% {
-			transform: translateX(100%);
+			transform: translateX(150%);
 		}
 	}
 </style>
