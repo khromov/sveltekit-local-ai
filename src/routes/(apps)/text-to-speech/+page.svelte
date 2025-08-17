@@ -17,11 +17,10 @@
 
 	import AudioChunk from '$lib/components/tts/AudioChunk.svelte';
 	import ModelSwitcher from '$lib/components/tts/ModelSwitcher.svelte';
-	import SampleRateSelector from '$lib/components/tts/SampleRateSelector.svelte';
+	import AdvancedParameters from '$lib/components/tts/AdvancedParameters.svelte';
 	import SpeedControl from '$lib/components/tts/SpeedControl.svelte';
 	import TextStatistics from '$lib/components/tts/TextStatistics.svelte';
 	import VoiceSelector from '$lib/components/tts/VoiceSelector.svelte';
-	import WebGPUToggle from '$lib/components/tts/WebGPUToggle.svelte';
 
 	// State variables
 	let text = $state(
@@ -397,6 +396,14 @@
 					</div>
 				</div>
 
+				<!-- Advanced Parameters Section -->
+				<AdvancedParameters
+					{selectedModel}
+					{useWebGPU}
+					onWebGPUToggle={handleWebGPUToggle}
+					onSampleRateChange={setSampleRate}
+				/>
+
 				<!-- Controls Section -->
 				{#if voices.length > 0}
 					<div class="controls-section">
@@ -414,17 +421,7 @@
 							<div class="control-item">
 								<SpeedControl {speed} onSpeedChange={setSpeed} />
 							</div>
-
-							{#if selectedModel === 'kitten'}
-								<div class="control-item">
-									<SampleRateSelector onSampleRateChange={setSampleRate} />
-								</div>
-							{/if}
 						</div>
-
-						{#if selectedModel === 'kitten' || selectedModel === 'kokoro'}
-							<WebGPUToggle modelValue={useWebGPU} onUpdate={handleWebGPUToggle} />
-						{/if}
 					</div>
 
 					<!-- Action Buttons -->
