@@ -12,7 +12,7 @@ https://ai.stanislav.garden
 - **Chat** - LLM conversations using models like Gemma3 via llama.cpp
 - **Transcribe** - Speech-to-text using Whisper AI with subtitle export
 - **Text-to-Speech** - Voice synthesis with Kitten TTS, Piper, and Kokoro models
-- **Background Remover** - AI-powered background removal using RMBG v1.4
+- **Background Remover** - AI-powered background removal
 
 ## Running Locally
 
