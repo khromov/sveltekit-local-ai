@@ -61,7 +61,17 @@ async function initializeModel(modelType: string, useWebGPU = false): Promise<vo
 		}
 	} catch (e) {
 		console.error('Error loading model:', e);
-		self.postMessage({ status: 'error', data: e instanceof Error ? e.message : String(e) });
+		const errorMessage = e instanceof Error ? e.message : String(e);
+		const isPhonemizerError =
+			errorMessage.toLowerCase().includes('phonemiz') ||
+			errorMessage.toLowerCase().includes('espeak') ||
+			errorMessage.toLowerCase().includes('phoneme');
+
+		self.postMessage({
+			status: 'error',
+			data: errorMessage,
+			errorType: isPhonemizerError ? 'phonemization' : 'general'
+		});
 	}
 }
 
@@ -141,9 +151,18 @@ self.addEventListener('message', async (e: MessageEvent) => {
 			}
 		} catch (error) {
 			console.error('Error during streaming:', error);
+
+			// Check if this is a phonemization error
+			const errorMessage = error instanceof Error ? error.message : String(error);
+			const isPhonemizerError =
+				errorMessage.toLowerCase().includes('phonemiz') ||
+				errorMessage.toLowerCase().includes('espeak') ||
+				errorMessage.toLowerCase().includes('phoneme');
+
 			self.postMessage({
 				status: 'error',
-				data: error instanceof Error ? error.message : String(error)
+				data: errorMessage,
+				errorType: isPhonemizerError ? 'phonemization' : 'general'
 			});
 			return;
 		}

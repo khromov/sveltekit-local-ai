@@ -231,8 +231,15 @@ export class KittenTTS {
 
 	// Convert text to phonemes using the phonemizer package
 	async textToPhonemes(text: string): Promise<string> {
-		const result = await phonemize(text, 'en-us');
-		return Array.isArray(result) ? result.join(' ') : result;
+		try {
+			const result = await phonemize(text, 'en-us');
+			return Array.isArray(result) ? result.join(' ') : result;
+		} catch (error) {
+			console.error('Phonemization failed:', error);
+			throw new Error(
+				`Phonemization failed: ${error instanceof Error ? error.message : String(error)}`
+			);
+		}
 	}
 
 	// Tokenize text using the loaded tokenizer

@@ -154,30 +154,37 @@ export class PiperTTS {
 			return [Array.from(text.normalize('NFD'))];
 		}
 
-		// Use phonemizer for espeak-style phonemes
-		const voice = this.voiceConfig.espeak?.voice || 'en-us';
-		const phonemes = await phonemize(text, voice);
+		try {
+			// Use phonemizer for espeak-style phonemes
+			const voice = this.voiceConfig.espeak?.voice || 'en-us';
+			const phonemes = await phonemize(text, voice);
 
-		// Handle different return types from phonemizer
-		let phonemeText: string;
-		if (typeof phonemes === 'string') {
-			phonemeText = phonemes;
-		} else if (Array.isArray(phonemes)) {
-			// Join the array elements - each element is a phonemized sentence
-			phonemeText = phonemes.join(' ');
-		} else if (phonemes && typeof phonemes === 'object') {
-			// If it's an object, try to extract text property or convert to string
-			const phonemeObj = phonemes as Record<string, unknown>;
-			phonemeText =
-				(phonemeObj.text as string) || (phonemeObj.phonemes as string) || String(phonemes);
-		} else {
-			console.warn('Unexpected phonemes format:', phonemes);
-			phonemeText = String(phonemes || text);
+			// Handle different return types from phonemizer
+			let phonemeText: string;
+			if (typeof phonemes === 'string') {
+				phonemeText = phonemes;
+			} else if (Array.isArray(phonemes)) {
+				// Join the array elements - each element is a phonemized sentence
+				phonemeText = phonemes.join(' ');
+			} else if (phonemes && typeof phonemes === 'object') {
+				// If it's an object, try to extract text property or convert to string
+				const phonemeObj = phonemes as Record<string, unknown>;
+				phonemeText =
+					(phonemeObj.text as string) || (phonemeObj.phonemes as string) || String(phonemes);
+			} else {
+				console.warn('Unexpected phonemes format:', phonemes);
+				phonemeText = String(phonemes || text);
+			}
+
+			// Split into sentences and convert to character arrays
+			const sentences = phonemeText.split(/[.!?]+/).filter((s: string) => s.trim());
+			return sentences.map((sentence: string) => Array.from(sentence.trim().normalize('NFD')));
+		} catch (error) {
+			console.error('Phonemization failed:', error);
+			throw new Error(
+				`Phonemization failed: ${error instanceof Error ? error.message : String(error)}`
+			);
 		}
-
-		// Split into sentences and convert to character arrays
-		const sentences = phonemeText.split(/[.!?]+/).filter((s: string) => s.trim());
-		return sentences.map((sentence: string) => Array.from(sentence.trim().normalize('NFD')));
 	}
 
 	// Convert phonemes to IDs using the phoneme ID map

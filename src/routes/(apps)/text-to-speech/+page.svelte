@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
+	import { toast } from 'svelte-sonner';
 	import MicIcon from 'virtual:icons/lucide/mic';
 	import PlayIcon from 'virtual:icons/lucide/play';
 	import PauseIcon from 'virtual:icons/lucide/pause';
@@ -262,6 +263,20 @@
 			case 'error':
 				status = 'error';
 				error = data.data;
+
+				// Show toast notification for errors
+				if (data.errorType === 'phonemization') {
+					toast.error('Phonemization Failed', {
+						description:
+							'Unable to convert text to phonemes. The text may contain unsupported characters or the phonemizer service is unavailable.',
+						duration: 5000
+					});
+				} else {
+					toast.error('TTS Error', {
+						description: data.data || 'An error occurred during text-to-speech generation.',
+						duration: 4000
+					});
+				}
 				break;
 			case 'stream':
 				chunks = [...chunks, data.chunk];

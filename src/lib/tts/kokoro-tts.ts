@@ -329,8 +329,10 @@ export class KokoroTTS {
 				.replace(/ɬ/g, 'l')
 				.trim();
 		} catch (error) {
-			console.error('Phonemization error:', error);
-			return text;
+			console.error('Phonemization failed:', error);
+			throw new Error(
+				`Phonemization failed: ${error instanceof Error ? error.message : String(error)}`
+			);
 		}
 	}
 
