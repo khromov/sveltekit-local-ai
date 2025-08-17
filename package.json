@@ -30,7 +30,7 @@
 		"@iconify-json/logos": "^1.2.9",
 		"@iconify-json/lucide": "^1.2.62",
 		"@sveltejs/adapter-node": "^5.3.1",
-		"@sveltejs/kit": "^2.27.3",
+		"@sveltejs/kit": "^2.31.1",
 		"@sveltejs/vite-plugin-svelte": "^6.1.2",
 		"@transcribe/transcriber": "^3.0.0",
 		"@webgpu/types": "^0.1.64",
