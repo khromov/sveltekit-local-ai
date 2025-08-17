@@ -390,7 +390,6 @@
 								<VoiceSelector
 									{voices}
 									selectedVoice={selectedVoice ?? ''}
-									modelType={selectedModel ?? ''}
 									onVoiceChange={setSelectedVoice}
 									onVoicePreview={handleVoicePreview}
 								/>
