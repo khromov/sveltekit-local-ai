@@ -6,3 +6,4 @@ src/routes/(apps)/og
 src/routes/debug
 icons.txt
 static/onnx-runtime
+scripts
