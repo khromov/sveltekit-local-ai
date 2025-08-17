@@ -219,7 +219,7 @@ export class KokoroTTS {
 				} else {
 					throw new Error('Using WASM as requested');
 				}
-			} catch (webgpuError) {
+			} catch {
 				// Fallback to WASM with explicit configuration
 				session = await ort.InferenceSession.create(new Uint8Array(modelBuffer), {
 					executionProviders: [
@@ -423,12 +423,10 @@ export class KokoroTTS {
 							const finalAudioData = new Float32Array(audioData);
 
 							// Clean up NaN values and normalize
-							let hasNaN = false;
 							let maxAmplitude = 0;
 							for (let i = 0; i < finalAudioData.length; i++) {
 								if (isNaN(finalAudioData[i])) {
 									finalAudioData[i] = 0; // Replace NaN with silence
-									hasNaN = true;
 								} else {
 									maxAmplitude = Math.max(maxAmplitude, Math.abs(finalAudioData[i]));
 								}

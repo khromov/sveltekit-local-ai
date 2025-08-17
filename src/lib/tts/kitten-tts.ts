@@ -325,12 +325,10 @@ export class KittenTTS {
 							}
 
 							// Clean up NaN values and normalize
-							let hasNaN = false;
 							let maxAmplitude = 0;
 							for (let i = 0; i < finalAudioData.length; i++) {
 								if (isNaN(finalAudioData[i])) {
 									finalAudioData[i] = 0; // Replace NaN with silence
-									hasNaN = true;
 								} else {
 									maxAmplitude = Math.max(maxAmplitude, Math.abs(finalAudioData[i]));
 								}

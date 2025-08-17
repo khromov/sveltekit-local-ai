@@ -12,7 +12,6 @@
 	interface Props {
 		voices: Voice[];
 		selectedVoice: string | number | null;
-		modelType: string;
 		onVoiceChange: (voiceId: string | number) => void;
 		onVoicePreview?: (params: {
 			voice: string | number;
@@ -21,7 +20,7 @@
 		}) => void;
 	}
 
-	let { voices, selectedVoice, modelType, onVoiceChange, onVoicePreview }: Props = $props();
+	let { voices, selectedVoice, onVoiceChange, onVoicePreview }: Props = $props();
 
 	let isExpanded = $state(false);
 	let previewingVoice = $state<string | number | null>(null);

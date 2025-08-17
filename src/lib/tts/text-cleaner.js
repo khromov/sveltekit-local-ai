@@ -11,13 +11,13 @@ export function cleanTextForTTS(text) {
 	const cleanedText = text
 		.replace(emojiRegex, '')
 		.replace(/\b\/\b/, ' slash ')
-		.replace(/[\/\\()¯]/g, '')
+		.replace(/[/\\()¯]/g, '')
 		.replace(/["""]/g, '')
 		.replace(/\s—/g, '.')
 		.replace(/\b_\b/g, ' ')
 		.replace(/\b-\b/g, ' ')
 		// Remove non-Latin characters (keep basic Latin, Latin Extended, numbers, punctuation, and whitespace)
-		.replace(/[^\u0000-\u024F]/g, '');
+		.replace(/[^\u0020-\u024F]/g, '');
 
 	return cleanedText.trim();
 }
