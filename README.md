@@ -1,11 +1,18 @@
-# SvelteKit Local AI Chat
+# SvelteKit Local AI Tools
 
-A browser-based chat application with AI models that run entirely on your device without sending data to external servers. This project uses Svelte 5, SvelteKit, WebAssembly, and the Wllama library.
+A browser-based AI application that runs entirely on your device without sending data to external servers. This project uses Svelte 5, SvelteKit, WebAssembly, and various AI libraries for chat, transcription, text-to-speech, and image processing.
 
 ## Live Demo
 
 You can try the application at:
 https://ai.stanislav.garden
+
+## Features
+
+- **Chat** - LLM conversations using models like Gemma3 via llama.cpp
+- **Transcribe** - Speech-to-text using Whisper AI with subtitle export
+- **Text-to-Speech** - Voice synthesis with Kitten TTS, Piper, and Kokoro models
+- **Background Remover** - AI-powered background removal using RMBG v1.4
 
 ## Running Locally
 
@@ -53,7 +60,7 @@ docker run -p 3000:3000 sveltekit-local-ai
 
 ## How It Works
 
-The application downloads compact language models directly to your browser and runs inference using WebAssembly. This approach ensures your conversations stay private and can work offline after the initial model download.
+The application downloads AI models directly to your browser and runs inference using WebAssembly. Models are cached locally using OPFS when available. This approach ensures your data stays private and can work offline after the initial model download.
 
 ## Acknowledgements
 
