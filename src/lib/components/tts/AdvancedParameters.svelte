@@ -17,7 +17,8 @@
 </script>
 
 {#if hasAdvancedOptions}
-	<AdvancedSection>
+	<div class="advanced-section">
+		<AdvancedSection>
 		{#if selectedModel === 'kitten' || selectedModel === 'kokoro'}
 			<div class="param-item">
 				<WebGPUToggle modelValue={useWebGPU} onUpdate={onWebGPUToggle} />
@@ -30,12 +31,28 @@
 			</div>
 		{/if}
 	</AdvancedSection>
+	</div>
 {/if}
 
 <style>
+	.advanced-section {
+		background: var(--color-background-main);
+		border: var(--border-brutalist-thick);
+		padding: 1.5rem;
+		box-shadow: var(--shadow-brutalist-medium);
+		margin-bottom: 1rem;
+		transform: rotate(-0.1deg);
+	}
+
 	.param-item {
 		display: flex;
 		flex-direction: column;
 		gap: 0.375rem;
+	}
+
+	@media (max-width: 600px) {
+		.advanced-section {
+			padding: 1rem;
+		}
 	}
 </style>

@@ -14,8 +14,7 @@
 	let showParams = $state(initialOpen);
 </script>
 
-<div class="advanced-section">
-	<div class="advanced-params">
+<div class="advanced-params">
 		<button class="params-toggle" onclick={() => (showParams = !showParams)}>
 			<span class="toggle-emoji"><icon></icon></span>
 			<span>{title}</span>
@@ -28,18 +27,9 @@
 				{@render children()}
 			</div>
 		{/if}
-	</div>
 </div>
 
 <style>
-	.advanced-section {
-		background: var(--color-background-main);
-		border: var(--border-brutalist-thick);
-		padding: 1.5rem;
-		box-shadow: var(--shadow-brutalist-medium);
-		margin-bottom: 1rem;
-		transform: rotate(-0.1deg);
-	}
 
 	.advanced-params {
 		background: linear-gradient(135deg, rgba(255, 217, 61, 0.1) 0%, rgba(152, 251, 152, 0.1) 100%);
