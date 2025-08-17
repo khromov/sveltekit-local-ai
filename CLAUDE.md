@@ -87,6 +87,14 @@ Key persisted stores:
 - Uses SvelteKit's adapter-node for production builds
 - Express server with health check endpoint at `/_health`
 
+### ONNX Runtime Web Integration
+
+- ONNX Runtime Web is used for TTS models (kitten-tts, piper-tts, kokoro-tts) and background removal
+- WASM files are automatically copied from npm packages to ensure version compatibility
+- Use `npm run copy-wasm` to manually update WASM files from `onnxruntime-web` and `@huggingface/transformers`
+- WASM files are located in `static/onnx-runtime/` (for TTS) and `static/transformers/` (for background removal)
+- Both `dev` and `build` scripts automatically copy WASM files before starting
+
 ## Environment Variables
 
 - `PUBLIC_DISABLE_OPFS=true` - Disable OPFS caching for testing fallback behavior
