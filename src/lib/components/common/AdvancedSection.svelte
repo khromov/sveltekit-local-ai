@@ -127,10 +127,6 @@
 	}
 
 	@media (max-width: 600px) {
-		.advanced-section {
-			padding: 1rem;
-		}
-
 		.advanced-params {
 			padding: 1rem;
 		}
