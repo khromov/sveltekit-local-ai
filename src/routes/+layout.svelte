@@ -660,18 +660,6 @@
 		text-align: center;
 	}
 
-	:global(.loading) {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 2rem;
-		animation: fadeIn 0.4s ease-out;
-		width: 100%;
-		box-sizing: border-box;
-		flex: 1;
-		justify-content: center;
-	}
-
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
@@ -760,11 +748,6 @@
 
 		:global(.input-area) {
 			padding: 0.875rem 1rem;
-		}
-
-		:global(.loading) {
-			align-items: stretch;
-			padding: 0;
 		}
 
 		.nav-left {

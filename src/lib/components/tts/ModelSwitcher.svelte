@@ -22,7 +22,7 @@
 		<button
 			class="model-card"
 			class:active={selectedModel === 'kitten'}
-			class:loading={loading}
+			class:loading
 			disabled={loading}
 			onclick={() => onModelChange('kitten')}
 		>
@@ -38,7 +38,7 @@
 		<button
 			class="model-card"
 			class:active={selectedModel === 'piper'}
-			class:loading={loading}
+			class:loading
 			disabled={loading}
 			onclick={() => onModelChange('piper')}
 		>
@@ -54,7 +54,7 @@
 		<button
 			class="model-card"
 			class:active={selectedModel === 'kokoro'}
-			class:loading={loading}
+			class:loading
 			disabled={loading}
 			onclick={() => onModelChange('kokoro')}
 		>
@@ -78,18 +78,6 @@
 		margin-bottom: 1.5rem;
 		position: relative;
 		transform: rotate(-0.2deg);
-		animation: slideIn 0.4s ease-out;
-	}
-
-	@keyframes slideIn {
-		from {
-			transform: translateY(10px) rotate(-0.2deg);
-			opacity: 0;
-		}
-		to {
-			transform: translateY(0) rotate(-0.2deg);
-			opacity: 1;
-		}
 	}
 
 	h3 {

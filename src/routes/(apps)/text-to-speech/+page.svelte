@@ -385,7 +385,11 @@
 			</div>
 
 			<!-- Model Selection -->
-			<ModelSwitcher selectedModel={$ttsModel} onModelChange={handleModelChange} loading={status === 'loading'} />
+			<ModelSwitcher
+				selectedModel={$ttsModel}
+				onModelChange={handleModelChange}
+				loading={status === 'loading'}
+			/>
 
 			{#if status === 'loading'}
 				<LoadingProgress
