@@ -1,7 +1,13 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { toast } from 'svelte-sonner';
-	import { ttsModel, ttsWebGPUKitten, ttsWebGPUKokoro, ttsKittenSampleRate, ttsText } from '$lib/stores';
+	import {
+		ttsModel,
+		ttsWebGPUKitten,
+		ttsWebGPUKokoro,
+		ttsKittenSampleRate,
+		ttsText
+	} from '$lib/stores';
 	import MicIcon from 'virtual:icons/lucide/mic';
 	import PlayIcon from 'virtual:icons/lucide/play';
 	import PauseIcon from 'virtual:icons/lucide/pause';
@@ -438,11 +444,7 @@
 										<CopyIcon />
 									{/if}
 								</button>
-								<button
-									class="clear-button"
-									onclick={handleClear}
-									title="Clear text"
-								>
+								<button class="clear-button" onclick={handleClear} title="Clear text">
 									<TrashIcon />
 								</button>
 							</div>
@@ -452,7 +454,9 @@
 					<div class="text-input-wrapper">
 						<textarea
 							bind:value={text}
-						oninput={() => { $ttsText = text; }}
+							oninput={() => {
+								$ttsText = text;
+							}}
 							placeholder="Type or paste your text here..."
 							class="text-input"
 							disabled={status === 'generating'}
