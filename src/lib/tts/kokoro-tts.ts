@@ -1,6 +1,6 @@
 import { BASE_MODEL_URL } from '$lib/config.js';
 import * as ort from 'onnxruntime-web';
-import { cachedFetch } from './model-cache';
+import { cachedFetch } from '$lib/download-utils';
 import { phonemize } from 'phonemizer';
 import { RawAudio } from '@huggingface/transformers';
 

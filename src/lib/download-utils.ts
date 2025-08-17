@@ -201,3 +201,17 @@ export async function getCacheInfo(): Promise<{ fileName: string; size: number }
 
 	return cacheInfo;
 }
+
+/**
+ * Compatibility wrapper for model-cache.ts cachedFetch function
+ * Provides the same interface as the old IndexedDB-based caching
+ * @param url URL of the file to fetch/cache
+ * @returns Response object containing the cached or downloaded file
+ */
+export async function cachedFetch(url: string): Promise<Response> {
+	const file = await downloadModelWithProgress(url, () => {
+		// Silent progress callback for compatibility
+	});
+
+	return new Response(file);
+}
