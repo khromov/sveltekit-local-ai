@@ -14,6 +14,7 @@
 	import CopyIcon from 'virtual:icons/lucide/copy';
 	import CheckIcon from 'virtual:icons/lucide/check';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
+	import DicesIcon from 'virtual:icons/lucide/dices';
 
 	import CardInterface from '$lib/components/common/CardInterface.svelte';
 	import Toolbar from '$lib/components/common/Toolbar.svelte';
@@ -261,6 +262,10 @@
 		}, 2000);
 	}
 
+	function handleGetRandomQuote() {
+		text = getRandomQuote();
+	}
+
 	// Worker message handlers
 	function onMessageReceived(event: MessageEvent) {
 		const { data } = event;
@@ -417,6 +422,13 @@
 							class="text-input"
 							disabled={status === 'generating'}
 						></textarea>
+						<button
+							class="dice-button"
+							onclick={handleGetRandomQuote}
+							title="Get random Svelte quote"
+						>
+							<DicesIcon />
+						</button>
 						<button
 							class="copy-button"
 							onclick={handleCopy}
@@ -611,10 +623,10 @@
 		cursor: not-allowed;
 	}
 
+	.dice-button,
 	.copy-button {
 		position: absolute;
 		top: 0.5rem;
-		right: 0.5rem;
 		width: 36px;
 		height: 36px;
 		background: var(--color-background-main);
@@ -627,11 +639,21 @@
 		color: var(--color-text-primary);
 	}
 
+	.dice-button {
+		right: 3rem;
+	}
+
+	.copy-button {
+		right: 0.5rem;
+	}
+
+	.dice-button :global(svg),
 	.copy-button :global(svg) {
 		width: 18px;
 		height: 18px;
 	}
 
+	.dice-button:hover,
 	.copy-button:hover {
 		background: var(--color-primary);
 		transform: translate(-1px, -1px);
