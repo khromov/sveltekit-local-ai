@@ -2,7 +2,7 @@ import { BASE_MODEL_URL } from '$lib/config.js';
 import * as ort from 'onnxruntime-web';
 import { cachedFetch } from './model-cache.js';
 import { phonemize } from 'phonemizer';
-import { RawAudio } from './utils.js';
+import { RawAudio } from '@huggingface/transformers';
 
 // Kokoro TTS class for local model
 export class KokoroTTS {

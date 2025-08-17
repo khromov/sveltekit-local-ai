@@ -1,7 +1,7 @@
 import * as ort from 'onnxruntime-web';
 import { cachedFetch } from './model-cache.js';
 import { phonemize } from 'phonemizer';
-import type { RawAudio } from './utils.js';
+import { RawAudio } from '@huggingface/transformers';
 
 // Piper TTS class for local model
 export class PiperTTS {

@@ -32,7 +32,7 @@ export function chunkText(text) {
 
 	// First, split by newlines
 	const lines = text.split('\n');
-	const chunks = [];
+	const chunks: string[] = [];
 
 	for (const line of lines) {
 		// Skip empty lines
