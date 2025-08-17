@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { toast } from 'svelte-sonner';
-	import { ttsModel, ttsWebGPUKitten, ttsWebGPUKokoro, ttsKittenSampleRate } from '$lib/stores';
+	import {
+		ttsModel,
+		ttsWebGPUKitten,
+		ttsWebGPUKokoro,
+		ttsKittenSampleRate
+	} from '$lib/stores';
 	import MicIcon from 'virtual:icons/lucide/mic';
 	import PlayIcon from 'virtual:icons/lucide/play';
 	import PauseIcon from 'virtual:icons/lucide/pause';
@@ -106,6 +111,7 @@
 			restartWorker(enabled);
 		}
 	}
+
 
 	let previewAudio: HTMLAudioElement | null = null;
 	let isPreviewMode = $state(false);

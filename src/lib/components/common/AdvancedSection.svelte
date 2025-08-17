@@ -1,33 +1,35 @@
 <script lang="ts">
 	import SettingsIcon from 'virtual:icons/lucide/settings';
 	import ChevronDownIcon from 'virtual:icons/lucide/chevron-down';
+	import { advancedExpanded } from '$lib/stores';
 	import type { Snippet } from 'svelte';
 
 	interface Props {
 		title?: string;
 		icon?: typeof SettingsIcon;
-		initialOpen?: boolean;
 		children: Snippet;
 	}
 
 	let {
 		title = 'Advanced Parameters',
 		icon = SettingsIcon,
-		initialOpen = false,
 		children
 	}: Props = $props();
-	let showParams = $state(initialOpen);
+
+	function handleToggle() {
+		$advancedExpanded = !$advancedExpanded;
+	}
 </script>
 
 <div class="advanced-params">
-	<button class="params-toggle" onclick={() => (showParams = !showParams)}>
+	<button class="params-toggle" onclick={handleToggle}>
 		<span class="toggle-emoji"><icon></icon></span>
 		<span>{title}</span>
-		<span class="toggle-icon" class:rotated={showParams}>
+		<span class="toggle-icon" class:rotated={$advancedExpanded}>
 			<ChevronDownIcon />
 		</span>
 	</button>
-	{#if showParams}
+	{#if $advancedExpanded}
 		<div class="params-grid">
 			{@render children()}
 		</div>

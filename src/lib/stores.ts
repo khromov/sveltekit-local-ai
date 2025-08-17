@@ -14,3 +14,4 @@ export const ttsModel = persisted<'kitten' | 'piper' | 'kokoro' | null>('ttsMode
 export const ttsWebGPUKitten = persisted<boolean>('ttsWebGPUKitten', false);
 export const ttsWebGPUKokoro = persisted<boolean>('ttsWebGPUKokoro', false);
 export const ttsKittenSampleRate = persisted<number>('ttsKittenSampleRate', 24000);
+export const advancedExpanded = persisted<boolean>('advancedExpanded', false);
