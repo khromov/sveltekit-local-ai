@@ -1,5 +1,3 @@
- 
-
 import { BASE_MODEL_URL } from '$lib/config.js';
 import { cleanTextForTTS, chunkText } from './text-cleaner.js';
 import * as ort from 'onnxruntime-web';
@@ -8,24 +6,27 @@ import { phonemize } from 'phonemizer';
 
 // Text splitting stream to break text into chunks
 export class TextSplitterStream {
+	chunks: string[];
+	closed: boolean;
+
 	constructor() {
 		this.chunks = [];
 		this.closed = false;
 	}
 
-	chunkText(text) {
+	chunkText(text: string): string[] | null {
 		// Clean the text first, then chunk it
 		const cleanedText = cleanTextForTTS(text);
 		return chunkText(cleanedText);
 	}
 
-	push(text) {
+	push(text: string): void {
 		// Simple sentence splitting for now
 		const sentences = this.chunkText(text) || [text];
 		this.chunks.push(...sentences);
 	}
 
-	close() {
+	close(): void {
 		this.closed = true;
 	}
 
@@ -38,7 +39,10 @@ export class TextSplitterStream {
 
 // RawAudio class to handle audio data
 export class RawAudio {
-	constructor(audio, sampling_rate) {
+	audio: Float32Array;
+	sampling_rate: number;
+
+	constructor(audio: Float32Array, sampling_rate: number) {
 		this.audio = audio;
 		this.sampling_rate = sampling_rate;
 	}
@@ -53,7 +57,7 @@ export class RawAudio {
 		return new Blob([buffer], { type: 'audio/wav' });
 	}
 
-	encodeWAV(samples, sampleRate) {
+	encodeWAV(samples: Float32Array, sampleRate: number): ArrayBuffer {
 		const buffer = new ArrayBuffer(44 + samples.length * 2);
 		const view = new DataView(buffer);
 
@@ -89,13 +93,13 @@ export class RawAudio {
 		return buffer;
 	}
 
-	writeString(view, offset, string) {
+	writeString(view: DataView, offset: number, string: string): void {
 		for (let i = 0; i < string.length; i++) {
 			view.setUint8(offset + i, string.charCodeAt(i));
 		}
 	}
 
-	floatTo16BitPCM(output, offset, input) {
+	floatTo16BitPCM(output: DataView, offset: number, input: Float32Array): void {
 		for (let i = 0; i < input.length; i++, offset += 2) {
 			const s = Math.max(-1, Math.min(1, input[i]));
 			output.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
@@ -105,14 +109,25 @@ export class RawAudio {
 
 // KittenTTS class for local model
 export class KittenTTS {
-	constructor(voices, session, voiceEmbeddings) {
+	voices: any[];
+	session: any;
+	voiceEmbeddings: Record<string, any>;
+	wasmSession: any;
+	tokenizer: any;
+	vocab: Record<string, number> = {};
+	vocabArray: string[] = [];
+
+	constructor(voices?: any[], session?: any, voiceEmbeddings?: Record<string, any>) {
 		this.voices = voices || [];
 		this.session = session;
 		this.voiceEmbeddings = voiceEmbeddings || {};
 		this.wasmSession = null; // Fallback WASM session
 	}
 
-	static async from_pretrained(model_path, options = {}) {
+	static async from_pretrained(
+		model_path: string,
+		options: Record<string, any> = {}
+	): Promise<KittenTTS> {
 		try {
 			// Use imported ONNX Runtime Web and caching utility
 
@@ -140,24 +155,25 @@ export class KittenTTS {
 									preferredChannelsLast: false,
 									enableDebugLogs: false
 								}
-							},
+							} as any,
 							'wasm' // Keep WASM as fallback
 						],
 						// Global session options that might help with precision
-						optimizationLevel: 'basic', // Less aggressive optimization
+						graphOptimizationLevel: 'basic', // Less aggressive optimization
 						enableProfiling: false
 					});
 				} else {
 					throw new Error('Using WASM as requested');
 				}
 			} catch (webgpuError) {
+				console.warn('WebGPU failed, falling back to WASM:', webgpuError);
 				// Fallback to WASM with explicit configuration
 				session = await ort.InferenceSession.create(new Uint8Array(modelBuffer), {
 					executionProviders: [
 						{
 							name: 'wasm',
 							simd: true
-						}
+						} as any
 					]
 				});
 			}
@@ -188,7 +204,7 @@ export class KittenTTS {
 	}
 
 	// Load the tokenizer
-	async loadTokenizer() {
+	async loadTokenizer(): Promise<void> {
 		if (!this.tokenizer) {
 			try {
 				const response = await cachedFetch(
@@ -215,12 +231,13 @@ export class KittenTTS {
 	}
 
 	// Convert text to phonemes using the phonemizer package
-	async textToPhonemes(text) {
-		return await phonemize(text, 'en-us');
+	async textToPhonemes(text: string): Promise<string> {
+		const result = await phonemize(text, 'en-us');
+		return Array.isArray(result) ? result.join(' ') : result;
 	}
 
 	// Tokenize text using the loaded tokenizer
-	async tokenizeText(text) {
+	async tokenizeText(text: string): Promise<number[]> {
 		await this.loadTokenizer();
 
 		const phonemes = await this.textToPhonemes(text);
@@ -239,7 +256,10 @@ export class KittenTTS {
 		return tokens;
 	}
 
-	async *stream(textStreamer, options = {}) {
+	async *stream(
+		textStreamer: AsyncIterable<string>,
+		options: Record<string, any> = {}
+	): AsyncGenerator<{ text: string; audio: RawAudio }, void, unknown> {
 		const { voice = 'expr-voice-2-m', speed = 1.0 } = options;
 
 		// Process the text stream

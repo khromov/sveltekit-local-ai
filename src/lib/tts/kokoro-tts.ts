@@ -8,19 +8,23 @@ import { phonemize } from 'phonemizer';
 
 // Text splitting stream to break text into chunks (enhanced for streaming)
 export class TextSplitterStream {
+	chunks: string[];
+	pendingText: string;
+	closed: boolean;
+
 	constructor() {
 		this.chunks = [];
 		this.pendingText = '';
 		this.closed = false;
 	}
 
-	chunkText(text) {
+	chunkText(text: string): string[] | null {
 		// Clean the text first, then chunk it
 		const cleanedText = cleanTextForTTS(text);
 		return chunkText(cleanedText);
 	}
 
-	push(...texts) {
+	push(...texts: string[]): void {
 		// Support both single text and multiple texts like the official implementation
 		for (const text of texts) {
 			this.pendingText += text;
@@ -43,7 +47,7 @@ export class TextSplitterStream {
 		}
 	}
 
-	flush() {
+	flush(): void {
 		// Process any remaining text without waiting for sentence completion
 		if (this.pendingText.trim()) {
 			const chunks = this.chunkText(this.pendingText) || [this.pendingText];
@@ -52,7 +56,7 @@ export class TextSplitterStream {
 		}
 	}
 
-	close() {
+	close(): void {
 		// Flush any remaining text and close the stream
 		this.flush();
 		this.closed = true;
@@ -78,7 +82,10 @@ export class TextSplitterStream {
 
 // RawAudio class to handle audio data
 export class RawAudio {
-	constructor(audio, sampling_rate) {
+	audio: Float32Array;
+	sampling_rate: number;
+
+	constructor(audio: Float32Array, sampling_rate: number) {
 		this.audio = audio;
 		this.sampling_rate = sampling_rate;
 	}
@@ -93,7 +100,7 @@ export class RawAudio {
 		return new Blob([buffer], { type: 'audio/wav' });
 	}
 
-	encodeWAV(samples, sampleRate) {
+	encodeWAV(samples: Float32Array, sampleRate: number): ArrayBuffer {
 		const buffer = new ArrayBuffer(44 + samples.length * 2);
 		const view = new DataView(buffer);
 
@@ -129,13 +136,13 @@ export class RawAudio {
 		return buffer;
 	}
 
-	writeString(view, offset, string) {
+	writeString(view: DataView, offset: number, string: string): void {
 		for (let i = 0; i < string.length; i++) {
 			view.setUint8(offset + i, string.charCodeAt(i));
 		}
 	}
 
-	floatTo16BitPCM(output, offset, input) {
+	floatTo16BitPCM(output: DataView, offset: number, input: Float32Array): void {
 		for (let i = 0; i < input.length; i++, offset += 2) {
 			const s = Math.max(-1, Math.min(1, input[i]));
 			output.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
@@ -145,7 +152,14 @@ export class RawAudio {
 
 // Kokoro TTS class for local model
 export class KokoroTTS {
-	constructor(voices, session, voiceEmbeddings, tokenizer, modelBuffer) {
+	voices: any[];
+	session: any;
+	voiceEmbeddings: Record<string, Float32Array>;
+	tokenizer: any;
+	modelBuffer: ArrayBuffer | undefined;
+	wasmSession: any;
+
+	constructor(voices?: any[], session?: any, voiceEmbeddings?: Record<string, Float32Array>, tokenizer?: any, modelBuffer?: ArrayBuffer) {
 		this.voices = voices || [];
 		this.session = session;
 		this.voiceEmbeddings = voiceEmbeddings || {};
@@ -154,7 +168,7 @@ export class KokoroTTS {
 		this.wasmSession = null; // Fallback WASM session
 	}
 
-	static async from_pretrained(model_path, options = {}) {
+	static async from_pretrained(model_path: string, options: Record<string, any> = {}): Promise<KokoroTTS> {
 		try {
 			// Use imported ONNX Runtime Web and caching utility
 
@@ -189,11 +203,11 @@ export class KokoroTTS {
 									preferredChannelsLast: false,
 									enableDebugLogs: false
 								}
-							},
+							} as any,
 							'wasm' // Keep WASM as fallback
 						],
 						// Global session options that might help with precision
-						optimizationLevel: 'basic', // Less aggressive optimization
+						graphOptimizationLevel: 'basic', // Less aggressive optimization
 						enableProfiling: false
 					});
 				} else {
@@ -206,7 +220,7 @@ export class KokoroTTS {
 						{
 							name: 'wasm',
 							simd: true
-						}
+						} as any
 					]
 				});
 			}
@@ -281,7 +295,7 @@ export class KokoroTTS {
 	}
 
 	// Import and use the proper phonemization function
-	async phonemize(text, language = 'a') {
+	async phonemize(text: string, language: string = 'a'): Promise<string> {
 		try {
 			// Use imported phonemizer package with proper normalization
 
@@ -315,7 +329,7 @@ export class KokoroTTS {
 	}
 
 	// Use the tokenizer properly like the reference implementation
-	async tokenizeText(text, language = 'a') {
+	async tokenizeText(text: string, language: string = 'a'): Promise<number[]> {
 		if (!this.tokenizer) {
 			throw new Error('Tokenizer not loaded');
 		}
@@ -339,7 +353,7 @@ export class KokoroTTS {
 		return [0, ...tokens, 0];
 	}
 
-	async *stream(textStreamer, options = {}) {
+	async *stream(textStreamer: AsyncIterable<string>, options: Record<string, any> = {}): AsyncGenerator<{ text: string; phonemes: string; audio: RawAudio }, void, unknown> {
 		const { voice = 'af_heart', speed = 1.0 } = options;
 
 		// Process the text stream
@@ -378,7 +392,7 @@ export class KokoroTTS {
 							// Check if WebGPU produced NaN values and fallback to WASM
 							if (audioData.length > 0 && isNaN(audioData[0])) {
 								// Create WASM session if we don't have one
-								if (!this.wasmSession) {
+								if (!this.wasmSession && this.modelBuffer) {
 									this.wasmSession = await ort.InferenceSession.create(
 										new Uint8Array(this.modelBuffer),
 										{
