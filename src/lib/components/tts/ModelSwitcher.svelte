@@ -42,7 +42,7 @@
 			</div>
 			<div class="model-info">
 				<h4>Piper Voices</h4>
-				<p>75MB • High Quality • Fastest</p>
+				<p>75MB • Better Quality • Fast</p>
 			</div>
 		</button>
 
