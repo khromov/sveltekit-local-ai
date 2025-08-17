@@ -1,8 +1,9 @@
-import { KittenTTS, TextSplitterStream as KittenTextSplitterStream } from '../tts/kitten-tts';
-import { PiperTTS, TextSplitterStream as PiperTextSplitterStream } from '../tts/piper-tts';
-import { KokoroTTS, TextSplitterStream as KokoroTextSplitterStream } from '../tts/kokoro-tts';
+import { KittenTTS } from '../tts/kitten-tts';
+import { PiperTTS } from '../tts/piper-tts';
+import { KokoroTTS } from '../tts/kokoro-tts';
 import { detectWebGPU } from '../utils';
 import { BASE_MODEL_URL } from '$lib/config';
+import { TextSplitterStream } from '$lib/tts/utils';
 
 let tts: KittenTTS | PiperTTS | KokoroTTS | null = null;
 let device = 'wasm';
@@ -110,13 +111,6 @@ self.addEventListener('message', async (e: MessageEvent) => {
 			return;
 		}
 
-		// Use the correct TextSplitterStream based on current model
-		const TextSplitterStream =
-			currentModel === 'kitten'
-				? KittenTextSplitterStream
-				: currentModel === 'kokoro'
-					? KokoroTextSplitterStream
-					: PiperTextSplitterStream;
 		const streamer = new TextSplitterStream();
 
 		streamer.push(text);
