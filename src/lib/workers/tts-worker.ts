@@ -4,12 +4,12 @@ import { KokoroTTS, TextSplitterStream as KokoroTextSplitterStream } from '../tt
 import { detectWebGPU } from '../utils.js';
 import { BASE_MODEL_URL } from '$lib/config.js';
 
-let tts = null;
+let tts: KittenTTS | PiperTTS | KokoroTTS | null = null;
 let device = 'wasm';
-let currentModel = null;
+let currentModel: string | null = null;
 
 // Initialize the model
-async function initializeModel(modelType, useWebGPU = false) {
+async function initializeModel(modelType: string, useWebGPU = false): Promise<void> {
 	try {
 		currentModel = modelType;
 
@@ -66,8 +66,17 @@ async function initializeModel(modelType, useWebGPU = false) {
 }
 
 // Listen for messages from the main thread
-self.addEventListener('message', async (e) => {
-	const { type, model, useWebGPU, text, voice, speed, sampleRate = 24000, isPreview } = e.data;
+self.addEventListener('message', async (e: MessageEvent) => {
+	const { type, model, useWebGPU, text, voice, speed, sampleRate = 24000, isPreview }: {
+		type: string;
+		model: string;
+		useWebGPU: boolean;
+		text: string;
+		voice: string | number;
+		speed: number;
+		sampleRate: number;
+		isPreview: boolean;
+	} = e.data;
 
 	// Handle initialization
 	if (type === 'init') {
@@ -100,13 +109,13 @@ self.addEventListener('message', async (e) => {
 				? { voice, speed }
 				: currentModel === 'kokoro'
 					? { voice, speed }
-					: { speakerId: voice, lengthScale: 1.0 / speed }; // Piper uses speakerId and lengthScale
+					: { speakerId: typeof voice === 'string' ? parseInt(voice) : voice, lengthScale: 1.0 / speed }; // Piper uses speakerId and lengthScale
 
 		const stream = tts.stream(streamer, streamOptions);
-		const chunks = [];
+		const chunks: any[] = [];
 
 		try {
-			for await (const { text, audio } of stream) {
+			for await (const { text, audio } of stream as any) {
 				if (!isPreview) {
 					self.postMessage({
 						status: 'stream',
@@ -116,7 +125,7 @@ self.addEventListener('message', async (e) => {
 						}
 					});
 				}
-				chunks.push(audio);
+				chunks.push(audio as any);
 			}
 		} catch (error) {
 			console.error('Error during streaming:', error);
@@ -131,11 +140,12 @@ self.addEventListener('message', async (e) => {
 		let audio;
 		if (chunks.length > 0) {
 			try {
-				const originalSamplingRate = chunks[0].sampling_rate;
-				const length = chunks.reduce((sum, chunk) => sum + chunk.audio.length, 0);
+				const originalSamplingRate = (chunks[0] as any).sampling_rate;
+				const length = chunks.reduce((sum, chunk) => sum + (chunk as any).audio.length, 0);
 				let waveform = new Float32Array(length);
 				let offset = 0;
-				for (const { audio } of chunks) {
+				for (const chunk of chunks) {
+					const { audio } = chunk as any;
 					waveform.set(audio, offset);
 					offset += audio.length;
 				}
@@ -163,7 +173,7 @@ self.addEventListener('message', async (e) => {
 				}
 
 				// Create a new merged RawAudio with the target sample rate
-				audio = new (chunks[0].constructor as any)(waveform, targetSampleRate);
+				audio = new (chunks[0] as any).constructor(waveform, targetSampleRate);
 			} catch (error) {
 				console.error('Error processing audio chunks:', error);
 				self.postMessage({
