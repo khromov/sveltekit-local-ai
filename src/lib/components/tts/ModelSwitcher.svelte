@@ -1,7 +1,7 @@
 <script lang="ts">
 	import CatIcon from 'virtual:icons/lucide/cat';
 	import FlowerIcon from 'virtual:icons/lucide/flower';
-	import MusicIcon from 'virtual:icons/lucide/music';
+	import PianoIcon from 'virtual:icons/lucide/piano';
 
 	interface Props {
 		selectedModel: string | null;
@@ -38,7 +38,7 @@
 			onclick={() => onModelChange('piper')}
 		>
 			<div class="model-icon">
-				<MusicIcon />
+				<PianoIcon />
 			</div>
 			<div class="model-info">
 				<h4>Piper Voices</h4>
