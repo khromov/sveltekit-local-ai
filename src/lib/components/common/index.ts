@@ -1,4 +1,5 @@
 export { default as ActionButton } from './ActionButton.svelte';
+export { default as AdvancedSection } from './AdvancedSection.svelte';
 export { default as CardInterface } from './CardInterface.svelte';
 export { default as ContentArea } from './ContentArea.svelte';
 export { default as InputArea } from './InputArea.svelte';
