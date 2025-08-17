@@ -27,11 +27,10 @@
 	import SpeedControl from '$lib/components/tts/SpeedControl.svelte';
 	import TextStatistics from '$lib/components/tts/TextStatistics.svelte';
 	import VoiceSelector from '$lib/components/tts/VoiceSelector.svelte';
+	import { getRandomQuote } from '$lib/quotes';
 
 	// State variables
-	let text = $state(
-		'Hello there! Welcome to the text to speech page! Choose your preferred TTS model and start generating high-quality speech from text, all running locally in your browser!'
-	);
+	let text = $state('');
 	let lastGeneration = $state<any>(null);
 	let isPlaying = $state(false);
 	let currentChunkIndex = $state(-1);
@@ -346,6 +345,9 @@
 
 	// Initialize on mount
 	onMount(() => {
+		// Set a random quote as the initial text
+		text = getRandomQuote();
+
 		// If we have a persisted model, initialize with it
 		if ($ttsModel) {
 			// Set voice defaults based on the persisted model
