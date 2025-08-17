@@ -31,10 +31,7 @@ const onnxRuntimeFiles = [
 	'ort.bundle.min.mjs'
 ];
 
-const transformersFiles = [
-	'ort-wasm-simd-threaded.jsep.wasm',
-	'ort-wasm-simd-threaded.jsep.mjs'
-];
+const transformersFiles = ['ort-wasm-simd-threaded.jsep.wasm', 'ort-wasm-simd-threaded.jsep.mjs'];
 
 console.log('Copying ONNX Runtime WASM files from npm packages...');
 
