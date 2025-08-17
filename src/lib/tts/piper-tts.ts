@@ -1,5 +1,5 @@
 import * as ort from 'onnxruntime-web';
-import { cachedFetch } from './model-cache.js';
+import { cachedFetch } from './model-cache';
 import { phonemize } from 'phonemizer';
 import { RawAudio } from '@huggingface/transformers';
 
