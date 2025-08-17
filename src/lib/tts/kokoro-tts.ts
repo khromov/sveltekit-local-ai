@@ -1,5 +1,3 @@
- 
-
 import { BASE_MODEL_URL } from '$lib/config.js';
 import { chunkText, cleanTextForTTS } from './text-cleaner.js';
 import * as ort from 'onnxruntime-web';
@@ -159,7 +157,13 @@ export class KokoroTTS {
 	modelBuffer: ArrayBuffer | undefined;
 	wasmSession: any;
 
-	constructor(voices?: any[], session?: any, voiceEmbeddings?: Record<string, Float32Array>, tokenizer?: any, modelBuffer?: ArrayBuffer) {
+	constructor(
+		voices?: any[],
+		session?: any,
+		voiceEmbeddings?: Record<string, Float32Array>,
+		tokenizer?: any,
+		modelBuffer?: ArrayBuffer
+	) {
 		this.voices = voices || [];
 		this.session = session;
 		this.voiceEmbeddings = voiceEmbeddings || {};
@@ -168,7 +172,10 @@ export class KokoroTTS {
 		this.wasmSession = null; // Fallback WASM session
 	}
 
-	static async from_pretrained(model_path: string, options: Record<string, any> = {}): Promise<KokoroTTS> {
+	static async from_pretrained(
+		model_path: string,
+		options: Record<string, any> = {}
+	): Promise<KokoroTTS> {
 		try {
 			// Use imported ONNX Runtime Web and caching utility
 
@@ -353,7 +360,10 @@ export class KokoroTTS {
 		return [0, ...tokens, 0];
 	}
 
-	async *stream(textStreamer: AsyncIterable<string>, options: Record<string, any> = {}): AsyncGenerator<{ text: string; phonemes: string; audio: RawAudio }, void, unknown> {
+	async *stream(
+		textStreamer: AsyncIterable<string>,
+		options: Record<string, any> = {}
+	): AsyncGenerator<{ text: string; phonemes: string; audio: RawAudio }, void, unknown> {
 		const { voice = 'af_heart', speed = 1.0 } = options;
 
 		// Process the text stream

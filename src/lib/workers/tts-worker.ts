@@ -67,7 +67,16 @@ async function initializeModel(modelType: string, useWebGPU = false): Promise<vo
 
 // Listen for messages from the main thread
 self.addEventListener('message', async (e: MessageEvent) => {
-	const { type, model, useWebGPU, text, voice, speed, sampleRate = 24000, isPreview }: {
+	const {
+		type,
+		model,
+		useWebGPU,
+		text,
+		voice,
+		speed,
+		sampleRate = 24000,
+		isPreview
+	}: {
 		type: string;
 		model: string;
 		useWebGPU: boolean;
@@ -109,7 +118,10 @@ self.addEventListener('message', async (e: MessageEvent) => {
 				? { voice, speed }
 				: currentModel === 'kokoro'
 					? { voice, speed }
-					: { speakerId: typeof voice === 'string' ? parseInt(voice) : voice, lengthScale: 1.0 / speed }; // Piper uses speakerId and lengthScale
+					: {
+							speakerId: typeof voice === 'string' ? parseInt(voice) : voice,
+							lengthScale: 1.0 / speed
+						}; // Piper uses speakerId and lengthScale
 
 		const stream = tts.stream(streamer, streamOptions);
 		const chunks: any[] = [];
