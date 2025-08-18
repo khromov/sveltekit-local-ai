@@ -1,4 +1,3 @@
-/// file: src/service-worker.js
 // Disables access to DOM typings like `HTMLElement` which are not available
 // inside a service worker and instantiates the correct globals
 /// <reference no-default-lib="true"/>
@@ -13,9 +12,8 @@
 
 import { build, files, version } from '$service-worker';
 
-// The reassignment of `self` to `sw` allows you to type cast it in the process
-// (this is the easiest way to do it without needing additional files)
-const sw = /** @type {ServiceWorkerGlobalScope} */ /** @type {unknown} */ self;
+// This gives `self` the correct types
+const self = globalThis.self as unknown as ServiceWorkerGlobalScope;
 
 // Create a unique cache name for this deployment
 const CACHE = `cache-${version}`;
@@ -25,7 +23,7 @@ const ASSETS = [
 	...files // everything in `static`
 ];
 
-sw.addEventListener('install', (event) => {
+self.addEventListener('install', (event) => {
 	// Create a new cache and add all files to it
 	async function addFilesToCache() {
 		const cache = await caches.open(CACHE);
@@ -35,7 +33,7 @@ sw.addEventListener('install', (event) => {
 	event.waitUntil(addFilesToCache());
 });
 
-sw.addEventListener('activate', (event) => {
+self.addEventListener('activate', (event) => {
 	// Remove previous cached data from disk
 	async function deleteOldCaches() {
 		for (const key of await caches.keys()) {
@@ -46,7 +44,7 @@ sw.addEventListener('activate', (event) => {
 	event.waitUntil(deleteOldCaches());
 });
 
-sw.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', (event) => {
 	// ignore POST requests etc
 	if (event.request.method !== 'GET') return;
 
