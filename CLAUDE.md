@@ -16,7 +16,15 @@ This is a browser-based AI chat and transcription application that runs entirely
 - `npm run check` - Type check with svelte-check
 - `npm run check:watch` - Type check in watch mode
 - `npm run lint` - Run ESLint and Prettier checks
+- `npm run lint:fix` - Fix ESLint and Prettier issues automatically
 - `npm run format` - Format code with Prettier
+- `npm run checks` - Run format, lint, and check in sequence
+- `npm run copy-wasm` - Manually copy WASM files from npm packages
+
+### Testing Commands
+
+- `npm run test` - Run unit tests once
+- `npm run test:unit` - Run unit tests in watch mode
 
 ### Docker Commands
 
@@ -63,7 +71,9 @@ Key persisted stores:
 
 - **Chat components**: `src/lib/components/chat/` (ModelSelector, ChatMessages, MessageInput, Message)
 - **Whisper components**: `src/lib/components/whisper/` (file upload, model selection, transcription)
-- **Common components**: LoadingProgress, ErrorDisplay, ProgressBar
+- **TTS components**: `src/lib/components/tts/` (voice selection, speed control, sample rate, WebGPU toggle)
+- **Background Remover components**: `src/lib/components/background-remover/` (upload, progress, results)
+- **Common components**: `src/lib/components/common/` (LoadingProgress, ErrorDisplay, ProgressBar, CardInterface, etc.)
 
 ## Key Technical Details
 
@@ -95,6 +105,14 @@ Key persisted stores:
 - Files are located in `static/onnx-runtime/` (for TTS) and `static/transformers/` (for background removal)
 - Both `dev` and `build` scripts automatically copy files before starting
 - Static ONNX Runtime directories are gitignored since they're generated from npm packages
+
+### Application Features
+
+- **Chat**: LLM conversations using Wllama with models like Gemma3
+- **Transcribe**: Speech-to-text using Whisper AI with subtitle export capabilities
+- **Text-to-Speech**: Voice synthesis with multiple TTS models and WebGPU acceleration
+- **Background Remover**: AI-powered background removal for images
+- All features run entirely client-side without external server dependencies
 
 ## Environment Variables
 
