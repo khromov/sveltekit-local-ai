@@ -1,6 +1,7 @@
 import * as ort from 'onnxruntime-web';
 import { cachedFetch } from '$lib/download-utils';
 import { phonemize } from 'phonemizer';
+import { RawAudio } from '@huggingface/transformers';
 
 // Piper TTS class for local model
 export class PiperTTS {
@@ -122,7 +123,7 @@ export class PiperTTS {
 			noiseScale?: number;
 			noiseWScale?: number;
 		} = {}
-	): AsyncGenerator<{ text: string; audio: any }, void, unknown> {
+	): AsyncGenerator<{ text: string; audio: RawAudio }, void, unknown> {
 		const { speakerId = 0, lengthScale = 1.0, noiseScale = 0.667, noiseWScale = 0.8 } = options;
 
 		// Process the text stream
@@ -173,7 +174,7 @@ export class PiperTTS {
 
 						yield {
 							text,
-							audio: { data: finalAudioData, sampling_rate: sampleRate }
+							audio: new RawAudio(finalAudioData, sampleRate)
 						};
 					}
 				} catch (error) {
@@ -181,7 +182,7 @@ export class PiperTTS {
 					// Yield silence in case of error
 					yield {
 						text,
-						audio: { data: new Float32Array(22050), sampling_rate: 22050 }
+						audio: new RawAudio(new Float32Array(22050), 22050)
 					};
 				}
 			}

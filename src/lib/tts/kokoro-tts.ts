@@ -2,6 +2,7 @@ import { BASE_MODEL_URL } from '$lib/config.js';
 import * as ort from 'onnxruntime-web';
 import { cachedFetch } from '$lib/download-utils';
 import { phonemize } from 'phonemizer';
+import { RawAudio } from '@huggingface/transformers';
 
 // Kokoro TTS class for local model
 export class KokoroTTS {
@@ -220,7 +221,7 @@ export class KokoroTTS {
 	async *stream(
 		textStreamer: AsyncIterable<string>,
 		options: Record<string, any> = {}
-	): AsyncGenerator<{ text: string; phonemes: string; audio: any }, void, unknown> {
+	): AsyncGenerator<{ text: string; phonemes: string; audio: RawAudio }, void, unknown> {
 		const { voice = 'af_heart', speed = 1.0 } = options;
 
 		// Process the text stream
@@ -311,7 +312,7 @@ export class KokoroTTS {
 							yield {
 								text,
 								phonemes, // Include phonemes in the output
-								audio: { data: finalAudioData, sampling_rate: sampleRate }
+								audio: new RawAudio(finalAudioData, sampleRate)
 							};
 						} catch (modelError) {
 							console.error('Model inference error:', modelError);
@@ -327,7 +328,7 @@ export class KokoroTTS {
 					yield {
 						text,
 						phonemes: text, // Fallback phonemes
-						audio: { data: new Float32Array(24000), sampling_rate: 24000 }
+						audio: new RawAudio(new Float32Array(24000), 24000)
 					};
 				}
 			}

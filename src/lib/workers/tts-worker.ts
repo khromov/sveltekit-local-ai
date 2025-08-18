@@ -9,43 +9,6 @@ let tts: KittenTTS | PiperTTS | KokoroTTS | null = null;
 let device = 'wasm';
 let currentModel: string | null = null;
 
-// Helper function to convert audio object to blob
-function audioToBlob(audio: any): Blob {
-	const { data, sampling_rate } = audio;
-	const buffer = new ArrayBuffer(44 + data.length * 2);
-	const view = new DataView(buffer);
-
-	// WAV header
-	const writeString = (offset: number, string: string) => {
-		for (let i = 0; i < string.length; i++) {
-			view.setUint8(offset + i, string.charCodeAt(i));
-		}
-	};
-
-	writeString(0, 'RIFF');
-	view.setUint32(4, 36 + data.length * 2, true);
-	writeString(8, 'WAVE');
-	writeString(12, 'fmt ');
-	view.setUint32(16, 16, true);
-	view.setUint16(20, 1, true);
-	view.setUint16(22, 1, true);
-	view.setUint32(24, sampling_rate, true);
-	view.setUint32(28, sampling_rate * 2, true);
-	view.setUint16(32, 2, true);
-	view.setUint16(34, 16, true);
-	writeString(36, 'data');
-	view.setUint32(40, data.length * 2, true);
-
-	// Convert float32 to int16
-	const offset = 44;
-	for (let i = 0; i < data.length; i++) {
-		const sample = Math.max(-1, Math.min(1, data[i]));
-		view.setInt16(offset + i * 2, sample * 0x7fff, true);
-	}
-
-	return new Blob([buffer], { type: 'audio/wav' });
-}
-
 // Initialize the model
 async function initializeModel(modelType: string, useWebGPU = false): Promise<void> {
 	try {
@@ -173,7 +136,7 @@ self.addEventListener('message', async (e: MessageEvent) => {
 					self.postMessage({
 						status: 'stream',
 						chunk: {
-							audio: audioToBlob(audio),
+							audio: audio.toBlob(),
 							text
 						}
 					});
@@ -203,13 +166,13 @@ self.addEventListener('message', async (e: MessageEvent) => {
 		if (chunks.length > 0) {
 			try {
 				const originalSamplingRate = (chunks[0] as any).sampling_rate;
-				const length = chunks.reduce((sum, chunk) => sum + (chunk as any).data.length, 0);
+				const length = chunks.reduce((sum, chunk) => sum + (chunk as any).audio.length, 0);
 				let waveform = new Float32Array(length);
 				let offset = 0;
 				for (const chunk of chunks) {
-					const audioData = (chunk as any).data;
-					waveform.set(audioData, offset);
-					offset += audioData.length;
+					const { audio } = chunk as any;
+					waveform.set(audio, offset);
+					offset += audio.length;
 				}
 
 				// Normalize peaks & trim silence
@@ -234,8 +197,8 @@ self.addEventListener('message', async (e: MessageEvent) => {
 					waveform = resampleLinear(waveform, originalSamplingRate, targetSampleRate);
 				}
 
-				// Create a new merged audio object with the target sample rate
-				audio = { data: waveform, sampling_rate: targetSampleRate };
+				// Create a new merged RawAudio with the target sample rate
+				audio = new (chunks[0] as any).constructor(waveform, targetSampleRate);
 			} catch (error) {
 				console.error('Error processing audio chunks:', error);
 				self.postMessage({
@@ -246,7 +209,7 @@ self.addEventListener('message', async (e: MessageEvent) => {
 			}
 		}
 
-		self.postMessage({ status: 'complete', audio: audio ? audioToBlob(audio) : null });
+		self.postMessage({ status: 'complete', audio: audio?.toBlob() });
 	}
 });
 

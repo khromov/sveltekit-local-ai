@@ -2,6 +2,7 @@ import { BASE_MODEL_URL } from '$lib/config.js';
 import * as ort from 'onnxruntime-web';
 import { cachedFetch } from '$lib/download-utils';
 import { phonemize } from 'phonemizer';
+import { RawAudio } from '@huggingface/transformers';
 
 // KittenTTS class for local model
 export class KittenTTS {
@@ -162,7 +163,7 @@ export class KittenTTS {
 	async *stream(
 		textStreamer: AsyncIterable<string>,
 		options: Record<string, any> = {}
-	): AsyncGenerator<{ text: string; audio: any }, void, unknown> {
+	): AsyncGenerator<{ text: string; audio: RawAudio }, void, unknown> {
 		const { voice = 'expr-voice-2-m', speed = 1.0 } = options;
 
 		// Process the text stream
@@ -249,7 +250,7 @@ export class KittenTTS {
 
 							yield {
 								text,
-								audio: { data: finalAudioData, sampling_rate: sampleRate }
+								audio: new RawAudio(finalAudioData, sampleRate)
 							};
 						} catch (modelError) {
 							console.error('Model inference error:', modelError);
@@ -264,7 +265,7 @@ export class KittenTTS {
 					// Yield silence in case of error
 					yield {
 						text,
-						audio: { data: new Float32Array(22050), sampling_rate: 22050 }
+						audio: new RawAudio(new Float32Array(22050), 22050)
 					};
 				}
 			}
