@@ -1,5 +1,3 @@
-import { PUBLIC_DISABLE_OPFS } from '$env/static/public';
-
 declare global {
 	interface FileSystemDirectoryHandle {
 		entries(): AsyncIterableIterator<[string, FileSystemHandle]>;
@@ -13,9 +11,8 @@ function getModelFileName(url: string): string {
 	return url.split('/').pop() || 'downloaded-model';
 }
 
-export function isOPFSSupported(): boolean {
-	if (PUBLIC_DISABLE_OPFS === 'true') {
-		console.log('OPFS disabled via PUBLIC_DISABLE_OPFS environment variable');
+export function isOPFSSupported(forceDisable = false): boolean {
+	if (forceDisable) {
 		return false;
 	}
 
@@ -56,19 +53,12 @@ async function cacheModel(fileName: string, data: Uint8Array): Promise<void> {
 	}
 }
 
-/**
- * Downloads a model file with progress tracking and OPFS caching
- * @param url URL of the model to download
- * @param onProgress Progress callback function
- * @returns A File object containing the model and cache info
- */
 export async function downloadModelWithProgress(
 	url: string,
 	onProgress: (progress: number, cached?: boolean) => void
 ): Promise<File> {
 	const fileName = getModelFileName(url);
 
-	// Check if model is already cached (only if OPFS is supported)
 	const cachedModel = await getCachedModel(fileName);
 	if (cachedModel) {
 		onProgress(100, true);
@@ -79,10 +69,9 @@ export async function downloadModelWithProgress(
 	onProgress(0);
 	console.log(`Downloading model from: ${url}`);
 
-	// If OPFS is not supported, use simple fetch without progress tracking
 	if (!isOPFSSupported()) {
 		console.log('OPFS not supported, using simple fetch');
-		onProgress(-1); // Signal no progress tracking available
+		onProgress(-1);
 		const response = await fetch(url);
 
 		if (!response.ok) {
@@ -200,4 +189,10 @@ export async function getCacheInfo(): Promise<{ fileName: string; size: number }
 	}
 
 	return cacheInfo;
+}
+
+export async function cachedFetch(url: string): Promise<Response> {
+	const file = await downloadModelWithProgress(url, () => {});
+
+	return new Response(file);
 }

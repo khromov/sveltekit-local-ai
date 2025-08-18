@@ -23,3 +23,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 codebase.md
+
+# ONNX Runtime files (generated from npm packages)
+/static/onnx-runtime/
+/static/transformers/

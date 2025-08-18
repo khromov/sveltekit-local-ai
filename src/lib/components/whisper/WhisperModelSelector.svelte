@@ -2,6 +2,7 @@
 	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
 	import { isOPFSSupported } from '$lib/download-utils';
+	import { PUBLIC_DISABLE_OPFS } from '$env/static/public';
 	import CheckIcon from 'virtual:icons/lucide/check';
 	import ChevronDownIcon from 'virtual:icons/lucide/chevron-down';
 
@@ -35,7 +36,7 @@
 		onRetry
 	}: Props = $props();
 
-	let opfsSupported = isOPFSSupported();
+	let opfsSupported = isOPFSSupported(PUBLIC_DISABLE_OPFS === 'true');
 </script>
 
 <div class="model-selection">

@@ -2,6 +2,7 @@
 	import MessageSquareIcon from 'virtual:icons/lucide/message-square';
 	import MicIcon from 'virtual:icons/lucide/mic';
 	import ImageIcon from 'virtual:icons/lucide/image';
+	import SpeechIcon from 'virtual:icons/lucide/speech';
 	// No props needed for this component
 </script>
 
@@ -55,8 +56,27 @@
 				</div>
 			</a>
 
-			<a href="/background-remover" class="feature-card background-card">
+			<a href="/text-to-speech" class="feature-card tts-card">
 				<div class="card-number">Tool #03</div>
+				<div class="card-content">
+					<div class="icon-container">
+						<SpeechIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
+					</div>
+					<h2>Text to Speech</h2>
+					<p class="feature-description">
+						Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,
+						or Kokoro models for high-quality voice synthesis.
+					</p>
+					<div class="feature-highlights">
+						<span class="highlight">Multiple Models</span>
+						<span class="highlight">Natural Voices</span>
+						<span class="highlight">Local Processing</span>
+					</div>
+				</div>
+			</a>
+
+			<a href="/background-remover" class="feature-card background-card">
+				<div class="card-number">Tool #04</div>
 				<div class="card-content">
 					<div class="icon-container">
 						<ImageIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
@@ -179,7 +199,7 @@
 
 	.feature-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 		gap: 2rem;
 		margin-bottom: 3rem;
 		padding: 0 1rem;
@@ -211,6 +231,10 @@
 
 	.feature-card:nth-child(3) {
 		animation-delay: 0.4s;
+	}
+
+	.feature-card:nth-child(4) {
+		animation-delay: 0.5s;
 	}
 
 	@keyframes cardFade {
@@ -293,6 +317,10 @@
 
 	.transcribe-card:hover .highlight {
 		background: var(--color-gradient-mint);
+	}
+
+	.tts-card:hover .highlight {
+		background: var(--color-gradient-lavender);
 	}
 
 	.background-card:hover .highlight {

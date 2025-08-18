@@ -8,6 +8,7 @@
 		message?: string;
 		percentageText?: string;
 		showPercentage?: boolean;
+		mode?: 'progress' | 'spinner';
 	}
 
 	let {
@@ -16,7 +17,8 @@
 		previousProgress = 0,
 		message,
 		percentageText,
-		showPercentage = true
+		showPercentage = true,
+		mode = 'progress'
 	}: Props = $props();
 
 	let displayPercentage = $derived(percentageText || `${progress}% Complete`);
@@ -24,10 +26,18 @@
 
 <div class="loading-progress">
 	<h3>{title}</h3>
-	{#if showPercentage}
-		<p class="download-percentage">{displayPercentage}</p>
+	{#if mode === 'progress'}
+		{#if showPercentage}
+			<p class="download-percentage">{displayPercentage}</p>
+		{/if}
+		<ProgressBar {progress} {previousProgress} />
+	{:else}
+		<div class="spinner-progress">
+			<div class="animated-progress-bar">
+				<div class="animated-progress-fill"></div>
+			</div>
+		</div>
 	{/if}
-	<ProgressBar {progress} {previousProgress} />
 	{#if message}
 		<p class="loading-message">{message}</p>
 	{/if}
@@ -118,6 +128,75 @@
 
 		.download-percentage {
 			font-size: 1rem;
+		}
+	}
+
+	.spinner-progress {
+		width: 100%;
+		margin: 0.5rem 0;
+	}
+
+	.animated-progress-bar {
+		height: 1.25rem;
+		background: var(--color-background-tertiary);
+		border: var(--border-brutalist-thin);
+		border-radius: 6px;
+		overflow: hidden;
+		width: 100%;
+		position: relative;
+	}
+
+	.animated-progress-fill {
+		height: 100%;
+		width: 100%;
+		background: linear-gradient(
+			90deg,
+			var(--color-primary) 0%,
+			var(--color-primary) 40%,
+			var(--color-warning) 60%,
+			var(--color-primary) 100%
+		);
+		background-size: 300% 100%;
+		animation: gradientShift 3s ease-in-out infinite;
+		position: relative;
+	}
+
+	.animated-progress-fill::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(
+			90deg,
+			transparent 0%,
+			transparent 30%,
+			rgba(255, 255, 255, 0.2) 50%,
+			transparent 70%,
+			transparent 100%
+		);
+		animation: shimmer 3s ease-in-out infinite;
+	}
+
+	@keyframes gradientShift {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	@keyframes shimmer {
+		0% {
+			transform: translateX(-150%);
+		}
+		100% {
+			transform: translateX(150%);
 		}
 	}
 </style>

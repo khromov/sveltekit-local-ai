@@ -1,0 +1,51 @@
+{
+	"theme_color": "#ffd700",
+	"background_color": "#fff",
+	"display": "standalone",
+	"scope": "/",
+	"start_url": "/",
+	"id": "/",
+	"name": "Local AI Tools",
+	"short_name": "LocalAI",
+	"description": "Browser-based AI tools for chat, transcription, text-to-speech, and image processing - runs entirely offline",
+	"orientation": "any",
+	"categories": ["utilities", "productivity", "multimedia"],
+	"shortcuts": [
+		{
+			"name": "Chat",
+			"short_name": "Chat",
+			"description": "LLM conversations using local models",
+			"url": "/chat",
+			"icons": [{ "src": "/favicon.png", "sizes": "512x512" }]
+		},
+		{
+			"name": "Transcribe",
+			"short_name": "Transcribe",
+			"description": "Speech-to-text using Whisper AI",
+			"url": "/transcribe",
+			"icons": [{ "src": "/favicon.png", "sizes": "512x512" }]
+		},
+		{
+			"name": "Text-to-Speech",
+			"short_name": "TTS",
+			"description": "Voice synthesis with multiple TTS models",
+			"url": "/text-to-speech",
+			"icons": [{ "src": "/favicon.png", "sizes": "512x512" }]
+		},
+		{
+			"name": "Background Remover",
+			"short_name": "BG Remover",
+			"description": "AI-powered background removal",
+			"url": "/background-remover",
+			"icons": [{ "src": "/favicon.png", "sizes": "512x512" }]
+		}
+	],
+	"icons": [
+		{
+			"purpose": "any",
+			"src": "/favicon.png",
+			"sizes": "any",
+			"type": "image/png"
+		}
+	]
+}

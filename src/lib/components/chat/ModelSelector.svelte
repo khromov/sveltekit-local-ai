@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { AVAILABLE_MODELS, formatFileSize } from '$lib/wllama-config';
 	import { inferenceParams } from '$lib/stores';
+	import AdvancedSection from '../common/AdvancedSection.svelte';
 	import RocketIcon from 'virtual:icons/lucide/rocket';
-	import SettingsIcon from 'virtual:icons/lucide/settings';
 	import ZapIcon from 'virtual:icons/lucide/zap';
 	import HourglassIcon from 'virtual:icons/lucide/hourglass';
-	import ChevronDownIcon from 'virtual:icons/lucide/chevron-down';
 	import BrainIcon from 'virtual:icons/lucide/brain';
 	import SmartphoneIcon from 'virtual:icons/lucide/smartphone';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
@@ -17,7 +16,6 @@
 	}
 
 	let { modelSelection = $bindable(), onLoadModel, isLoading = false }: Props = $props();
-	let showParams = $state(false);
 
 	// Get model pros
 	function getModelPros(modelUrl: string) {
@@ -73,37 +71,26 @@
 		<!-- Advanced Parameters -->
 		<div class="advanced-section">
 			<h3><span class="step-number">Step 2:</span> Advanced Settings</h3>
-			<div class="inference-params">
-				<button class="params-toggle" onclick={() => (showParams = !showParams)}>
-					<span class="toggle-emoji"><SettingsIcon /></span>
-					<span>Advanced Parameters</span>
-					<span class="toggle-icon" class:rotated={showParams}>
-						<ChevronDownIcon />
-					</span>
-				</button>
-				{#if showParams}
-					<div class="params-grid">
-						<label class="param-item">
-							<span class="param-label">Threads <span class="param-hint">(-1 auto)</span></span>
-							<input type="number" bind:value={$inferenceParams.nThreads} min="-1" max="32" />
-						</label>
-						<label class="param-item">
-							<span class="param-label">Context Size</span>
-							<input type="number" bind:value={$inferenceParams.nContext} min="512" max="8192" />
-						</label>
-						<label class="param-item">
-							<span class="param-label">Temperature</span>
-							<input
-								type="number"
-								bind:value={$inferenceParams.temperature}
-								min="0"
-								max="2"
-								step="0.1"
-							/>
-						</label>
-					</div>
-				{/if}
-			</div>
+			<AdvancedSection>
+				<label class="param-item">
+					<span class="param-label">Threads <span class="param-hint">(-1 auto)</span></span>
+					<input type="number" bind:value={$inferenceParams.nThreads} min="-1" max="32" />
+				</label>
+				<label class="param-item">
+					<span class="param-label">Context Size</span>
+					<input type="number" bind:value={$inferenceParams.nContext} min="512" max="8192" />
+				</label>
+				<label class="param-item">
+					<span class="param-label">Temperature</span>
+					<input
+						type="number"
+						bind:value={$inferenceParams.temperature}
+						min="0"
+						max="2"
+						step="0.1"
+					/>
+				</label>
+			</AdvancedSection>
 		</div>
 	</div>
 
@@ -375,100 +362,6 @@
 		margin-right: auto;
 	}
 
-	.inference-params {
-		background: linear-gradient(135deg, rgba(255, 217, 61, 0.1) 0%, rgba(152, 251, 152, 0.1) 100%);
-		padding: 1.25rem;
-		border: var(--border-brutalist-thick);
-		border-radius: 8px;
-		box-sizing: border-box;
-		transform: rotate(0.2deg);
-		box-shadow: var(--shadow-brutalist-small);
-	}
-
-	.params-toggle {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 0.75rem 0;
-		background: none;
-		border: none;
-		font-size: 1rem;
-		font-weight: 700;
-		color: var(--color-text-primary);
-		cursor: pointer;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		font-family: var(--font-family-primary);
-		transition: color 0.2s;
-	}
-
-	.toggle-emoji {
-		font-size: 1.25rem;
-		margin-right: 0.5rem;
-		display: flex;
-		align-items: center;
-		color: var(--color-text-primary);
-		animation: rotate 3s linear infinite;
-	}
-
-	.toggle-emoji :global(svg) {
-		width: 1.25rem;
-		height: 1.25rem;
-	}
-
-	@keyframes rotate {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-
-	.params-toggle:hover .toggle-emoji {
-		animation-duration: 1s;
-	}
-
-	.params-toggle:hover {
-		color: var(--color-text-tertiary);
-	}
-
-	.toggle-icon {
-		transition: transform 0.3s ease;
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		color: var(--color-text-primary);
-	}
-
-	.toggle-icon :global(svg) {
-		width: 20px;
-		height: 20px;
-	}
-
-	.toggle-icon.rotated {
-		transform: rotate(180deg);
-	}
-
-	.params-grid {
-		display: grid;
-		gap: 1rem;
-		margin-top: 1rem;
-		animation: slideDown 0.3s ease-out;
-	}
-
-	@keyframes slideDown {
-		from {
-			opacity: 0;
-			transform: translateY(-10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
 	.param-item {
 		display: flex;
 		flex-direction: column;
@@ -491,7 +384,7 @@
 		letter-spacing: 0;
 	}
 
-	.inference-params input {
+	.param-item input {
 		padding: 0.625rem 0.75rem;
 		border: var(--border-brutalist-thin);
 		border-radius: 4px;
@@ -505,12 +398,12 @@
 		box-shadow: var(--shadow-brutalist-small);
 	}
 
-	.inference-params input:hover {
+	.param-item input:hover {
 		transform: translate(-1px, -1px);
 		box-shadow: var(--shadow-brutalist-small);
 	}
 
-	.inference-params input:focus {
+	.param-item input:focus {
 		outline: none;
 		border-color: #ffd700;
 		background: var(--color-background-cream);
@@ -670,10 +563,6 @@
 
 		.advanced-section {
 			padding: 1.25rem;
-		}
-
-		.inference-params {
-			padding: 1rem;
 		}
 
 		.load-button {

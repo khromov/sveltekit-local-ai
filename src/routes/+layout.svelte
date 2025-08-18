@@ -9,6 +9,9 @@
 	import MicIcon from 'virtual:icons/lucide/mic';
 	import ImageIcon from 'virtual:icons/lucide/image';
 	import GithubIcon from 'virtual:icons/lucide/github';
+	import SpeechIcon from 'virtual:icons/lucide/speech';
+	import { Toaster } from 'svelte-sonner';
+	import { dev } from '$app/environment';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -21,6 +24,7 @@
 		{ path: '/', label: '', icon: 'home' },
 		{ path: '/chat', label: 'Chat', icon: 'chat' },
 		{ path: '/transcribe', label: 'Transcribe', icon: 'mic' },
+		{ path: '/text-to-speech', label: 'TTS', icon: 'speech' },
 		{ path: '/background-remover', label: 'BG Remover', icon: 'image' }
 	];
 
@@ -50,6 +54,178 @@
 	<meta name="twitter:title" content={page.data.seo.title} />
 	<meta name="twitter:description" content={page.data.seo.description} />
 	<meta name="twitter:image" content={page.data.seo.ogImage} />
+
+	{#if !dev}
+		<script
+			data-website-id="8b61040a-306f-4d99-95b3-0e925d631ec3"
+			data-host-url="https://u.khromov.se"
+		>
+			!(function () {
+				'use strict';
+				((t) => {
+					const {
+							screen: { width: e, height: a },
+							navigator: { language: n, doNotTrack: r, msDoNotTrack: i },
+							location: o,
+							document: s,
+							history: c,
+							top: u,
+							doNotTrack: d
+						} = t,
+						{ currentScript: l, referrer: f } = s;
+					if (!l) return;
+					const { hostname: h, href: m, origin: p } = o,
+						y = m.startsWith('data:') ? void 0 : t.localStorage,
+						g = 'data-',
+						b = 'true',
+						v = l.getAttribute.bind(l),
+						S = v(g + 'website-id'),
+						w = v(g + 'host-url'),
+						k = v(g + 'before-send'),
+						N = v(g + 'tag') || void 0,
+						T = 'false' !== v(g + 'auto-track'),
+						A = v(g + 'do-not-track') === b,
+						j = v(g + 'exclude-search') === b,
+						x = v(g + 'exclude-hash') === b,
+						$ = v(g + 'domains') || '',
+						E = $.split(',').map((t) => t.trim()),
+						K = `${(w || '' || l.src.split('/').slice(0, -1).join('/')).replace(/\/$/, '')}/api/send`,
+						L = `${e}x${a}`,
+						O = /data-umami-event-([\w-_]+)/,
+						_ = g + 'umami-event',
+						D = 300,
+						U = () => ({
+							website: S,
+							screen: L,
+							language: n,
+							title: s.title,
+							hostname: h,
+							url: z,
+							referrer: F,
+							tag: N,
+							id: q || void 0
+						}),
+						W = (t, e, a) => {
+							a &&
+								((F = z),
+								(z = new URL(a, o.href)),
+								j && (z.search = ''),
+								x && (z.hash = ''),
+								(z = z.toString()),
+								z !== F && setTimeout(J, D));
+						},
+						B = () =>
+							H ||
+							!S ||
+							(y && y.getItem('umami.disabled')) ||
+							($ && !E.includes(h)) ||
+							(A &&
+								(() => {
+									const t = d || r || i;
+									return 1 === t || '1' === t || 'yes' === t;
+								})()),
+						C = async (e, a = 'event') => {
+							if (B()) return;
+							const n = t[k];
+							if (('function' == typeof n && (e = n(a, e)), e))
+								try {
+									const t = await fetch(K, {
+											method: 'POST',
+											body: JSON.stringify({ type: a, payload: e }),
+											headers: {
+												'Content-Type': 'application/json',
+												...(void 0 !== R && { 'x-umami-cache': R })
+											},
+											credentials: 'omit'
+										}),
+										n = await t.json();
+									n && ((H = !!n.disabled), (R = n.cache));
+								} catch (t) {}
+						},
+						I = () => {
+							G ||
+								((G = !0),
+								J(),
+								(() => {
+									const t = (t, e, a) => {
+										const n = t[e];
+										return (...e) => (a.apply(null, e), n.apply(t, e));
+									};
+									((c.pushState = t(c, 'pushState', W)),
+										(c.replaceState = t(c, 'replaceState', W)));
+								})(),
+								(() => {
+									const t = async (t) => {
+										const e = t.getAttribute(_);
+										if (e) {
+											const a = {};
+											return (
+												t.getAttributeNames().forEach((e) => {
+													const n = e.match(O);
+													n && (a[n[1]] = t.getAttribute(e));
+												}),
+												J(e, a)
+											);
+										}
+									};
+									s.addEventListener(
+										'click',
+										async (e) => {
+											const a = e.target,
+												n = a.closest('a,button');
+											if (!n) return t(a);
+											const { href: r, target: i } = n;
+											if (n.getAttribute(_)) {
+												if ('BUTTON' === n.tagName) return t(n);
+												if ('A' === n.tagName && r) {
+													const a =
+														'_blank' === i ||
+														e.ctrlKey ||
+														e.shiftKey ||
+														e.metaKey ||
+														(e.button && 1 === e.button);
+													return (
+														a || e.preventDefault(),
+														t(n).then(() => {
+															a || (('_top' === i ? u.location : o).href = r);
+														})
+													);
+												}
+											}
+										},
+										!0
+									);
+								})());
+						},
+						J = (t, e) =>
+							C(
+								'string' == typeof t
+									? { ...U(), name: t, data: e }
+									: 'object' == typeof t
+										? { ...t }
+										: 'function' == typeof t
+											? t(U())
+											: U()
+							),
+						P = (t, e) => (
+							'string' == typeof t && (q = t),
+							(R = ''),
+							C({ ...U(), data: 'object' == typeof t ? t : e }, 'identify')
+						);
+					t.umami || (t.umami = { track: J, identify: P });
+					let R,
+						q,
+						z = m,
+						F = f.startsWith(p) ? '' : f,
+						G = !1,
+						H = !1;
+					T &&
+						!B() &&
+						('complete' === s.readyState ? I() : s.addEventListener('readystatechange', I, !0));
+				})(window);
+			})();
+		</script>
+	{/if}
 </svelte:head>
 
 <div class="app-wrapper">
@@ -86,6 +262,8 @@
 											<MessageSquareIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 										{:else if link.icon === 'mic'}
 											<MicIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
+										{:else if link.icon === 'speech'}
+											<SpeechIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 										{:else if link.icon === 'image'}
 											<ImageIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 										{/if}
@@ -117,6 +295,16 @@
 		</div>
 	</div>
 </div>
+
+<Toaster
+	position="bottom-right"
+	theme="light"
+	richColors
+	toastOptions={{
+		style:
+			'border: 3px solid #000; box-shadow: 4px 4px 0 #000; border-radius: 8px; font-family: Space Grotesk, sans-serif; font-weight: 600;'
+	}}
+/>
 
 <style>
 	/* Neo-Brutalist Design System */
@@ -472,18 +660,6 @@
 		text-align: center;
 	}
 
-	:global(.loading) {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 2rem;
-		animation: fadeIn 0.4s ease-out;
-		width: 100%;
-		box-sizing: border-box;
-		flex: 1;
-		justify-content: center;
-	}
-
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
@@ -572,11 +748,6 @@
 
 		:global(.input-area) {
 			padding: 0.875rem 1rem;
-		}
-
-		:global(.loading) {
-			align-items: stretch;
-			padding: 0;
 		}
 
 		.nav-left {

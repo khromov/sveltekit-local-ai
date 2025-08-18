@@ -2,6 +2,7 @@
 	import createModule from '@transcribe/shout';
 	import { FileTranscriber } from '@transcribe/transcriber';
 	import { downloadModelWithProgress, isModelCached, isOPFSSupported } from '$lib/download-utils';
+	import { PUBLIC_DISABLE_OPFS } from '$env/static/public';
 	import { onMount, onDestroy } from 'svelte';
 	import { whisperModel } from '$lib/stores';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
@@ -237,7 +238,7 @@
 	}
 
 	onMount(async () => {
-		opfsSupported = isOPFSSupported();
+		opfsSupported = isOPFSSupported(PUBLIC_DISABLE_OPFS === 'true');
 		if (!opfsSupported) {
 			console.log('OPFS not supported - models will not be cached');
 		}
