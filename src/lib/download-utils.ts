@@ -1,4 +1,5 @@
-import { PUBLIC_DISABLE_OPFS } from '$env/static/public';
+// Note: This module must be compatible with Web Workers, so it cannot import SvelteKit's $env modules.
+// The PUBLIC_DISABLE_OPFS environment variable is handled by components that import this module.
 
 declare global {
 	interface FileSystemDirectoryHandle {
@@ -13,12 +14,11 @@ function getModelFileName(url: string): string {
 	return url.split('/').pop() || 'downloaded-model';
 }
 
-export function isOPFSSupported(): boolean {
-	if (PUBLIC_DISABLE_OPFS === 'true') {
-		console.log('OPFS disabled via PUBLIC_DISABLE_OPFS environment variable');
+export function isOPFSSupported(forceDisable = false): boolean {
+	if (forceDisable) {
 		return false;
 	}
-
+	
 	return 'navigator' in globalThis && 'storage' in navigator && 'getDirectory' in navigator.storage;
 }
 
