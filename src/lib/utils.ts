@@ -9,36 +9,33 @@ export async function detectWebGPU() {
 	}
 }
 
-function encodeWAV(audioData: Float32Array, sampleRate: number): ArrayBuffer {
-	const length = audioData.length;
-	const buffer = new ArrayBuffer(44 + length * 2);
+function encodeWAV(samples: Float32Array, rate: number): ArrayBuffer {
+	let offset = 44;
+	const buffer = new ArrayBuffer(offset + samples.length * 4);
 	const view = new DataView(buffer);
 
-	const writeString = (offset: number, string: string) => {
-		for (let i = 0; i < string.length; i++) {
+	const writeString = (view: DataView, offset: number, string: string) => {
+		for (let i = 0; i < string.length; ++i) {
 			view.setUint8(offset + i, string.charCodeAt(i));
 		}
 	};
 
-	writeString(0, 'RIFF');
-	view.setUint32(4, 36 + length * 2, true);
-	writeString(8, 'WAVE');
-	writeString(12, 'fmt ');
+	writeString(view, 0, 'RIFF');
+	view.setUint32(4, 36 + samples.length * 4, true);
+	writeString(view, 8, 'WAVE');
+	writeString(view, 12, 'fmt ');
 	view.setUint32(16, 16, true);
-	view.setUint16(20, 1, true);
+	view.setUint16(20, 3, true);
 	view.setUint16(22, 1, true);
-	view.setUint32(24, sampleRate, true);
-	view.setUint32(28, sampleRate * 2, true);
-	view.setUint16(32, 2, true);
-	view.setUint16(34, 16, true);
-	writeString(36, 'data');
-	view.setUint32(40, length * 2, true);
+	view.setUint32(24, rate, true);
+	view.setUint32(28, rate * 4, true);
+	view.setUint16(32, 4, true);
+	view.setUint16(34, 32, true);
+	writeString(view, 36, 'data');
+	view.setUint32(40, samples.length * 4, true);
 
-	let offset = 44;
-	for (let i = 0; i < length; i++) {
-		const sample = Math.max(-1, Math.min(1, audioData[i]));
-		view.setInt16(offset, sample < 0 ? sample * 0x8000 : sample * 0x7fff, true);
-		offset += 2;
+	for (let i = 0; i < samples.length; ++i, offset += 4) {
+		view.setFloat32(offset, samples[i], true);
 	}
 
 	return buffer;
