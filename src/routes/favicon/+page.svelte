@@ -26,8 +26,25 @@
 	import DiamondIcon from 'virtual:icons/lucide/diamond';
 	import StarIcon from 'virtual:icons/lucide/star';
 
+	// Type definitions for favicon concepts
+	interface IconConcept {
+		name: string;
+		icon: any;
+		color: string;
+		description: string;
+	}
+
+	interface SVGConcept {
+		name: string;
+		color: string;
+		description: string;
+		svg: string;
+	}
+
+	type FaviconConcept = IconConcept | SVGConcept;
+
 	// Favicon concepts data
-	const faviconConcepts = [
+	const faviconConcepts: IconConcept[] = [
 		// AI/Intelligence Icons
 		{
 			name: 'AI Brain',
@@ -182,7 +199,7 @@
 	];
 
 	// Custom SVG favicon concepts
-	const customSVGs = [
+	const customSVGs: SVGConcept[] = [
 		{
 			name: 'Neural Network',
 			color: '#ff69b4',
@@ -278,7 +295,7 @@
 	];
 
 	// All favicon concepts combined
-	const allConcepts = [...faviconConcepts, ...customSVGs];
+	const allConcepts: FaviconConcept[] = [...faviconConcepts, ...customSVGs];
 </script>
 
 <div class="favicon-gallery">
@@ -295,9 +312,10 @@
 			<div class="concept-card" style="--delay: {index * 0.05}s">
 				<div class="concept-number">#{(index + 1).toString().padStart(2, '0')}</div>
 				<div class="favicon-container" style="background-color: {concept.color}">
-					{#if concept.svg}
+					{#if 'svg' in concept}
 						<!-- Custom SVG -->
 						<div class="custom-favicon">
+							<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 							{@html concept.svg}
 						</div>
 					{:else}
