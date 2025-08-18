@@ -1,4 +1,3 @@
-
 declare global {
 	interface FileSystemDirectoryHandle {
 		entries(): AsyncIterableIterator<[string, FileSystemHandle]>;
@@ -16,7 +15,7 @@ export function isOPFSSupported(forceDisable = false): boolean {
 	if (forceDisable) {
 		return false;
 	}
-	
+
 	return 'navigator' in globalThis && 'storage' in navigator && 'getDirectory' in navigator.storage;
 }
 
