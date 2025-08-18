@@ -9,7 +9,7 @@
 	import { BASE_MODEL_URL } from '$lib/config';
 	import LockIcon from 'virtual:icons/lucide/lock';
 	import PlayIcon from 'virtual:icons/lucide/play';
-	import LoaderIcon from 'virtual:icons/lucide/loader';
+	import SquareSpinner from '$lib/components/common/SquareSpinner.svelte';
 
 	import WhisperModelSelector from '$lib/components/whisper/WhisperModelSelector.svelte';
 	import TranscribeOptions from '$lib/components/whisper/TranscribeOptions.svelte';
@@ -323,7 +323,7 @@
 			fullWidth
 		>
 			{#if isTranscribing}
-				<span class="loading-spinner"><LoaderIcon /></span>
+				<SquareSpinner class="loading-spinner" />
 				Transcribing...
 			{:else}
 				<span class="button-icon"><PlayIcon /></span>
@@ -361,17 +361,9 @@
 		height: 1.5rem;
 	}
 
-	.loading-spinner {
-		font-size: 1.5rem;
-		animation: spin 1s linear infinite;
-		display: inline-block;
+	:global(.loading-spinner) {
 		color: #000;
-	}
-
-	.loading-spinner :global(svg) {
-		width: 1.5rem;
-		height: 1.5rem;
-		animation: spin 1s linear infinite;
+		margin-right: 0.5rem;
 	}
 
 	@keyframes spin {
