@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { detectWebGPU } from '$lib/utils.js';
+	import { detectWebGPU } from '$lib/utils';
 
 	interface Props {
 		modelValue: boolean;
