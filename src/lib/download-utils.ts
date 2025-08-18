@@ -1,5 +1,3 @@
-// Note: This module must be compatible with Web Workers, so it cannot import SvelteKit's $env modules.
-// The PUBLIC_DISABLE_OPFS environment variable is handled by components that import this module.
 
 declare global {
 	interface FileSystemDirectoryHandle {
@@ -56,19 +54,12 @@ async function cacheModel(fileName: string, data: Uint8Array): Promise<void> {
 	}
 }
 
-/**
- * Downloads a model file with progress tracking and OPFS caching
- * @param url URL of the model to download
- * @param onProgress Progress callback function
- * @returns A File object containing the model and cache info
- */
 export async function downloadModelWithProgress(
 	url: string,
 	onProgress: (progress: number, cached?: boolean) => void
 ): Promise<File> {
 	const fileName = getModelFileName(url);
 
-	// Check if model is already cached (only if OPFS is supported)
 	const cachedModel = await getCachedModel(fileName);
 	if (cachedModel) {
 		onProgress(100, true);
@@ -79,10 +70,9 @@ export async function downloadModelWithProgress(
 	onProgress(0);
 	console.log(`Downloading model from: ${url}`);
 
-	// If OPFS is not supported, use simple fetch without progress tracking
 	if (!isOPFSSupported()) {
 		console.log('OPFS not supported, using simple fetch');
-		onProgress(-1); // Signal no progress tracking available
+		onProgress(-1);
 		const response = await fetch(url);
 
 		if (!response.ok) {
@@ -202,16 +192,8 @@ export async function getCacheInfo(): Promise<{ fileName: string; size: number }
 	return cacheInfo;
 }
 
-/**
- * Compatibility wrapper for model-cache.ts cachedFetch function
- * Provides the same interface as the old IndexedDB-based caching
- * @param url URL of the file to fetch/cache
- * @returns Response object containing the cached or downloaded file
- */
 export async function cachedFetch(url: string): Promise<Response> {
-	const file = await downloadModelWithProgress(url, () => {
-		// Silent progress callback for compatibility
-	});
+	const file = await downloadModelWithProgress(url, () => {});
 
 	return new Response(file);
 }
