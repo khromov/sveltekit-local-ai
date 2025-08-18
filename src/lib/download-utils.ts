@@ -192,7 +192,7 @@ export async function getCacheInfo(): Promise<{ fileName: string; size: number }
 }
 
 export async function cachedFetch(url: string): Promise<Response> {
-	const file = await downloadModelWithProgress(url, () => {});
-
-	return new Response(file);
+	// const file = await downloadModelWithProgress(url, () => {});
+	//return new Response(file);
+	return fetch(url);
 }
