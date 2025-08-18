@@ -7,4 +7,4 @@ src/routes/debug
 icons.txt
 static/onnx-runtime
 scripts
-quotes.ts
+src/routes/favicon
