@@ -61,11 +61,9 @@
 					<span class="checkmark"><CheckIcon /></span>
 					<span>Model Ready</span>
 				</div>
-				{#if selectedModel !== availableModels[0].path}
-					<button onclick={onChangeModel} disabled={isLoading} class="change-model-btn">
-						{isLoading ? 'Changing...' : 'Change Model'}
-					</button>
-				{/if}
+				<button onclick={onChangeModel} disabled={isLoading} class="change-model-btn">
+					{isLoading ? 'Changing...' : 'Change Model'}
+				</button>
 			</div>
 		{/if}
 	</div>
