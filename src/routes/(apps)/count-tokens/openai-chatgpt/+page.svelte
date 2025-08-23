@@ -76,7 +76,7 @@
 	<TokenizerHeader
 		icon={MessageSquareIcon}
 		title="OpenAI ChatGPT Tokenizer"
-		description="Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo and other OpenAI models"
+		description="Count tokens for GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT and other OpenAI models"
 	/>
 
 	<div class="tokenizer-main">

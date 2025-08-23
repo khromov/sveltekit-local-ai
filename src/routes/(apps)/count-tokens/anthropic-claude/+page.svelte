@@ -76,7 +76,7 @@
 	<TokenizerHeader
 		icon={BrainIcon}
 		title="Anthropic Claude Tokenizer"
-		description="Count tokens for Claude 3 models (Opus, Sonnet, Haiku) using the official tokenizer"
+		description="Count tokens for Claude models (Opus, Sonnet, Haiku) using the official tokenizer"
 	/>
 
 	<div class="tokenizer-main">
@@ -98,7 +98,6 @@
 		items={[
 			'Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models',
 			'Average token length: ~4 characters for English text',
-			'Context window: 200K tokens (Claude 3)',
 			'Special characters and code may use more tokens'
 		]}
 	/>
