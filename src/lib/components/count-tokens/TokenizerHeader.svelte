@@ -11,19 +11,20 @@
 
 	let { icon: Icon, title, description }: Props = $props();
 
-	// Determine counterpart page for quick switching
+	// Determine counterpart page for quick switching based on current pathname
 	let targetHref = $state<string | null>(null);
 	let targetLabel = $state<string | null>(null);
 
+	const OPENAI_PATH = '/count-tokens/openai-chatgpt';
+	const ANTHROPIC_PATH = '/count-tokens/anthropic-claude';
+
 	$effect(() => {
 		const path = $page.url.pathname;
-		const isOpenAI = path.includes('/count-tokens/openai-chatgpt');
-		const isAnthropic = path.includes('/count-tokens/anthropic-claude');
-		if (isOpenAI) {
-			targetHref = '/count-tokens/anthropic-claude';
+		if (path.startsWith(OPENAI_PATH)) {
+			targetHref = ANTHROPIC_PATH;
 			targetLabel = 'Switch to Anthropic';
-		} else if (isAnthropic) {
-			targetHref = '/count-tokens/openai-chatgpt';
+		} else if (path.startsWith(ANTHROPIC_PATH)) {
+			targetHref = OPENAI_PATH;
 			targetLabel = 'Switch to OpenAI';
 		} else {
 			targetHref = null;
