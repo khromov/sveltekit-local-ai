@@ -61,8 +61,6 @@
 		</p>
 		<ul>
 			<li>1 token ≈ 4 characters in English</li>
-			<li>1 token ≈ ¾ words</li>
-			<li>100 tokens ≈ 75 words</li>
 		</ul>
 		<p>
 			Different models use different tokenization methods, so the same text may result in different
