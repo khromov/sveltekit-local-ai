@@ -17,6 +17,9 @@
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 	import DicesIcon from 'virtual:icons/lucide/dices';
 	import TrashIcon from 'virtual:icons/lucide/trash';
+	import CatIcon from 'virtual:icons/lucide/cat';
+	import FlowerIcon from 'virtual:icons/lucide/flower';
+	import TheaterIcon from 'virtual:icons/lucide/theater';
 
 	import CardInterface from '$lib/components/common/CardInterface.svelte';
 	import Toolbar from '$lib/components/common/Toolbar.svelte';
@@ -24,11 +27,12 @@
 	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
 
+	// Import shared components
+	import { ModelSelector, StatsDisplay } from '$lib/components/shared';
+
 	import AudioChunk from '$lib/components/tts/AudioChunk.svelte';
-	import ModelSwitcher from '$lib/components/tts/ModelSwitcher.svelte';
 	import AdvancedParameters from '$lib/components/tts/AdvancedParameters.svelte';
 	import SpeedControl from '$lib/components/tts/SpeedControl.svelte';
-	import TextStatistics from '$lib/components/tts/TextStatistics.svelte';
 	import VoiceSelector from '$lib/components/tts/VoiceSelector.svelte';
 	import { getRandomQuote } from '$lib/quotes';
 
@@ -44,6 +48,7 @@
 	let worker: Worker | null = $state(null);
 	let voices = $state<any[]>([]);
 	let selectedVoice = $state<string>('expr-voice-2-m');
+
 	// Computed properties for persisted values
 	let selectedSampleRate = $derived(
 		$ttsModel === 'kitten' ? $ttsKittenSampleRate : $ttsModel === 'piper' ? 22050 : 24000
@@ -54,6 +59,36 @@
 	let actualDevice = $state('wasm');
 	let chunks = $state<any[]>([]);
 	let result = $state<Blob | null>(null);
+
+	// Text statistics
+	let words = $derived(text.trim() ? text.trim().split(/\s+/).length : 0);
+	let characters = $derived(text.length);
+	let statsData = $derived([
+		{ label: 'Words', value: words },
+		{ label: 'Characters', value: characters }
+	]);
+
+	// TTS Model options for ModelSelector
+	let ttsModelOptions = $derived([
+		{
+			id: 'kitten',
+			name: 'Kitten TTS Nano',
+			description: '24MB • Best for edge devices',
+			icon: CatIcon
+		},
+		{
+			id: 'piper',
+			name: 'Piper Voices',
+			description: '75MB • Better Quality • Fast',
+			icon: TheaterIcon
+		},
+		{
+			id: 'kokoro',
+			name: 'Kokoro',
+			description: '80MB • Highest Quality • Slow',
+			icon: FlowerIcon
+		}
+	]);
 
 	// Computed properties
 	let processed = $derived(() => {
@@ -82,7 +117,8 @@
 		}
 	}
 
-	function handleModelChange(model: 'kitten' | 'piper' | 'kokoro') {
+	function handleModelSelect(modelId: string) {
+		const model = modelId as 'kitten' | 'piper' | 'kokoro';
 		if ($ttsModel === model) return;
 
 		$ttsModel = model;
@@ -97,6 +133,11 @@
 		}
 
 		// Restart worker with new model
+		restartWorker();
+	}
+
+	function loadModel() {
+		if (!$ttsModel) return;
 		restartWorker();
 	}
 
@@ -399,11 +440,17 @@
 				<p>Generate high-quality speech from text, all running locally in your browser!</p>
 			</div>
 
-			<!-- Model Selection -->
-			<ModelSwitcher
+			<!-- Model Selection using shared ModelSelector -->
+			<ModelSelector
+				models={ttsModelOptions}
 				selectedModel={$ttsModel}
-				onModelChange={handleModelChange}
-				loading={status === 'loading'}
+				onModelSelect={handleModelSelect}
+				onLoadModel={loadModel}
+				isLoading={status === 'loading'}
+				isReady={status === 'ready'}
+				showAsCards={true}
+				title="Text-to-speech Model"
+				stepNumber={1}
 			/>
 
 			{#if status === 'loading'}
@@ -426,7 +473,9 @@
 					<div class="section-header">
 						<h3>Enter Your Text</h3>
 						<div class="stats-and-buttons">
-							<TextStatistics {text} />
+							<!-- Use shared StatsDisplay component -->
+							<StatsDisplay stats={statsData} layout="horizontal" size="small" />
+
 							<div class="button-group">
 								<button
 									class="dice-button"

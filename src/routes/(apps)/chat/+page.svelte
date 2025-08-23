@@ -12,10 +12,12 @@
 	import { messages, inferenceParams } from '$lib/stores';
 	import BotIcon from 'virtual:icons/lucide/bot';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
+	import BrainIcon from 'virtual:icons/lucide/brain';
+	import SmartphoneIcon from 'virtual:icons/lucide/smartphone';
 
 	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
-	import ModelSelector from '$lib/components/chat/ModelSelector.svelte';
+	import { ModelSelector } from '$lib/components/shared';
 	import ChatMessages from '$lib/components/chat/ChatMessages.svelte';
 	import MessageInput from '$lib/components/chat/MessageInput.svelte';
 	import CardInterface from '$lib/components/common/CardInterface.svelte';
@@ -37,6 +39,17 @@
 	let messageInputComponent: MessageInput | undefined = $state();
 
 	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
+
+	// Convert AVAILABLE_MODELS to the format expected by shared ModelSelector
+	let modelOptions = $derived(
+		AVAILABLE_MODELS.map((model) => ({
+			id: model.url,
+			name: model.name,
+			description: model.longName,
+			size: `${(model.size / 1024 / 1024).toFixed(0)}MB`,
+			icon: model.name.includes('Gemma') ? BrainIcon : SmartphoneIcon
+		}))
+	);
 
 	onMount(() => {
 		return setupWakeLock(() => isGenerating);
@@ -207,6 +220,10 @@
 		messageInputComponent?.focus();
 	}
 
+	function handleModelSelect(modelId: string) {
+		modelSelection = modelId;
+	}
+
 	onMount(() => {
 		if ($messages.length === 0) {
 			$messages = [
@@ -241,7 +258,16 @@
 				message="This will take a couple of minutes. The chat model is being downloaded to your browser."
 			/>
 		{:else}
-			<ModelSelector bind:modelSelection onLoadModel={loadModel} {isLoading} />
+			<ModelSelector
+				models={modelOptions}
+				selectedModel={modelSelection}
+				onModelSelect={handleModelSelect}
+				onLoadModel={loadModel}
+				{isLoading}
+				isReady={isModelLoaded}
+				showAsCards={true}
+				title="Choose Your AI Model"
+			/>
 		{/if}
 	</div>
 {:else}

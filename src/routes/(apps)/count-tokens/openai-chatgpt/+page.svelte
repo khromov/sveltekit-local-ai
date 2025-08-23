@@ -4,7 +4,7 @@
 	import MessageSquareIcon from 'virtual:icons/lucide/message-square';
 	import TokenizerHeader from '$lib/components/count-tokens/TokenizerHeader.svelte';
 	import TextInputSection from '$lib/components/count-tokens/TextInputSection.svelte';
-	import TokenStats from '$lib/components/count-tokens/TokenStats.svelte';
+	import { StatsDisplay } from '$lib/components/shared';
 	import RawTokensDisplay from '$lib/components/count-tokens/RawTokensDisplay.svelte';
 	import InfoBox from '$lib/components/count-tokens/InfoBox.svelte';
 	import EmptyState from '$lib/components/count-tokens/EmptyState.svelte';
@@ -38,6 +38,13 @@
 		});
 	});
 
+	// Stats for shared StatsDisplay component
+	let statsData = $derived([
+		{ label: 'Tokens', value: tokenCount, color: 'success' as const },
+		{ label: 'Characters', value: charCount, color: 'info' as const },
+		{ label: 'Chars/Token', value: tokenCount > 0 ? (charCount / tokenCount).toFixed(2) : '0' }
+	]);
+
 	// Example texts
 	const exampleTexts = [
 		"Hello! I'm ChatGPT, an AI language model created by OpenAI. I can help you with questions, creative writing, analysis, and problem-solving.",
@@ -70,7 +77,8 @@
 		<!-- Results Section -->
 		{#if tokenCount > 0}
 			<div class="results-section">
-				<TokenStats {tokenCount} {charCount} />
+				<!-- Use shared StatsDisplay component -->
+				<StatsDisplay stats={statsData} layout="grid" size="large" />
 				<RawTokensDisplay {tokens} {decodedTokens} bind:showRawTokens />
 			</div>
 		{:else if encoder && text.length === 0}
@@ -121,6 +129,9 @@
 		padding: 1.5rem;
 		transform: rotate(-0.2deg);
 		animation: slideIn 0.3s ease-out;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
 	}
 
 	@keyframes slideIn {
