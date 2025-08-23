@@ -88,7 +88,7 @@
 				<TokenStats {tokenCount} {charCount} />
 				<RawTokensDisplay {tokens} {decodedTokens} bind:showRawTokens />
 			</div>
-		{:else if encoder && text.length === 0}
+		{:else if text.length === 0}
 			<EmptyState />
 		{/if}
 	</div>
