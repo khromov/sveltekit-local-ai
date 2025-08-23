@@ -11,13 +11,14 @@
 
 	const { data } = $props();
 
-	let text = $state('');
+	import { tokenCounterText } from '$lib/stores';
+
 	let showRawTokens = $state(false);
 	let encoder: Tiktoken | null = $state(null);
 	let specialTokens: string[] = $state([]);
 
 	// Derived values from text and encoder
-	let charCount = $derived(text.length);
+	let charCount = $derived($tokenCounterText.length);
 	function sanitizeText(input: string): string {
 		if (!specialTokens || specialTokens.length === 0) return input;
 		let out = input;
@@ -29,9 +30,9 @@
 	}
 
 	let tokens = $derived.by(() => {
-		if (!encoder || !text) return [];
+		if (!encoder || !$tokenCounterText) return [];
 		try {
-			const sanitized = sanitizeText(text);
+			const sanitized = sanitizeText($tokenCounterText);
 			return encoder.encode(sanitized);
 		} catch (error) {
 			console.error('Error encoding text:', error);
@@ -80,7 +81,7 @@
 	/>
 
 	<div class="tokenizer-main">
-		<TextInputSection bind:text {exampleTexts} />
+		<TextInputSection bind:text={$tokenCounterText} {exampleTexts} />
 
 		<!-- Results Section -->
 		{#if tokenCount > 0}
@@ -88,7 +89,7 @@
 				<TokenStats {tokenCount} {charCount} />
 				<RawTokensDisplay {tokens} {decodedTokens} bind:showRawTokens />
 			</div>
-		{:else if encoder && text.length === 0}
+		{:else if encoder && $tokenCounterText.length === 0}
 			<EmptyState />
 		{/if}
 	</div>
@@ -96,9 +97,7 @@
 	<InfoBox
 		title="About OpenAI's Tokenizer"
 		items={[
-			'Uses o200k_base encoding for GPT-4o and newer models',
 			'Average token length: ~4 characters for English text',
-			'Context windows: 128K tokens (GPT-4o), 8K-32K (GPT-4), 16K (GPT-3.5)',
 			'Code and special characters typically use more tokens'
 		]}
 	/>

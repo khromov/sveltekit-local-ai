@@ -11,13 +11,13 @@
 
 	const { data } = $props();
 
-	let text = $state('');
+	import { tokenCounterText } from '$lib/stores';
 	let showRawTokens = $state(false);
 	let encoder: Tiktoken | null = $state(null);
 	let specialTokens: string[] = $state([]);
 
 	// Derived values from text and encoder
-	let charCount = $derived(text.length);
+	let charCount = $derived($tokenCounterText.length);
 	function sanitizeText(input: string): string {
 		if (!specialTokens || specialTokens.length === 0) return input;
 		let out = input;
@@ -29,9 +29,9 @@
 	}
 
 	let tokens = $derived.by(() => {
-		if (!encoder || !text) return [];
+		if (!encoder || !$tokenCounterText) return [];
 		try {
-			const sanitized = sanitizeText(text);
+			const sanitized = sanitizeText($tokenCounterText);
 			return encoder.encode(sanitized);
 		} catch (error) {
 			console.error('Error encoding text:', error);
@@ -80,7 +80,7 @@
 	/>
 
 	<div class="tokenizer-main">
-		<TextInputSection bind:text {exampleTexts} />
+		<TextInputSection bind:text={$tokenCounterText} {exampleTexts} />
 
 		<!-- Results Section -->
 		{#if tokenCount > 0}
@@ -88,7 +88,7 @@
 				<TokenStats {tokenCount} {charCount} />
 				<RawTokensDisplay {tokens} {decodedTokens} bind:showRawTokens />
 			</div>
-		{:else if text.length === 0}
+		{:else if $tokenCounterText.length === 0}
 			<EmptyState />
 		{/if}
 	</div>

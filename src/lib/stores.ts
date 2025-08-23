@@ -16,3 +16,4 @@ export const ttsWebGPUKokoro = persisted<boolean>('ttsWebGPUKokoro', false);
 export const ttsKittenSampleRate = persisted<number>('ttsKittenSampleRate', 24000);
 export const ttsText = persisted<string>('ttsText', '');
 export const advancedExpanded = persisted<boolean>('advancedExpanded', false);
+export const tokenCounterText = persisted<string>('tokenCounterText', '');
