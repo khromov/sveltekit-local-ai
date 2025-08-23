@@ -320,8 +320,9 @@
 						</div>
 					{:else}
 						<!-- Lucide Icon -->
+						{@const IconComponent = concept.icon}
 						<div class="icon-favicon" style="background-color: {concept.color}">
-							<svelte:component this={concept.icon} />
+							<IconComponent />
 						</div>
 					{/if}
 				</div>
