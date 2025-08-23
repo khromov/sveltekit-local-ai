@@ -2,20 +2,17 @@
 	import { onMount } from 'svelte';
 	import type { Tiktoken } from 'js-tiktoken';
 	import MessageSquareIcon from 'virtual:icons/lucide/message-square';
-	import SparklesIcon from 'virtual:icons/lucide/sparkles';
-	import ChevronDownIcon from 'virtual:icons/lucide/chevron-down';
-	import ChevronUpIcon from 'virtual:icons/lucide/chevron-up';
-	import CopyIcon from 'virtual:icons/lucide/copy';
-	import CheckIcon from 'virtual:icons/lucide/check';
-	import TrashIcon from 'virtual:icons/lucide/trash';
-	import DicesIcon from 'virtual:icons/lucide/dices';
-	import { toast } from 'svelte-sonner';
+	import TokenizerHeader from '$lib/components/count-tokens/TokenizerHeader.svelte';
+	import TextInputSection from '$lib/components/count-tokens/TextInputSection.svelte';
+	import TokenStats from '$lib/components/count-tokens/TokenStats.svelte';
+	import TokenCostEstimation from '$lib/components/count-tokens/TokenCostEstimation.svelte';
+	import RawTokensDisplay from '$lib/components/count-tokens/RawTokensDisplay.svelte';
+	import InfoBox from '$lib/components/count-tokens/InfoBox.svelte';
 
 	const { data } = $props();
 
 	let text = $state('');
 	let showRawTokens = $state(false);
-	let copied = $state(false);
 	let encoder: Tiktoken | null = $state(null);
 
 	// Derived values from text and encoder
@@ -59,36 +56,6 @@
 		}
 	});
 
-	function handleRandomExample() {
-		const randomText = exampleTexts[Math.floor(Math.random() * exampleTexts.length)];
-		text = randomText;
-	}
-
-	function handleClear() {
-		text = '';
-		tokens = [];
-		tokenCount = 0;
-		decodedTokens = [];
-		showRawTokens = false;
-	}
-
-	async function handleCopy() {
-		try {
-			await navigator.clipboard.writeText(text);
-			copied = true;
-			toast.success('Text copied to clipboard!');
-			setTimeout(() => {
-				copied = false;
-			}, 2000);
-		} catch {
-			toast.error('Failed to copy text');
-		}
-	}
-
-	function formatNumber(num: number): string {
-		return new Intl.NumberFormat().format(num);
-	}
-
 	// Cost calculation (approximate)
 	function calculateCost(): {
 		gpt4o: { input: string; output: string };
@@ -120,130 +87,22 @@
 </script>
 
 <div class="tokenizer-container">
-	<div class="tokenizer-header">
-		<div class="header-content">
-			<div class="header-title">
-				<span class="header-icon"><MessageSquareIcon /></span>
-				<h1>OpenAI ChatGPT Tokenizer</h1>
-			</div>
-			<p class="header-description">
-				Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo and other OpenAI models
-			</p>
-		</div>
-	</div>
+	<TokenizerHeader
+		icon={MessageSquareIcon}
+		title="OpenAI ChatGPT Tokenizer"
+		description="Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo and other OpenAI models"
+	/>
 
 	<div class="tokenizer-main">
-		<!-- Text Input Section -->
-		<div class="input-section">
-			<div class="section-header">
-				<h3>Input Text</h3>
-				<div class="header-actions">
-					<button class="icon-button" onclick={handleRandomExample} title="Load example">
-						<DicesIcon />
-					</button>
-					<button class="icon-button" onclick={handleCopy} title={copied ? 'Copied!' : 'Copy text'}>
-						{#if copied}
-							<CheckIcon />
-						{:else}
-							<CopyIcon />
-						{/if}
-					</button>
-					<button class="icon-button" onclick={handleClear} title="Clear text">
-						<TrashIcon />
-					</button>
-				</div>
-			</div>
-
-			<textarea
-				bind:value={text}
-				placeholder="Enter or paste your text here to count tokens..."
-				class="text-input"
-			></textarea>
-		</div>
+		<TextInputSection bind:text {exampleTexts} />
 
 		<!-- Results Section -->
 		{#if tokenCount > 0}
 			{@const costs = calculateCost()}
 			<div class="results-section">
-				<div class="stats-grid">
-					<div class="stat-card tokens">
-						<div class="stat-label">Tokens</div>
-						<div class="stat-value">{formatNumber(tokenCount)}</div>
-					</div>
-					<div class="stat-card chars">
-						<div class="stat-label">Characters</div>
-						<div class="stat-value">{formatNumber(charCount)}</div>
-					</div>
-					<div class="stat-card ratio">
-						<div class="stat-label">Chars/Token</div>
-						<div class="stat-value">{(charCount / tokenCount).toFixed(2)}</div>
-					</div>
-				</div>
-
-				<!-- Cost Estimation -->
-				<div class="cost-section">
-					<h4>Estimated API Costs</h4>
-					<div class="model-costs">
-						<div class="model-cost-card">
-							<h5>GPT-4o</h5>
-							<div class="cost-row">
-								<span class="cost-label">Input:</span>
-								<span class="cost-value">{costs.gpt4o.input}</span>
-							</div>
-							<div class="cost-row">
-								<span class="cost-label">Output:</span>
-								<span class="cost-value">{costs.gpt4o.output}</span>
-							</div>
-						</div>
-						<div class="model-cost-card">
-							<h5>GPT-4</h5>
-							<div class="cost-row">
-								<span class="cost-label">Input:</span>
-								<span class="cost-value">{costs.gpt4.input}</span>
-							</div>
-							<div class="cost-row">
-								<span class="cost-label">Output:</span>
-								<span class="cost-value">{costs.gpt4.output}</span>
-							</div>
-						</div>
-						<div class="model-cost-card">
-							<h5>GPT-3.5 Turbo</h5>
-							<div class="cost-row">
-								<span class="cost-label">Input:</span>
-								<span class="cost-value">{costs.gpt35.input}</span>
-							</div>
-							<div class="cost-row">
-								<span class="cost-label">Output:</span>
-								<span class="cost-value">{costs.gpt35.output}</span>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Raw Tokens Display -->
-				<div class="tokens-section">
-					<button class="toggle-button" onclick={() => (showRawTokens = !showRawTokens)}>
-						{#if showRawTokens}
-							<ChevronUpIcon />
-						{:else}
-							<ChevronDownIcon />
-						{/if}
-						Raw Tokens ({tokenCount})
-					</button>
-
-					{#if showRawTokens}
-						<div class="tokens-display">
-							<div class="tokens-grid">
-								{#each decodedTokens as token, i}
-									<div class="token-item" title={`Token ID: ${tokens[i]}`}>
-										<span class="token-id">{tokens[i]}</span>
-										<span class="token-text">{token}</span>
-									</div>
-								{/each}
-							</div>
-						</div>
-					{/if}
-				</div>
+				<TokenStats {tokenCount} {charCount} />
+				<TokenCostEstimation {costs} title="Estimated API Costs" />
+				<RawTokensDisplay {tokens} {decodedTokens} bind:showRawTokens />
 			</div>
 		{:else if encoder && text.length === 0}
 			<div class="empty-state">
@@ -252,16 +111,15 @@
 		{/if}
 	</div>
 
-	<!-- Info Section -->
-	<div class="info-box">
-		<h4>About OpenAI's Tokenizer</h4>
-		<ul>
-			<li>Uses o200k_base encoding for GPT-4o and newer models</li>
-			<li>Average token length: ~4 characters for English text</li>
-			<li>Context windows: 128K tokens (GPT-4o), 8K-32K (GPT-4), 16K (GPT-3.5)</li>
-			<li>Code and special characters typically use more tokens</li>
-		</ul>
-	</div>
+	<InfoBox
+		title="About OpenAI's Tokenizer"
+		items={[
+			'Uses o200k_base encoding for GPT-4o and newer models',
+			'Average token length: ~4 characters for English text',
+			'Context windows: 128K tokens (GPT-4o), 8K-32K (GPT-4), 16K (GPT-3.5)',
+			'Code and special characters typically use more tokens'
+		]}
+	/>
 </div>
 
 <style>
