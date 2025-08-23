@@ -59,8 +59,6 @@
 	<meta name="twitter:image" content={page.data.seo.ogImage} />
 </svelte:head>
 
-<Tracking />
-
 <div class="app-wrapper">
 	<div
 		class="container"
@@ -138,6 +136,8 @@
 			'border: 3px solid #000; box-shadow: 4px 4px 0 #000; border-radius: 8px; font-family: Space Grotesk, sans-serif; font-weight: 600;'
 	}}
 />
+
+<Tracking />
 
 <style>
 	/* Base styles with refined Neo-Brutalist approach */
