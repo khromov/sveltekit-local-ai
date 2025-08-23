@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import type { Tiktoken } from 'js-tiktoken';
 	import MessageSquareIcon from 'virtual:icons/lucide/message-square';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
@@ -42,11 +42,13 @@
 	// Auto-calculate for small texts
 	$effect(() => {
 		if (encoder && text && text.length < 2000) {
-			calculateTokens();
+			untrack(() => calculateTokens());
 		} else if (!text) {
-			tokens = [];
-			tokenCount = 0;
-			decodedTokens = [];
+			untrack(() => {
+				tokens = [];
+				tokenCount = 0;
+				decodedTokens = [];
+			});
 		}
 	});
 
@@ -74,7 +76,7 @@
 			// Decode each token individually to show what it represents
 			decodedTokens = tokens.map((tokenId) => {
 				try {
-					return encoder!.decode(new Uint32Array([tokenId]));
+					return encoder!.decode([tokenId]);
 				} catch {
 					return `[Token ${tokenId}]`;
 				}
