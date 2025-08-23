@@ -1,4 +1,5 @@
 <script lang="ts">
+	import "$lib/design-system.css";
 	import { page } from '$app/state';
 	import '@fontsource/space-grotesk/400.css';
 	import '@fontsource/space-grotesk/500.css';
@@ -12,6 +13,8 @@
 	import SpeechIcon from 'virtual:icons/lucide/speech';
 	import { Toaster } from 'svelte-sonner';
 	import { dev } from '$app/environment';
+	import Tracking from '$lib/components/Tracking.svelte';
+	import DesignSystem from '$lib/components/DesignSystem.svelte';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -54,179 +57,9 @@
 	<meta name="twitter:title" content={page.data.seo.title} />
 	<meta name="twitter:description" content={page.data.seo.description} />
 	<meta name="twitter:image" content={page.data.seo.ogImage} />
-
-	{#if !dev}
-		<script
-			data-website-id="8b61040a-306f-4d99-95b3-0e925d631ec3"
-			data-host-url="https://u.khromov.se"
-		>
-			!(function () {
-				'use strict';
-				((t) => {
-					const {
-							screen: { width: e, height: a },
-							navigator: { language: n, doNotTrack: r, msDoNotTrack: i },
-							location: o,
-							document: s,
-							history: c,
-							top: u,
-							doNotTrack: d
-						} = t,
-						{ currentScript: l, referrer: f } = s;
-					if (!l) return;
-					const { hostname: h, href: m, origin: p } = o,
-						y = m.startsWith('data:') ? void 0 : t.localStorage,
-						g = 'data-',
-						b = 'true',
-						v = l.getAttribute.bind(l),
-						S = v(g + 'website-id'),
-						w = v(g + 'host-url'),
-						k = v(g + 'before-send'),
-						N = v(g + 'tag') || void 0,
-						T = 'false' !== v(g + 'auto-track'),
-						A = v(g + 'do-not-track') === b,
-						j = v(g + 'exclude-search') === b,
-						x = v(g + 'exclude-hash') === b,
-						$ = v(g + 'domains') || '',
-						E = $.split(',').map((t) => t.trim()),
-						K = `${(w || '' || l.src.split('/').slice(0, -1).join('/')).replace(/\/$/, '')}/api/send`,
-						L = `${e}x${a}`,
-						O = /data-umami-event-([\w-_]+)/,
-						_ = g + 'umami-event',
-						D = 300,
-						U = () => ({
-							website: S,
-							screen: L,
-							language: n,
-							title: s.title,
-							hostname: h,
-							url: z,
-							referrer: F,
-							tag: N,
-							id: q || void 0
-						}),
-						W = (t, e, a) => {
-							a &&
-								((F = z),
-								(z = new URL(a, o.href)),
-								j && (z.search = ''),
-								x && (z.hash = ''),
-								(z = z.toString()),
-								z !== F && setTimeout(J, D));
-						},
-						B = () =>
-							H ||
-							!S ||
-							(y && y.getItem('umami.disabled')) ||
-							($ && !E.includes(h)) ||
-							(A &&
-								(() => {
-									const t = d || r || i;
-									return 1 === t || '1' === t || 'yes' === t;
-								})()),
-						C = async (e, a = 'event') => {
-							if (B()) return;
-							const n = t[k];
-							if (('function' == typeof n && (e = n(a, e)), e))
-								try {
-									const t = await fetch(K, {
-											method: 'POST',
-											body: JSON.stringify({ type: a, payload: e }),
-											headers: {
-												'Content-Type': 'application/json',
-												...(void 0 !== R && { 'x-umami-cache': R })
-											},
-											credentials: 'omit'
-										}),
-										n = await t.json();
-									n && ((H = !!n.disabled), (R = n.cache));
-								} catch (t) {}
-						},
-						I = () => {
-							G ||
-								((G = !0),
-								J(),
-								(() => {
-									const t = (t, e, a) => {
-										const n = t[e];
-										return (...e) => (a.apply(null, e), n.apply(t, e));
-									};
-									((c.pushState = t(c, 'pushState', W)),
-										(c.replaceState = t(c, 'replaceState', W)));
-								})(),
-								(() => {
-									const t = async (t) => {
-										const e = t.getAttribute(_);
-										if (e) {
-											const a = {};
-											return (
-												t.getAttributeNames().forEach((e) => {
-													const n = e.match(O);
-													n && (a[n[1]] = t.getAttribute(e));
-												}),
-												J(e, a)
-											);
-										}
-									};
-									s.addEventListener(
-										'click',
-										async (e) => {
-											const a = e.target,
-												n = a.closest('a,button');
-											if (!n) return t(a);
-											const { href: r, target: i } = n;
-											if (n.getAttribute(_)) {
-												if ('BUTTON' === n.tagName) return t(n);
-												if ('A' === n.tagName && r) {
-													const a =
-														'_blank' === i ||
-														e.ctrlKey ||
-														e.shiftKey ||
-														e.metaKey ||
-														(e.button && 1 === e.button);
-													return (
-														a || e.preventDefault(),
-														t(n).then(() => {
-															a || (('_top' === i ? u.location : o).href = r);
-														})
-													);
-												}
-											}
-										},
-										!0
-									);
-								})());
-						},
-						J = (t, e) =>
-							C(
-								'string' == typeof t
-									? { ...U(), name: t, data: e }
-									: 'object' == typeof t
-										? { ...t }
-										: 'function' == typeof t
-											? t(U())
-											: U()
-							),
-						P = (t, e) => (
-							'string' == typeof t && (q = t),
-							(R = ''),
-							C({ ...U(), data: 'object' == typeof t ? t : e }, 'identify')
-						);
-					t.umami || (t.umami = { track: J, identify: P });
-					let R,
-						q,
-						z = m,
-						F = f.startsWith(p) ? '' : f,
-						G = !1,
-						H = !1;
-					T &&
-						!B() &&
-						('complete' === s.readyState ? I() : s.addEventListener('readystatechange', I, !0));
-				})(window);
-			})();
-		</script>
-	{/if}
 </svelte:head>
+
+<Tracking />
 
 <div class="app-wrapper">
 	<div
@@ -307,87 +140,6 @@
 />
 
 <style>
-	/* Neo-Brutalist Design System */
-	:root {
-		/* Colors - Base */
-		--color-black: #000;
-		--color-white: #fff;
-		--color-gray-100: #f5f5f5;
-		--color-gray-200: #e0e0e0;
-		--color-gray-300: #d0d0d0;
-		--color-gray-400: #b0b0b0;
-		--color-gray-500: #888;
-		--color-gray-600: #666;
-		--color-gray-700: #333;
-		--color-gray-800: #222;
-		--color-gray-900: #111;
-
-		/* Colors - Primary */
-		--color-primary: #ffd700;
-		--color-primary-dark: #ffd93d;
-		--color-primary-hover: #ffcc00;
-
-		/* Colors - State */
-		--color-success: #98fb98;
-		--color-success-hover: #90ee90;
-		--color-danger: #ff6b6b;
-		--color-danger-hover: #ff5252;
-		--color-warning: #ffa500;
-		--color-warning-hover: #ff8c00;
-
-		/* Colors - Accent */
-		--color-accent-pink: #ff69b4;
-		--color-accent-blue: #87ceeb;
-		--color-accent-light-green: #b4e7ce;
-		--color-accent-red: #ff0000;
-		--color-accent-light-blue: #f0f8ff;
-		--color-accent-light-pink: #ffe4e1;
-		--color-accent-light-yellow: #fffacd;
-
-		/* Colors - Background */
-		--color-background-main: #fff;
-		--color-background-secondary: #f5f5f5;
-		--color-background-tertiary: #f0f0f0;
-		--color-background-disabled: #e0e0e0;
-		--color-background-cream: #fffacd;
-		--color-background-light-blue: #f0f8ff;
-		--color-background-light-green: #f0fff0;
-		--color-background-light-pink: #ffe4e1;
-		--color-background-pattern: #e8e8e8;
-
-		/* Colors - Border */
-		--color-border-primary: #000;
-		--color-border-secondary: #333;
-
-		/* Colors - Text */
-		--color-text-primary: #000;
-		--color-text-secondary: #333;
-		--color-text-tertiary: #666;
-		--color-text-disabled: #999;
-		--color-text-inverse: #fff;
-		--color-text-danger: #d62828;
-
-		/* Colors - Gradient Backgrounds */
-		--color-gradient-gold: #ffe5b4;
-		--color-gradient-lavender: #e6e6fa;
-		--color-gradient-mint: #b4e7ce;
-
-		/* Typography */
-		--font-family-primary: 'Space Grotesk', system-ui, -apple-system, sans-serif;
-		--font-family-display: 'Bebas Neue', sans-serif;
-
-		/* Shadows & Effects */
-		--shadow-brutalist-small: 2px 2px 0 var(--color-border-primary);
-		--shadow-brutalist-medium: 4px 4px 0 var(--color-border-primary);
-		--shadow-brutalist-large: 6px 6px 0 var(--color-border-primary);
-		--shadow-brutalist-xlarge: 8px 8px 0 var(--color-border-primary);
-
-		/* Borders */
-		--border-brutalist-thin: 2px solid var(--color-border-primary);
-		--border-brutalist-thick: 3px solid var(--color-border-primary);
-		--border-brutalist-extra-thick: 4px solid var(--color-border-primary);
-	}
-
 	/* Base styles with refined Neo-Brutalist approach */
 	:global(html) {
 		height: 100%;

@@ -1,0 +1,79 @@
+:root {
+    /* Colors - Base */
+    --color-black: #000;
+    --color-white: #fff;
+    --color-gray-100: #f5f5f5;
+    --color-gray-200: #e0e0e0;
+    --color-gray-300: #d0d0d0;
+    --color-gray-400: #b0b0b0;
+    --color-gray-500: #888;
+    --color-gray-600: #666;
+    --color-gray-700: #333;
+    --color-gray-800: #222;
+    --color-gray-900: #111;
+
+    /* Colors - Primary */
+    --color-primary: #ffd700;
+    --color-primary-dark: #ffd93d;
+    --color-primary-hover: #ffcc00;
+
+    /* Colors - State */
+    --color-success: #98fb98;
+    --color-success-hover: #90ee90;
+    --color-danger: #ff6b6b;
+    --color-danger-hover: #ff5252;
+    --color-warning: #ffa500;
+    --color-warning-hover: #ff8c00;
+
+    /* Colors - Accent */
+    --color-accent-pink: #ff69b4;
+    --color-accent-blue: #87ceeb;
+    --color-accent-light-green: #b4e7ce;
+    --color-accent-red: #ff0000;
+    --color-accent-light-blue: #f0f8ff;
+    --color-accent-light-pink: #ffe4e1;
+    --color-accent-light-yellow: #fffacd;
+
+    /* Colors - Background */
+    --color-background-main: #fff;
+    --color-background-secondary: #f5f5f5;
+    --color-background-tertiary: #f0f0f0;
+    --color-background-disabled: #e0e0e0;
+    --color-background-cream: #fffacd;
+    --color-background-light-blue: #f0f8ff;
+    --color-background-light-green: #f0fff0;
+    --color-background-light-pink: #ffe4e1;
+    --color-background-pattern: #e8e8e8;
+
+    /* Colors - Border */
+    --color-border-primary: #000;
+    --color-border-secondary: #333;
+
+    /* Colors - Text */
+    --color-text-primary: #000;
+    --color-text-secondary: #333;
+    --color-text-tertiary: #666;
+    --color-text-disabled: #999;
+    --color-text-inverse: #fff;
+    --color-text-danger: #d62828;
+
+    /* Colors - Gradient Backgrounds */
+    --color-gradient-gold: #ffe5b4;
+    --color-gradient-lavender: #e6e6fa;
+    --color-gradient-mint: #b4e7ce;
+
+    /* Typography */
+    --font-family-primary: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    --font-family-display: 'Bebas Neue', sans-serif;
+
+    /* Shadows & Effects */
+    --shadow-brutalist-small: 2px 2px 0 var(--color-border-primary);
+    --shadow-brutalist-medium: 4px 4px 0 var(--color-border-primary);
+    --shadow-brutalist-large: 6px 6px 0 var(--color-border-primary);
+    --shadow-brutalist-xlarge: 8px 8px 0 var(--color-border-primary);
+
+    /* Borders */
+    --border-brutalist-thin: 2px solid var(--color-border-primary);
+    --border-brutalist-thick: 3px solid var(--color-border-primary);
+    --border-brutalist-extra-thick: 4px solid var(--color-border-primary);
+}
