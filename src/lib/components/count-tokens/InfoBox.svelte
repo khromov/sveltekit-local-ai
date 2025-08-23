@@ -10,7 +10,7 @@
 <div class="info-box">
 	<h4>{title}</h4>
 	<ul>
-		{#each items as item}
+		{#each items as item, index (index)}
 			<li>{item}</li>
 		{/each}
 	</ul>

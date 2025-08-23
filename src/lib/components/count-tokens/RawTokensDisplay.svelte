@@ -26,7 +26,7 @@
 	{#if showRawTokens}
 		<div class="tokens-display">
 			<div class="tokens-grid">
-				{#each decodedTokens as token, i}
+				{#each decodedTokens as token, i (i)}
 					<div class="token-item" title={`Token ID: ${tokens[i]}`}>
 						<span class="token-id">{tokens[i]}</span>
 						<span class="token-text">{token}</span>

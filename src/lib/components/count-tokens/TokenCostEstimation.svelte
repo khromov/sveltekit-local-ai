@@ -4,7 +4,7 @@
 		output: string;
 	}
 
-	interface SingleModelCost extends CostData {}
+	type SingleModelCost = CostData;
 
 	interface MultiModelCost {
 		[modelName: string]: CostData;
@@ -49,7 +49,7 @@
 	{:else if multiCosts}
 		<!-- Multiple model cost display (OpenAI) -->
 		<div class="model-costs">
-			{#each Object.entries(multiCosts) as [modelName, modelCosts]}
+			{#each Object.entries(multiCosts) as [modelName, modelCosts] (modelName)}
 				<div class="model-cost-card">
 					<h5>{modelName.toUpperCase().replace('GPT', 'GPT-').replace('35', '3.5')}</h5>
 					<div class="cost-row">

@@ -8,6 +8,7 @@
 	import TokenCostEstimation from '$lib/components/count-tokens/TokenCostEstimation.svelte';
 	import RawTokensDisplay from '$lib/components/count-tokens/RawTokensDisplay.svelte';
 	import InfoBox from '$lib/components/count-tokens/InfoBox.svelte';
+	import EmptyState from '$lib/components/count-tokens/EmptyState.svelte';
 
 	const { data } = $props();
 
@@ -105,9 +106,7 @@
 				<RawTokensDisplay {tokens} {decodedTokens} bind:showRawTokens />
 			</div>
 		{:else if encoder && text.length === 0}
-			<div class="empty-state">
-				<p>Enter some text above to see the token count</p>
-			</div>
+			<EmptyState />
 		{/if}
 	</div>
 
@@ -165,13 +164,6 @@
 			opacity: 1;
 			transform: translateY(0) rotate(-0.2deg);
 		}
-	}
-
-	.empty-state {
-		text-align: center;
-		padding: 3rem;
-		color: var(--color-text-tertiary);
-		font-size: 1.125rem;
 	}
 
 	@media (max-width: 600px) {
