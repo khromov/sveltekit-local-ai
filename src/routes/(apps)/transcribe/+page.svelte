@@ -317,19 +317,8 @@
 
 		if ($whisperModel) {
 			selectedModel = $whisperModel;
-
-			if (opfsSupported) {
-				// Only autoload if the model is already cached
-				const cached = await isModelCached($whisperModel);
-				if (cached) {
-					console.log('Autoloading cached model:', $whisperModel);
-					loadModel();
-				} else {
-					console.log('Model not cached, user must manually load:', $whisperModel);
-				}
-			} else {
-				console.log('OPFS not supported, user must manually load model:', $whisperModel);
-			}
+			// Don't automatically load the model - let user choose to load it
+			console.log('Previous model selection restored:', $whisperModel);
 		}
 	});
 
