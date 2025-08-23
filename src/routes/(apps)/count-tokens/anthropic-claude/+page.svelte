@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount, untrack } from 'svelte';
+	import { onMount } from 'svelte';
 	import type { Tiktoken } from 'js-tiktoken';
 	import BrainIcon from 'virtual:icons/lucide/brain';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
@@ -14,14 +14,32 @@
 	const { data } = $props();
 
 	let text = $state('');
-	let tokens: number[] = $state([]);
-	let tokenCount = $state(0);
-	let charCount = $state(0);
 	let showRawTokens = $state(false);
 	let copied = $state(false);
 	let encoder: Tiktoken | null = $state(null);
-	let isProcessing = $state(false);
-	let decodedTokens: string[] = $state([]);
+
+	// Derived values from text and encoder
+	let charCount = $derived(text.length);
+	let tokens = $derived.by(() => {
+		if (!encoder || !text) return [];
+		try {
+			return encoder.encode(text);
+		} catch (error) {
+			console.error('Error encoding text:', error);
+			return [];
+		}
+	});
+	let tokenCount = $derived(tokens.length);
+	let decodedTokens = $derived.by(() => {
+		if (!encoder || tokens.length === 0) return [];
+		return tokens.map((tokenId: number) => {
+			try {
+				return encoder!.decode([tokenId]);
+			} catch {
+				return `[Token ${tokenId}]`;
+			}
+		});
+	});
 
 	// Example texts
 	const exampleTexts = [
@@ -34,63 +52,12 @@
 		'人工智能（Artificial Intelligence，简称AI）是计算机科学的一个分支，旨在创建能够执行通常需要人类智能的任务的系统。'
 	];
 
-	// Calculate character count
-	$effect(() => {
-		charCount = text.length;
-	});
-
-	// Auto-calculate for small texts
-	$effect(() => {
-		if (encoder && text && text.length < 2000) {
-			untrack(() => calculateTokens());
-		} else if (!text) {
-			untrack(() => {
-				tokens = [];
-				tokenCount = 0;
-				decodedTokens = [];
-			});
-		}
-	});
-
 	onMount(() => {
 		if (data.encoder) {
 			encoder = data.encoder;
 			console.log('Encoder loaded successfully');
 		}
 	});
-
-	function calculateTokens() {
-		if (!encoder || !text) {
-			tokens = [];
-			tokenCount = 0;
-			decodedTokens = [];
-			return;
-		}
-
-		isProcessing = true;
-		try {
-			// Encode the text to get token IDs
-			tokens = encoder.encode(text);
-			tokenCount = tokens.length;
-
-			// Decode each token individually to show what it represents
-			decodedTokens = tokens.map((tokenId) => {
-				try {
-					return encoder!.decode([tokenId]);
-				} catch {
-					return `[Token ${tokenId}]`;
-				}
-			});
-		} catch (error) {
-			console.error('Error encoding text:', error);
-			toast.error('Failed to tokenize text');
-			tokens = [];
-			tokenCount = 0;
-			decodedTokens = [];
-		} finally {
-			isProcessing = false;
-		}
-	}
 
 	function handleRandomExample() {
 		const randomText = exampleTexts[Math.floor(Math.random() * exampleTexts.length)];
@@ -177,15 +144,7 @@
 				bind:value={text}
 				placeholder="Enter or paste your text here to count tokens..."
 				class="text-input"
-				disabled={isProcessing}
 			></textarea>
-
-			{#if text.length >= 2000 && encoder}
-				<button class="calculate-button" onclick={calculateTokens} disabled={isProcessing}>
-					<SparklesIcon />
-					{isProcessing ? 'Calculating...' : 'Calculate Tokens'}
-				</button>
-			{/if}
 		</div>
 
 		<!-- Results Section -->
