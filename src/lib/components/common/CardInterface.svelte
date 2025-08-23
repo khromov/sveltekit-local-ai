@@ -49,8 +49,15 @@
 		);
 		border: var(--border-brutalist-thick);
 		opacity: 0.2;
-		z-index: -1;
+		/* Ensure decoration sits above card background but below content */
+		z-index: 0;
 		pointer-events: none;
+	}
+
+	/* Keep all non-decoration children above the floating shapes */
+	.card-interface > :not(.floating-decoration) {
+		position: relative;
+		z-index: 1;
 	}
 
 	.decoration-1 {
