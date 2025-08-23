@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { Component } from 'svelte';
+	import { page } from '$app/stores';
+	import RefreshCwIcon from 'virtual:icons/lucide/refresh-cw';
 
 	interface Props {
 		icon: Component;
@@ -8,9 +10,34 @@
 	}
 
 	let { icon: Icon, title, description }: Props = $props();
+
+	// Determine counterpart page for quick switching
+	let targetHref = $state<string | null>(null);
+	let targetLabel = $state<string | null>(null);
+
+	$effect(() => {
+		const path = $page.url.pathname;
+		const isOpenAI = path.includes('/count-tokens/openai-chatgpt');
+		const isAnthropic = path.includes('/count-tokens/anthropic-claude');
+		if (isOpenAI) {
+			targetHref = '/count-tokens/anthropic-claude';
+			targetLabel = 'Switch to Anthropic';
+		} else if (isAnthropic) {
+			targetHref = '/count-tokens/openai-chatgpt';
+			targetLabel = 'Switch to OpenAI';
+		} else {
+			targetHref = null;
+			targetLabel = null;
+		}
+	});
 </script>
 
 <div class="tokenizer-header">
+	{#if targetHref && targetLabel}
+		<a class="switch-button" href={targetHref} aria-label={targetLabel} title={targetLabel}>
+			<RefreshCwIcon />
+		</a>
+	{/if}
 	<div class="header-content">
 		<div class="header-title">
 			<span class="header-icon"><Icon /></span>
@@ -28,6 +55,7 @@
 		padding: 1.5rem;
 		margin-bottom: 2rem;
 		transform: rotate(-0.3deg);
+		position: relative;
 	}
 
 	.header-content {
@@ -67,5 +95,31 @@
 		margin: 0;
 		font-size: 1rem;
 		color: var(--color-text-secondary);
+	}
+
+	.switch-button {
+		position: absolute;
+		top: 0.75rem;
+		right: 0.75rem;
+		text-decoration: none;
+		padding: 0.5rem;
+		background: var(--color-background-secondary);
+		border: var(--border-brutalist-thin);
+		border-radius: 6px;
+		color: var(--color-text-primary);
+		box-shadow: var(--shadow-brutalist-small);
+		transition: all 0.2s ease;
+	}
+
+	.switch-button:hover {
+		background: var(--color-background-tertiary);
+		transform: translate(-1px, -1px);
+		box-shadow: var(--shadow-brutalist-medium);
+	}
+
+	.switch-button :global(svg) {
+		width: 1.1rem;
+		height: 1.1rem;
+		display: block;
 	}
 </style>
