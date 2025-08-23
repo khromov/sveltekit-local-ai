@@ -3,6 +3,7 @@
 	import MicIcon from 'virtual:icons/lucide/mic';
 	import ImageIcon from 'virtual:icons/lucide/image';
 	import SpeechIcon from 'virtual:icons/lucide/speech';
+	import CalculatorIcon from 'virtual:icons/lucide/calculator';
 	// No props needed for this component
 </script>
 
@@ -89,6 +90,23 @@
 					<div class="feature-highlights">
 						<span class="highlight">AI-Powered</span>
 						<span class="highlight">High Quality</span>
+					</div>
+				</div>
+			</a>
+
+			<a href="/count-tokens" class="feature-card tokens-card">
+				<div class="card-number">Tool #05</div>
+				<div class="card-content">
+					<div class="icon-container">
+						<CalculatorIcon style="width: 48px; height: 48px; stroke-width: 2.5" />
+					</div>
+					<h2>Count Tokens</h2>
+					<p class="feature-description">
+						Estimate token usage for prompts across OpenAI and Anthropic models.
+					</p>
+					<div class="feature-highlights">
+						<span class="highlight">OpenAI & Anthropic</span>
+						<span class="highlight">Accurate Counts</span>
 					</div>
 				</div>
 			</a>
@@ -235,6 +253,10 @@
 
 	.feature-card:nth-child(4) {
 		animation-delay: 0.5s;
+	}
+
+	.feature-card:nth-child(5) {
+		animation-delay: 0.6s;
 	}
 
 	@keyframes cardFade {
