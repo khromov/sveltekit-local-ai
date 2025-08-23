@@ -32,7 +32,7 @@
 							<BrainIcon />
 						</div>
 						<h1>Local AI</h1>
-						<p>Private AI Tools</p>
+						<p>Chat • Transcribe • Text to Speech • Background Remover • Count Tokens</p>
 						<div class="url">ai.stanislav.garden</div>
 					</div>
 				</div>
@@ -53,8 +53,10 @@
 						<h2>Private AI in Your Browser</h2>
 						<div class="features">
 							<span>💬 Chat</span>
-							<span>🎤 Transcribe</span>
-							<span>🖼️ Edit Images</span>
+							<span>🎤 Transcribe Audio</span>
+							<span>🗣️ Text to Speech</span>
+							<span>🖼️ Remove Background</span>
+							<span>🧮 Count Tokens</span>
 						</div>
 					</div>
 				</div>
@@ -72,7 +74,7 @@
 					</div>
 					<div class="main">
 						<h1>Local AI Tools</h1>
-						<p>Run AI models completely offline</p>
+						<p>Run offline: Chat • Transcribe • TTS • Background • Tokens</p>
 					</div>
 					<div class="footer">
 						<span class="url">ai.stanislav.garden</span>
@@ -323,6 +325,14 @@
 
 	.layout-2 .features span:nth-child(3) {
 		transform: rotate(-0.3deg);
+	}
+
+	.layout-2 .features span:nth-child(4) {
+		transform: rotate(0.4deg);
+	}
+
+	.layout-2 .features span:nth-child(5) {
+		transform: rotate(-0.2deg);
 	}
 
 	/* Layout 3: Clean Focus */
