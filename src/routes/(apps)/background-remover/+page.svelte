@@ -6,11 +6,12 @@
 	import ImageIcon from 'virtual:icons/lucide/image';
 	import Trash2Icon from 'virtual:icons/lucide/trash-2';
 	import FolderIcon from 'virtual:icons/lucide/folder';
+	import StarIcon from 'virtual:icons/lucide/star';
 
-	import BackgroundRemoverUpload from '$lib/components/background-remover/BackgroundRemoverUpload.svelte';
-	import BackgroundRemoverProgress from '$lib/components/background-remover/BackgroundRemoverProgress.svelte';
-	import BackgroundRemoverResult from '$lib/components/background-remover/BackgroundRemoverResult.svelte';
+	import { FileUploadArea, ProgressDisplay, ResultDisplay } from '$lib/components/shared';
 	import BackgroundRemoverBatchResult from '$lib/components/background-remover/BackgroundRemoverBatchResult.svelte';
+
+	// Import common components
 	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
 	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
 	import CardInterface from '$lib/components/common/CardInterface.svelte';
@@ -28,6 +29,7 @@
 	let errorMessage = $state('');
 	let modelLoadProgress = $state(0);
 	let processingProgress = $state(0);
+	let previousProgress = $state(0);
 
 	// Configure custom model URL
 	if (env.backends?.onnx?.wasm) {
@@ -160,6 +162,7 @@
 		try {
 			isProcessing = true;
 			processingProgress = 0;
+			previousProgress = 0;
 			originalImageUrl = imageUrl;
 
 			await requestWakeLock();
@@ -191,6 +194,7 @@
 		try {
 			isProcessing = true;
 			processingProgress = 0;
+			previousProgress = 0;
 			currentBatchIndex = 0;
 			totalBatchCount = files.length;
 
@@ -206,6 +210,7 @@
 			// Process each image
 			for (let i = 0; i < files.length; i++) {
 				currentBatchIndex = i + 1;
+				previousProgress = processingProgress;
 				processingProgress = Math.round((i / files.length) * 100);
 
 				try {
@@ -242,8 +247,13 @@
 		handleBatchProcessing(files);
 	}
 
-	function handleExampleUse() {
+	async function handleExampleUse() {
 		if (processingMode === 'single') {
+			// Create a fake file object for the example
+			const response = await fetch(EXAMPLE_URL);
+			const blob = await response.blob();
+			const file = new File([blob], 'example.jpg', { type: 'image/jpeg' });
+			selectedFile = file;
 			handleSingleImageProcessing(EXAMPLE_URL);
 		}
 	}
@@ -303,6 +313,16 @@
 		link.click();
 		document.body.removeChild(link);
 		URL.revokeObjectURL(url);
+	}
+
+	function downloadSingleImage() {
+		if (!processedImageUrl) return;
+		const link = document.createElement('a');
+		link.href = processedImageUrl;
+		link.download = 'background-removed.png';
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
 	}
 
 	function retry() {
@@ -418,24 +438,53 @@
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
 				<SectionCard rotation={-0.1} animationDelay={0.2}>
 					<StepHeader stepNumber={3} title="Upload Images" backgroundColor="#98fb98" />
-					<BackgroundRemoverUpload
-						mode={processingMode}
-						{selectedFile}
-						{selectedFiles}
-						onFileSelect={handleSingleFileSelect}
-						onFilesSelect={handleBatchFileSelect}
-						onExampleUse={handleExampleUse}
-						disabled={isProcessing}
-					/>
+
+					{#if processingMode === 'single'}
+						<FileUploadArea
+							bind:selectedFile
+							onFileSelect={handleSingleFileSelect}
+							disabled={isProcessing}
+							fileType="image"
+							accept="image/*"
+							title="Drop your image here"
+							subtitle="or click to browse • JPG, PNG, WebP supported"
+						/>
+
+						{#if !selectedFile}
+							<div class="or-divider">
+								<span>OR</span>
+							</div>
+
+							<button class="example-button" onclick={handleExampleUse} disabled={isProcessing}>
+								<span class="example-icon"><StarIcon /></span>
+								Try Example Image
+							</button>
+						{/if}
+					{:else}
+						<FileUploadArea
+							bind:selectedFiles
+							onFilesSelect={handleBatchFileSelect}
+							disabled={isProcessing}
+							multiple={true}
+							maxFiles={10}
+							fileType="image"
+							accept="image/*"
+							title="Drop multiple images here"
+							subtitle="or click to browse • JPG, PNG, WebP supported"
+						/>
+					{/if}
 				</SectionCard>
 			{/if}
 
 			{#if isProcessing}
-				<BackgroundRemoverProgress
+				<ProgressDisplay
+					title="Processing Image"
 					progress={processingProgress}
+					{previousProgress}
 					message={processingMode === 'single'
 						? 'Processing image and removing background...'
 						: `Processing image ${currentBatchIndex} of ${totalBatchCount}...`}
+					icon="processing"
 				/>
 			{/if}
 
@@ -444,11 +493,34 @@
 			{/if}
 
 			{#if processingMode === 'single' && processedImageUrl && originalImageUrl && !isProcessing}
-				<BackgroundRemoverResult
-					{originalImageUrl}
-					{processedImageUrl}
+				<ResultDisplay
+					title="Background Removed!"
+					onCopy={() => {
+						if (processedImageUrl) {
+							navigator.clipboard.write([
+								new ClipboardItem({
+									'image/png': fetch(processedImageUrl).then((r) => r.blob())
+								})
+							]);
+						}
+					}}
+					onDownload={downloadSingleImage}
 					onProcessAnother={clearResults}
-				/>
+				>
+					<div class="comparison-view">
+						<div class="image-side">
+							<h4>Original</h4>
+							<img src={originalImageUrl} alt="Original" />
+						</div>
+						<div class="image-side">
+							<h4>Background Removed</h4>
+							<div class="processed-image-container">
+								<div class="transparent-bg-pattern"></div>
+								<img src={processedImageUrl} alt="Background removed" />
+							</div>
+						</div>
+					</div>
+				</ResultDisplay>
 			{/if}
 
 			{#if processingMode === 'batch' && batchResults.length > 0 && !isProcessing}
@@ -604,6 +676,163 @@
 		letter-spacing: 0;
 		font-weight: 400;
 		line-height: 1.2;
+	}
+
+	.or-divider {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 1rem 0;
+		position: relative;
+	}
+
+	.or-divider span {
+		background: var(--color-background-main);
+		padding: 0 1rem;
+		font-weight: 700;
+		font-size: 0.875rem;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: var(--color-text-tertiary);
+		position: relative;
+	}
+
+	.or-divider::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: var(--color-gray-300);
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.example-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		width: 100%;
+		padding: 1rem 1.5rem;
+		background: var(--color-success);
+		color: var(--color-text-primary);
+		border: var(--border-brutalist-thick);
+		border-radius: 8px;
+		cursor: pointer;
+		font-size: 1rem;
+		font-weight: 700;
+		transition: all 0.2s;
+		box-shadow: var(--shadow-brutalist-medium);
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		font-family: var(--font-family-primary);
+		transform: rotate(-0.5deg);
+	}
+
+	.example-button:hover:not(:disabled) {
+		transform: translate(-2px, -2px) rotate(0deg);
+		box-shadow: var(--shadow-brutalist-large);
+		background: var(--color-primary-dark);
+	}
+
+	.example-button:disabled {
+		background: var(--color-background-disabled);
+		cursor: not-allowed;
+		opacity: 0.6;
+	}
+
+	.example-icon {
+		font-size: 1.25rem;
+		display: flex;
+		align-items: center;
+		color: var(--color-text-primary);
+	}
+
+	.example-icon :global(svg) {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	/* Image comparison styles */
+	.comparison-view {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.5rem;
+		border: var(--border-brutalist-thick);
+		border-radius: 8px;
+		padding: 1.5rem;
+		background: var(--color-background-secondary);
+	}
+
+	.image-side {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.image-side h4 {
+		margin: 0;
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--color-text-primary);
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		background: var(--color-primary-dark);
+		padding: 0.5rem 1rem;
+		border: var(--border-brutalist-thin);
+		box-shadow: var(--shadow-brutalist-small);
+	}
+
+	.image-side img {
+		max-width: 100%;
+		max-height: 300px;
+		border: var(--border-brutalist-thin);
+		border-radius: 4px;
+		box-shadow: var(--shadow-brutalist-small);
+	}
+
+	.processed-image-container {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 200px;
+		width: 100%;
+	}
+
+	.transparent-bg-pattern {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image:
+			linear-gradient(45deg, var(--color-background-pattern) 25%, transparent 25%),
+			linear-gradient(-45deg, var(--color-background-pattern) 25%, transparent 25%),
+			linear-gradient(45deg, transparent 75%, var(--color-background-pattern) 75%),
+			linear-gradient(-45deg, transparent 75%, var(--color-background-pattern) 75%);
+		background-size: 20px 20px;
+		background-position:
+			0 0,
+			0 10px,
+			10px -10px,
+			-10px 0px;
+		z-index: 0;
+	}
+
+	.processed-image-container img {
+		position: relative;
+		z-index: 1;
+	}
+
+	@media (max-width: 768px) {
+		.comparison-view {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+			padding: 1rem;
+		}
 	}
 
 	@media (max-width: 600px) {
