@@ -1,5 +1,5 @@
 <script lang="ts">
-	import FileUpload from './FileUpload.svelte';
+	import { FileUploadArea } from '$lib/components/shared';
 	import AudioRecorder from './AudioRecorder.svelte';
 	import MusicIcon from 'virtual:icons/lucide/music';
 	import FolderIcon from 'virtual:icons/lucide/folder';
@@ -91,7 +91,15 @@
 	</div>
 
 	{#if transcribeMode === 'upload'}
-		<FileUpload bind:selectedFile {onFileSelect} {disabled} />
+		<FileUploadArea
+			bind:selectedFile
+			{onFileSelect}
+			{disabled}
+			fileType="audio"
+			accept="audio/*"
+			title="Drop your audio file here"
+			subtitle="or click to browse • MP3, WAV, M4A supported"
+		/>
 	{:else if transcribeMode === 'record'}
 		<AudioRecorder bind:transcribeMode bind:selectedFile {onFileSelect} {disabled} />
 	{/if}
@@ -113,12 +121,12 @@
 
 	@keyframes slideIn {
 		from {
-			transform: translateX(20px) rotate(1deg);
 			opacity: 0;
+			transform: translateX(20px) rotate(1deg);
 		}
 		to {
-			transform: translateX(0) rotate(0.5deg);
 			opacity: 1;
+			transform: translateX(0) rotate(0.5deg);
 		}
 	}
 

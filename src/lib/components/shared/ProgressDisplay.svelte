@@ -1,62 +1,85 @@
+<!-- Shared Progress Display Component -->
 <script lang="ts">
 	import ProgressBar from '$lib/components/common/ProgressBar.svelte';
-	import HeadphonesIcon from 'virtual:icons/lucide/headphones';
-	import ZapIcon from 'virtual:icons/lucide/zap';
+	import RotateCwIcon from 'virtual:icons/lucide/rotate-cw';
+	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 	import AlertTriangleIcon from 'virtual:icons/lucide/alert-triangle';
 
 	interface Props {
+		title?: string;
 		progress: number;
 		previousProgress?: number;
-		currentSegment?: string;
+		message?: string;
+		subMessage?: string;
+		icon?: 'processing' | 'sparkles' | 'warning';
+		showPercentage?: boolean;
 		isStuck?: boolean;
 		onReload?: () => void;
 	}
 
 	let {
+		title = 'Processing',
 		progress = 0,
 		previousProgress = 0,
-		currentSegment = '',
+		message = 'Processing...',
+		subMessage = '',
+		icon = 'processing',
+		showPercentage = true,
 		isStuck = false,
 		onReload
 	}: Props = $props();
 </script>
 
-<div class="transcribing">
-	<div class="transcribing-decoration"></div>
+<div class="progress-display">
+	<div class="progress-decoration"></div>
+
 	<h3>
-		<span class="title-icon"><HeadphonesIcon /></span>
-		Transcribing Audio
+		{#if icon === 'processing'}
+			<span class="title-icon rotating"><RotateCwIcon /></span>
+		{:else if icon === 'sparkles'}
+			<span class="title-icon sparkling"><SparklesIcon /></span>
+		{:else if icon === 'warning'}
+			<span class="title-icon warning"><AlertTriangleIcon /></span>
+		{/if}
+		{title}
 	</h3>
-	<p class="progress-percentage">{progress}% Complete</p>
+
+	{#if showPercentage}
+		<p class="progress-percentage">{progress}% Complete</p>
+	{/if}
 
 	<div class="progress-wrapper">
 		<ProgressBar {progress} {previousProgress} />
 	</div>
 
-	{#if currentSegment}
-		<div class="segment-preview">
-			<h4>Current Segment</h4>
-			<p>"{currentSegment}"</p>
-			<div class="segment-decoration"></div>
+	{#if subMessage}
+		<div class="sub-message">
+			<p>"{subMessage}"</p>
 		</div>
 	{/if}
 
 	{#if isStuck}
 		<div class="stuck-message">
 			<span class="warning-icon"><AlertTriangleIcon /></span>
-			Transcription seems stuck
-			<button class="reload-link" onclick={onReload}> Reload Page → </button>
+			Process seems stuck
+			{#if onReload}
+				<button class="reload-link" onclick={onReload}>Reload Page →</button>
+			{/if}
 		</div>
 	{:else}
-		<div class="transcribing-message">
-			<span class="pulse-icon"><ZapIcon /></span>
-			Keep this tab active during transcription
+		<div class="processing-message">
+			{#if icon === 'sparkles'}
+				<span class="pulse-icon"><SparklesIcon /></span>
+			{:else}
+				<span class="pulse-icon"><RotateCwIcon /></span>
+			{/if}
+			{message}
 		</div>
 	{/if}
 </div>
 
 <style>
-	.transcribing {
+	.progress-display {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -81,7 +104,7 @@
 		}
 	}
 
-	.transcribing-decoration {
+	.progress-decoration {
 		position: absolute;
 		top: -10px;
 		left: -10px;
@@ -109,7 +132,7 @@
 		}
 	}
 
-	.transcribing h3 {
+	.progress-display h3 {
 		margin-top: 0;
 		margin-bottom: 1rem;
 		font-family: var(--font-family-display);
@@ -132,7 +155,6 @@
 		display: flex;
 		align-items: center;
 		color: var(--color-text-primary);
-		animation: bounce 2s ease-in-out infinite;
 	}
 
 	.title-icon :global(svg) {
@@ -140,13 +162,44 @@
 		height: 2rem;
 	}
 
-	@keyframes bounce {
+	.title-icon.rotating {
+		animation: rotate 2s linear infinite;
+	}
+
+	.title-icon.sparkling {
+		animation: sparkle 2s ease-in-out infinite;
+	}
+
+	.title-icon.warning {
+		animation: pulse 2s ease-in-out infinite;
+	}
+
+	@keyframes rotate {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes sparkle {
 		0%,
 		100% {
-			transform: translateY(0);
+			transform: scale(1) rotate(0deg);
 		}
 		50% {
-			transform: translateY(-5px);
+			transform: scale(1.2) rotate(180deg);
+		}
+	}
+
+	@keyframes pulse {
+		0%,
+		100% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.1);
 		}
 	}
 
@@ -160,11 +213,11 @@
 		border: var(--border-brutalist-thick);
 		box-shadow: 5px 5px 0 var(--color-text-primary);
 		transform: rotate(1deg);
-		animation: pulse 2s ease-in-out infinite;
+		animation: pulseBadge 2s ease-in-out infinite;
 		text-transform: uppercase;
 	}
 
-	@keyframes pulse {
+	@keyframes pulseBadge {
 		0%,
 		100% {
 			transform: scale(1) rotate(1deg);
@@ -180,7 +233,7 @@
 		margin-bottom: 1.5rem;
 	}
 
-	.segment-preview {
+	.sub-message {
 		margin: 1.5rem 0;
 		padding: 1.5rem;
 		background: var(--color-background-main);
@@ -193,46 +246,7 @@
 		transform: rotate(0.5deg);
 	}
 
-	@keyframes slideIn {
-		from {
-			transform: translateY(10px) rotate(0.5deg);
-			opacity: 0;
-		}
-		to {
-			transform: translateY(0) rotate(0.5deg);
-			opacity: 1;
-		}
-	}
-
-	.segment-decoration {
-		position: absolute;
-		top: -8px;
-		right: -8px;
-		width: 50px;
-		height: 50px;
-		background: var(--color-accent-pink);
-		border: var(--border-brutalist-thin);
-		border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
-		opacity: 0.4;
-		transform: rotate(-45deg);
-	}
-
-	.segment-preview h4 {
-		text-align: center;
-		margin: 0 0 0.75rem 0;
-		font-size: 1rem;
-		font-weight: 700;
-		color: var(--color-text-primary);
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		background: var(--color-primary-dark);
-		padding: 4px 12px;
-		border: var(--border-brutalist-thin);
-		display: inline-block;
-		box-shadow: var(--shadow-brutalist-small);
-	}
-
-	.segment-preview p {
+	.sub-message p {
 		margin: 0;
 		font-size: 1.0625rem;
 		line-height: 1.5;
@@ -244,7 +258,7 @@
 		border: 2px dashed var(--color-text-primary);
 	}
 
-	.transcribing-message {
+	.processing-message {
 		margin-top: 1rem;
 		color: var(--color-text-primary);
 		font-weight: 700;
@@ -348,20 +362,31 @@
 		background: var(--color-success);
 	}
 
+	@keyframes slideIn {
+		from {
+			transform: translateY(10px) rotate(0.5deg);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0) rotate(0.5deg);
+			opacity: 1;
+		}
+	}
+
 	@media (max-width: 600px) {
-		.transcribing {
+		.progress-display {
 			padding: 1.75rem;
 		}
 
-		.transcribing h3 {
+		.progress-display h3 {
 			font-size: 2rem;
 		}
 
-		.segment-preview {
+		.sub-message {
 			max-width: none;
 		}
 
-		.transcribing-message,
+		.processing-message,
 		.stuck-message {
 			font-size: 0.875rem;
 			padding: 0.875rem 1rem;

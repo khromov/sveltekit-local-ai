@@ -11,10 +11,14 @@
 	import PlayIcon from 'virtual:icons/lucide/play';
 	import SquareSpinner from '$lib/components/common/SquareSpinner.svelte';
 
-	import WhisperModelSelector from '$lib/components/whisper/WhisperModelSelector.svelte';
+	// Import shared components instead of whisper-specific ones
+	import {
+		FileUploadArea,
+		ProgressDisplay,
+		ResultDisplay,
+		ModelSelector
+	} from '$lib/components/shared';
 	import TranscribeOptions from '$lib/components/whisper/TranscribeOptions.svelte';
-	import TranscriptionProgress from '$lib/components/whisper/TranscriptionProgress.svelte';
-	import TranscriptionResult from '$lib/components/whisper/TranscriptionResult.svelte';
 	import CardInterface from '$lib/components/common/CardInterface.svelte';
 	import Toolbar from '$lib/components/common/Toolbar.svelte';
 	import ContentArea from '$lib/components/common/ContentArea.svelte';
@@ -65,28 +69,48 @@
 	const DEFAULT_MODEL = `${BASE_MODEL_URL}/whisper/ggml-tiny-q5_1.bin`;
 
 	let selectedModel = $state($whisperModel || DEFAULT_MODEL);
-	const availableModels = [
-		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' },
+	let availableModels = [
 		{
-			path: `${BASE_MODEL_URL}/whisper/ggml-tiny.en-q5_1.bin`,
-			name: 'Whisper Tiny English (q5_1)'
-		},
-		{ path: `${BASE_MODEL_URL}/whisper/ggml-small-q5_1.bin`, name: 'Whisper Small (q5_1)' },
-		{
-			path: `${BASE_MODEL_URL}/whisper/ggml-small.en-q5_1.bin`,
-			name: 'Whisper Small English (q5_1)'
+			id: `${BASE_MODEL_URL}/whisper/ggml-tiny-q5_1.bin`,
+			name: 'Whisper Tiny (q5_1)',
+			description: 'Fastest model, good for quick transcriptions',
+			size: '39MB'
 		},
 		{
-			path: `${BASE_MODEL_URL}/whisper/ggml-medium-q5_0.bin`,
-			name: 'Whisper Medium (q5_0)'
+			id: `${BASE_MODEL_URL}/whisper/ggml-tiny.en-q5_1.bin`,
+			name: 'Whisper Tiny English (q5_1)',
+			description: 'English-only, fastest performance',
+			size: '39MB'
 		},
 		{
-			path: `${BASE_MODEL_URL}/whisper/ggml-medium.en-q5_0.bin`,
-			name: 'Whisper Medium English (q5_0)'
+			id: `${BASE_MODEL_URL}/whisper/ggml-small-q5_1.bin`,
+			name: 'Whisper Small (q5_1)',
+			description: 'Good balance of speed and accuracy',
+			size: '244MB'
 		},
 		{
-			path: `${BASE_MODEL_URL}/whisper/ggml-large-v2-q5_0.bin`,
-			name: 'Whisper Large (q5_0)'
+			id: `${BASE_MODEL_URL}/whisper/ggml-small.en-q5_1.bin`,
+			name: 'Whisper Small English (q5_1)',
+			description: 'English-only, better accuracy',
+			size: '244MB'
+		},
+		{
+			id: `${BASE_MODEL_URL}/whisper/ggml-medium-q5_0.bin`,
+			name: 'Whisper Medium (q5_0)',
+			description: 'Higher accuracy, slower processing',
+			size: '769MB'
+		},
+		{
+			id: `${BASE_MODEL_URL}/whisper/ggml-medium.en-q5_0.bin`,
+			name: 'Whisper Medium English (q5_0)',
+			description: 'English-only, high accuracy',
+			size: '769MB'
+		},
+		{
+			id: `${BASE_MODEL_URL}/whisper/ggml-large-v2-q5_0.bin`,
+			name: 'Whisper Large (q5_0)',
+			description: 'Best accuracy, slowest processing',
+			size: '1550MB'
 		}
 	];
 
@@ -237,6 +261,54 @@
 		loadModel();
 	}
 
+	function handleModelSelect(modelId: string) {
+		selectedModel = modelId;
+	}
+
+	async function handleCopy() {
+		if (!text) return;
+		try {
+			await navigator.clipboard.writeText(text);
+		} catch (err) {
+			console.error('Failed to copy to clipboard:', err);
+		}
+	}
+
+	function handleDownload() {
+		if (!text || !transcriptionData?.transcription?.length) return;
+
+		// Create SRT content
+		const srtContent = convertToSRT();
+		const blob = new Blob([srtContent], { type: 'text/plain' });
+		const url = URL.createObjectURL(blob);
+		const link = document.createElement('a');
+		link.href = url;
+		link.download = 'transcription.srt';
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+		URL.revokeObjectURL(url);
+	}
+
+	function convertToSRT(): string {
+		if (!transcriptionData?.transcription?.length) return '';
+
+		return transcriptionData.transcription
+			.map((segment, index) => {
+				const startTime = segment.timestamps.from.replace(',', '.');
+				const endTime = segment.timestamps.to.replace(',', '.');
+				return `${index + 1}\n${startTime} --> ${endTime}\n${segment.text.trim()}\n`;
+			})
+			.join('\n');
+	}
+
+	function processAnotherFile() {
+		text = '';
+		transcriptionData = undefined;
+		selectedFile = null;
+		transcribeMode = 'upload';
+	}
+
 	onMount(async () => {
 		opfsSupported = isOPFSSupported(PUBLIC_DISABLE_OPFS === 'true');
 		if (!opfsSupported) {
@@ -245,19 +317,8 @@
 
 		if ($whisperModel) {
 			selectedModel = $whisperModel;
-
-			if (opfsSupported) {
-				// Only autoload if the model is already cached
-				const cached = await isModelCached($whisperModel);
-				if (cached) {
-					console.log('Autoloading cached model:', $whisperModel);
-					loadModel();
-				} else {
-					console.log('Model not cached, user must manually load:', $whisperModel);
-				}
-			} else {
-				console.log('OPFS not supported, user must manually load model:', $whisperModel);
-			}
+			// Don't automatically load the model - let user choose to load it
+			console.log('Previous model selection restored:', $whisperModel);
 		}
 	});
 
@@ -273,20 +334,21 @@
 	<Toolbar modelInfo="Whisper Audio Transcription" />
 
 	<ContentArea>
-		<WhisperModelSelector
-			bind:selectedModel
-			{availableModels}
-			{isLoading}
-			{isReady}
-			{error}
-			{downloadProgress}
-			{previousDownloadProgress}
-			{usingCachedModel}
-			{hasProgressTracking}
-			onLoadModel={loadModel}
-			onChangeModel={changeModel}
-			onRetry={retry}
-		/>
+		<!-- Model Selection using shared ModelSelector -->
+		{#if !isReady}
+			<ModelSelector
+				models={availableModels}
+				{selectedModel}
+				onModelSelect={handleModelSelect}
+				onLoadModel={loadModel}
+				{isLoading}
+				{isReady}
+				showAsCards={false}
+				showDropdown={true}
+				title="Select Whisper Model"
+				stepNumber={1}
+			/>
+		{/if}
 
 		<div class="main-content" class:disabled={!isReady}>
 			<TranscribeOptions
@@ -298,15 +360,37 @@
 			/>
 
 			{#if isTranscribing}
-				<TranscriptionProgress
+				<ProgressDisplay
+					title="Transcribing Audio"
 					progress={transcribeProgress}
 					{previousProgress}
-					{currentSegment}
+					message="Keep this tab active during transcription"
+					subMessage={currentSegment}
+					icon="processing"
 					{isStuck}
 					onReload={reloadPage}
 				/>
 			{:else if text}
-				<TranscriptionResult {text} {transcriptionData} />
+				<ResultDisplay
+					title="Transcription Complete!"
+					onCopy={handleCopy}
+					onDownload={handleDownload}
+					onProcessAnother={processAnotherFile}
+					tabOptions={transcriptionData?.transcription?.length
+						? [
+								{ id: 'text', label: 'Text' },
+								{ id: 'srt', label: 'SRT' }
+							]
+						: undefined}
+					activeTab="text"
+					onTabChange={(tab) => {
+						// Tab switching logic would go here if needed
+					}}
+				>
+					<div class="result-text-container">
+						<p class="result-text">{text}</p>
+					</div>
+				</ResultDisplay>
 			{/if}
 		</div>
 	</ContentArea>
@@ -407,6 +491,50 @@
 		height: 1.25rem;
 	}
 
+	.result-text-container {
+		background: linear-gradient(
+			135deg,
+			rgba(255, 217, 61, 0.05) 0%,
+			rgba(152, 251, 152, 0.05) 100%
+		);
+		border: var(--border-brutalist-thick);
+		padding: 1.5rem;
+		box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.1);
+		min-height: 100px;
+		max-height: 400px;
+		overflow-y: auto;
+		border-radius: 8px;
+	}
+
+	.result-text {
+		margin: 0;
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: var(--color-text-primary);
+		font-weight: 500;
+		white-space: pre-wrap;
+		word-break: break-word;
+	}
+
+	/* Custom scrollbar */
+	.result-text-container::-webkit-scrollbar {
+		width: 12px;
+	}
+
+	.result-text-container::-webkit-scrollbar-track {
+		background: var(--color-background-main);
+		border-left: var(--border-brutalist-thick);
+	}
+
+	.result-text-container::-webkit-scrollbar-thumb {
+		background: var(--color-primary-dark);
+		border: var(--border-brutalist-thin);
+	}
+
+	.result-text-container::-webkit-scrollbar-thumb:hover {
+		background: var(--color-accent-pink);
+	}
+
 	@media (max-width: 600px) {
 		.main-content.disabled {
 			opacity: 0.3;
@@ -416,6 +544,10 @@
 		.disclaimer {
 			font-size: 0.875rem;
 			padding: 0.625rem 0.875rem;
+		}
+
+		.result-text-container {
+			padding: 1rem;
 		}
 	}
 </style>

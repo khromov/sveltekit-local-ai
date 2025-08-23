@@ -1,121 +1,101 @@
+<!-- Shared Result Display Component -->
 <script lang="ts">
-	import subsrt from 'subsrt-ts';
-	import FileTextIcon from 'virtual:icons/lucide/file-text';
 	import CheckCircleIcon from 'virtual:icons/lucide/check-circle';
 	import ClipboardIcon from 'virtual:icons/lucide/clipboard';
+	import CheckIcon from 'virtual:icons/lucide/check';
+	import DownloadIcon from 'virtual:icons/lucide/download';
+	import RotateCwIcon from 'virtual:icons/lucide/rotate-cw';
+	import type { Snippet } from 'svelte';
 
 	interface Props {
-		text: string;
-		transcriptionData?: {
-			transcription: Array<{
-				text: string;
-				timestamps: {
-					from: string;
-					to: string;
-				};
-			}>;
-		};
+		title?: string;
+		icon?: any;
+		hasActions?: boolean;
+		onCopy?: () => void;
+		onDownload?: () => void;
+		onProcessAnother?: () => void;
+		copied?: boolean;
+		children: Snippet;
+		tabOptions?: { id: string; label: string }[];
+		activeTab?: string;
+		onTabChange?: (tab: string) => void;
 	}
 
-	let { text, transcriptionData }: Props = $props();
-
-	let activeTab = $state<'text' | 'srt'>('text');
-	let hasCopied = $state(false);
-
-	// Convert transcription data to SRT format using subsrt-ts
-	function convertToSRT(): string {
-		if (!transcriptionData?.transcription?.length) return '';
-
-		// Transform transcription data to subsrt format
-		const captions = transcriptionData.transcription.map((segment, index) => {
-			// Convert timestamp format from "hh:mm:ss,mmm" to milliseconds
-			const startMs = timestampToMs(segment.timestamps.from);
-			const endMs = timestampToMs(segment.timestamps.to);
-
-			return {
-				type: 'caption' as const,
-				index: index + 1,
-				start: startMs,
-				end: endMs,
-				duration: endMs - startMs,
-				content: segment.text.trim(),
-				text: segment.text.trim()
-			};
-		});
-
-		// Generate SRT content using subsrt-ts
-		return subsrt.build(captions, { format: 'srt' });
-	}
-
-	// Helper function to convert SRT timestamp format to milliseconds
-	function timestampToMs(timestamp: string): number {
-		// timestamp format: "hh:mm:ss,mmm"
-		const [time, ms] = timestamp.split(',');
-		const [hours, minutes, seconds] = time.split(':').map(Number);
-
-		return (hours * 3600 + minutes * 60 + seconds) * 1000 + Number(ms);
-	}
-
-	async function copyToClipboard() {
-		try {
-			const contentToCopy = activeTab === 'text' ? text : convertToSRT();
-			await navigator.clipboard.writeText(contentToCopy);
-			hasCopied = true;
-			setTimeout(() => {
-				hasCopied = false;
-			}, 2000);
-		} catch (err) {
-			console.error('Failed to copy to clipboard:', err);
-		}
-	}
+	let {
+		title = 'Result',
+		icon: Icon = CheckCircleIcon,
+		hasActions = true,
+		onCopy,
+		onDownload,
+		onProcessAnother,
+		copied = false,
+		children,
+		tabOptions,
+		activeTab,
+		onTabChange
+	}: Props = $props();
 </script>
 
-<div class="result-wrapper">
-	<div class="result">
+<div class="result-display-wrapper">
+	<div class="result-display">
 		<div class="result-decoration"></div>
 		<div class="result-content">
 			<div class="result-header">
 				<h3>
-					<span class="header-icon"><FileTextIcon /></span>
-					Transcription Result
+					<span class="header-icon"><Icon /></span>
+					{title}
 				</h3>
-				<div class="result-actions">
-					{#if transcriptionData?.transcription?.length}
-						<div class="tab-selectors">
-							<button class:active={activeTab === 'text'} onclick={() => (activeTab = 'text')}>
-								Text
-							</button>
-							<button class:active={activeTab === 'srt'} onclick={() => (activeTab = 'srt')}>
-								SRT
-							</button>
-						</div>
-					{/if}
 
-					<button class="copy-btn" onclick={copyToClipboard} class:copied={hasCopied}>
-						{#if hasCopied}
-							<span class="copy-icon"><CheckCircleIcon /></span>
-							Copied!
-						{:else}
-							<span class="copy-icon"><ClipboardIcon /></span>
-							Copy
+				{#if hasActions}
+					<div class="result-actions">
+						{#if tabOptions && tabOptions.length > 0}
+							<div class="tab-selectors">
+								{#each tabOptions as tab (tab.id)}
+									<button class:active={activeTab === tab.id} onclick={() => onTabChange?.(tab.id)}>
+										{tab.label}
+									</button>
+								{/each}
+							</div>
 						{/if}
-					</button>
-				</div>
+
+						{#if onCopy}
+							<button class="action-btn copy-btn" onclick={onCopy} class:copied>
+								{#if copied}
+									<span class="btn-icon"><CheckIcon /></span>
+									Copied!
+								{:else}
+									<span class="btn-icon"><ClipboardIcon /></span>
+									Copy
+								{/if}
+							</button>
+						{/if}
+
+						{#if onDownload}
+							<button class="action-btn download-btn" onclick={onDownload}>
+								<span class="btn-icon"><DownloadIcon /></span>
+								Download
+							</button>
+						{/if}
+
+						{#if onProcessAnother}
+							<button class="action-btn process-another-btn" onclick={onProcessAnother}>
+								<span class="btn-icon"><RotateCwIcon /></span>
+								Process Another
+							</button>
+						{/if}
+					</div>
+				{/if}
 			</div>
 
-			<div class="result-text-container">
-				{#if !transcriptionData?.transcription?.length || activeTab === 'text'}
-					<p class="result-text">{text}</p>
-				{:else if activeTab === 'srt' && transcriptionData?.transcription?.length}
-					<pre class="srt-preview">{convertToSRT()}</pre>
-				{/if}
+			<div class="result-body">
+				{@render children()}
 			</div>
 		</div>
 	</div>
 </div>
 
 <style>
-	.result-wrapper {
+	.result-display-wrapper {
 		display: flex;
 		margin: 1.5rem 0;
 		width: 100%;
@@ -133,7 +113,7 @@
 		}
 	}
 
-	.result {
+	.result-display {
 		position: relative;
 		width: 100%;
 		max-width: 100%;
@@ -194,6 +174,7 @@
 		display: flex;
 		align-items: center;
 		color: var(--color-text-primary);
+		animation: sparkle 2s ease-in-out infinite;
 	}
 
 	.header-icon :global(svg) {
@@ -201,10 +182,21 @@
 		height: 1.5rem;
 	}
 
+	@keyframes sparkle {
+		0%,
+		100% {
+			transform: scale(1) rotate(0deg);
+		}
+		50% {
+			transform: scale(1.2) rotate(180deg);
+		}
+	}
+
 	.result-actions {
 		display: flex;
 		align-items: center;
 		gap: 1rem;
+		flex-wrap: wrap;
 	}
 
 	/* Tab selectors */
@@ -213,6 +205,7 @@
 		border: var(--border-brutalist-thick);
 		background: var(--color-background-main);
 		box-shadow: var(--shadow-brutalist-medium);
+		overflow: hidden;
 	}
 
 	.tab-selectors button {
@@ -241,53 +234,12 @@
 		background: var(--color-primary-dark);
 	}
 
-	/* Result text container */
-	.result-text-container {
-		background: linear-gradient(
-			135deg,
-			rgba(255, 217, 61, 0.05) 0%,
-			rgba(152, 251, 152, 0.05) 100%
-		);
-		border: var(--border-brutalist-thick);
-		padding: 1.5rem;
-		box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.1);
-		min-height: 100px;
-		max-height: 400px;
-		overflow-y: auto;
-	}
-
-	.result-text {
-		margin: 0;
-		font-size: 1.0625rem;
-		line-height: 1.6;
-		color: var(--color-text-primary);
-		font-weight: 500;
-		white-space: pre-wrap;
-		word-break: break-word;
-	}
-
-	/* SRT Preview */
-	.srt-preview {
-		font-family: monospace;
-		font-size: 0.9375rem;
-		line-height: 1.5;
-		white-space: pre-wrap;
-		background: var(--color-background-main);
-		padding: 1rem;
-		border: 2px dashed var(--color-text-primary);
-		overflow-x: auto;
-		margin: 0;
-		color: var(--color-text-primary);
-		font-weight: 600;
-	}
-
-	.copy-btn {
+	/* Action buttons */
+	.action-btn {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
 		padding: 0.625rem 1.25rem;
-		background: var(--color-accent-pink);
-		color: var(--color-text-primary);
 		border: var(--border-brutalist-thick);
 		cursor: pointer;
 		font-size: 1rem;
@@ -297,12 +249,39 @@
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		font-family: var(--font-family-primary);
+		border-radius: 6px;
+	}
+
+	.copy-btn {
+		background: var(--color-accent-pink);
+		color: var(--color-text-primary);
+	}
+
+	.download-btn {
+		background: var(--color-success);
+		color: var(--color-text-primary);
+	}
+
+	.process-another-btn {
+		background: var(--color-primary-dark);
+		color: var(--color-text-primary);
+	}
+
+	.action-btn:hover {
+		transform: translate(-2px, -2px);
+		box-shadow: var(--shadow-brutalist-large);
 	}
 
 	.copy-btn:hover {
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
 		background: var(--color-primary-dark);
+	}
+
+	.download-btn:hover {
+		background: var(--color-success-hover);
+	}
+
+	.process-another-btn:hover {
+		background: var(--color-warning);
 	}
 
 	.copy-btn.copied {
@@ -322,57 +301,66 @@
 		}
 	}
 
-	.copy-icon {
+	.btn-icon {
 		font-size: 1.25rem;
 		display: flex;
 		align-items: center;
 		color: var(--color-text-primary);
 	}
 
-	.copy-icon :global(svg) {
+	.btn-icon :global(svg) {
 		width: 1.25rem;
 		height: 1.25rem;
 	}
 
+	.result-body {
+		background: linear-gradient(
+			135deg,
+			rgba(255, 217, 61, 0.05) 0%,
+			rgba(152, 251, 152, 0.05) 100%
+		);
+		border: var(--border-brutalist-thick);
+		padding: 1.5rem;
+		box-shadow: inset 3px 3px 0 rgba(0, 0, 0, 0.1);
+		min-height: 100px;
+		max-height: 400px;
+		overflow-y: auto;
+		border-radius: 8px;
+	}
+
 	/* Custom scrollbar */
-	.result-text-container::-webkit-scrollbar {
+	.result-body::-webkit-scrollbar {
 		width: 12px;
 	}
 
-	.result-text-container::-webkit-scrollbar-track {
+	.result-body::-webkit-scrollbar-track {
 		background: var(--color-background-main);
 		border-left: var(--border-brutalist-thick);
 	}
 
-	.result-text-container::-webkit-scrollbar-thumb {
+	.result-body::-webkit-scrollbar-thumb {
 		background: var(--color-primary-dark);
 		border: var(--border-brutalist-thin);
 	}
 
-	.result-text-container::-webkit-scrollbar-thumb:hover {
+	.result-body::-webkit-scrollbar-thumb:hover {
 		background: var(--color-accent-pink);
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		.result-content {
-			padding: 1.25rem;
+			padding: 1.5rem;
 		}
 
 		.result-header {
 			flex-direction: column;
-			align-items: flex-start;
+			align-items: stretch;
 			gap: 1rem;
 		}
 
-		.result-content h3 {
-			font-size: 1.5rem;
-		}
-
 		.result-actions {
-			width: 100%;
 			flex-direction: column;
-			align-items: stretch;
-			gap: 0.75rem;
+			width: 100%;
 		}
 
 		.tab-selectors {
@@ -383,12 +371,22 @@
 			flex: 1;
 		}
 
-		.copy-btn {
+		.action-btn {
 			width: 100%;
 			justify-content: center;
 		}
+	}
 
-		.result-text-container {
+	@media (max-width: 600px) {
+		.result-content {
+			padding: 1.25rem;
+		}
+
+		.result-content h3 {
+			font-size: 1.5rem;
+		}
+
+		.result-body {
 			padding: 1rem;
 		}
 	}
