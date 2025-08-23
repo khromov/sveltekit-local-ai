@@ -278,6 +278,7 @@
 			{availableModels}
 			{isLoading}
 			{isReady}
+			loadedModel={$whisperModel}
 			{error}
 			{downloadProgress}
 			{previousDownloadProgress}

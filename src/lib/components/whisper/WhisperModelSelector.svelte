@@ -11,6 +11,7 @@
 		availableModels: Array<{ path: string; name: string }>;
 		isLoading?: boolean;
 		isReady?: boolean;
+		loadedModel?: string;
 		error?: boolean;
 		downloadProgress?: number;
 		previousDownloadProgress?: number;
@@ -26,6 +27,7 @@
 		availableModels,
 		isLoading = false,
 		isReady = false,
+		loadedModel = '',
 		error = false,
 		downloadProgress = 0,
 		previousDownloadProgress = 0,
@@ -37,6 +39,8 @@
 	}: Props = $props();
 
 	let opfsSupported = isOPFSSupported(PUBLIC_DISABLE_OPFS === 'true');
+
+	const isCurrentModelReady = $derived(isReady && loadedModel === selectedModel);
 </script>
 
 <div class="model-selection">
@@ -57,10 +61,12 @@
 			</button>
 		{:else}
 			<div class="model-controls-loaded">
-				<div class="model-ready">
-					<span class="checkmark"><CheckIcon /></span>
-					<span>Model Ready</span>
-				</div>
+				{#if isCurrentModelReady}
+					<div class="model-ready">
+						<span class="checkmark"><CheckIcon /></span>
+						<span>Model Ready</span>
+					</div>
+				{/if}
 				<button onclick={onChangeModel} disabled={isLoading} class="change-model-btn">
 					{isLoading ? 'Changing...' : 'Change Model'}
 				</button>
