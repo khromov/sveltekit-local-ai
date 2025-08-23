@@ -14,13 +14,25 @@
 	let text = $state('');
 	let showRawTokens = $state(false);
 	let encoder: Tiktoken | null = $state(null);
+	let specialTokens: string[] = $state([]);
 
 	// Derived values from text and encoder
 	let charCount = $derived(text.length);
+	function sanitizeText(input: string): string {
+		if (!specialTokens || specialTokens.length === 0) return input;
+		let out = input;
+		for (const tok of specialTokens) {
+			if (!tok) continue;
+			out = out.split(tok).join('');
+		}
+		return out;
+	}
+
 	let tokens = $derived.by(() => {
 		if (!encoder || !text) return [];
 		try {
-			return encoder.encode(text);
+			const sanitized = sanitizeText(text);
+			return encoder.encode(sanitized);
 		} catch (error) {
 			console.error('Error encoding text:', error);
 			return [];
@@ -53,6 +65,9 @@
 		if (data.encoder) {
 			encoder = data.encoder;
 			console.log('Encoder loaded successfully');
+		}
+		if (data.specialTokens) {
+			specialTokens = data.specialTokens as string[];
 		}
 	});
 </script>

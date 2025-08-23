@@ -10,9 +10,11 @@ export const load = (async ({ fetch }) => {
 	} else {
 		console.log('Loading encoder in browser');
 		const res = await fetch(`/claude.json`);
-		const o200k_base = await res.json();
+		const claudeEncoding = await res.json();
+		const specialTokens = Object.keys(claudeEncoding?.special_tokens ?? {});
 		return {
-			encoder: new Tiktoken(o200k_base)
+			encoder: new Tiktoken(claudeEncoding),
+			specialTokens
 		};
 	}
 }) satisfies PageLoad;

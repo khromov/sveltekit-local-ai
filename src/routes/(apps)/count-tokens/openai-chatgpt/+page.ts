@@ -11,8 +11,10 @@ export const load = (async ({ fetch }) => {
 		console.log('Loading encoder in browser');
 		const res = await fetch(`/o200k_base.json`);
 		const o200k_base = await res.json();
+		const specialTokens = Object.keys(o200k_base?.special_tokens ?? {});
 		return {
-			encoder: new Tiktoken(o200k_base)
+			encoder: new Tiktoken(o200k_base),
+			specialTokens
 		};
 	}
 }) satisfies PageLoad;
