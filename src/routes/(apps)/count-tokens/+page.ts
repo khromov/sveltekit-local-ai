@@ -7,9 +7,9 @@ export const load: PageLoad = ({ parent }) => {
 		...data,
 		seo: {
 			...data.seo,
-			title: 'Background Remover - Local AI Tools',
+			title: 'Count LLM Tokens - Local AI Tools',
 			description:
-				'Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality.'
+				'Calculate token counts for different AI models. Understand context limits for Claude and ChatGPT models with our tokenizer tools.'
 		}
 	}));
 };

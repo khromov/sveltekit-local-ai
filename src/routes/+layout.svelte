@@ -1,5 +1,5 @@
 <script lang="ts">
-	import "$lib/design-system.css";
+	import '$lib/design-system.css';
 	import { page } from '$app/state';
 	import '@fontsource/space-grotesk/400.css';
 	import '@fontsource/space-grotesk/500.css';
@@ -11,10 +11,9 @@
 	import ImageIcon from 'virtual:icons/lucide/image';
 	import GithubIcon from 'virtual:icons/lucide/github';
 	import SpeechIcon from 'virtual:icons/lucide/speech';
+	import CalculatorIcon from 'virtual:icons/lucide/calculator';
 	import { Toaster } from 'svelte-sonner';
-	import { dev } from '$app/environment';
 	import Tracking from '$lib/components/Tracking.svelte';
-	import DesignSystem from '$lib/components/DesignSystem.svelte';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -28,12 +27,13 @@
 		{ path: '/chat', label: 'Chat', icon: 'chat' },
 		{ path: '/transcribe', label: 'Transcribe', icon: 'mic' },
 		{ path: '/text-to-speech', label: 'TTS', icon: 'speech' },
-		{ path: '/background-remover', label: 'BG Remover', icon: 'image' }
+		{ path: '/background-remover', label: 'BG Remover', icon: 'image' },
+		{ path: '/count-tokens', label: 'Tokens', icon: 'calculator' }
 	];
 
 	// Check if a path is active
 	function isActive(path: string): boolean {
-		return page.url.pathname === path;
+		return page.url.pathname === path || (path !== '/' && page.url.pathname.startsWith(path));
 	}
 
 	// Check if we're on the chat page (which uses fixed height)
@@ -58,8 +58,6 @@
 	<meta name="twitter:description" content={page.data.seo.description} />
 	<meta name="twitter:image" content={page.data.seo.ogImage} />
 </svelte:head>
-
-<Tracking />
 
 <div class="app-wrapper">
 	<div
@@ -99,6 +97,8 @@
 											<SpeechIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 										{:else if link.icon === 'image'}
 											<ImageIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
+										{:else if link.icon === 'calculator'}
+											<CalculatorIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 										{/if}
 										{#if link.label}
 											<span>{link.label}</span>
@@ -138,6 +138,8 @@
 			'border: 3px solid #000; box-shadow: 4px 4px 0 #000; border-radius: 8px; font-family: Space Grotesk, sans-serif; font-weight: 600;'
 	}}
 />
+
+<Tracking />
 
 <style>
 	/* Base styles with refined Neo-Brutalist approach */

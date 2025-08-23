@@ -2,6 +2,9 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+Always start each question by looking up relevant documentation sections in the Svelte MCP.
+Always run "npm run format" followed by "npm run checks" before finishing a task, and fix any linting issues.
+
 ## Project Overview
 
 This is a browser-based AI chat and transcription application that runs entirely client-side without sending data to external servers. The application uses Svelte 5, SvelteKit, WebAssembly, the Wllama library for chat completions, and @transcribe/transcriber for audio transcription.
