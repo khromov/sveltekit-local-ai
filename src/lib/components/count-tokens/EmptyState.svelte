@@ -1,19 +1,15 @@
 <script lang="ts">
-	import TypeIcon from 'virtual:icons/lucide/type';
-
 	interface Props {
 		message?: string;
-		icon?: any;
 	}
 
-	let { message = 'Enter some text above to see the token count', icon = TypeIcon }: Props =
-		$props();
+	let { message = 'Enter some text above to see the token count' }: Props = $props();
 </script>
 
 <div class="empty-state">
 	<div class="empty-state-content">
 		<div class="empty-state-icon">
-			<svelte:component this={icon} />
+			<span class="dots">⋯</span>
 		</div>
 		<h3>{message}</h3>
 		<p>
@@ -54,9 +50,10 @@
 		box-shadow: var(--shadow-brutalist-medium);
 	}
 
-	.empty-state-icon :global(svg) {
-		width: 1.5rem;
-		height: 1.5rem;
+	.dots {
+		font-size: 2rem;
+		font-weight: bold;
+		line-height: 1;
 	}
 
 	.empty-state h3 {
@@ -107,9 +104,8 @@
 			margin-bottom: 1rem;
 		}
 
-		.empty-state-icon :global(svg) {
-			width: 1.25rem;
-			height: 1.25rem;
+		.dots {
+			font-size: 1.5rem;
 		}
 	}
 </style>

@@ -1,6 +1,3 @@
 src/lib/components/Tracking.svelte
-static/o200k_base.json
-static/claude.json
-static/transformers
-static/onnx-runtime
+static/
 scripts
