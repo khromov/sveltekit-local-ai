@@ -11,6 +11,7 @@
 	import ImageIcon from 'virtual:icons/lucide/image';
 	import GithubIcon from 'virtual:icons/lucide/github';
 	import SpeechIcon from 'virtual:icons/lucide/speech';
+	import CalculatorIcon from 'virtual:icons/lucide/calculator';
 	import { Toaster } from 'svelte-sonner';
 	import Tracking from '$lib/components/Tracking.svelte';
 
@@ -26,12 +27,13 @@
 		{ path: '/chat', label: 'Chat', icon: 'chat' },
 		{ path: '/transcribe', label: 'Transcribe', icon: 'mic' },
 		{ path: '/text-to-speech', label: 'TTS', icon: 'speech' },
-		{ path: '/background-remover', label: 'BG Remover', icon: 'image' }
+		{ path: '/background-remover', label: 'BG Remover', icon: 'image' },
+		{ path: '/count-tokens', label: 'Tokens', icon: 'calculator' }
 	];
 
 	// Check if a path is active
 	function isActive(path: string): boolean {
-		return page.url.pathname === path;
+		return page.url.pathname === path || (path !== '/' && page.url.pathname.startsWith(path));
 	}
 
 	// Check if we're on the chat page (which uses fixed height)
@@ -95,6 +97,8 @@
 											<SpeechIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 										{:else if link.icon === 'image'}
 											<ImageIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
+										{:else if link.icon === 'calculator'}
+											<CalculatorIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 										{/if}
 										{#if link.label}
 											<span>{link.label}</span>
