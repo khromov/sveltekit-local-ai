@@ -12,9 +12,7 @@
 	import GithubIcon from 'virtual:icons/lucide/github';
 	import SpeechIcon from 'virtual:icons/lucide/speech';
 	import { Toaster } from 'svelte-sonner';
-	import { dev } from '$app/environment';
 	import Tracking from '$lib/components/Tracking.svelte';
-	import DesignSystem from '$lib/components/DesignSystem.svelte';
 
 	interface Props {
 		children?: import('svelte').Snippet;
