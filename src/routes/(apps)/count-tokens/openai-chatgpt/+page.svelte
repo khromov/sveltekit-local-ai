@@ -105,7 +105,8 @@
 
 <style>
 	.tokenizer-container {
-		max-width: 900px;
+		width: 100%;
+		max-width: 100%;
 		margin: 0 auto;
 		padding: 1rem;
 		animation: fadeIn 0.5s ease-out;
