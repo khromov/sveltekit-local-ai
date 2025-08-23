@@ -39,11 +39,11 @@
 		<div class="cost-grid">
 			<div class="cost-item">
 				<span class="cost-label">Input:</span>
-				<span class="cost-value">{singleCost().input}</span>
+				<span class="cost-value">{singleCost()!.input}</span>
 			</div>
 			<div class="cost-item">
 				<span class="cost-label">Output:</span>
-				<span class="cost-value">{singleCost().output}</span>
+				<span class="cost-value">{singleCost()!.output}</span>
 			</div>
 		</div>
 	{:else if multiCosts}
