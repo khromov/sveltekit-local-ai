@@ -12,8 +12,8 @@
 			Count LLM Tokens
 		</h1>
 		<p class="header-description">
-			Calculate how many tokens your text will use with different AI models. Token counts affect API
-			costs and context limits.
+			Calculate how many tokens your text will use with different AI models. Token counts affect
+			context limits for AI conversations.
 		</p>
 	</div>
 

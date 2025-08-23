@@ -12,9 +12,7 @@
 			<span class="dots">⋯</span>
 		</div>
 		<h3>{message}</h3>
-		<p>
-			Type or paste text in the input field above to analyze tokens, character count, and API costs.
-		</p>
+		<p>Type or paste text in the input field above to analyze tokens and character count.</p>
 	</div>
 </div>
 

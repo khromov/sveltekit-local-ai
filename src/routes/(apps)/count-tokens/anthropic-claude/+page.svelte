@@ -5,7 +5,6 @@
 	import TokenizerHeader from '$lib/components/count-tokens/TokenizerHeader.svelte';
 	import TextInputSection from '$lib/components/count-tokens/TextInputSection.svelte';
 	import TokenStats from '$lib/components/count-tokens/TokenStats.svelte';
-	import TokenCostEstimation from '$lib/components/count-tokens/TokenCostEstimation.svelte';
 	import RawTokensDisplay from '$lib/components/count-tokens/RawTokensDisplay.svelte';
 	import InfoBox from '$lib/components/count-tokens/InfoBox.svelte';
 	import EmptyState from '$lib/components/count-tokens/EmptyState.svelte';
@@ -56,21 +55,6 @@
 			console.log('Encoder loaded successfully');
 		}
 	});
-
-	// Cost calculation (approximate)
-	function calculateCost(): { input: string; output: string } {
-		// Claude 3 Opus pricing (as of 2024)
-		const inputCostPer1M = 15.0; // $15 per 1M input tokens
-		const outputCostPer1M = 75.0; // $75 per 1M output tokens
-
-		const inputCost = (tokenCount / 1_000_000) * inputCostPer1M;
-		const outputCost = (tokenCount / 1_000_000) * outputCostPer1M;
-
-		return {
-			input: inputCost < 0.01 ? '<$0.01' : `$${inputCost.toFixed(4)}`,
-			output: outputCost < 0.01 ? '<$0.01' : `$${outputCost.toFixed(4)}`
-		};
-	}
 </script>
 
 <div class="tokenizer-container">
@@ -85,10 +69,8 @@
 
 		<!-- Results Section -->
 		{#if tokenCount > 0}
-			{@const cost = calculateCost()}
 			<div class="results-section">
 				<TokenStats {tokenCount} {charCount} />
-				<TokenCostEstimation costs={cost} title="Estimated Cost (Claude 3 Opus)" />
 				<RawTokensDisplay {tokens} {decodedTokens} bind:showRawTokens />
 			</div>
 		{:else if encoder && text.length === 0}

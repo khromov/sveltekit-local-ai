@@ -5,7 +5,6 @@
 	import TokenizerHeader from '$lib/components/count-tokens/TokenizerHeader.svelte';
 	import TextInputSection from '$lib/components/count-tokens/TextInputSection.svelte';
 	import TokenStats from '$lib/components/count-tokens/TokenStats.svelte';
-	import TokenCostEstimation from '$lib/components/count-tokens/TokenCostEstimation.svelte';
 	import RawTokensDisplay from '$lib/components/count-tokens/RawTokensDisplay.svelte';
 	import InfoBox from '$lib/components/count-tokens/InfoBox.svelte';
 	import EmptyState from '$lib/components/count-tokens/EmptyState.svelte';
@@ -56,35 +55,6 @@
 			console.log('Encoder loaded successfully');
 		}
 	});
-
-	// Cost calculation (approximate)
-	function calculateCost(): {
-		gpt4o: { input: string; output: string };
-		gpt4: { input: string; output: string };
-		gpt35: { input: string; output: string };
-	} {
-		// OpenAI pricing (as of 2024)
-		const pricing = {
-			gpt4o: { input: 2.5, output: 10.0 }, // per 1M tokens
-			gpt4: { input: 10.0, output: 30.0 }, // per 1M tokens
-			gpt35: { input: 0.5, output: 1.5 } // per 1M tokens
-		};
-
-		const calculateForModel = (model: keyof typeof pricing) => {
-			const inputCost = (tokenCount / 1_000_000) * pricing[model].input;
-			const outputCost = (tokenCount / 1_000_000) * pricing[model].output;
-			return {
-				input: inputCost < 0.01 ? '<$0.01' : `$${inputCost.toFixed(4)}`,
-				output: outputCost < 0.01 ? '<$0.01' : `$${outputCost.toFixed(4)}`
-			};
-		};
-
-		return {
-			gpt4o: calculateForModel('gpt4o'),
-			gpt4: calculateForModel('gpt4'),
-			gpt35: calculateForModel('gpt35')
-		};
-	}
 </script>
 
 <div class="tokenizer-container">
@@ -99,10 +69,8 @@
 
 		<!-- Results Section -->
 		{#if tokenCount > 0}
-			{@const costs = calculateCost()}
 			<div class="results-section">
 				<TokenStats {tokenCount} {charCount} />
-				<TokenCostEstimation {costs} title="Estimated API Costs" />
 				<RawTokensDisplay {tokens} {decodedTokens} bind:showRawTokens />
 			</div>
 		{:else if encoder && text.length === 0}
