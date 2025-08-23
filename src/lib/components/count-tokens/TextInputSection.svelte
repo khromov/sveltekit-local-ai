@@ -66,7 +66,12 @@
 			<button class="icon-button" onclick={handleRandomExample} title="Load example">
 				<DicesIcon />
 			</button>
-			<button class="icon-button" onclick={handleCopy} title={copied ? 'Copied!' : 'Copy text'}>
+			<button
+				class="icon-button"
+				onclick={handleCopy}
+				title={copied ? 'Copied!' : 'Copy text'}
+				disabled={!text}
+			>
 				{#if copied}
 					<CheckIcon />
 				{:else}
@@ -136,6 +141,11 @@
 	.icon-button:active {
 		transform: translate(1px, 1px);
 		box-shadow: none;
+	}
+
+	.icon-button:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
 	}
 
 	.icon-button :global(svg) {

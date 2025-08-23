@@ -256,6 +256,8 @@
 	}
 
 	async function handleCopy() {
+		if (!text) return;
+
 		await navigator.clipboard.writeText(text);
 		copied = true;
 		toast.success('Text copied to clipboard!');
@@ -437,6 +439,7 @@
 									class="copy-button"
 									onclick={handleCopy}
 									title={copied ? 'Copied!' : 'Copy text'}
+									disabled={!text}
 								>
 									{#if copied}
 										<CheckIcon />
@@ -676,8 +679,13 @@
 		height: 16px;
 	}
 
+	.copy-button:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
 	.dice-button:hover,
-	.copy-button:hover,
+	.copy-button:hover:not(:disabled),
 	.clear-button:hover {
 		background: var(--color-primary);
 		transform: translate(-1px, -1px);
