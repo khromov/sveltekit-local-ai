@@ -20,7 +20,21 @@
 	let copied = $state(false);
 
 	function handleRandomExample() {
-		const randomText = exampleTexts[Math.floor(Math.random() * exampleTexts.length)];
+		if (exampleTexts.length <= 1) {
+			// If there's only one example, just use it
+			text = exampleTexts[0] || '';
+			return;
+		}
+
+		let randomText;
+		let attempts = 0;
+		const maxAttempts = 10; // Prevent infinite loop
+
+		do {
+			randomText = exampleTexts[Math.floor(Math.random() * exampleTexts.length)];
+			attempts++;
+		} while (randomText === text && attempts < maxAttempts);
+
 		text = randomText;
 	}
 
