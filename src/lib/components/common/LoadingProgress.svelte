@@ -57,7 +57,7 @@
 		max-width: 500px;
 		text-align: center;
 		border-radius: 12px;
-		margin: 0 auto;
+		margin: 2rem auto 0;
 		box-sizing: border-box;
 	}
 
@@ -97,7 +97,7 @@
 			width: calc(100% - 2rem);
 			padding: 1.5rem 1rem;
 			max-width: none;
-			margin: 0 1rem;
+			margin: 2rem 1rem 0;
 		}
 
 		.loading-progress h3 {
@@ -118,7 +118,7 @@
 	@media (max-width: 400px) {
 		.loading-progress {
 			width: calc(100% - 1rem);
-			margin: 0 0.5rem;
+			margin: 2rem 0.5rem 0;
 			padding: 1.25rem 0.75rem;
 		}
 
