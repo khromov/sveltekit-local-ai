@@ -44,12 +44,14 @@
 		{
 			id: 'RMBG-1.4', //briaai/
 			name: 'RMBG v1.4',
-			description: 'Smaller and faster, runs on most devices'
+			description: ['Small and fast', 'Runs on most devices'],
+			size: '44MB'
 		},
 		{
 			id: 'BEN2-ONNX', //briaai/
 			name: 'BEN2',
-			description: 'Larger with potentially better results'
+			description: ['Large, very slow model', 'Generally provides better results'],
+			size: '235MB'
 		}
 	];
 	let selectedModelId = $state('RMBG-1.4');
@@ -91,13 +93,10 @@
 
 			await requestWakeLock();
 
-			// Load the background removal pipeline
-			modelLoadProgress = 25;
 			segmenter = await pipeline('background-removal', selectedModelId, {
 				progress_callback: (progress: any) => {
-					// Update progress based on pipeline loading
-					if (progress.status === 'downloading') {
-						modelLoadProgress = Math.round(25 + (progress.progress || 0) * 0.5);
+					if (progress.status === 'progress') {
+						modelLoadProgress = Math.round(progress.progress || 0);
 					} else if (progress.status === 'ready') {
 						modelLoadProgress = 100;
 					}
@@ -383,7 +382,12 @@
 								disabled={isLoadingModel}
 							>
 								<span class="model-name">{modelOption.name}</span>
-								<span class="model-description">{modelOption.description}</span>
+								<span class="model-size">{modelOption.size}</span>
+								<div class="model-description">
+									{#each modelOption.description as line, index (index)}
+										<div>{line}</div>
+									{/each}
+								</div>
 							</button>
 						{/each}
 					</div>
@@ -595,6 +599,17 @@
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
 		color: #000;
+	}
+
+	.model-size {
+		font-size: 0.8rem;
+		font-weight: 600;
+		color: #333;
+		background: rgba(0, 0, 0, 0.1);
+		padding: 0.2rem 0.5rem;
+		border-radius: 4px;
+		text-transform: none;
+		letter-spacing: 0;
 	}
 
 	.model-description {
