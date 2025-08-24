@@ -425,8 +425,34 @@
 				<!-- Text Input Section -->
 				<div class="text-input-section">
 					<div class="section-header">
-						<h3>Enter Your Text</h3>
-						<div class="stats-and-buttons">
+						<div class="title-and-icons">
+							<h3>Enter Your Text</h3>
+							<div class="button-group mobile-icons">
+								<button
+									class="dice-button"
+									onclick={handleGetRandomQuote}
+									title="Get random Svelte quote"
+								>
+									<DicesIcon />
+								</button>
+								<button
+									class="copy-button"
+									onclick={handleCopy}
+									title={copied ? 'Copied!' : 'Copy text'}
+									disabled={!text}
+								>
+									{#if copied}
+										<CheckIcon />
+									{:else}
+										<CopyIcon />
+									{/if}
+								</button>
+								<button class="clear-button" onclick={handleClear} title="Clear text">
+									<TrashIcon />
+								</button>
+							</div>
+						</div>
+						<div class="stats-and-buttons desktop-only">
 							<TextStatistics {text} />
 							<div class="button-group">
 								<button
@@ -453,6 +479,9 @@
 								</button>
 							</div>
 						</div>
+					</div>
+					<div class="mobile-stats">
+						<TextStatistics {text} />
 					</div>
 
 					<div class="text-input-wrapper">
@@ -602,6 +631,7 @@
 		padding: 1.5rem;
 		box-shadow: var(--shadow-brutalist-large);
 		transform: rotate(0.2deg);
+		overflow: hidden;
 	}
 
 	.section-header {
@@ -611,6 +641,27 @@
 		margin-bottom: 1rem;
 		flex-wrap: wrap;
 		gap: 1rem;
+	}
+
+	.title-and-icons {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.button-group.mobile-icons {
+		display: none;
+	}
+
+	.desktop-only {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.mobile-stats {
+		display: none;
+		margin-bottom: 1rem;
 	}
 
 	.section-header h3 {
@@ -654,11 +705,14 @@
 		display: flex;
 		align-items: center;
 		gap: 1rem;
+		flex-shrink: 0;
+		min-width: 0;
 	}
 
 	.button-group {
 		display: flex;
 		gap: 0.5rem;
+		flex-shrink: 0;
 	}
 
 	.dice-button,
@@ -813,6 +867,29 @@
 	@media (max-width: 600px) {
 		.text-input-section {
 			padding: 1rem;
+		}
+
+		.section-header {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.5rem;
+		}
+
+		.title-and-icons {
+			width: 100%;
+			justify-content: space-between;
+		}
+
+		.button-group.mobile-icons {
+			display: flex;
+		}
+
+		.desktop-only {
+			display: none;
+		}
+
+		.mobile-stats {
+			display: block;
 		}
 
 		.controls-section {
