@@ -4,7 +4,7 @@
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import JSZip from 'jszip';
 	import ImageIcon from 'virtual:icons/lucide/image';
-	import Trash2Icon from 'virtual:icons/lucide/trash-2';
+	import RefreshCcwIcon from 'virtual:icons/lucide/refresh-ccw';
 	import FolderIcon from 'virtual:icons/lucide/folder';
 
 	import BackgroundRemoverUpload from '$lib/components/background-remover/BackgroundRemoverUpload.svelte';
@@ -44,12 +44,16 @@
 		{
 			id: 'RMBG-1.4', //briaai/
 			name: 'RMBG v1.4',
-			description: 'Smaller and faster, runs on most devices'
+			description: ['Small and fast', 'Runs on most devices'],
+			size: '44MB',
+			precision: 'QUANT'
 		},
 		{
 			id: 'BEN2-ONNX', //briaai/
 			name: 'BEN2',
-			description: 'Larger with potentially better results'
+			description: ['Large, very slow model', 'Generally provides better results'],
+			size: '235MB',
+			precision: 'FP16'
 		}
 	];
 	let selectedModelId = $state('RMBG-1.4');
@@ -91,13 +95,12 @@
 
 			await requestWakeLock();
 
-			// Load the background removal pipeline
-			modelLoadProgress = 25;
 			segmenter = await pipeline('background-removal', selectedModelId, {
 				progress_callback: (progress: any) => {
-					// Update progress based on pipeline loading
-					if (progress.status === 'downloading') {
-						modelLoadProgress = Math.round(25 + (progress.progress || 0) * 0.5);
+					if (progress.status === 'initiate') {
+						console.log('Initiating download of', progress);
+					} else if (progress.status === 'progress') {
+						modelLoadProgress = Math.round(progress.progress || 0);
 					} else if (progress.status === 'ready') {
 						modelLoadProgress = 100;
 					}
@@ -366,7 +369,11 @@
 				?.name})"
 			ModelIcon={ImageIcon}
 		>
-			<ActionButton onClick={clearResults} variant="danger" Icon={Trash2Icon}>Clear</ActionButton>
+			{#if (processingMode === 'single' && processedImageUrl) || (processingMode === 'batch' && batchResults.length > 0)}
+				<ActionButton onClick={clearResults} variant="danger" Icon={RefreshCcwIcon}
+					>Restart</ActionButton
+				>
+			{/if}
 		</Toolbar>
 
 		<ContentArea>
@@ -383,7 +390,15 @@
 								disabled={isLoadingModel}
 							>
 								<span class="model-name">{modelOption.name}</span>
-								<span class="model-description">{modelOption.description}</span>
+								<div class="model-badges">
+									<span class="model-size">{modelOption.size}</span>
+									<span class="model-precision">{modelOption.precision}</span>
+								</div>
+								<div class="model-description">
+									{#each modelOption.description as line, index (index)}
+										<div>{line}</div>
+									{/each}
+								</div>
 							</button>
 						{/each}
 					</div>
@@ -595,6 +610,35 @@
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
 		color: #000;
+	}
+
+	.model-badges {
+		display: flex;
+		gap: 0.5rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.model-size {
+		font-size: 0.8rem;
+		font-weight: 600;
+		color: #333;
+		background: rgba(0, 0, 0, 0.1);
+		padding: 0.2rem 0.5rem;
+		border-radius: 4px;
+		text-transform: none;
+		letter-spacing: 0;
+	}
+
+	.model-precision {
+		font-size: 0.8rem;
+		font-weight: 600;
+		color: #fff;
+		background: #6366f1;
+		padding: 0.2rem 0.5rem;
+		border-radius: 4px;
+		text-transform: none;
+		letter-spacing: 0;
 	}
 
 	.model-description {

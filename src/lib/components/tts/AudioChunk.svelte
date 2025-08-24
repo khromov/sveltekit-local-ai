@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
 	interface Props {
 		audio: Blob;
 		active: boolean;
@@ -30,27 +28,27 @@
 
 	// Watch for changes in active/playing state
 	$effect(() => {
-		if (!audioElement) return;
+		if (!audioElement || !url) return; // Ensure URL is ready
 		if (!active) return;
 
 		if (playing) {
 			if (audioElement.ended) {
 				audioElement.currentTime = 0;
 			}
-			audioElement.play();
+
+			// Add a small delay to ensure audio is ready and handle promise properly
+			setTimeout(() => {
+				if (audioElement && active && playing) {
+					audioElement.play().catch((error) => {
+						// Silently handle play interruption errors
+						if (error.name !== 'AbortError') {
+							console.warn('Audio play failed:', error);
+						}
+					});
+				}
+			}, 10);
 		} else {
 			audioElement.pause();
-		}
-	});
-
-	onMount(() => {
-		if (!audio || !audioElement) return;
-
-		if (active) {
-			audioElement.play();
-		} else {
-			audioElement.pause();
-			audioElement.currentTime = 0;
 		}
 	});
 </script>

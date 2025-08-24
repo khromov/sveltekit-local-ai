@@ -9,6 +9,7 @@
 		percentageText?: string;
 		showPercentage?: boolean;
 		mode?: 'progress' | 'spinner';
+		topMargin?: boolean;
 	}
 
 	let {
@@ -18,13 +19,14 @@
 		message,
 		percentageText,
 		showPercentage = true,
-		mode = 'progress'
+		mode = 'progress',
+		topMargin = false
 	}: Props = $props();
 
 	let displayPercentage = $derived(percentageText || `${progress}% Complete`);
 </script>
 
-<div class="loading-progress">
+<div class="loading-progress" class:top-margin={topMargin}>
 	<h3>{title}</h3>
 	{#if mode === 'progress'}
 		{#if showPercentage}
@@ -59,6 +61,10 @@
 		border-radius: 12px;
 		margin: 0 auto;
 		box-sizing: border-box;
+	}
+
+	.loading-progress.top-margin {
+		margin-top: 2rem;
 	}
 
 	.loading-progress h3 {
