@@ -77,3 +77,13 @@
 	--border-brutalist-thick: 3px solid var(--color-border-primary);
 	--border-brutalist-extra-thick: 4px solid var(--color-border-primary);
 }
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
