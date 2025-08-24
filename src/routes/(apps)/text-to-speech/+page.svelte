@@ -17,6 +17,7 @@
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 	import DicesIcon from 'virtual:icons/lucide/dices';
 	import TrashIcon from 'virtual:icons/lucide/trash';
+	import LoaderIcon from 'virtual:icons/lucide/loader';
 
 	import CardInterface from '$lib/components/common/CardInterface.svelte';
 	import Toolbar from '$lib/components/common/Toolbar.svelte';
@@ -56,7 +57,7 @@
 	let result = $state<Blob | null>(null);
 
 	// Computed properties
-	let processed = $derived(() => {
+	let processed = $derived.by(() => {
 		return (
 			lastGeneration &&
 			lastGeneration.text === text &&
@@ -221,7 +222,7 @@
 	}
 
 	function handlePlayPause() {
-		if (!isPlaying && status === 'ready' && !processed()) {
+		if (!isPlaying && status === 'ready' && !processed) {
 			status = 'generating';
 			chunks = [];
 			currentChunkIndex = 0;
@@ -505,12 +506,15 @@
 							disabled={(status === 'ready' && !isPlaying && !text) ||
 								(status !== 'ready' && chunks.length === 0)}
 						>
-							{#if isPlaying}
+							{#if status === 'generating'}
+								<LoaderIcon />
+								<span>Generating</span>
+							{:else if isPlaying && status === 'ready'}
 								<PauseIcon />
 								<span>Pause</span>
 							{:else}
 								<PlayIcon />
-								<span>{processed() || status === 'generating' ? 'Play' : 'Generate'}</span>
+								<span>{processed ? 'Play' : 'Generate'}</span>
 							{/if}
 						</button>
 
@@ -784,6 +788,19 @@
 	.secondary-action-btn :global(svg) {
 		width: 1.25rem;
 		height: 1.25rem;
+	}
+
+	.primary-action-btn :global(.lucide-loader) {
+		animation: spin 1s linear infinite;
+	}
+
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
 	}
 
 	.hidden {
