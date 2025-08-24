@@ -4,7 +4,7 @@
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import JSZip from 'jszip';
 	import ImageIcon from 'virtual:icons/lucide/image';
-	import Trash2Icon from 'virtual:icons/lucide/trash-2';
+	import RefreshCcwIcon from 'virtual:icons/lucide/refresh-ccw';
 	import FolderIcon from 'virtual:icons/lucide/folder';
 
 	import BackgroundRemoverUpload from '$lib/components/background-remover/BackgroundRemoverUpload.svelte';
@@ -370,7 +370,7 @@
 			ModelIcon={ImageIcon}
 		>
 			{#if (processingMode === 'single' && processedImageUrl) || (processingMode === 'batch' && batchResults.length > 0)}
-				<ActionButton onClick={clearResults} variant="danger" Icon={Trash2Icon}
+				<ActionButton onClick={clearResults} variant="danger" Icon={RefreshCcwIcon}
 					>Restart</ActionButton
 				>
 			{/if}
