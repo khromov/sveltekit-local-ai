@@ -369,7 +369,11 @@
 				?.name})"
 			ModelIcon={ImageIcon}
 		>
-			<ActionButton onClick={clearResults} variant="danger" Icon={Trash2Icon}>Clear</ActionButton>
+			{#if (processingMode === 'single' && processedImageUrl) || (processingMode === 'batch' && batchResults.length > 0)}
+				<ActionButton onClick={clearResults} variant="danger" Icon={Trash2Icon}
+					>Restart</ActionButton
+				>
+			{/if}
 		</Toolbar>
 
 		<ContentArea>
