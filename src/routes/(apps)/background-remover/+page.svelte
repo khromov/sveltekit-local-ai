@@ -7,7 +7,7 @@
 	import Trash2Icon from 'virtual:icons/lucide/trash-2';
 	import FolderIcon from 'virtual:icons/lucide/folder';
 
-	import BackgroundRemoverUpload from '$lib/components/background-remover/BackgroundRemoverUpload.svelte';
+	import { FileUpload } from '$lib/components/common';
 	import BackgroundRemoverProgress from '$lib/components/background-remover/BackgroundRemoverProgress.svelte';
 	import BackgroundRemoverResult from '$lib/components/background-remover/BackgroundRemoverResult.svelte';
 	import BackgroundRemoverBatchResult from '$lib/components/background-remover/BackgroundRemoverBatchResult.svelte';
@@ -418,14 +418,18 @@
 			{#if !isProcessing && !processedImageUrl && batchResults.length === 0}
 				<SectionCard rotation={-0.1} animationDelay={0.2}>
 					<StepHeader stepNumber={3} title="Upload Images" backgroundColor="#98fb98" />
-					<BackgroundRemoverUpload
+					<FileUpload
 						mode={processingMode}
-						{selectedFile}
-						{selectedFiles}
+						fileType="image"
+						bind:selectedFile
+						bind:selectedFiles
 						onFileSelect={handleSingleFileSelect}
 						onFilesSelect={handleBatchFileSelect}
 						onExampleUse={handleExampleUse}
 						disabled={isProcessing}
+						showExample={true}
+						showPreview={true}
+						exampleUrl="/pexels-photo-5965592.jpeg"
 					/>
 				</SectionCard>
 			{/if}

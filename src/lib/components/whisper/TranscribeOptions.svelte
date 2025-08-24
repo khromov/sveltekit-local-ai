@@ -1,5 +1,5 @@
 <script lang="ts">
-	import FileUpload from './FileUpload.svelte';
+	import { FileUpload } from '$lib/components/common';
 	import AudioRecorder from './AudioRecorder.svelte';
 	import MusicIcon from 'virtual:icons/lucide/music';
 	import FolderIcon from 'virtual:icons/lucide/folder';
@@ -91,7 +91,14 @@
 	</div>
 
 	{#if transcribeMode === 'upload'}
-		<FileUpload bind:selectedFile {onFileSelect} {disabled} />
+		<FileUpload
+			mode="single"
+			fileType="audio"
+			bind:selectedFile
+			{onFileSelect}
+			{disabled}
+			variant="compact"
+		/>
 	{:else if transcribeMode === 'record'}
 		<AudioRecorder bind:transcribeMode bind:selectedFile {onFileSelect} {disabled} />
 	{/if}
