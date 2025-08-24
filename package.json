@@ -16,7 +16,8 @@
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run",
 		"checks": "npm run format && npm run lint && npm run check",
-		"copy-wasm": "node scripts/copy-wasm-files.js"
+		"copy-wasm": "node scripts/copy-wasm-files.js",
+		"ai-digest": "npx ai-digest --ignore-file .cocoignore --minify-file .cocominify"
 	},
 	"dependencies": {
 		"express": "^5.1.0"

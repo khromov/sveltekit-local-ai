@@ -2,24 +2,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-24T22:45:01.951Z\n"
+"POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
+"PO-Revision-Date: 2025-08-24T22:45:01.952Z\n"
 "Last-Translator: \n"
-"Language: es\n"
+"Language: ja\n"
 "Language-Team: \n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.svelte
 #: src/routes/+page.svelte
+#: src/routes/+layout.svelte
 #: src/routes/(apps)/og/+page.svelte
 msgid "Local AI Tools"
-msgstr ""
-
-#: src/routes/+layout.svelte
-msgid "View source on GitHub"
 msgstr ""
 
 #: src/routes/+page.svelte
@@ -376,42 +372,8 @@ msgstr ""
 msgid "Processing failed"
 msgstr ""
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-msgid "<0/> Processing Image"
-msgstr ""
-
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-msgid "{0}% Complete"
-msgstr ""
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Background Removed!"
-msgstr ""
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Processed"
-msgstr ""
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Compare"
-msgstr ""
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "Background Removed"
-msgstr ""
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "Background removed"
-msgstr ""
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Download"
-msgstr ""
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Process Another"
+#: src/routes/+layout.svelte
+msgid "View source on GitHub"
 msgstr ""
 
 #: src/routes/favicon/+page.svelte
@@ -432,6 +394,15 @@ msgstr ""
 msgid ""
 "Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
 "\t\t\tdisplay sizes."
+msgstr ""
+
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+msgid "<0/> Processing Image"
+msgstr ""
+
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "{0}% Complete"
 msgstr ""
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
@@ -481,43 +452,33 @@ msgstr ""
 msgid "<0/> Process {0} Image{1}"
 msgstr ""
 
-#: src/lib/components/count-tokens/RawTokensDisplay.svelte
-msgid "<0/> Raw Tokens ({0})"
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Background Removed!"
 msgstr ""
 
-#: src/lib/components/count-tokens/RawTokensDisplay.svelte
-msgid "Token ID: {0}"
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Processed"
 msgstr ""
 
-#: src/lib/components/count-tokens/EmptyState.svelte
-msgid "Type or paste text in the input field above to analyze tokens and character count."
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Compare"
 msgstr ""
 
-#: src/lib/components/count-tokens/TextInputSection.svelte
-msgid "Input Text"
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "Background Removed"
 msgstr ""
 
-#: src/lib/components/count-tokens/TextInputSection.svelte
-msgid "Load example"
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "Background removed"
 msgstr ""
 
-#: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/(apps)/text-to-speech/+page.svelte
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Clear text"
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Download"
 msgstr ""
 
-#: src/lib/components/count-tokens/TokenStats.svelte
-msgid "Tokens"
-msgstr ""
-
-#: src/lib/components/count-tokens/TokenStats.svelte
-#: src/lib/components/tts/TextStatistics.svelte
-msgid "Characters"
-msgstr ""
-
-#: src/lib/components/count-tokens/TokenStats.svelte
-msgid "Chars/Token"
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Process Another"
 msgstr ""
 
 #: src/lib/components/chat/ChatMessages.svelte
@@ -536,8 +497,16 @@ msgstr ""
 msgid "AI"
 msgstr ""
 
-#: src/lib/components/common/StepHeader.svelte
-msgid "Step {0}:"
+#: src/lib/components/chat/MessageInput.svelte
+msgid "Stop generation"
+msgstr ""
+
+#: src/lib/components/chat/MessageInput.svelte
+msgid "Send message"
+msgstr ""
+
+#: src/lib/components/chat/MessageInput.svelte
+msgid "<0/> Model responses may not always be accurate."
 msgstr ""
 
 #: src/lib/components/chat/ModelSelector.svelte
@@ -588,60 +557,42 @@ msgstr ""
 msgid "<0/> Models run locally in your browser. No data is sent to external servers."
 msgstr ""
 
-#: src/lib/components/chat/MessageInput.svelte
-msgid "Stop generation"
+#: src/lib/components/common/ErrorDisplay.svelte
+msgid "Error"
 msgstr ""
 
-#: src/lib/components/chat/MessageInput.svelte
-msgid "Send message"
-msgstr ""
-
-#: src/lib/components/chat/MessageInput.svelte
-msgid "<0/> Model responses may not always be accurate."
+#: src/lib/components/common/StepHeader.svelte
+msgid "Step {0}:"
 msgstr ""
 
 #: src/lib/components/common/SquareSpinner.svelte
 msgid "Loading"
 msgstr ""
 
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "<0>Step 1:</0> Text-to-speech Model"
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "<0/> Raw Tokens ({0})"
 msgstr ""
 
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "Kitten TTS Nano"
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "Token ID: {0}"
 msgstr ""
 
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "24MB • Best for edge devices"
+#: src/lib/components/count-tokens/EmptyState.svelte
+msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr ""
 
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "Piper Voices"
+#: src/lib/components/count-tokens/TextInputSection.svelte
+msgid "Input Text"
 msgstr ""
 
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "75MB • Better Quality • Fast"
+#: src/lib/components/count-tokens/TextInputSection.svelte
+msgid "Load example"
 msgstr ""
 
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "Kokoro"
-msgstr ""
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "80MB • Highest Quality • Slow"
-msgstr ""
-
-#: src/lib/components/tts/SpeedControl.svelte
-msgid "Speed:"
-msgstr ""
-
-#: src/lib/components/tts/SpeedControl.svelte
-msgid "{0}x"
-msgstr ""
-
-#: src/lib/components/tts/TextStatistics.svelte
-msgid "Words"
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Clear text"
 msgstr ""
 
 #: src/lib/components/whisper/AudioRecorder.svelte
@@ -664,44 +615,29 @@ msgstr ""
 msgid "<0/> Clear Recording"
 msgstr ""
 
-#: src/lib/components/tts/SampleRateSelector.svelte
-msgid "Sample Rate:"
+#: src/lib/components/count-tokens/TokenStats.svelte
+msgid "Tokens"
 msgstr ""
 
-#: src/lib/components/common/ErrorDisplay.svelte
-msgid "Error"
+#: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
+msgid "Characters"
 msgstr ""
 
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hello! I'm Heart, your friendly voice assistant."
+#: src/lib/components/count-tokens/TokenStats.svelte
+msgid "Chars/Token"
 msgstr ""
 
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hi there! I'm Bella, ready to bring your words to life."
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "Drag & Drop Audio File"
 msgstr ""
 
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Greetings! I'm Nova, here to make your content shine."
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "or"
 msgstr ""
 
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hello! I'm Sarah, delighted to speak for you."
-msgstr ""
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hi! I'm Adam, your reliable voice companion."
-msgstr ""
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hello there! I'm Echo, echoing your thoughts perfectly."
-msgstr ""
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hi! I'm {0}, nice to meet you!"
-msgstr ""
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Select Voice"
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "Browse Files"
 msgstr ""
 
 #: src/lib/components/whisper/TranscriptionProgress.svelte
@@ -718,14 +654,6 @@ msgstr ""
 
 #: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "<0/> Keep this tab active during transcription"
-msgstr ""
-
-#: src/lib/components/tts/WebGPUToggle.svelte
-msgid "(not supported)"
-msgstr ""
-
-#: src/lib/components/tts/WebGPUToggle.svelte
-msgid "Try WebGPU (experimental) <0/>"
 msgstr ""
 
 #: src/lib/components/whisper/TranscriptionResult.svelte
@@ -746,18 +674,6 @@ msgstr ""
 
 #: src/lib/components/whisper/TranscriptionResult.svelte
 msgid "<0/> Copy"
-msgstr ""
-
-#: src/lib/components/whisper/FileUpload.svelte
-msgid "Drag & Drop Audio File"
-msgstr ""
-
-#: src/lib/components/whisper/FileUpload.svelte
-msgid "or"
-msgstr ""
-
-#: src/lib/components/whisper/FileUpload.svelte
-msgid "Browse Files"
 msgstr ""
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
@@ -805,6 +721,90 @@ msgstr ""
 msgid "Retry"
 msgstr ""
 
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "<0>Step 1:</0> Text-to-speech Model"
+msgstr ""
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Kitten TTS Nano"
+msgstr ""
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "24MB • Best for edge devices"
+msgstr ""
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Piper Voices"
+msgstr ""
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "75MB • Better Quality • Fast"
+msgstr ""
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Kokoro"
+msgstr ""
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "80MB • Highest Quality • Slow"
+msgstr ""
+
+#: src/lib/components/tts/SpeedControl.svelte
+msgid "Speed:"
+msgstr ""
+
+#: src/lib/components/tts/SpeedControl.svelte
+msgid "{0}x"
+msgstr ""
+
+#: src/lib/components/tts/TextStatistics.svelte
+msgid "Words"
+msgstr ""
+
+#: src/lib/components/tts/SampleRateSelector.svelte
+msgid "Sample Rate:"
+msgstr ""
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hello! I'm Heart, your friendly voice assistant."
+msgstr ""
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hi there! I'm Bella, ready to bring your words to life."
+msgstr ""
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Greetings! I'm Nova, here to make your content shine."
+msgstr ""
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hello! I'm Sarah, delighted to speak for you."
+msgstr ""
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hi! I'm Adam, your reliable voice companion."
+msgstr ""
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hello there! I'm Echo, echoing your thoughts perfectly."
+msgstr ""
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hi! I'm {0}, nice to meet you!"
+msgstr ""
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Select Voice"
+msgstr ""
+
+#: src/lib/components/tts/WebGPUToggle.svelte
+msgid "(not supported)"
+msgstr ""
+
+#: src/lib/components/tts/WebGPUToggle.svelte
+msgid "Try WebGPU (experimental) <0/>"
+msgstr ""
+
 #: src/routes/(apps)/chat/+page.svelte
 msgid "Failed to load model. Please check your connection and try again."
 msgstr ""
@@ -819,170 +819,6 @@ msgstr ""
 
 #: src/routes/(apps)/chat/+page.svelte
 msgid "New <0>Chat</0>"
-msgstr ""
-
-#: src/routes/(apps)/background-remover/+page.svelte
-msgid "Loading Background Removal Model"
-msgstr ""
-
-#: src/routes/(apps)/background-remover/+page.svelte
-msgid "The AI model is being downloaded and initialized. This may take a few moments."
-msgstr ""
-
-#: src/routes/(apps)/background-remover/+page.svelte
-msgid "Background Remover ("
-msgstr ""
-
-#: src/routes/(apps)/background-remover/+page.svelte
-msgid "Restart"
-msgstr ""
-
-#: src/routes/(apps)/background-remover/+page.svelte
-msgid "Model Selection"
-msgstr ""
-
-#: src/routes/(apps)/background-remover/+page.svelte
-msgid "Processing Mode"
-msgstr ""
-
-#: src/routes/(apps)/background-remover/+page.svelte
-msgid "<0/> Single Image"
-msgstr ""
-
-#: src/routes/(apps)/background-remover/+page.svelte
-msgid "<0/> Multiple images"
-msgstr ""
-
-#: src/routes/(apps)/background-remover/+page.svelte
-msgid "Upload Images"
-msgstr ""
-
-#: src/routes/(apps)/background-remover/+page.svelte
-msgid "Try Again"
-msgstr ""
-
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid "<0/> Count LLM Tokens"
-msgstr ""
-
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid ""
-"Calculate how many tokens your text will use with different AI models. Token counts affect\n"
-"\t\t\tcontext limits for AI conversations."
-msgstr ""
-
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid "Anthropic Claude"
-msgstr ""
-
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
-msgstr ""
-
-#: src/routes/(apps)/count-tokens/+page.svelte
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid "Open Tokenizer"
-msgstr ""
-
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid "OpenAI ChatGPT"
-msgstr ""
-
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
-msgstr ""
-
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid "What are tokens?"
-msgstr ""
-
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid ""
-"Tokens are the basic units that language models process. A token can be as short as one\n"
-"\t\t\tcharacter or as long as one word. On average:"
-msgstr ""
-
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid "1 token ≈ 4 characters in English"
-msgstr ""
-
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid ""
-"Different models use different tokenization methods, so the same text may result in different\n"
-"\t\t\ttoken counts."
-msgstr ""
-
-#: src/routes/(apps)/transcribe/+page.svelte
-msgid "Whisper Audio Transcription"
-msgstr ""
-
-#: src/routes/(apps)/transcribe/+page.svelte
-msgid "<0/> Transcribing..."
-msgstr ""
-
-#: src/routes/(apps)/transcribe/+page.svelte
-msgid "<0/> Start Transcription"
-msgstr ""
-
-#: src/routes/(apps)/transcribe/+page.svelte
-msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Text copied to clipboard!"
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Text to Speech Studio"
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "<0/> Welcome to TTS Studio"
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Generate high-quality speech from text, all running locally in your browser!"
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Loading TTS Model"
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Initializing text-to-speech model..."
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Failed to load model"
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Enter Your Text"
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Get random Svelte quote"
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Type or paste your text here..."
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Voice:"
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Generating"
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Pause"
-msgstr ""
-
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Download Audio"
 msgstr ""
 
 #: src/routes/(apps)/og/+page.svelte
@@ -1056,6 +892,119 @@ msgstr ""
 msgid "Run offline: Chat • Transcribe • TTS • Background • Tokens"
 msgstr ""
 
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Loading Background Removal Model"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "The AI model is being downloaded and initialized. This may take a few moments."
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Background Remover ("
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Restart"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Model Selection"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Processing Mode"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "<0/> Single Image"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "<0/> Multiple images"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Upload Images"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Try Again"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Text copied to clipboard!"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Text to Speech Studio"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "<0/> Welcome to TTS Studio"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Generate high-quality speech from text, all running locally in your browser!"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Loading TTS Model"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Initializing text-to-speech model..."
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Failed to load model"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Enter Your Text"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Get random Svelte quote"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Type or paste your text here..."
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Voice:"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Generating"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Pause"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Download Audio"
+msgstr ""
+
+#: src/routes/(apps)/transcribe/+page.svelte
+msgid "Whisper Audio Transcription"
+msgstr ""
+
+#: src/routes/(apps)/transcribe/+page.svelte
+msgid "<0/> Transcribing..."
+msgstr ""
+
+#: src/routes/(apps)/transcribe/+page.svelte
+msgid "<0/> Start Transcription"
+msgstr ""
+
+#: src/routes/(apps)/transcribe/+page.svelte
+msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
+msgstr ""
+
 #: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
 msgid "Anthropic Claude Tokenizer"
 msgstr ""
@@ -1079,6 +1028,57 @@ msgstr ""
 
 #: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
 msgid "Special characters and code may use more tokens"
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "<0/> Count LLM Tokens"
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid ""
+"Calculate how many tokens your text will use with different AI models. Token counts affect\n"
+"\t\t\tcontext limits for AI conversations."
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "Anthropic Claude"
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "Open Tokenizer"
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "OpenAI ChatGPT"
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "What are tokens?"
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid ""
+"Tokens are the basic units that language models process. A token can be as short as one\n"
+"\t\t\tcharacter or as long as one word. On average:"
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "1 token ≈ 4 characters in English"
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid ""
+"Different models use different tokenization methods, so the same text may result in different\n"
+"\t\t\ttoken counts."
 msgstr ""
 
 #: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
