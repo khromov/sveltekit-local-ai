@@ -3,6 +3,9 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import Icons from 'unplugin-icons/vite';
 
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { wuchale } from '@wuchale/vite-plugin';
+
 export default defineConfig({
 	plugins: [
 		{
@@ -16,6 +19,8 @@ export default defineConfig({
 				});
 			}
 		},
+		wuchale(),
+		svelte(),
 		sveltekit(),
 		Icons({
 			compiler: 'svelte'

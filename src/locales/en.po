@@ -1,0 +1,1277 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2025-08-24T22:12:14.877Z\n"
+"POT-Creation-Date: 2025-08-24T22:12:14.877Z\n"
+
+#: src/routes/+layout.svelte
+#: src/routes/+page.svelte
+#: src/routes/(apps)/og/+page.svelte
+msgid "Local AI Tools"
+msgstr "Local AI Tools"
+
+#: src/routes/+layout.svelte
+msgid "View source on GitHub"
+msgstr "View source on GitHub"
+
+#: src/routes/+page.svelte
+msgid ""
+"On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
+"\t\t\t\toffline!"
+msgstr ""
+"On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
+"\t\t\t\toffline!"
+
+#: src/routes/+page.svelte
+msgid "Tool #01"
+msgstr "Tool #01"
+
+#: src/routes/+page.svelte
+msgid "Chat"
+msgstr "Chat"
+
+#: src/routes/+page.svelte
+msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
+msgstr "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
+
+#: src/routes/+page.svelte
+msgid "Private & Secure"
+msgstr "Private & Secure"
+
+#: src/routes/+page.svelte
+msgid "Works Offline"
+msgstr "Works Offline"
+
+#: src/routes/+page.svelte
+msgid "No Data Sharing"
+msgstr "No Data Sharing"
+
+#: src/routes/+page.svelte
+msgid "Tool #02"
+msgstr "Tool #02"
+
+#: src/routes/+page.svelte
+msgid "Transcribe Audio"
+msgstr "Transcribe Audio"
+
+#: src/routes/+page.svelte
+msgid ""
+"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
+"\t\t\t\t\t\ttext or a subtitle file."
+msgstr ""
+"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
+"\t\t\t\t\t\ttext or a subtitle file."
+
+#: src/routes/+page.svelte
+msgid "High Accuracy"
+msgstr "High Accuracy"
+
+#: src/routes/+page.svelte
+msgid "Multiple Formats"
+msgstr "Multiple Formats"
+
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
+msgid "Local Processing"
+msgstr "Local Processing"
+
+#: src/routes/+page.svelte
+msgid "Tool #03"
+msgstr "Tool #03"
+
+#: src/routes/+page.svelte
+msgid "Text to Speech"
+msgstr "Text to Speech"
+
+#: src/routes/+page.svelte
+msgid ""
+"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
+"\t\t\t\t\t\tor Kokoro models for high-quality voice synthesis."
+msgstr ""
+"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
+"\t\t\t\t\t\tor Kokoro models for high-quality voice synthesis."
+
+#: src/routes/+page.svelte
+msgid "Multiple Models"
+msgstr "Multiple Models"
+
+#: src/routes/+page.svelte
+msgid "Natural Voices"
+msgstr "Natural Voices"
+
+#: src/routes/+page.svelte
+msgid "Tool #04"
+msgstr "Tool #04"
+
+#: src/routes/+page.svelte
+msgid "Remove Background"
+msgstr "Remove Background"
+
+#: src/routes/+page.svelte
+msgid ""
+"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
+"\t\t\t\t\t\tprofessional results."
+msgstr ""
+"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
+"\t\t\t\t\t\tprofessional results."
+
+#: src/routes/+page.svelte
+msgid "AI-Powered"
+msgstr "AI-Powered"
+
+#: src/routes/+page.svelte
+msgid "High Quality"
+msgstr "High Quality"
+
+#: src/routes/+page.svelte
+msgid "Tool #05"
+msgstr "Tool #05"
+
+#: src/routes/+page.svelte
+msgid "Count Tokens"
+msgstr "Count Tokens"
+
+#: src/routes/+page.svelte
+msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
+msgstr "Estimate token usage for prompts across OpenAI and Anthropic models."
+
+#: src/routes/+page.svelte
+msgid "OpenAI & Anthropic"
+msgstr "OpenAI & Anthropic"
+
+#: src/routes/+page.svelte
+msgid "Accurate Counts"
+msgstr "Accurate Counts"
+
+#: src/routes/+page.svelte
+msgid "All processing happens locally in your browser using WebAssembly."
+msgstr "All processing happens locally in your browser using WebAssembly."
+
+#: src/routes/+page.svelte
+msgid "No data is sent to external servers."
+msgstr "No data is sent to external servers."
+
+#: src/lib/components/Tracking.svelte
+msgid ""
+"!(function () {\n"
+"\t\t\t\t'use strict';\n"
+"\t\t\t\t((t) => {\n"
+"\t\t\t\t\tconst {\n"
+"\t\t\t\t\t\t\tscreen: { width: e, height: a },\n"
+"\t\t\t\t\t\t\tnavigator: { language: n, doNotTrack: r, msDoNotTrack: i },\n"
+"\t\t\t\t\t\t\tlocation: o,\n"
+"\t\t\t\t\t\t\tdocument: s,\n"
+"\t\t\t\t\t\t\thistory: c,\n"
+"\t\t\t\t\t\t\ttop: u,\n"
+"\t\t\t\t\t\t\tdoNotTrack: d\n"
+"\t\t\t\t\t\t} = t,\n"
+"\t\t\t\t\t\t{ currentScript: l, referrer: f } = s;\n"
+"\t\t\t\t\tif (!l) return;\n"
+"\t\t\t\t\tconst { hostname: h, href: m, origin: p } = o,\n"
+"\t\t\t\t\t\ty = m.startsWith('data:') ? void 0 : t.localStorage,\n"
+"\t\t\t\t\t\tg = 'data-',\n"
+"\t\t\t\t\t\tb = 'true',\n"
+"\t\t\t\t\t\tv = l.getAttribute.bind(l),\n"
+"\t\t\t\t\t\tS = v(g + 'website-id'),\n"
+"\t\t\t\t\t\tw = v(g + 'host-url'),\n"
+"\t\t\t\t\t\tk = v(g + 'before-send'),\n"
+"\t\t\t\t\t\tN = v(g + 'tag') || void 0,\n"
+"\t\t\t\t\t\tT = 'false' !== v(g + 'auto-track'),\n"
+"\t\t\t\t\t\tA = v(g + 'do-not-track') === b,\n"
+"\t\t\t\t\t\tj = v(g + 'exclude-search') === b,\n"
+"\t\t\t\t\t\tx = v(g + 'exclude-hash') === b,\n"
+"\t\t\t\t\t\t$ = v(g + 'domains') || '',\n"
+"\t\t\t\t\t\tE = $.split(',').map((t) => t.trim()),\n"
+"\t\t\t\t\t\tK = `${(w || '' || l.src.split('/').slice(0, -1).join('/')).replace(/\\/$/, '')}/api/send`,\n"
+"\t\t\t\t\t\tL = `${e}x${a}`,\n"
+"\t\t\t\t\t\tO = /data-umami-event-([\\w-_]+)/,\n"
+"\t\t\t\t\t\t_ = g + 'umami-event',\n"
+"\t\t\t\t\t\tD = 300,\n"
+"\t\t\t\t\t\tU = () => ({\n"
+"\t\t\t\t\t\t\twebsite: S,\n"
+"\t\t\t\t\t\t\tscreen: L,\n"
+"\t\t\t\t\t\t\tlanguage: n,\n"
+"\t\t\t\t\t\t\ttitle: s.title,\n"
+"\t\t\t\t\t\t\thostname: h,\n"
+"\t\t\t\t\t\t\turl: z,\n"
+"\t\t\t\t\t\t\treferrer: F,\n"
+"\t\t\t\t\t\t\ttag: N,\n"
+"\t\t\t\t\t\t\tid: q || void 0\n"
+"\t\t\t\t\t\t}),\n"
+"\t\t\t\t\t\tW = (t, e, a) => {\n"
+"\t\t\t\t\t\t\ta &&\n"
+"\t\t\t\t\t\t\t\t((F = z),\n"
+"\t\t\t\t\t\t\t\t(z = new URL(a, o.href)),\n"
+"\t\t\t\t\t\t\t\tj && (z.search = ''),\n"
+"\t\t\t\t\t\t\t\tx && (z.hash = ''),\n"
+"\t\t\t\t\t\t\t\t(z = z.toString()),\n"
+"\t\t\t\t\t\t\t\tz !== F && setTimeout(J, D));\n"
+"\t\t\t\t\t\t},\n"
+"\t\t\t\t\t\tB = () =>\n"
+"\t\t\t\t\t\t\tH ||\n"
+"\t\t\t\t\t\t\t!S ||\n"
+"\t\t\t\t\t\t\t(y && y.getItem('umami.disabled')) ||\n"
+"\t\t\t\t\t\t\t($ && !E.includes(h)) ||\n"
+"\t\t\t\t\t\t\t(A &&\n"
+"\t\t\t\t\t\t\t\t(() => {\n"
+"\t\t\t\t\t\t\t\t\tconst t = d || r || i;\n"
+"\t\t\t\t\t\t\t\t\treturn 1 === t || '1' === t || 'yes' === t;\n"
+"\t\t\t\t\t\t\t\t})()),\n"
+"\t\t\t\t\t\tC = async (e, a = 'event') => {\n"
+"\t\t\t\t\t\t\tif (B()) return;\n"
+"\t\t\t\t\t\t\tconst n = t[k];\n"
+"\t\t\t\t\t\t\tif (('function' == typeof n && (e = n(a, e)), e))\n"
+"\t\t\t\t\t\t\t\ttry {\n"
+"\t\t\t\t\t\t\t\t\tconst t = await fetch(K, {\n"
+"\t\t\t\t\t\t\t\t\t\t\tmethod: 'POST',\n"
+"\t\t\t\t\t\t\t\t\t\t\tbody: JSON.stringify({ type: a, payload: e }),\n"
+"\t\t\t\t\t\t\t\t\t\t\theaders: {\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t'Content-Type': 'application/json',\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t...(void 0 !== R && { 'x-umami-cache': R })\n"
+"\t\t\t\t\t\t\t\t\t\t\t},\n"
+"\t\t\t\t\t\t\t\t\t\t\tcredentials: 'omit'\n"
+"\t\t\t\t\t\t\t\t\t\t}),\n"
+"\t\t\t\t\t\t\t\t\t\tn = await t.json();\n"
+"\t\t\t\t\t\t\t\t\tn && ((H = !!n.disabled), (R = n.cache));\n"
+"\t\t\t\t\t\t\t\t} catch (t) {}\n"
+"\t\t\t\t\t\t},\n"
+"\t\t\t\t\t\tI = () => {\n"
+"\t\t\t\t\t\t\tG ||\n"
+"\t\t\t\t\t\t\t\t((G = !0),\n"
+"\t\t\t\t\t\t\t\tJ(),\n"
+"\t\t\t\t\t\t\t\t(() => {\n"
+"\t\t\t\t\t\t\t\t\tconst t = (t, e, a) => {\n"
+"\t\t\t\t\t\t\t\t\t\tconst n = t[e];\n"
+"\t\t\t\t\t\t\t\t\t\treturn (...e) => (a.apply(null, e), n.apply(t, e));\n"
+"\t\t\t\t\t\t\t\t\t};\n"
+"\t\t\t\t\t\t\t\t\t((c.pushState = t(c, 'pushState', W)),\n"
+"\t\t\t\t\t\t\t\t\t\t(c.replaceState = t(c, 'replaceState', W)));\n"
+"\t\t\t\t\t\t\t\t})(),\n"
+"\t\t\t\t\t\t\t\t(() => {\n"
+"\t\t\t\t\t\t\t\t\tconst t = async (t) => {\n"
+"\t\t\t\t\t\t\t\t\t\tconst e = t.getAttribute(_);\n"
+"\t\t\t\t\t\t\t\t\t\tif (e) {\n"
+"\t\t\t\t\t\t\t\t\t\t\tconst a = {};\n"
+"\t\t\t\t\t\t\t\t\t\t\treturn (\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tt.getAttributeNames().forEach((e) => {\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\tconst n = e.match(O);\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\tn && (a[n[1]] = t.getAttribute(e));\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t}),\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tJ(e, a)\n"
+"\t\t\t\t\t\t\t\t\t\t\t);\n"
+"\t\t\t\t\t\t\t\t\t\t}\n"
+"\t\t\t\t\t\t\t\t\t};\n"
+"\t\t\t\t\t\t\t\t\ts.addEventListener(\n"
+"\t\t\t\t\t\t\t\t\t\t'click',\n"
+"\t\t\t\t\t\t\t\t\t\tasync (e) => {\n"
+"\t\t\t\t\t\t\t\t\t\t\tconst a = e.target,\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tn = a.closest('a,button');\n"
+"\t\t\t\t\t\t\t\t\t\t\tif (!n) return t(a);\n"
+"\t\t\t\t\t\t\t\t\t\t\tconst { href: r, target: i } = n;\n"
+"\t\t\t\t\t\t\t\t\t\t\tif (n.getAttribute(_)) {\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tif ('BUTTON' === n.tagName) return t(n);\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tif ('A' === n.tagName && r) {\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\tconst a =\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t'_blank' === i ||\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\te.ctrlKey ||\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\te.shiftKey ||\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\te.metaKey ||\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t(e.button && 1 === e.button);\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\treturn (\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\ta || e.preventDefault(),\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tt(n).then(() => {\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ta || (('_top' === i ? u.location : o).href = r);\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t})\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t);\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t}\n"
+"\t\t\t\t\t\t\t\t\t\t\t}\n"
+"\t\t\t\t\t\t\t\t\t\t},\n"
+"\t\t\t\t\t\t\t\t\t\t!0\n"
+"\t\t\t\t\t\t\t\t\t);\n"
+"\t\t\t\t\t\t\t\t})());\n"
+"\t\t\t\t\t\t},\n"
+"\t\t\t\t\t\tJ = (t, e) =>\n"
+"\t\t\t\t\t\t\tC(\n"
+"\t\t\t\t\t\t\t\t'string' == typeof t\n"
+"\t\t\t\t\t\t\t\t\t? { ...U(), name: t, data: e }\n"
+"\t\t\t\t\t\t\t\t\t: 'object' == typeof t\n"
+"\t\t\t\t\t\t\t\t\t\t? { ...t }\n"
+"\t\t\t\t\t\t\t\t\t\t: 'function' == typeof t\n"
+"\t\t\t\t\t\t\t\t\t\t\t? t(U())\n"
+"\t\t\t\t\t\t\t\t\t\t\t: U()\n"
+"\t\t\t\t\t\t\t),\n"
+"\t\t\t\t\t\tP = (t, e) => (\n"
+"\t\t\t\t\t\t\t'string' == typeof t && (q = t),\n"
+"\t\t\t\t\t\t\t(R = ''),\n"
+"\t\t\t\t\t\t\tC({ ...U(), data: 'object' == typeof t ? t : e }, 'identify')\n"
+"\t\t\t\t\t\t);\n"
+"\t\t\t\t\tt.umami || (t.umami = { track: J, identify: P });\n"
+"\t\t\t\t\tlet R,\n"
+"\t\t\t\t\t\tq,\n"
+"\t\t\t\t\t\tz = m,\n"
+"\t\t\t\t\t\tF = f.startsWith(p) ? '' : f,\n"
+"\t\t\t\t\t\tG = !1,\n"
+"\t\t\t\t\t\tH = !1;\n"
+"\t\t\t\t\tT &&\n"
+"\t\t\t\t\t\t!B() &&\n"
+"\t\t\t\t\t\t('complete' === s.readyState ? I() : s.addEventListener('readystatechange', I, !0));\n"
+"\t\t\t\t})(window);\n"
+"\t\t\t})();"
+msgstr ""
+"!(function () {\n"
+"\t\t\t\t'use strict';\n"
+"\t\t\t\t((t) => {\n"
+"\t\t\t\t\tconst {\n"
+"\t\t\t\t\t\t\tscreen: { width: e, height: a },\n"
+"\t\t\t\t\t\t\tnavigator: { language: n, doNotTrack: r, msDoNotTrack: i },\n"
+"\t\t\t\t\t\t\tlocation: o,\n"
+"\t\t\t\t\t\t\tdocument: s,\n"
+"\t\t\t\t\t\t\thistory: c,\n"
+"\t\t\t\t\t\t\ttop: u,\n"
+"\t\t\t\t\t\t\tdoNotTrack: d\n"
+"\t\t\t\t\t\t} = t,\n"
+"\t\t\t\t\t\t{ currentScript: l, referrer: f } = s;\n"
+"\t\t\t\t\tif (!l) return;\n"
+"\t\t\t\t\tconst { hostname: h, href: m, origin: p } = o,\n"
+"\t\t\t\t\t\ty = m.startsWith('data:') ? void 0 : t.localStorage,\n"
+"\t\t\t\t\t\tg = 'data-',\n"
+"\t\t\t\t\t\tb = 'true',\n"
+"\t\t\t\t\t\tv = l.getAttribute.bind(l),\n"
+"\t\t\t\t\t\tS = v(g + 'website-id'),\n"
+"\t\t\t\t\t\tw = v(g + 'host-url'),\n"
+"\t\t\t\t\t\tk = v(g + 'before-send'),\n"
+"\t\t\t\t\t\tN = v(g + 'tag') || void 0,\n"
+"\t\t\t\t\t\tT = 'false' !== v(g + 'auto-track'),\n"
+"\t\t\t\t\t\tA = v(g + 'do-not-track') === b,\n"
+"\t\t\t\t\t\tj = v(g + 'exclude-search') === b,\n"
+"\t\t\t\t\t\tx = v(g + 'exclude-hash') === b,\n"
+"\t\t\t\t\t\t$ = v(g + 'domains') || '',\n"
+"\t\t\t\t\t\tE = $.split(',').map((t) => t.trim()),\n"
+"\t\t\t\t\t\tK = `${(w || '' || l.src.split('/').slice(0, -1).join('/')).replace(/\\/$/, '')}/api/send`,\n"
+"\t\t\t\t\t\tL = `${e}x${a}`,\n"
+"\t\t\t\t\t\tO = /data-umami-event-([\\w-_]+)/,\n"
+"\t\t\t\t\t\t_ = g + 'umami-event',\n"
+"\t\t\t\t\t\tD = 300,\n"
+"\t\t\t\t\t\tU = () => ({\n"
+"\t\t\t\t\t\t\twebsite: S,\n"
+"\t\t\t\t\t\t\tscreen: L,\n"
+"\t\t\t\t\t\t\tlanguage: n,\n"
+"\t\t\t\t\t\t\ttitle: s.title,\n"
+"\t\t\t\t\t\t\thostname: h,\n"
+"\t\t\t\t\t\t\turl: z,\n"
+"\t\t\t\t\t\t\treferrer: F,\n"
+"\t\t\t\t\t\t\ttag: N,\n"
+"\t\t\t\t\t\t\tid: q || void 0\n"
+"\t\t\t\t\t\t}),\n"
+"\t\t\t\t\t\tW = (t, e, a) => {\n"
+"\t\t\t\t\t\t\ta &&\n"
+"\t\t\t\t\t\t\t\t((F = z),\n"
+"\t\t\t\t\t\t\t\t(z = new URL(a, o.href)),\n"
+"\t\t\t\t\t\t\t\tj && (z.search = ''),\n"
+"\t\t\t\t\t\t\t\tx && (z.hash = ''),\n"
+"\t\t\t\t\t\t\t\t(z = z.toString()),\n"
+"\t\t\t\t\t\t\t\tz !== F && setTimeout(J, D));\n"
+"\t\t\t\t\t\t},\n"
+"\t\t\t\t\t\tB = () =>\n"
+"\t\t\t\t\t\t\tH ||\n"
+"\t\t\t\t\t\t\t!S ||\n"
+"\t\t\t\t\t\t\t(y && y.getItem('umami.disabled')) ||\n"
+"\t\t\t\t\t\t\t($ && !E.includes(h)) ||\n"
+"\t\t\t\t\t\t\t(A &&\n"
+"\t\t\t\t\t\t\t\t(() => {\n"
+"\t\t\t\t\t\t\t\t\tconst t = d || r || i;\n"
+"\t\t\t\t\t\t\t\t\treturn 1 === t || '1' === t || 'yes' === t;\n"
+"\t\t\t\t\t\t\t\t})()),\n"
+"\t\t\t\t\t\tC = async (e, a = 'event') => {\n"
+"\t\t\t\t\t\t\tif (B()) return;\n"
+"\t\t\t\t\t\t\tconst n = t[k];\n"
+"\t\t\t\t\t\t\tif (('function' == typeof n && (e = n(a, e)), e))\n"
+"\t\t\t\t\t\t\t\ttry {\n"
+"\t\t\t\t\t\t\t\t\tconst t = await fetch(K, {\n"
+"\t\t\t\t\t\t\t\t\t\t\tmethod: 'POST',\n"
+"\t\t\t\t\t\t\t\t\t\t\tbody: JSON.stringify({ type: a, payload: e }),\n"
+"\t\t\t\t\t\t\t\t\t\t\theaders: {\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t'Content-Type': 'application/json',\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t...(void 0 !== R && { 'x-umami-cache': R })\n"
+"\t\t\t\t\t\t\t\t\t\t\t},\n"
+"\t\t\t\t\t\t\t\t\t\t\tcredentials: 'omit'\n"
+"\t\t\t\t\t\t\t\t\t\t}),\n"
+"\t\t\t\t\t\t\t\t\t\tn = await t.json();\n"
+"\t\t\t\t\t\t\t\t\tn && ((H = !!n.disabled), (R = n.cache));\n"
+"\t\t\t\t\t\t\t\t} catch (t) {}\n"
+"\t\t\t\t\t\t},\n"
+"\t\t\t\t\t\tI = () => {\n"
+"\t\t\t\t\t\t\tG ||\n"
+"\t\t\t\t\t\t\t\t((G = !0),\n"
+"\t\t\t\t\t\t\t\tJ(),\n"
+"\t\t\t\t\t\t\t\t(() => {\n"
+"\t\t\t\t\t\t\t\t\tconst t = (t, e, a) => {\n"
+"\t\t\t\t\t\t\t\t\t\tconst n = t[e];\n"
+"\t\t\t\t\t\t\t\t\t\treturn (...e) => (a.apply(null, e), n.apply(t, e));\n"
+"\t\t\t\t\t\t\t\t\t};\n"
+"\t\t\t\t\t\t\t\t\t((c.pushState = t(c, 'pushState', W)),\n"
+"\t\t\t\t\t\t\t\t\t\t(c.replaceState = t(c, 'replaceState', W)));\n"
+"\t\t\t\t\t\t\t\t})(),\n"
+"\t\t\t\t\t\t\t\t(() => {\n"
+"\t\t\t\t\t\t\t\t\tconst t = async (t) => {\n"
+"\t\t\t\t\t\t\t\t\t\tconst e = t.getAttribute(_);\n"
+"\t\t\t\t\t\t\t\t\t\tif (e) {\n"
+"\t\t\t\t\t\t\t\t\t\t\tconst a = {};\n"
+"\t\t\t\t\t\t\t\t\t\t\treturn (\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tt.getAttributeNames().forEach((e) => {\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\tconst n = e.match(O);\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\tn && (a[n[1]] = t.getAttribute(e));\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t}),\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tJ(e, a)\n"
+"\t\t\t\t\t\t\t\t\t\t\t);\n"
+"\t\t\t\t\t\t\t\t\t\t}\n"
+"\t\t\t\t\t\t\t\t\t};\n"
+"\t\t\t\t\t\t\t\t\ts.addEventListener(\n"
+"\t\t\t\t\t\t\t\t\t\t'click',\n"
+"\t\t\t\t\t\t\t\t\t\tasync (e) => {\n"
+"\t\t\t\t\t\t\t\t\t\t\tconst a = e.target,\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tn = a.closest('a,button');\n"
+"\t\t\t\t\t\t\t\t\t\t\tif (!n) return t(a);\n"
+"\t\t\t\t\t\t\t\t\t\t\tconst { href: r, target: i } = n;\n"
+"\t\t\t\t\t\t\t\t\t\t\tif (n.getAttribute(_)) {\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tif ('BUTTON' === n.tagName) return t(n);\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tif ('A' === n.tagName && r) {\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\tconst a =\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t'_blank' === i ||\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\te.ctrlKey ||\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\te.shiftKey ||\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\te.metaKey ||\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t(e.button && 1 === e.button);\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\treturn (\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\ta || e.preventDefault(),\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\tt(n).then(() => {\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ta || (('_top' === i ? u.location : o).href = r);\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t})\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t);\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t}\n"
+"\t\t\t\t\t\t\t\t\t\t\t}\n"
+"\t\t\t\t\t\t\t\t\t\t},\n"
+"\t\t\t\t\t\t\t\t\t\t!0\n"
+"\t\t\t\t\t\t\t\t\t);\n"
+"\t\t\t\t\t\t\t\t})());\n"
+"\t\t\t\t\t\t},\n"
+"\t\t\t\t\t\tJ = (t, e) =>\n"
+"\t\t\t\t\t\t\tC(\n"
+"\t\t\t\t\t\t\t\t'string' == typeof t\n"
+"\t\t\t\t\t\t\t\t\t? { ...U(), name: t, data: e }\n"
+"\t\t\t\t\t\t\t\t\t: 'object' == typeof t\n"
+"\t\t\t\t\t\t\t\t\t\t? { ...t }\n"
+"\t\t\t\t\t\t\t\t\t\t: 'function' == typeof t\n"
+"\t\t\t\t\t\t\t\t\t\t\t? t(U())\n"
+"\t\t\t\t\t\t\t\t\t\t\t: U()\n"
+"\t\t\t\t\t\t\t),\n"
+"\t\t\t\t\t\tP = (t, e) => (\n"
+"\t\t\t\t\t\t\t'string' == typeof t && (q = t),\n"
+"\t\t\t\t\t\t\t(R = ''),\n"
+"\t\t\t\t\t\t\tC({ ...U(), data: 'object' == typeof t ? t : e }, 'identify')\n"
+"\t\t\t\t\t\t);\n"
+"\t\t\t\t\tt.umami || (t.umami = { track: J, identify: P });\n"
+"\t\t\t\t\tlet R,\n"
+"\t\t\t\t\t\tq,\n"
+"\t\t\t\t\t\tz = m,\n"
+"\t\t\t\t\t\tF = f.startsWith(p) ? '' : f,\n"
+"\t\t\t\t\t\tG = !1,\n"
+"\t\t\t\t\t\tH = !1;\n"
+"\t\t\t\t\tT &&\n"
+"\t\t\t\t\t\t!B() &&\n"
+"\t\t\t\t\t\t('complete' === s.readyState ? I() : s.addEventListener('readystatechange', I, !0));\n"
+"\t\t\t\t})(window);\n"
+"\t\t\t})();"
+
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+msgid "<0/> Processing Image"
+msgstr "<0/> Processing Image"
+
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "{0}% Complete"
+msgstr "{0}% Complete"
+
+#: src/routes/favicon/+page.svelte
+msgid "Favicon Concept Gallery"
+msgstr "Favicon Concept Gallery"
+
+#: src/routes/favicon/+page.svelte
+msgid ""
+"A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
+"\t\t\tLocal AI Tools application."
+msgstr ""
+"A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
+"\t\t\tLocal AI Tools application."
+
+#: src/routes/favicon/+page.svelte
+msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
+msgstr "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
+
+#: src/routes/favicon/+page.svelte
+msgid ""
+"Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
+"\t\t\tdisplay sizes."
+msgstr ""
+"Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
+"\t\t\tdisplay sizes."
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Batch Processing Complete!"
+msgstr "<0/> Batch Processing Complete!"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "{0} Successful"
+msgstr "{0} Successful"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "{0} Failed"
+msgstr "{0} Failed"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Download All as ZIP"
+msgstr "<0/> Download All as ZIP"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Process More Images"
+msgstr "<0/> Process More Images"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Successfully Processed Images"
+msgstr "Successfully Processed Images"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Before"
+msgstr "Before"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "Original "
+msgstr "Original"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "After"
+msgstr "After"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processed "
+msgstr "Processed "
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Download this image"
+msgstr "Download this image"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed to Process"
+msgstr "Failed to Process"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed "
+msgstr "Failed "
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processing failed"
+msgstr "Processing failed"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Background Removed!"
+msgstr "<0/> Background Removed!"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Processed"
+msgstr "<0/> Processed"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Compare"
+msgstr "<0/> Compare"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "Background Removed"
+msgstr "Background Removed"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "Background removed"
+msgstr "Background removed"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Download"
+msgstr "<0/> Download"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Process Another"
+msgstr "<0/> Process Another"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
+msgid "Enter"
+msgstr "Enter"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Drop your image here"
+msgstr "Drop your image here"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "<0/> {0} image{1} selected"
+msgstr "<0/> {0} image{1} selected"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Drop multiple images here"
+msgstr "Drop multiple images here"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "OR"
+msgstr "OR"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "<0/> Try Example Image"
+msgstr "<0/> Try Example Image"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Selected Images ({0})"
+msgstr "Selected Images ({0})"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "<0/> Clear All"
+msgstr "<0/> Clear All"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "{0} MB"
+msgstr "{0} MB"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Remove {0}"
+msgstr "Remove {0}"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "<0/> Process {0} Image{1}"
+msgstr "<0/> Process {0} Image{1}"
+
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "<0/> Raw Tokens ({0})"
+msgstr "<0/> Raw Tokens ({0})"
+
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "Token ID: {0}"
+msgstr "Token ID: {0}"
+
+#: src/lib/components/count-tokens/EmptyState.svelte
+msgid "Type or paste text in the input field above to analyze tokens and character count."
+msgstr "Type or paste text in the input field above to analyze tokens and character count."
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+msgid "Input Text"
+msgstr "Input Text"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+msgid "Load example"
+msgstr "Load example"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Clear text"
+msgstr "Clear text"
+
+#: src/lib/components/count-tokens/TokenStats.svelte
+msgid "Tokens"
+msgstr "Tokens"
+
+#: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
+msgid "Characters"
+msgstr "Characters"
+
+#: src/lib/components/count-tokens/TokenStats.svelte
+msgid "Chars/Token"
+msgstr "Chars/Token"
+
+#: src/lib/components/chat/ChatMessages.svelte
+msgid "Start a Conversation"
+msgstr "Start a Conversation"
+
+#: src/lib/components/chat/ChatMessages.svelte
+msgid "Type a message below to begin chatting with AI"
+msgstr "Type a message below to begin chatting with AI"
+
+#: src/lib/components/chat/Message.svelte
+msgid "You"
+msgstr "You"
+
+#: src/lib/components/chat/Message.svelte
+msgid "AI"
+msgstr "AI"
+
+#: src/lib/components/chat/MessageInput.svelte
+msgid "Stop generation"
+msgstr "Stop generation"
+
+#: src/lib/components/chat/MessageInput.svelte
+msgid "Send message"
+msgstr "Send message"
+
+#: src/lib/components/chat/MessageInput.svelte
+msgid "<0/> Model responses may not always be accurate."
+msgstr "<0/> Model responses may not always be accurate."
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Smarter AI responses"
+msgstr "Smarter AI responses"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Runs on most computers and phones"
+msgstr "Runs on most computers and phones"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "High quality responses"
+msgstr "High quality responses"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0/> Chat with AI Models"
+msgstr "<0/> Chat with AI Models"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0>Step 1:</0> Choose Your AI Model"
+msgstr "<0>Step 1:</0> Choose Your AI Model"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0>Step 2:</0> Advanced Settings"
+msgstr "<0>Step 2:</0> Advanced Settings"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Threads <0>(-1 auto)</0>"
+msgstr "Threads <0>(-1 auto)</0>"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Context Size"
+msgstr "Context Size"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Temperature"
+msgstr "Temperature"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0/> Loading Model..."
+msgstr "<0/> Loading Model..."
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0/> Load Selected Model"
+msgstr "<0/> Load Selected Model"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0/> Models run locally in your browser. No data is sent to external servers."
+msgstr "<0/> Models run locally in your browser. No data is sent to external servers."
+
+#: src/lib/components/common/ErrorDisplay.svelte
+msgid "Error"
+msgstr "Error"
+
+#: src/lib/components/common/StepHeader.svelte
+msgid "Step {0}:"
+msgstr "Step {0}:"
+
+#: src/lib/components/common/SquareSpinner.svelte
+msgid "Loading"
+msgstr "Loading"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "<0>Step 1:</0> Text-to-speech Model"
+msgstr "<0>Step 1:</0> Text-to-speech Model"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Kitten TTS Nano"
+msgstr "Kitten TTS Nano"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "24MB • Best for edge devices"
+msgstr "24MB • Best for edge devices"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Piper Voices"
+msgstr "Piper Voices"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "75MB • Better Quality • Fast"
+msgstr "75MB • Better Quality • Fast"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Kokoro"
+msgstr "Kokoro"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "80MB • Highest Quality • Slow"
+msgstr "80MB • Highest Quality • Slow"
+
+#: src/lib/components/tts/TextStatistics.svelte
+msgid "Words"
+msgstr "Words"
+
+#: src/lib/components/tts/SpeedControl.svelte
+msgid "Speed:"
+msgstr "Speed:"
+
+#: src/lib/components/tts/SpeedControl.svelte
+msgid "{0}x"
+msgstr "{0}x"
+
+#: src/lib/components/tts/SampleRateSelector.svelte
+msgid "Sample Rate:"
+msgstr "Sample Rate:"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "<0/> Start Recording"
+msgstr "<0/> Start Recording"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "<0/> Recording... {0}"
+msgstr "<0/> Recording... {0}"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "<0/> Stop Recording"
+msgstr "<0/> Stop Recording"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "Recording Complete"
+msgstr "Recording Complete"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "<0/> Clear Recording"
+msgstr "<0/> Clear Recording"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hello! I'm Heart, your friendly voice assistant."
+msgstr "Hello! I'm Heart, your friendly voice assistant."
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hi there! I'm Bella, ready to bring your words to life."
+msgstr "Hi there! I'm Bella, ready to bring your words to life."
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Greetings! I'm Nova, here to make your content shine."
+msgstr "Greetings! I'm Nova, here to make your content shine."
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hello! I'm Sarah, delighted to speak for you."
+msgstr "Hello! I'm Sarah, delighted to speak for you."
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hi! I'm Adam, your reliable voice companion."
+msgstr "Hi! I'm Adam, your reliable voice companion."
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hello there! I'm Echo, echoing your thoughts perfectly."
+msgstr "Hello there! I'm Echo, echoing your thoughts perfectly."
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hi! I'm {0}, nice to meet you!"
+msgstr "Hi! I'm {0}, nice to meet you!"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Select Voice"
+msgstr "Select Voice"
+
+#: src/lib/components/tts/WebGPUToggle.svelte
+msgid "(not supported)"
+msgstr "(not supported)"
+
+#: src/lib/components/tts/WebGPUToggle.svelte
+msgid "Try WebGPU (experimental) <0/>"
+msgstr "Try WebGPU (experimental) <0/>"
+
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "Drag & Drop Audio File"
+msgstr "Drag & Drop Audio File"
+
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "or"
+msgstr "or"
+
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "Browse Files"
+msgstr "Browse Files"
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "<0/> Transcribing Audio"
+msgstr "<0/> Transcribing Audio"
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "Current Segment"
+msgstr "Current Segment"
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "<0/> Transcription seems stuck <1>Reload Page →</1>"
+msgstr "<0/> Transcription seems stuck <1>Reload Page →</1>"
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "<0/> Keep this tab active during transcription"
+msgstr "<0/> Keep this tab active during transcription"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "<0/> Transcription Result"
+msgstr "<0/> Transcription Result"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "Text"
+msgstr "Text"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "SRT"
+msgstr "SRT"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "<0/> Copied!"
+msgstr "<0/> Copied!"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "<0/> Copy"
+msgstr "<0/> Copy"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "<0/> Choose Audio Source"
+msgstr "<0/> Choose Audio Source"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Local File"
+msgstr "Local File"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Select an audio file from your device (.mp3, .wav, .m4a)"
+msgstr "Select an audio file from your device (.mp3, .wav, .m4a)"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Record Audio"
+msgstr "Record Audio"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Record audio directly from your microphone"
+msgstr "Record audio directly from your microphone"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Demo File"
+msgstr "Demo File"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Listen →"
+msgstr "Listen →"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Select Model"
+msgstr "Select Model"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Model Ready"
+msgstr "Model Ready"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Failed to load transcription model. Please try again."
+msgstr "Failed to load transcription model. Please try again."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Retry"
+msgstr "Retry"
+
+#: src/routes/(apps)/chat/+page.svelte
+msgid "Failed to load model. Please check your connection and try again."
+msgstr "Failed to load model. Please check your connection and try again."
+
+#: src/routes/(apps)/chat/+page.svelte
+msgid "Loading Model"
+msgstr "Loading Model"
+
+#: src/routes/(apps)/chat/+page.svelte
+msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
+msgstr "This will take a couple of minutes. The chat model is being downloaded to your browser."
+
+#: src/routes/(apps)/chat/+page.svelte
+msgid "New <0>Chat</0>"
+msgstr "New <0>Chat</0>"
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Loading Background Removal Model"
+msgstr "Loading Background Removal Model"
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "The AI model is being downloaded and initialized. This may take a few moments."
+msgstr "The AI model is being downloaded and initialized. This may take a few moments."
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Background Remover ("
+msgstr "Background Remover ("
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Restart"
+msgstr "Restart"
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Model Selection"
+msgstr "Model Selection"
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Processing Mode"
+msgstr "Processing Mode"
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "<0/> Single Image"
+msgstr "<0/> Single Image"
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "<0/> Multiple images"
+msgstr "<0/> Multiple images"
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Upload Images"
+msgstr "Upload Images"
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Try Again"
+msgstr "Try Again"
+
+#: src/routes/(apps)/transcribe/+page.svelte
+msgid "Whisper Audio Transcription"
+msgstr "Whisper Audio Transcription"
+
+#: src/routes/(apps)/transcribe/+page.svelte
+msgid "<0/> Transcribing..."
+msgstr "<0/> Transcribing..."
+
+#: src/routes/(apps)/transcribe/+page.svelte
+msgid "<0/> Start Transcription"
+msgstr "<0/> Start Transcription"
+
+#: src/routes/(apps)/transcribe/+page.svelte
+msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
+msgstr "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "<0/> Count LLM Tokens"
+msgstr "<0/> Count LLM Tokens"
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid ""
+"Calculate how many tokens your text will use with different AI models. Token counts affect\n"
+"\t\t\tcontext limits for AI conversations."
+msgstr ""
+"Calculate how many tokens your text will use with different AI models. Token counts affect\n"
+"\t\t\tcontext limits for AI conversations."
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "Anthropic Claude"
+msgstr "Anthropic Claude"
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
+msgstr "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "Open Tokenizer"
+msgstr "Open Tokenizer"
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "OpenAI ChatGPT"
+msgstr "OpenAI ChatGPT"
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
+msgstr "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "What are tokens?"
+msgstr "What are tokens?"
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid ""
+"Tokens are the basic units that language models process. A token can be as short as one\n"
+"\t\t\tcharacter or as long as one word. On average:"
+msgstr ""
+"Tokens are the basic units that language models process. A token can be as short as one\n"
+"\t\t\tcharacter or as long as one word. On average:"
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid "1 token ≈ 4 characters in English"
+msgstr "1 token ≈ 4 characters in English"
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid ""
+"Different models use different tokenization methods, so the same text may result in different\n"
+"\t\t\ttoken counts."
+msgstr ""
+"Different models use different tokenization methods, so the same text may result in different\n"
+"\t\t\ttoken counts."
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Text copied to clipboard!"
+msgstr "Text copied to clipboard!"
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Text to Speech Studio"
+msgstr "Text to Speech Studio"
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "<0/> Welcome to TTS Studio"
+msgstr "<0/> Welcome to TTS Studio"
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Generate high-quality speech from text, all running locally in your browser!"
+msgstr "Generate high-quality speech from text, all running locally in your browser!"
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Loading TTS Model"
+msgstr "Loading TTS Model"
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Initializing text-to-speech model..."
+msgstr "Initializing text-to-speech model..."
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Failed to load model"
+msgstr "Failed to load model"
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Enter Your Text"
+msgstr "Enter Your Text"
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Get random Svelte quote"
+msgstr "Get random Svelte quote"
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Type or paste your text here..."
+msgstr "Type or paste your text here..."
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Voice:"
+msgstr "Voice:"
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Generating"
+msgstr "Generating"
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Pause"
+msgstr "Pause"
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Download Audio"
+msgstr "Download Audio"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "OpenGraph Image Generator"
+msgstr "OpenGraph Image Generator"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "OpenGraph Images"
+msgstr "OpenGraph Images"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "Simple designs optimized for social media sharing (1200×630)"
+msgstr "Simple designs optimized for social media sharing (1200×630)"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "Layout 1: Simple & Bold"
+msgstr "Layout 1: Simple & Bold"
+
+#: src/routes/(apps)/og/+page.svelte
+#: src/routes/(apps)/og/+page.svelte
+msgid "Local AI"
+msgstr "Local AI"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
+msgstr "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
+
+#: src/routes/(apps)/og/+page.svelte
+#: src/routes/(apps)/og/+page.svelte
+#: src/routes/(apps)/og/+page.svelte
+msgid "ai.stanislav.garden"
+msgstr "ai.stanislav.garden"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "Layout 2: Split Simple"
+msgstr "Layout 2: Split Simple"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "Private AI in Your Browser"
+msgstr "Private AI in Your Browser"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "💬 Chat"
+msgstr "💬 Chat"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "🎤 Transcribe Audio"
+msgstr "🎤 Transcribe Audio"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "🗣️ Text to Speech"
+msgstr "🗣️ Text to Speech"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "🖼️ Remove Background"
+msgstr "🖼️ Remove Background"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "🧮 Count Tokens"
+msgstr "🧮 Count Tokens"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "Layout 3: Clean Focus"
+msgstr "Layout 3: Clean Focus"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "100% Private"
+msgstr "100% Private"
+
+#: src/routes/(apps)/og/+page.svelte
+msgid "Run offline: Chat • Transcribe • TTS • Background • Tokens"
+msgstr "Run offline: Chat • Transcribe • TTS • Background • Tokens"
+
+#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
+msgid "Anthropic Claude Tokenizer"
+msgstr "Anthropic Claude Tokenizer"
+
+#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
+msgid "Count tokens for Claude models (Opus, Sonnet, Haiku) using the official tokenizer"
+msgstr "Count tokens for Claude models (Opus, Sonnet, Haiku) using the official tokenizer"
+
+#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
+msgid "About Claude's Tokenizer"
+msgstr "About Claude's Tokenizer"
+
+#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
+msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+msgstr "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+
+#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
+msgid "Average token length: ~4 characters for English text"
+msgstr "Average token length: ~4 characters for English text"
+
+#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
+msgid "Special characters and code may use more tokens"
+msgstr "Special characters and code may use more tokens"
+
+#: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
+msgid "OpenAI ChatGPT Tokenizer"
+msgstr "OpenAI ChatGPT Tokenizer"
+
+#: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
+msgid "Count tokens for GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT and other OpenAI models"
+msgstr "Count tokens for GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT and other OpenAI models"
+
+#: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
+msgid "About OpenAI's Tokenizer"
+msgstr "About OpenAI's Tokenizer"
+
+#: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
+msgid "Code and special characters typically use more tokens"
+msgstr "Code and special characters typically use more tokens"
