@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-25T12:47:21.538Z\n"
+"PO-Revision-Date: 2025-08-25T12:53:10.225Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -243,8 +243,8 @@ msgstr ""
 msgid "<0/> Processing Image"
 msgstr "<0/> 画像処理中"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% 完了"
 
@@ -1017,4 +1017,20 @@ msgstr ""
 
 #: src/routes/+layout.svelte
 msgid "TTS"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Small and fast"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Runs on most devices"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Large, very slow model"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Generally provides better results"
 msgstr ""

@@ -44,14 +44,17 @@
 		{
 			id: 'RMBG-1.4', //briaai/
 			name: 'RMBG v1.4',
-			description: ['Small and fast', 'Runs on most devices'],
+			/* @wc-include */ description: ['Small and fast', 'Runs on most devices'],
 			size: '44MB',
 			precision: 'QUANT'
 		},
 		{
 			id: 'BEN2-ONNX', //briaai/
 			name: 'BEN2',
-			description: ['Large, very slow model', 'Generally provides better results'],
+			/* @wc-include */ description: [
+				'Large, very slow model',
+				'Generally provides better results'
+			],
 			size: '235MB',
 			precision: 'FP16'
 		}

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-25T12:47:21.537Z\n"
+"PO-Revision-Date: 2025-08-25T12:53:10.224Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -219,8 +219,8 @@ msgstr "Procesamiento fallido"
 msgid "<0/> Processing Image"
 msgstr "<0/> Procesando Imagen"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Completado"
 
@@ -1017,4 +1017,20 @@ msgstr ""
 
 #: src/routes/+layout.svelte
 msgid "TTS"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Small and fast"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Runs on most devices"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Large, very slow model"
+msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Generally provides better results"
 msgstr ""
