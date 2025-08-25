@@ -2,6 +2,7 @@
 	import { dev } from '$app/environment';
 </script>
 
+<!-- @wc-ignore -->
 <svelte:head>
 	{#if !dev}
 		<script

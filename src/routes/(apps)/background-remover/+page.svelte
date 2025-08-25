@@ -44,19 +44,27 @@
 		{
 			id: 'RMBG-1.4', //briaai/
 			name: 'RMBG v1.4',
-			description: ['Small and fast', 'Runs on most devices'],
+			/* @wc-include */ description: ['Small and fast', 'Runs on most devices'],
 			size: '44MB',
 			precision: 'QUANT'
 		},
 		{
 			id: 'BEN2-ONNX', //briaai/
 			name: 'BEN2',
-			description: ['Large, very slow model', 'Generally provides better results'],
+			/* @wc-include */ description: [
+				'Large, very slow model',
+				'Generally provides better results'
+			],
 			size: '235MB',
 			precision: 'FP16'
 		}
 	];
 	let selectedModelId = $state('RMBG-1.4');
+
+	// Computed model info for display
+	let modelInfo = $derived(
+		`Background Remover (${AVAILABLE_MODELS.find((m) => m.id === selectedModelId)?.name})`
+	);
 
 	// Single image mode
 	let selectedFile: File | null = $state(null);
@@ -364,11 +372,7 @@
 	</div>
 {:else}
 	<CardInterface>
-		<Toolbar
-			modelInfo="Background Remover ({AVAILABLE_MODELS.find((m) => m.id === selectedModelId)
-				?.name})"
-			ModelIcon={ImageIcon}
-		>
+		<Toolbar {modelInfo} ModelIcon={ImageIcon}>
 			{#if (processingMode === 'single' && processedImageUrl) || (processingMode === 'batch' && batchResults.length > 0)}
 				<ActionButton onClick={clearResults} variant="danger" Icon={RefreshCcwIcon}
 					>Restart</ActionButton

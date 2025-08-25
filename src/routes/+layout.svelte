@@ -12,6 +12,7 @@
 	import GithubIcon from 'virtual:icons/lucide/github';
 	import SpeechIcon from 'virtual:icons/lucide/speech';
 	import CalculatorIcon from 'virtual:icons/lucide/calculator';
+	import GlobeIcon from 'virtual:icons/lucide/globe';
 	import { Toaster } from 'svelte-sonner';
 	import Tracking from '$lib/components/Tracking.svelte';
 
@@ -24,11 +25,11 @@
 	// Navigation links
 	const navLinks = [
 		{ path: '/', label: '', icon: 'home' },
-		{ path: '/chat', label: 'Chat', icon: 'chat' },
-		{ path: '/transcribe', label: 'Transcribe', icon: 'mic' },
-		{ path: '/text-to-speech', label: 'TTS', icon: 'speech' },
-		{ path: '/background-remover', label: 'BG Remover', icon: 'image' },
-		{ path: '/count-tokens', label: 'Tokens', icon: 'calculator' }
+		{ path: '/chat', label: /* @wc-include */ 'Chat', icon: 'chat' },
+		{ path: '/transcribe', label: /* @wc-include */ 'Transcribe', icon: 'mic' },
+		{ path: '/text-to-speech', label: /* @wc-include */ 'TTS', icon: 'speech' },
+		{ path: '/background-remover', label: /* @wc-include */ 'BG Remover', icon: 'image' },
+		{ path: '/count-tokens', label: /* @wc-include */ 'Tokens', icon: 'calculator' }
 	];
 
 	// Check if a path is active
@@ -38,25 +39,27 @@
 
 	// Check if we're on the chat page (which uses fixed height)
 	let isChatPage = $derived(page.url.pathname === '/chat');
+
+	const DEFAULT_TITLE = 'Local AI tools';
 </script>
 
 <svelte:head>
-	<title>{page.data.seo.title}</title>
-	<meta name="description" content={page.data.seo.description} />
+	<title>{page.data.seo?.title || DEFAULT_TITLE}</title>
+	<meta name="description" content={page.data.seo?.description || ''} />
 
 	<!-- Open Graph meta tags -->
-	<meta property="og:title" content={page.data.seo.title} />
-	<meta property="og:description" content={page.data.seo.description} />
-	<meta property="og:image" content={page.data.seo.ogImage} />
-	<meta property="og:url" content={page.data.seo.url} />
+	<meta property="og:title" content={page.data.seo?.title || DEFAULT_TITLE} />
+	<meta property="og:description" content={page.data.seo?.description || ''} />
+	<meta property="og:image" content={page.data.seo?.ogImage || ''} />
+	<meta property="og:url" content={page.data.seo?.url} />
 	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="Local AI Tools" />
+	<meta property="og:site_name" content={DEFAULT_TITLE} />
 
 	<!-- Twitter Card meta tags -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content={page.data.seo.title} />
-	<meta name="twitter:description" content={page.data.seo.description} />
-	<meta name="twitter:image" content={page.data.seo.ogImage} />
+	<meta name="twitter:title" content={page.data.seo?.title || DEFAULT_TITLE} />
+	<meta name="twitter:description" content={page.data.seo?.description || ''} />
+	<meta name="twitter:image" content={page.data.seo?.ogImage || ''} />
 </svelte:head>
 
 <div class="app-wrapper">
@@ -109,6 +112,11 @@
 						{/each}
 					</div>
 				</div>
+				<li class="home-item language-item">
+					<a href="/language" class="home-link" aria-label="Change language">
+						<GlobeIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
+					</a>
+				</li>
 				<li class="home-item github-item">
 					<a
 						href="https://github.com/khromov/sveltekit-local-ai"
@@ -334,6 +342,7 @@
 		padding: 0.75rem !important;
 	}
 
+	.language-item .home-link,
 	.github-item .home-link {
 		border: var(--border-brutalist-thick);
 		box-shadow: var(--shadow-brutalist-medium);
@@ -512,6 +521,7 @@
 			gap: 0.5rem;
 		}
 
+		.language-item .home-link,
 		.github-item .home-link {
 			border: var(--border-brutalist-thin);
 			box-shadow: var(--shadow-brutalist-small);
@@ -536,6 +546,7 @@
 			gap: 0.375rem;
 		}
 
+		.language-item .home-link,
 		.github-item .home-link {
 			border: var(--border-brutalist-thin);
 			box-shadow: var(--shadow-brutalist-small);

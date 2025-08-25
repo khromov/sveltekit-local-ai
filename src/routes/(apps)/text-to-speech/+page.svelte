@@ -497,7 +497,6 @@
 					</div>
 				</div>
 
-				<!-- Advanced Parameters Section -->
 				<AdvancedParameters
 					selectedModel={$ttsModel}
 					{useWebGPU}

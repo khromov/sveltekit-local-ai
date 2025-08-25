@@ -68,7 +68,6 @@
 			</div>
 		</div>
 
-		<!-- Advanced Parameters -->
 		<div class="advanced-section">
 			<h3><span class="step-number">Step 2:</span> Advanced Settings</h3>
 			<AdvancedSection>

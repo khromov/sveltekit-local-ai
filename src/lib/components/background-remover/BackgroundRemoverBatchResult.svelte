@@ -24,6 +24,19 @@
 	let successfulResults = $derived(batchResults.filter((r) => r.processedUrl && !r.error));
 	let failedResults = $derived(batchResults.filter((r) => r.error || !r.processedUrl));
 
+	// Helper functions to generate alt text (to avoid wuchale plugin issues with template strings)
+	function getOriginalAltText(fileName: string) {
+		return `Original ${fileName}`;
+	}
+
+	function getProcessedAltText(fileName: string) {
+		return `Processed ${fileName}`;
+	}
+
+	function getFailedAltText(fileName: string) {
+		return `Failed ${fileName}`;
+	}
+
 	function downloadIndividualImage(result: BatchResult) {
 		if (!result.processedUrl) return;
 
@@ -83,13 +96,16 @@
 									<div class="before-after">
 										<div class="image-side">
 											<div class="image-label">Before</div>
-											<img src={result.originalUrl} alt="Original {result.file.name}" />
+											<img src={result.originalUrl} alt={getOriginalAltText(result.file.name)} />
 										</div>
 										<div class="image-side">
 											<div class="image-label">After</div>
 											<div class="processed-image-container">
 												<div class="transparent-bg-pattern"></div>
-												<img src={result.processedUrl} alt="Processed {result.file.name}" />
+												<img
+													src={result.processedUrl}
+													alt={getProcessedAltText(result.file.name)}
+												/>
 											</div>
 										</div>
 									</div>
@@ -122,7 +138,7 @@
 						{#each failedResults as result (result.file.name)}
 							<div class="failed-item">
 								<div class="failed-preview">
-									<img src={result.originalUrl} alt="Failed {result.file.name}" />
+									<img src={result.originalUrl} alt={getFailedAltText(result.file.name)} />
 									<div class="failed-overlay">
 										<span class="failed-icon"><XCircleIcon /></span>
 									</div>
