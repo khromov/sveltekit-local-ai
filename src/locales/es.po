@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-25T12:20:52.628Z\n"
+"PO-Revision-Date: 2025-08-25T12:29:05.255Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -975,8 +975,8 @@ msgstr "Cambiar la configuración de idioma para la aplicación Herramientas de 
 msgid "Language Settings"
 msgstr "Configuración de Idioma"
 
-#: src/routes/language/+page.svelte
 #: src/lib/components/common/LanguageSelector.svelte
+#: src/routes/language/+page.svelte
 msgid "Select Language"
 msgstr "Seleccionar Idioma"
 
@@ -996,12 +996,11 @@ msgstr "Selección Actual:"
 msgid "Save Language Settings"
 msgstr "Guardar Configuración de Idioma"
 
-#: src/routes/language/+page.svelte
-msgid ""
-"<0>Note:</0> Language translation functionality is currently in development. This\n"
-"\t\t\t\t\t\tinterface allows you to select your preferred language, but the actual translation feature\n"
-"\t\t\t\t\t\twill be implemented in a future update."
-msgstr ""
-"<0>Nota:</0> La funcionalidad de traducción de idiomas está actualmente en desarrollo.\n"
-"\t\t\t\t\t\tEsta interfaz te permite seleccionar tu idioma preferido, pero la función de traducción real\n"
-"\t\t\t\t\t\tse implementará en una actualización futura."
+#~ msgid ""
+#~ "<0>Note:</0> Language translation functionality is currently in development. This\n"
+#~ "\t\t\t\t\t\tinterface allows you to select your preferred language, but the actual translation feature\n"
+#~ "\t\t\t\t\t\twill be implemented in a future update."
+#~ msgstr ""
+#~ "<0>Nota:</0> La funcionalidad de traducción de idiomas está actualmente en desarrollo.\n"
+#~ "\t\t\t\t\t\tEsta interfaz te permite seleccionar tu idioma preferido, pero la función de traducción real\n"
+#~ "\t\t\t\t\t\tse implementará en una actualización futura."
