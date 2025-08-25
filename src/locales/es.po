@@ -1009,28 +1009,28 @@ msgstr "Guardar Configuración de Idioma"
 
 #: src/routes/+layout.svelte
 msgid "BG Remover"
-msgstr ""
+msgstr "Eliminador de Fondo"
 
 #: src/routes/+layout.svelte
 msgid "Transcribe"
-msgstr ""
+msgstr "Transcribir"
 
 #: src/routes/+layout.svelte
 msgid "TTS"
-msgstr ""
+msgstr "TTS"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Small and fast"
-msgstr ""
+msgstr "Pequeño y rápido"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Runs on most devices"
-msgstr ""
+msgstr "Funciona en la mayoría de dispositivos"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Large, very slow model"
-msgstr ""
+msgstr "Modelo grande, muy lento"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Generally provides better results"
-msgstr ""
+msgstr "Generalmente proporciona mejores resultados"

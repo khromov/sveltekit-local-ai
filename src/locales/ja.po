@@ -1009,28 +1009,28 @@ msgstr "言語設定を保存"
 
 #: src/routes/+layout.svelte
 msgid "BG Remover"
-msgstr ""
+msgstr "背景除去"
 
 #: src/routes/+layout.svelte
 msgid "Transcribe"
-msgstr ""
+msgstr "文字起こし"
 
 #: src/routes/+layout.svelte
 msgid "TTS"
-msgstr ""
+msgstr "音声合成"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Small and fast"
-msgstr ""
+msgstr "小型で高速"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Runs on most devices"
-msgstr ""
+msgstr "ほとんどのデバイスで動作"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Large, very slow model"
-msgstr ""
+msgstr "大型で非常に遅いモデル"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Generally provides better results"
-msgstr ""
+msgstr "一般的により良い結果を提供"
