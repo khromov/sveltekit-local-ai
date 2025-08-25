@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-25T12:53:10.224Z\n"
+"PO-Revision-Date: 2025-08-25T12:58:27.394Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -12,9 +12,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
+#: src/routes/+layout.svelte
 #: src/routes/+page.svelte
 #: src/routes/(apps)/og/+page.svelte
-#: src/routes/+layout.svelte
 msgid "Local AI Tools"
 msgstr "Herramientas de IA Local"
 
@@ -22,20 +22,19 @@ msgstr "Herramientas de IA Local"
 msgid "View source on GitHub"
 msgstr "Ver código fuente en GitHub"
 
-#: src/routes/+page.svelte
-msgid ""
-"On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
-"\t\t\t\toffline!"
-msgstr ""
-"En esta página encontrarás herramientas de IA gratuitas y privadas que funcionan completamente en tu navegador - ¡incluso\n"
-"\t\t\t\tsin conexión!"
+#~ msgid ""
+#~ "On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
+#~ "\t\t\t\toffline!"
+#~ msgstr ""
+#~ "En esta página encontrarás herramientas de IA gratuitas y privadas que funcionan completamente en tu navegador - ¡incluso\n"
+#~ "\t\t\t\tsin conexión!"
 
 #: src/routes/+page.svelte
 msgid "Tool #01"
 msgstr "Herramienta #01"
 
-#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
+#: src/routes/+page.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -63,13 +62,12 @@ msgstr "Herramienta #02"
 msgid "Transcribe Audio"
 msgstr "Transcribir Audio"
 
-#: src/routes/+page.svelte
-msgid ""
-"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
-"\t\t\t\t\t\ttext or a subtitle file."
-msgstr ""
-"Convierte voz a texto usando Whisper AI. Sube cualquier archivo de audio y expórtalo como\n"
-"\t\t\t\t\t\ttexto o archivo de subtítulos."
+#~ msgid ""
+#~ "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
+#~ "\t\t\t\t\t\ttext or a subtitle file."
+#~ msgstr ""
+#~ "Convierte voz a texto usando Whisper AI. Sube cualquier archivo de audio y expórtalo como\n"
+#~ "\t\t\t\t\t\ttexto o archivo de subtítulos."
 
 #: src/routes/+page.svelte
 msgid "High Accuracy"
@@ -92,13 +90,12 @@ msgstr "Herramienta #03"
 msgid "Text to Speech"
 msgstr "Texto a Voz"
 
-#: src/routes/+page.svelte
-msgid ""
-"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
-"\t\t\t\t\t\tor Kokoro models for high-quality voice synthesis."
-msgstr ""
-"Convierte texto en voz de sonido natural usando modelos de IA. Elige entre los modelos Kitten TTS, Piper,\n"
-"\t\t\t\t\t\to Kokoro para síntesis de voz de alta calidad."
+#~ msgid ""
+#~ "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
+#~ "\t\t\t\t\t\tor Kokoro models for high-quality voice synthesis."
+#~ msgstr ""
+#~ "Convierte texto en voz de sonido natural usando modelos de IA. Elige entre los modelos Kitten TTS, Piper,\n"
+#~ "\t\t\t\t\t\to Kokoro para síntesis de voz de alta calidad."
 
 #: src/routes/+page.svelte
 msgid "Multiple Models"
@@ -116,13 +113,12 @@ msgstr "Herramienta #04"
 msgid "Remove Background"
 msgstr "Eliminar Fondo"
 
-#: src/routes/+page.svelte
-msgid ""
-"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
-"\t\t\t\t\t\tprofessional results."
-msgstr ""
-"Elimina fondos de imágenes usando IA. Impulsado por el modelo RMBG v1.4 de BRIA AI para\n"
-"\t\t\t\t\t\tresultados profesionales."
+#~ msgid ""
+#~ "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
+#~ "\t\t\t\t\t\tprofessional results."
+#~ msgstr ""
+#~ "Elimina fondos de imágenes usando IA. Impulsado por el modelo RMBG v1.4 de BRIA AI para\n"
+#~ "\t\t\t\t\t\tresultados profesionales."
 
 #: src/routes/+page.svelte
 msgid "AI-Powered"
@@ -219,8 +215,8 @@ msgstr "Procesamiento fallido"
 msgid "<0/> Processing Image"
 msgstr "<0/> Procesando Imagen"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Completado"
 
@@ -257,28 +253,25 @@ msgstr "<0/> Procesar Otra"
 msgid "Favicon Concept Gallery"
 msgstr "Galería de Conceptos de Favicon"
 
-#: src/routes/favicon/+page.svelte
-msgid ""
-"A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
-"\t\t\tLocal AI Tools application."
-msgstr ""
-"Una colección de {0} conceptos de favicon cuadrados en formato 512×512, diseñados para la\n"
-"\t\t\taplicación Herramientas de IA Local."
+#~ msgid ""
+#~ "A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
+#~ "\t\t\tLocal AI Tools application."
+#~ msgstr ""
+#~ "Una colección de {0} conceptos de favicon cuadrados en formato 512×512, diseñados para la\n"
+#~ "\t\t\taplicación Herramientas de IA Local."
 
 #: src/routes/favicon/+page.svelte
 msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
 msgstr "Todos los conceptos están diseñados en 512×512 píxeles con la estética de diseño brutalista en mente."
 
-#: src/routes/favicon/+page.svelte
-msgid ""
-"Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
-"\t\t\tdisplay sizes."
-msgstr ""
-"Cada favicon usa colores audaces, contrastes fuertes e iconografía clara adecuada para varios\n"
-"\t\t\ttamaños de visualización."
+#~ msgid ""
+#~ "Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
+#~ "\t\t\tdisplay sizes."
+#~ msgstr ""
+#~ "Cada favicon usa colores audaces, contrastes fuertes e iconografía clara adecuada para varios\n"
+#~ "\t\t\ttamaños de visualización."
 
 #: src/lib/components/chat/MessageInput.svelte
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Entrar"
 
@@ -316,9 +309,8 @@ msgstr "<0/> Limpiar Todo"
 msgid "{0} MB"
 msgstr "{0} MB"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Remove {0}"
-msgstr "Eliminar {0}"
+#~ msgid "Remove {0}"
+#~ msgstr "Eliminar {0}"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "<0/> Process {0} Image{1}"
@@ -328,9 +320,8 @@ msgstr "<0/> Procesar {0} Imagen{1}"
 msgid "<0/> Raw Tokens ({0})"
 msgstr "<0/> Tokens Sin Procesar ({0})"
 
-#: src/lib/components/count-tokens/RawTokensDisplay.svelte
-msgid "Token ID: {0}"
-msgstr "ID de Token: {0}"
+#~ msgid "Token ID: {0}"
+#~ msgstr "ID de Token: {0}"
 
 #: src/lib/components/count-tokens/EmptyState.svelte
 msgid "Type or paste text in the input field above to analyze tokens and character count."
@@ -350,13 +341,13 @@ msgstr "Cargar ejemplo"
 msgid "Clear text"
 msgstr "Limpiar texto"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/lib/components/tts/TextStatistics.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Characters"
 msgstr "Caracteres"
 
@@ -708,13 +699,12 @@ msgstr "Intentar de Nuevo"
 msgid "<0/> Count LLM Tokens"
 msgstr "<0/> Contar Tokens de LLM"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid ""
-"Calculate how many tokens your text will use with different AI models. Token counts affect\n"
-"\t\t\tcontext limits for AI conversations."
-msgstr ""
-"Calcula cuántos tokens usará tu texto con diferentes modelos de IA. El conteo de tokens afecta\n"
-"\t\t\tlos límites de contexto para conversaciones de IA."
+#~ msgid ""
+#~ "Calculate how many tokens your text will use with different AI models. Token counts affect\n"
+#~ "\t\t\tcontext limits for AI conversations."
+#~ msgstr ""
+#~ "Calcula cuántos tokens usará tu texto con diferentes modelos de IA. El conteo de tokens afecta\n"
+#~ "\t\t\tlos límites de contexto para conversaciones de IA."
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid "Anthropic Claude"
@@ -741,25 +731,23 @@ msgstr "Cuenta tokens para GPT-4, GPT-4o, GPT-3.5 Turbo y otros modelos de OpenA
 msgid "What are tokens?"
 msgstr "¿Qué son los tokens?"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid ""
-"Tokens are the basic units that language models process. A token can be as short as one\n"
-"\t\t\tcharacter or as long as one word. On average:"
-msgstr ""
-"Los tokens son las unidades básicas que procesan los modelos de lenguaje. Un token puede ser tan corto como un\n"
-"\t\t\tcarácter o tan largo como una palabra. En promedio:"
+#~ msgid ""
+#~ "Tokens are the basic units that language models process. A token can be as short as one\n"
+#~ "\t\t\tcharacter or as long as one word. On average:"
+#~ msgstr ""
+#~ "Los tokens son las unidades básicas que procesan los modelos de lenguaje. Un token puede ser tan corto como un\n"
+#~ "\t\t\tcarácter o tan largo como una palabra. En promedio:"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid "1 token ≈ 4 characters in English"
 msgstr "1 token ≈ 4 caracteres en inglés"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
-msgid ""
-"Different models use different tokenization methods, so the same text may result in different\n"
-"\t\t\ttoken counts."
-msgstr ""
-"Diferentes modelos usan diferentes métodos de tokenización, por lo que el mismo texto puede resultar en diferentes\n"
-"\t\t\tconteos de tokens."
+#~ msgid ""
+#~ "Different models use different tokenization methods, so the same text may result in different\n"
+#~ "\t\t\ttoken counts."
+#~ msgstr ""
+#~ "Diferentes modelos usan diferentes métodos de tokenización, por lo que el mismo texto puede resultar en diferentes\n"
+#~ "\t\t\tconteos de tokens."
 
 #: src/routes/(apps)/transcribe/+page.svelte
 msgid "Whisper Audio Transcription"
@@ -801,9 +789,8 @@ msgstr "Cargando Modelo TTS"
 msgid "Initializing text-to-speech model..."
 msgstr "Inicializando modelo de texto a voz..."
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
-msgid "Failed to load model"
-msgstr "Error al cargar el modelo"
+#~ msgid "Failed to load model"
+#~ msgstr "Error al cargar el modelo"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Enter Your Text"
@@ -917,18 +904,14 @@ msgstr "Cuenta tokens para modelos Claude (Opus, Sonnet, Haiku) usando el tokeni
 msgid "About Claude's Tokenizer"
 msgstr "Acerca del Tokenizador de Claude"
 
-#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
-msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-msgstr "Claude usa un tokenizador BPE (Codificación de Pares de Bytes) similar a los modelos GPT"
+#~ msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+#~ msgstr "Claude usa un tokenizador BPE (Codificación de Pares de Bytes) similar a los modelos GPT"
 
-#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
-#: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
-msgid "Average token length: ~4 characters for English text"
-msgstr "Longitud promedio de token: ~4 caracteres para texto en inglés"
+#~ msgid "Average token length: ~4 characters for English text"
+#~ msgstr "Longitud promedio de token: ~4 caracteres para texto en inglés"
 
-#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
-msgid "Special characters and code may use more tokens"
-msgstr "Los caracteres especiales y el código pueden usar más tokens"
+#~ msgid "Special characters and code may use more tokens"
+#~ msgstr "Los caracteres especiales y el código pueden usar más tokens"
 
 #: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
 msgid "OpenAI ChatGPT Tokenizer"
@@ -942,9 +925,8 @@ msgstr "Cuenta tokens para GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT y otros 
 msgid "About OpenAI's Tokenizer"
 msgstr "Acerca del Tokenizador de OpenAI"
 
-#: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
-msgid "Code and special characters typically use more tokens"
-msgstr "El código y los caracteres especiales típicamente usan más tokens"
+#~ msgid "Code and special characters typically use more tokens"
+#~ msgstr "El código y los caracteres especiales típicamente usan más tokens"
 
 #~ msgid "hello"
 #~ msgstr ""
@@ -982,13 +964,12 @@ msgstr "Configuración de Idioma"
 msgid "Select Language"
 msgstr "Seleccionar Idioma"
 
-#: src/routes/language/+page.svelte
-msgid ""
-"Choose your preferred language for the interface. This setting will apply to all parts of\n"
-"\t\t\t\t\tthe application."
-msgstr ""
-"Elige tu idioma preferido para la interfaz. Esta configuración se aplicará a todas las partes de\n"
-"\t\t\t\t\tla aplicación."
+#~ msgid ""
+#~ "Choose your preferred language for the interface. This setting will apply to all parts of\n"
+#~ "\t\t\t\t\tthe application."
+#~ msgstr ""
+#~ "Elige tu idioma preferido para la interfaz. Esta configuración se aplicará a todas las partes de\n"
+#~ "\t\t\t\t\tla aplicación."
 
 #: src/routes/language/+page.svelte
 msgid "Current Selection:"
@@ -1034,3 +1015,66 @@ msgstr "Modelo grande, muy lento"
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Generally provides better results"
 msgstr "Generalmente proporciona mejores resultados"
+
+#: src/routes/language/+page.svelte
+msgid ""
+"Choose your preferred language for the interface. This setting will apply to all parts of\n"
+"the application."
+msgstr ""
+
+#: src/routes/+page.svelte
+msgid ""
+"On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
+"offline!"
+msgstr ""
+
+#: src/routes/+page.svelte
+msgid ""
+"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
+"text or a subtitle file."
+msgstr ""
+
+#: src/routes/+page.svelte
+msgid ""
+"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
+"or Kokoro models for high-quality voice synthesis."
+msgstr ""
+
+#: src/routes/+page.svelte
+msgid ""
+"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
+"professional results."
+msgstr ""
+
+#: src/routes/favicon/+page.svelte
+msgid ""
+"A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
+"Local AI Tools application."
+msgstr ""
+
+#: src/routes/favicon/+page.svelte
+msgid ""
+"Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
+"display sizes."
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid ""
+"Calculate how many tokens your text will use with different AI models. Token counts affect\n"
+"context limits for AI conversations."
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid ""
+"Tokens are the basic units that language models process. A token can be as short as one\n"
+"character or as long as one word. On average:"
+msgstr ""
+
+#: src/routes/(apps)/count-tokens/+page.svelte
+msgid ""
+"Different models use different tokenization methods, so the same text may result in different\n"
+"token counts."
+msgstr ""
+odels use different tokenization methods, so the same text may result in different\n"
+"token counts."
+msgstr ""
