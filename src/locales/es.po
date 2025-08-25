@@ -949,50 +949,52 @@ msgstr "El código y los caracteres especiales típicamente usan más tokens"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Background Remover ({0})"
-msgstr ""
+msgstr "Eliminador de Fondo ({0})"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Original {0}"
-msgstr ""
+msgstr "Original {0}"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Processed {0}"
-msgstr ""
+msgstr "Procesado {0}"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Failed {0}"
-msgstr ""
+msgstr "Fallido {0}"
 
 #: src/routes/+layout.svelte
 msgid "Change language"
-msgstr ""
+msgstr "Cambiar idioma"
 
 #: src/routes/language/+page.svelte
 msgid "Change the language settings for the Local AI Tools application"
-msgstr ""
+msgstr "Cambiar la configuración de idioma para la aplicación Herramientas de IA Local"
 
 #: src/routes/language/+page.svelte
 msgid "Language Settings"
-msgstr ""
+msgstr "Configuración de Idioma"
 
 #: src/routes/language/+page.svelte
 #: src/lib/components/common/LanguageSelector.svelte
 msgid "Select Language"
-msgstr ""
+msgstr "Seleccionar Idioma"
 
 #: src/routes/language/+page.svelte
 msgid ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
 "\t\t\t\t\tthe application."
 msgstr ""
+"Elige tu idioma preferido para la interfaz. Esta configuración se aplicará a todas las partes de\n"
+"\t\t\t\t\tla aplicación."
 
 #: src/routes/language/+page.svelte
 msgid "Current Selection:"
-msgstr ""
+msgstr "Selección Actual:"
 
 #: src/routes/language/+page.svelte
 msgid "Save Language Settings"
-msgstr ""
+msgstr "Guardar Configuración de Idioma"
 
 #: src/routes/language/+page.svelte
 msgid ""
@@ -1000,3 +1002,6 @@ msgid ""
 "\t\t\t\t\t\tinterface allows you to select your preferred language, but the actual translation feature\n"
 "\t\t\t\t\t\twill be implemented in a future update."
 msgstr ""
+"<0>Nota:</0> La funcionalidad de traducción de idiomas está actualmente en desarrollo.\n"
+"\t\t\t\t\t\tEsta interfaz te permite seleccionar tu idioma preferido, pero la función de traducción real\n"
+"\t\t\t\t\t\tse implementará en una actualización futura."

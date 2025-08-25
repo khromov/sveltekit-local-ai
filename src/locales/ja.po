@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-25T12:20:52.629Z\n"
+"PO-Revision-Date: 2025-08-25T12:25:24.211Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -949,54 +949,58 @@ msgstr "コードと特殊文字は通常より多くのトークンを使用し
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Background Remover ({0})"
-msgstr ""
+msgstr "背景除去 ({0})"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Original {0}"
-msgstr ""
+msgstr "オリジナル {0}"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Processed {0}"
-msgstr ""
+msgstr "処理済み {0}"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Failed {0}"
-msgstr ""
+msgstr "失敗 {0}"
 
 #: src/routes/+layout.svelte
 msgid "Change language"
-msgstr ""
+msgstr "言語を変更"
 
 #: src/routes/language/+page.svelte
 msgid "Change the language settings for the Local AI Tools application"
-msgstr ""
+msgstr "ローカルAIツールアプリケーションの言語設定を変更"
 
 #: src/routes/language/+page.svelte
 msgid "Language Settings"
-msgstr ""
+msgstr "言語設定"
 
-#: src/routes/language/+page.svelte
 #: src/lib/components/common/LanguageSelector.svelte
+#: src/routes/language/+page.svelte
 msgid "Select Language"
-msgstr ""
+msgstr "言語を選択"
 
 #: src/routes/language/+page.svelte
 msgid ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
 "\t\t\t\t\tthe application."
 msgstr ""
+"インターフェースの言語を選択してください。この設定は\n"
+"\t\t\t\t\tアプリケーションのすべての部分に適用されます。"
 
 #: src/routes/language/+page.svelte
 msgid "Current Selection:"
-msgstr ""
+msgstr "現在の選択:"
 
 #: src/routes/language/+page.svelte
 msgid "Save Language Settings"
-msgstr ""
+msgstr "言語設定を保存"
 
-#: src/routes/language/+page.svelte
-msgid ""
-"<0>Note:</0> Language translation functionality is currently in development. This\n"
-"\t\t\t\t\t\tinterface allows you to select your preferred language, but the actual translation feature\n"
-"\t\t\t\t\t\twill be implemented in a future update."
-msgstr ""
+#~ msgid ""
+#~ "<0>Note:</0> Language translation functionality is currently in development. This\n"
+#~ "\t\t\t\t\t\tinterface allows you to select your preferred language, but the actual translation feature\n"
+#~ "\t\t\t\t\t\twill be implemented in a future update."
+#~ msgstr ""
+#~ "<0>注意:</0> 言語翻訳機能は現在開発中です。\n"
+#~ "\t\t\t\t\t\tこのインターフェースでは言語を選択できますが、実際の翻訳機能は\n"
+#~ "\t\t\t\t\t\t今後のアップデートで実装される予定です。"
