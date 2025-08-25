@@ -39,25 +39,27 @@
 
 	// Check if we're on the chat page (which uses fixed height)
 	let isChatPage = $derived(page.url.pathname === '/chat');
+
+	const DEFAULT_TITLE = 'Local AI tools';
 </script>
 
 <svelte:head>
-	<title>{page.data.seo.title}</title>
-	<meta name="description" content={page.data.seo.description} />
+	<title>{page.data.seo?.title || DEFAULT_TITLE}</title>
+	<meta name="description" content={page.data.seo?.description || ''} />
 
 	<!-- Open Graph meta tags -->
-	<meta property="og:title" content={page.data.seo.title} />
-	<meta property="og:description" content={page.data.seo.description} />
-	<meta property="og:image" content={page.data.seo.ogImage} />
-	<meta property="og:url" content={page.data.seo.url} />
+	<meta property="og:title" content={page.data.seo?.title || DEFAULT_TITLE} />
+	<meta property="og:description" content={page.data.seo?.description || ''} />
+	<meta property="og:image" content={page.data.seo?.ogImage || ''} />
+	<meta property="og:url" content={page.data.seo?.url} />
 	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="Local AI Tools" />
+	<meta property="og:site_name" content={DEFAULT_TITLE} />
 
 	<!-- Twitter Card meta tags -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content={page.data.seo.title} />
-	<meta name="twitter:description" content={page.data.seo.description} />
-	<meta name="twitter:image" content={page.data.seo.ogImage} />
+	<meta name="twitter:title" content={page.data.seo?.title || DEFAULT_TITLE} />
+	<meta name="twitter:description" content={page.data.seo?.description || ''} />
+	<meta name="twitter:image" content={page.data.seo?.ogImage || ''} />
 </svelte:head>
 
 <div class="app-wrapper">

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-25T13:40:04.952Z\n"
+"PO-Revision-Date: 2025-08-25T14:17:48.640Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -13,7 +13,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 
 #: src/routes/+page.svelte
-#: src/routes/+layout.svelte
 #: src/routes/(apps)/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "Local AI Tools"
@@ -175,19 +174,23 @@ msgid "<0/> Copy"
 msgstr "<0/> Copy"
 
 #: src/routes/language/+page.svelte
+#: src/routes/(apps)/language/+page.svelte
 msgid "Change the language settings for the Local AI Tools application"
 msgstr "Change the language settings for the Local AI Tools application"
 
 #: src/routes/language/+page.svelte
+#: src/routes/(apps)/language/+page.svelte
 msgid "Language Settings"
 msgstr "Language Settings"
 
 #: src/routes/language/+page.svelte
 #: src/lib/components/common/LanguageSelector.svelte
+#: src/routes/(apps)/language/+page.svelte
 msgid "Select Language"
 msgstr "Select Language"
 
 #: src/routes/language/+page.svelte
+#: src/routes/(apps)/language/+page.svelte
 msgid ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
 "\t\t\t\t\tthe application."
@@ -196,10 +199,12 @@ msgstr ""
 "the application."
 
 #: src/routes/language/+page.svelte
+#: src/routes/(apps)/language/+page.svelte
 msgid "Current Selection:"
 msgstr "Current Selection:"
 
 #: src/routes/language/+page.svelte
+#: src/routes/(apps)/language/+page.svelte
 msgid "Save Language Settings"
 msgstr "Save Language Settings"
 
@@ -575,8 +580,8 @@ msgstr "<0/> Raw Tokens ({0})"
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Type or paste text in the input field above to analyze tokens and character count."
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -983,3 +988,6 @@ msgstr "Large, very slow model"
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Generally provides better results"
 msgstr "Generally provides better results"
+
+#~ msgid "Local AI tools"
+#~ msgstr "Local AI tools"

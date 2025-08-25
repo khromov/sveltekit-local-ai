@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-25T14:13:11.506Z\n"
+"PO-Revision-Date: 2025-08-25T14:17:48.643Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -12,7 +12,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.svelte
 #: src/routes/+page.svelte
 #: src/routes/(apps)/og/+page.svelte
 msgid "Local AI Tools"
@@ -22,8 +21,8 @@ msgstr "ローカルAIツール"
 msgid "Tool #01"
 msgstr "ツール #01"
 
-#: src/routes/+layout.svelte
 #: src/routes/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "チャット"
 
@@ -856,23 +855,28 @@ msgid "Change language"
 msgstr "言語を変更"
 
 #: src/routes/language/+page.svelte
+#: src/routes/(apps)/language/+page.svelte
 msgid "Change the language settings for the Local AI Tools application"
 msgstr "ローカルAIツールアプリケーションの言語設定を変更"
 
 #: src/routes/language/+page.svelte
+#: src/routes/(apps)/language/+page.svelte
 msgid "Language Settings"
 msgstr "言語設定"
 
-#: src/lib/components/common/LanguageSelector.svelte
 #: src/routes/language/+page.svelte
+#: src/lib/components/common/LanguageSelector.svelte
+#: src/routes/(apps)/language/+page.svelte
 msgid "Select Language"
 msgstr "言語を選択"
 
 #: src/routes/language/+page.svelte
+#: src/routes/(apps)/language/+page.svelte
 msgid "Current Selection:"
 msgstr "現在の選択:"
 
 #: src/routes/language/+page.svelte
+#: src/routes/(apps)/language/+page.svelte
 msgid "Save Language Settings"
 msgstr "言語設定を保存"
 
@@ -905,6 +909,7 @@ msgid "Generally provides better results"
 msgstr "一般的により良い結果を提供"
 
 #: src/routes/language/+page.svelte
+#: src/routes/(apps)/language/+page.svelte
 msgid ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
 "the application."
@@ -987,4 +992,7 @@ msgstr ""
 #~ msgid ""
 #~ "Choose your preferred language for the interface. This setting will apply to all parts of\n"
 #~ "\t\t\t\t\tthe application."
+#~ msgstr ""
+
+#~ msgid "Local AI tools"
 #~ msgstr ""
