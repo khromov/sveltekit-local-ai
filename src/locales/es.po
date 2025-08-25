@@ -896,6 +896,8 @@ msgid ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
 "\t\t\t\t\tthe application."
 msgstr ""
+"Elige tu idioma preferido para la interfaz. Esta configuración se aplicará a todas las partes de\n"
+"\t\t\t\t\tla aplicación."
 
 #: src/routes/+page.svelte
 msgid ""
@@ -966,63 +968,65 @@ msgid ""
 "Different models use different tokenization methods, so the same text may result in different\n"
 "token counts."
 msgstr ""
+"Diferentes modelos usan diferentes métodos de tokenización, por lo que el mismo texto puede resultar en diferentes\n"
+"conteos de tokens."
 
 #: src/lib/components/common/ErrorDisplay.svelte
 msgid "Retrying..."
-msgstr ""
+msgstr "Reintentando..."
 
 #: src/lib/components/common/AdvancedSection.svelte
 msgid "Advanced Parameters"
-msgstr ""
+msgstr "Parámetros Avanzados"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Model..."
-msgstr ""
+msgstr "Cargando Modelo..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Load Model"
-msgstr ""
+msgstr "Cargar Modelo"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Changing..."
-msgstr ""
+msgstr "Cambiando..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Change Model"
-msgstr ""
+msgstr "Cambiar Modelo"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Choose Image"
-msgstr ""
+msgstr "Elegir Imagen"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Batch Processing"
-msgstr ""
+msgstr "Procesamiento por Lotes"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Click to change image"
-msgstr ""
+msgstr "Clic para cambiar imagen"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Click to add more images"
-msgstr ""
+msgstr "Clic para agregar más imágenes"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Play"
-msgstr ""
+msgstr "Reproducir"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Generate"
-msgstr ""
+msgstr "Generar"
 
 #: src/routes/+layout.svelte
 msgid "Transcribe"
-msgstr ""
+msgstr "Transcribir"
 
 #: src/routes/+layout.svelte
 msgid "TTS"
-msgstr ""
+msgstr "TTS"
 
 #: src/routes/+layout.svelte
 msgid "BG Remover"
-msgstr ""
+msgstr "Quitar Fondo"

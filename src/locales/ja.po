@@ -896,6 +896,8 @@ msgid ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
 "\t\t\t\t\tthe application."
 msgstr ""
+"インターフェース用の言語を選択してください。この設定は\n"
+"\t\t\t\t\tアプリケーションのすべての部分に適用されます。"
 
 #: src/routes/+page.svelte
 msgid ""
@@ -971,60 +973,60 @@ msgstr ""
 
 #: src/lib/components/common/AdvancedSection.svelte
 msgid "Advanced Parameters"
-msgstr ""
+msgstr "詳細パラメータ"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Model..."
-msgstr ""
+msgstr "モデル読み込み中..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Load Model"
-msgstr ""
+msgstr "モデルを読み込む"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Changing..."
-msgstr ""
+msgstr "変更中..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Change Model"
-msgstr ""
+msgstr "モデルを変更"
 
 #: src/lib/components/common/ErrorDisplay.svelte
 msgid "Retrying..."
-msgstr ""
+msgstr "再試行中..."
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Choose Image"
-msgstr ""
+msgstr "画像を選択"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Batch Processing"
-msgstr ""
+msgstr "バッチ処理"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Click to change image"
-msgstr ""
+msgstr "クリックして画像を変更"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Click to add more images"
-msgstr ""
+msgstr "クリックして画像を追加"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Play"
-msgstr ""
+msgstr "再生"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Generate"
-msgstr ""
+msgstr "生成"
 
 #: src/routes/+layout.svelte
 msgid "Transcribe"
-msgstr ""
+msgstr "文字起こし"
 
 #: src/routes/+layout.svelte
 msgid "TTS"
-msgstr ""
+msgstr "音声合成"
 
 #: src/routes/+layout.svelte
 msgid "BG Remover"
-msgstr ""
+msgstr "背景除去"
