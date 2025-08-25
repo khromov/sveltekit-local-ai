@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-25T11:12:22.187Z\n"
+"PO-Revision-Date: 2025-08-25T11:17:05.222Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.svelte
 #: src/routes/+page.svelte
+#: src/routes/+layout.svelte
 #: src/routes/(apps)/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "ローカルAIツール"
@@ -231,13 +231,13 @@ msgstr ""
 msgid "<0/> Processing Image"
 msgstr "<0/> 画像処理中"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% 完了"
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -253,8 +253,8 @@ msgstr "<0/> {0}枚の画像を選択中"
 msgid "Drop multiple images here"
 msgstr "ここに複数の画像をドロップ"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "または"
 
@@ -420,9 +420,9 @@ msgstr "入力テキスト"
 msgid "Load example"
 msgstr "例を読み込む"
 
+#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/(apps)/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/(apps)/text-to-speech/+page.svelte
-#: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Clear text"
 msgstr "テキストをクリア"
 
@@ -450,8 +450,8 @@ msgstr "<0/> 録音をクリア"
 msgid "Tokens"
 msgstr "トークン"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/lib/components/tts/TextStatistics.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Characters"
 msgstr "文字数"
 
@@ -547,8 +547,8 @@ msgstr "モデル準備完了"
 msgid "Failed to load transcription model. Please try again."
 msgstr "文字起こしモデルの読み込みに失敗しました。もう一度お試しください。"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "再試行"
 
@@ -734,8 +734,9 @@ msgstr "AIモデルをダウンロードして初期化しています。しば�
 #~ msgid "Background Remover ("
 #~ msgstr "背景除去 ("
 
-#~ msgid "Restart"
-#~ msgstr "リスタート"
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Restart"
+msgstr "リスタート"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Model Selection"
@@ -934,3 +935,7 @@ msgstr "コードと特殊文字は通常より多くのトークンを使用し
 
 #~ msgid "hello"
 #~ msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Background Remover ({0})"
+msgstr ""

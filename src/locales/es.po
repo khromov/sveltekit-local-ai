@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-25T11:12:22.186Z\n"
+"PO-Revision-Date: 2025-08-25T11:17:05.026Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.svelte
 #: src/routes/+page.svelte
+#: src/routes/+layout.svelte
 #: src/routes/(apps)/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "Herramientas de IA Local"
@@ -663,8 +663,9 @@ msgstr "El modelo de IA se está descargando e inicializando. Esto puede tomar u
 #~ msgid "Background Remover ("
 #~ msgstr "Eliminador de Fondo ("
 
-#~ msgid "Restart"
-#~ msgstr "Reiniciar"
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Restart"
+msgstr "Reiniciar"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Model Selection"
@@ -934,3 +935,7 @@ msgstr "El código y los caracteres especiales típicamente usan más tokens"
 
 #~ msgid "hello"
 #~ msgstr ""
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Background Remover ({0})"
+msgstr ""

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.877Z\n"
-"PO-Revision-Date: 2025-08-25T11:12:22.185Z\n"
+"PO-Revision-Date: 2025-08-25T11:17:04.833Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -12,9 +12,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.svelte
-#: src/routes/+page.svelte
 #: src/routes/(apps)/og/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Local AI Tools"
 msgstr "Local AI Tools"
 
@@ -994,8 +994,9 @@ msgstr "The AI model is being downloaded and initialized. This may take a few mo
 #~ msgid "Background Remover ("
 #~ msgstr "Background Remover ("
 
-#~ msgid "Restart"
-#~ msgstr "Restart"
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Restart"
+msgstr "Restart"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Model Selection"
@@ -1265,3 +1266,7 @@ msgstr "Code and special characters typically use more tokens"
 
 #~ msgid "hello"
 #~ msgstr "hello"
+
+#: src/routes/(apps)/background-remover/+page.svelte
+msgid "Background Remover ({0})"
+msgstr "Background Remover ({0})"

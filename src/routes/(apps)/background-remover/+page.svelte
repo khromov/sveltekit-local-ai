@@ -58,6 +58,11 @@
 	];
 	let selectedModelId = $state('RMBG-1.4');
 
+	// Computed model info for display
+	let modelInfo = $derived(
+		`Background Remover (${AVAILABLE_MODELS.find((m) => m.id === selectedModelId)?.name})`
+	);
+
 	// Single image mode
 	let selectedFile: File | null = $state(null);
 	let processedImageUrl = $state<string | null>(null);
@@ -364,11 +369,7 @@
 	</div>
 {:else}
 	<CardInterface>
-		<Toolbar
-			modelInfo="Background Remover ({AVAILABLE_MODELS.find((m) => m.id === selectedModelId)
-				?.name})"
-			ModelIcon={ImageIcon}
-		>
+		<Toolbar {modelInfo} ModelIcon={ImageIcon}>
 			{#if (processingMode === 'single' && processedImageUrl) || (processingMode === 'batch' && batchResults.length > 0)}
 				<ActionButton onClick={clearResults} variant="danger" Icon={RefreshCcwIcon}
 					>Restart</ActionButton
