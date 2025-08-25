@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-25T12:58:27.388Z\n"
+"PO-Revision-Date: 2025-08-25T13:40:04.952Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.svelte
 #: src/routes/+page.svelte
+#: src/routes/+layout.svelte
 #: src/routes/(apps)/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "Local AI Tools"
@@ -239,8 +239,8 @@ msgstr ""
 msgid "Tool #01"
 msgstr "Tool #01"
 
-#: src/routes/+layout.svelte
 #: src/routes/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -453,9 +453,6 @@ msgstr "Selected Images ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Clear All"
 
-#~ msgid "Remove {0}"
-#~ msgstr "Remove {0}"
-
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "<0/> Process {0} Image{1}"
 msgstr "<0/> Process {0} Image{1}"
@@ -574,9 +571,6 @@ msgstr "<0/> Models run locally in your browser. No data is sent to external ser
 msgid "<0/> Raw Tokens ({0})"
 msgstr "<0/> Raw Tokens ({0})"
 
-#~ msgid "Token ID: {0}"
-#~ msgstr "Token ID: {0}"
-
 #: src/lib/components/count-tokens/EmptyState.svelte
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Type or paste text in the input field above to analyze tokens and character count."
@@ -586,8 +580,8 @@ msgstr "Type or paste text in the input field above to analyze tokens and charac
 msgid "Tokens"
 msgstr "Tokens"
 
-#: src/lib/components/tts/TextStatistics.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "Characters"
 
@@ -838,9 +832,6 @@ msgstr "Loading TTS Model"
 msgid "Initializing text-to-speech model..."
 msgstr "Initializing text-to-speech model..."
 
-#~ msgid "Failed to load model"
-#~ msgstr "Failed to load model"
-
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Enter Your Text"
 msgstr "Enter Your Text"
@@ -954,13 +945,6 @@ msgid "About OpenAI's Tokenizer"
 msgstr "About OpenAI's Tokenizer"
 
 #: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
-msgid "Average token length: ~4 characters for English text"
-msgstr "Average token length: ~4 characters for English text"
-
-#~ msgid "Code and special characters typically use more tokens"
-#~ msgstr "Code and special characters typically use more tokens"
-
-#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
 msgid "Anthropic Claude Tokenizer"
 msgstr "Anthropic Claude Tokenizer"
 
@@ -971,14 +955,6 @@ msgstr "Count tokens for Claude models (Opus, Sonnet, Haiku) using the official 
 #: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
 msgid "About Claude's Tokenizer"
 msgstr "About Claude's Tokenizer"
-
-#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
-msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-msgstr "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-
-#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
-msgid "Special characters and code may use more tokens"
-msgstr "Special characters and code may use more tokens"
 
 #: src/routes/+layout.svelte
 msgid "BG Remover"
@@ -1005,8 +981,5 @@ msgid "Large, very slow model"
 msgstr "Large, very slow model"
 
 #: src/routes/(apps)/background-remover/+page.svelte
-msgid "Generally provides better results"
-msgstr "Generally provides better results"
- src/routes/(apps)/background-remover/+page.svelte
 msgid "Generally provides better results"
 msgstr "Generally provides better results"
