@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
-"Language: ua\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,1002 +11,1022 @@ msgstr ""
 #: src/routes/+page.svelte
 #: src/routes/(apps)/og/+page.svelte
 msgid "Local AI Tools"
-msgstr ""
+msgstr "Локальні AI інструменти"
 
 #: src/routes/+page.svelte
 msgid ""
 "On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
 "offline!"
 msgstr ""
+"На цій сторінці ви знайдете безкоштовні, приватні AI інструменти, які працюють повністю у вашому браузері - і навіть\n"
+"офлайн!"
 
 #: src/routes/+page.svelte
 msgid "Tool #01"
-msgstr ""
+msgstr "Інструмент #01"
 
 #: src/routes/+page.svelte
 #: src/routes/+layout.svelte
 msgid "Chat"
-msgstr ""
+msgstr "Чат"
 
 #: src/routes/+page.svelte
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
-msgstr ""
+msgstr "Спілкуйтеся з великими мовними моделями як Gemma3, повністю на вашому пристрої завдяки llama.cpp"
 
 #: src/routes/+page.svelte
 msgid "Private & Secure"
-msgstr ""
+msgstr "Приватно та безпечно"
 
 #: src/routes/+page.svelte
 msgid "Works Offline"
-msgstr ""
+msgstr "Працює офлайн"
 
 #: src/routes/+page.svelte
 msgid "No Data Sharing"
-msgstr ""
+msgstr "Без передачі даних"
 
 #: src/routes/+page.svelte
 msgid "Tool #02"
-msgstr ""
+msgstr "Інструмент #02"
 
 #: src/routes/+page.svelte
 msgid "Transcribe Audio"
-msgstr ""
+msgstr "Транскрибувати аудіо"
 
 #: src/routes/+page.svelte
 msgid ""
 "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
 "text or a subtitle file."
 msgstr ""
+"Перетворюйте мовлення на текст за допомогою Whisper AI. Завантажте будь-який аудіофайл та експортуйте як\n"
+"текст або файл субтитрів."
 
 #: src/routes/+page.svelte
 msgid "High Accuracy"
-msgstr ""
+msgstr "Висока точність"
 
 #: src/routes/+page.svelte
 msgid "Multiple Formats"
-msgstr ""
+msgstr "Різні формати"
 
 #: src/routes/+page.svelte
 #: src/routes/+page.svelte
 msgid "Local Processing"
-msgstr ""
+msgstr "Локальна обробка"
 
 #: src/routes/+page.svelte
 msgid "Tool #03"
-msgstr ""
+msgstr "Інструмент #03"
 
 #: src/routes/+page.svelte
 msgid "Text to Speech"
-msgstr ""
+msgstr "Текст у мовлення"
 
 #: src/routes/+page.svelte
 msgid ""
 "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
 "or Kokoro models for high-quality voice synthesis."
 msgstr ""
+"Перетворюйте текст на природне мовлення за допомогою AI моделей. Оберіть з Kitten TTS, Piper\n"
+"або Kokoro моделей для високоякісного синтезу голосу."
 
 #: src/routes/+page.svelte
 msgid "Multiple Models"
-msgstr ""
+msgstr "Різні моделі"
 
 #: src/routes/+page.svelte
 msgid "Natural Voices"
-msgstr ""
+msgstr "Природні голоси"
 
 #: src/routes/+page.svelte
 msgid "Tool #04"
-msgstr ""
+msgstr "Інструмент #04"
 
 #: src/routes/+page.svelte
 msgid "Remove Background"
-msgstr ""
+msgstr "Видалити фон"
 
 #: src/routes/+page.svelte
 msgid ""
 "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
 "professional results."
 msgstr ""
+"Видаляйте фон із зображень за допомогою AI. На основі моделі RMBG v1.4 від BRIA AI для\n"
+"професійних результатів."
 
 #: src/routes/+page.svelte
 msgid "AI-Powered"
-msgstr ""
+msgstr "На основі AI"
 
 #: src/routes/+page.svelte
 msgid "High Quality"
-msgstr ""
+msgstr "Висока якість"
 
 #: src/routes/+page.svelte
 msgid "Tool #05"
-msgstr ""
+msgstr "Інструмент #05"
 
 #: src/routes/+page.svelte
 msgid "Count Tokens"
-msgstr ""
+msgstr "Підрахувати токени"
 
 #: src/routes/+page.svelte
 msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
-msgstr ""
+msgstr "Оцініть використання токенів для запитів у моделях OpenAI та Anthropic."
 
 #: src/routes/+page.svelte
 msgid "OpenAI & Anthropic"
-msgstr ""
+msgstr "OpenAI та Anthropic"
 
 #: src/routes/+page.svelte
 msgid "Accurate Counts"
-msgstr ""
+msgstr "Точні підрахунки"
 
 #: src/routes/+page.svelte
 msgid "All processing happens locally in your browser using WebAssembly."
-msgstr ""
+msgstr "Вся обробка відбувається локально у вашому браузері за допомогою WebAssembly."
 
 #: src/routes/+page.svelte
 msgid "No data is sent to external servers."
-msgstr ""
+msgstr "Жодні дані не передаються на зовнішні сервери."
 
 #: src/routes/+layout.svelte
 msgid "Transcribe"
-msgstr ""
+msgstr "Транскрибувати"
 
 #: src/routes/+layout.svelte
 msgid "TTS"
-msgstr ""
+msgstr "TTS"
 
 #: src/routes/+layout.svelte
 msgid "BG Remover"
-msgstr ""
+msgstr "Видалення фону"
 
 #: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
-msgstr ""
+msgstr "Токени"
 
 #: src/routes/+layout.svelte
 msgid "Change language"
-msgstr ""
+msgstr "Змінити мову"
 
 #: src/routes/+layout.svelte
 msgid "View source on GitHub"
-msgstr ""
+msgstr "Переглянути код на GitHub"
 
 #: src/routes/favicon/+page.svelte
 msgid "Favicon Concept Gallery"
-msgstr ""
+msgstr "Галерея концептів фавіконів"
 
 #: src/routes/favicon/+page.svelte
 msgid ""
 "A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
 "Local AI Tools application."
 msgstr ""
+"Колекція {0} квадратних концептів фавіконів у форматі 512×512, розроблених для\n"
+"додатку Local AI Tools."
 
 #: src/routes/favicon/+page.svelte
 msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
-msgstr ""
+msgstr "Всі концепти розроблені в розмірі 512×512 пікселів з урахуванням бруталістичної естетики дизайну."
 
 #: src/routes/favicon/+page.svelte
 msgid ""
 "Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
 "display sizes."
 msgstr ""
+"Кожен фавікон використовує яскраві кольори, сильні контрасти та чітку іконографію, придатну для різних\n"
+"розмірів відображення."
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Original {0}"
-msgstr ""
+msgstr "Оригінал {0}"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Processed {0}"
-msgstr ""
+msgstr "Оброблено {0}"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Failed {0}"
-msgstr ""
+msgstr "Помилка {0}"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "<0/> Batch Processing Complete!"
-msgstr ""
+msgstr "<0/> Пакетну обробку завершено!"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "{0} Successful"
-msgstr ""
+msgstr "{0} Успішно"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "{0} Failed"
-msgstr ""
+msgstr "{0} З помилками"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "<0/> Download All as ZIP"
-msgstr ""
+msgstr "<0/> Завантажити все як ZIP"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "<0/> Process More Images"
-msgstr ""
+msgstr "<0/> Обробити більше зображень"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Successfully Processed Images"
-msgstr ""
+msgstr "Успішно оброблені зображення"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Before"
-msgstr ""
+msgstr "До"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "After"
-msgstr ""
+msgstr "Після"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Download this image"
-msgstr ""
+msgstr "Завантажити це зображення"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Failed to Process"
-msgstr ""
+msgstr "Не вдалося обробити"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Processing failed"
-msgstr ""
+msgstr "Обробка не вдалася"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "<0/> Processing Image"
-msgstr ""
+msgstr "<0/> Обробка зображення"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
-msgstr ""
+msgstr "{0}% Завершено"
 
 #: src/lib/components/chat/ChatMessages.svelte
 msgid "Start a Conversation"
-msgstr ""
+msgstr "Почати розмову"
 
 #: src/lib/components/chat/ChatMessages.svelte
 msgid "Type a message below to begin chatting with AI"
-msgstr ""
+msgstr "Введіть повідомлення нижче, щоб почати спілкування з AI"
 
 #: src/lib/components/chat/Message.svelte
 msgid "You"
-msgstr ""
+msgstr "Ви"
 
 #: src/lib/components/chat/Message.svelte
 msgid "AI"
-msgstr ""
+msgstr "AI"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Choose Image"
-msgstr ""
+msgstr "Обрати зображення"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Batch Processing"
-msgstr ""
+msgstr "Пакетна обробка"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Drop your image here"
-msgstr ""
+msgstr "Перетягніть зображення сюди"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "<0/> {0} image{1} selected"
-msgstr ""
+msgstr "<0/> {0} зображення{1} обрано"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Drop multiple images here"
-msgstr ""
+msgstr "Перетягніть кілька зображень сюди"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Click to change image"
-msgstr ""
+msgstr "Клацніть, щоб змінити зображення"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Click to add more images"
-msgstr ""
+msgstr "Клацніть, щоб додати більше зображень"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "or click to browse • JPG, PNG, WebP supported"
-msgstr ""
+msgstr "або клацніть для вибору • Підтримуються JPG, PNG, WebP"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
-msgstr ""
+msgstr "АБО"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "<0/> Try Example Image"
-msgstr ""
+msgstr "<0/> Спробувати приклад"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Selected Images ({0})"
-msgstr ""
+msgstr "Обрані зображення ({0})"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "<0/> Clear All"
-msgstr ""
+msgstr "<0/> Очистити все"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
-msgstr ""
+msgstr "{0} МБ"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "<0/> Process {0} Image{1}"
-msgstr ""
+msgstr "<0/> Обробити {0} зображення{1}"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 msgid "<0/> Background Removed!"
-msgstr ""
+msgstr "<0/> Фон видалено!"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 msgid "<0/> Processed"
-msgstr ""
+msgstr "<0/> Оброблено"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 msgid "<0/> Compare"
-msgstr ""
+msgstr "<0/> Порівняти"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 msgid "Original"
-msgstr ""
+msgstr "Оригінал"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 msgid "Background Removed"
-msgstr ""
+msgstr "Фон видалено"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 msgid "Background removed"
-msgstr ""
+msgstr "Фон видалено"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 msgid "<0/> Download"
-msgstr ""
+msgstr "<0/> Завантажити"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 msgid "<0/> Process Another"
-msgstr ""
+msgstr "<0/> Обробити інше"
 
 #: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #: src/lib/components/chat/MessageInput.svelte
 msgid "Stop generation"
-msgstr ""
+msgstr "Зупинити генерацію"
 
 #: src/lib/components/chat/MessageInput.svelte
 msgid "Send message"
-msgstr ""
+msgstr "Надіслати повідомлення"
 
 #: src/lib/components/chat/MessageInput.svelte
 msgid "<0/> Model responses may not always be accurate."
-msgstr ""
+msgstr "<0/> Відповіді моделі можуть бути не завжди точними."
 
 #: src/lib/components/count-tokens/EmptyState.svelte
 msgid "Type or paste text in the input field above to analyze tokens and character count."
-msgstr ""
+msgstr "Введіть або вставте текст у поле вводу вище для аналізу токенів та підрахунку символів."
 
 #: src/lib/components/count-tokens/RawTokensDisplay.svelte
 msgid "<0/> Raw Tokens ({0})"
-msgstr ""
+msgstr "<0/> Необроблені токени ({0})"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "Smarter AI responses"
-msgstr ""
+msgstr "Розумніші відповіді AI"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "Runs on most computers and phones"
-msgstr ""
+msgstr "Працює на більшості комп'ютерів та телефонів"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "High quality responses"
-msgstr ""
+msgstr "Високоякісні відповіді"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "<0/> Chat with AI Models"
-msgstr ""
+msgstr "<0/> Спілкування з AI моделями"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "<0>Step 1:</0> Choose Your AI Model"
-msgstr ""
+msgstr "<0>Крок 1:</0> Оберіть вашу AI модель"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "<0>Step 2:</0> Advanced Settings"
-msgstr ""
+msgstr "<0>Крок 2:</0> Розширені налаштування"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "Threads <0>(-1 auto)</0>"
-msgstr ""
+msgstr "Потоки <0>(-1 авто)</0>"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "Context Size"
-msgstr ""
+msgstr "Розмір контексту"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "Temperature"
-msgstr ""
+msgstr "Температура"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "<0/> Loading Model..."
-msgstr ""
+msgstr "<0/> Завантаження моделі..."
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "<0/> Load Selected Model"
-msgstr ""
+msgstr "<0/> Завантажити обрану модель"
 
 #: src/lib/components/chat/ModelSelector.svelte
 msgid "<0/> Models run locally in your browser. No data is sent to external servers."
-msgstr ""
+msgstr "<0/> Моделі працюють локально у вашому браузері. Жодні дані не передаються на зовнішні сервери."
 
 #: src/lib/components/count-tokens/TokenStats.svelte
 #: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
-msgstr ""
+msgstr "Символи"
 
 #: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Chars/Token"
-msgstr ""
+msgstr "Символів/токен"
 
 #: src/lib/components/count-tokens/TextInputSection.svelte
 msgid "Input Text"
-msgstr ""
+msgstr "Вхідний текст"
 
 #: src/lib/components/count-tokens/TextInputSection.svelte
 msgid "Load example"
-msgstr ""
+msgstr "Завантажити приклад"
 
 #: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/(apps)/text-to-speech/+page.svelte
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Clear text"
-msgstr ""
+msgstr "Очистити текст"
 
 #: src/lib/components/common/ErrorDisplay.svelte
 msgid "Error"
-msgstr ""
+msgstr "Помилка"
 
 #: src/lib/components/common/ErrorDisplay.svelte
 msgid "Retrying..."
-msgstr ""
+msgstr "Повторна спроба..."
 
 #: src/lib/components/common/AdvancedSection.svelte
 msgid "Advanced Parameters"
-msgstr ""
+msgstr "Розширені параметри"
 
 #: src/lib/components/whisper/AudioRecorder.svelte
 msgid "<0/> Start Recording"
-msgstr ""
+msgstr "<0/> Почати запис"
 
 #: src/lib/components/whisper/AudioRecorder.svelte
 msgid "<0/> Recording... {0}"
-msgstr ""
+msgstr "<0/> Запис... {0}"
 
 #: src/lib/components/whisper/AudioRecorder.svelte
 msgid "<0/> Stop Recording"
-msgstr ""
+msgstr "<0/> Зупинити запис"
 
 #: src/lib/components/whisper/AudioRecorder.svelte
 msgid "Recording Complete"
-msgstr ""
+msgstr "Запис завершено"
 
 #: src/lib/components/whisper/AudioRecorder.svelte
 msgid "<0/> Clear Recording"
-msgstr ""
+msgstr "<0/> Очистити запис"
 
 #: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "<0/> Transcribing Audio"
-msgstr ""
+msgstr "<0/> Транскрибування аудіо"
 
 #: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "Current Segment"
-msgstr ""
+msgstr "Поточний сегмент"
 
 #: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "<0/> Transcription seems stuck <1>Reload Page →</1>"
-msgstr ""
+msgstr "<0/> Схоже, транскрибування застрягло <1>Перезавантажити сторінку →</1>"
 
 #: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "<0/> Keep this tab active during transcription"
-msgstr ""
+msgstr "<0/> Тримайте цю вкладку активною під час транскрибування"
 
 #: src/lib/components/whisper/FileUpload.svelte
 msgid "Drag & Drop Audio File"
-msgstr ""
+msgstr "Перетягніть аудіофайл"
 
 #: src/lib/components/whisper/FileUpload.svelte
 msgid "or"
-msgstr ""
+msgstr "або"
 
 #: src/lib/components/whisper/FileUpload.svelte
 msgid "Browse Files"
-msgstr ""
+msgstr "Обрати файли"
 
 #: src/lib/components/common/StepHeader.svelte
 msgid "Step {0}:"
-msgstr ""
+msgstr "Крок {0}:"
 
 #: src/lib/components/common/SquareSpinner.svelte
 msgid "Loading"
-msgstr ""
+msgstr "Завантаження"
 
 #: src/lib/components/common/LanguageSelector.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Select Language"
-msgstr ""
+msgstr "Оберіть мову"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Select Model"
-msgstr ""
+msgstr "Оберіть модель"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Model..."
-msgstr ""
+msgstr "Завантаження моделі..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Load Model"
-msgstr ""
+msgstr "Завантажити модель"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Model Ready"
-msgstr ""
+msgstr "Модель готова"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Changing..."
-msgstr ""
+msgstr "Зміна..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Change Model"
-msgstr ""
+msgstr "Змінити модель"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Failed to load transcription model. Please try again."
-msgstr ""
+msgstr "Не вдалося завантажити модель транскрибування. Спробуйте ще раз."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Retry"
-msgstr ""
+msgstr "Повторити"
 
 #: src/lib/components/whisper/TranscriptionResult.svelte
 msgid "<0/> Transcription Result"
-msgstr ""
+msgstr "<0/> Результат транскрибування"
 
 #: src/lib/components/whisper/TranscriptionResult.svelte
 msgid "Text"
-msgstr ""
+msgstr "Текст"
 
 #: src/lib/components/whisper/TranscriptionResult.svelte
 msgid "SRT"
-msgstr ""
+msgstr "SRT"
 
 #: src/lib/components/whisper/TranscriptionResult.svelte
 msgid "<0/> Copied!"
-msgstr ""
+msgstr "<0/> Скопійовано!"
 
 #: src/lib/components/whisper/TranscriptionResult.svelte
 msgid "<0/> Copy"
-msgstr ""
+msgstr "<0/> Копіювати"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "<0>Step 1:</0> Text-to-speech Model"
-msgstr ""
+msgstr "<0>Крок 1:</0> Модель тексту в мовлення"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "Kitten TTS Nano"
-msgstr ""
+msgstr "Kitten TTS Nano"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "24MB • Best for edge devices"
-msgstr ""
+msgstr "24МБ • Краще для периферійних пристроїв"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "Piper Voices"
-msgstr ""
+msgstr "Piper голоси"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "75MB • Better Quality • Fast"
-msgstr ""
+msgstr "75МБ • Краща якість • Швидко"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "Kokoro"
-msgstr ""
+msgstr "Kokoro"
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "80MB • Highest Quality • Slow"
-msgstr ""
+msgstr "80МБ • Найвища якість • Повільно"
 
 #: src/lib/components/tts/SpeedControl.svelte
 msgid "Speed:"
-msgstr ""
+msgstr "Швидкість:"
 
 #: src/lib/components/tts/SpeedControl.svelte
 msgid "{0}x"
-msgstr ""
+msgstr "{0}x"
 
 #: src/lib/components/tts/SampleRateSelector.svelte
 msgid "Sample Rate:"
-msgstr ""
+msgstr "Частота дискретизації:"
 
 #: src/lib/components/tts/TextStatistics.svelte
 msgid "Words"
-msgstr ""
+msgstr "Слова"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "<0/> Choose Audio Source"
-msgstr ""
+msgstr "<0/> Оберіть джерело аудіо"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "Local File"
-msgstr ""
+msgstr "Локальний файл"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "Select an audio file from your device (.mp3, .wav, .m4a)"
-msgstr ""
+msgstr "Оберіть аудіофайл з вашого пристрою (.mp3, .wav, .m4a)"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "Record Audio"
-msgstr ""
+msgstr "Записати аудіо"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "Record audio directly from your microphone"
-msgstr ""
+msgstr "Записати аудіо безпосередньо з вашого мікрофона"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "Demo File"
-msgstr ""
+msgstr "Демо файл"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "Listen →"
-msgstr ""
+msgstr "Слухати →"
 
 #: src/routes/(apps)/chat/+page.svelte
 msgid "Failed to load model. Please check your connection and try again."
-msgstr ""
+msgstr "Не вдалося завантажити модель. Перевірте з'єднання та спробуйте знову."
 
 #: src/routes/(apps)/chat/+page.svelte
 msgid "Loading Model"
-msgstr ""
+msgstr "Завантаження моделі"
 
 #: src/routes/(apps)/chat/+page.svelte
 msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
-msgstr ""
+msgstr "Це займе кілька хвилин. Чат-модель завантажується у ваш браузер."
 
 #: src/routes/(apps)/chat/+page.svelte
 msgid "New <0>Chat</0>"
-msgstr ""
+msgstr "Новий <0>чат</0>"
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Hello! I'm Heart, your friendly voice assistant."
-msgstr ""
+msgstr "Привіт! Я Heart, ваш дружній голосовий асистент."
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Hi there! I'm Bella, ready to bring your words to life."
-msgstr ""
+msgstr "Привіт! Я Bella, готова оживити ваші слова."
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Greetings! I'm Nova, here to make your content shine."
-msgstr ""
+msgstr "Вітаю! Я Nova, тут щоб зробити ваш контент яскравим."
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Hello! I'm Sarah, delighted to speak for you."
-msgstr ""
+msgstr "Привіт! Я Sarah, рада говорити для вас."
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Hi! I'm Adam, your reliable voice companion."
-msgstr ""
+msgstr "Привіт! Я Adam, ваш надійний голосовий супутник."
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Hello there! I'm Echo, echoing your thoughts perfectly."
-msgstr ""
+msgstr "Привіт! Я Echo, ідеально відлунюю ваші думки."
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Hi! I'm {0}, nice to meet you!"
-msgstr ""
+msgstr "Привіт! Я {0}, приємно познайомитись!"
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Select Voice"
-msgstr ""
+msgstr "Оберіть голос"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid "<0/> Count LLM Tokens"
-msgstr ""
+msgstr "<0/> Підрахунок токенів LLM"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid ""
 "Calculate how many tokens your text will use with different AI models. Token counts affect\n"
 "context limits for AI conversations."
 msgstr ""
+"Порахуйте, скільки токенів використає ваш текст у різних AI моделях. Кількість токенів впливає на\n"
+"обмеження контексту для AI розмов."
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid "Anthropic Claude"
-msgstr ""
+msgstr "Anthropic Claude"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
-msgstr ""
+msgstr "Підрахунок токенів для моделей Claude, включаючи Claude 3 Opus, Sonnet та Haiku"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid "Open Tokenizer"
-msgstr ""
+msgstr "Відкрити токенізатор"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid "OpenAI ChatGPT"
-msgstr ""
+msgstr "OpenAI ChatGPT"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
-msgstr ""
+msgstr "Підрахунок токенів для GPT-4, GPT-4o, GPT-3.5 Turbo та інших моделей OpenAI"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid "What are tokens?"
-msgstr ""
+msgstr "Що таке токени?"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid ""
 "Tokens are the basic units that language models process. A token can be as short as one\n"
 "character or as long as one word. On average:"
 msgstr ""
+"Токени - це основні одиниці, які обробляють мовні моделі. Токен може бути коротким як один\n"
+"символ або довгим як одне слово. В середньому:"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid "1 token ≈ 4 characters in English"
-msgstr ""
+msgstr "1 токен ≈ 4 символи англійською"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid ""
 "Different models use different tokenization methods, so the same text may result in different\n"
 "token counts."
 msgstr ""
+"Різні моделі використовують різні методи токенізації, тому той самий текст може мати різну\n"
+"кількість токенів."
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "OpenGraph Image Generator"
-msgstr ""
+msgstr "Генератор OpenGraph зображень"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "OpenGraph Images"
-msgstr ""
+msgstr "OpenGraph зображення"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "Simple designs optimized for social media sharing (1200×630)"
-msgstr ""
+msgstr "Прості дизайни оптимізовані для поширення в соціальних мережах (1200×630)"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "Layout 1: Simple & Bold"
-msgstr ""
+msgstr "Макет 1: Простий та яскравий"
 
 #: src/routes/(apps)/og/+page.svelte
 #: src/routes/(apps)/og/+page.svelte
 msgid "Local AI"
-msgstr ""
+msgstr "Локальний AI"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
-msgstr ""
+msgstr "Чат • Транскрибування • Текст у мовлення • Видалення фону • Підрахунок токенів"
 
 #: src/routes/(apps)/og/+page.svelte
 #: src/routes/(apps)/og/+page.svelte
 #: src/routes/(apps)/og/+page.svelte
 msgid "ai.stanislav.garden"
-msgstr ""
+msgstr "ai.stanislav.garden"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "Layout 2: Split Simple"
-msgstr ""
+msgstr "Макет 2: Простий розділений"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "Private AI in Your Browser"
-msgstr ""
+msgstr "Приватний AI у вашому браузері"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "💬 Chat"
-msgstr ""
+msgstr "💬 Чат"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "🎤 Transcribe Audio"
-msgstr ""
+msgstr "🎤 Транскрибувати аудіо"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "🗣️ Text to Speech"
-msgstr ""
+msgstr "🗣️ Текст у мовлення"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "🖼️ Remove Background"
-msgstr ""
+msgstr "🖼️ Видалити фон"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "🧮 Count Tokens"
-msgstr ""
+msgstr "🧮 Підрахувати токени"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "Layout 3: Clean Focus"
-msgstr ""
+msgstr "Макет 3: Чистий фокус"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "100% Private"
-msgstr ""
+msgstr "100% Приватно"
 
 #: src/routes/(apps)/og/+page.svelte
 msgid "Run offline: Chat • Transcribe • TTS • Background • Tokens"
-msgstr ""
+msgstr "Працює офлайн: Чат • Транскрибування • TTS • Фон • Токени"
 
 #: src/lib/components/tts/WebGPUToggle.svelte
 msgid "(not supported)"
-msgstr ""
+msgstr "(не підтримується)"
 
 #: src/lib/components/tts/WebGPUToggle.svelte
 msgid "Try WebGPU (experimental) <0/>"
-msgstr ""
+msgstr "Спробувати WebGPU (експериментально) <0/>"
 
 #: src/routes/(apps)/language/+page.svelte
 msgid "Change the language settings for the Local AI Tools application"
-msgstr ""
+msgstr "Змініть мовні налаштування для додатку Local AI Tools"
 
 #: src/routes/(apps)/language/+page.svelte
 msgid "Language Settings"
-msgstr ""
+msgstr "Налаштування мови"
 
 #: src/routes/(apps)/language/+page.svelte
 msgid ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
 "the application."
 msgstr ""
+"Оберіть бажану мову інтерфейсу. Це налаштування застосується до всіх частин\n"
+"додатку."
 
 #: src/routes/(apps)/language/+page.svelte
 msgid "Current Selection:"
-msgstr ""
+msgstr "Поточний вибір:"
 
 #: src/routes/(apps)/language/+page.svelte
 msgid "Save Language Settings"
-msgstr ""
+msgstr "Зберегти мовні налаштування"
 
 #: src/routes/(apps)/transcribe/+page.svelte
 msgid "Whisper Audio Transcription"
-msgstr ""
+msgstr "Транскрибування аудіо Whisper"
 
 #: src/routes/(apps)/transcribe/+page.svelte
 msgid "<0/> Transcribing..."
-msgstr ""
+msgstr "<0/> Транскрибування..."
 
 #: src/routes/(apps)/transcribe/+page.svelte
 msgid "<0/> Start Transcription"
-msgstr ""
+msgstr "<0/> Почати транскрибування"
 
 #: src/routes/(apps)/transcribe/+page.svelte
 msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
-msgstr ""
+msgstr "<0/> Транскрибування виконується локально у вашому браузері. Результати можуть бути не завжди точними."
 
 #: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
 msgid "Anthropic Claude Tokenizer"
-msgstr ""
+msgstr "Токенізатор Anthropic Claude"
 
 #: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
 msgid "Count tokens for Claude models (Opus, Sonnet, Haiku) using the official tokenizer"
-msgstr ""
+msgstr "Підрахунок токенів для моделей Claude (Opus, Sonnet, Haiku) з офіційним токенізатором"
 
 #: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
 msgid "About Claude's Tokenizer"
-msgstr ""
+msgstr "Про токенізатор Claude"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Text copied to clipboard!"
-msgstr ""
+msgstr "Текст скопійовано в буфер обміну!"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Text to Speech Studio"
-msgstr ""
+msgstr "Студія тексту в мовлення"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "<0/> Welcome to TTS Studio"
-msgstr ""
+msgstr "<0/> Ласкаво просимо до TTS студії"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Generate high-quality speech from text, all running locally in your browser!"
-msgstr ""
+msgstr "Генеруйте високоякісне мовлення з тексту, все працює локально у вашому браузері!"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Loading TTS Model"
-msgstr ""
+msgstr "Завантаження TTS моделі"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Initializing text-to-speech model..."
-msgstr ""
+msgstr "Ініціалізація моделі тексту в мовлення..."
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Enter Your Text"
-msgstr ""
+msgstr "Введіть ваш текст"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Get random Svelte quote"
-msgstr ""
+msgstr "Отримати випадкову цитату Svelte"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Type or paste your text here..."
-msgstr ""
+msgstr "Введіть або вставте ваш текст тут..."
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Voice:"
-msgstr ""
+msgstr "Голос:"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Generating"
-msgstr ""
+msgstr "Генерація"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Pause"
-msgstr ""
+msgstr "Пауза"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Play"
-msgstr ""
+msgstr "Відтворити"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Generate"
-msgstr ""
+msgstr "Згенерувати"
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Download Audio"
-msgstr ""
+msgstr "Завантажити аудіо"
 
 #: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
 msgid "OpenAI ChatGPT Tokenizer"
-msgstr ""
+msgstr "Токенізатор OpenAI ChatGPT"
 
 #: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
 msgid "Count tokens for GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT and other OpenAI models"
-msgstr ""
+msgstr "Підрахунок токенів для GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT та інших моделей OpenAI"
 
 #: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
 msgid "About OpenAI's Tokenizer"
-msgstr ""
+msgstr "Про токенізатор OpenAI"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Small and fast"
-msgstr ""
+msgstr "Маленький та швидкий"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Runs on most devices"
-msgstr ""
+msgstr "Працює на більшості пристроїв"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Large, very slow model"
-msgstr ""
+msgstr "Велика, дуже повільна модель"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Generally provides better results"
-msgstr ""
+msgstr "Зазвичай дає кращі результати"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Background Remover ({0})"
-msgstr ""
+msgstr "Видалення фону ({0})"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Loading Background Removal Model"
-msgstr ""
+msgstr "Завантаження моделі видалення фону"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "The AI model is being downloaded and initialized. This may take a few moments."
-msgstr ""
+msgstr "AI модель завантажується та ініціалізується. Це може зайняти кілька хвилин."
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Restart"
-msgstr ""
+msgstr "Перезапустити"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Model Selection"
-msgstr ""
+msgstr "Вибір моделі"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Processing Mode"
-msgstr ""
+msgstr "Режим обробки"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "<0/> Single Image"
-msgstr ""
+msgstr "<0/> Одне зображення"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "<0/> Multiple images"
-msgstr ""
+msgstr "<0/> Кілька зображень"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Upload Images"
-msgstr ""
+msgstr "Завантажити зображення"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Try Again"
-msgstr ""
+msgstr "Спробувати знову"
