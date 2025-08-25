@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-25T22:40:21.084Z\n"
+"PO-Revision-Date: 2025-08-25T23:32:55.399Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -12,12 +12,14 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Local AI Tools"
 msgstr "Локальні AI інструменти"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid ""
 "On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
 "offline!"
@@ -26,39 +28,48 @@ msgstr ""
 "офлайн!"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #01"
 msgstr "Інструмент #01"
 
 #: src/routes/+layout.svelte
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
 msgstr "Чат"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 msgstr "Спілкуйтеся з великими мовними моделями як Gemma3, повністю на вашому пристрої завдяки llama.cpp"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Private & Secure"
 msgstr "Приватно та безпечно"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Works Offline"
 msgstr "Працює офлайн"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "No Data Sharing"
 msgstr "Без передачі даних"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #02"
 msgstr "Інструмент #02"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Transcribe Audio"
 msgstr "Транскрибувати аудіо"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
 "text or a subtitle file."
@@ -67,27 +78,34 @@ msgstr ""
 "текст або файл субтитрів."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "High Accuracy"
 msgstr "Висока точність"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Multiple Formats"
 msgstr "Різні формати"
 
 #: src/routes/+page.svelte
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Local Processing"
 msgstr "Локальна обробка"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #03"
 msgstr "Інструмент #03"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Text to Speech"
 msgstr "Текст у мовлення"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
 "or Kokoro models for high-quality voice synthesis."
@@ -96,22 +114,27 @@ msgstr ""
 "або Kokoro моделей для високоякісного синтезу голосу."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Multiple Models"
 msgstr "Різні моделі"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Natural Voices"
 msgstr "Природні голоси"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #04"
 msgstr "Інструмент #04"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Remove Background"
 msgstr "Видалити фон"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
 "professional results."
@@ -120,38 +143,47 @@ msgstr ""
 "професійних результатів."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "AI-Powered"
 msgstr "На основі AI"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "High Quality"
 msgstr "Висока якість"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #05"
 msgstr "Інструмент #05"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Count Tokens"
 msgstr "Підрахувати токени"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
 msgstr "Оцініть використання токенів для запитів у моделях OpenAI та Anthropic."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "OpenAI & Anthropic"
 msgstr "OpenAI та Anthropic"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Accurate Counts"
 msgstr "Точні підрахунки"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "All processing happens locally in your browser using WebAssembly."
 msgstr "Вся обробка відбувається локально у вашому браузері за допомогою WebAssembly."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "No data is sent to external servers."
 msgstr "Жодні дані не передаються на зовнішні сервери."
 
@@ -167,8 +199,8 @@ msgstr "TTS"
 msgid "BG Remover"
 msgstr "Видалення фону"
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Токени"
 
@@ -264,8 +296,8 @@ msgstr "Обробка не вдалася"
 msgid "<0/> Processing Image"
 msgstr "<0/> Обробка зображення"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Завершено"
 
@@ -862,21 +894,18 @@ msgstr "Змініть мовні налаштування для додатку
 msgid "Language Settings"
 msgstr "Налаштування мови"
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid ""
-"Choose your preferred language for the interface. This setting will apply to all parts of\n"
-"the application."
-msgstr ""
-"Оберіть бажану мову інтерфейсу. Це налаштування застосується до всіх частин\n"
-"додатку."
+#~ msgid ""
+#~ "Choose your preferred language for the interface. This setting will apply to all parts of\n"
+#~ "the application."
+#~ msgstr ""
+#~ "Оберіть бажану мову інтерфейсу. Це налаштування застосується до всіх частин\n"
+#~ "додатку."
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Current Selection:"
-msgstr "Поточний вибір:"
+#~ msgid "Current Selection:"
+#~ msgstr "Поточний вибір:"
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Save Language Settings"
-msgstr "Зберегти мовні налаштування"
+#~ msgid "Save Language Settings"
+#~ msgstr "Зберегти мовні налаштування"
 
 #: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "Whisper Audio Transcription"
@@ -1034,3 +1063,9 @@ msgstr "Завантажити зображення"
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Try Again"
 msgstr "Спробувати знову"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid ""
+"Choose your preferred language for the interface. Click on a language to switch to that\n"
+"version of the application."
+msgstr ""

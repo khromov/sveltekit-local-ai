@@ -32,6 +32,7 @@
 		"@iconify-json/logos": "^1.2.9",
 		"@iconify-json/lucide": "^1.2.64",
 		"@sveltejs/adapter-node": "^5.3.1",
+		"@sveltejs/adapter-static": "^3.0.9",
 		"@sveltejs/kit": "^2.36.2",
 		"@transcribe/transcriber": "^3.0.0",
 		"@webgpu/types": "^0.1.64",

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-25T22:40:21.083Z\n"
+"PO-Revision-Date: 2025-08-25T23:32:55.398Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -12,12 +12,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Local AI Tools"
 msgstr "Lokala AI-verktyg"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid ""
 "On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
 "offline!"
@@ -26,39 +28,48 @@ msgstr ""
 "offline!"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #01"
 msgstr "Verktyg #01"
 
-#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
+#: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
 msgstr "Chatt"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 msgstr "Chatta med stora språkmodeller som Gemma3, helt lokalt tack vare llama.cpp"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Private & Secure"
 msgstr "Privat & säker"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Works Offline"
 msgstr "Fungerar offline"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "No Data Sharing"
 msgstr "Ingen datadelning"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #02"
 msgstr "Verktyg #02"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Transcribe Audio"
 msgstr "Transkribera ljud"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
 "text or a subtitle file."
@@ -67,27 +78,34 @@ msgstr ""
 "text eller undertextfil."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "High Accuracy"
 msgstr "Hög noggrannhet"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Multiple Formats"
 msgstr "Flera format"
 
 #: src/routes/+page.svelte
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Local Processing"
 msgstr "Lokal bearbetning"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #03"
 msgstr "Verktyg #03"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Text to Speech"
 msgstr "Text till tal"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
 "or Kokoro models for high-quality voice synthesis."
@@ -96,22 +114,27 @@ msgstr ""
 "eller Kokoro-modeller för högkvalitativ röstsyntes."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Multiple Models"
 msgstr "Flera modeller"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Natural Voices"
 msgstr "Naturliga röster"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #04"
 msgstr "Verktyg #04"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Remove Background"
 msgstr "Ta bort bakgrund"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
 "professional results."
@@ -120,38 +143,47 @@ msgstr ""
 "professionella resultat."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "AI-Powered"
 msgstr "AI-driven"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "High Quality"
 msgstr "Hög kvalitet"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #05"
 msgstr "Verktyg #05"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Count Tokens"
 msgstr "Räkna tokens"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
 msgstr "Uppskatta tokenanvändning för prompter i OpenAI- och Anthropic-modeller."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "OpenAI & Anthropic"
 msgstr "OpenAI & Anthropic"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Accurate Counts"
 msgstr "Exakta beräkningar"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "All processing happens locally in your browser using WebAssembly."
 msgstr "All bearbetning sker lokalt i din webbläsare med WebAssembly."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "No data is sent to external servers."
 msgstr "Ingen data skickas till externa servrar."
 
@@ -167,8 +199,8 @@ msgstr "TTS"
 msgid "BG Remover"
 msgstr "Bakgrundsborttagare"
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -264,8 +296,8 @@ msgstr ""
 msgid "<0/> Processing Image"
 msgstr "<0/> Bearbetar bild"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% klart"
 
@@ -878,21 +910,18 @@ msgstr "Ändra språkinställningar för Local AI Tools-applikationen"
 msgid "Language Settings"
 msgstr "Språkinställningar"
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid ""
-"Choose your preferred language for the interface. This setting will apply to all parts of\n"
-"the application."
-msgstr ""
-"Välj ditt föredragna språk för gränssnittet. Denna inställning kommer att gälla alla delar av\n"
-"applikationen."
+#~ msgid ""
+#~ "Choose your preferred language for the interface. This setting will apply to all parts of\n"
+#~ "the application."
+#~ msgstr ""
+#~ "Välj ditt föredragna språk för gränssnittet. Denna inställning kommer att gälla alla delar av\n"
+#~ "applikationen."
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Current Selection:"
-msgstr "Aktuellt val:"
+#~ msgid "Current Selection:"
+#~ msgstr "Aktuellt val:"
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Save Language Settings"
-msgstr "Spara språkinställningar"
+#~ msgid "Save Language Settings"
+#~ msgstr "Spara språkinställningar"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Small and fast"
@@ -1034,3 +1063,9 @@ msgstr "Räkna tokens för Claude-modeller (Opus, Sonnet, Haiku) med den officie
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "About Claude's Tokenizer"
 msgstr "Om Claudes Tokenizer"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid ""
+"Choose your preferred language for the interface. Click on a language to switch to that\n"
+"version of the application."
+msgstr ""

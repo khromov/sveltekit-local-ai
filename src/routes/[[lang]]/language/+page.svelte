@@ -1,8 +1,6 @@
 <script lang="ts">
 	import CardInterface from '$lib/components/common/CardInterface.svelte';
 	import ContentArea from '$lib/components/common/ContentArea.svelte';
-	import PrimaryButton from '$lib/components/common/PrimaryButton.svelte';
-	import LanguageSelector from '$lib/components/common/LanguageSelector.svelte';
 	import Toolbar from '$lib/components/common/Toolbar.svelte';
 
 	interface Language {
@@ -14,24 +12,10 @@
 	const availableLanguages: Language[] = [
 		{ code: 'en', name: 'English', nativeName: 'English' },
 		{ code: 'es', name: 'Spanish', nativeName: 'Español' },
-		{ code: 'ja', name: 'Japanese', nativeName: '日本語' }
+		{ code: 'ja', name: 'Japanese', nativeName: '日本語' },
+		{ code: 'sv', name: 'Swedish', nativeName: 'Svenska' },
+		{ code: 'uk', name: 'Ukrainian', nativeName: 'Українська' }
 	];
-
-	let selectedLanguage = $state('en');
-
-	function handleLanguageChange(languageCode: string) {
-		selectedLanguage = languageCode;
-	}
-
-	function handleSaveLanguage() {
-		// TODO: Implement actual language saving/switching functionality
-		console.log(`Language changed to: ${selectedLanguage}`);
-		// For now, just show a placeholder action
-	}
-
-	function getSelectedLanguageInfo() {
-		return availableLanguages.find((lang) => lang.code === selectedLanguage);
-	}
 </script>
 
 <svelte:head>
@@ -50,31 +34,20 @@
 			<div class="settings-section">
 				<h2>Select Language</h2>
 				<p class="description">
-					Choose your preferred language for the interface. This setting will apply to all parts of
-					the application.
+					Choose your preferred language for the interface. Click on a language to switch to that
+					version of the application.
 				</p>
 
-				<div class="language-selection">
-					<LanguageSelector
-						languages={availableLanguages}
-						{selectedLanguage}
-						onLanguageChange={handleLanguageChange}
-					/>
-				</div>
-
-				<div class="current-selection">
-					<h3>Current Selection:</h3>
-					<div class="selection-info">
-						<div class="language-display">
-							<span class="language-code">{selectedLanguage.toUpperCase()}</span>
-							<span class="language-name">{getSelectedLanguageInfo()?.name}</span>
-							<span class="language-native">({getSelectedLanguageInfo()?.nativeName})</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="save-section">
-					<PrimaryButton onClick={handleSaveLanguage}>Save Language Settings</PrimaryButton>
+				<div class="language-grid">
+					{#each availableLanguages as language (language.code)}
+						<a href={language.code === 'en' ? '/' : `/${language.code}`} class="language-card">
+							<div class="language-code">{language.code.toUpperCase()}</div>
+							<div class="language-info">
+								<div class="language-name">{language.name}</div>
+								<div class="language-native">{language.nativeName}</div>
+							</div>
+						</a>
+					{/each}
 				</div>
 			</div>
 		</div>
@@ -83,7 +56,7 @@
 
 <style>
 	.language-settings {
-		max-width: 600px;
+		max-width: 800px;
 		margin: 0 auto;
 	}
 
@@ -102,15 +75,6 @@
 		letter-spacing: 0.5px;
 	}
 
-	h3 {
-		font-size: 1.125rem;
-		font-weight: 600;
-		color: var(--color-text-primary);
-		margin: 0;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-	}
-
 	.description {
 		color: var(--color-text-secondary);
 		font-size: 0.875rem;
@@ -118,40 +82,58 @@
 		margin: 0;
 	}
 
-	.language-selection {
+	.language-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1rem;
 		margin: 1rem 0;
 	}
 
-	.current-selection {
-		padding: 1rem;
-		background: var(--color-background-secondary);
+	.language-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 1.5rem 1rem;
+		background: var(--color-background-main);
 		border: var(--border-brutalist-thick);
 		border-radius: 8px;
 		box-shadow: var(--shadow-brutalist-small);
+		text-decoration: none;
+		transition: all 0.2s ease;
+		cursor: pointer;
 	}
 
-	.selection-info {
-		margin-top: 0.75rem;
+	.language-card:hover {
+		transform: translate(-2px, -2px);
+		box-shadow: var(--shadow-brutalist-medium);
+		background: var(--color-background-secondary);
 	}
 
-	.language-display {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		flex-wrap: wrap;
+	.language-card:active {
+		transform: translate(-1px, -1px);
+		box-shadow: var(--shadow-brutalist-small);
 	}
 
 	.language-code {
-		padding: 0.375rem 0.75rem;
+		padding: 0.5rem 1rem;
 		background: var(--color-primary);
 		color: var(--color-text-primary);
 		border: var(--border-brutalist-thick);
 		border-radius: 4px;
 		font-weight: 700;
-		font-size: 0.75rem;
+		font-size: 0.875rem;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
 		box-shadow: var(--shadow-brutalist-small);
+	}
+
+	.language-info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.25rem;
+		text-align: center;
 	}
 
 	.language-name {
@@ -169,29 +151,46 @@
 		font-style: italic;
 	}
 
-	.save-section {
-		display: flex;
-		justify-content: center;
-		margin: 2rem 0;
-	}
-
 	@media (max-width: 600px) {
 		.language-settings {
 			max-width: none;
 		}
 
-		.language-display {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 0.5rem;
+		.language-grid {
+			grid-template-columns: 1fr;
+			gap: 0.75rem;
+		}
+
+		.language-card {
+			padding: 1.25rem 1rem;
 		}
 
 		h2 {
 			font-size: 1.25rem;
 		}
+	}
 
-		h3 {
-			font-size: 1rem;
+	@media (max-width: 400px) {
+		.language-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.language-card {
+			padding: 1rem 0.75rem;
+			gap: 0.5rem;
+		}
+
+		.language-code {
+			padding: 0.375rem 0.75rem;
+			font-size: 0.75rem;
+		}
+
+		.language-name {
+			font-size: 0.875rem;
+		}
+
+		.language-native {
+			font-size: 0.75rem;
 		}
 	}
 </style>

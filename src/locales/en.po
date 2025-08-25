@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-25T22:40:21.080Z\n"
+"PO-Revision-Date: 2025-08-25T23:32:55.388Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -12,8 +12,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Local AI Tools"
 msgstr "Local AI Tools"
 
@@ -82,8 +83,8 @@ msgstr "Record Audio"
 msgid "Record audio directly from your microphone"
 msgstr "Record audio directly from your microphone"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "OR"
 
@@ -95,8 +96,8 @@ msgstr "Demo File"
 msgid "Listen →"
 msgstr "Listen →"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -136,8 +137,8 @@ msgstr "<0/> Clear Recording"
 msgid "<0/> Transcribing Audio"
 msgstr "<0/> Transcribing Audio"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Complete"
 
@@ -186,21 +187,18 @@ msgstr "Language Settings"
 msgid "Select Language"
 msgstr "Select Language"
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid ""
-"Choose your preferred language for the interface. This setting will apply to all parts of\n"
-"\t\t\t\t\tthe application."
-msgstr ""
-"Choose your preferred language for the interface. This setting will apply to all parts of\n"
-"the application."
+#~ msgid ""
+#~ "Choose your preferred language for the interface. This setting will apply to all parts of\n"
+#~ "\t\t\t\t\tthe application."
+#~ msgstr ""
+#~ "Choose your preferred language for the interface. This setting will apply to all parts of\n"
+#~ "the application."
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Current Selection:"
-msgstr "Current Selection:"
+#~ msgid "Current Selection:"
+#~ msgstr "Current Selection:"
 
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Save Language Settings"
-msgstr "Save Language Settings"
+#~ msgid "Save Language Settings"
+#~ msgstr "Save Language Settings"
 
 #: src/routes/favicon/+page.svelte
 msgid "Favicon Concept Gallery"
@@ -227,6 +225,7 @@ msgstr ""
 "display sizes."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid ""
 "On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
 "\t\t\t\toffline!"
@@ -235,39 +234,48 @@ msgstr ""
 "offline!"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #01"
 msgstr "Tool #01"
 
-#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
+#: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
 msgstr "Chat"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 msgstr "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Private & Secure"
 msgstr "Private & Secure"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Works Offline"
 msgstr "Works Offline"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "No Data Sharing"
 msgstr "No Data Sharing"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #02"
 msgstr "Tool #02"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Transcribe Audio"
 msgstr "Transcribe Audio"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
 "\t\t\t\t\t\ttext or a subtitle file."
@@ -276,27 +284,34 @@ msgstr ""
 "text or a subtitle file."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "High Accuracy"
 msgstr "High Accuracy"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Multiple Formats"
 msgstr "Multiple Formats"
 
 #: src/routes/+page.svelte
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Local Processing"
 msgstr "Local Processing"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #03"
 msgstr "Tool #03"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Text to Speech"
 msgstr "Text to Speech"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
 "\t\t\t\t\t\tor Kokoro models for high-quality voice synthesis."
@@ -305,22 +320,27 @@ msgstr ""
 "or Kokoro models for high-quality voice synthesis."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Multiple Models"
 msgstr "Multiple Models"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Natural Voices"
 msgstr "Natural Voices"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #04"
 msgstr "Tool #04"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Remove Background"
 msgstr "Remove Background"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
 "\t\t\t\t\t\tprofessional results."
@@ -329,38 +349,47 @@ msgstr ""
 "professional results."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "AI-Powered"
 msgstr "AI-Powered"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "High Quality"
 msgstr "High Quality"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Tool #05"
 msgstr "Tool #05"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Count Tokens"
 msgstr "Count Tokens"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
 msgstr "Estimate token usage for prompts across OpenAI and Anthropic models."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "OpenAI & Anthropic"
 msgstr "OpenAI & Anthropic"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Accurate Counts"
 msgstr "Accurate Counts"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "All processing happens locally in your browser using WebAssembly."
 msgstr "All processing happens locally in your browser using WebAssembly."
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "No data is sent to external servers."
 msgstr "No data is sent to external servers."
 
@@ -574,8 +603,8 @@ msgstr "<0/> Raw Tokens ({0})"
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Type or paste text in the input field above to analyze tokens and character count."
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -1034,3 +1063,11 @@ msgstr "BG Remover"
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "or click to browse • JPG, PNG, WebP supported"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid ""
+"Choose your preferred language for the interface. Click on a language to switch to that\n"
+"version of the application."
+msgstr ""
+"Choose your preferred language for the interface. Click on a language to switch to that\n"
+"version of the application."
