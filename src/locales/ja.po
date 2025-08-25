@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-24T22:45:01.952Z\n"
+"PO-Revision-Date: 2025-08-25T11:12:22.187Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
+#: src/routes/+page.svelte
 #: src/routes/(apps)/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "ローカルAIツール"
@@ -155,63 +155,49 @@ msgstr "すべての処理はWebAssemblyを使用してブラウザ内でロー�
 msgid "No data is sent to external servers."
 msgstr "外部サーバーにデータは送信されません。"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "<0/> Batch Processing Complete!"
-msgstr "<0/> バッチ処理完了！"
+#~ msgid "<0/> Batch Processing Complete!"
+#~ msgstr "<0/> バッチ処理完了！"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "{0} Successful"
-msgstr "{0} 成功"
+#~ msgid "{0} Successful"
+#~ msgstr "{0} 成功"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "{0} Failed"
-msgstr "{0} 失敗"
+#~ msgid "{0} Failed"
+#~ msgstr "{0} 失敗"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "<0/> Download All as ZIP"
-msgstr "<0/> すべてをZIPでダウンロード"
+#~ msgid "<0/> Download All as ZIP"
+#~ msgstr "<0/> すべてをZIPでダウンロード"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "<0/> Process More Images"
-msgstr "<0/> さらに画像を処理"
+#~ msgid "<0/> Process More Images"
+#~ msgstr "<0/> さらに画像を処理"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Successfully Processed Images"
-msgstr "正常に処理された画像"
+#~ msgid "Successfully Processed Images"
+#~ msgstr "正常に処理された画像"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Before"
-msgstr "処理前"
+#~ msgid "Before"
+#~ msgstr "処理前"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 msgid "Original "
 msgstr "オリジナル "
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "After"
-msgstr "処理後"
+#~ msgid "After"
+#~ msgstr "処理後"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Processed "
-msgstr "処理済み "
+#~ msgid "Processed "
+#~ msgstr "処理済み "
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Download this image"
-msgstr "この画像をダウンロード"
+#~ msgid "Download this image"
+#~ msgstr "この画像をダウンロード"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Failed to Process"
-msgstr "処理失敗"
+#~ msgid "Failed to Process"
+#~ msgstr "処理失敗"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Failed "
-msgstr "失敗 "
+#~ msgid "Failed "
+#~ msgstr "失敗 "
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Processing failed"
-msgstr "処理に失敗しました"
+#~ msgid "Processing failed"
+#~ msgstr "処理に失敗しました"
 
 #: src/routes/+layout.svelte
 msgid "View source on GitHub"
@@ -245,13 +231,13 @@ msgstr ""
 msgid "<0/> Processing Image"
 msgstr "<0/> 画像処理中"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% 完了"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -267,8 +253,8 @@ msgstr "<0/> {0}枚の画像を選択中"
 msgid "Drop multiple images here"
 msgstr "ここに複数の画像をドロップ"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "または"
 
@@ -284,8 +270,8 @@ msgstr "選択された画像 ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> すべてクリア"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -745,13 +731,11 @@ msgstr "背景除去モデル読み込み中"
 msgid "The AI model is being downloaded and initialized. This may take a few moments."
 msgstr "AIモデルをダウンロードして初期化しています。しばらくお待ちください。"
 
-#: src/routes/(apps)/background-remover/+page.svelte
-msgid "Background Remover ("
-msgstr "背景除去 ("
+#~ msgid "Background Remover ("
+#~ msgstr "背景除去 ("
 
-#: src/routes/(apps)/background-remover/+page.svelte
-msgid "Restart"
-msgstr "リスタート"
+#~ msgid "Restart"
+#~ msgstr "リスタート"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Model Selection"
@@ -947,3 +931,6 @@ msgstr "OpenAIのトークナイザーについて"
 #: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
 msgid "Code and special characters typically use more tokens"
 msgstr "コードと特殊文字は通常より多くのトークンを使用します"
+
+#~ msgid "hello"
+#~ msgstr ""
