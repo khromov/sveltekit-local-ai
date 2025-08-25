@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-25T14:17:48.640Z\n"
+"PO-Revision-Date: 2025-08-25T20:53:12.795Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -82,8 +82,8 @@ msgstr "Record Audio"
 msgid "Record audio directly from your microphone"
 msgstr "Record audio directly from your microphone"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "OR"
 
@@ -244,8 +244,8 @@ msgstr ""
 msgid "Tool #01"
 msgstr "Tool #01"
 
-#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
+#: src/routes/+page.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -580,8 +580,8 @@ msgstr "<0/> Raw Tokens ({0})"
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Type or paste text in the input field above to analyze tokens and character count."
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -991,3 +991,51 @@ msgstr "Generally provides better results"
 
 #~ msgid "Local AI tools"
 #~ msgstr "Local AI tools"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Choose Image"
+msgstr "Choose Image"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Batch Processing"
+msgstr "Batch Processing"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to change image"
+msgstr "Click to change image"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to add more images"
+msgstr "Click to add more images"
+
+#: src/lib/components/common/ErrorDisplay.svelte
+msgid "Retrying..."
+msgstr "Retrying..."
+
+#: src/lib/components/common/AdvancedSection.svelte
+msgid "Advanced Parameters"
+msgstr "Advanced Parameters"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Model..."
+msgstr "Loading Model..."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Load Model"
+msgstr "Load Model"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Changing..."
+msgstr "Changing..."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Change Model"
+msgstr "Change Model"
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Play"
+msgstr "Play"
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Generate"
+msgstr "Generate"

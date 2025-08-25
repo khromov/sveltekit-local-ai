@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-25T14:17:48.641Z\n"
+"PO-Revision-Date: 2025-08-25T20:53:12.815Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -25,8 +25,8 @@ msgstr "Ver código fuente en GitHub"
 msgid "Tool #01"
 msgstr "Herramienta #01"
 
-#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
+#: src/routes/+page.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -238,8 +238,8 @@ msgstr "<0/> {0} imagen{1} seleccionada{1}"
 msgid "Drop multiple images here"
 msgstr "Suelta múltiples imágenes aquí"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "O"
 
@@ -255,8 +255,8 @@ msgstr "Imágenes Seleccionadas ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Limpiar Todo"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -286,8 +286,8 @@ msgstr "Cargar ejemplo"
 msgid "Clear text"
 msgstr "Limpiar texto"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -908,14 +908,11 @@ msgstr "Modelo grande, muy lento"
 msgid "Generally provides better results"
 msgstr "Generalmente proporciona mejores resultados"
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
-"the application."
+"\t\t\t\t\tthe application."
 msgstr ""
-"Elige tu idioma preferido para la interfaz. Esta configuración se aplicará a todas las partes de\n"
-"la aplicación."
 
 #: src/routes/+page.svelte
 msgid ""
@@ -987,10 +984,53 @@ msgid ""
 "token counts."
 msgstr ""
 
-#~ msgid ""
-#~ "Choose your preferred language for the interface. This setting will apply to all parts of\n"
-#~ "\t\t\t\t\tthe application."
-#~ msgstr ""
-
 #~ msgid "Local AI tools"
 #~ msgstr ""
+
+#: src/lib/components/common/ErrorDisplay.svelte
+msgid "Retrying..."
+msgstr ""
+
+#: src/lib/components/common/AdvancedSection.svelte
+msgid "Advanced Parameters"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Model..."
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Load Model"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Changing..."
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Change Model"
+msgstr ""
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Choose Image"
+msgstr ""
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Batch Processing"
+msgstr ""
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to change image"
+msgstr ""
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to add more images"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Play"
+msgstr ""
+
+#: src/routes/(apps)/text-to-speech/+page.svelte
+msgid "Generate"
+msgstr ""
