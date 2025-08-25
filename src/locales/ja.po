@@ -1021,57 +1021,77 @@ msgid ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
 "the application."
 msgstr ""
+"インターフェースの言語を選択してください。この設定は\n"
+"アプリケーションのすべての部分に適用されます。"
 
 #: src/routes/+page.svelte
 msgid ""
 "On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
 "offline!"
 msgstr ""
+"このページでは、ブラウザ上で完全に動作する無料でプライベートなAIツールをご利用いただけます - \n"
+"オフラインでも動作します！"
 
 #: src/routes/+page.svelte
 msgid ""
 "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
 "text or a subtitle file."
 msgstr ""
+"Whisper AIを使用して音声をテキストに変換。任意の音声ファイルをアップロードして、\n"
+"テキストまたは字幕ファイルとしてエクスポート。"
 
 #: src/routes/+page.svelte
 msgid ""
 "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
 "or Kokoro models for high-quality voice synthesis."
 msgstr ""
+"AIモデルを使用してテキストを自然な音声に変換。Kitten TTS、Piper、\n"
+"Kokoroモデルから選択して高品質な音声合成を実現。"
 
 #: src/routes/+page.svelte
 msgid ""
 "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
 "professional results."
 msgstr ""
+"AIを使用して画像の背景を除去。BRIA AIのRMBG v1.4モデルにより\n"
+"プロフェッショナルな仕上がりを実現。"
 
 #: src/routes/favicon/+page.svelte
 msgid ""
 "A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
 "Local AI Tools application."
 msgstr ""
+"ローカルAIツールアプリケーション用にデザインされた\n"
+"512×512形式の{0}個の正方形ファビコンコンセプトのコレクション。"
 
 #: src/routes/favicon/+page.svelte
 msgid ""
 "Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
 "display sizes."
 msgstr ""
+"各ファビコンは、大胆な色使い、強いコントラスト、さまざまな\n"
+"表示サイズに適した明確なアイコノグラフィーを使用しています。"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid ""
 "Calculate how many tokens your text will use with different AI models. Token counts affect\n"
 "context limits for AI conversations."
 msgstr ""
+"さまざまなAIモデルでテキストが使用するトークン数を計算します。トークン数は\n"
+"AI会話のコンテキスト制限に影響します。"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid ""
 "Tokens are the basic units that language models process. A token can be as short as one\n"
 "character or as long as one word. On average:"
 msgstr ""
+"トークンは言語モデルが処理する基本単位です。トークンは1文字から\n"
+"1単語までの長さになることがあります。平均的に："
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid ""
 "Different models use different tokenization methods, so the same text may result in different\n"
 "token counts."
 msgstr ""
+"モデルによって異なるトークン化方法を使用するため、同じテキストでも\n"
+"トークン数が異なる場合があります。"

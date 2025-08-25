@@ -1021,60 +1021,80 @@ msgid ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
 "the application."
 msgstr ""
+"Elige tu idioma preferido para la interfaz. Esta configuración se aplicará a todas las partes de\n"
+"la aplicación."
 
 #: src/routes/+page.svelte
 msgid ""
 "On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
 "offline!"
 msgstr ""
+"En esta página encontrarás herramientas de IA gratuitas y privadas que funcionan completamente en tu navegador - ¡incluso\n"
+"sin conexión!"
 
 #: src/routes/+page.svelte
 msgid ""
 "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
 "text or a subtitle file."
 msgstr ""
+"Convierte voz a texto usando Whisper AI. Sube cualquier archivo de audio existente y expórtalo como\n"
+"texto o archivo de subtítulos."
 
 #: src/routes/+page.svelte
 msgid ""
 "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
 "or Kokoro models for high-quality voice synthesis."
 msgstr ""
+"Convierte texto en voz de sonido natural usando modelos de IA. Elige entre los modelos Kitten TTS, Piper\n"
+"o Kokoro para síntesis de voz de alta calidad."
 
 #: src/routes/+page.svelte
 msgid ""
 "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
 "professional results."
 msgstr ""
+"Elimina fondos de imágenes usando IA. Impulsado por el modelo RMBG v1.4 de BRIA AI para\n"
+"resultados profesionales."
 
 #: src/routes/favicon/+page.svelte
 msgid ""
 "A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
 "Local AI Tools application."
 msgstr ""
+"Una colección de {0} conceptos de favicon cuadrados en formato 512×512, diseñados para la\n"
+"aplicación Herramientas de IA Local."
 
 #: src/routes/favicon/+page.svelte
 msgid ""
 "Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
 "display sizes."
 msgstr ""
+"Cada favicon usa colores audaces, contrastes fuertes e iconografía clara adecuada para varios\n"
+"tamaños de visualización."
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid ""
 "Calculate how many tokens your text will use with different AI models. Token counts affect\n"
 "context limits for AI conversations."
 msgstr ""
+"Calcula cuántos tokens usará tu texto con diferentes modelos de IA. El conteo de tokens afecta\n"
+"los límites de contexto para conversaciones de IA."
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid ""
 "Tokens are the basic units that language models process. A token can be as short as one\n"
 "character or as long as one word. On average:"
 msgstr ""
+"Los tokens son las unidades básicas que procesan los modelos de lenguaje. Un token puede ser tan corto como un\n"
+"carácter o tan largo como una palabra. En promedio:"
 
 #: src/routes/(apps)/count-tokens/+page.svelte
 msgid ""
 "Different models use different tokenization methods, so the same text may result in different\n"
 "token counts."
 msgstr ""
+"Diferentes modelos usan diferentes métodos de tokenización, por lo que el mismo texto puede resultar en diferentes\n"
+"conteos de tokens."
 odels use different tokenization methods, so the same text may result in different\n"
 "token counts."
 msgstr ""
