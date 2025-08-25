@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-25T20:53:12.817Z\n"
+"PO-Revision-Date: 2025-08-25T20:55:46.185Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -21,8 +21,8 @@ msgstr "ローカルAIツール"
 msgid "Tool #01"
 msgstr "ツール #01"
 
-#: src/routes/+layout.svelte
 #: src/routes/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "チャット"
 
@@ -209,8 +209,8 @@ msgstr "<0/> {0}枚の画像を選択中"
 msgid "Drop multiple images here"
 msgstr "ここに複数の画像をドロップ"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "または"
 
@@ -226,8 +226,8 @@ msgstr "選択された画像 ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> すべてクリア"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -854,43 +854,26 @@ msgstr "失敗 {0}"
 msgid "Change language"
 msgstr "言語を変更"
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Change the language settings for the Local AI Tools application"
 msgstr "ローカルAIツールアプリケーションの言語設定を変更"
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Language Settings"
 msgstr "言語設定"
 
-#: src/routes/language/+page.svelte
 #: src/lib/components/common/LanguageSelector.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Select Language"
 msgstr "言語を選択"
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Current Selection:"
 msgstr "現在の選択:"
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Save Language Settings"
 msgstr "言語設定を保存"
-
-#: src/routes/+layout.svelte
-msgid "BG Remover"
-msgstr "背景除去"
-
-#: src/routes/+layout.svelte
-msgid "Transcribe"
-msgstr "文字起こし"
-
-#: src/routes/+layout.svelte
-msgid "TTS"
-msgstr "音声合成"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Small and fast"
@@ -986,9 +969,6 @@ msgstr ""
 "モデルによって異なるトークン化方法を使用するため、同じテキストでも\n"
 "トークン数が異なる場合があります。"
 
-#~ msgid "Local AI tools"
-#~ msgstr ""
-
 #: src/lib/components/common/AdvancedSection.svelte
 msgid "Advanced Parameters"
 msgstr ""
@@ -1035,4 +1015,16 @@ msgstr ""
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Generate"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Transcribe"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "TTS"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "BG Remover"
 msgstr ""

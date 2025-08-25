@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-25T20:53:12.795Z\n"
+"PO-Revision-Date: 2025-08-25T20:55:46.184Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -82,8 +82,8 @@ msgstr "Record Audio"
 msgid "Record audio directly from your microphone"
 msgstr "Record audio directly from your microphone"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "OR"
 
@@ -173,23 +173,19 @@ msgstr "<0/> Copied!"
 msgid "<0/> Copy"
 msgstr "<0/> Copy"
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Change the language settings for the Local AI Tools application"
 msgstr "Change the language settings for the Local AI Tools application"
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Language Settings"
 msgstr "Language Settings"
 
-#: src/routes/language/+page.svelte
 #: src/lib/components/common/LanguageSelector.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Select Language"
 msgstr "Select Language"
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
@@ -198,12 +194,10 @@ msgstr ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
 "the application."
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Current Selection:"
 msgstr "Current Selection:"
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Save Language Settings"
 msgstr "Save Language Settings"
@@ -961,18 +955,6 @@ msgstr "Count tokens for Claude models (Opus, Sonnet, Haiku) using the official 
 msgid "About Claude's Tokenizer"
 msgstr "About Claude's Tokenizer"
 
-#: src/routes/+layout.svelte
-msgid "BG Remover"
-msgstr "BG Remover"
-
-#: src/routes/+layout.svelte
-msgid "Transcribe"
-msgstr "Transcribe"
-
-#: src/routes/+layout.svelte
-msgid "TTS"
-msgstr "TTS"
-
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Small and fast"
 msgstr "Small and fast"
@@ -988,9 +970,6 @@ msgstr "Large, very slow model"
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Generally provides better results"
 msgstr "Generally provides better results"
-
-#~ msgid "Local AI tools"
-#~ msgstr "Local AI tools"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Choose Image"
@@ -1039,3 +1018,15 @@ msgstr "Play"
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Generate"
 msgstr "Generate"
+
+#: src/routes/+layout.svelte
+msgid "Transcribe"
+msgstr "Transcribe"
+
+#: src/routes/+layout.svelte
+msgid "TTS"
+msgstr "TTS"
+
+#: src/routes/+layout.svelte
+msgid "BG Remover"
+msgstr "BG Remover"

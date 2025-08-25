@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-25T20:53:12.815Z\n"
+"PO-Revision-Date: 2025-08-25T20:55:46.184Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -238,8 +238,8 @@ msgstr "<0/> {0} imagen{1} seleccionada{1}"
 msgid "Drop multiple images here"
 msgstr "Suelta múltiples imágenes aquí"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "O"
 
@@ -255,8 +255,8 @@ msgstr "Imágenes Seleccionadas ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Limpiar Todo"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -854,43 +854,26 @@ msgstr "Fallido {0}"
 msgid "Change language"
 msgstr "Cambiar idioma"
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Change the language settings for the Local AI Tools application"
 msgstr "Cambiar la configuración de idioma para la aplicación Herramientas de IA Local"
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Language Settings"
 msgstr "Configuración de Idioma"
 
-#: src/routes/language/+page.svelte
 #: src/lib/components/common/LanguageSelector.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Select Language"
 msgstr "Seleccionar Idioma"
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Current Selection:"
 msgstr "Selección Actual:"
 
-#: src/routes/language/+page.svelte
 #: src/routes/(apps)/language/+page.svelte
 msgid "Save Language Settings"
 msgstr "Guardar Configuración de Idioma"
-
-#: src/routes/+layout.svelte
-msgid "BG Remover"
-msgstr "Eliminador de Fondo"
-
-#: src/routes/+layout.svelte
-msgid "Transcribe"
-msgstr "Transcribir"
-
-#: src/routes/+layout.svelte
-msgid "TTS"
-msgstr "TTS"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Small and fast"
@@ -984,9 +967,6 @@ msgid ""
 "token counts."
 msgstr ""
 
-#~ msgid "Local AI tools"
-#~ msgstr ""
-
 #: src/lib/components/common/ErrorDisplay.svelte
 msgid "Retrying..."
 msgstr ""
@@ -1033,4 +1013,16 @@ msgstr ""
 
 #: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Generate"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Transcribe"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "TTS"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "BG Remover"
 msgstr ""
