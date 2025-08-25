@@ -68,7 +68,7 @@
 					</div>
 				{/if}
 				<button onclick={onChangeModel} disabled={isLoading} class="change-model-btn">
-					{isLoading ? /* @wc-include */ 'Changing...' : /* @wc-include */ 'Change Model'}
+					{isLoading ? 'Changing...' : 'Change Model'}
 				</button>
 			</div>
 		{/if}

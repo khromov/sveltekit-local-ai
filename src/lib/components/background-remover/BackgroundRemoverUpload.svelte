@@ -119,7 +119,7 @@
 	<div class="upload-decoration"></div>
 	<h3>
 		<span class="title-icon"><FolderIcon /></span>
-		{mode === 'single' ? /* @wc-include */ 'Choose Image' : /* @wc-include */ 'Batch Processing'}
+		{mode === 'single' ? 'Choose Image' : 'Batch Processing'}
 	</h3>
 
 	<input
