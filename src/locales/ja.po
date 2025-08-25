@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-25T21:04:05.980Z\n"
+"PO-Revision-Date: 2025-08-25T21:56:49.533Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -21,8 +21,8 @@ msgstr "ローカルAIツール"
 msgid "Tool #01"
 msgstr "ツール #01"
 
-#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
+#: src/routes/+page.svelte
 msgid "Chat"
 msgstr "チャット"
 
@@ -188,8 +188,8 @@ msgstr "すべてのコンセプトは、ブルータリストデザインの美
 msgid "<0/> Processing Image"
 msgstr "<0/> 画像処理中"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% 完了"
 
@@ -209,8 +209,8 @@ msgstr "<0/> {0}枚の画像を選択中"
 msgid "Drop multiple images here"
 msgstr "ここに複数の画像をドロップ"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "または"
 
@@ -226,8 +226,8 @@ msgstr "選択された画像 ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> すべてクリア"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -496,8 +496,8 @@ msgstr "モデル準備完了"
 msgid "Failed to load transcription model. Please try again."
 msgstr "文字起こしモデルの読み込みに失敗しました。もう一度お試しください。"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "再試行"
 
@@ -586,18 +586,22 @@ msgid "Try WebGPU (experimental) <0/>"
 msgstr "WebGPUを試す (実験的) <0/>"
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "モデルの読み込みに失敗しました。接続を確認してもう一度お試しください。"
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "モデル読み込み中"
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
 msgstr "数分かかります。チャットモデルをブラウザにダウンロード中です。"
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "New <0>Chat</0>"
 msgstr "新規<0>チャット</0>"
 
@@ -762,18 +766,26 @@ msgid "Download Audio"
 msgstr "音声をダウンロード"
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "Whisper Audio Transcription"
 msgstr "Whisper音声文字起こし"
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Transcribing..."
 msgstr "<0/> 文字起こし中..."
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Start Transcription"
 msgstr "<0/> 文字起こしを開始"
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
 msgstr "<0/> 文字起こしはブラウザ内でローカルに実行されます。結果は常に正確とは限りません。"
 

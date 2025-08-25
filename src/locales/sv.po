@@ -1,15 +1,19 @@
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
+"PO-Revision-Date: 2025-08-25T21:56:49.534Z\n"
+"Last-Translator: \n"
 "Language: sv\n"
-"MIME-Version: 1.0\n"
+"Language-Team: \n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2025-08-25T21:12:40.444Z\n"
-"POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"MIME-Version: 1.0\n"
 
-#: src/routes/+page.svelte
 #: src/routes/(apps)/og/+page.svelte
+#: src/routes/+page.svelte
 msgid "Local AI Tools"
 msgstr "Lokala AI-verktyg"
 
@@ -25,8 +29,8 @@ msgstr ""
 msgid "Tool #01"
 msgstr "Verktyg #01"
 
-#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
+#: src/routes/+page.svelte
 msgid "Chat"
 msgstr "Chatt"
 
@@ -163,8 +167,8 @@ msgstr "TTS"
 msgid "BG Remover"
 msgstr "Bakgrundsborttagare"
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -653,8 +657,8 @@ msgstr "Byt modell"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Misslyckades att ladda transkriptionsmodell. Försök igen."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Försök igen"
 
@@ -707,18 +711,26 @@ msgid "<0/> Copy"
 msgstr "<0/> Kopiera"
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "Whisper Audio Transcription"
 msgstr "Whisper ljudtranskription"
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Transcribing..."
 msgstr "<0/> Transkriberar..."
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Start Transcription"
 msgstr "<0/> Starta transkription"
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
 msgstr "<0/> Transkriptionen utförs lokalt i din webbläsare. Resultaten är inte alltid korrekta."
 
@@ -780,18 +792,22 @@ msgstr ""
 "antal tokens."
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Misslyckades att ladda modell. Kontrollera din anslutning och försök igen."
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "Laddar modell"
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
 msgstr "Detta tar några minuter. Chattmodellen laddas ner till din webbläsare."
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "New <0>Chat</0>"
 msgstr "Ny <0>chatt</0>"
 

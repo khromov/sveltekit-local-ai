@@ -1,15 +1,19 @@
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
+"PO-Revision-Date: 2025-08-25T21:56:49.535Z\n"
+"Last-Translator: \n"
 "Language: uk\n"
-"MIME-Version: 1.0\n"
+"Language-Team: \n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2025-08-25T21:20:18.035Z\n"
-"POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
 
-#: src/routes/+page.svelte
 #: src/routes/(apps)/og/+page.svelte
+#: src/routes/+page.svelte
 msgid "Local AI Tools"
 msgstr "Локальні AI інструменти"
 
@@ -25,8 +29,8 @@ msgstr ""
 msgid "Tool #01"
 msgstr "Інструмент #01"
 
-#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
+#: src/routes/+page.svelte
 msgid "Chat"
 msgstr "Чат"
 
@@ -163,8 +167,8 @@ msgstr "TTS"
 msgid "BG Remover"
 msgstr "Видалення фону"
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Токени"
 
@@ -569,8 +573,8 @@ msgstr "Змінити модель"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Не вдалося завантажити модель транскрибування. Спробуйте ще раз."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Повторити"
 
@@ -667,18 +671,22 @@ msgid "Listen →"
 msgstr "Слухати →"
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Не вдалося завантажити модель. Перевірте з'єднання та спробуйте знову."
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "Завантаження моделі"
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
 msgstr "Це займе кілька хвилин. Чат-модель завантажується у ваш браузер."
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "New <0>Chat</0>"
 msgstr "Новий <0>чат</0>"
 
@@ -875,18 +883,26 @@ msgid "Save Language Settings"
 msgstr "Зберегти мовні налаштування"
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "Whisper Audio Transcription"
 msgstr "Транскрибування аудіо Whisper"
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Transcribing..."
 msgstr "<0/> Транскрибування..."
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Start Transcription"
 msgstr "<0/> Почати транскрибування"
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
 msgstr "<0/> Транскрибування виконується локально у вашому браузері. Результати можуть бути не завжди точними."
 

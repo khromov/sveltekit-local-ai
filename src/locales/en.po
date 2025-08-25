@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-25T21:04:05.972Z\n"
+"PO-Revision-Date: 2025-08-25T21:56:49.525Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -26,18 +26,26 @@ msgid "View source on GitHub"
 msgstr "View source on GitHub"
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "Whisper Audio Transcription"
 msgstr "Whisper Audio Transcription"
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Transcribing..."
 msgstr "<0/> Transcribing..."
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Start Transcription"
 msgstr "<0/> Start Transcription"
 
 #: src/routes/(apps)/transcribe/+page.svelte
+#: src/routes/(lang)/transcribe/+page.svelte
+#: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
 msgstr "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
 
@@ -57,8 +65,8 @@ msgstr "Model Ready"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Failed to load transcription model. Please try again."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Retry"
 
@@ -82,8 +90,8 @@ msgstr "Record Audio"
 msgid "Record audio directly from your microphone"
 msgstr "Record audio directly from your microphone"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "OR"
 
@@ -95,8 +103,8 @@ msgstr "Demo File"
 msgid "Listen →"
 msgstr "Listen →"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -136,8 +144,8 @@ msgstr "<0/> Clear Recording"
 msgid "<0/> Transcribing Audio"
 msgstr "<0/> Transcribing Audio"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Complete"
 
@@ -238,8 +246,8 @@ msgstr ""
 msgid "Tool #01"
 msgstr "Tool #01"
 
-#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
+#: src/routes/+page.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -752,18 +760,22 @@ msgstr ""
 "token counts."
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Failed to load model. Please check your connection and try again."
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "Loading Model"
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
 msgstr "This will take a couple of minutes. The chat model is being downloaded to your browser."
 
 #: src/routes/(apps)/chat/+page.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 msgid "New <0>Chat</0>"
 msgstr "New <0>Chat</0>"
 
