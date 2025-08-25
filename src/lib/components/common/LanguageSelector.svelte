@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
 	import ChevronDownIcon from 'virtual:icons/lucide/chevron-down';
 
 	interface Language {
@@ -25,13 +24,6 @@
 
 	function getSelectedLanguage() {
 		return languages.find((language) => language.code === selectedLanguage);
-	}
-
-	function handleClickOutside(event: MouseEvent) {
-		const target = event.target as HTMLElement;
-		if (!target.closest('.language-selector-container')) {
-			isExpanded = false;
-		}
 	}
 
 	/*
