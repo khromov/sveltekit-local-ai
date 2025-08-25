@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.877Z\n"
-"PO-Revision-Date: 2025-08-25T12:08:36.661Z\n"
+"PO-Revision-Date: 2025-08-25T12:23:25.792Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -494,8 +494,8 @@ msgstr "No data is sent to external servers."
 msgid "<0/> Processing Image"
 msgstr "<0/> Processing Image"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Complete"
 
@@ -624,8 +624,8 @@ msgstr "<0/> {0} image{1} selected"
 msgid "Drop multiple images here"
 msgstr "Drop multiple images here"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "OR"
 
@@ -641,8 +641,8 @@ msgstr "Selected Images ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Clear All"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -973,8 +973,8 @@ msgstr "Model Ready"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Failed to load transcription model. Please try again."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Retry"
 
@@ -1293,3 +1293,45 @@ msgstr "Processed {0}"
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Failed {0}"
 msgstr "Failed {0}"
+
+#: src/routes/+layout.svelte
+msgid "Change language"
+msgstr "Change language"
+
+#: src/routes/language/+page.svelte
+msgid "Change the language settings for the Local AI Tools application"
+msgstr "Change the language settings for the Local AI Tools application"
+
+#: src/routes/language/+page.svelte
+msgid "Language Settings"
+msgstr "Language Settings"
+
+#: src/lib/components/common/LanguageSelector.svelte
+#: src/routes/language/+page.svelte
+msgid "Select Language"
+msgstr "Select Language"
+
+#: src/routes/language/+page.svelte
+msgid ""
+"Choose your preferred language for the interface. This setting will apply to all parts of\n"
+"\t\t\t\t\tthe application."
+msgstr ""
+"Choose your preferred language for the interface. This setting will apply to all parts of\n"
+"\t\t\t\t\tthe application."
+
+#: src/routes/language/+page.svelte
+msgid "Current Selection:"
+msgstr "Current Selection:"
+
+#: src/routes/language/+page.svelte
+msgid "Save Language Settings"
+msgstr "Save Language Settings"
+
+#~ msgid ""
+#~ "<0>Note:</0> Language translation functionality is currently in development. This\n"
+#~ "\t\t\t\t\t\tinterface allows you to select your preferred language, but the actual translation feature\n"
+#~ "\t\t\t\t\t\twill be implemented in a future update."
+#~ msgstr ""
+#~ "<0>Note:</0> Language translation functionality is currently in development. This\n"
+#~ "\t\t\t\t\t\tinterface allows you to select your preferred language, but the actual translation feature\n"
+#~ "\t\t\t\t\t\twill be implemented in a future update."

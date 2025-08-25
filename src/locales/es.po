@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-25T12:07:53.464Z\n"
+"PO-Revision-Date: 2025-08-25T12:20:52.628Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+page.svelte
 #: src/routes/(apps)/og/+page.svelte
+#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
 msgid "Local AI Tools"
 msgstr "Herramientas de IA Local"
@@ -189,7 +189,6 @@ msgstr "Antes"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Original "
 msgstr "Original "
 
@@ -197,9 +196,8 @@ msgstr "Original "
 msgid "After"
 msgstr "Después"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Processed "
-msgstr "Procesado "
+#~ msgid "Processed "
+#~ msgstr "Procesado "
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Download this image"
@@ -209,9 +207,8 @@ msgstr "Descargar esta imagen"
 msgid "Failed to Process"
 msgstr "Error al Procesar"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Failed "
-msgstr "Fallido "
+#~ msgid "Failed "
+#~ msgstr "Fallido "
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Processing failed"
@@ -221,8 +218,8 @@ msgstr "Procesamiento fallido"
 msgid "<0/> Processing Image"
 msgstr "<0/> Procesando Imagen"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Completado"
 
@@ -296,8 +293,8 @@ msgstr "<0/> {0} imagen{1} seleccionada{1}"
 msgid "Drop multiple images here"
 msgstr "Suelta múltiples imágenes aquí"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "O"
 
@@ -313,8 +310,8 @@ msgstr "Imágenes Seleccionadas ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Limpiar Todo"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -645,8 +642,8 @@ msgstr "Modelo Listo"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Error al cargar el modelo de transcripción. Por favor intenta de nuevo."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Reintentar"
 
@@ -964,4 +961,42 @@ msgstr ""
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Failed {0}"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Change language"
+msgstr ""
+
+#: src/routes/language/+page.svelte
+msgid "Change the language settings for the Local AI Tools application"
+msgstr ""
+
+#: src/routes/language/+page.svelte
+msgid "Language Settings"
+msgstr ""
+
+#: src/routes/language/+page.svelte
+#: src/lib/components/common/LanguageSelector.svelte
+msgid "Select Language"
+msgstr ""
+
+#: src/routes/language/+page.svelte
+msgid ""
+"Choose your preferred language for the interface. This setting will apply to all parts of\n"
+"\t\t\t\t\tthe application."
+msgstr ""
+
+#: src/routes/language/+page.svelte
+msgid "Current Selection:"
+msgstr ""
+
+#: src/routes/language/+page.svelte
+msgid "Save Language Settings"
+msgstr ""
+
+#: src/routes/language/+page.svelte
+msgid ""
+"<0>Note:</0> Language translation functionality is currently in development. This\n"
+"\t\t\t\t\t\tinterface allows you to select your preferred language, but the actual translation feature\n"
+"\t\t\t\t\t\twill be implemented in a future update."
 msgstr ""

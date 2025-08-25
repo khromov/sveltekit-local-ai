@@ -12,6 +12,7 @@
 	import GithubIcon from 'virtual:icons/lucide/github';
 	import SpeechIcon from 'virtual:icons/lucide/speech';
 	import CalculatorIcon from 'virtual:icons/lucide/calculator';
+	import GlobeIcon from 'virtual:icons/lucide/globe';
 	import { Toaster } from 'svelte-sonner';
 	import Tracking from '$lib/components/Tracking.svelte';
 
@@ -109,6 +110,11 @@
 						{/each}
 					</div>
 				</div>
+				<li class="home-item language-item">
+					<a href="/language" class="home-link" aria-label="Change language">
+						<GlobeIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
+					</a>
+				</li>
 				<li class="home-item github-item">
 					<a
 						href="https://github.com/khromov/sveltekit-local-ai"
@@ -334,6 +340,7 @@
 		padding: 0.75rem !important;
 	}
 
+	.language-item .home-link,
 	.github-item .home-link {
 		border: var(--border-brutalist-thick);
 		box-shadow: var(--shadow-brutalist-medium);
@@ -512,6 +519,7 @@
 			gap: 0.5rem;
 		}
 
+		.language-item .home-link,
 		.github-item .home-link {
 			border: var(--border-brutalist-thin);
 			box-shadow: var(--shadow-brutalist-small);
@@ -536,6 +544,7 @@
 			gap: 0.375rem;
 		}
 
+		.language-item .home-link,
 		.github-item .home-link {
 			border: var(--border-brutalist-thin);
 			box-shadow: var(--shadow-brutalist-small);
