@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-25T12:44:46.786Z\n"
+"PO-Revision-Date: 2025-08-25T12:47:21.536Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -12,9 +12,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.svelte
 #: src/routes/+page.svelte
 #: src/routes/(apps)/og/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Local AI Tools"
 msgstr "Local AI Tools"
 
@@ -240,6 +240,7 @@ msgid "Tool #01"
 msgstr "Tool #01"
 
 #: src/routes/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -584,6 +585,7 @@ msgid "Type or paste text in the input field above to analyze tokens and charact
 msgstr "Type or paste text in the input field above to analyze tokens and character count."
 
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -983,3 +985,15 @@ msgstr "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
 #: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
 msgid "Special characters and code may use more tokens"
 msgstr "Special characters and code may use more tokens"
+
+#: src/routes/+layout.svelte
+msgid "BG Remover"
+msgstr "BG Remover"
+
+#: src/routes/+layout.svelte
+msgid "Transcribe"
+msgstr "Transcribe"
+
+#: src/routes/+layout.svelte
+msgid "TTS"
+msgstr "TTS"

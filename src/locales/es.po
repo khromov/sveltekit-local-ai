@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-25T12:44:06.334Z\n"
+"PO-Revision-Date: 2025-08-25T12:47:21.537Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 
 #: src/routes/+page.svelte
-#: src/routes/+layout.svelte
 #: src/routes/(apps)/og/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Local AI Tools"
 msgstr "Herramientas de IA Local"
 
@@ -35,6 +35,7 @@ msgid "Tool #01"
 msgstr "Herramienta #01"
 
 #: src/routes/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -350,6 +351,7 @@ msgid "Clear text"
 msgstr "Limpiar texto"
 
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -1004,3 +1006,15 @@ msgstr "Guardar Configuración de Idioma"
 #~ "<0>Nota:</0> La funcionalidad de traducción de idiomas está actualmente en desarrollo.\n"
 #~ "\t\t\t\t\t\tEsta interfaz te permite seleccionar tu idioma preferido, pero la función de traducción real\n"
 #~ "\t\t\t\t\t\tse implementará en una actualización futura."
+
+#: src/routes/+layout.svelte
+msgid "BG Remover"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Transcribe"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "TTS"
+msgstr ""

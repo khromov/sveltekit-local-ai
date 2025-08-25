@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-25T12:44:06.339Z\n"
+"PO-Revision-Date: 2025-08-25T12:47:21.538Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 
 #: src/routes/+page.svelte
-#: src/routes/+layout.svelte
 #: src/routes/(apps)/og/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Local AI Tools"
 msgstr "ローカルAIツール"
 
@@ -31,6 +31,7 @@ msgid "Tool #01"
 msgstr "ツール #01"
 
 #: src/routes/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "チャット"
 
@@ -458,6 +459,7 @@ msgid "<0/> Clear Recording"
 msgstr "<0/> 録音をクリア"
 
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "トークン"
 
@@ -1004,3 +1006,15 @@ msgstr "言語設定を保存"
 #~ "<0>注意:</0> 言語翻訳機能は現在開発中です。\n"
 #~ "\t\t\t\t\t\tこのインターフェースでは言語を選択できますが、実際の翻訳機能は\n"
 #~ "\t\t\t\t\t\t今後のアップデートで実装される予定です。"
+
+#: src/routes/+layout.svelte
+msgid "BG Remover"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "Transcribe"
+msgstr ""
+
+#: src/routes/+layout.svelte
+msgid "TTS"
+msgstr ""

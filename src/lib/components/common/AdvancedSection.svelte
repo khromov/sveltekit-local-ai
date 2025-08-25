@@ -11,7 +11,7 @@
 	}
 
 	let {
-		title = /* @wc-include */ 'Advanced Parameters',
+		/* @wc-include */ title = 'Advanced Parameters',
 		Icon = SettingsIcon,
 		children
 	}: Props = $props();

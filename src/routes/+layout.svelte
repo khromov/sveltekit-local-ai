@@ -25,11 +25,11 @@
 	// Navigation links
 	const navLinks = [
 		{ path: '/', label: '', icon: 'home' },
-		{ path: '/chat', label: 'Chat', icon: 'chat' },
-		{ path: '/transcribe', label: 'Transcribe', icon: 'mic' },
-		{ path: '/text-to-speech', label: 'TTS', icon: 'speech' },
-		{ path: '/background-remover', /* @ws-include */ label: 'BG Remover', icon: 'image' },
-		{ path: '/count-tokens', label: 'Tokens', icon: 'calculator' }
+		{ path: '/chat', label: /* @wc-include */ 'Chat', icon: 'chat' },
+		{ path: '/transcribe', label: /* @wc-include */ 'Transcribe', icon: 'mic' },
+		{ path: '/text-to-speech', label: /* @wc-include */ 'TTS', icon: 'speech' },
+		{ path: '/background-remover', label: /* @wc-include */ 'BG Remover', icon: 'image' },
+		{ path: '/count-tokens', label: /* @wc-include */ 'Tokens', icon: 'calculator' }
 	];
 
 	// Check if a path is active
