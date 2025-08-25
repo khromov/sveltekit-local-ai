@@ -24,9 +24,11 @@ jobs:
 
       - name: Run wuchale status
         id: wuchale_status
+        env:
+          NO_COLOR: 1
         run: |
           echo "Running wuchale status..."
-          wuchale_output=$(npx wuchale status 2>&1)
+          wuchale_output=$(npx wuchale status 2>&1 | sed 's/\x1B\[[0-9;]*[JKmsu]//g')
           echo "WUCHALE_OUTPUT<<EOF" >> $GITHUB_ENV
           echo "$wuchale_output" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
