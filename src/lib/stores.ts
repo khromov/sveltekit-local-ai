@@ -17,3 +17,4 @@ export const ttsKittenSampleRate = persisted<number>('ttsKittenSampleRate', 2400
 export const ttsText = persisted<string>('ttsText', '');
 export const advancedExpanded = persisted<boolean>('advancedExpanded', false);
 export const tokenCounterText = persisted<string>('tokenCounterText', '');
+export const locale = persisted<string>('locale', 'en');
