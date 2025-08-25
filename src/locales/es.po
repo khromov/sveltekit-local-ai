@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-25T11:17:05.026Z\n"
+"PO-Revision-Date: 2025-08-25T11:22:01.794Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 
 #: src/routes/+page.svelte
-#: src/routes/+layout.svelte
 #: src/routes/(apps)/og/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Local AI Tools"
 msgstr "Herramientas de IA Local"
 
@@ -159,49 +159,63 @@ msgstr "Todo el procesamiento ocurre localmente en tu navegador usando WebAssemb
 msgid "No data is sent to external servers."
 msgstr "No se envían datos a servidores externos."
 
-#~ msgid "<0/> Batch Processing Complete!"
-#~ msgstr "<0/> ¡Procesamiento por Lotes Completado!"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Batch Processing Complete!"
+msgstr "<0/> ¡Procesamiento por Lotes Completado!"
 
-#~ msgid "{0} Successful"
-#~ msgstr "{0} Exitosos"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "{0} Successful"
+msgstr "{0} Exitosos"
 
-#~ msgid "{0} Failed"
-#~ msgstr "{0} Fallidos"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "{0} Failed"
+msgstr "{0} Fallidos"
 
-#~ msgid "<0/> Download All as ZIP"
-#~ msgstr "<0/> Descargar Todo como ZIP"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Download All as ZIP"
+msgstr "<0/> Descargar Todo como ZIP"
 
-#~ msgid "<0/> Process More Images"
-#~ msgstr "<0/> Procesar Más Imágenes"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Process More Images"
+msgstr "<0/> Procesar Más Imágenes"
 
-#~ msgid "Successfully Processed Images"
-#~ msgstr "Imágenes Procesadas Exitosamente"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Successfully Processed Images"
+msgstr "Imágenes Procesadas Exitosamente"
 
-#~ msgid "Before"
-#~ msgstr "Antes"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Before"
+msgstr "Antes"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Original "
 msgstr "Original "
 
-#~ msgid "After"
-#~ msgstr "Después"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "After"
+msgstr "Después"
 
-#~ msgid "Processed "
-#~ msgstr "Procesado "
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processed "
+msgstr "Procesado "
 
-#~ msgid "Download this image"
-#~ msgstr "Descargar esta imagen"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Download this image"
+msgstr "Descargar esta imagen"
 
-#~ msgid "Failed to Process"
-#~ msgstr "Error al Procesar"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed to Process"
+msgstr "Error al Procesar"
 
-#~ msgid "Failed "
-#~ msgstr "Fallido "
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed "
+msgstr "Fallido "
 
-#~ msgid "Processing failed"
-#~ msgstr "Procesamiento fallido"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processing failed"
+msgstr "Procesamiento fallido"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "<0/> Processing Image"
@@ -265,8 +279,8 @@ msgstr ""
 "Cada favicon usa colores audaces, contrastes fuertes e iconografía clara adecuada para varios\n"
 "\t\t\ttamaños de visualización."
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Entrar"
 

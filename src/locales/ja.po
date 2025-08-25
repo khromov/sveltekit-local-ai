@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-25T11:17:05.222Z\n"
+"PO-Revision-Date: 2025-08-25T11:22:01.797Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 
 #: src/routes/+page.svelte
-#: src/routes/+layout.svelte
 #: src/routes/(apps)/og/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Local AI Tools"
 msgstr "ローカルAIツール"
 
@@ -155,49 +155,63 @@ msgstr "すべての処理はWebAssemblyを使用してブラウザ内でロー�
 msgid "No data is sent to external servers."
 msgstr "外部サーバーにデータは送信されません。"
 
-#~ msgid "<0/> Batch Processing Complete!"
-#~ msgstr "<0/> バッチ処理完了！"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Batch Processing Complete!"
+msgstr "<0/> バッチ処理完了！"
 
-#~ msgid "{0} Successful"
-#~ msgstr "{0} 成功"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "{0} Successful"
+msgstr "{0} 成功"
 
-#~ msgid "{0} Failed"
-#~ msgstr "{0} 失敗"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "{0} Failed"
+msgstr "{0} 失敗"
 
-#~ msgid "<0/> Download All as ZIP"
-#~ msgstr "<0/> すべてをZIPでダウンロード"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Download All as ZIP"
+msgstr "<0/> すべてをZIPでダウンロード"
 
-#~ msgid "<0/> Process More Images"
-#~ msgstr "<0/> さらに画像を処理"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Process More Images"
+msgstr "<0/> さらに画像を処理"
 
-#~ msgid "Successfully Processed Images"
-#~ msgstr "正常に処理された画像"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Successfully Processed Images"
+msgstr "正常に処理された画像"
 
-#~ msgid "Before"
-#~ msgstr "処理前"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Before"
+msgstr "処理前"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Original "
 msgstr "オリジナル "
 
-#~ msgid "After"
-#~ msgstr "処理後"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "After"
+msgstr "処理後"
 
-#~ msgid "Processed "
-#~ msgstr "処理済み "
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processed "
+msgstr "処理済み "
 
-#~ msgid "Download this image"
-#~ msgstr "この画像をダウンロード"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Download this image"
+msgstr "この画像をダウンロード"
 
-#~ msgid "Failed to Process"
-#~ msgstr "処理失敗"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed to Process"
+msgstr "処理失敗"
 
-#~ msgid "Failed "
-#~ msgstr "失敗 "
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed "
+msgstr "失敗 "
 
-#~ msgid "Processing failed"
-#~ msgstr "処理に失敗しました"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processing failed"
+msgstr "処理に失敗しました"
 
 #: src/routes/+layout.svelte
 msgid "View source on GitHub"
@@ -231,8 +245,8 @@ msgstr ""
 msgid "<0/> Processing Image"
 msgstr "<0/> 画像処理中"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% 完了"
 
@@ -253,8 +267,8 @@ msgstr "<0/> {0}枚の画像を選択中"
 msgid "Drop multiple images here"
 msgstr "ここに複数の画像をドロップ"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "または"
 
@@ -420,9 +434,9 @@ msgstr "入力テキスト"
 msgid "Load example"
 msgstr "例を読み込む"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
-#: src/routes/(apps)/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Clear text"
 msgstr "テキストをクリア"
 
@@ -450,8 +464,8 @@ msgstr "<0/> 録音をクリア"
 msgid "Tokens"
 msgstr "トークン"
 
-#: src/lib/components/tts/TextStatistics.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "文字数"
 
@@ -547,8 +561,8 @@ msgstr "モデル準備完了"
 msgid "Failed to load transcription model. Please try again."
 msgstr "文字起こしモデルの読み込みに失敗しました。もう一度お試しください。"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/(apps)/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "再試行"
 

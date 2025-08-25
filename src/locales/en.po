@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.877Z\n"
-"PO-Revision-Date: 2025-08-25T11:17:04.833Z\n"
+"PO-Revision-Date: 2025-08-25T11:22:01.782Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -523,49 +523,63 @@ msgstr ""
 "Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
 "\t\t\tdisplay sizes."
 
-#~ msgid "<0/> Batch Processing Complete!"
-#~ msgstr "<0/> Batch Processing Complete!"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Batch Processing Complete!"
+msgstr "<0/> Batch Processing Complete!"
 
-#~ msgid "{0} Successful"
-#~ msgstr "{0} Successful"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "{0} Successful"
+msgstr "{0} Successful"
 
-#~ msgid "{0} Failed"
-#~ msgstr "{0} Failed"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "{0} Failed"
+msgstr "{0} Failed"
 
-#~ msgid "<0/> Download All as ZIP"
-#~ msgstr "<0/> Download All as ZIP"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Download All as ZIP"
+msgstr "<0/> Download All as ZIP"
 
-#~ msgid "<0/> Process More Images"
-#~ msgstr "<0/> Process More Images"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Process More Images"
+msgstr "<0/> Process More Images"
 
-#~ msgid "Successfully Processed Images"
-#~ msgstr "Successfully Processed Images"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Successfully Processed Images"
+msgstr "Successfully Processed Images"
 
-#~ msgid "Before"
-#~ msgstr "Before"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Before"
+msgstr "Before"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Original "
-msgstr "Original"
+msgstr "Original "
 
-#~ msgid "After"
-#~ msgstr "After"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "After"
+msgstr "After"
 
-#~ msgid "Processed "
-#~ msgstr "Processed "
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processed "
+msgstr "Processed "
 
-#~ msgid "Download this image"
-#~ msgstr "Download this image"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Download this image"
+msgstr "Download this image"
 
-#~ msgid "Failed to Process"
-#~ msgstr "Failed to Process"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed to Process"
+msgstr "Failed to Process"
 
-#~ msgid "Failed "
-#~ msgstr "Failed "
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed "
+msgstr "Failed "
 
-#~ msgid "Processing failed"
-#~ msgstr "Processing failed"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processing failed"
+msgstr "Processing failed"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 msgid "<0/> Background Removed!"
@@ -596,8 +610,8 @@ msgstr "<0/> Download"
 msgid "<0/> Process Another"
 msgstr "<0/> Process Another"
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Enter"
 
