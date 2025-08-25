@@ -28,7 +28,7 @@
 		{ path: '/chat', label: 'Chat', icon: 'chat' },
 		{ path: '/transcribe', label: 'Transcribe', icon: 'mic' },
 		{ path: '/text-to-speech', label: 'TTS', icon: 'speech' },
-		{ path: '/background-remover', label: 'BG Remover', icon: 'image' },
+		{ path: '/background-remover', /* @ws-include */ label: 'BG Remover', icon: 'image' },
 		{ path: '/count-tokens', label: 'Tokens', icon: 'calculator' }
 	];
 
