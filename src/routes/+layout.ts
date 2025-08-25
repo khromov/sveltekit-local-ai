@@ -5,17 +5,13 @@ import { browser } from '$app/environment';
 import { loadLocale } from 'wuchale/load-utils';
 import '../locales/loader.svelte.js';
 
-import { locale } from '$lib/stores';
-import { get } from 'svelte/store';
-
 export const ssr = true;
 export const prerender = true;
 
-export const load: LayoutLoad = async ({ url }) => {
-	const currentLocale = browser ? get(locale) : null;
-	if (!currentLocale || !locales.includes(currentLocale)) {
-		return;
-	}
+export const load: LayoutLoad = async ({ url, params }) => {
+	const defaultLocale = 'en';
+	const requestedLocale = params.lang || defaultLocale;
+	const currentLocale = locales.includes(requestedLocale) ? requestedLocale : defaultLocale;
 	if (browser) {
 		await loadLocale(currentLocale);
 	}
