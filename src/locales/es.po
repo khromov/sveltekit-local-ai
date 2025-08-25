@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-25T11:22:01.794Z\n"
+"PO-Revision-Date: 2025-08-25T12:07:53.464Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -952,4 +952,16 @@ msgstr "El código y los caracteres especiales típicamente usan más tokens"
 
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Background Remover ({0})"
+msgstr ""
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Original {0}"
+msgstr ""
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processed {0}"
+msgstr ""
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed {0}"
 msgstr ""

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.877Z\n"
-"PO-Revision-Date: 2025-08-25T11:22:01.782Z\n"
+"PO-Revision-Date: 2025-08-25T12:08:36.661Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -553,7 +553,6 @@ msgstr "Before"
 
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
 #: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Original "
 msgstr "Original "
 
@@ -561,9 +560,8 @@ msgstr "Original "
 msgid "After"
 msgstr "After"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Processed "
-msgstr "Processed "
+#~ msgid "Processed "
+#~ msgstr "Processed "
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Download this image"
@@ -573,9 +571,8 @@ msgstr "Download this image"
 msgid "Failed to Process"
 msgstr "Failed to Process"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Failed "
-msgstr "Failed "
+#~ msgid "Failed "
+#~ msgstr "Failed "
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Processing failed"
@@ -1284,3 +1281,15 @@ msgstr "Code and special characters typically use more tokens"
 #: src/routes/(apps)/background-remover/+page.svelte
 msgid "Background Remover ({0})"
 msgstr "Background Remover ({0})"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Original {0}"
+msgstr "Original {0}"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processed {0}"
+msgstr "Processed {0}"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed {0}"
+msgstr "Failed {0}"
