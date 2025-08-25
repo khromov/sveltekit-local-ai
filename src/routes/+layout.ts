@@ -13,7 +13,7 @@ export const prerender = true;
 
 export const load: LayoutLoad = async ({ url }) => {
 	const currentLocale = browser ? get(locale) : null;
-	if (!locales.includes(currentLocale)) {
+	if (!currentLocale || !locales.includes(currentLocale)) {
 		return;
 	}
 	if (browser) {
