@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-25T21:56:49.532Z\n"
+"PO-Revision-Date: 2025-08-25T22:40:21.081Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/(apps)/og/+page.svelte
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "Herramientas de IA Local"
 
@@ -281,13 +281,13 @@ msgid "Load example"
 msgstr "Cargar ejemplo"
 
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/(apps)/text-to-speech/+page.svelte
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Clear text"
 msgstr "Limpiar texto"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -580,273 +580,261 @@ msgstr "Modelo Listo"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Error al cargar el modelo de transcripción. Por favor intenta de nuevo."
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "Reintentar"
 
-#: src/routes/(apps)/chat/+page.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Error al cargar el modelo. Por favor verifica tu conexión e intenta de nuevo."
 
-#: src/routes/(apps)/chat/+page.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "Cargando Modelo"
 
-#: src/routes/(apps)/chat/+page.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
 msgstr "Esto tomará un par de minutos. El modelo de chat se está descargando a tu navegador."
 
-#: src/routes/(apps)/chat/+page.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "New <0>Chat</0>"
 msgstr "Nuevo <0>Chat</0>"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading Background Removal Model"
 msgstr "Cargando Modelo de Eliminación de Fondo"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "The AI model is being downloaded and initialized. This may take a few moments."
 msgstr "El modelo de IA se está descargando e inicializando. Esto puede tomar unos momentos."
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Model Selection"
 msgstr "Selección de Modelo"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Processing Mode"
 msgstr "Modo de Procesamiento"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "<0/> Single Image"
 msgstr "<0/> Imagen Individual"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "<0/> Multiple images"
 msgstr "<0/> Múltiples imágenes"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Upload Images"
 msgstr "Subir Imágenes"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Try Again"
 msgstr "Intentar de Nuevo"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "<0/> Count LLM Tokens"
 msgstr "<0/> Contar Tokens de LLM"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Anthropic Claude"
 msgstr "Anthropic Claude"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
 msgstr "Cuenta tokens para modelos Claude incluyendo Claude 3 Opus, Sonnet y Haiku"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Open Tokenizer"
 msgstr "Abrir Tokenizador"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "OpenAI ChatGPT"
 msgstr "OpenAI ChatGPT"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
 msgstr "Cuenta tokens para GPT-4, GPT-4o, GPT-3.5 Turbo y otros modelos de OpenAI"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "What are tokens?"
 msgstr "¿Qué son los tokens?"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "1 token ≈ 4 characters in English"
 msgstr "1 token ≈ 4 caracteres en inglés"
 
-#: src/routes/(apps)/transcribe/+page.svelte
-#: src/routes/(lang)/transcribe/+page.svelte
 #: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "Whisper Audio Transcription"
 msgstr "Transcripción de Audio Whisper"
 
-#: src/routes/(apps)/transcribe/+page.svelte
-#: src/routes/(lang)/transcribe/+page.svelte
 #: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Transcribing..."
 msgstr "<0/> Transcribiendo..."
 
-#: src/routes/(apps)/transcribe/+page.svelte
-#: src/routes/(lang)/transcribe/+page.svelte
 #: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Start Transcription"
 msgstr "<0/> Iniciar Transcripción"
 
-#: src/routes/(apps)/transcribe/+page.svelte
-#: src/routes/(lang)/transcribe/+page.svelte
 #: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
 msgstr "<0/> La transcripción se realiza localmente en tu navegador. Los resultados pueden no ser siempre precisos."
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Text copied to clipboard!"
 msgstr "¡Texto copiado al portapapeles!"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Text to Speech Studio"
 msgstr "Estudio de Texto a Voz"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "<0/> Welcome to TTS Studio"
 msgstr "<0/> Bienvenido al Estudio TTS"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Generate high-quality speech from text, all running locally in your browser!"
 msgstr "¡Genera voz de alta calidad desde texto, todo funcionando localmente en tu navegador!"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Loading TTS Model"
 msgstr "Cargando Modelo TTS"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Initializing text-to-speech model..."
 msgstr "Inicializando modelo de texto a voz..."
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Enter Your Text"
 msgstr "Ingresa Tu Texto"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Get random Svelte quote"
 msgstr "Obtener cita aleatoria de Svelte"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Type or paste your text here..."
 msgstr "Escribe o pega tu texto aquí..."
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Voice:"
 msgstr "Voz:"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Generating"
 msgstr "Generando"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Pause"
 msgstr "Pausar"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Download Audio"
 msgstr "Descargar Audio"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "OpenGraph Image Generator"
 msgstr "Generador de Imágenes OpenGraph"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "OpenGraph Images"
 msgstr "Imágenes OpenGraph"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Simple designs optimized for social media sharing (1200×630)"
 msgstr "Diseños simples optimizados para compartir en redes sociales (1200×630)"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Layout 1: Simple & Bold"
 msgstr "Diseño 1: Simple y Audaz"
 
-#: src/routes/(apps)/og/+page.svelte
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Local AI"
 msgstr "IA Local"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
 msgstr "Chat • Transcribir • Texto a Voz • Eliminador de Fondo • Contar Tokens"
 
-#: src/routes/(apps)/og/+page.svelte
-#: src/routes/(apps)/og/+page.svelte
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "ai.stanislav.garden"
 msgstr "ai.stanislav.garden"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Layout 2: Split Simple"
 msgstr "Diseño 2: División Simple"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Private AI in Your Browser"
 msgstr "IA Privada en Tu Navegador"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "💬 Chat"
 msgstr "💬 Chat"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "🎤 Transcribe Audio"
 msgstr "🎤 Transcribir Audio"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "🗣️ Text to Speech"
 msgstr "🗣️ Texto a Voz"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "🖼️ Remove Background"
 msgstr "🖼️ Eliminar Fondo"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "🧮 Count Tokens"
 msgstr "🧮 Contar Tokens"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Layout 3: Clean Focus"
 msgstr "Diseño 3: Enfoque Limpio"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "100% Private"
 msgstr "100% Privado"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Run offline: Chat • Transcribe • TTS • Background • Tokens"
 msgstr "Funciona sin conexión: Chat • Transcribir • TTS • Fondo • Tokens"
 
-#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Anthropic Claude Tokenizer"
 msgstr "Tokenizador de Anthropic Claude"
 
-#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Count tokens for Claude models (Opus, Sonnet, Haiku) using the official tokenizer"
 msgstr "Cuenta tokens para modelos Claude (Opus, Sonnet, Haiku) usando el tokenizador oficial"
 
-#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "About Claude's Tokenizer"
 msgstr "Acerca del Tokenizador de Claude"
 
-#: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "OpenAI ChatGPT Tokenizer"
 msgstr "Tokenizador de OpenAI ChatGPT"
 
-#: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Count tokens for GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT and other OpenAI models"
 msgstr "Cuenta tokens para GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT y otros modelos de OpenAI"
 
-#: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "About OpenAI's Tokenizer"
 msgstr "Acerca del Tokenizador de OpenAI"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Background Remover ({0})"
 msgstr "Eliminador de Fondo ({0})"
 
@@ -866,44 +854,44 @@ msgstr "Fallido {0}"
 msgid "Change language"
 msgstr "Cambiar idioma"
 
-#: src/routes/(apps)/language/+page.svelte
+#: src/routes/[[lang]]/language/+page.svelte
 msgid "Change the language settings for the Local AI Tools application"
 msgstr "Cambiar la configuración de idioma para la aplicación Herramientas de IA Local"
 
-#: src/routes/(apps)/language/+page.svelte
+#: src/routes/[[lang]]/language/+page.svelte
 msgid "Language Settings"
 msgstr "Configuración de Idioma"
 
-#: src/routes/(apps)/language/+page.svelte
 #: src/lib/components/common/LanguageSelector.svelte
+#: src/routes/[[lang]]/language/+page.svelte
 msgid "Select Language"
 msgstr "Seleccionar Idioma"
 
-#: src/routes/(apps)/language/+page.svelte
+#: src/routes/[[lang]]/language/+page.svelte
 msgid "Current Selection:"
 msgstr "Selección Actual:"
 
-#: src/routes/(apps)/language/+page.svelte
+#: src/routes/[[lang]]/language/+page.svelte
 msgid "Save Language Settings"
 msgstr "Guardar Configuración de Idioma"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Small and fast"
 msgstr "Pequeño y rápido"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Runs on most devices"
 msgstr "Funciona en la mayoría de dispositivos"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Large, very slow model"
 msgstr "Modelo grande, muy lento"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Generally provides better results"
 msgstr "Generalmente proporciona mejores resultados"
 
-#: src/routes/(apps)/language/+page.svelte
+#: src/routes/[[lang]]/language/+page.svelte
 msgid ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
 "\t\t\t\t\tthe application."
@@ -959,7 +947,7 @@ msgstr ""
 "Cada favicon usa colores audaces, contrastes fuertes e iconografía clara adecuada para varios\n"
 "tamaños de visualización."
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid ""
 "Calculate how many tokens your text will use with different AI models. Token counts affect\n"
 "context limits for AI conversations."
@@ -967,7 +955,7 @@ msgstr ""
 "Calcula cuántos tokens usará tu texto con diferentes modelos de IA. El conteo de tokens afecta\n"
 "los límites de contexto para conversaciones de IA."
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid ""
 "Tokens are the basic units that language models process. A token can be as short as one\n"
 "character or as long as one word. On average:"
@@ -975,7 +963,7 @@ msgstr ""
 "Los tokens son las unidades básicas que procesan los modelos de lenguaje. Un token puede ser tan corto como un\n"
 "carácter o tan largo como una palabra. En promedio:"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid ""
 "Different models use different tokenization methods, so the same text may result in different\n"
 "token counts."
@@ -1023,11 +1011,11 @@ msgstr "Clic para cambiar imagen"
 msgid "Click to add more images"
 msgstr "Clic para agregar más imágenes"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Play"
 msgstr "Reproducir"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Generate"
 msgstr "Generar"
 

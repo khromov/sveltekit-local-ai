@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-25T21:56:49.534Z\n"
+"PO-Revision-Date: 2025-08-25T22:40:21.083Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/(apps)/og/+page.svelte
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "Lokala AI-verktyg"
 
@@ -29,8 +29,8 @@ msgstr ""
 msgid "Tool #01"
 msgstr "Verktyg #01"
 
-#: src/routes/+layout.svelte
 #: src/routes/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Chatt"
 
@@ -167,8 +167,8 @@ msgstr "TTS"
 msgid "BG Remover"
 msgstr "Bakgrundsborttagare"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -335,8 +335,8 @@ msgstr "Klicka för att lägga till fler bilder"
 msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "eller klicka för att bläddra • JPG, PNG, WebP stöds"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "ELLER"
 
@@ -352,8 +352,8 @@ msgstr "Valda bilder ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Rensa alla"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -467,8 +467,8 @@ msgid "Load example"
 msgstr "Ladda exempel"
 
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/(apps)/text-to-speech/+page.svelte
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Clear text"
 msgstr "Rensa text"
 
@@ -569,7 +569,7 @@ msgid "Advanced Parameters"
 msgstr "Avancerade parametrar"
 
 #: src/lib/components/common/LanguageSelector.svelte
-#: src/routes/(apps)/language/+page.svelte
+#: src/routes/[[lang]]/language/+page.svelte
 msgid "Select Language"
 msgstr "Välj språk"
 
@@ -657,8 +657,8 @@ msgstr "Byt modell"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Misslyckades att ladda transkriptionsmodell. Försök igen."
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "Försök igen"
 
@@ -710,35 +710,27 @@ msgstr "<0/> Kopierat!"
 msgid "<0/> Copy"
 msgstr "<0/> Kopiera"
 
-#: src/routes/(apps)/transcribe/+page.svelte
-#: src/routes/(lang)/transcribe/+page.svelte
 #: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "Whisper Audio Transcription"
 msgstr "Whisper ljudtranskription"
 
-#: src/routes/(apps)/transcribe/+page.svelte
-#: src/routes/(lang)/transcribe/+page.svelte
 #: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Transcribing..."
 msgstr "<0/> Transkriberar..."
 
-#: src/routes/(apps)/transcribe/+page.svelte
-#: src/routes/(lang)/transcribe/+page.svelte
 #: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Start Transcription"
 msgstr "<0/> Starta transkription"
 
-#: src/routes/(apps)/transcribe/+page.svelte
-#: src/routes/(lang)/transcribe/+page.svelte
 #: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
 msgstr "<0/> Transkriptionen utförs lokalt i din webbläsare. Resultaten är inte alltid korrekta."
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "<0/> Count LLM Tokens"
 msgstr "<0/> Räkna LLM-tokens"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid ""
 "Calculate how many tokens your text will use with different AI models. Token counts affect\n"
 "context limits for AI conversations."
@@ -746,32 +738,32 @@ msgstr ""
 "Beräkna hur många tokens din text kommer att använda med olika AI-modeller. Antal tokens påverkar\n"
 "kontextgränser för AI-konversationer."
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Anthropic Claude"
 msgstr "Anthropic Claude"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
 msgstr "Räkna tokens för Claude-modeller inklusive Claude 3 Opus, Sonnet och Haiku"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Open Tokenizer"
 msgstr "Öppna tokenizer"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "OpenAI ChatGPT"
 msgstr "OpenAI ChatGPT"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
 msgstr "Räkna tokens för GPT-4, GPT-4o, GPT-3.5 Turbo och andra OpenAI-modeller"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "What are tokens?"
 msgstr "Vad är tokens?"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid ""
 "Tokens are the basic units that language models process. A token can be as short as one\n"
 "character or as long as one word. On average:"
@@ -779,11 +771,11 @@ msgstr ""
 "Tokens är de grundläggande enheter som språkmodeller bearbetar. En token kan vara så kort som ett\n"
 "tecken eller så lång som ett ord. I genomsnitt:"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "1 token ≈ 4 characters in English"
 msgstr "1 token ≈ 4 tecken på engelska"
 
-#: src/routes/(apps)/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid ""
 "Different models use different tokenization methods, so the same text may result in different\n"
 "token counts."
@@ -791,106 +783,102 @@ msgstr ""
 "Olika modeller använder olika tokeniseringsmetoder, så samma text kan resultera i olika\n"
 "antal tokens."
 
-#: src/routes/(apps)/chat/+page.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Misslyckades att ladda modell. Kontrollera din anslutning och försök igen."
 
-#: src/routes/(apps)/chat/+page.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "Laddar modell"
 
-#: src/routes/(apps)/chat/+page.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
 msgstr "Detta tar några minuter. Chattmodellen laddas ner till din webbläsare."
 
-#: src/routes/(apps)/chat/+page.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "New <0>Chat</0>"
 msgstr "Ny <0>chatt</0>"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "OpenGraph Image Generator"
 msgstr "OpenGraph bildgenerator"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "OpenGraph Images"
 msgstr "OpenGraph-bilder"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Simple designs optimized for social media sharing (1200×630)"
 msgstr "Enkla designer optimerade för delning på sociala medier (1200×630)"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Layout 1: Simple & Bold"
 msgstr "Layout 1: Enkel & djärv"
 
-#: src/routes/(apps)/og/+page.svelte
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Local AI"
 msgstr "Lokal AI"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
 msgstr "Chatt • Transkribera • Text till tal • Bakgrundsborttagare • Räkna tokens"
 
-#: src/routes/(apps)/og/+page.svelte
-#: src/routes/(apps)/og/+page.svelte
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "ai.stanislav.garden"
 msgstr "ai.stanislav.garden"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Layout 2: Split Simple"
 msgstr "Layout 2: Delad enkel"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Private AI in Your Browser"
 msgstr "Privat AI i din webbläsare"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "💬 Chat"
 msgstr "💬 Chatt"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "🎤 Transcribe Audio"
 msgstr "🎤 Transkribera ljud"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "🗣️ Text to Speech"
 msgstr "🗣️ Text till tal"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "🖼️ Remove Background"
 msgstr "🖼️ Ta bort bakgrund"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "🧮 Count Tokens"
 msgstr "🧮 Räkna tokens"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Layout 3: Clean Focus"
 msgstr "Layout 3: Rent fokus"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "100% Private"
 msgstr "100% privat"
 
-#: src/routes/(apps)/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Run offline: Chat • Transcribe • TTS • Background • Tokens"
 msgstr "Kör offline: Chatt • Transkribera • TTS • Bakgrund • Tokens"
 
-#: src/routes/(apps)/language/+page.svelte
+#: src/routes/[[lang]]/language/+page.svelte
 msgid "Change the language settings for the Local AI Tools application"
 msgstr "Ändra språkinställningar för Local AI Tools-applikationen"
 
-#: src/routes/(apps)/language/+page.svelte
+#: src/routes/[[lang]]/language/+page.svelte
 msgid "Language Settings"
 msgstr "Språkinställningar"
 
-#: src/routes/(apps)/language/+page.svelte
+#: src/routes/[[lang]]/language/+page.svelte
 msgid ""
 "Choose your preferred language for the interface. This setting will apply to all parts of\n"
 "the application."
@@ -898,151 +886,151 @@ msgstr ""
 "Välj ditt föredragna språk för gränssnittet. Denna inställning kommer att gälla alla delar av\n"
 "applikationen."
 
-#: src/routes/(apps)/language/+page.svelte
+#: src/routes/[[lang]]/language/+page.svelte
 msgid "Current Selection:"
 msgstr "Aktuellt val:"
 
-#: src/routes/(apps)/language/+page.svelte
+#: src/routes/[[lang]]/language/+page.svelte
 msgid "Save Language Settings"
 msgstr "Spara språkinställningar"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Small and fast"
 msgstr "Liten och snabb"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Runs on most devices"
 msgstr "Körs på de flesta enheter"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Large, very slow model"
 msgstr "Stor, mycket långsam modell"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Generally provides better results"
 msgstr "Ger generellt bättre resultat"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Background Remover ({0})"
 msgstr "Bakgrundsborttagare ({0})"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading Background Removal Model"
 msgstr "Laddar bakgrundsborttagningsmodell"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "The AI model is being downloaded and initialized. This may take a few moments."
 msgstr "AI-modellen laddas ner och initialiseras. Detta kan ta några ögonblick."
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Restart"
 msgstr "Starta om"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Model Selection"
 msgstr "Modellval"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Processing Mode"
 msgstr "Bearbetningsläge"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "<0/> Single Image"
 msgstr "<0/> Enkel bild"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "<0/> Multiple images"
 msgstr "<0/> Flera bilder"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Upload Images"
 msgstr "Ladda upp bilder"
 
-#: src/routes/(apps)/background-remover/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Try Again"
 msgstr "Försök igen"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Text copied to clipboard!"
 msgstr "Text kopierad till urklipp!"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Text to Speech Studio"
 msgstr "Text-till-tal-studio"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "<0/> Welcome to TTS Studio"
 msgstr "<0/> Välkommen till TTS-studion"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Generate high-quality speech from text, all running locally in your browser!"
 msgstr "Generera högkvalitativt tal från text, allt körs lokalt i din webbläsare!"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Loading TTS Model"
 msgstr "Laddar TTS-modell"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Initializing text-to-speech model..."
 msgstr "Initialiserar text-till-tal-modell..."
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Enter Your Text"
 msgstr "Ange din text"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Get random Svelte quote"
 msgstr "Få slumpmässigt Svelte-citat"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Type or paste your text here..."
 msgstr "Skriv eller klistra in din text här..."
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Voice:"
 msgstr "Röst:"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Generating"
 msgstr "Genererar"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Pause"
 msgstr "Pausa"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Play"
 msgstr "Spela"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Generate"
 msgstr "Generera"
 
-#: src/routes/(apps)/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Download Audio"
 msgstr "Ladda ner ljud"
 
-#: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "OpenAI ChatGPT Tokenizer"
 msgstr "OpenAI ChatGPT Tokenizer"
 
-#: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Count tokens for GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT and other OpenAI models"
 msgstr "Räkna tokens för GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT och andra OpenAI-modeller"
 
-#: src/routes/(apps)/count-tokens/openai-chatgpt/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "About OpenAI's Tokenizer"
 msgstr "Om OpenAI:s Tokenizer"
 
-#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Anthropic Claude Tokenizer"
 msgstr "Anthropic Claude Tokenizer"
 
-#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Count tokens for Claude models (Opus, Sonnet, Haiku) using the official tokenizer"
 msgstr "Räkna tokens för Claude-modeller (Opus, Sonnet, Haiku) med den officiella tokenizer"
 
-#: src/routes/(apps)/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "About Claude's Tokenizer"
 msgstr "Om Claudes Tokenizer"
