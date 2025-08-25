@@ -1033,4 +1033,4 @@ msgstr "Quitar Fondo"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "or click to browse • JPG, PNG, WebP supported"
-msgstr ""
+msgstr "o haz clic para explorar • JPG, PNG, WebP compatibles"

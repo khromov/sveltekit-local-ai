@@ -1033,4 +1033,4 @@ msgstr "背景除去"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "or click to browse • JPG, PNG, WebP supported"
-msgstr ""
+msgstr "またはクリックして参照 • JPG、PNG、WebP対応"
