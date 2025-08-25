@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-25T13:40:04.952Z\n"
+"PO-Revision-Date: 2025-08-25T14:13:11.482Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -287,8 +287,8 @@ msgstr "Cargar ejemplo"
 msgid "Clear text"
 msgstr "Limpiar texto"
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -863,8 +863,8 @@ msgstr "Cambiar la configuración de idioma para la aplicación Herramientas de 
 msgid "Language Settings"
 msgstr "Configuración de Idioma"
 
-#: src/routes/language/+page.svelte
 #: src/lib/components/common/LanguageSelector.svelte
+#: src/routes/language/+page.svelte
 msgid "Select Language"
 msgstr "Seleccionar Idioma"
 
@@ -981,3 +981,8 @@ msgid ""
 "Different models use different tokenization methods, so the same text may result in different\n"
 "token counts."
 msgstr ""
+
+#~ msgid ""
+#~ "Choose your preferred language for the interface. This setting will apply to all parts of\n"
+#~ "\t\t\t\t\tthe application."
+#~ msgstr ""

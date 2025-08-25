@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-25T13:40:04.953Z\n"
+"PO-Revision-Date: 2025-08-25T14:13:11.506Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -395,8 +395,8 @@ msgstr "録音完了"
 msgid "<0/> Clear Recording"
 msgstr "<0/> 録音をクリア"
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "トークン"
 
@@ -863,8 +863,8 @@ msgstr "ローカルAIツールアプリケーションの言語設定を変更"
 msgid "Language Settings"
 msgstr "言語設定"
 
-#: src/routes/language/+page.svelte
 #: src/lib/components/common/LanguageSelector.svelte
+#: src/routes/language/+page.svelte
 msgid "Select Language"
 msgstr "言語を選択"
 
@@ -983,3 +983,8 @@ msgid ""
 msgstr ""
 "モデルによって異なるトークン化方法を使用するため、同じテキストでも\n"
 "トークン数が異なる場合があります。"
+
+#~ msgid ""
+#~ "Choose your preferred language for the interface. This setting will apply to all parts of\n"
+#~ "\t\t\t\t\tthe application."
+#~ msgstr ""
