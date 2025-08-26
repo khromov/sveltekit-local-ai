@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-26T22:29:00.950Z\n"
+"PO-Revision-Date: 2025-08-26T22:38:27.106Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -1074,94 +1074,92 @@ msgstr ""
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "Recommended"
-msgstr ""
+msgstr "Рекомендовано"
 
 #: src/lib/components/count-tokens/RawTokensDisplay.svelte
 msgid "Token ID: {0}"
-msgstr ""
+msgstr "ID токена: {0}"
 
 #: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copied!"
-msgstr ""
+msgstr "Скопійовано!"
 
 #: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copy text"
-msgstr ""
+msgstr "Копіювати текст"
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Stop preview"
-msgstr ""
+msgstr "Зупинити попередній перегляд"
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Preview voice"
-msgstr ""
+msgstr "Попередній перегляд голосу"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Remove {0}"
-msgstr ""
+msgstr "Видалити {0}"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Cached Model"
-msgstr ""
+msgstr "Завантаження моделі з кешу"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Downloading Model"
-msgstr ""
+msgstr "Завантаження моделі"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading..."
-msgstr ""
+msgstr "Завантаження..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading model from local cache..."
-msgstr ""
+msgstr "Завантаження моделі з локального кешу..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "The transcription model is being downloaded to your browser."
-msgstr ""
+msgstr "Модель транскрибації завантажується у ваш браузер."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading model... Progress tracking not available in this browser."
-msgstr ""
+msgstr "Завантаження моделі... Відстеження прогресу не доступне в цьому браузері."
 
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Failed to load model"
-msgstr ""
+msgstr "Не вдалося завантажити модель"
 
 #: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Average token length: ~4 characters for English text"
-msgstr ""
+msgstr "Середня довжина токена: ~4 символи для англійського тексту"
 
 #: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Code and special characters typically use more tokens"
-msgstr ""
+msgstr "Код та спеціальні символи звичайно використовують більше токенів"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Processing image and removing background..."
-msgstr ""
+msgstr "Обробка зображення та видалення фону..."
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Processing image {0} of {1}..."
-msgstr ""
+msgstr "Обробка зображення {0} з {1}..."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reloading..."
-msgstr ""
+#~ msgid "Reloading..."
+#~ msgstr "Перезавантаження..."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reload Model"
-msgstr ""
+#~ msgid "Reload Model"
+#~ msgstr "Перезавантажити модель"
 
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-msgstr ""
+msgstr "Claude використовує BPE (кодування байтових пар) токенайзер, схожий на GPT моделі"
 
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Special characters and code may use more tokens"
-msgstr ""
+msgstr "Спеціальні символи та код можуть використовувати більше токенів"

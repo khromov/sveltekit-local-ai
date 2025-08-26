@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-26T22:29:00.934Z\n"
+"PO-Revision-Date: 2025-08-26T22:38:27.095Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -1139,13 +1139,11 @@ msgstr "Processing image and removing background..."
 msgid "Processing image {0} of {1}..."
 msgstr "Processing image {0} of {1}..."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reloading..."
-msgstr "Reloading..."
+#~ msgid "Reloading..."
+#~ msgstr "Reloading..."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reload Model"
-msgstr "Reload Model"
+#~ msgid "Reload Model"
+#~ msgstr "Reload Model"
 
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Failed to load model"

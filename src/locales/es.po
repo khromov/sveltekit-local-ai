@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-26T22:29:00.939Z\n"
+"PO-Revision-Date: 2025-08-26T22:38:27.100Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -1071,97 +1071,97 @@ msgid ""
 "Choose your preferred language for the interface. Click on a language to switch to that\n"
 "version of the application."
 msgstr ""
+"Elige tu idioma preferido para la interfaz. Haz clic en un idioma para cambiar a esa\n"
+"versión de la aplicación."
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "Recommended"
-msgstr ""
+msgstr "Recomendado"
 
 #: src/lib/components/count-tokens/RawTokensDisplay.svelte
 msgid "Token ID: {0}"
-msgstr ""
+msgstr "ID de Token: {0}"
 
 #: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copied!"
-msgstr ""
+msgstr "¡Copiado!"
 
 #: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copy text"
-msgstr ""
+msgstr "Copiar texto"
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Stop preview"
-msgstr ""
+msgstr "Detener vista previa"
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Preview voice"
-msgstr ""
+msgstr "Previsualizar voz"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Remove {0}"
-msgstr ""
+msgstr "Eliminar {0}"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Cached Model"
-msgstr ""
+msgstr "Cargando Modelo en Caché"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Downloading Model"
-msgstr ""
+msgstr "Descargando Modelo"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading..."
-msgstr ""
+msgstr "Cargando..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading model from local cache..."
-msgstr ""
+msgstr "Cargando modelo desde caché local..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "The transcription model is being downloaded to your browser."
-msgstr ""
+msgstr "El modelo de transcripción se está descargando a tu navegador."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading model... Progress tracking not available in this browser."
-msgstr ""
+msgstr "Cargando modelo... El seguimiento del progreso no está disponible en este navegador."
 
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Failed to load model"
-msgstr ""
+msgstr "Error al cargar el modelo"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Processing image and removing background..."
-msgstr ""
+msgstr "Procesando imagen y eliminando fondo..."
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Processing image {0} of {1}..."
-msgstr ""
+msgstr "Procesando imagen {0} de {1}..."
 
 #: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Average token length: ~4 characters for English text"
-msgstr ""
+msgstr "Longitud promedio de token: ~4 caracteres para texto en inglés"
 
 #: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Code and special characters typically use more tokens"
-msgstr ""
+msgstr "El código y los caracteres especiales normalmente usan más tokens"
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reloading..."
-msgstr ""
+#~ msgid "Reloading..."
+#~ msgstr "Recargando..."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reload Model"
-msgstr ""
+#~ msgid "Reload Model"
+#~ msgstr "Recargar Modelo"
 
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-msgstr ""
+msgstr "Claude usa un tokenizador BPE (Byte Pair Encoding) similar a los modelos GPT"
 
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Special characters and code may use more tokens"
-msgstr ""
+msgstr "Los caracteres especiales y el código pueden usar más tokens"
