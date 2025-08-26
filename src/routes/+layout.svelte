@@ -25,7 +25,6 @@
 
 	// Get current language from URL and generate localized navigation links
 	const currentLang = $derived(getCurrentLanguage(page.url.pathname));
-	const navLinks = $derived(getLocalizedNavLinks(currentLang));
 
 	// Check if a path is active
 	function isActive(path: string): boolean {
@@ -59,7 +58,7 @@
 		<nav class="main-nav">
 			<ul>
 				<div class="nav-left">
-					{#each navLinks as link (link.path)}
+					{#each getLocalizedNavLinks(currentLang) as link (link.path)}
 						{#if link.icon === 'home'}
 							<!-- TODO: Make SPA work with language switching -->
 							<li class="home-item">
@@ -78,7 +77,7 @@
 						{/if}
 					{/each}
 					<div class="center-items">
-						{#each navLinks as link (link.path)}
+						{#each getLocalizedNavLinks(currentLang) as link (link.path)}
 							{#if link.icon !== 'home'}
 								<li>
 									<a href={link.path} class:active={isActive(link.path)}>
