@@ -15,7 +15,7 @@
 	import GlobeIcon from 'virtual:icons/lucide/globe';
 	import { Toaster } from 'svelte-sonner';
 	import Tracking from '$lib/components/Tracking.svelte';
-	import { getCurrentLanguage, createLocalizedLink, getLocalizedNavLinks } from '$lib/i18n-utils';
+	import { getCurrentLanguage, createLocalizedLink } from '$lib/i18n-utils';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -32,6 +32,26 @@
 	}
 
 	const DEFAULT_TITLE = 'Local AI tools';
+
+	const getLocalizedNavLinks = (currentLang: string) => {
+		console.log('calling getlocalizednavlin', currentLang);
+		return [
+			{ path: createLocalizedLink('/', currentLang), label: '', icon: 'home' },
+			{ path: createLocalizedLink('/chat', currentLang), label: 'Chat', icon: 'chat' },
+			{ path: createLocalizedLink('/transcribe', currentLang), label: 'Transcribe', icon: 'mic' },
+			{ path: createLocalizedLink('/text-to-speech', currentLang), label: 'TTS', icon: 'speech' },
+			{
+				path: createLocalizedLink('/background-remover', currentLang),
+				label: 'BG Remover',
+				icon: 'image'
+			},
+			{
+				path: createLocalizedLink('/count-tokens', currentLang),
+				label: 'Tokens',
+				icon: 'calculator'
+			}
+		];
+	};
 </script>
 
 <svelte:head>

@@ -29,7 +29,10 @@ export function createLocalizedLink(path: string, lang: string): string {
  * @param currentLang - The current language code
  * @returns Array of navigation link objects with localized paths
  */
+/* TODO: This one doesn't work for some reason to translate */
+/*
 export function getLocalizedNavLinks(currentLang: string) {
+	console.log('calling getlocalizednavlin', currentLang);
 	return [
 		{ path: createLocalizedLink('/', currentLang), label: '', icon: 'home' },
 		{ path: createLocalizedLink('/chat', currentLang), label: 'Chat', icon: 'chat' },
@@ -43,6 +46,7 @@ export function getLocalizedNavLinks(currentLang: string) {
 		{ path: createLocalizedLink('/count-tokens', currentLang), label: 'Tokens', icon: 'calculator' }
 	];
 }
+*/
 
 /**
  * Get the current language from a page store (for use in components)
