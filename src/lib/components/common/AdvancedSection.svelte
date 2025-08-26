@@ -10,7 +10,11 @@
 		children: Snippet;
 	}
 
-	let { title = 'Advanced Parameters', Icon = SettingsIcon, children }: Props = $props();
+	let {
+		title = /* @wc-include */ 'Advanced Parameters',
+		Icon = SettingsIcon,
+		children
+	}: Props = $props();
 
 	function handleToggle() {
 		$advancedExpanded = !$advancedExpanded;

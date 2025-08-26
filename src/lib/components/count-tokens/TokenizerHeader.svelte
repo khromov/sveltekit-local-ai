@@ -2,6 +2,7 @@
 	import type { Component } from 'svelte';
 	import { page } from '$app/stores';
 	import RefreshCwIcon from 'virtual:icons/lucide/refresh-cw';
+	import { getCurrentLanguageFromPage, getTokenizerPaths } from '$lib/i18n-utils';
 
 	interface Props {
 		icon: Component;
@@ -11,25 +12,30 @@
 
 	let { icon: Icon, title, description }: Props = $props();
 
+	// Get current language and create localized tokenizer paths
+	const currentLang = $derived(getCurrentLanguageFromPage($page));
+	const tokenizerPaths = $derived(getTokenizerPaths(currentLang));
+
 	// Determine counterpart page for quick switching based on current pathname
-	let targetHref = $state<string | null>(null);
-	let targetLabel = $state<string | null>(null);
-
-	const OPENAI_PATH = '/count-tokens/openai-chatgpt';
-	const ANTHROPIC_PATH = '/count-tokens/anthropic-claude';
-
-	$effect(() => {
+	const targetHref = $derived.by(() => {
 		const path = $page.url.pathname;
-		if (path.startsWith(OPENAI_PATH)) {
-			targetHref = ANTHROPIC_PATH;
-			targetLabel = 'Switch to Anthropic';
-		} else if (path.startsWith(ANTHROPIC_PATH)) {
-			targetHref = OPENAI_PATH;
-			targetLabel = 'Switch to OpenAI';
-		} else {
-			targetHref = null;
-			targetLabel = null;
+
+		if (path.includes('openai-chatgpt')) {
+			return tokenizerPaths.anthropic;
+		} else if (path.includes('anthropic-claude')) {
+			return tokenizerPaths.openai;
 		}
+		return null;
+	});
+
+	const targetLabel = $derived.by(() => {
+		const path = $page.url.pathname;
+		if (path.includes('openai-chatgpt')) {
+			return 'Switch to Anthropic';
+		} else if (path.includes('anthropic-claude')) {
+			return 'Switch to OpenAI';
+		}
+		return null;
 	});
 </script>
 

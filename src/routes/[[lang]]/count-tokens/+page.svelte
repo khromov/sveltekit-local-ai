@@ -3,6 +3,12 @@
 	import BrainIcon from 'virtual:icons/lucide/brain';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 	import ChevronRightIcon from 'virtual:icons/lucide/chevron-right';
+	import { page } from '$app/stores';
+	import { getCurrentLanguageFromPage, getTokenizerPaths } from '$lib/i18n-utils';
+
+	// Get current language and create localized tokenizer paths
+	const currentLang = $derived(getCurrentLanguageFromPage($page));
+	const tokenizerPaths = $derived(getTokenizerPaths(currentLang));
 </script>
 
 <div class="tokenizers-container">
@@ -18,7 +24,7 @@
 	</div>
 
 	<div class="tokenizer-cards">
-		<a href="/count-tokens/anthropic-claude" class="tokenizer-card claude-card">
+		<a href={tokenizerPaths.anthropic} class="tokenizer-card claude-card">
 			<div class="card-decoration"></div>
 			<div class="card-content">
 				<div class="card-icon">
@@ -35,7 +41,7 @@
 			</div>
 		</a>
 
-		<a href="/count-tokens/openai-chatgpt" class="tokenizer-card chatgpt-card">
+		<a href={tokenizerPaths.openai} class="tokenizer-card chatgpt-card">
 			<div class="card-decoration"></div>
 			<div class="card-content">
 				<div class="card-icon">

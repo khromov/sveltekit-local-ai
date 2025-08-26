@@ -2,6 +2,7 @@
 	import CardInterface from '$lib/components/common/CardInterface.svelte';
 	import ContentArea from '$lib/components/common/ContentArea.svelte';
 	import Toolbar from '$lib/components/common/Toolbar.svelte';
+	import { locales } from '$lib/i18n-utils';
 
 	interface Language {
 		code: string;
@@ -9,13 +10,21 @@
 		nativeName: string;
 	}
 
-	const availableLanguages: Language[] = [
-		{ code: 'en', name: 'English', nativeName: 'English' },
-		{ code: 'es', name: 'Spanish', nativeName: 'Español' },
-		{ code: 'ja', name: 'Japanese', nativeName: '日本語' },
-		{ code: 'sv', name: 'Swedish', nativeName: 'Svenska' },
-		{ code: 'uk', name: 'Ukrainian', nativeName: 'Українська' }
-	];
+	// Language metadata - this should match the locales from Wuchale config
+	const languageMetadata: Record<string, { name: string; nativeName: string }> = {
+		en: { name: 'English', nativeName: 'English' },
+		es: { name: 'Spanish', nativeName: 'Español' },
+		ja: { name: 'Japanese', nativeName: '日本語' },
+		sv: { name: 'Swedish', nativeName: 'Svenska' },
+		uk: { name: 'Ukrainian', nativeName: 'Українська' }
+	};
+
+	// Create available languages from Wuchale locales
+	const availableLanguages: Language[] = locales.map((code) => ({
+		code,
+		name: languageMetadata[code]?.name || code.toUpperCase(),
+		nativeName: languageMetadata[code]?.nativeName || code.toUpperCase()
+	}));
 </script>
 
 <svelte:head>

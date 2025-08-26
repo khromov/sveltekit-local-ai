@@ -45,6 +45,27 @@ export function getLocalizedNavLinks(currentLang: string) {
 }
 
 /**
+ * Get the current language from a page store (for use in components)
+ * @param page - The page store object from $app/stores
+ * @returns The current language code
+ */
+export function getCurrentLanguageFromPage(page: { url: { pathname: string } }): string {
+	return getCurrentLanguage(page.url.pathname);
+}
+
+/**
+ * Create localized links for specific tokenizer paths
+ * @param currentLang - The current language code
+ * @returns Object with localized tokenizer paths
+ */
+export function getTokenizerPaths(currentLang: string) {
+	return {
+		openai: createLocalizedLink('/count-tokens/openai-chatgpt', currentLang),
+		anthropic: createLocalizedLink('/count-tokens/anthropic-claude', currentLang)
+	};
+}
+
+/**
  * Export the available locales from Wuchale for use in other components
  */
 export { locales };

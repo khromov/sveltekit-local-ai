@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-26T23:04:59.199Z\n"
+"PO-Revision-Date: 2025-08-26T23:13:48.813Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Local AI Tools"
 msgstr "ローカルAIツール"
 
@@ -368,9 +368,9 @@ msgstr "入力テキスト"
 msgid "Load example"
 msgstr "例を読み込む"
 
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Clear text"
 msgstr "テキストをクリア"
 
@@ -398,8 +398,8 @@ msgstr "<0/> 録音をクリア"
 msgid "Tokens"
 msgstr "トークン"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/lib/components/tts/TextStatistics.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Characters"
 msgstr "文字数"
 
@@ -1016,17 +1016,14 @@ msgstr ""
 msgid "Recommended"
 msgstr "推奨"
 
-#: src/lib/components/count-tokens/RawTokensDisplay.svelte
-msgid "Token ID: {0}"
-msgstr "トークンID: {0}"
+#~ msgid "Token ID: {0}"
+#~ msgstr "トークンID: {0}"
 
-#: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copied!"
 msgstr "コピーしました！"
 
-#: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copy text"
@@ -1073,14 +1070,11 @@ msgstr "文字起こしモデルをブラウザにダウンロード中です。
 msgid "Loading model... Progress tracking not available in this browser."
 msgstr "モデル読み込み中... このブラウザではプログレス追跡は利用できません。"
 
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "Average token length: ~4 characters for English text"
-msgstr "平均トークン長: 英語テキストで約4文字"
+#~ msgid "Average token length: ~4 characters for English text"
+#~ msgstr "平均トークン長: 英語テキストで約4文字"
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "Code and special characters typically use more tokens"
-msgstr "コードと特殊文字は通常より多くのトークンを使用します"
+#~ msgid "Code and special characters typically use more tokens"
+#~ msgstr "コードと特殊文字は通常より多くのトークンを使用します"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Processing image and removing background..."
@@ -1090,13 +1084,11 @@ msgstr "画像を処理して背景を除去中..."
 msgid "Processing image {0} of {1}..."
 msgstr "画像 {0}/{1} を処理中..."
 
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-msgstr "ClaudeはGPTモデルと同様のBPE（バイトペアエンコーディング）トークナイザーを使用します"
+#~ msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+#~ msgstr "ClaudeはGPTモデルと同様のBPE（バイトペアエンコーディング）トークナイザーを使用します"
 
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "Special characters and code may use more tokens"
-msgstr "特殊文字とコードはより多くのトークンを使用する可能性があります"
+#~ msgid "Special characters and code may use more tokens"
+#~ msgstr "特殊文字とコードはより多くのトークンを使用する可能性があります"
 
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Reloading..."
@@ -1105,3 +1097,15 @@ msgstr "再読み込み中..."
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Reload Model"
 msgstr "モデルを再読み込み"
+
+#: src/lib/components/count-tokens/TokenizerHeader.svelte
+msgid "Switch to Anthropic"
+msgstr ""
+
+#: src/lib/components/count-tokens/TokenizerHeader.svelte
+msgid "Switch to OpenAI"
+msgstr ""
+
+#: src/lib/components/common/AdvancedSection.svelte
+msgid "Advanced Parameters"
+msgstr ""
