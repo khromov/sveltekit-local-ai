@@ -303,7 +303,13 @@
 
 	/* When in chat mode (model loaded), apply height constraints */
 	.chat-page.chat-mode {
-		height: 100vh; /* Full viewport height for chat interface */
+		/* Calculate height accounting for navigation and container padding:
+		   - Container padding: 1rem top + 1rem bottom = 2rem
+		   - Navigation height: ~0.75rem padding × 2 + ~3rem nav content + 1rem margin-bottom = ~5.5rem
+		   - Border thickness: 3px top + 3px bottom = 6px
+		   - Box shadow: 5px bottom = 5px
+		   Total: ~7.5rem + 11px */
+		height: calc(100vh - 7.5rem - 11px);
 		overflow: hidden; /* Prevent overall page scroll when chat scrolls */
 	}
 
@@ -345,7 +351,12 @@
 
 	@media (max-width: 600px) {
 		.chat-page.chat-mode {
-			height: 100vh; /* Full height on mobile */
+			/* Adjust for smaller mobile padding:
+			   - Container padding: 0.75rem × 2 = 1.5rem  
+			   - Navigation: ~0.5rem padding × 2 + ~2.5rem nav content + 1rem margin = ~4.5rem
+			   - Border thickness: 6px + Box shadow: 5px = 11px
+			   Total: ~6rem + 11px */
+			height: calc(100vh - 6rem - 11px);
 		}
 
 		.loading {
@@ -354,6 +365,17 @@
 
 		.desktop-only {
 			display: none;
+		}
+	}
+
+	@media (max-width: 400px) {
+		.chat-page.chat-mode {
+			/* Adjust for smallest mobile padding:
+			   - Container padding: 0.5rem × 2 = 1rem
+			   - Navigation: similar to 600px breakpoint = ~4.5rem
+			   - Border thickness: 6px + Box shadow: 5px = 11px
+			   Total: ~5.5rem + 11px */
+			height: calc(100vh - 5.5rem - 11px);
 		}
 	}
 </style>
