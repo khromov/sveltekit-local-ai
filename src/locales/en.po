@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-26T23:19:44.509Z\n"
+"PO-Revision-Date: 2025-08-26T23:22:45.878Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -57,8 +57,8 @@ msgstr "Model Ready"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Failed to load transcription model. Please try again."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "Retry"
@@ -1048,8 +1048,8 @@ msgstr "Loading Cached Model"
 msgid "Downloading Model"
 msgstr "Downloading Model"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading..."
 msgstr "Loading..."
 
@@ -1117,3 +1117,27 @@ msgstr "Switch to OpenAI"
 #: src/lib/components/common/AdvancedSection.svelte
 msgid "Advanced Parameters"
 msgstr "Advanced Parameters"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "RMBG-1.4"
+msgstr "RMBG-1.4"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "RMBG v1.4"
+msgstr "RMBG v1.4"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "QUANT"
+msgstr "QUANT"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "BEN2-ONNX"
+msgstr "BEN2-ONNX"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "BEN2"
+msgstr "BEN2"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "FP16"
+msgstr "FP16"

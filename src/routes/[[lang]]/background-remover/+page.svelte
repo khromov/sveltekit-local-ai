@@ -39,31 +39,30 @@
 	// Mode selection
 	let processingMode = $state<'single' | 'batch'>('single');
 
-	// Model selection
-	const AVAILABLE_MODELS = [
-		{
-			id: 'RMBG-1.4', //briaai/
-			name: 'RMBG v1.4',
-			/* @wc-include */ description: ['Small and fast', 'Runs on most devices'],
-			size: '44MB',
-			precision: 'QUANT'
-		},
-		{
-			id: 'BEN2-ONNX', //briaai/
-			name: 'BEN2',
-			/* @wc-include */ description: [
-				'Large, very slow model',
-				'Generally provides better results'
-			],
-			size: '235MB',
-			precision: 'FP16'
-		}
-	];
+	const getAvailableModels = () => {
+		return [
+			{
+				id: 'RMBG-1.4', //briaai/
+				name: 'RMBG v1.4',
+				description: ['Small and fast', 'Runs on most devices'],
+				size: '44MB',
+				precision: 'QUANT'
+			},
+			{
+				id: 'BEN2-ONNX', //briaai/
+				name: 'BEN2',
+				description: ['Large, very slow model', 'Generally provides better results'],
+				size: '235MB',
+				precision: 'FP16'
+			}
+		];
+	};
+
 	let selectedModelId = $state('RMBG-1.4');
 
 	// Computed model info for display
 	let modelInfo = $derived(
-		`Background Remover (${AVAILABLE_MODELS.find((m) => m.id === selectedModelId)?.name})`
+		`Background Remover (${getAvailableModels().find((m) => m.id === selectedModelId)?.name})`
 	);
 
 	// Single image mode

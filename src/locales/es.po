@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-26T23:19:44.509Z\n"
+"PO-Revision-Date: 2025-08-26T23:22:45.878Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -579,8 +579,8 @@ msgstr "Modelo Listo"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Error al cargar el modelo de transcripción. Por favor intenta de nuevo."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "Reintentar"
@@ -1052,8 +1052,8 @@ msgstr "Cargando Modelo en Caché"
 msgid "Downloading Model"
 msgstr "Descargando Modelo"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading..."
 msgstr "Cargando..."
 
@@ -1081,8 +1081,8 @@ msgstr "Procesando imagen y eliminando fondo..."
 msgid "Processing image {0} of {1}..."
 msgstr "Procesando imagen {0} de {1}..."
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "Longitud promedio de token: ~4 caracteres para texto en inglés"
 
@@ -1116,4 +1116,28 @@ msgstr ""
 
 #: src/lib/components/common/AdvancedSection.svelte
 msgid "Advanced Parameters"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "RMBG-1.4"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "RMBG v1.4"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "QUANT"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "BEN2-ONNX"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "BEN2"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "FP16"
 msgstr ""

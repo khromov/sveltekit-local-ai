@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-26T23:19:44.510Z\n"
+"PO-Revision-Date: 2025-08-26T23:22:45.879Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -363,8 +363,8 @@ msgstr "<0/> Завантажити"
 msgid "<0/> Process Another"
 msgstr "<0/> Обробити інше"
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -1071,8 +1071,8 @@ msgstr "Завантаження моделі... Відстеження прог
 msgid "Failed to load model"
 msgstr "Не вдалося завантажити модель"
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "Середня довжина токена: ~4 символи для англійського тексту"
 
@@ -1114,4 +1114,28 @@ msgstr ""
 
 #: src/lib/components/common/AdvancedSection.svelte
 msgid "Advanced Parameters"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "RMBG-1.4"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "RMBG v1.4"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "QUANT"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "BEN2-ONNX"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "BEN2"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "FP16"
 msgstr ""
