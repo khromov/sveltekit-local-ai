@@ -34,7 +34,6 @@
 	const DEFAULT_TITLE = 'Local AI tools';
 
 	const getLocalizedNavLinks = (currentLang: string) => {
-		console.log('calling getlocalizednavlin', currentLang);
 		return [
 			{ path: createLocalizedLink('/', currentLang), label: '', icon: 'home' },
 			{ path: createLocalizedLink('/chat', currentLang), label: 'Chat', icon: 'chat' },
