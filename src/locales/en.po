@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-26T23:13:48.801Z\n"
+"PO-Revision-Date: 2025-08-26T23:19:44.509Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "Local AI Tools"
 
@@ -563,8 +563,8 @@ msgstr "Type or paste text in the input field above to analyze tokens and charac
 msgid "Tokens"
 msgstr "Tokens"
 
-#: src/lib/components/tts/TextStatistics.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "Characters"
 
@@ -580,9 +580,9 @@ msgstr "Input Text"
 msgid "Load example"
 msgstr "Load example"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Clear text"
 msgstr "Clear text"
 
@@ -1016,14 +1016,17 @@ msgstr ""
 msgid "Recommended"
 msgstr "Recommended"
 
-#~ msgid "Token ID: {0}"
-#~ msgstr "Token ID: {0}"
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "Token ID: {0}"
+msgstr "Token ID: {0}"
 
+#: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copied!"
 msgstr "Copied!"
 
+#: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copy text"
@@ -1086,17 +1089,22 @@ msgstr "Reload Model"
 msgid "Failed to load model"
 msgstr "Failed to load model"
 
-#~ msgid "Average token length: ~4 characters for English text"
-#~ msgstr "Average token length: ~4 characters for English text"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Average token length: ~4 characters for English text"
+msgstr "Average token length: ~4 characters for English text"
 
-#~ msgid "Code and special characters typically use more tokens"
-#~ msgstr "Code and special characters typically use more tokens"
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Code and special characters typically use more tokens"
+msgstr "Code and special characters typically use more tokens"
 
-#~ msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-#~ msgstr "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+msgstr "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
 
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Special characters and code may use more tokens"
-msgstr "Special characters and code may use more tokensSpecial characters and code may use more tokens"
+msgstr "Special characters and code may use more tokens"
 
 #: src/lib/components/count-tokens/TokenizerHeader.svelte
 msgid "Switch to Anthropic"

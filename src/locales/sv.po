@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-26T23:13:48.814Z\n"
+"PO-Revision-Date: 2025-08-26T23:19:44.510Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "Lokala AI-verktyg"
 
@@ -436,8 +436,8 @@ msgstr "<0/> Modeller körs lokalt i din webbläsare. Ingen data skickas till ex
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Skriv eller klistra in text i fältet ovan för att analysera tokens och antal tecken."
 
-#: src/lib/components/tts/TextStatistics.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "Tecken"
 
@@ -453,9 +453,9 @@ msgstr "Inmatningstext"
 msgid "Load example"
 msgstr "Ladda exempel"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Clear text"
 msgstr "Rensa text"
 
@@ -1014,14 +1014,17 @@ msgstr ""
 msgid "Recommended"
 msgstr "Rekommenderad"
 
-#~ msgid "Token ID: {0}"
-#~ msgstr "Token-ID: {0}"
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "Token ID: {0}"
+msgstr "Token-ID: {0}"
 
+#: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copied!"
 msgstr "Kopierad!"
 
+#: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copy text"
@@ -1068,11 +1071,14 @@ msgstr "Transkriptionsmodellen laddas ner till din webbläsare."
 msgid "Loading model... Progress tracking not available in this browser."
 msgstr "Laddar modell... Framståndsspårning inte tillgänglig i denna webbläsare."
 
-#~ msgid "Average token length: ~4 characters for English text"
-#~ msgstr "Genomsnittlig tokenlängd: ~4 tecken för engelsk text"
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Average token length: ~4 characters for English text"
+msgstr "Genomsnittlig tokenlängd: ~4 tecken för engelsk text"
 
-#~ msgid "Code and special characters typically use more tokens"
-#~ msgstr "Kod och specialtecken använder vanligtvis fler tokens"
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Code and special characters typically use more tokens"
+msgstr "Kod och specialtecken använder vanligtvis fler tokens"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Processing image and removing background..."
@@ -1082,11 +1088,13 @@ msgstr "Bearbetar bild och tar bort bakgrund..."
 msgid "Processing image {0} of {1}..."
 msgstr "Bearbetar bild {0} av {1}..."
 
-#~ msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-#~ msgstr "Claude använder en BPE (Byte Pair Encoding) tokenizer liknande GPT-modeller"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+msgstr "Claude använder en BPE (Byte Pair Encoding) tokenizer liknande GPT-modeller"
 
-#~ msgid "Special characters and code may use more tokens"
-#~ msgstr "Specialtecken och kod kan använda fler tokens"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Special characters and code may use more tokens"
+msgstr "Specialtecken och kod kan använda fler tokens"
 
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Reloading..."

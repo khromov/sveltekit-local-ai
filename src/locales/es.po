@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-26T23:13:48.810Z\n"
+"PO-Revision-Date: 2025-08-26T23:19:44.509Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "Herramientas de IA Local"
 
@@ -280,9 +280,9 @@ msgstr "Texto de Entrada"
 msgid "Load example"
 msgstr "Cargar ejemplo"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Clear text"
 msgstr "Limpiar texto"
 
@@ -290,8 +290,8 @@ msgstr "Limpiar texto"
 msgid "Tokens"
 msgstr "Tokens"
 
-#: src/lib/components/tts/TextStatistics.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "Caracteres"
 
@@ -1016,14 +1016,17 @@ msgstr ""
 msgid "Recommended"
 msgstr "Recomendado"
 
-#~ msgid "Token ID: {0}"
-#~ msgstr "ID de Token: {0}"
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "Token ID: {0}"
+msgstr "ID de Token: {0}"
 
+#: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copied!"
 msgstr "¡Copiado!"
 
+#: src/lib/components/count-tokens/TextInputSection.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copy text"
@@ -1078,11 +1081,14 @@ msgstr "Procesando imagen y eliminando fondo..."
 msgid "Processing image {0} of {1}..."
 msgstr "Procesando imagen {0} de {1}..."
 
-#~ msgid "Average token length: ~4 characters for English text"
-#~ msgstr "Longitud promedio de token: ~4 caracteres para texto en inglés"
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Average token length: ~4 characters for English text"
+msgstr "Longitud promedio de token: ~4 caracteres para texto en inglés"
 
-#~ msgid "Code and special characters typically use more tokens"
-#~ msgstr "El código y los caracteres especiales normalmente usan más tokens"
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Code and special characters typically use more tokens"
+msgstr "El código y los caracteres especiales normalmente usan más tokens"
 
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Reloading..."
@@ -1092,9 +1098,11 @@ msgstr "Recargando..."
 msgid "Reload Model"
 msgstr "Recargar Modelo"
 
-#~ msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-#~ msgstr "Claude usa un tokenizador BPE (Byte Pair Encoding) similar a los modelos GPT"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+msgstr "Claude usa un tokenizador BPE (Byte Pair Encoding) similar a los modelos GPT"
 
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Special characters and code may use more tokens"
 msgstr "Los caracteres especiales y el código pueden usar más tokens"
 
