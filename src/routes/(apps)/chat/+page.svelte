@@ -251,47 +251,75 @@
 	});
 </script>
 
-{#if !isModelLoaded}
-	<div class="loading">
-		{#if downloadError}
-			<ErrorDisplay
-				message="Failed to load model. Please check your connection and try again."
-				buttonText={isLoading ? 'Reloading...' : 'Reload Model'}
-				onRetry={loadModel}
-				isRetrying={isLoading}
-			/>
-		{:else if isLoading}
-			<LoadingProgress
-				title="Loading Model"
-				progress={downloadProgress}
-				{previousProgress}
-				message="This will take a couple of minutes. The chat model is being downloaded to your browser."
-			/>
-		{:else}
-			<ModelSelector bind:modelSelection onLoadModel={loadModel} {isLoading} />
-		{/if}
-	</div>
-{:else}
-	<CardInterface fixedHeight={true}>
-		<Toolbar modelInfo={selectedModel.name} ModelIcon={BotIcon}>
-			<ActionButton onClick={newChat} Icon={SparklesIcon}>
-				New <span class="desktop-only">Chat</span>
-			</ActionButton>
-		</Toolbar>
+<div class="chat-page" class:chat-mode={isModelLoaded}>
+	{#if !isModelLoaded}
+		<div class="loading">
+			{#if downloadError}
+				<ErrorDisplay
+					message="Failed to load model. Please check your connection and try again."
+					buttonText={isLoading ? 'Reloading...' : 'Reload Model'}
+					onRetry={loadModel}
+					isRetrying={isLoading}
+				/>
+			{:else if isLoading}
+				<LoadingProgress
+					title="Loading Model"
+					progress={downloadProgress}
+					{previousProgress}
+					message="This will take a couple of minutes. The chat model is being downloaded to your browser."
+				/>
+			{:else}
+				<ModelSelector bind:modelSelection onLoadModel={loadModel} {isLoading} />
+			{/if}
+		</div>
+	{:else}
+		<CardInterface fixedHeight={true}>
+			<Toolbar modelInfo={selectedModel.name} ModelIcon={BotIcon}>
+				<ActionButton onClick={newChat} Icon={SparklesIcon}>
+					New <span class="desktop-only">Chat</span>
+				</ActionButton>
+			</Toolbar>
 
-		<ChatMessages bind:this={chatMessagesComponent} messages={$messages} {isGenerating} />
+			<ChatMessages bind:this={chatMessagesComponent} messages={$messages} {isGenerating} />
 
-		<MessageInput
-			bind:this={messageInputComponent}
-			bind:value={inputText}
-			{isGenerating}
-			onSend={sendMessage}
-			onStop={stopGeneration}
-		/>
-	</CardInterface>
-{/if}
+			<MessageInput
+				bind:this={messageInputComponent}
+				bind:value={inputText}
+				{isGenerating}
+				onSend={sendMessage}
+				onStop={stopGeneration}
+			/>
+		</CardInterface>
+	{/if}
+</div>
 
 <style>
+	/* Chat page wrapper */
+	.chat-page {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* When in chat mode (model loaded), apply height constraints */
+	.chat-page.chat-mode {
+		height: 100vh; /* Full viewport height for chat interface */
+		overflow: hidden; /* Prevent overall page scroll when chat scrolls */
+	}
+
+	/* Apply flex and scrolling constraints to fixed-height CardInterfaces in chat mode */
+	.chat-page.chat-mode :global(.card-interface.fixed-height) {
+		flex: 1; /* Take remaining space */
+		min-height: 0; /* Critical for flex scrolling */
+	}
+
+	/* Apply flex and scrolling constraints to content areas in chat mode */
+	.chat-page.chat-mode :global(.card-interface.fixed-height .content-area) {
+		flex: 1; /* Take remaining space */
+		min-height: 0; /* Critical for flex scrolling */
+		overflow-y: auto; /* Allow scrolling when needed */
+	}
+
 	.loading {
 		display: flex;
 		flex-direction: column;
@@ -316,6 +344,10 @@
 	}
 
 	@media (max-width: 600px) {
+		.chat-page.chat-mode {
+			height: 100vh; /* Full height on mobile */
+		}
+
 		.loading {
 			align-items: stretch;
 		}
