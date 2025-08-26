@@ -10,6 +10,7 @@
 	} from '$lib/wllama-config';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import { messages, inferenceParams } from '$lib/stores';
+	import { setModelLoaded } from '$lib/chat-state.svelte';
 	import BotIcon from 'virtual:icons/lucide/bot';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 
@@ -71,6 +72,7 @@
 			});
 
 			isModelLoaded = true;
+			setModelLoaded(true);
 		} catch (err) {
 			console.error('Model loading error:', err);
 			downloadError = true;
