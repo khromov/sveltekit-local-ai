@@ -64,7 +64,7 @@
 
 	const DEFAULT_MODEL = `${BASE_MODEL_URL}/whisper/ggml-tiny-q5_1.bin`;
 
-	let selectedModel = $state($whisperModel || DEFAULT_MODEL);
+	let selectedModel = $state(DEFAULT_MODEL);
 	const availableModels = [
 		{ path: DEFAULT_MODEL, name: 'Whisper Tiny (q5_1)' },
 		{
@@ -179,7 +179,9 @@
 				isReady = false;
 			}
 
-			$whisperModel = selectedModel;
+			// Save the model name instead of the path
+			const selectedModelObj = availableModels.find((m) => m.path === selectedModel);
+			$whisperModel = selectedModelObj?.name || '';
 
 			console.log(`Loading model from: ${selectedModel}`);
 
@@ -244,19 +246,31 @@
 		}
 
 		if ($whisperModel) {
-			selectedModel = $whisperModel;
+			// Find the stored model by name and set selectedModel to its path
+			const storedModel =
+				availableModels.find((m) => m.name === $whisperModel) ||
+				availableModels.find((m) => m.path === $whisperModel); // Backward compatibility
 
-			if (opfsSupported) {
-				// Only autoload if the model is already cached
-				const cached = await isModelCached($whisperModel);
-				if (cached) {
-					console.log('Autoloading cached model:', $whisperModel);
-					loadModel();
-				} else {
-					console.log('Model not cached, user must manually load:', $whisperModel);
+			if (storedModel) {
+				selectedModel = storedModel.path;
+
+				// Migrate old format if needed
+				if ($whisperModel !== storedModel.name) {
+					$whisperModel = storedModel.name;
 				}
-			} else {
-				console.log('OPFS not supported, user must manually load model:', $whisperModel);
+
+				if (opfsSupported) {
+					// Only autoload if the model is already cached
+					const cached = await isModelCached(storedModel.path);
+					if (cached) {
+						console.log('Autoloading cached model:', storedModel.name);
+						loadModel();
+					} else {
+						console.log('Model not cached, user must manually load:', storedModel.name);
+					}
+				} else {
+					console.log('OPFS not supported, user must manually load model:', storedModel.name);
+				}
 			}
 		}
 	});
