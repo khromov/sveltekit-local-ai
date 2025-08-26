@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-26T21:48:44.576Z\n"
+"PO-Revision-Date: 2025-08-26T22:29:00.934Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -12,9 +12,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "Local AI Tools"
 
@@ -59,6 +59,7 @@ msgid "Failed to load transcription model. Please try again."
 msgstr "Failed to load transcription model. Please try again."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "Retry"
@@ -137,8 +138,8 @@ msgstr "<0/> Clear Recording"
 msgid "<0/> Transcribing Audio"
 msgstr "<0/> Transcribing Audio"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Complete"
 
@@ -239,8 +240,8 @@ msgid "Tool #01"
 msgstr "Tool #01"
 
 #: src/routes/+page.svelte
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/+layout.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -453,6 +454,7 @@ msgstr "Processing failed"
 msgid "<0/> Processing Image"
 msgstr "<0/> Processing Image"
 
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Enter"
@@ -603,8 +605,8 @@ msgstr "<0/> Raw Tokens ({0})"
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Type or paste text in the input field above to analyze tokens and character count."
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -784,6 +786,7 @@ msgstr ""
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Failed to load model. Please check your connection and try again."
 
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "Loading Model"
@@ -1020,9 +1023,8 @@ msgstr "Click to add more images"
 msgid "Retrying..."
 msgstr "Retrying..."
 
-#: src/lib/components/common/AdvancedSection.svelte
-msgid "Advanced Parameters"
-msgstr "Advanced Parameters"
+#~ msgid "Advanced Parameters"
+#~ msgstr "Advanced Parameters"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Model..."
@@ -1075,3 +1077,93 @@ msgstr ""
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "Recommended"
 msgstr "Recommended"
+
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "Token ID: {0}"
+msgstr "Token ID: {0}"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copied!"
+msgstr "Copied!"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copy text"
+msgstr "Copy text"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Stop preview"
+msgstr "Stop preview"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Preview voice"
+msgstr "Preview voice"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Cached Model"
+msgstr "Loading Cached Model"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Downloading Model"
+msgstr "Downloading Model"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Loading..."
+msgstr "Loading..."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model from local cache..."
+msgstr "Loading model from local cache..."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "The transcription model is being downloaded to your browser."
+msgstr "The transcription model is being downloaded to your browser."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model... Progress tracking not available in this browser."
+msgstr "Loading model... Progress tracking not available in this browser."
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Remove {0}"
+msgstr "Remove {0}"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image and removing background..."
+msgstr "Processing image and removing background..."
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image {0} of {1}..."
+msgstr "Processing image {0} of {1}..."
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reloading..."
+msgstr "Reloading..."
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reload Model"
+msgstr "Reload Model"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Failed to load model"
+msgstr "Failed to load model"
+
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Average token length: ~4 characters for English text"
+msgstr "Average token length: ~4 characters for English text"
+
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Code and special characters typically use more tokens"
+msgstr "Code and special characters typically use more tokens"
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+msgstr "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Special characters and code may use more tokens"
+msgstr "Special characters and code may use more tokens"

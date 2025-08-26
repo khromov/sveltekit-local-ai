@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-26T21:48:44.578Z\n"
+"PO-Revision-Date: 2025-08-26T22:29:00.939Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -12,9 +12,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "Herramientas de IA Local"
 
@@ -28,8 +28,8 @@ msgid "Tool #01"
 msgstr "Herramienta #01"
 
 #: src/routes/+page.svelte
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/+layout.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -208,8 +208,8 @@ msgstr "Procesamiento fallido"
 msgid "<0/> Processing Image"
 msgstr "<0/> Procesando Imagen"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Completado"
 
@@ -251,6 +251,7 @@ msgid "All concepts are designed at 512×512 pixels with the brutalist design ae
 msgstr "Todos los conceptos están diseñados en 512×512 píxeles con la estética de diseño brutalista en mente."
 
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Entrar"
 
@@ -314,8 +315,8 @@ msgstr "Cargar ejemplo"
 msgid "Clear text"
 msgstr "Limpiar texto"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -610,6 +611,7 @@ msgstr "Error al cargar el modelo de transcripción. Por favor intenta de nuevo.
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Retry"
 msgstr "Reintentar"
 
@@ -617,6 +619,7 @@ msgstr "Reintentar"
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Error al cargar el modelo. Por favor verifica tu conexión e intenta de nuevo."
 
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "Cargando Modelo"
@@ -1004,9 +1007,8 @@ msgstr ""
 msgid "Retrying..."
 msgstr "Reintentando..."
 
-#: src/lib/components/common/AdvancedSection.svelte
-msgid "Advanced Parameters"
-msgstr "Parámetros Avanzados"
+#~ msgid "Advanced Parameters"
+#~ msgstr "Parámetros Avanzados"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Model..."
@@ -1072,4 +1074,94 @@ msgstr ""
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "Recommended"
+msgstr ""
+
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "Token ID: {0}"
+msgstr ""
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copied!"
+msgstr ""
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copy text"
+msgstr ""
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Stop preview"
+msgstr ""
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Preview voice"
+msgstr ""
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Remove {0}"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Cached Model"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Downloading Model"
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Loading..."
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model from local cache..."
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "The transcription model is being downloaded to your browser."
+msgstr ""
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model... Progress tracking not available in this browser."
+msgstr ""
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Failed to load model"
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image and removing background..."
+msgstr ""
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image {0} of {1}..."
+msgstr ""
+
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Average token length: ~4 characters for English text"
+msgstr ""
+
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Code and special characters typically use more tokens"
+msgstr ""
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reloading..."
+msgstr ""
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reload Model"
+msgstr ""
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+msgstr ""
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Special characters and code may use more tokens"
 msgstr ""
