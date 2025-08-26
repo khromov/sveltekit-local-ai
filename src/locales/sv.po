@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-25T23:32:55.398Z\n"
+"PO-Revision-Date: 2025-08-26T21:48:44.582Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -32,9 +32,9 @@ msgstr ""
 msgid "Tool #01"
 msgstr "Verktyg #01"
 
-#: src/routes/+layout.svelte
 #: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Chatt"
 
@@ -1068,4 +1068,8 @@ msgstr "Om Claudes Tokenizer"
 msgid ""
 "Choose your preferred language for the interface. Click on a language to switch to that\n"
 "version of the application."
+msgstr ""
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Recommended"
 msgstr ""

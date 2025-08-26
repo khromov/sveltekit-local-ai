@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-25T23:32:55.399Z\n"
+"PO-Revision-Date: 2025-08-26T21:48:44.583Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -32,9 +32,9 @@ msgstr ""
 msgid "Tool #01"
 msgstr "Інструмент #01"
 
-#: src/routes/+layout.svelte
 #: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Чат"
 
@@ -1068,4 +1068,8 @@ msgstr "Спробувати знову"
 msgid ""
 "Choose your preferred language for the interface. Click on a language to switch to that\n"
 "version of the application."
+msgstr ""
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Recommended"
 msgstr ""
