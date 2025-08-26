@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-26T22:39:19.998Z\n"
+"PO-Revision-Date: 2025-08-26T22:39:43.157Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -12,13 +12,11 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "Локальні AI інструменти"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
@@ -27,48 +25,39 @@ msgstr ""
 "На цій сторінці ви знайдете безкоштовні, приватні AI інструменти, які працюють повністю у вашому браузері - і навіть\n"
 "офлайн!"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #01"
 msgstr "Інструмент #01"
 
-#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
 msgstr "Чат"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 msgstr "Спілкуйтеся з великими мовними моделями як Gemma3, повністю на вашому пристрої завдяки llama.cpp"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Private & Secure"
 msgstr "Приватно та безпечно"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Works Offline"
 msgstr "Працює офлайн"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "No Data Sharing"
 msgstr "Без передачі даних"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #02"
 msgstr "Інструмент #02"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Transcribe Audio"
 msgstr "Транскрибувати аудіо"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
@@ -77,34 +66,27 @@ msgstr ""
 "Перетворюйте мовлення на текст за допомогою Whisper AI. Завантажте будь-який аудіофайл та експортуйте як\n"
 "текст або файл субтитрів."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "High Accuracy"
 msgstr "Висока точність"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Multiple Formats"
 msgstr "Різні формати"
 
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Local Processing"
 msgstr "Локальна обробка"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #03"
 msgstr "Інструмент #03"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Text to Speech"
 msgstr "Текст у мовлення"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
@@ -113,27 +95,22 @@ msgstr ""
 "Перетворюйте текст на природне мовлення за допомогою AI моделей. Оберіть з Kitten TTS, Piper\n"
 "або Kokoro моделей для високоякісного синтезу голосу."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Multiple Models"
 msgstr "Різні моделі"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Natural Voices"
 msgstr "Природні голоси"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #04"
 msgstr "Інструмент #04"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Remove Background"
 msgstr "Видалити фон"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
@@ -142,47 +119,38 @@ msgstr ""
 "Видаляйте фон із зображень за допомогою AI. На основі моделі RMBG v1.4 від BRIA AI для\n"
 "професійних результатів."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "AI-Powered"
 msgstr "На основі AI"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "High Quality"
 msgstr "Висока якість"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #05"
 msgstr "Інструмент #05"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Count Tokens"
 msgstr "Підрахувати токени"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
 msgstr "Оцініть використання токенів для запитів у моделях OpenAI та Anthropic."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "OpenAI & Anthropic"
 msgstr "OpenAI та Anthropic"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Accurate Counts"
 msgstr "Точні підрахунки"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "All processing happens locally in your browser using WebAssembly."
 msgstr "Вся обробка відбувається локально у вашому браузері за допомогою WebAssembly."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "No data is sent to external servers."
 msgstr "Жодні дані не передаються на зовнішні сервери."
@@ -296,8 +264,8 @@ msgstr "Обробка не вдалася"
 msgid "<0/> Processing Image"
 msgstr "<0/> Обробка зображення"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Завершено"
 
@@ -349,8 +317,8 @@ msgstr "Клацніть, щоб додати більше зображень"
 msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "або клацніть для вибору • Підтримуються JPG, PNG, WebP"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "АБО"
 
@@ -366,8 +334,8 @@ msgstr "Обрані зображення ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Очистити все"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} МБ"
 
@@ -409,8 +377,8 @@ msgstr "<0/> Завантажити"
 msgid "<0/> Process Another"
 msgstr "<0/> Обробити інше"
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -482,8 +450,8 @@ msgstr "<0/> Завантажити обрану модель"
 msgid "<0/> Models run locally in your browser. No data is sent to external servers."
 msgstr "<0/> Моделі працюють локально у вашому браузері. Жодні дані не передаються на зовнішні сервери."
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/lib/components/tts/TextStatistics.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Characters"
 msgstr "Символи"
 
@@ -512,9 +480,6 @@ msgstr "Помилка"
 #: src/lib/components/common/ErrorDisplay.svelte
 msgid "Retrying..."
 msgstr "Повторна спроба..."
-
-#~ msgid "Advanced Parameters"
-#~ msgstr "Розширені параметри"
 
 #: src/lib/components/whisper/AudioRecorder.svelte
 msgid "<0/> Start Recording"
@@ -895,19 +860,6 @@ msgstr "Змініть мовні налаштування для додатку
 #: src/routes/[[lang]]/language/+page.svelte
 msgid "Language Settings"
 msgstr "Налаштування мови"
-
-#~ msgid ""
-#~ "Choose your preferred language for the interface. This setting will apply to all parts of\n"
-#~ "the application."
-#~ msgstr ""
-#~ "Оберіть бажану мову інтерфейсу. Це налаштування застосується до всіх частин\n"
-#~ "додатку."
-
-#~ msgid "Current Selection:"
-#~ msgstr "Поточний вибір:"
-
-#~ msgid "Save Language Settings"
-#~ msgstr "Зберегти мовні налаштування"
 
 #: src/routes/[[lang]]/transcribe/+page.svelte
 msgid "Whisper Audio Transcription"

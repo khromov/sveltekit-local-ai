@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-26T22:39:19.995Z\n"
+"PO-Revision-Date: 2025-08-26T22:39:43.150Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -12,7 +12,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Local AI Tools"
@@ -22,135 +21,108 @@ msgstr "Herramientas de IA Local"
 msgid "View source on GitHub"
 msgstr "Ver código fuente en GitHub"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #01"
 msgstr "Herramienta #01"
 
-#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
 msgstr "Chat"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 msgstr "Chatea con Modelos de Lenguaje Grande como Gemma3, completamente en tu dispositivo gracias a llama.cpp"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Private & Secure"
 msgstr "Privado y Seguro"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Works Offline"
 msgstr "Funciona Sin Conexión"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "No Data Sharing"
 msgstr "Sin Compartir Datos"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #02"
 msgstr "Herramienta #02"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Transcribe Audio"
 msgstr "Transcribir Audio"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "High Accuracy"
 msgstr "Alta Precisión"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Multiple Formats"
 msgstr "Múltiples Formatos"
 
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Local Processing"
 msgstr "Procesamiento Local"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #03"
 msgstr "Herramienta #03"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Text to Speech"
 msgstr "Texto a Voz"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Multiple Models"
 msgstr "Múltiples Modelos"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Natural Voices"
 msgstr "Voces Naturales"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #04"
 msgstr "Herramienta #04"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Remove Background"
 msgstr "Eliminar Fondo"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "AI-Powered"
 msgstr "Impulsado por IA"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "High Quality"
 msgstr "Alta Calidad"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #05"
 msgstr "Herramienta #05"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Count Tokens"
 msgstr "Contar Tokens"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
 msgstr "Estima el uso de tokens para prompts en modelos de OpenAI y Anthropic."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "OpenAI & Anthropic"
 msgstr "OpenAI y Anthropic"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Accurate Counts"
 msgstr "Conteos Precisos"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "All processing happens locally in your browser using WebAssembly."
 msgstr "Todo el procesamiento ocurre localmente en tu navegador usando WebAssembly."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "No data is sent to external servers."
 msgstr "No se envían datos a servidores externos."
@@ -208,8 +180,8 @@ msgstr "Procesamiento fallido"
 msgid "<0/> Processing Image"
 msgstr "<0/> Procesando Imagen"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Completado"
 
@@ -250,8 +222,8 @@ msgstr "Galería de Conceptos de Favicon"
 msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
 msgstr "Todos los conceptos están diseñados en 512×512 píxeles con la estética de diseño brutalista en mente."
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Entrar"
 
@@ -267,8 +239,8 @@ msgstr "<0/> {0} imagen{1} seleccionada{1}"
 msgid "Drop multiple images here"
 msgstr "Suelta múltiples imágenes aquí"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "O"
 
@@ -284,8 +256,8 @@ msgstr "Imágenes Seleccionadas ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Limpiar Todo"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -898,12 +870,6 @@ msgstr "Configuración de Idioma"
 msgid "Select Language"
 msgstr "Seleccionar Idioma"
 
-#~ msgid "Current Selection:"
-#~ msgstr "Selección Actual:"
-
-#~ msgid "Save Language Settings"
-#~ msgstr "Guardar Configuración de Idioma"
-
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Small and fast"
 msgstr "Pequeño y rápido"
@@ -920,14 +886,6 @@ msgstr "Modelo grande, muy lento"
 msgid "Generally provides better results"
 msgstr "Generalmente proporciona mejores resultados"
 
-#~ msgid ""
-#~ "Choose your preferred language for the interface. This setting will apply to all parts of\n"
-#~ "\t\t\t\t\tthe application."
-#~ msgstr ""
-#~ "Elige tu idioma preferido para la interfaz. Esta configuración se aplicará a todas las partes de\n"
-#~ "\t\t\t\t\tla aplicación."
-
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
@@ -936,7 +894,6 @@ msgstr ""
 "En esta página encontrarás herramientas de IA gratuitas y privadas que funcionan completamente en tu navegador - ¡incluso\n"
 "sin conexión!"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
@@ -945,7 +902,6 @@ msgstr ""
 "Convierte voz a texto usando Whisper AI. Sube cualquier archivo de audio existente y expórtalo como\n"
 "texto o archivo de subtítulos."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
@@ -954,7 +910,6 @@ msgstr ""
 "Convierte texto en voz de sonido natural usando modelos de IA. Elige entre los modelos Kitten TTS, Piper\n"
 "o Kokoro para síntesis de voz de alta calidad."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
@@ -1006,9 +961,6 @@ msgstr ""
 #: src/lib/components/common/ErrorDisplay.svelte
 msgid "Retrying..."
 msgstr "Reintentando..."
-
-#~ msgid "Advanced Parameters"
-#~ msgstr "Parámetros Avanzados"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Model..."

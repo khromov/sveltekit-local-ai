@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-26T22:39:19.997Z\n"
+"PO-Revision-Date: 2025-08-26T22:39:43.154Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -12,13 +12,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Local AI Tools"
 msgstr "Lokala AI-verktyg"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
@@ -27,48 +25,39 @@ msgstr ""
 "På den här sidan hittar du gratis, privata AI-verktyg som körs helt i din webbläsare - även\n"
 "offline!"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #01"
 msgstr "Verktyg #01"
 
-#: src/routes/+page.svelte
 #: src/routes/+layout.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
 msgstr "Chatt"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 msgstr "Chatta med stora språkmodeller som Gemma3, helt lokalt tack vare llama.cpp"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Private & Secure"
 msgstr "Privat & säker"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Works Offline"
 msgstr "Fungerar offline"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "No Data Sharing"
 msgstr "Ingen datadelning"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #02"
 msgstr "Verktyg #02"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Transcribe Audio"
 msgstr "Transkribera ljud"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
@@ -77,34 +66,27 @@ msgstr ""
 "Konvertera tal till text med Whisper AI. Ladda upp en ljudfil och exportera som\n"
 "text eller undertextfil."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "High Accuracy"
 msgstr "Hög noggrannhet"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Multiple Formats"
 msgstr "Flera format"
 
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Local Processing"
 msgstr "Lokal bearbetning"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #03"
 msgstr "Verktyg #03"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Text to Speech"
 msgstr "Text till tal"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
@@ -113,27 +95,22 @@ msgstr ""
 "Konvertera text till naturligt tal med AI-modeller. Välj mellan Kitten TTS, Piper\n"
 "eller Kokoro-modeller för högkvalitativ röstsyntes."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Multiple Models"
 msgstr "Flera modeller"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Natural Voices"
 msgstr "Naturliga röster"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #04"
 msgstr "Verktyg #04"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Remove Background"
 msgstr "Ta bort bakgrund"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
@@ -142,47 +119,38 @@ msgstr ""
 "Ta bort bakgrunder från bilder med AI. Drivs av RMBG v1.4-modellen från BRIA AI för\n"
 "professionella resultat."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "AI-Powered"
 msgstr "AI-driven"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "High Quality"
 msgstr "Hög kvalitet"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #05"
 msgstr "Verktyg #05"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Count Tokens"
 msgstr "Räkna tokens"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
 msgstr "Uppskatta tokenanvändning för prompter i OpenAI- och Anthropic-modeller."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "OpenAI & Anthropic"
 msgstr "OpenAI & Anthropic"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Accurate Counts"
 msgstr "Exakta beräkningar"
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "All processing happens locally in your browser using WebAssembly."
 msgstr "All bearbetning sker lokalt i din webbläsare med WebAssembly."
 
-#: src/routes/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "No data is sent to external servers."
 msgstr "Ingen data skickas till externa servrar."
@@ -296,8 +264,8 @@ msgstr ""
 msgid "<0/> Processing Image"
 msgstr "<0/> Bearbetar bild"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% klart"
 
@@ -367,8 +335,8 @@ msgstr "Klicka för att lägga till fler bilder"
 msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "eller klicka för att bläddra • JPG, PNG, WebP stöds"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "ELLER"
 
@@ -384,8 +352,8 @@ msgstr "Valda bilder ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Rensa alla"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -409,8 +377,8 @@ msgstr "Du"
 msgid "AI"
 msgstr "AI"
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -482,8 +450,8 @@ msgstr "<0/> Modeller körs lokalt i din webbläsare. Ingen data skickas till ex
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Skriv eller klistra in text i fältet ovan för att analysera tokens och antal tecken."
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/lib/components/tts/TextStatistics.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Characters"
 msgstr "Tecken"
 
@@ -596,9 +564,6 @@ msgstr "Fel"
 #: src/lib/components/common/ErrorDisplay.svelte
 msgid "Retrying..."
 msgstr "Försöker igen..."
-
-#~ msgid "Advanced Parameters"
-#~ msgstr "Avancerade parametrar"
 
 #: src/lib/components/common/LanguageSelector.svelte
 #: src/routes/[[lang]]/language/+page.svelte
@@ -911,19 +876,6 @@ msgstr "Ändra språkinställningar för Local AI Tools-applikationen"
 #: src/routes/[[lang]]/language/+page.svelte
 msgid "Language Settings"
 msgstr "Språkinställningar"
-
-#~ msgid ""
-#~ "Choose your preferred language for the interface. This setting will apply to all parts of\n"
-#~ "the application."
-#~ msgstr ""
-#~ "Välj ditt föredragna språk för gränssnittet. Denna inställning kommer att gälla alla delar av\n"
-#~ "applikationen."
-
-#~ msgid "Current Selection:"
-#~ msgstr "Aktuellt val:"
-
-#~ msgid "Save Language Settings"
-#~ msgstr "Spara språkinställningar"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Small and fast"
