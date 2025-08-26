@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-26T22:38:27.095Z\n"
+"PO-Revision-Date: 2025-08-26T22:39:19.974Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 
 #: src/routes/+page.svelte
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Local AI Tools"
 msgstr "Local AI Tools"
 
@@ -58,9 +58,9 @@ msgstr "Model Ready"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Failed to load transcription model. Please try again."
 
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "Retry"
 
@@ -138,8 +138,8 @@ msgstr "<0/> Clear Recording"
 msgid "<0/> Transcribing Audio"
 msgstr "<0/> Transcribing Audio"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Complete"
 
@@ -454,8 +454,8 @@ msgstr "Processing failed"
 msgid "<0/> Processing Image"
 msgstr "<0/> Processing Image"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -627,9 +627,9 @@ msgstr "Input Text"
 msgid "Load example"
 msgstr "Load example"
 
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Clear text"
 msgstr "Clear text"
 
@@ -1082,15 +1082,15 @@ msgstr "Recommended"
 msgid "Token ID: {0}"
 msgstr "Token ID: {0}"
 
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copied!"
 msgstr "Copied!"
 
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copy text"
 msgstr "Copy text"
 
@@ -1139,11 +1139,13 @@ msgstr "Processing image and removing background..."
 msgid "Processing image {0} of {1}..."
 msgstr "Processing image {0} of {1}..."
 
-#~ msgid "Reloading..."
-#~ msgstr "Reloading..."
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reloading..."
+msgstr "Reloading..."
 
-#~ msgid "Reload Model"
-#~ msgstr "Reload Model"
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reload Model"
+msgstr "Reload Model"
 
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Failed to load model"

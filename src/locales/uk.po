@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-26T22:38:27.106Z\n"
+"PO-Revision-Date: 2025-08-26T22:39:19.998Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -296,8 +296,8 @@ msgstr "Обробка не вдалася"
 msgid "<0/> Processing Image"
 msgstr "<0/> Обробка зображення"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Завершено"
 
@@ -606,8 +606,8 @@ msgid "Failed to load transcription model. Please try again."
 msgstr "Не вдалося завантажити модель транскрибування. Спробуйте ще раз."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "Повторити"
 
@@ -1133,8 +1133,8 @@ msgstr "Завантаження моделі... Відстеження прог
 msgid "Failed to load model"
 msgstr "Не вдалося завантажити модель"
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "Середня довжина токена: ~4 символи для англійського тексту"
 
@@ -1150,11 +1150,13 @@ msgstr "Обробка зображення та видалення фону..."
 msgid "Processing image {0} of {1}..."
 msgstr "Обробка зображення {0} з {1}..."
 
-#~ msgid "Reloading..."
-#~ msgstr "Перезавантаження..."
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reloading..."
+msgstr "Перезавантаження..."
 
-#~ msgid "Reload Model"
-#~ msgstr "Перезавантажити модель"
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reload Model"
+msgstr "Перезавантажити модель"
 
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"

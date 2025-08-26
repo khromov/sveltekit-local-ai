@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-26T22:38:27.105Z\n"
+"PO-Revision-Date: 2025-08-26T22:39:19.997Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -296,8 +296,8 @@ msgstr ""
 msgid "<0/> Processing Image"
 msgstr "<0/> Bearbetar bild"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% klart"
 
@@ -689,9 +689,9 @@ msgstr "Byt modell"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Misslyckades att ladda transkriptionsmodell. Försök igen."
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "Försök igen"
 
@@ -1133,8 +1133,8 @@ msgstr "Transkriptionsmodellen laddas ner till din webbläsare."
 msgid "Loading model... Progress tracking not available in this browser."
 msgstr "Laddar modell... Framståndsspårning inte tillgänglig i denna webbläsare."
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "Genomsnittlig tokenlängd: ~4 tecken för engelsk text"
 
@@ -1158,8 +1158,10 @@ msgstr "Claude använder en BPE (Byte Pair Encoding) tokenizer liknande GPT-mode
 msgid "Special characters and code may use more tokens"
 msgstr "Specialtecken och kod kan använda fler tokens"
 
-#~ msgid "Reloading..."
-#~ msgstr "Laddar om..."
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reloading..."
+msgstr "Laddar om..."
 
-#~ msgid "Reload Model"
-#~ msgstr "Ladda om modell"
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reload Model"
+msgstr "Ladda om modell"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-26T22:38:27.100Z\n"
+"PO-Revision-Date: 2025-08-26T22:39:19.995Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -208,8 +208,8 @@ msgstr "Procesamiento fallido"
 msgid "<0/> Processing Image"
 msgstr "<0/> Procesando Imagen"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Completado"
 
@@ -610,8 +610,8 @@ msgid "Failed to load transcription model. Please try again."
 msgstr "Error al cargar el modelo de transcripción. Por favor intenta de nuevo."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "Reintentar"
 
@@ -1143,8 +1143,8 @@ msgstr "Procesando imagen y eliminando fondo..."
 msgid "Processing image {0} of {1}..."
 msgstr "Procesando imagen {0} de {1}..."
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "Longitud promedio de token: ~4 caracteres para texto en inglés"
 
@@ -1152,11 +1152,13 @@ msgstr "Longitud promedio de token: ~4 caracteres para texto en inglés"
 msgid "Code and special characters typically use more tokens"
 msgstr "El código y los caracteres especiales normalmente usan más tokens"
 
-#~ msgid "Reloading..."
-#~ msgstr "Recargando..."
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reloading..."
+msgstr "Recargando..."
 
-#~ msgid "Reload Model"
-#~ msgstr "Recargar Modelo"
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reload Model"
+msgstr "Recargar Modelo"
 
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
