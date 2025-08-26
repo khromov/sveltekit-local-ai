@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-26T22:42:52.563Z\n"
+"PO-Revision-Date: 2025-08-26T23:04:59.198Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -223,7 +223,6 @@ msgstr ""
 msgid "Tool #01"
 msgstr "Tool #01"
 
-#: src/routes/+layout.svelte
 #: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
 msgstr "Chat"
@@ -560,7 +559,6 @@ msgstr "<0/> Raw Tokens ({0})"
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Type or paste text in the input field above to analyze tokens and character count."
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
@@ -1002,18 +1000,6 @@ msgstr "Play"
 msgid "Generate"
 msgstr "Generate"
 
-#: src/routes/+layout.svelte
-msgid "Transcribe"
-msgstr "Transcribe"
-
-#: src/routes/+layout.svelte
-msgid "TTS"
-msgstr "TTS"
-
-#: src/routes/+layout.svelte
-msgid "BG Remover"
-msgstr "BG Remover"
-
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "or click to browse • JPG, PNG, WebP supported"
@@ -1103,8 +1089,8 @@ msgstr "Reload Model"
 msgid "Failed to load model"
 msgstr "Failed to load model"
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "Average token length: ~4 characters for English text"
 

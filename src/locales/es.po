@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-26T22:42:52.563Z\n"
+"PO-Revision-Date: 2025-08-26T23:04:59.198Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -26,7 +26,6 @@ msgid "Tool #01"
 msgstr "Herramienta #01"
 
 #: src/routes/[[lang]]/+page.svelte
-#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -287,13 +286,12 @@ msgstr "Cargar ejemplo"
 msgid "Clear text"
 msgstr "Limpiar texto"
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
-#: src/lib/components/tts/TextStatistics.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "Caracteres"
 
@@ -1002,18 +1000,6 @@ msgstr "Reproducir"
 msgid "Generate"
 msgstr "Generar"
 
-#: src/routes/+layout.svelte
-msgid "Transcribe"
-msgstr "Transcribir"
-
-#: src/routes/+layout.svelte
-msgid "TTS"
-msgstr "TTS"
-
-#: src/routes/+layout.svelte
-msgid "BG Remover"
-msgstr "Quitar Fondo"
-
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "o haz clic para explorar • JPG, PNG, WebP compatibles"
@@ -1095,8 +1081,8 @@ msgstr "Procesando imagen y eliminando fondo..."
 msgid "Processing image {0} of {1}..."
 msgstr "Procesando imagen {0} de {1}..."
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "Longitud promedio de token: ~4 caracteres para texto en inglés"
 

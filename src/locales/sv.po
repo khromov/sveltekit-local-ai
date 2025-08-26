@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-26T22:42:52.565Z\n"
+"PO-Revision-Date: 2025-08-26T23:04:59.199Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -30,7 +30,6 @@ msgid "Tool #01"
 msgstr "Verktyg #01"
 
 #: src/routes/[[lang]]/+page.svelte
-#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Chatt"
 
@@ -155,19 +154,6 @@ msgstr "All bearbetning sker lokalt i din webbläsare med WebAssembly."
 msgid "No data is sent to external servers."
 msgstr "Ingen data skickas till externa servrar."
 
-#: src/routes/+layout.svelte
-msgid "Transcribe"
-msgstr "Transkribera"
-
-#: src/routes/+layout.svelte
-msgid "TTS"
-msgstr "TTS"
-
-#: src/routes/+layout.svelte
-msgid "BG Remover"
-msgstr "Bakgrundsborttagare"
-
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
@@ -450,8 +436,8 @@ msgstr "<0/> Modeller körs lokalt i din webbläsare. Ingen data skickas till ex
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Skriv eller klistra in text i fältet ovan för att analysera tokens och antal tecken."
 
-#: src/lib/components/tts/TextStatistics.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "Tecken"
 
@@ -1085,8 +1071,8 @@ msgstr "Transkriptionsmodellen laddas ner till din webbläsare."
 msgid "Loading model... Progress tracking not available in this browser."
 msgstr "Laddar modell... Framståndsspårning inte tillgänglig i denna webbläsare."
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "Genomsnittlig tokenlängd: ~4 tecken för engelsk text"
 

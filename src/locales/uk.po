@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-26T22:42:52.565Z\n"
+"PO-Revision-Date: 2025-08-26T23:04:59.200Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -30,7 +30,6 @@ msgid "Tool #01"
 msgstr "Інструмент #01"
 
 #: src/routes/[[lang]]/+page.svelte
-#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Чат"
 
@@ -155,19 +154,6 @@ msgstr "Вся обробка відбувається локально у ва�
 msgid "No data is sent to external servers."
 msgstr "Жодні дані не передаються на зовнішні сервери."
 
-#: src/routes/+layout.svelte
-msgid "Transcribe"
-msgstr "Транскрибувати"
-
-#: src/routes/+layout.svelte
-msgid "TTS"
-msgstr "TTS"
-
-#: src/routes/+layout.svelte
-msgid "BG Remover"
-msgstr "Видалення фону"
-
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Токени"
@@ -450,8 +436,8 @@ msgstr "<0/> Завантажити обрану модель"
 msgid "<0/> Models run locally in your browser. No data is sent to external servers."
 msgstr "<0/> Моделі працюють локально у вашому браузері. Жодні дані не передаються на зовнішні сервери."
 
-#: src/lib/components/tts/TextStatistics.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "Символи"
 
@@ -1085,8 +1071,8 @@ msgstr "Завантаження моделі... Відстеження прог
 msgid "Failed to load model"
 msgstr "Не вдалося завантажити модель"
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "Середня довжина токена: ~4 символи для англійського тексту"
 
