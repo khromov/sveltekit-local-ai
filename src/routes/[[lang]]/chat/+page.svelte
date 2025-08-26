@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Wllama, type DownloadProgressCallback } from '@wllama/wllama';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { Template } from '@huggingface/jinja';
 	import {
 		WLLAMA_CONFIG_PATHS,
@@ -10,6 +10,7 @@
 	} from '$lib/wllama-config';
 	import { useWakeLock } from '$lib/wakeLock.svelte';
 	import { messages, inferenceParams } from '$lib/stores';
+	import { setModelLoaded } from '$lib/chat-state.svelte';
 	import BotIcon from 'virtual:icons/lucide/bot';
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 
@@ -35,11 +36,35 @@
 	let stopSignal = false;
 	let chatMessagesComponent: ChatMessages | undefined = $state();
 	let messageInputComponent: MessageInput | undefined = $state();
+	let downloadAbortController: AbortController | null = null;
 
 	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
 
 	onMount(() => {
 		return setupWakeLock(() => isGenerating);
+	});
+
+	onDestroy(() => {
+		// Cancel any ongoing download
+		if (downloadAbortController) {
+			downloadAbortController.abort();
+		}
+
+		// Clean up wllama instance if it exists
+		if (wllama) {
+			wllama.exit();
+		}
+
+		// Reset global state
+		setModelLoaded(false);
+	});
+
+	// Fixes weird Safari bug
+	$effect(() => {
+		if (isLoading) {
+			console.log('isLoading true');
+			window.scrollTo(0, 0);
+		}
 	});
 
 	async function loadModel() {
@@ -48,6 +73,9 @@
 			downloadError = false;
 			downloadProgress = 0;
 			previousProgress = 0;
+
+			// Create new abort controller for this download
+			downloadAbortController = new AbortController();
 
 			const model = AVAILABLE_MODELS.find((m) => m.url === modelSelection);
 			if (model) {
@@ -65,17 +93,24 @@
 
 			await wllama.loadModelFromUrl(modelSelection, {
 				progressCallback,
+				signal: downloadAbortController.signal,
 				n_threads: $inferenceParams.nThreads > 0 ? $inferenceParams.nThreads : undefined,
 				n_ctx: $inferenceParams.nContext,
 				n_batch: $inferenceParams.nBatch
 			});
 
 			isModelLoaded = true;
+			setModelLoaded(true);
 		} catch (err) {
+			if (err instanceof Error && err.name === 'AbortError') {
+				console.log('Model download was cancelled');
+				return;
+			}
 			console.error('Model loading error:', err);
 			downloadError = true;
 		} finally {
 			isLoading = false;
+			downloadAbortController = null;
 		}
 	}
 
@@ -224,47 +259,81 @@
 	});
 </script>
 
-{#if !isModelLoaded}
-	<div class="loading">
-		{#if downloadError}
-			<ErrorDisplay
-				message="Failed to load model. Please check your connection and try again."
-				buttonText={isLoading ? 'Reloading...' : 'Reload Model'}
-				onRetry={loadModel}
-				isRetrying={isLoading}
-			/>
-		{:else if isLoading}
-			<LoadingProgress
-				title="Loading Model"
-				progress={downloadProgress}
-				{previousProgress}
-				message="This will take a couple of minutes. The chat model is being downloaded to your browser."
-			/>
-		{:else}
-			<ModelSelector bind:modelSelection onLoadModel={loadModel} {isLoading} />
-		{/if}
-	</div>
-{:else}
-	<CardInterface fixedHeight={true}>
-		<Toolbar modelInfo={selectedModel.name} ModelIcon={BotIcon}>
-			<ActionButton onClick={newChat} Icon={SparklesIcon}>
-				New <span class="desktop-only">Chat</span>
-			</ActionButton>
-		</Toolbar>
+<div class="chat-page" class:chat-mode={isModelLoaded}>
+	{#if !isModelLoaded}
+		<div class="loading">
+			{#if downloadError}
+				<ErrorDisplay
+					message="Failed to load model. Please check your connection and try again."
+					buttonText={isLoading ? 'Reloading...' : 'Reload Model'}
+					onRetry={loadModel}
+					isRetrying={isLoading}
+				/>
+			{:else if isLoading}
+				<LoadingProgress
+					title="Loading Model"
+					progress={downloadProgress}
+					{previousProgress}
+					message="This will take a couple of minutes. The chat model is being downloaded to your browser."
+				/>
+			{:else}
+				<ModelSelector bind:modelSelection onLoadModel={loadModel} {isLoading} />
+			{/if}
+		</div>
+	{:else}
+		<CardInterface fixedHeight={true}>
+			<Toolbar modelInfo={selectedModel.name} ModelIcon={BotIcon}>
+				<ActionButton onClick={newChat} Icon={SparklesIcon}>
+					New <span class="desktop-only">Chat</span>
+				</ActionButton>
+			</Toolbar>
 
-		<ChatMessages bind:this={chatMessagesComponent} messages={$messages} {isGenerating} />
+			<ChatMessages bind:this={chatMessagesComponent} messages={$messages} {isGenerating} />
 
-		<MessageInput
-			bind:this={messageInputComponent}
-			bind:value={inputText}
-			{isGenerating}
-			onSend={sendMessage}
-			onStop={stopGeneration}
-		/>
-	</CardInterface>
-{/if}
+			<MessageInput
+				bind:this={messageInputComponent}
+				bind:value={inputText}
+				{isGenerating}
+				onSend={sendMessage}
+				onStop={stopGeneration}
+			/>
+		</CardInterface>
+	{/if}
+</div>
 
 <style>
+	/* Chat page wrapper */
+	.chat-page {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* When in chat mode (model loaded), apply height constraints */
+	.chat-page.chat-mode {
+		/* Calculate height accounting for navigation and container padding:
+		   - Container padding: 1rem top + 1rem bottom = 2rem
+		   - Navigation height: ~0.75rem padding × 2 + ~3rem nav content + 1rem margin-bottom = ~5.5rem
+		   - Border thickness: 3px top + 3px bottom = 6px
+		   - Box shadow: 5px bottom = 5px
+		   Total: ~7.5rem + 11px */
+		height: calc(100vh - 7.5rem - 11px);
+		overflow: hidden; /* Prevent overall page scroll when chat scrolls */
+	}
+
+	/* Apply flex and scrolling constraints to fixed-height CardInterfaces in chat mode */
+	.chat-page.chat-mode :global(.card-interface.fixed-height) {
+		flex: 1; /* Take remaining space */
+		min-height: 0; /* Critical for flex scrolling */
+	}
+
+	/* Apply flex and scrolling constraints to content areas in chat mode */
+	.chat-page.chat-mode :global(.card-interface.fixed-height .content-area) {
+		flex: 1; /* Take remaining space */
+		min-height: 0; /* Critical for flex scrolling */
+		overflow-y: auto; /* Allow scrolling when needed */
+	}
+
 	.loading {
 		display: flex;
 		flex-direction: column;
@@ -289,12 +358,32 @@
 	}
 
 	@media (max-width: 600px) {
+		.chat-page.chat-mode {
+			/* Adjust for smaller mobile padding:
+			   - Container padding: 0.75rem × 2 = 1.5rem  
+			   - Navigation: ~0.5rem padding × 2 + ~2.5rem nav content + 1rem margin = ~4.5rem
+			   - Border thickness: 6px + Box shadow: 5px = 11px
+			   Total: ~6rem + 11px */
+			height: calc(100vh - 6rem - 11px);
+		}
+
 		.loading {
 			align-items: stretch;
 		}
 
 		.desktop-only {
 			display: none;
+		}
+	}
+
+	@media (max-width: 400px) {
+		.chat-page.chat-mode {
+			/* Adjust for smallest mobile padding:
+			   - Container padding: 0.5rem × 2 = 1rem
+			   - Navigation: similar to 600px breakpoint = ~4.5rem
+			   - Border thickness: 6px + Box shadow: 5px = 11px
+			   Total: ~5.5rem + 11px */
+			height: calc(100vh - 5.5rem - 11px);
 		}
 	}
 </style>

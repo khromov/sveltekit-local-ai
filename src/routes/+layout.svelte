@@ -37,9 +37,6 @@
 		return page.url.pathname === path || (path !== '/' && page.url.pathname.startsWith(path));
 	}
 
-	// Check if we're on the chat page (which uses fixed height)
-	let isChatPage = $derived(page.url.pathname === '/chat');
-
 	const DEFAULT_TITLE = 'Local AI tools';
 </script>
 
@@ -63,11 +60,7 @@
 </svelte:head>
 
 <div class="app-wrapper">
-	<div
-		class="container"
-		class:fullWidth={page.url.pathname === '/og'}
-		class:chat-layout={isChatPage}
-	>
+	<div class="container" class:fullWidth={page.url.pathname === '/og'}>
 		<nav class="main-nav">
 			<ul>
 				<div class="nav-left">
@@ -232,11 +225,6 @@
 		flex-direction: column;
 	}
 
-	/* Only apply height constraints for chat layout */
-	.container.chat-layout {
-		height: 100vh; /* Full viewport height for chat interface */
-	}
-
 	.content-wrapper {
 		width: 100%;
 		position: relative;
@@ -244,11 +232,6 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 0; /* Critical for nested flex scrolling */
-	}
-
-	/* Only apply overflow hidden for chat layout */
-	.container.chat-layout .content-wrapper {
-		overflow: hidden; /* Prevent overall page scroll when chat scrolls */
 	}
 
 	/* Navigation styles - Refined Neo-Brutalist */
@@ -365,12 +348,6 @@
 		flex-direction: column;
 	}
 
-	/* Only apply flex and scrolling constraints to fixed-height CardInterfaces */
-	:global(.chat-layout .card-interface.fixed-height) {
-		flex: 1; /* Take remaining space */
-		min-height: 0; /* Critical for flex scrolling */
-	}
-
 	:global(.toolbar) {
 		display: flex;
 		justify-content: space-between;
@@ -400,13 +377,6 @@
 		flex-direction: column;
 		gap: 1rem;
 		box-sizing: border-box;
-	}
-
-	/* Only apply flex and scrolling constraints to content areas in chat layout with fixed-height CardInterfaces */
-	:global(.chat-layout .card-interface.fixed-height .content-area) {
-		flex: 1; /* Take remaining space */
-		min-height: 0; /* Critical for flex scrolling */
-		overflow-y: auto; /* Allow scrolling when needed */
 	}
 
 	:global(.input-area) {
@@ -475,10 +445,6 @@
 	@media (max-width: 600px) {
 		.container {
 			padding: 0.75rem;
-		}
-
-		.container.chat-layout {
-			height: 100vh; /* Full height on mobile */
 		}
 
 		.main-nav ul {
