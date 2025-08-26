@@ -22,14 +22,31 @@
 
 	let { children }: Props = $props();
 
+	// Extract current language from URL path
+	function getCurrentLanguage(): string {
+		const pathSegments = page.url.pathname.split('/').filter(Boolean);
+		const supportedLanguages = ['en', 'es', 'ja', 'sv', 'uk'];
+		const firstSegment = pathSegments[0];
+		return supportedLanguages.includes(firstSegment) ? firstSegment : 'en';
+	}
+
+	// Helper function to create language-aware links
+	function createLink(path: string): string {
+		const currentLang = getCurrentLanguage();
+		if (currentLang === 'en') {
+			return path;
+		}
+		return `/${currentLang}${path}`;
+	}
+
 	const getNavLinks = () => {
 		return [
-			{ path: '/', label: '', icon: 'home' },
-			{ path: '/chat', label: 'Chat', icon: 'chat' },
-			{ path: '/transcribe', label: 'Transcribe', icon: 'mic' },
-			{ path: '/text-to-speech', label: 'TTS', icon: 'speech' },
-			{ path: '/background-remover', label: 'BG Remover', icon: 'image' },
-			{ path: '/count-tokens', label: 'Tokens', icon: 'calculator' }
+			{ path: createLink('/'), label: '', icon: 'home' },
+			{ path: createLink('/chat'), label: 'Chat', icon: 'chat' },
+			{ path: createLink('/transcribe'), label: 'Transcribe', icon: 'mic' },
+			{ path: createLink('/text-to-speech'), label: 'TTS', icon: 'speech' },
+			{ path: createLink('/background-remover'), label: 'BG Remover', icon: 'image' },
+			{ path: createLink('/count-tokens'), label: 'Tokens', icon: 'calculator' }
 		];
 	};
 
@@ -84,7 +101,7 @@
 						{/if}
 					{/each}
 					<div class="center-items">
-						{#each navLinks as link (link.path)}
+						{#each getNavLinks() as link (link.path)}
 							{#if link.icon !== 'home'}
 								<li>
 									<a href={link.path} class:active={isActive(link.path)}>
@@ -109,7 +126,7 @@
 					</div>
 				</div>
 				<li class="home-item language-item">
-					<a href="/language" class="home-link" aria-label="Change language">
+					<a href={createLink('/language')} class="home-link" aria-label="Change language">
 						<GlobeIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
 					</a>
 				</li>
