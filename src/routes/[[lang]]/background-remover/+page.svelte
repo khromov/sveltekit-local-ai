@@ -385,7 +385,7 @@
 				<SectionCard rotation={0.2} animationDelay={0}>
 					<StepHeader stepNumber={1} title="Model Selection" backgroundColor="#ff69b4" />
 					<div class="model-buttons">
-						{#each AVAILABLE_MODELS as modelOption (modelOption.id)}
+						{#each getAvailableModels() as modelOption (modelOption.id)}
 							<button
 								class="model-btn"
 								class:active={selectedModelId === modelOption.id}

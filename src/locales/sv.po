@@ -1011,6 +1011,8 @@ msgid ""
 "Choose your preferred language for the interface. Click on a language to switch to that\n"
 "version of the application."
 msgstr ""
+"Välj ditt föredragna språk för gränssnittet. Klicka på ett språk för att växla till den\n"
+"versionen av applikationen."
 
 #: src/lib/components/tts/ModelSwitcher.svelte
 msgid "Recommended"
@@ -1108,48 +1110,48 @@ msgstr "Ladda om modell"
 
 #: src/lib/components/count-tokens/TokenizerHeader.svelte
 msgid "Switch to Anthropic"
-msgstr ""
+msgstr "Växla till Anthropic"
 
 #: src/lib/components/count-tokens/TokenizerHeader.svelte
 msgid "Switch to OpenAI"
-msgstr ""
+msgstr "Växla till OpenAI"
 
 #: src/lib/components/common/AdvancedSection.svelte
 msgid "Advanced Parameters"
-msgstr ""
+msgstr "Avancerade parametrar"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "RMBG-1.4"
-msgstr ""
+msgstr "RMBG-1.4"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "RMBG v1.4"
-msgstr ""
+msgstr "RMBG v1.4"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "QUANT"
-msgstr ""
+msgstr "QUANT"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "BEN2-ONNX"
-msgstr ""
+msgstr "BEN2-ONNX"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "BEN2"
-msgstr ""
+msgstr "BEN2"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "FP16"
-msgstr ""
+msgstr "FP16"
 
 #: src/routes/+layout.svelte
 msgid "Transcribe"
-msgstr ""
+msgstr "Transkribera"
 
 #: src/routes/+layout.svelte
 msgid "TTS"
-msgstr ""
+msgstr "TTS"
 
 #: src/routes/+layout.svelte
 msgid "BG Remover"
-msgstr ""
+msgstr "Bakgrundsborttagare"
