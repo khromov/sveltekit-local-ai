@@ -89,10 +89,10 @@
 		<LoadingProgress
 			topMargin={true}
 			title={usingCachedModel
-				? /* TODO: Not picked up */ 'Loading Cached Model'
+				? 'Loading Cached Model'
 				: opfsSupported
-					? /* TODO: Not picked up */ 'Downloading Model'
-					: /* TODO: Not picked up */ 'Loading Model'}
+					? 'Downloading Model'
+					: 'Loading Model'}
 			progress={downloadProgress}
 			previousProgress={previousDownloadProgress}
 			percentageText={hasProgressTracking ? `${downloadProgress}% Complete` : 'Loading...'}
