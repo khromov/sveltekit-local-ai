@@ -59,6 +59,14 @@
 		setModelLoaded(false);
 	});
 
+	// Fixes weird Safari bug
+	$effect(() => {
+		if (isLoading) {
+			console.log('isLoading true');
+			window.scrollTo(0, 0);
+		}
+	});
+
 	async function loadModel() {
 		try {
 			isLoading = true;
