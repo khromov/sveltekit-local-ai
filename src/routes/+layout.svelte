@@ -22,15 +22,16 @@
 
 	let { children }: Props = $props();
 
-	// Navigation links
-	const navLinks = [
-		{ path: '/', label: '', icon: 'home' },
-		{ path: '/chat', label: /* @wc-include */ 'Chat', icon: 'chat' },
-		{ path: '/transcribe', label: /* @wc-include */ 'Transcribe', icon: 'mic' },
-		{ path: '/text-to-speech', label: /* @wc-include */ 'TTS', icon: 'speech' },
-		{ path: '/background-remover', label: /* @wc-include */ 'BG Remover', icon: 'image' },
-		{ path: '/count-tokens', label: /* @wc-include */ 'Tokens', icon: 'calculator' }
-	];
+	const getNavLinks = () => {
+		return [
+			{ path: '/', label: '', icon: 'home' },
+			{ path: '/chat', label: 'Chat', icon: 'chat' },
+			{ path: '/transcribe', label: 'Transcribe', icon: 'mic' },
+			{ path: '/text-to-speech', label: 'TTS', icon: 'speech' },
+			{ path: '/background-remover', label: 'BG Remover', icon: 'image' },
+			{ path: '/count-tokens', label: 'Tokens', icon: 'calculator' }
+		];
+	};
 
 	// Check if a path is active
 	function isActive(path: string): boolean {
@@ -64,7 +65,7 @@
 		<nav class="main-nav">
 			<ul>
 				<div class="nav-left">
-					{#each navLinks as link (link.path)}
+					{#each getNavLinks() as link (link.path)}
 						{#if link.icon === 'home'}
 							<!-- TODO: Make SPA work with language switching -->
 							<li class="home-item">
