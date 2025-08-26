@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Wllama, type DownloadProgressCallback } from '@wllama/wllama';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { Template } from '@huggingface/jinja';
 	import {
 		WLLAMA_CONFIG_PATHS,
@@ -36,11 +36,27 @@
 	let stopSignal = false;
 	let chatMessagesComponent: ChatMessages | undefined = $state();
 	let messageInputComponent: MessageInput | undefined = $state();
+	let downloadAbortController: AbortController | null = null;
 
 	const { requestWakeLock, releaseWakeLock, setupWakeLock } = useWakeLock();
 
 	onMount(() => {
 		return setupWakeLock(() => isGenerating);
+	});
+
+	onDestroy(() => {
+		// Cancel any ongoing download
+		if (downloadAbortController) {
+			downloadAbortController.abort();
+		}
+
+		// Clean up wllama instance if it exists
+		if (wllama) {
+			wllama.exit();
+		}
+
+		// Reset global state
+		setModelLoaded(false);
 	});
 
 	async function loadModel() {
@@ -49,6 +65,9 @@
 			downloadError = false;
 			downloadProgress = 0;
 			previousProgress = 0;
+
+			// Create new abort controller for this download
+			downloadAbortController = new AbortController();
 
 			const model = AVAILABLE_MODELS.find((m) => m.url === modelSelection);
 			if (model) {
@@ -66,6 +85,7 @@
 
 			await wllama.loadModelFromUrl(modelSelection, {
 				progressCallback,
+				signal: downloadAbortController.signal,
 				n_threads: $inferenceParams.nThreads > 0 ? $inferenceParams.nThreads : undefined,
 				n_ctx: $inferenceParams.nContext,
 				n_batch: $inferenceParams.nBatch
@@ -74,10 +94,15 @@
 			isModelLoaded = true;
 			setModelLoaded(true);
 		} catch (err) {
+			if (err instanceof Error && err.name === 'AbortError') {
+				console.log('Model download was cancelled');
+				return;
+			}
 			console.error('Model loading error:', err);
 			downloadError = true;
 		} finally {
 			isLoading = false;
+			downloadAbortController = null;
 		}
 	}
 

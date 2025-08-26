@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '$lib/design-system.css';
 	import { page } from '$app/state';
+	import { chatState, setModelLoaded } from '$lib/chat-state.svelte';
 	import '@fontsource/space-grotesk/400.css';
 	import '@fontsource/space-grotesk/500.css';
 	import '@fontsource/space-grotesk/700.css';
@@ -14,6 +15,7 @@
 	import CalculatorIcon from 'virtual:icons/lucide/calculator';
 	import { Toaster } from 'svelte-sonner';
 	import Tracking from '$lib/components/Tracking.svelte';
+	import { beforeNavigate } from '$app/navigation';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -36,8 +38,15 @@
 		return page.url.pathname === path || (path !== '/' && page.url.pathname.startsWith(path));
 	}
 
-	// Check if we're on the chat page (which uses fixed height)
+	// Check if we're on the chat page AND if a model is loaded (for fixed height)
 	let isChatPage = $derived(page.url.pathname === '/chat');
+	let shouldUseFixedLayout = $derived(isChatPage && chatState.isModelLoaded);
+	beforeNavigate(({ to }) => {
+		if (to?.route.id === '/(apps)/chat') {
+			// We need to reset the model loading state
+			setModelLoaded(false);
+		}
+	});
 </script>
 
 <svelte:head>
@@ -63,7 +72,7 @@
 	<div
 		class="container"
 		class:fullWidth={page.url.pathname === '/og'}
-		class:chat-layout={isChatPage}
+		class:chat-layout={shouldUseFixedLayout}
 	>
 		<nav class="main-nav">
 			<ul>
