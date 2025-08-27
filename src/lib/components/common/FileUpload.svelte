@@ -122,9 +122,12 @@
 		{#if selectedFiles.length === 0}
 			<div class="upload-placeholder">
 				<span class="upload-icon"><UploadIcon /></span>
-				<p><strong>Drag & Drop Files</strong></p>
-				<p class="upload-hint">or click to browse</p>
-				<p class="upload-info">Max size: {maxSize} MB</p>
+				<p>Drop your {multiple ? 'files' : 'file'} here</p>
+				<p class="upload-hint">
+					or click to browse • {accept === 'image/*'
+						? 'JPG, PNG, WebP supported'
+						: `Max size: ${maxSize} MB`}
+				</p>
 			</div>
 		{:else}
 			<div class="selected-files">
@@ -165,35 +168,37 @@
 		font-weight: 700;
 		color: var(--color-text-primary);
 		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		letter-spacing: 1px;
 	}
 
 	.upload-area {
-		min-height: 150px;
+		min-height: 180px;
 		background: var(--color-background-main);
-		border: 3px dashed var(--color-text-primary);
+		border: 4px dashed var(--color-text-primary);
 		cursor: pointer;
-		transition: all 0.2s;
+		transition: all 0.15s ease;
 		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 1.5rem;
+		padding: 2rem;
 		border-radius: 8px;
-		box-shadow: var(--shadow-brutalist-small);
+		box-shadow: 5px 5px 0 var(--color-text-primary);
+		transform: rotate(-0.5deg);
 	}
 
 	.upload-area:hover:not(.disabled) {
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-medium);
+		transform: translate(-2px, -2px) rotate(0deg);
+		box-shadow: 7px 7px 0 var(--color-text-primary);
 		background: var(--color-background-cream);
 	}
 
 	.upload-area.dragging {
-		background: var(--color-primary);
+		background: var(--color-primary-dark);
 		border-style: solid;
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
+		border-color: var(--color-text-primary);
+		transform: translate(-3px, -3px) rotate(0deg);
+		box-shadow: 8px 8px 0 var(--color-text-primary);
 	}
 
 	.upload-area.has-files {
@@ -210,32 +215,51 @@
 	.upload-placeholder {
 		text-align: center;
 		color: var(--color-text-primary);
+		position: relative;
+		z-index: 1;
 	}
 
 	.upload-icon {
-		font-size: 3rem;
-		display: block;
+		font-size: 48px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		margin-bottom: 1rem;
 		color: var(--color-text-primary);
+		animation: float 3s ease-in-out infinite;
+	}
+
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
 	}
 
 	.upload-icon :global(svg) {
-		width: 3rem;
-		height: 3rem;
+		width: 48px;
+		height: 48px;
 	}
 
 	.upload-placeholder p {
-		margin: 0.25rem 0;
+		margin: 0.5rem 0;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1px;
 	}
 
 	.upload-hint {
 		color: var(--color-text-secondary);
-		font-size: 0.875rem;
-	}
-
-	.upload-info {
-		font-size: 0.75rem;
-		color: var(--color-text-tertiary);
+		font-size: 0.9375rem;
+		font-weight: 600;
+		background: var(--color-primary-dark);
+		padding: 4px 12px;
+		border: var(--border-brutalist-thin);
+		box-shadow: var(--shadow-brutalist-small);
+		display: inline-block;
 		margin-top: 0.5rem;
 	}
 

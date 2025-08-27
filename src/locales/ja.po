@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-27T14:43:46.700Z\n"
+"PO-Revision-Date: 2025-08-27T20:42:05.983Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -194,8 +194,8 @@ msgid "{0}% Complete"
 msgstr "{0}% 完了"
 
 #: src/lib/components/chat/MessageInput.svelte
-#: src/lib/components/common/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/common/FileUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -509,8 +509,8 @@ msgstr "文字起こしモデルの読み込みに失敗しました。もう一
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/demo/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Retry"
 msgstr "再試行"
 
@@ -1790,12 +1790,10 @@ msgid ""
 msgstr ""
 
 #: src/lib/common/FileUpload.svelte
-#: src/lib/components/common/FileUpload.svelte
 msgid "Drag & Drop Files"
 msgstr ""
 
 #: src/lib/common/FileUpload.svelte
-#: src/lib/components/common/FileUpload.svelte
 msgid "or click to browse"
 msgstr ""
 
@@ -1987,4 +1985,16 @@ msgstr ""
 
 #: src/routes/demo/+page.svelte
 msgid "Selected {0} background removal model"
+msgstr ""
+
+#: src/lib/components/common/FileUpload.svelte
+msgid "Drop your {0} here"
+msgstr ""
+
+#: src/lib/components/common/FileUpload.svelte
+msgid "JPG, PNG, WebP supported"
+msgstr ""
+
+#: src/lib/components/common/FileUpload.svelte
+msgid "or click to browse • {0}"
 msgstr ""

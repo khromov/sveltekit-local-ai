@@ -69,15 +69,16 @@
 			ondrop={handleDrop}
 			ondragover={handleDragOver}
 			ondragleave={handleDragLeave}
+			onclick={() => fileInput?.click()}
+			onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && fileInput?.click()}
 			role="button"
 			tabindex="0"
 		>
-			<span class="upload-icon"><UploadIcon /></span>
-			<p><strong>Drag & Drop Audio File</strong></p>
-			<p class="upload-hint">or</p>
-			<button onclick={() => fileInput?.click()} {disabled} class="browse-button">
-				Browse Files
-			</button>
+			<div class="upload-content">
+				<span class="upload-icon"><UploadIcon /></span>
+				<p>Drop your audio file here</p>
+				<p class="upload-hint">or click to browse • MP3, WAV, M4A supported</p>
+			</div>
 			<input
 				bind:this={fileInput}
 				type="file"
@@ -95,71 +96,91 @@
 	}
 
 	.upload-area {
-		border: 3px dashed var(--color-text-primary);
+		border: 4px dashed var(--color-text-primary);
 		padding: 2rem;
 		text-align: center;
-		background: linear-gradient(135deg, rgba(255, 229, 180, 0.1) 0%, rgba(230, 230, 250, 0.1) 100%);
+		background: var(--color-background-main);
 		cursor: pointer;
-		transition: all 0.3s;
+		transition: all 0.15s ease;
 		position: relative;
 		transform: rotate(-0.5deg);
-	}
-
-	.upload-area.drag-over {
-		background: var(--color-accent-light-yellow);
-		border-color: var(--color-primary);
-		transform: rotate(0deg) scale(1.02);
 		box-shadow: 5px 5px 0 var(--color-text-primary);
-	}
-
-	.upload-icon {
-		font-size: 3rem;
-		display: block;
-		margin-bottom: 1rem;
+		min-height: 180px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.upload-area.drag-over {
+		background: var(--color-primary-dark);
+		border-style: solid;
+		border-color: var(--color-text-primary);
+		transform: translate(-3px, -3px) rotate(0deg);
+		box-shadow: 8px 8px 0 var(--color-text-primary);
+	}
+
+	.upload-area:hover:not(.drag-over) {
+		transform: translate(-2px, -2px) rotate(0deg);
+		box-shadow: 7px 7px 0 var(--color-text-primary);
+		background: var(--color-background-cream);
+	}
+
+	.upload-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+		height: 100%;
+		min-height: 180px;
+		position: relative;
+		z-index: 1;
+	}
+
+	.upload-icon {
+		font-size: 48px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 1rem;
 		color: var(--color-text-primary);
+		animation: float 3s ease-in-out infinite;
+	}
+
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
 	}
 
 	.upload-icon :global(svg) {
-		width: 3rem;
-		height: 3rem;
+		width: 48px;
+		height: 48px;
 	}
 
 	.upload-area p {
 		margin: 0.5rem 0;
-		font-weight: 500;
-	}
-
-	.upload-hint {
-		color: var(--color-text-tertiary);
-		font-size: 0.875rem;
-	}
-
-	.browse-button {
-		margin-top: 1rem;
-		padding: 0.75rem 1.5rem;
-		background: var(--color-success);
-		border: var(--border-brutalist-thick);
-		box-shadow: var(--shadow-brutalist-medium);
-		font-size: 1rem;
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 1px;
-		cursor: pointer;
-		transition: all 0.15s;
+		color: var(--color-text-primary);
+		text-align: center;
 	}
 
-	.browse-button:hover:not(:disabled) {
-		transform: translate(-2px, -2px);
-		box-shadow: var(--shadow-brutalist-large);
+	.upload-hint {
+		color: var(--color-text-secondary);
+		font-size: 0.9375rem;
+		font-weight: 600;
 		background: var(--color-primary-dark);
-	}
-
-	.browse-button:disabled {
-		opacity: 0.5;
-		cursor: not-allowed;
+		padding: 4px 12px;
+		border: var(--border-brutalist-thin);
+		box-shadow: var(--shadow-brutalist-small);
+		display: inline-block;
+		margin-top: 0.5rem;
 	}
 
 	.file-selected {
@@ -211,7 +232,8 @@
 	.file-details strong {
 		font-size: 1.125rem;
 		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		letter-spacing: 1px;
+		font-weight: 700;
 	}
 
 	.file-details small {

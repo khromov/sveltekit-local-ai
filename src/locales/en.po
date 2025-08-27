@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-27T14:43:46.696Z\n"
+"PO-Revision-Date: 2025-08-27T20:42:28.196Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -418,8 +418,8 @@ msgid "<0/> Processing Image"
 msgstr "<0/> Processing Image"
 
 #: src/lib/components/chat/MessageInput.svelte
-#: src/lib/components/common/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/common/FileUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -1526,9 +1526,8 @@ msgstr "Selected {0} file(s)"
 msgid "🎨 Neo-Brutalist UI Component Library"
 msgstr "🎨 Neo-Brutalist UI Component Library"
 
-#: src/routes/demo/+page.svelte
-msgid "A collection of reusable Svelte components with bold, playful brutalist design"
-msgstr "A collection of reusable Svelte components with bold, playful brutalist design"
+#~ msgid "A collection of reusable Svelte components with bold, playful brutalist design"
+#~ msgstr "A collection of reusable Svelte components with bold, playful brutalist design"
 
 #: src/routes/demo/+page.svelte
 msgid "Primary Buttons"
@@ -1798,12 +1797,10 @@ msgstr ""
 "work together to create a complete interface."
 
 #: src/lib/common/FileUpload.svelte
-#: src/lib/components/common/FileUpload.svelte
 msgid "Drag & Drop Files"
 msgstr "Drag & Drop Files"
 
 #: src/lib/common/FileUpload.svelte
-#: src/lib/components/common/FileUpload.svelte
 msgid "or click to browse"
 msgstr "or click to browse"
 
@@ -1996,3 +1993,15 @@ msgstr "The quick brown fox jumps over the lazy dog."
 #: src/routes/demo/+page.svelte
 msgid "Selected {0} background removal model"
 msgstr "Selected {0} background removal model"
+
+#: src/lib/components/common/FileUpload.svelte
+msgid "Drop your {0} here"
+msgstr "Drop your {0} here"
+
+#: src/lib/components/common/FileUpload.svelte
+msgid "JPG, PNG, WebP supported"
+msgstr "JPG, PNG, WebP supported"
+
+#: src/lib/components/common/FileUpload.svelte
+msgid "or click to browse • {0}"
+msgstr "or click to browse • {0}"

@@ -223,7 +223,6 @@
 <div class="demo-page">
 	<div class="demo-header">
 		<h1>🎨 Neo-Brutalist UI Component Library</h1>
-		<p>A collection of reusable Svelte components with bold, playful brutalist design</p>
 	</div>
 
 	<!-- Newly Extracted Components Section -->
@@ -693,16 +692,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
-	}
-
-	.demo-header {
-		text-align: center;
-		padding: 3rem 2rem;
-		background: var(--color-background-main);
-		border: var(--border-brutalist-extra-thick);
-		box-shadow: var(--shadow-brutalist-xlarge);
-		transform: rotate(-0.5deg);
-		margin-bottom: 2rem;
 	}
 
 	.demo-header h1 {

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-27T14:43:46.698Z\n"
+"PO-Revision-Date: 2025-08-27T20:42:05.981Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -223,8 +223,8 @@ msgid "All concepts are designed at 512×512 pixels with the brutalist design ae
 msgstr "Todos los conceptos están diseñados en 512×512 píxeles con la estética de diseño brutalista en mente."
 
 #: src/lib/components/chat/MessageInput.svelte
-#: src/lib/components/common/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/common/FileUpload.svelte
 msgid "Enter"
 msgstr "Entrar"
 
@@ -593,8 +593,8 @@ msgstr "Error al cargar el modelo de transcripción. Por favor intenta de nuevo.
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/demo/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Retry"
 msgstr "Reintentar"
 
@@ -1790,12 +1790,10 @@ msgid ""
 msgstr ""
 
 #: src/lib/common/FileUpload.svelte
-#: src/lib/components/common/FileUpload.svelte
 msgid "Drag & Drop Files"
 msgstr ""
 
 #: src/lib/common/FileUpload.svelte
-#: src/lib/components/common/FileUpload.svelte
 msgid "or click to browse"
 msgstr ""
 
@@ -1987,4 +1985,16 @@ msgstr ""
 
 #: src/routes/demo/+page.svelte
 msgid "Selected {0} background removal model"
+msgstr ""
+
+#: src/lib/components/common/FileUpload.svelte
+msgid "Drop your {0} here"
+msgstr ""
+
+#: src/lib/components/common/FileUpload.svelte
+msgid "JPG, PNG, WebP supported"
+msgstr ""
+
+#: src/lib/components/common/FileUpload.svelte
+msgid "or click to browse • {0}"
 msgstr ""
