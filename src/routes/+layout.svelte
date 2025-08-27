@@ -82,7 +82,6 @@
 							<!-- TODO: Make SPA work with language switching -->
 							<li class="home-item">
 								<a
-									data-sveltekit-reload
 									href={link.path}
 									class:active={isActive(link.path)}
 									class:home-link={link.icon === 'home'}
