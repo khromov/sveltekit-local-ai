@@ -168,9 +168,7 @@
 				{#if hasFiles}
 					{mode === 'single' ? 'Click to change image' : 'Click to add more images'}
 				{:else}
-					{mode === 'single'
-						? 'or click to browse • JPG, PNG, WebP supported'
-						: 'or click to browse • JPG, PNG, WebP supported'}
+					or click to browse • JPG, PNG, WebP supported
 				{/if}
 			</p>
 		</div>

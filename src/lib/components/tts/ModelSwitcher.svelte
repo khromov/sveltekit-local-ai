@@ -42,6 +42,7 @@
 			disabled={loading}
 			onclick={() => onModelChange('piper')}
 		>
+			<div class="recommended-badge">Recommended</div>
 			<div class="model-icon">
 				<TheaterIcon />
 			</div>
@@ -201,6 +202,23 @@
 		line-height: 1.2;
 	}
 
+	.recommended-badge {
+		position: absolute;
+		top: 0.5rem;
+		right: 0.5rem;
+		background: black;
+		color: white;
+		font-size: 0.625rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		padding: 0.25rem 0.5rem;
+		border: var(--border-brutalist-thin);
+		box-shadow: var(--shadow-brutalist-small);
+		transform: rotate(-2deg);
+		z-index: 1;
+	}
+
 	@media (max-width: 768px) {
 		.model-cards {
 			grid-template-columns: 1fr;
@@ -219,6 +237,13 @@
 
 		.model-info {
 			text-align: left;
+		}
+
+		.recommended-badge {
+			top: 0.25rem;
+			right: 0.25rem;
+			font-size: 0.55rem;
+			padding: 0.2rem 0.4rem;
 		}
 	}
 

@@ -1,0 +1,1157 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
+"PO-Revision-Date: 2025-08-26T23:31:31.308Z\n"
+"Last-Translator: \n"
+"Language: ja\n"
+"Language-Team: \n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"MIME-Version: 1.0\n"
+
+#: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Local AI Tools"
+msgstr "ローカルAIツール"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Tool #01"
+msgstr "ツール #01"
+
+#: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.svelte
+msgid "Chat"
+msgstr "チャット"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
+msgstr "llama.cppにより、Gemma3などの大規模言語モデルとデバイス上で完全にチャット"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Private & Secure"
+msgstr "プライベート＆セキュア"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Works Offline"
+msgstr "オフライン動作"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "No Data Sharing"
+msgstr "データ共有なし"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Tool #02"
+msgstr "ツール #02"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Transcribe Audio"
+msgstr "音声文字起こし"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "High Accuracy"
+msgstr "高精度"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Multiple Formats"
+msgstr "複数フォーマット対応"
+
+#: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
+msgid "Local Processing"
+msgstr "ローカル処理"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Tool #03"
+msgstr "ツール #03"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Text to Speech"
+msgstr "テキスト読み上げ"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Multiple Models"
+msgstr "複数モデル対応"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Natural Voices"
+msgstr "自然な音声"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Tool #04"
+msgstr "ツール #04"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Remove Background"
+msgstr "背景除去"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "AI-Powered"
+msgstr "AI搭載"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "High Quality"
+msgstr "高品質"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Tool #05"
+msgstr "ツール #05"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Count Tokens"
+msgstr "トークンカウント"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
+msgstr "OpenAIとAnthropicモデルのプロンプトのトークン使用量を推定。"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "OpenAI & Anthropic"
+msgstr "OpenAI & Anthropic"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Accurate Counts"
+msgstr "正確なカウント"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "All processing happens locally in your browser using WebAssembly."
+msgstr "すべての処理はWebAssemblyを使用してブラウザ内でローカルに実行されます。"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "No data is sent to external servers."
+msgstr "外部サーバーにデータは送信されません。"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Batch Processing Complete!"
+msgstr "<0/> バッチ処理完了！"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "{0} Successful"
+msgstr "{0} 成功"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "{0} Failed"
+msgstr "{0} 失敗"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Download All as ZIP"
+msgstr "<0/> すべてをZIPでダウンロード"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Process More Images"
+msgstr "<0/> さらに画像を処理"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Successfully Processed Images"
+msgstr "正常に処理された画像"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Before"
+msgstr "処理前"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "Original "
+msgstr "オリジナル "
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "After"
+msgstr "処理後"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Download this image"
+msgstr "この画像をダウンロード"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed to Process"
+msgstr "処理失敗"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processing failed"
+msgstr "処理に失敗しました"
+
+#: src/routes/+layout.svelte
+msgid "View source on GitHub"
+msgstr "GitHubでソースを見る"
+
+#: src/routes/favicon/+page.svelte
+msgid "Favicon Concept Gallery"
+msgstr "ファビコンコンセプトギャラリー"
+
+#: src/routes/favicon/+page.svelte
+msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
+msgstr "すべてのコンセプトは、ブルータリストデザインの美学を念頭に512×512ピクセルでデザインされています。"
+
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+msgid "<0/> Processing Image"
+msgstr "<0/> 画像処理中"
+
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "{0}% Complete"
+msgstr "{0}% 完了"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
+msgid "Enter"
+msgstr "Enter"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Drop your image here"
+msgstr "ここに画像をドロップ"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "<0/> {0} image{1} selected"
+msgstr "<0/> {0}枚の画像を選択中"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Drop multiple images here"
+msgstr "ここに複数の画像をドロップ"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "OR"
+msgstr "または"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "<0/> Try Example Image"
+msgstr "<0/> サンプル画像を試す"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Selected Images ({0})"
+msgstr "選択された画像 ({0})"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "<0/> Clear All"
+msgstr "<0/> すべてクリア"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "{0} MB"
+msgstr "{0} MB"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "<0/> Process {0} Image{1}"
+msgstr "<0/> {0}枚の画像を処理"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Background Removed!"
+msgstr "<0/> 背景除去完了！"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Processed"
+msgstr "<0/> 処理済み"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Compare"
+msgstr "<0/> 比較"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "Background Removed"
+msgstr "背景除去済み"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "Background removed"
+msgstr "背景除去済み"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Download"
+msgstr "<0/> ダウンロード"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Process Another"
+msgstr "<0/> 別の画像を処理"
+
+#: src/lib/components/chat/ChatMessages.svelte
+msgid "Start a Conversation"
+msgstr "会話を開始"
+
+#: src/lib/components/chat/ChatMessages.svelte
+msgid "Type a message below to begin chatting with AI"
+msgstr "下にメッセージを入力してAIとのチャットを開始"
+
+#: src/lib/components/chat/Message.svelte
+msgid "You"
+msgstr "あなた"
+
+#: src/lib/components/chat/Message.svelte
+msgid "AI"
+msgstr "AI"
+
+#: src/lib/components/chat/MessageInput.svelte
+msgid "Stop generation"
+msgstr "生成を停止"
+
+#: src/lib/components/chat/MessageInput.svelte
+msgid "Send message"
+msgstr "メッセージを送信"
+
+#: src/lib/components/chat/MessageInput.svelte
+msgid "<0/> Model responses may not always be accurate."
+msgstr "<0/> モデルの応答は常に正確とは限りません。"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Smarter AI responses"
+msgstr "より賢いAI応答"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Runs on most computers and phones"
+msgstr "ほとんどのコンピューターとスマートフォンで動作"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "High quality responses"
+msgstr "高品質な応答"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0/> Chat with AI Models"
+msgstr "<0/> AIモデルとチャット"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0>Step 1:</0> Choose Your AI Model"
+msgstr "<0>ステップ 1:</0> AIモデルを選択"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0>Step 2:</0> Advanced Settings"
+msgstr "<0>ステップ 2:</0> 詳細設定"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Threads <0>(-1 auto)</0>"
+msgstr "スレッド数 <0>(-1 自動)</0>"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Context Size"
+msgstr "コンテキストサイズ"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Temperature"
+msgstr "温度"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0/> Loading Model..."
+msgstr "<0/> モデル読み込み中..."
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0/> Load Selected Model"
+msgstr "<0/> 選択したモデルを読み込む"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0/> Models run locally in your browser. No data is sent to external servers."
+msgstr "<0/> モデルはブラウザ内でローカルに実行されます。外部サーバーにデータは送信されません。"
+
+#: src/lib/components/common/ErrorDisplay.svelte
+msgid "Error"
+msgstr "エラー"
+
+#: src/lib/components/common/StepHeader.svelte
+msgid "Step {0}:"
+msgstr "ステップ {0}:"
+
+#: src/lib/components/common/SquareSpinner.svelte
+msgid "Loading"
+msgstr "読み込み中"
+
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "<0/> Raw Tokens ({0})"
+msgstr "<0/> 生トークン ({0})"
+
+#: src/lib/components/count-tokens/EmptyState.svelte
+msgid "Type or paste text in the input field above to analyze tokens and character count."
+msgstr "上の入力フィールドにテキストを入力または貼り付けて、トークンと文字数を分析してください。"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+msgid "Input Text"
+msgstr "入力テキスト"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+msgid "Load example"
+msgstr "例を読み込む"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Clear text"
+msgstr "テキストをクリア"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "<0/> Start Recording"
+msgstr "<0/> 録音開始"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "<0/> Recording... {0}"
+msgstr "<0/> 録音中... {0}"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "<0/> Stop Recording"
+msgstr "<0/> 録音停止"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "Recording Complete"
+msgstr "録音完了"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "<0/> Clear Recording"
+msgstr "<0/> 録音をクリア"
+
+#: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
+msgid "Tokens"
+msgstr "トークン"
+
+#: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
+msgid "Characters"
+msgstr "文字数"
+
+#: src/lib/components/count-tokens/TokenStats.svelte
+msgid "Chars/Token"
+msgstr "文字/トークン"
+
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "Drag & Drop Audio File"
+msgstr "音声ファイルをドラッグ＆ドロップ"
+
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "or"
+msgstr "または"
+
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "Browse Files"
+msgstr "ファイルを選択"
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "<0/> Transcribing Audio"
+msgstr "<0/> 音声文字起こし中"
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "Current Segment"
+msgstr "現在のセグメント"
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "<0/> Transcription seems stuck <1>Reload Page →</1>"
+msgstr "<0/> 文字起こしが停止しているようです <1>ページを再読み込み →</1>"
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "<0/> Keep this tab active during transcription"
+msgstr "<0/> 文字起こし中はこのタブをアクティブにしてください"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "<0/> Transcription Result"
+msgstr "<0/> 文字起こし結果"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "Text"
+msgstr "テキスト"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "SRT"
+msgstr "SRT"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "<0/> Copied!"
+msgstr "<0/> コピーしました！"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "<0/> Copy"
+msgstr "<0/> コピー"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "<0/> Choose Audio Source"
+msgstr "<0/> 音声ソースを選択"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Local File"
+msgstr "ローカルファイル"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Select an audio file from your device (.mp3, .wav, .m4a)"
+msgstr "デバイスから音声ファイルを選択 (.mp3, .wav, .m4a)"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Record Audio"
+msgstr "音声録音"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Record audio directly from your microphone"
+msgstr "マイクから直接音声を録音"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Demo File"
+msgstr "デモファイル"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Listen →"
+msgstr "聴く →"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Select Model"
+msgstr "モデルを選択"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Model Ready"
+msgstr "モデル準備完了"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Failed to load transcription model. Please try again."
+msgstr "文字起こしモデルの読み込みに失敗しました。もう一度お試しください。"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Retry"
+msgstr "再試行"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "<0>Step 1:</0> Text-to-speech Model"
+msgstr "<0>ステップ 1:</0> 音声合成モデル"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Kitten TTS Nano"
+msgstr "Kitten TTS Nano"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "24MB • Best for edge devices"
+msgstr "24MB • エッジデバイスに最適"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Piper Voices"
+msgstr "Piper音声"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "75MB • Better Quality • Fast"
+msgstr "75MB • より高品質 • 高速"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Kokoro"
+msgstr "Kokoro"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "80MB • Highest Quality • Slow"
+msgstr "80MB • 最高品質 • 低速"
+
+#: src/lib/components/tts/SpeedControl.svelte
+msgid "Speed:"
+msgstr "速度:"
+
+#: src/lib/components/tts/SpeedControl.svelte
+msgid "{0}x"
+msgstr "{0}倍"
+
+#: src/lib/components/tts/TextStatistics.svelte
+msgid "Words"
+msgstr "単語数"
+
+#: src/lib/components/tts/SampleRateSelector.svelte
+msgid "Sample Rate:"
+msgstr "サンプルレート:"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hello! I'm Heart, your friendly voice assistant."
+msgstr "こんにちは！私はHeart、あなたのフレンドリーな音声アシスタントです。"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hi there! I'm Bella, ready to bring your words to life."
+msgstr "こんにちは！私はBella、あなたの言葉に命を吹き込む準備ができています。"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Greetings! I'm Nova, here to make your content shine."
+msgstr "ごあいさつ！私はNova、あなたのコンテンツを輝かせるためにここにいます。"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hello! I'm Sarah, delighted to speak for you."
+msgstr "こんにちは！私はSarah、あなたのために話すことを喜んでいます。"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hi! I'm Adam, your reliable voice companion."
+msgstr "こんにちは！私はAdam、あなたの信頼できる音声コンパニオンです。"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hello there! I'm Echo, echoing your thoughts perfectly."
+msgstr "こんにちは！私はEcho、あなたの考えを完璧にエコーします。"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hi! I'm {0}, nice to meet you!"
+msgstr "こんにちは！私は{0}です、はじめまして！"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Select Voice"
+msgstr "音声を選択"
+
+#: src/lib/components/tts/WebGPUToggle.svelte
+msgid "(not supported)"
+msgstr "(非対応)"
+
+#: src/lib/components/tts/WebGPUToggle.svelte
+msgid "Try WebGPU (experimental) <0/>"
+msgstr "WebGPUを試す (実験的) <0/>"
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Failed to load model. Please check your connection and try again."
+msgstr "モデルの読み込みに失敗しました。接続を確認してもう一度お試しください。"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Loading Model"
+msgstr "モデル読み込み中"
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
+msgstr "数分かかります。チャットモデルをブラウザにダウンロード中です。"
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "New <0>Chat</0>"
+msgstr "新規<0>チャット</0>"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "OpenGraph Image Generator"
+msgstr "OpenGraph画像ジェネレーター"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "OpenGraph Images"
+msgstr "OpenGraph画像"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Simple designs optimized for social media sharing (1200×630)"
+msgstr "ソーシャルメディア共有用に最適化されたシンプルなデザイン (1200×630)"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Layout 1: Simple & Bold"
+msgstr "レイアウト1: シンプル＆ボールド"
+
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Local AI"
+msgstr "ローカルAI"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
+msgstr "チャット • 文字起こし • 音声合成 • 背景除去 • トークンカウント"
+
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "ai.stanislav.garden"
+msgstr "ai.stanislav.garden"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Layout 2: Split Simple"
+msgstr "レイアウト2: 分割シンプル"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Private AI in Your Browser"
+msgstr "ブラウザ内のプライベートAI"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "💬 Chat"
+msgstr "💬 チャット"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "🎤 Transcribe Audio"
+msgstr "🎤 音声文字起こし"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "🗣️ Text to Speech"
+msgstr "🗣️ テキスト読み上げ"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "🖼️ Remove Background"
+msgstr "🖼️ 背景除去"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "🧮 Count Tokens"
+msgstr "🧮 トークンカウント"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Layout 3: Clean Focus"
+msgstr "レイアウト3: クリーンフォーカス"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "100% Private"
+msgstr "100% プライベート"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Run offline: Chat • Transcribe • TTS • Background • Tokens"
+msgstr "オフライン動作: チャット • 文字起こし • TTS • 背景 • トークン"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Loading Background Removal Model"
+msgstr "背景除去モデル読み込み中"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "The AI model is being downloaded and initialized. This may take a few moments."
+msgstr "AIモデルをダウンロードして初期化しています。しばらくお待ちください。"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Restart"
+msgstr "リスタート"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Model Selection"
+msgstr "モデル選択"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing Mode"
+msgstr "処理モード"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "<0/> Single Image"
+msgstr "<0/> 単一画像"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "<0/> Multiple images"
+msgstr "<0/> 複数画像"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Upload Images"
+msgstr "画像をアップロード"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Try Again"
+msgstr "もう一度試す"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Text copied to clipboard!"
+msgstr "テキストをクリップボードにコピーしました！"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Text to Speech Studio"
+msgstr "音声合成スタジオ"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "<0/> Welcome to TTS Studio"
+msgstr "<0/> TTSスタジオへようこそ"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Generate high-quality speech from text, all running locally in your browser!"
+msgstr "ブラウザ内でローカルに動作する高品質な音声をテキストから生成！"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Loading TTS Model"
+msgstr "TTSモデル読み込み中"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Initializing text-to-speech model..."
+msgstr "音声合成モデルを初期化中..."
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Enter Your Text"
+msgstr "テキストを入力"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Get random Svelte quote"
+msgstr "ランダムな引用を取得"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Type or paste your text here..."
+msgstr "ここにテキストを入力または貼り付け..."
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Voice:"
+msgstr "音声:"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Generating"
+msgstr "生成中"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Pause"
+msgstr "一時停止"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Download Audio"
+msgstr "音声をダウンロード"
+
+#: src/routes/[[lang]]/transcribe/+page.svelte
+msgid "Whisper Audio Transcription"
+msgstr "Whisper音声文字起こし"
+
+#: src/routes/[[lang]]/transcribe/+page.svelte
+msgid "<0/> Transcribing..."
+msgstr "<0/> 文字起こし中..."
+
+#: src/routes/[[lang]]/transcribe/+page.svelte
+msgid "<0/> Start Transcription"
+msgstr "<0/> 文字起こしを開始"
+
+#: src/routes/[[lang]]/transcribe/+page.svelte
+msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
+msgstr "<0/> 文字起こしはブラウザ内でローカルに実行されます。結果は常に正確とは限りません。"
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Anthropic Claude Tokenizer"
+msgstr "Anthropic Claudeトークナイザー"
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Count tokens for Claude models (Opus, Sonnet, Haiku) using the official tokenizer"
+msgstr "公式トークナイザーを使用してClaudeモデル（Opus、Sonnet、Haiku）のトークンをカウント"
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "About Claude's Tokenizer"
+msgstr "Claudeのトークナイザーについて"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "<0/> Count LLM Tokens"
+msgstr "<0/> LLMトークンカウント"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Anthropic Claude"
+msgstr "Anthropic Claude"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
+msgstr "Claude 3 Opus、Sonnet、Haikuを含むClaudeモデルのトークンをカウント"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Open Tokenizer"
+msgstr "トークナイザーを開く"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "OpenAI ChatGPT"
+msgstr "OpenAI ChatGPT"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
+msgstr "GPT-4、GPT-4o、GPT-3.5 Turbo、その他のOpenAIモデルのトークンをカウント"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "What are tokens?"
+msgstr "トークンとは？"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "1 token ≈ 4 characters in English"
+msgstr "1トークン ≈ 英語で4文字"
+
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "OpenAI ChatGPT Tokenizer"
+msgstr "OpenAI ChatGPTトークナイザー"
+
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Count tokens for GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT and other OpenAI models"
+msgstr "GPT-5、GPT-4、GPT-4o、GPT-3.5 Turbo、ChatGPT、その他のOpenAIモデルのトークンをカウント"
+
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "About OpenAI's Tokenizer"
+msgstr "OpenAIのトークナイザーについて"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Background Remover ({0})"
+msgstr "背景除去 ({0})"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Original {0}"
+msgstr "オリジナル {0}"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processed {0}"
+msgstr "処理済み {0}"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed {0}"
+msgstr "失敗 {0}"
+
+#: src/routes/+layout.svelte
+msgid "Change language"
+msgstr "言語を変更"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Change the language settings for the Local AI Tools application"
+msgstr "ローカルAIツールアプリケーションの言語設定を変更"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Language Settings"
+msgstr "言語設定"
+
+#: src/lib/components/common/LanguageSelector.svelte
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Select Language"
+msgstr "言語を選択"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Small and fast"
+msgstr "小型で高速"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Runs on most devices"
+msgstr "ほとんどのデバイスで動作"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Large, very slow model"
+msgstr "大型で非常に遅いモデル"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Generally provides better results"
+msgstr "一般的により良い結果を提供"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
+"offline!"
+msgstr ""
+"このページでは、ブラウザ上で完全に動作する無料でプライベートなAIツールをご利用いただけます - \n"
+"オフラインでも動作します！"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
+"text or a subtitle file."
+msgstr ""
+"Whisper AIを使用して音声をテキストに変換。任意の音声ファイルをアップロードして、\n"
+"テキストまたは字幕ファイルとしてエクスポート。"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
+"or Kokoro models for high-quality voice synthesis."
+msgstr ""
+"AIモデルを使用してテキストを自然な音声に変換。Kitten TTS、Piper、\n"
+"Kokoroモデルから選択して高品質な音声合成を実現。"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
+"professional results."
+msgstr ""
+"AIを使用して画像の背景を除去。BRIA AIのRMBG v1.4モデルにより\n"
+"プロフェッショナルな仕上がりを実現。"
+
+#: src/routes/favicon/+page.svelte
+msgid ""
+"A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
+"Local AI Tools application."
+msgstr ""
+"ローカルAIツールアプリケーション用にデザインされた\n"
+"512×512形式の{0}個の正方形ファビコンコンセプトのコレクション。"
+
+#: src/routes/favicon/+page.svelte
+msgid ""
+"Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
+"display sizes."
+msgstr ""
+"各ファビコンは、大胆な色使い、強いコントラスト、さまざまな\n"
+"表示サイズに適した明確なアイコノグラフィーを使用しています。"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid ""
+"Calculate how many tokens your text will use with different AI models. Token counts affect\n"
+"context limits for AI conversations."
+msgstr ""
+"さまざまなAIモデルでテキストが使用するトークン数を計算します。トークン数は\n"
+"AI会話のコンテキスト制限に影響します。"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid ""
+"Tokens are the basic units that language models process. A token can be as short as one\n"
+"character or as long as one word. On average:"
+msgstr ""
+"トークンは言語モデルが処理する基本単位です。トークンは1文字から\n"
+"1単語までの長さになることがあります。平均的に："
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid ""
+"Different models use different tokenization methods, so the same text may result in different\n"
+"token counts."
+msgstr ""
+"モデルによって異なるトークン化方法を使用するため、同じテキストでも\n"
+"トークン数が異なる場合があります。"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Model..."
+msgstr "モデル読み込み中..."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Load Model"
+msgstr "モデルを読み込む"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Changing..."
+msgstr "変更中..."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Change Model"
+msgstr "モデルを変更"
+
+#: src/lib/components/common/ErrorDisplay.svelte
+msgid "Retrying..."
+msgstr "再試行中..."
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Choose Image"
+msgstr "画像を選択"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Batch Processing"
+msgstr "バッチ処理"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to change image"
+msgstr "クリックして画像を変更"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to add more images"
+msgstr "クリックして画像を追加"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Play"
+msgstr "再生"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Generate"
+msgstr "生成"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "or click to browse • JPG, PNG, WebP supported"
+msgstr "またはクリックして参照 • JPG、PNG、WebP対応"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid ""
+"Choose your preferred language for the interface. Click on a language to switch to that\n"
+"version of the application."
+msgstr ""
+"インターフェース用の言語を選択してください。言語をクリックすると、\n"
+"そのバージョンのアプリケーションに切り替わります。"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Recommended"
+msgstr "推奨"
+
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "Token ID: {0}"
+msgstr "トークンID: {0}"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copied!"
+msgstr "コピーしました！"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copy text"
+msgstr "テキストをコピー"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Stop preview"
+msgstr "プレビューを停止"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Preview voice"
+msgstr "音声をプレビュー"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Remove {0}"
+msgstr "{0}を削除"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Failed to load model"
+msgstr "モデルの読み込みに失敗しました"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Cached Model"
+msgstr "キャッシュされたモデルを読み込み中"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Downloading Model"
+msgstr "モデルをダウンロード中"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Loading..."
+msgstr "読み込み中..."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model from local cache..."
+msgstr "ローカルキャッシュからモデルを読み込み中..."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "The transcription model is being downloaded to your browser."
+msgstr "文字起こしモデルをブラウザにダウンロード中です。"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model... Progress tracking not available in this browser."
+msgstr "モデル読み込み中... このブラウザではプログレス追跡は利用できません。"
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Average token length: ~4 characters for English text"
+msgstr "平均トークン長: 英語テキストで約4文字"
+
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Code and special characters typically use more tokens"
+msgstr "コードと特殊文字は通常より多くのトークンを使用します"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image and removing background..."
+msgstr "画像を処理して背景を除去中..."
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image {0} of {1}..."
+msgstr "画像 {0}/{1} を処理中..."
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+msgstr "ClaudeはGPTモデルと同様のBPE（バイトペアエンコーディング）トークナイザーを使用します"
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Special characters and code may use more tokens"
+msgstr "特殊文字とコードはより多くのトークンを使用する可能性があります"
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reloading..."
+msgstr "再読み込み中..."
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reload Model"
+msgstr "モデルを再読み込み"
+
+#: src/lib/components/count-tokens/TokenizerHeader.svelte
+msgid "Switch to Anthropic"
+msgstr "Anthropicに切り替え"
+
+#: src/lib/components/count-tokens/TokenizerHeader.svelte
+msgid "Switch to OpenAI"
+msgstr "OpenAIに切り替え"
+
+#: src/lib/components/common/AdvancedSection.svelte
+msgid "Advanced Parameters"
+msgstr "詳細パラメータ"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "RMBG-1.4"
+msgstr "RMBG-1.4"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "RMBG v1.4"
+msgstr "RMBG v1.4"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "QUANT"
+msgstr "QUANT"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "BEN2-ONNX"
+msgstr "BEN2-ONNX"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "BEN2"
+msgstr "BEN2"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "FP16"
+msgstr "FP16"
+
+#: src/routes/+layout.svelte
+msgid "Transcribe"
+msgstr "文字起こし"
+
+#: src/routes/+layout.svelte
+msgid "TTS"
+msgstr "TTS"
+
+#: src/routes/+layout.svelte
+msgid "BG Remover"
+msgstr "背景除去"

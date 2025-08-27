@@ -12,8 +12,10 @@
 	import GithubIcon from 'virtual:icons/lucide/github';
 	import SpeechIcon from 'virtual:icons/lucide/speech';
 	import CalculatorIcon from 'virtual:icons/lucide/calculator';
+	import GlobeIcon from 'virtual:icons/lucide/globe';
 	import { Toaster } from 'svelte-sonner';
 	import Tracking from '$lib/components/Tracking.svelte';
+	import { getCurrentLanguage, createLocalizedLink } from '$lib/i18n-utils';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -21,39 +23,53 @@
 
 	let { children }: Props = $props();
 
-	// Navigation links
-	const navLinks = [
-		{ path: '/', label: '', icon: 'home' },
-		{ path: '/chat', label: 'Chat', icon: 'chat' },
-		{ path: '/transcribe', label: 'Transcribe', icon: 'mic' },
-		{ path: '/text-to-speech', label: 'TTS', icon: 'speech' },
-		{ path: '/background-remover', label: 'BG Remover', icon: 'image' },
-		{ path: '/count-tokens', label: 'Tokens', icon: 'calculator' }
-	];
+	// Get current language from URL and generate localized navigation links
+	const currentLang = $derived(getCurrentLanguage(page.url.pathname));
 
 	// Check if a path is active
 	function isActive(path: string): boolean {
 		return page.url.pathname === path || (path !== '/' && page.url.pathname.startsWith(path));
 	}
+
+	const DEFAULT_TITLE = 'Local AI tools';
+
+	const getLocalizedNavLinks = (currentLang: string) => {
+		return [
+			{ path: createLocalizedLink('/', currentLang), label: '', icon: 'home' },
+			{ path: createLocalizedLink('/chat', currentLang), label: 'Chat', icon: 'chat' },
+			{ path: createLocalizedLink('/transcribe', currentLang), label: 'Transcribe', icon: 'mic' },
+			{ path: createLocalizedLink('/text-to-speech', currentLang), label: 'TTS', icon: 'speech' },
+			{
+				path: createLocalizedLink('/background-remover', currentLang),
+				label: 'BG Remover',
+				icon: 'image'
+			},
+			{
+				path: createLocalizedLink('/count-tokens', currentLang),
+				label: 'Tokens',
+				icon: 'calculator'
+			}
+		];
+	};
 </script>
 
 <svelte:head>
-	<title>{page.data.seo.title}</title>
-	<meta name="description" content={page.data.seo.description} />
+	<title>{page.data.seo?.title || DEFAULT_TITLE}</title>
+	<meta name="description" content={page.data.seo?.description || ''} />
 
 	<!-- Open Graph meta tags -->
-	<meta property="og:title" content={page.data.seo.title} />
-	<meta property="og:description" content={page.data.seo.description} />
-	<meta property="og:image" content={page.data.seo.ogImage} />
-	<meta property="og:url" content={page.data.seo.url} />
+	<meta property="og:title" content={page.data.seo?.title || DEFAULT_TITLE} />
+	<meta property="og:description" content={page.data.seo?.description || ''} />
+	<meta property="og:image" content={page.data.seo?.ogImage || ''} />
+	<meta property="og:url" content={page.data.seo?.url} />
 	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="Local AI Tools" />
+	<meta property="og:site_name" content={DEFAULT_TITLE} />
 
 	<!-- Twitter Card meta tags -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content={page.data.seo.title} />
-	<meta name="twitter:description" content={page.data.seo.description} />
-	<meta name="twitter:image" content={page.data.seo.ogImage} />
+	<meta name="twitter:title" content={page.data.seo?.title || DEFAULT_TITLE} />
+	<meta name="twitter:description" content={page.data.seo?.description || ''} />
+	<meta name="twitter:image" content={page.data.seo?.ogImage || ''} />
 </svelte:head>
 
 <div class="app-wrapper">
@@ -61,7 +77,7 @@
 		<nav class="main-nav">
 			<ul>
 				<div class="nav-left">
-					{#each navLinks as link (link.path)}
+					{#each getLocalizedNavLinks(currentLang) as link (link.path)}
 						{#if link.icon === 'home'}
 							<li class="home-item">
 								<a
@@ -78,7 +94,7 @@
 						{/if}
 					{/each}
 					<div class="center-items">
-						{#each navLinks as link (link.path)}
+						{#each getLocalizedNavLinks(currentLang) as link (link.path)}
 							{#if link.icon !== 'home'}
 								<li>
 									<a href={link.path} class:active={isActive(link.path)}>
@@ -102,6 +118,15 @@
 						{/each}
 					</div>
 				</div>
+				<li class="home-item language-item">
+					<a
+						href={createLocalizedLink('/language', currentLang)}
+						class="home-link"
+						aria-label="Change language"
+					>
+						<GlobeIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
+					</a>
+				</li>
 				<li class="home-item github-item">
 					<a
 						href="https://github.com/khromov/sveltekit-local-ai"
@@ -317,6 +342,7 @@
 		padding: 0.75rem !important;
 	}
 
+	.language-item .home-link,
 	.github-item .home-link {
 		border: var(--border-brutalist-thick);
 		box-shadow: var(--shadow-brutalist-medium);
@@ -478,6 +504,7 @@
 			gap: 0.5rem;
 		}
 
+		.language-item .home-link,
 		.github-item .home-link {
 			border: var(--border-brutalist-thin);
 			box-shadow: var(--shadow-brutalist-small);
@@ -502,6 +529,7 @@
 			gap: 0.375rem;
 		}
 
+		.language-item .home-link,
 		.github-item .home-link {
 			border: var(--border-brutalist-thin);
 			box-shadow: var(--shadow-brutalist-small);

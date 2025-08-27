@@ -109,6 +109,16 @@ Key persisted stores:
 - Both `dev` and `build` scripts automatically copy files before starting
 - Static ONNX Runtime directories are gitignored since they're generated from npm packages
 
+### Internationalization (i18n)
+
+- Uses **Wuchale** for internationalization with support for multiple languages
+- Configured locales: `en` (default), `es`, `ja`, `sv`, `uk` (defined in `wuchale.config.js`)
+- Route structure uses optional `[[lang]]` parameter for language-specific URLs
+- Language detection in `hooks.server.ts` extracts language from URL path, defaults to 'en'
+- Language switching available at `/language` page with cards for each supported locale
+- All internal navigation links should include language prefix to maintain language context
+- Language context is available via URL path parsing in components
+
 ### Application Features
 
 - **Chat**: LLM conversations using Wllama with models like Gemma3

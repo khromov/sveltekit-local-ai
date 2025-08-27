@@ -1,0 +1,1157 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
+"PO-Revision-Date: 2025-08-26T23:31:31.310Z\n"
+"Last-Translator: \n"
+"Language: sv\n"
+"Language-Team: \n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"MIME-Version: 1.0\n"
+
+#: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Local AI Tools"
+msgstr "Lokala AI-verktyg"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
+"offline!"
+msgstr ""
+"På den här sidan hittar du gratis, privata AI-verktyg som körs helt i din webbläsare - även\n"
+"offline!"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Tool #01"
+msgstr "Verktyg #01"
+
+#: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.svelte
+msgid "Chat"
+msgstr "Chatt"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
+msgstr "Chatta med stora språkmodeller som Gemma3, helt lokalt tack vare llama.cpp"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Private & Secure"
+msgstr "Privat & säker"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Works Offline"
+msgstr "Fungerar offline"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "No Data Sharing"
+msgstr "Ingen datadelning"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Tool #02"
+msgstr "Verktyg #02"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Transcribe Audio"
+msgstr "Transkribera ljud"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
+"text or a subtitle file."
+msgstr ""
+"Konvertera tal till text med Whisper AI. Ladda upp en ljudfil och exportera som\n"
+"text eller undertextfil."
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "High Accuracy"
+msgstr "Hög noggrannhet"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Multiple Formats"
+msgstr "Flera format"
+
+#: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
+msgid "Local Processing"
+msgstr "Lokal bearbetning"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Tool #03"
+msgstr "Verktyg #03"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Text to Speech"
+msgstr "Text till tal"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
+"or Kokoro models for high-quality voice synthesis."
+msgstr ""
+"Konvertera text till naturligt tal med AI-modeller. Välj mellan Kitten TTS, Piper\n"
+"eller Kokoro-modeller för högkvalitativ röstsyntes."
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Multiple Models"
+msgstr "Flera modeller"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Natural Voices"
+msgstr "Naturliga röster"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Tool #04"
+msgstr "Verktyg #04"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Remove Background"
+msgstr "Ta bort bakgrund"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
+"professional results."
+msgstr ""
+"Ta bort bakgrunder från bilder med AI. Drivs av RMBG v1.4-modellen från BRIA AI för\n"
+"professionella resultat."
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "AI-Powered"
+msgstr "AI-driven"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "High Quality"
+msgstr "Hög kvalitet"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Tool #05"
+msgstr "Verktyg #05"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Count Tokens"
+msgstr "Räkna tokens"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
+msgstr "Uppskatta tokenanvändning för prompter i OpenAI- och Anthropic-modeller."
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "OpenAI & Anthropic"
+msgstr "OpenAI & Anthropic"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Accurate Counts"
+msgstr "Exakta beräkningar"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "All processing happens locally in your browser using WebAssembly."
+msgstr "All bearbetning sker lokalt i din webbläsare med WebAssembly."
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "No data is sent to external servers."
+msgstr "Ingen data skickas till externa servrar."
+
+#: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
+msgid "Tokens"
+msgstr "Tokens"
+
+#: src/routes/+layout.svelte
+msgid "Change language"
+msgstr "Byt språk"
+
+#: src/routes/+layout.svelte
+msgid "View source on GitHub"
+msgstr "Visa källkod på GitHub"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Original {0}"
+msgstr "Original {0}"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processed {0}"
+msgstr "Bearbetad {0}"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed {0}"
+msgstr "Misslyckad {0}"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Batch Processing Complete!"
+msgstr "<0/> Batchbearbetning klar!"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "{0} Successful"
+msgstr "{0} lyckade"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "{0} Failed"
+msgstr "{0} misslyckade"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Download All as ZIP"
+msgstr "<0/> Ladda ner alla som ZIP"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "<0/> Process More Images"
+msgstr "<0/> Bearbeta fler bilder"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Successfully Processed Images"
+msgstr "Framgångsrikt bearbetade bilder"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Before"
+msgstr "Före"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "After"
+msgstr "Efter"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Download this image"
+msgstr "Ladda ner denna bild"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Failed to Process"
+msgstr "Misslyckades att bearbeta"
+
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processing failed"
+msgstr "Bearbetning misslyckades"
+
+#: src/routes/favicon/+page.svelte
+msgid "Favicon Concept Gallery"
+msgstr "Favicon-konceptgalleri"
+
+#: src/routes/favicon/+page.svelte
+msgid ""
+"A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
+"Local AI Tools application."
+msgstr ""
+"En samling med {0} fyrkantiga favicon-koncept i 512×512-format, designade för\n"
+"Local AI Tools-applikationen."
+
+#: src/routes/favicon/+page.svelte
+msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
+msgstr "Alla koncept är designade i 512×512 pixlar med brutalistisk designestetik i åtanke."
+
+#: src/routes/favicon/+page.svelte
+msgid ""
+"Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
+"display sizes."
+msgstr ""
+"Varje favicon använder djärva färger, starka kontraster och tydlig ikonografi lämplig för olika\n"
+"visningsstorlekar."
+
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+msgid "<0/> Processing Image"
+msgstr "<0/> Bearbetar bild"
+
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "{0}% Complete"
+msgstr "{0}% klart"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Background Removed!"
+msgstr "<0/> Bakgrund borttagen!"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Processed"
+msgstr "<0/> Bearbetad"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Compare"
+msgstr "<0/> Jämför"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "Original"
+msgstr "Original"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "Background Removed"
+msgstr "Bakgrund borttagen"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "Background removed"
+msgstr "Bakgrund borttagen"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Download"
+msgstr "<0/> Ladda ner"
+
+#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
+msgid "<0/> Process Another"
+msgstr "<0/> Bearbeta en till"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Choose Image"
+msgstr "Välj bild"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Batch Processing"
+msgstr "Batchbearbetning"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Drop your image here"
+msgstr "Släpp din bild här"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "<0/> {0} image{1} selected"
+msgstr "<0/> {0} bild{1} valda"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Drop multiple images here"
+msgstr "Släpp flera bilder här"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to change image"
+msgstr "Klicka för att byta bild"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to add more images"
+msgstr "Klicka för att lägga till fler bilder"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "or click to browse • JPG, PNG, WebP supported"
+msgstr "eller klicka för att bläddra • JPG, PNG, WebP stöds"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "OR"
+msgstr "ELLER"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "<0/> Try Example Image"
+msgstr "<0/> Testa exempelbild"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Selected Images ({0})"
+msgstr "Valda bilder ({0})"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "<0/> Clear All"
+msgstr "<0/> Rensa alla"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "{0} MB"
+msgstr "{0} MB"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "<0/> Process {0} Image{1}"
+msgstr "<0/> Bearbeta {0} bild{1}"
+
+#: src/lib/components/chat/ChatMessages.svelte
+msgid "Start a Conversation"
+msgstr "Starta en konversation"
+
+#: src/lib/components/chat/ChatMessages.svelte
+msgid "Type a message below to begin chatting with AI"
+msgstr "Skriv ett meddelande nedan för att börja chatta med AI"
+
+#: src/lib/components/chat/Message.svelte
+msgid "You"
+msgstr "Du"
+
+#: src/lib/components/chat/Message.svelte
+msgid "AI"
+msgstr "AI"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
+msgid "Enter"
+msgstr "Enter"
+
+#: src/lib/components/chat/MessageInput.svelte
+msgid "Stop generation"
+msgstr "Stoppa generering"
+
+#: src/lib/components/chat/MessageInput.svelte
+msgid "Send message"
+msgstr "Skicka meddelande"
+
+#: src/lib/components/chat/MessageInput.svelte
+msgid "<0/> Model responses may not always be accurate."
+msgstr "<0/> Modellsvar är inte alltid korrekta."
+
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "<0/> Raw Tokens ({0})"
+msgstr "<0/> Råa tokens ({0})"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Smarter AI responses"
+msgstr "Smartare AI-svar"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Runs on most computers and phones"
+msgstr "Körs på de flesta datorer och telefoner"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "High quality responses"
+msgstr "Högkvalitativa svar"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0/> Chat with AI Models"
+msgstr "<0/> Chatta med AI-modeller"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0>Step 1:</0> Choose Your AI Model"
+msgstr "<0>Steg 1:</0> Välj din AI-modell"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0>Step 2:</0> Advanced Settings"
+msgstr "<0>Steg 2:</0> Avancerade inställningar"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Threads <0>(-1 auto)</0>"
+msgstr "Trådar <0>(-1 auto)</0>"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Context Size"
+msgstr "Kontextstorlek"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "Temperature"
+msgstr "Temperatur"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0/> Loading Model..."
+msgstr "<0/> Laddar modell..."
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0/> Load Selected Model"
+msgstr "<0/> Ladda vald modell"
+
+#: src/lib/components/chat/ModelSelector.svelte
+msgid "<0/> Models run locally in your browser. No data is sent to external servers."
+msgstr "<0/> Modeller körs lokalt i din webbläsare. Ingen data skickas till externa servrar."
+
+#: src/lib/components/count-tokens/EmptyState.svelte
+msgid "Type or paste text in the input field above to analyze tokens and character count."
+msgstr "Skriv eller klistra in text i fältet ovan för att analysera tokens och antal tecken."
+
+#: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
+msgid "Characters"
+msgstr "Tecken"
+
+#: src/lib/components/count-tokens/TokenStats.svelte
+msgid "Chars/Token"
+msgstr "Tecken/Token"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+msgid "Input Text"
+msgstr "Inmatningstext"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+msgid "Load example"
+msgstr "Ladda exempel"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Clear text"
+msgstr "Rensa text"
+
+#: src/lib/components/tts/SpeedControl.svelte
+msgid "Speed:"
+msgstr "Hastighet:"
+
+#: src/lib/components/tts/SpeedControl.svelte
+msgid "{0}x"
+msgstr "{0}x"
+
+#: src/lib/components/tts/SampleRateSelector.svelte
+msgid "Sample Rate:"
+msgstr "Samplingsfrekvens:"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "<0>Step 1:</0> Text-to-speech Model"
+msgstr "<0>Steg 1:</0> Text-till-tal-modell"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Kitten TTS Nano"
+msgstr "Kitten TTS Nano"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "24MB • Best for edge devices"
+msgstr "24MB • Bäst för edge-enheter"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Piper Voices"
+msgstr "Piper-röster"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "75MB • Better Quality • Fast"
+msgstr "75MB • Bättre kvalitet • Snabb"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Kokoro"
+msgstr "Kokoro"
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "80MB • Highest Quality • Slow"
+msgstr "80MB • Högsta kvalitet • Långsam"
+
+#: src/lib/components/tts/TextStatistics.svelte
+msgid "Words"
+msgstr "Ord"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hello! I'm Heart, your friendly voice assistant."
+msgstr "Hej! Jag är Heart, din vänliga röstassistent."
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hi there! I'm Bella, ready to bring your words to life."
+msgstr "Hej där! Jag är Bella, redo att ge liv åt dina ord."
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Greetings! I'm Nova, here to make your content shine."
+msgstr "Hälsningar! Jag är Nova, här för att få ditt innehåll att glänsa."
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hello! I'm Sarah, delighted to speak for you."
+msgstr "Hej! Jag är Sarah, glad att få tala för dig."
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hi! I'm Adam, your reliable voice companion."
+msgstr "Hej! Jag är Adam, din pålitliga röstpartner."
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hello there! I'm Echo, echoing your thoughts perfectly."
+msgstr "Hej där! Jag är Echo, ekar dina tankar perfekt."
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Hi! I'm {0}, nice to meet you!"
+msgstr "Hej! Jag är {0}, trevligt att träffas!"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Select Voice"
+msgstr "Välj röst"
+
+#: src/lib/components/tts/WebGPUToggle.svelte
+msgid "(not supported)"
+msgstr "(stöds ej)"
+
+#: src/lib/components/tts/WebGPUToggle.svelte
+msgid "Try WebGPU (experimental) <0/>"
+msgstr "Testa WebGPU (experimentell) <0/>"
+
+#: src/lib/components/common/ErrorDisplay.svelte
+msgid "Error"
+msgstr "Fel"
+
+#: src/lib/components/common/ErrorDisplay.svelte
+msgid "Retrying..."
+msgstr "Försöker igen..."
+
+#: src/lib/components/common/LanguageSelector.svelte
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Select Language"
+msgstr "Välj språk"
+
+#: src/lib/components/common/StepHeader.svelte
+msgid "Step {0}:"
+msgstr "Steg {0}:"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "<0/> Start Recording"
+msgstr "<0/> Starta inspelning"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "<0/> Recording... {0}"
+msgstr "<0/> Spelar in... {0}"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "<0/> Stop Recording"
+msgstr "<0/> Stoppa inspelning"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "Recording Complete"
+msgstr "Inspelning klar"
+
+#: src/lib/components/whisper/AudioRecorder.svelte
+msgid "<0/> Clear Recording"
+msgstr "<0/> Rensa inspelning"
+
+#: src/lib/components/common/SquareSpinner.svelte
+msgid "Loading"
+msgstr "Laddar"
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "<0/> Transcribing Audio"
+msgstr "<0/> Transkriberar ljud"
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "Current Segment"
+msgstr "Aktuellt segment"
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "<0/> Transcription seems stuck <1>Reload Page →</1>"
+msgstr "<0/> Transkriberingen verkar ha fastnat <1>Ladda om sidan →</1>"
+
+#: src/lib/components/whisper/TranscriptionProgress.svelte
+msgid "<0/> Keep this tab active during transcription"
+msgstr "<0/> Håll denna flik aktiv under transkribering"
+
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "Drag & Drop Audio File"
+msgstr "Dra & släpp ljudfil"
+
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "or"
+msgstr "eller"
+
+#: src/lib/components/whisper/FileUpload.svelte
+msgid "Browse Files"
+msgstr "Bläddra bland filer"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Select Model"
+msgstr "Välj modell"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Model..."
+msgstr "Laddar modell..."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Load Model"
+msgstr "Ladda modell"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Model Ready"
+msgstr "Modell redo"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Changing..."
+msgstr "Byter..."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Change Model"
+msgstr "Byt modell"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Failed to load transcription model. Please try again."
+msgstr "Misslyckades att ladda transkriptionsmodell. Försök igen."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Retry"
+msgstr "Försök igen"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "<0/> Choose Audio Source"
+msgstr "<0/> Välj ljudkälla"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Local File"
+msgstr "Lokal fil"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Select an audio file from your device (.mp3, .wav, .m4a)"
+msgstr "Välj en ljudfil från din enhet (.mp3, .wav, .m4a)"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Record Audio"
+msgstr "Spela in ljud"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Record audio directly from your microphone"
+msgstr "Spela in ljud direkt från din mikrofon"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Demo File"
+msgstr "Demofil"
+
+#: src/lib/components/whisper/TranscribeOptions.svelte
+msgid "Listen →"
+msgstr "Lyssna →"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "<0/> Transcription Result"
+msgstr "<0/> Transkriptionsresultat"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "Text"
+msgstr "Text"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "SRT"
+msgstr "SRT"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "<0/> Copied!"
+msgstr "<0/> Kopierat!"
+
+#: src/lib/components/whisper/TranscriptionResult.svelte
+msgid "<0/> Copy"
+msgstr "<0/> Kopiera"
+
+#: src/routes/[[lang]]/transcribe/+page.svelte
+msgid "Whisper Audio Transcription"
+msgstr "Whisper ljudtranskription"
+
+#: src/routes/[[lang]]/transcribe/+page.svelte
+msgid "<0/> Transcribing..."
+msgstr "<0/> Transkriberar..."
+
+#: src/routes/[[lang]]/transcribe/+page.svelte
+msgid "<0/> Start Transcription"
+msgstr "<0/> Starta transkription"
+
+#: src/routes/[[lang]]/transcribe/+page.svelte
+msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
+msgstr "<0/> Transkriptionen utförs lokalt i din webbläsare. Resultaten är inte alltid korrekta."
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "<0/> Count LLM Tokens"
+msgstr "<0/> Räkna LLM-tokens"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid ""
+"Calculate how many tokens your text will use with different AI models. Token counts affect\n"
+"context limits for AI conversations."
+msgstr ""
+"Beräkna hur många tokens din text kommer att använda med olika AI-modeller. Antal tokens påverkar\n"
+"kontextgränser för AI-konversationer."
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Anthropic Claude"
+msgstr "Anthropic Claude"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
+msgstr "Räkna tokens för Claude-modeller inklusive Claude 3 Opus, Sonnet och Haiku"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Open Tokenizer"
+msgstr "Öppna tokenizer"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "OpenAI ChatGPT"
+msgstr "OpenAI ChatGPT"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
+msgstr "Räkna tokens för GPT-4, GPT-4o, GPT-3.5 Turbo och andra OpenAI-modeller"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "What are tokens?"
+msgstr "Vad är tokens?"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid ""
+"Tokens are the basic units that language models process. A token can be as short as one\n"
+"character or as long as one word. On average:"
+msgstr ""
+"Tokens är de grundläggande enheter som språkmodeller bearbetar. En token kan vara så kort som ett\n"
+"tecken eller så lång som ett ord. I genomsnitt:"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "1 token ≈ 4 characters in English"
+msgstr "1 token ≈ 4 tecken på engelska"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid ""
+"Different models use different tokenization methods, so the same text may result in different\n"
+"token counts."
+msgstr ""
+"Olika modeller använder olika tokeniseringsmetoder, så samma text kan resultera i olika\n"
+"antal tokens."
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Failed to load model. Please check your connection and try again."
+msgstr "Misslyckades att ladda modell. Kontrollera din anslutning och försök igen."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Loading Model"
+msgstr "Laddar modell"
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
+msgstr "Detta tar några minuter. Chattmodellen laddas ner till din webbläsare."
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "New <0>Chat</0>"
+msgstr "Ny <0>chatt</0>"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "OpenGraph Image Generator"
+msgstr "OpenGraph bildgenerator"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "OpenGraph Images"
+msgstr "OpenGraph-bilder"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Simple designs optimized for social media sharing (1200×630)"
+msgstr "Enkla designer optimerade för delning på sociala medier (1200×630)"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Layout 1: Simple & Bold"
+msgstr "Layout 1: Enkel & djärv"
+
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Local AI"
+msgstr "Lokal AI"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
+msgstr "Chatt • Transkribera • Text till tal • Bakgrundsborttagare • Räkna tokens"
+
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "ai.stanislav.garden"
+msgstr "ai.stanislav.garden"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Layout 2: Split Simple"
+msgstr "Layout 2: Delad enkel"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Private AI in Your Browser"
+msgstr "Privat AI i din webbläsare"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "💬 Chat"
+msgstr "💬 Chatt"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "🎤 Transcribe Audio"
+msgstr "🎤 Transkribera ljud"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "🗣️ Text to Speech"
+msgstr "🗣️ Text till tal"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "🖼️ Remove Background"
+msgstr "🖼️ Ta bort bakgrund"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "🧮 Count Tokens"
+msgstr "🧮 Räkna tokens"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Layout 3: Clean Focus"
+msgstr "Layout 3: Rent fokus"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "100% Private"
+msgstr "100% privat"
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "Run offline: Chat • Transcribe • TTS • Background • Tokens"
+msgstr "Kör offline: Chatt • Transkribera • TTS • Bakgrund • Tokens"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Change the language settings for the Local AI Tools application"
+msgstr "Ändra språkinställningar för Local AI Tools-applikationen"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Language Settings"
+msgstr "Språkinställningar"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Small and fast"
+msgstr "Liten och snabb"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Runs on most devices"
+msgstr "Körs på de flesta enheter"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Large, very slow model"
+msgstr "Stor, mycket långsam modell"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Generally provides better results"
+msgstr "Ger generellt bättre resultat"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Background Remover ({0})"
+msgstr "Bakgrundsborttagare ({0})"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Loading Background Removal Model"
+msgstr "Laddar bakgrundsborttagningsmodell"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "The AI model is being downloaded and initialized. This may take a few moments."
+msgstr "AI-modellen laddas ner och initialiseras. Detta kan ta några ögonblick."
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Restart"
+msgstr "Starta om"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Model Selection"
+msgstr "Modellval"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing Mode"
+msgstr "Bearbetningsläge"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "<0/> Single Image"
+msgstr "<0/> Enkel bild"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "<0/> Multiple images"
+msgstr "<0/> Flera bilder"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Upload Images"
+msgstr "Ladda upp bilder"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Try Again"
+msgstr "Försök igen"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Text copied to clipboard!"
+msgstr "Text kopierad till urklipp!"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Text to Speech Studio"
+msgstr "Text-till-tal-studio"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "<0/> Welcome to TTS Studio"
+msgstr "<0/> Välkommen till TTS-studion"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Generate high-quality speech from text, all running locally in your browser!"
+msgstr "Generera högkvalitativt tal från text, allt körs lokalt i din webbläsare!"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Loading TTS Model"
+msgstr "Laddar TTS-modell"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Initializing text-to-speech model..."
+msgstr "Initialiserar text-till-tal-modell..."
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Enter Your Text"
+msgstr "Ange din text"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Get random Svelte quote"
+msgstr "Få slumpmässigt Svelte-citat"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Type or paste your text here..."
+msgstr "Skriv eller klistra in din text här..."
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Voice:"
+msgstr "Röst:"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Generating"
+msgstr "Genererar"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Pause"
+msgstr "Pausa"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Play"
+msgstr "Spela"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Generate"
+msgstr "Generera"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Download Audio"
+msgstr "Ladda ner ljud"
+
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "OpenAI ChatGPT Tokenizer"
+msgstr "OpenAI ChatGPT Tokenizer"
+
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Count tokens for GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT and other OpenAI models"
+msgstr "Räkna tokens för GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT och andra OpenAI-modeller"
+
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "About OpenAI's Tokenizer"
+msgstr "Om OpenAI:s Tokenizer"
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Anthropic Claude Tokenizer"
+msgstr "Anthropic Claude Tokenizer"
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Count tokens for Claude models (Opus, Sonnet, Haiku) using the official tokenizer"
+msgstr "Räkna tokens för Claude-modeller (Opus, Sonnet, Haiku) med den officiella tokenizer"
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "About Claude's Tokenizer"
+msgstr "Om Claudes Tokenizer"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid ""
+"Choose your preferred language for the interface. Click on a language to switch to that\n"
+"version of the application."
+msgstr ""
+"Välj ditt föredragna språk för gränssnittet. Klicka på ett språk för att växla till den\n"
+"versionen av applikationen."
+
+#: src/lib/components/tts/ModelSwitcher.svelte
+msgid "Recommended"
+msgstr "Rekommenderad"
+
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "Token ID: {0}"
+msgstr "Token-ID: {0}"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copied!"
+msgstr "Kopierad!"
+
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copy text"
+msgstr "Kopiera text"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Stop preview"
+msgstr "Stoppa förhandsgranskning"
+
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Preview voice"
+msgstr "Förhandsgranska röst"
+
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Remove {0}"
+msgstr "Ta bort {0}"
+
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Failed to load model"
+msgstr "Misslyckades att ladda modell"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Cached Model"
+msgstr "Laddar cachad modell"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Downloading Model"
+msgstr "Laddar ner modell"
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Loading..."
+msgstr "Laddar..."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model from local cache..."
+msgstr "Laddar modell från lokal cache..."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "The transcription model is being downloaded to your browser."
+msgstr "Transkriptionsmodellen laddas ner till din webbläsare."
+
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model... Progress tracking not available in this browser."
+msgstr "Laddar modell... Framståndsspårning inte tillgänglig i denna webbläsare."
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Average token length: ~4 characters for English text"
+msgstr "Genomsnittlig tokenlängd: ~4 tecken för engelsk text"
+
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Code and special characters typically use more tokens"
+msgstr "Kod och specialtecken använder vanligtvis fler tokens"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image and removing background..."
+msgstr "Bearbetar bild och tar bort bakgrund..."
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image {0} of {1}..."
+msgstr "Bearbetar bild {0} av {1}..."
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+msgstr "Claude använder en BPE (Byte Pair Encoding) tokenizer liknande GPT-modeller"
+
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Special characters and code may use more tokens"
+msgstr "Specialtecken och kod kan använda fler tokens"
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reloading..."
+msgstr "Laddar om..."
+
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reload Model"
+msgstr "Ladda om modell"
+
+#: src/lib/components/count-tokens/TokenizerHeader.svelte
+msgid "Switch to Anthropic"
+msgstr "Växla till Anthropic"
+
+#: src/lib/components/count-tokens/TokenizerHeader.svelte
+msgid "Switch to OpenAI"
+msgstr "Växla till OpenAI"
+
+#: src/lib/components/common/AdvancedSection.svelte
+msgid "Advanced Parameters"
+msgstr "Avancerade parametrar"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "RMBG-1.4"
+msgstr "RMBG-1.4"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "RMBG v1.4"
+msgstr "RMBG v1.4"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "QUANT"
+msgstr "QUANT"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "BEN2-ONNX"
+msgstr "BEN2-ONNX"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "BEN2"
+msgstr "BEN2"
+
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "FP16"
+msgstr "FP16"
+
+#: src/routes/+layout.svelte
+msgid "Transcribe"
+msgstr "Transkribera"
+
+#: src/routes/+layout.svelte
+msgid "TTS"
+msgstr "TTS"
+
+#: src/routes/+layout.svelte
+msgid "BG Remover"
+msgstr "Bakgrundsborttagare"

@@ -4,7 +4,16 @@
 	import ImageIcon from 'virtual:icons/lucide/image';
 	import SpeechIcon from 'virtual:icons/lucide/speech';
 	import CalculatorIcon from 'virtual:icons/lucide/calculator';
-	// No props needed for this component
+	import { page } from '$app/stores';
+	import { getCurrentLanguageFromPage, createLocalizedLink } from '$lib/i18n-utils';
+
+	// Get current language and create localized links
+	const currentLang = $derived(getCurrentLanguageFromPage($page));
+	const chatLink = $derived(createLocalizedLink('/chat', currentLang));
+	const transcribeLink = $derived(createLocalizedLink('/transcribe', currentLang));
+	const ttsLink = $derived(createLocalizedLink('/text-to-speech', currentLang));
+	const backgroundLink = $derived(createLocalizedLink('/background-remover', currentLang));
+	const tokensLink = $derived(createLocalizedLink('/count-tokens', currentLang));
 </script>
 
 <div class="main-menu">
@@ -20,7 +29,7 @@
 		</header>
 
 		<div class="feature-grid">
-			<a href="/chat" class="feature-card chat-card">
+			<a href={chatLink} class="feature-card chat-card">
 				<div class="card-number">Tool #01</div>
 				<div class="card-content">
 					<div class="icon-container">
@@ -38,7 +47,7 @@
 				</div>
 			</a>
 
-			<a href="/transcribe" class="feature-card transcribe-card">
+			<a href={transcribeLink} class="feature-card transcribe-card">
 				<div class="card-number">Tool #02</div>
 				<div class="card-content">
 					<div class="icon-container">
@@ -57,7 +66,7 @@
 				</div>
 			</a>
 
-			<a href="/text-to-speech" class="feature-card tts-card">
+			<a href={ttsLink} class="feature-card tts-card">
 				<div class="card-number">Tool #03</div>
 				<div class="card-content">
 					<div class="icon-container">
@@ -76,7 +85,7 @@
 				</div>
 			</a>
 
-			<a href="/background-remover" class="feature-card background-card">
+			<a href={backgroundLink} class="feature-card background-card">
 				<div class="card-number">Tool #04</div>
 				<div class="card-content">
 					<div class="icon-container">
@@ -94,7 +103,7 @@
 				</div>
 			</a>
 
-			<a href="/count-tokens" class="feature-card tokens-card">
+			<a href={tokensLink} class="feature-card tokens-card">
 				<div class="card-number">Tool #05</div>
 				<div class="card-content">
 					<div class="icon-container">

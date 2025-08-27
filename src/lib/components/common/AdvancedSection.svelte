@@ -5,12 +5,11 @@
 	import type { Snippet } from 'svelte';
 
 	interface Props {
-		title?: string;
 		Icon?: typeof SettingsIcon;
 		children: Snippet;
 	}
 
-	let { title = 'Advanced Parameters', Icon = SettingsIcon, children }: Props = $props();
+	let { Icon = SettingsIcon, children }: Props = $props();
 
 	function handleToggle() {
 		$advancedExpanded = !$advancedExpanded;
@@ -20,7 +19,7 @@
 <div class="advanced-params">
 	<button class="params-toggle" onclick={handleToggle}>
 		<span class="toggle-emoji"><Icon /></span>
-		<span>{title}</span>
+		<span>Advanced Parameters</span>
 		<span class="toggle-icon" class:rotated={$advancedExpanded}>
 			<ChevronDownIcon />
 		</span>

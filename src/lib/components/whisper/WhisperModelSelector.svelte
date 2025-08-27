@@ -40,7 +40,11 @@
 
 	let opfsSupported = isOPFSSupported(PUBLIC_DISABLE_OPFS === 'true');
 
-	const isCurrentModelReady = $derived(isReady && loadedModel === selectedModel);
+	const isCurrentModelReady = $derived.by(() => {
+		if (!isReady || !loadedModel) return false;
+		const selectedModelObj = availableModels.find((m) => m.path === selectedModel);
+		return selectedModelObj?.name === loadedModel;
+	});
 </script>
 
 <div class="model-selection">
@@ -83,6 +87,7 @@
 		/>
 	{:else if isLoading}
 		<LoadingProgress
+			topMargin={true}
 			title={usingCachedModel
 				? 'Loading Cached Model'
 				: opfsSupported

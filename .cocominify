@@ -1,3 +1,4 @@
 src/lib/components/Tracking.svelte
 static/
 scripts
+*.po
