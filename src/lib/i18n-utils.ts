@@ -21,6 +21,10 @@ export function createLocalizedLink(path: string, lang: string): string {
 	if (lang === 'en') {
 		return path; // English uses clean URLs without prefix
 	}
+	// Handle root path specially to avoid double slash
+	if (path === '/') {
+		return `/${lang}`;
+	}
 	return `/${lang}${path}`;
 }
 

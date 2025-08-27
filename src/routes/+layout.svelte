@@ -15,7 +15,7 @@
 	import GlobeIcon from 'virtual:icons/lucide/globe';
 	import { Toaster } from 'svelte-sonner';
 	import Tracking from '$lib/components/Tracking.svelte';
-	import { getCurrentLanguage, createLocalizedLink } from '$lib/i18n-utils';
+	import { getCurrentLanguage, createLocalizedLink, locales } from '$lib/i18n-utils';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -28,7 +28,16 @@
 
 	// Check if a path is active
 	function isActive(path: string): boolean {
-		return page.url.pathname === path || (path !== '/' && page.url.pathname.startsWith(path));
+		// Exact match
+		if (page.url.pathname === path) {
+			return true;
+		}
+		// Don't allow parent path matching for language home pages
+		const isLanguageHomePage = locales.some((locale) => path === `/${locale}`);
+		if (!isLanguageHomePage && path !== '/' && page.url.pathname.startsWith(path + '/')) {
+			return true;
+		}
+		return false;
 	}
 
 	const DEFAULT_TITLE = 'Local AI tools';
