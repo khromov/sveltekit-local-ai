@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-27T13:18:30.176Z\n"
+"PO-Revision-Date: 2025-08-27T13:32:30.390Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -365,8 +365,9 @@ msgstr "<0/> Завантажити"
 msgid "<0/> Process Another"
 msgstr "<0/> Обробити інше"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/common/FileUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -465,8 +466,8 @@ msgstr "Очистити текст"
 msgid "Error"
 msgstr "Помилка"
 
-#: src/lib/components/common/ErrorDisplay.svelte
 #: src/routes/demo/+page.svelte
+#: src/lib/components/common/ErrorDisplay.svelte
 msgid "Retrying..."
 msgstr "Повторна спроба..."
 
@@ -522,9 +523,9 @@ msgstr "Обрати файли"
 msgid "Step {0}:"
 msgstr "Крок {0}:"
 
-#: src/lib/components/common/SquareSpinner.svelte
 #: src/lib/common/Spinner.svelte
 #: src/routes/demo/+page.svelte
+#: src/lib/components/common/SquareSpinner.svelte
 msgid "Loading"
 msgstr "Завантаження"
 
@@ -563,8 +564,8 @@ msgstr "Не вдалося завантажити модель транскри
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/demo/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Повторити"
 
@@ -665,8 +666,8 @@ msgid "Failed to load model. Please check your connection and try again."
 msgstr "Не вдалося завантажити модель. Перевірте з'єднання та спробуйте знову."
 
 #: src/routes/[[lang]]/chat/+page.svelte
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/demo/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Model"
 msgstr "Завантаження моделі"
 

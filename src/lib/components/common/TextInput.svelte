@@ -27,11 +27,13 @@
 			onChange(target.value);
 		}
 	}
+
+	let textInputId = `text-input-${Math.random().toString(36).substr(2, 9)}`;
 </script>
 
 <div class="text-input-wrapper">
 	{#if label}
-		<label class="input-label">
+		<label class="input-label" for={textInputId}>
 			{label}
 			{#if required}
 				<span class="required">*</span>
@@ -45,6 +47,7 @@
 			</div>
 		{/if}
 		<input
+			id={textInputId}
 			bind:value
 			{type}
 			{placeholder}

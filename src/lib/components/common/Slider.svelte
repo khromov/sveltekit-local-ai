@@ -32,12 +32,13 @@
 	}
 
 	let percentage = $derived(((value - min) / (max - min)) * 100);
+	let sliderId = `slider-${Math.random().toString(36).substr(2, 9)}`;
 </script>
 
 <div class="slider-wrapper">
 	{#if label}
 		<div class="slider-header">
-			<label class="slider-label">{label}</label>
+			<label class="slider-label" for={sliderId}>{label}</label>
 			{#if showValue}
 				<span class="slider-value">{value}{unit}</span>
 			{/if}
@@ -46,6 +47,7 @@
 
 	<div class="slider-container">
 		<input
+			id={sliderId}
 			type="range"
 			bind:value
 			{min}

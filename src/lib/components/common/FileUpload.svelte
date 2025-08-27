@@ -24,6 +24,7 @@
 	let fileInput: HTMLInputElement | undefined = $state();
 	let isDragging = $state(false);
 	let selectedFiles = $state<File[]>([]);
+	let fileInputId = `file-input-${Math.random().toString(36).substr(2, 9)}`;
 
 	function handleFileSelect(event: Event) {
 		const target = event.target as HTMLInputElement;
@@ -80,11 +81,18 @@
 		const mb = bytes / (1024 * 1024);
 		return `${mb.toFixed(2)} MB`;
 	}
+
+	function handleKeyDown(event: KeyboardEvent) {
+		if (!disabled && (event.key === 'Enter' || event.key === ' ')) {
+			event.preventDefault();
+			fileInput?.click();
+		}
+	}
 </script>
 
 <div class="file-upload-wrapper">
 	{#if label}
-		<label class="upload-label">{label}</label>
+		<label class="upload-label" for={fileInputId}>{label}</label>
 	{/if}
 
 	<div
@@ -96,10 +104,12 @@
 		ondragover={handleDragOver}
 		ondragleave={handleDragLeave}
 		onclick={() => !disabled && fileInput?.click()}
+		onkeydown={handleKeyDown}
 		role="button"
 		tabindex={disabled ? -1 : 0}
 	>
 		<input
+			id={fileInputId}
 			bind:this={fileInput}
 			type="file"
 			{accept}

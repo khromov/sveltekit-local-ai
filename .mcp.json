@@ -3,10 +3,6 @@
 		"svelte-llm": {
 			"type": "sse",
 			"url": "https://svelte-llm.stanislav.garden/mcp/sse"
-		},
-		"browsermcp": {
-			"command": "npx",
-			"args": ["-y", "@browsermcp/mcp@latest"]
 		}
 	},
 	"mcpServers_disabled": {
@@ -15,6 +11,10 @@
 			"command": "npx",
 			"args": ["-y", "@playwright/mcp@latest"],
 			"env": {}
+		},
+		"browsermcp": {
+			"command": "npx",
+			"args": ["-y", "@browsermcp/mcp@latest"]
 		}
 	}
 }

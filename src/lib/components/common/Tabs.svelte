@@ -31,8 +31,9 @@
 				onclick={() => handleTabClick(tab.id)}
 			>
 				{#if tab.icon}
+					{@const Icon = tab.icon}
 					<span class="tab-icon">
-						<svelte:component this={tab.icon} />
+						<Icon />
 					</span>
 				{/if}
 				{tab.label}

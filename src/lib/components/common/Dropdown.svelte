@@ -31,6 +31,7 @@
 
 	let isOpen = $state(false);
 	let containerElement: HTMLDivElement | undefined = $state();
+	let dropdownId = `dropdown-${Math.random().toString(36).substr(2, 9)}`;
 
 	$effect(() => {
 		function handleClickOutside(event: MouseEvent) {
@@ -68,7 +69,7 @@
 
 <div class="dropdown-wrapper" bind:this={containerElement}>
 	{#if label}
-		<label class="dropdown-label">
+		<label class="dropdown-label" for={dropdownId}>
 			{label}
 			{#if required}
 				<span class="required">*</span>
@@ -77,6 +78,7 @@
 	{/if}
 
 	<button
+		id={dropdownId}
 		class="dropdown-button"
 		class:open={isOpen}
 		class:disabled
@@ -86,9 +88,13 @@
 	>
 		<div class="dropdown-button-content">
 			{#if getSelectedOption()?.icon}
-				<span class="option-icon">
-					<svelte:component this={getSelectedOption().icon} />
-				</span>
+				{@const selectedOption = getSelectedOption()}
+				{#if selectedOption?.icon}
+					{@const Icon = selectedOption.icon}
+					<span class="option-icon">
+						<Icon />
+					</span>
+				{/if}
 			{/if}
 			<span class="dropdown-value" class:placeholder={!value}>
 				{getSelectedLabel()}
@@ -111,8 +117,9 @@
 					disabled={option.disabled}
 				>
 					{#if option.icon}
+						{@const Icon = option.icon}
 						<span class="option-icon">
-							<svelte:component this={option.icon} />
+							<Icon />
 						</span>
 					{/if}
 					<span class="option-label">{option.label}</span>
