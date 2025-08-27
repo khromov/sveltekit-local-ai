@@ -23,7 +23,12 @@
 		topMargin = false
 	}: Props = $props();
 
-	let displayPercentage = $derived(percentageText || `${progress}% Complete`);
+	// Not extracted unless you remove "progress"
+	let displayPercentage = $derived(`${progress}% Complete`);
+	// Not extracted
+	let displayPercentageTest = $derived.by(() => {
+		return percentageText || `${progress}% Complete`;
+	});
 </script>
 
 <div class="loading-progress" class:top-margin={topMargin}>
