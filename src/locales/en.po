@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-27T13:48:42.249Z\n"
+"PO-Revision-Date: 2025-08-27T14:42:11.809Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -59,9 +59,9 @@ msgstr "Model Ready"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Failed to load transcription model. Please try again."
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/demo/+page.svelte
 msgid "Retry"
 msgstr "Retry"
@@ -90,8 +90,8 @@ msgstr "Record Audio"
 msgid "Record audio directly from your microphone"
 msgstr "Record audio directly from your microphone"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "OR"
 
@@ -104,8 +104,8 @@ msgstr "Demo File"
 msgid "Listen →"
 msgstr "Listen →"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -145,8 +145,8 @@ msgstr "<0/> Clear Recording"
 msgid "<0/> Transcribing Audio"
 msgstr "<0/> Transcribing Audio"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Complete"
 
@@ -417,9 +417,9 @@ msgstr "Processing failed"
 msgid "<0/> Processing Image"
 msgstr "<0/> Processing Image"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/common/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -569,13 +569,13 @@ msgstr "<0/> Raw Tokens ({0})"
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Type or paste text in the input field above to analyze tokens and character count."
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/lib/components/tts/TextStatistics.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Characters"
 msgstr "Characters"
 
@@ -591,9 +591,10 @@ msgstr "Input Text"
 msgid "Load example"
 msgstr "Load example"
 
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Clear text"
 msgstr "Clear text"
 
@@ -602,6 +603,7 @@ msgid "Error"
 msgstr "Error"
 
 #: src/lib/components/common/StepHeader.svelte
+#: src/lib/components/common/ModelSwitcher.svelte
 msgid "Step {0}:"
 msgstr "Step {0}:"
 
@@ -702,23 +704,28 @@ msgstr ""
 "context limits for AI conversations."
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Anthropic Claude"
 msgstr "Anthropic Claude"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
 msgstr "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/lib/components/common/TokenizerCard.svelte
 msgid "Open Tokenizer"
 msgstr "Open Tokenizer"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "OpenAI ChatGPT"
 msgstr "OpenAI ChatGPT"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
 msgstr "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
 
@@ -829,6 +836,7 @@ msgid "Initializing text-to-speech model..."
 msgstr "Initializing text-to-speech model..."
 
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Enter Your Text"
 msgstr "Enter Your Text"
 
@@ -1027,6 +1035,7 @@ msgstr ""
 "version of the application."
 
 #: src/lib/components/tts/ModelSwitcher.svelte
+#: src/lib/components/common/ModelSwitcher.svelte
 msgid "Recommended"
 msgstr "Recommended"
 
@@ -1034,15 +1043,17 @@ msgstr "Recommended"
 msgid "Token ID: {0}"
 msgstr "Token ID: {0}"
 
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Copied!"
 msgstr "Copied!"
 
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Copy text"
 msgstr "Copy text"
 
@@ -1062,8 +1073,8 @@ msgstr "Loading Cached Model"
 msgid "Downloading Model"
 msgstr "Downloading Model"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading..."
 msgstr "Loading..."
 
@@ -1860,3 +1871,124 @@ msgstr "Selected Demo File"
 #: src/routes/demo/+page.svelte
 msgid "Demo audio file available"
 msgstr "Demo audio file available"
+
+#: src/lib/components/common/TextInputCard.svelte
+msgid "<0/> chars"
+msgstr "<0/> chars"
+
+#: src/lib/components/common/TextInputCard.svelte
+#: src/lib/components/common/TextInputCard.svelte
+msgid "<0/> words"
+msgstr "<0/> words"
+
+#: src/lib/components/common/TextInputCard.svelte
+msgid "<0/> characters"
+msgstr "<0/> characters"
+
+#: src/routes/demo/+page.svelte
+msgid "Selected {0} model"
+msgstr "Selected {0} model"
+
+#: src/routes/demo/+page.svelte
+msgid "Selected {0} mode"
+msgstr "Selected {0} mode"
+
+#: src/routes/demo/+page.svelte
+msgid "Intro Card"
+msgstr "Intro Card"
+
+#: src/routes/demo/+page.svelte
+msgid "Welcome to the Demo"
+msgstr "Welcome to the Demo"
+
+#: src/routes/demo/+page.svelte
+msgid "This intro card component was extracted from the TTS page and made reusable."
+msgstr "This intro card component was extracted from the TTS page and made reusable."
+
+#: src/routes/demo/+page.svelte
+msgid "Model Switcher"
+msgstr "Model Switcher"
+
+#: src/routes/demo/+page.svelte
+msgid "TTS Models (3 columns with recommended badge):"
+msgstr "TTS Models (3 columns with recommended badge):"
+
+#: src/routes/demo/+page.svelte
+msgid "Text-to-Speech Model"
+msgstr "Text-to-Speech Model"
+
+#: src/routes/demo/+page.svelte
+msgid "Background Removal Models (2 columns with custom badge):"
+msgstr "Background Removal Models (2 columns with custom badge):"
+
+#: src/routes/demo/+page.svelte
+msgid "Background Removal Model"
+msgstr "Background Removal Model"
+
+#: src/routes/demo/+page.svelte
+msgid "Text Input Card"
+msgstr "Text Input Card"
+
+#: src/routes/demo/+page.svelte
+msgid "Mode Selector"
+msgstr "Mode Selector"
+
+#: src/routes/demo/+page.svelte
+msgid "Tokenizer Cards"
+msgstr "Tokenizer Cards"
+
+#: src/routes/demo/+page.svelte
+msgid "Expandable Sections"
+msgstr "Expandable Sections"
+
+#: src/routes/demo/+page.svelte
+msgid "Raw Tokens"
+msgstr "Raw Tokens"
+
+#: src/routes/demo/+page.svelte
+msgid "Hello"
+msgstr "Hello"
+
+#: src/routes/demo/+page.svelte
+msgid "This"
+msgstr "This"
+
+#: src/routes/demo/+page.svelte
+msgid "is"
+msgstr "is"
+
+#: src/routes/demo/+page.svelte
+msgid "a"
+msgstr "a"
+
+#: src/routes/demo/+page.svelte
+msgid "demo"
+msgstr "demo"
+
+#: src/routes/demo/+page.svelte
+msgid "Configuration Options"
+msgstr "Configuration Options"
+
+#: src/routes/demo/+page.svelte
+msgid "Temperature:"
+msgstr "Temperature:"
+
+#: src/routes/demo/+page.svelte
+msgid "Max Tokens:"
+msgstr "Max Tokens:"
+
+#: src/routes/demo/+page.svelte
+msgid "Top P:"
+msgstr "Top P:"
+
+#: src/routes/demo/+page.svelte
+msgid "Frequency Penalty:"
+msgstr "Frequency Penalty:"
+
+#: src/routes/demo/+page.svelte
+msgid "Get random quote"
+msgstr "Get random quote"
+
+#: src/routes/demo/+page.svelte
+msgid "The quick brown fox jumps over the lazy dog."
+msgstr "The quick brown fox jumps over the lazy dog."

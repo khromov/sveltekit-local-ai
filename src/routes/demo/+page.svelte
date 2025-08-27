@@ -33,6 +33,14 @@
 	import OptionButton from '$lib/components/common/OptionButton.svelte';
 	import OrDivider from '$lib/components/common/OrDivider.svelte';
 
+	// Import newly extracted components
+	import ModelSwitcher from '$lib/components/common/ModelSwitcher.svelte';
+	import TextInputCard from '$lib/components/common/TextInputCard.svelte';
+	import IntroCard from '$lib/components/common/IntroCard.svelte';
+	import ModeSelector from '$lib/components/common/ModeSelector.svelte';
+	import TokenizerCard from '$lib/components/common/TokenizerCard.svelte';
+	import ExpandableSection from '$lib/components/common/ExpandableSection.svelte';
+
 	// Import icons for demo
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 	import SaveIcon from 'virtual:icons/lucide/save';
@@ -49,6 +57,13 @@
 	import MicIcon from 'virtual:icons/lucide/mic';
 	import LockIcon from 'virtual:icons/lucide/lock';
 	import HourglassIcon from 'virtual:icons/lucide/hourglass';
+	import CatIcon from 'virtual:icons/lucide/cat';
+	import FlowerIcon from 'virtual:icons/lucide/flower';
+	import TheaterIcon from 'virtual:icons/lucide/theater';
+	import ImageIcon from 'virtual:icons/lucide/image';
+	import MessageSquareIcon from 'virtual:icons/lucide/message-square';
+	import DicesIcon from 'virtual:icons/lucide/dices';
+	import CopyIcon from 'virtual:icons/lucide/copy';
 
 	// Demo state
 	let textInputValue = $state('');
@@ -60,6 +75,14 @@
 	let progressValue = $state(65);
 	let selectedModel = $state('model1');
 	let selectedOption = $state('option1');
+
+	// State for new components
+	let selectedTTSModel = $state('piper');
+	let selectedMode = $state('single');
+	let demoText = $state('Hello! This is a demo of the reusable components.');
+	let copied = $state(false);
+	let expandedSection1 = $state(false);
+	let expandedSection2 = $state(false);
 
 	const dropdownOptions = [
 		{ value: 'option1', label: 'Option One', icon: HomeIcon },
@@ -97,6 +120,98 @@
 	function handleFileSelect(files: File[]) {
 		toast.success(`Selected ${files.length} file(s)`);
 	}
+
+	// Demo data for new components
+	const ttsModels = [
+		{
+			id: 'kitten',
+			icon: CatIcon,
+			title: 'Kitten TTS Nano',
+			description: '24MB • Best for edge devices'
+		},
+		{
+			id: 'piper',
+			icon: TheaterIcon,
+			title: 'Piper Voices',
+			description: '75MB • Better Quality • Fast',
+			recommended: true
+		},
+		{
+			id: 'kokoro',
+			icon: FlowerIcon,
+			title: 'Kokoro',
+			description: '80MB • Highest Quality • Slow'
+		}
+	];
+
+	const backgroundRemovalModels = [
+		{
+			id: 'rmbg-small',
+			icon: ImageIcon,
+			title: 'RMBG Lite',
+			description: '44MB • Fast processing'
+		},
+		{
+			id: 'rmbg-large',
+			icon: ImageIcon,
+			title: 'RMBG Pro',
+			description: '235MB • Higher quality',
+			badge: 'Best Quality'
+		}
+	];
+
+	const processingModes = [
+		{
+			id: 'single',
+			icon: ImageIcon,
+			label: 'Single Image'
+		},
+		{
+			id: 'batch',
+			icon: FolderIcon,
+			label: 'Multiple Images'
+		}
+	];
+
+	let actionButtons = $derived([
+		{
+			icon: DicesIcon,
+			title: 'Get random quote',
+			onClick: () => {
+				demoText = 'The quick brown fox jumps over the lazy dog.';
+			},
+			variant: 'dice' as const
+		},
+		{
+			icon: CopyIcon,
+			title: copied ? 'Copied!' : 'Copy text',
+			onClick: async () => {
+				await navigator.clipboard.writeText(demoText);
+				copied = true;
+				setTimeout(() => (copied = false), 2000);
+			},
+			disabled: !demoText,
+			variant: 'copy' as const
+		},
+		{
+			icon: TrashIcon,
+			title: 'Clear text',
+			onClick: () => {
+				demoText = '';
+			},
+			variant: 'clear' as const
+		}
+	]);
+
+	function handleTTSModelChange(modelId: string) {
+		selectedTTSModel = modelId;
+		toast.success(`Selected ${modelId} model`);
+	}
+
+	function handleModeChange(modeId: string) {
+		selectedMode = modeId;
+		toast.success(`Selected ${modeId} mode`);
+	}
 </script>
 
 <div class="demo-page">
@@ -104,6 +219,123 @@
 		<h1>🎨 Neo-Brutalist UI Component Library</h1>
 		<p>A collection of reusable Svelte components with bold, playful brutalist design</p>
 	</div>
+
+	<!-- Newly Extracted Components Section -->
+	<Card title="🆕 Newly Extracted Components" rotation={0.5}>
+		<div class="component-section">
+			<h3>Intro Card</h3>
+			<IntroCard
+				icon={SparklesIcon}
+				title="Welcome to the Demo"
+				description="This intro card component was extracted from the TTS page and made reusable."
+				animateIcon={true}
+				rotation={-0.3}
+			/>
+
+			<h3>Model Switcher</h3>
+			<p>TTS Models (3 columns with recommended badge):</p>
+			<ModelSwitcher
+				title="Text-to-Speech Model"
+				stepNumber={1}
+				models={ttsModels}
+				selectedModel={selectedTTSModel}
+				onModelChange={handleTTSModelChange}
+				rotation={-0.2}
+			/>
+
+			<p>Background Removal Models (2 columns with custom badge):</p>
+			<ModelSwitcher
+				title="Background Removal Model"
+				models={backgroundRemovalModels}
+				selectedModel="rmbg-small"
+				onModelChange={() => {}}
+				rotation={0.3}
+			/>
+
+			<h3>Text Input Card</h3>
+			<TextInputCard
+				title="Enter Your Text"
+				bind:text={demoText}
+				{actionButtons}
+				showStats={true}
+				rotation={0.2}
+			/>
+
+			<h3>Mode Selector</h3>
+			<ModeSelector
+				modes={processingModes}
+				{selectedMode}
+				onModeChange={handleModeChange}
+				rotation={-0.3}
+			/>
+
+			<h3>Tokenizer Cards</h3>
+			<div class="tokenizer-cards-demo">
+				<TokenizerCard
+					href="/demo"
+					icon={BrainIcon}
+					title="Anthropic Claude"
+					description="Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
+					decorationColor="var(--color-accent-pink)"
+					decorationPosition="right"
+					hoverColor="var(--color-accent-pink)"
+					rotation={0.5}
+				/>
+
+				<TokenizerCard
+					href="/demo"
+					icon={MessageSquareIcon}
+					title="OpenAI ChatGPT"
+					description="Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
+					decorationColor="var(--color-success)"
+					decorationPosition="left"
+					hoverColor="var(--color-success)"
+					rotation={-0.5}
+				/>
+			</div>
+
+			<h3>Expandable Sections</h3>
+			<ExpandableSection title="Raw Tokens" count={42} bind:expanded={expandedSection1}>
+				<div class="demo-tokens">
+					<div class="token-grid">
+						<div class="token-item">
+							<span class="token-id">15339</span>
+							<span class="token-text">Hello</span>
+						</div>
+						<div class="token-item">
+							<span class="token-id">0</span>
+							<span class="token-text">!</span>
+						</div>
+						<div class="token-item">
+							<span class="token-id">1012</span>
+							<span class="token-text"> This</span>
+						</div>
+						<div class="token-item">
+							<span class="token-id">318</span>
+							<span class="token-text"> is</span>
+						</div>
+						<div class="token-item">
+							<span class="token-id">257</span>
+							<span class="token-text"> a</span>
+						</div>
+						<div class="token-item">
+							<span class="token-id">9206</span>
+							<span class="token-text"> demo</span>
+						</div>
+					</div>
+				</div>
+			</ExpandableSection>
+
+			<ExpandableSection title="Configuration Options" bind:expanded={expandedSection2}>
+				<div class="demo-config">
+					<p><strong>Temperature:</strong> 0.7</p>
+					<p><strong>Max Tokens:</strong> 150</p>
+					<p><strong>Top P:</strong> 0.9</p>
+					<p><strong>Frequency Penalty:</strong> 0.1</p>
+				</div>
+			</ExpandableSection>
+		</div>
+	</Card>
 
 	<!-- Buttons Section -->
 	<Card title="Buttons" rotation={-0.3}>
@@ -545,6 +777,63 @@
 		gap: 1rem;
 		max-width: 600px;
 		margin: 0 auto;
+	}
+
+	/* Styles for newly extracted components */
+	.tokenizer-cards-demo {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	.demo-tokens {
+		max-height: 300px;
+		overflow-y: auto;
+	}
+
+	.token-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+		gap: 0.5rem;
+	}
+
+	.token-item {
+		display: flex;
+		flex-direction: column;
+		padding: 0.5rem;
+		background: var(--color-background-secondary);
+		border: var(--border-brutalist-thin);
+		border-radius: 4px;
+		font-family: var(--font-family-mono);
+		font-size: 0.75rem;
+		transition: all 0.2s;
+	}
+
+	.token-item:hover {
+		background: var(--color-background-tertiary);
+		transform: translate(-1px, -1px);
+		box-shadow: var(--shadow-brutalist-small);
+	}
+
+	.token-id {
+		font-weight: 700;
+		color: var(--color-text-secondary);
+		font-size: 0.7rem;
+		margin-bottom: 0.25rem;
+	}
+
+	.token-text {
+		color: var(--color-text-primary);
+		word-break: break-all;
+		white-space: pre-wrap;
+		line-height: 1.2;
+	}
+
+	.demo-config p {
+		margin: 0.5rem 0;
+		font-family: var(--font-family-mono);
+		font-size: 0.9rem;
 	}
 
 	button:not([class]) {

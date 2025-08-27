@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-27T13:48:42.266Z\n"
+"PO-Revision-Date: 2025-08-27T14:42:11.820Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -155,8 +155,8 @@ msgstr "All bearbetning sker lokalt i din webbläsare med WebAssembly."
 msgid "No data is sent to external servers."
 msgstr "Ingen data skickas till externa servrar."
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -252,8 +252,8 @@ msgstr ""
 msgid "<0/> Processing Image"
 msgstr "<0/> Bearbetar bild"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% klart"
 
@@ -323,8 +323,8 @@ msgstr "Klicka för att lägga till fler bilder"
 msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "eller klicka för att bläddra • JPG, PNG, WebP stöds"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "ELLER"
 
@@ -340,8 +340,8 @@ msgstr "Valda bilder ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Rensa alla"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -365,9 +365,9 @@ msgstr "Du"
 msgid "AI"
 msgstr "AI"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/common/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -439,8 +439,8 @@ msgstr "<0/> Modeller körs lokalt i din webbläsare. Ingen data skickas till ex
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Skriv eller klistra in text i fältet ovan för att analysera tokens och antal tecken."
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/lib/components/tts/TextStatistics.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Characters"
 msgstr "Tecken"
 
@@ -456,9 +456,10 @@ msgstr "Inmatningstext"
 msgid "Load example"
 msgstr "Ladda exempel"
 
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Clear text"
 msgstr "Rensa text"
 
@@ -561,6 +562,7 @@ msgid "Select Language"
 msgstr "Välj språk"
 
 #: src/lib/components/common/StepHeader.svelte
+#: src/lib/components/common/ModelSwitcher.svelte
 msgid "Step {0}:"
 msgstr "Steg {0}:"
 
@@ -647,9 +649,9 @@ msgstr "Byt modell"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Misslyckades att ladda transkriptionsmodell. Försök igen."
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/demo/+page.svelte
 msgid "Retry"
 msgstr "Försök igen"
@@ -736,23 +738,28 @@ msgstr ""
 "kontextgränser för AI-konversationer."
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Anthropic Claude"
 msgstr "Anthropic Claude"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
 msgstr "Räkna tokens för Claude-modeller inklusive Claude 3 Opus, Sonnet och Haiku"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/lib/components/common/TokenizerCard.svelte
 msgid "Open Tokenizer"
 msgstr "Öppna tokenizer"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "OpenAI ChatGPT"
 msgstr "OpenAI ChatGPT"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
 msgstr "Räkna tokens för GPT-4, GPT-4o, GPT-3.5 Turbo och andra OpenAI-modeller"
 
@@ -958,6 +965,7 @@ msgid "Initializing text-to-speech model..."
 msgstr "Initialiserar text-till-tal-modell..."
 
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Enter Your Text"
 msgstr "Ange din text"
 
@@ -1027,6 +1035,7 @@ msgstr ""
 "versionen av applikationen."
 
 #: src/lib/components/tts/ModelSwitcher.svelte
+#: src/lib/components/common/ModelSwitcher.svelte
 msgid "Recommended"
 msgstr "Rekommenderad"
 
@@ -1034,15 +1043,17 @@ msgstr "Rekommenderad"
 msgid "Token ID: {0}"
 msgstr "Token-ID: {0}"
 
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Copied!"
 msgstr "Kopierad!"
 
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Copy text"
 msgstr "Kopiera text"
 
@@ -1070,8 +1081,8 @@ msgstr "Laddar cachad modell"
 msgid "Downloading Model"
 msgstr "Laddar ner modell"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading..."
 msgstr "Laddar..."
 
@@ -1851,4 +1862,125 @@ msgstr ""
 
 #: src/routes/demo/+page.svelte
 msgid "Demo audio file available"
+msgstr ""
+
+#: src/lib/components/common/TextInputCard.svelte
+msgid "<0/> chars"
+msgstr ""
+
+#: src/lib/components/common/TextInputCard.svelte
+#: src/lib/components/common/TextInputCard.svelte
+msgid "<0/> words"
+msgstr ""
+
+#: src/lib/components/common/TextInputCard.svelte
+msgid "<0/> characters"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected {0} model"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected {0} mode"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Intro Card"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Welcome to the Demo"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "This intro card component was extracted from the TTS page and made reusable."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Model Switcher"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "TTS Models (3 columns with recommended badge):"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Text-to-Speech Model"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Background Removal Models (2 columns with custom badge):"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Background Removal Model"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Text Input Card"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Mode Selector"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Tokenizer Cards"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Expandable Sections"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Raw Tokens"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Hello"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "This"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "is"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "a"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "demo"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Configuration Options"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Temperature:"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Max Tokens:"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Top P:"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Frequency Penalty:"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Get random quote"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "The quick brown fox jumps over the lazy dog."
 msgstr ""
