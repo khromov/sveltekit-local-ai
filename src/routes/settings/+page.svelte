@@ -1,5 +1,53 @@
 <script lang="ts">
-	import { CardInterface, ContentArea, Toolbar } from '$lib/components/common';
+	import { toast } from 'svelte-sonner';
+	import {
+		CardInterface,
+		ContentArea,
+		Toolbar,
+		ActionButton,
+		Toggle,
+		TextInput,
+		Dropdown,
+		LanguageSelector,
+		SectionCard,
+		InfoBox,
+		PrimaryButton,
+		InputArea
+	} from '$lib/components/common';
+	import SettingsIcon from 'virtual:icons/lucide/settings';
+	import SaveIcon from 'virtual:icons/lucide/save';
+	import UserIcon from 'virtual:icons/lucide/user';
+	import LockIcon from 'virtual:icons/lucide/lock';
+	import BrainIcon from 'virtual:icons/lucide/brain';
+
+	// Settings state
+	let username = $state('');
+	let enableNotifications = $state(true);
+	let darkMode = $state(false);
+	let autoSave = $state(true);
+	let selectedTheme = $state<string | number>('');
+	let selectedLanguage = $state('en');
+
+	const themeOptions = [
+		{ value: 'neo-brutalist', label: 'Neo-Brutalist (Current)' },
+		{ value: 'minimal', label: 'Minimal' },
+		{ value: 'classic', label: 'Classic' }
+	];
+
+	const languages = [
+		{ code: 'en', name: 'English', nativeName: 'English' },
+		{ code: 'es', name: 'Spanish', nativeName: 'Español' },
+		{ code: 'sv', name: 'Swedish', nativeName: 'Svenska' }
+	];
+
+	function handleSaveSettings() {
+		toast.success('Settings saved successfully!');
+	}
+
+	function handleLanguageChange(code: string) {
+		selectedLanguage = code;
+		toast.info(`Language changed to ${code}`);
+	}
 </script>
 
 <svelte:head>
@@ -8,53 +56,74 @@
 </svelte:head>
 
 <CardInterface>
-	<Toolbar>
-		<div class="model-info">Settings</div>
+	<Toolbar modelInfo="Application Settings" ModelIcon={SettingsIcon}>
+		<ActionButton onClick={handleSaveSettings} Icon={SaveIcon}>Save All</ActionButton>
 	</Toolbar>
 
 	<ContentArea>
-		<h2>Application Settings</h2>
+		<SectionCard>
+			<div class="settings-group">
+				<h3>Profile Settings</h3>
+				<TextInput
+					label="Display Name"
+					bind:value={username}
+					placeholder="Enter your display name"
+					icon={UserIcon}
+				/>
 
-		<div class="settings-section">
-			<h3>General</h3>
-			<p>Configure general application preferences.</p>
-			<!-- Settings options will be added here -->
-		</div>
+				<h3>General Options</h3>
+				<div class="toggle-group">
+					<Toggle
+						bind:checked={enableNotifications}
+						label="Enable Notifications"
+						variant="switch"
+					/>
+					<Toggle
+						bind:checked={darkMode}
+						label="Dark Mode (Coming Soon)"
+						variant="switch"
+						disabled={true}
+					/>
+					<Toggle bind:checked={autoSave} label="Auto-save Settings" variant="switch" />
+				</div>
 
-		<div class="settings-section">
-			<h3>Models</h3>
-			<p>Manage your AI models and configurations.</p>
-			<!-- Model settings will be added here -->
-		</div>
+				<h3>Theme & Language</h3>
+				<Dropdown
+					label="Theme"
+					options={themeOptions}
+					bind:value={selectedTheme}
+					placeholder="Choose a theme..."
+				/>
+				<LanguageSelector {languages} {selectedLanguage} onLanguageChange={handleLanguageChange} />
 
-		<div class="settings-section">
-			<h3>Language</h3>
-			<p>Select your preferred language for the interface.</p>
-			<!-- Language settings will be added here -->
-		</div>
+				<h3>Model Configuration</h3>
+				<InfoBox
+					message="AI models run locally in your browser. No data is sent to external servers."
+					Icon={LockIcon}
+					variant="blue"
+				/>
+				<InfoBox
+					message="Model settings will be available in future updates."
+					Icon={BrainIcon}
+					variant="warning"
+				/>
+			</div>
+		</SectionCard>
 	</ContentArea>
+
+	<InputArea>
+		<PrimaryButton onClick={handleSaveSettings} fullWidth={true}>Save All Settings</PrimaryButton>
+	</InputArea>
 </CardInterface>
 
 <style>
-	h2 {
-		margin: 0 0 1.5rem 0;
-		color: var(--color-text-primary);
-		font-size: 1.5rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
+	.settings-group {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
 	}
 
-	.settings-section {
-		margin-bottom: 2rem;
-		padding: 1.5rem;
-		border: var(--border-brutalist-thick);
-		border-radius: 8px;
-		background: var(--color-background-secondary);
-		box-shadow: var(--shadow-brutalist-small);
-	}
-
-	.settings-section h3 {
+	.settings-group h3 {
 		margin: 0 0 0.5rem 0;
 		color: var(--color-text-primary);
 		font-size: 1.25rem;
@@ -63,10 +132,9 @@
 		letter-spacing: 0.5px;
 	}
 
-	.settings-section p {
-		margin: 0;
-		color: var(--color-text-secondary);
-		font-size: 0.875rem;
-		line-height: 1.5;
+	.toggle-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
 	}
 </style>

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T22:20:29.029Z\n"
-"PO-Revision-Date: 2025-08-27T22:37:08.421Z\n"
+"PO-Revision-Date: 2025-08-27T22:40:27.769Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -312,6 +312,7 @@ msgid "Language Selector"
 msgstr "Language Selector"
 
 #: src/routes/+page.svelte
+#: src/routes/settings/+page.svelte
 msgid "Language changed to {0}"
 msgstr "Language changed to {0}"
 
@@ -795,7 +796,6 @@ msgid "Open Tokenizer"
 msgstr "Open Tokenizer"
 
 #: src/routes/+layout.svelte
-#: src/routes/settings/+page.svelte
 msgid "Settings"
 msgstr "Settings"
 
@@ -807,26 +807,96 @@ msgstr "Configure your Local AI tools settings"
 msgid "Application Settings"
 msgstr "Application Settings"
 
-#: src/routes/settings/+page.svelte
-msgid "General"
-msgstr "General"
+#~ msgid "General"
+#~ msgstr "General"
+
+#~ msgid "Configure general application preferences."
+#~ msgstr "Configure general application preferences."
+
+#~ msgid "Models"
+#~ msgstr "Models"
+
+#~ msgid "Manage your AI models and configurations."
+#~ msgstr "Manage your AI models and configurations."
+
+#~ msgid "Language"
+#~ msgstr "Language"
+
+#~ msgid "Select your preferred language for the interface."
+#~ msgstr "Select your preferred language for the interface."
 
 #: src/routes/settings/+page.svelte
-msgid "Configure general application preferences."
-msgstr "Configure general application preferences."
+msgid "Settings saved successfully!"
+msgstr "Settings saved successfully!"
 
 #: src/routes/settings/+page.svelte
-msgid "Models"
-msgstr "Models"
+msgid "Save All"
+msgstr "Save All"
+
+#~ msgid "User Preferences"
+#~ msgstr "User Preferences"
 
 #: src/routes/settings/+page.svelte
-msgid "Manage your AI models and configurations."
-msgstr "Manage your AI models and configurations."
+msgid "Profile Settings"
+msgstr "Profile Settings"
 
 #: src/routes/settings/+page.svelte
-msgid "Language"
-msgstr "Language"
+msgid "Display Name"
+msgstr "Display Name"
 
 #: src/routes/settings/+page.svelte
-msgid "Select your preferred language for the interface."
-msgstr "Select your preferred language for the interface."
+msgid "Enter your display name"
+msgstr "Enter your display name"
+
+#~ msgid "Application Behavior"
+#~ msgstr "Application Behavior"
+
+#: src/routes/settings/+page.svelte
+msgid "General Options"
+msgstr "General Options"
+
+#: src/routes/settings/+page.svelte
+msgid "Enable Notifications"
+msgstr "Enable Notifications"
+
+#: src/routes/settings/+page.svelte
+msgid "Dark Mode (Coming Soon)"
+msgstr "Dark Mode (Coming Soon)"
+
+#: src/routes/settings/+page.svelte
+msgid "Auto-save Settings"
+msgstr "Auto-save Settings"
+
+#~ msgid "Appearance"
+#~ msgstr "Appearance"
+
+#: src/routes/settings/+page.svelte
+msgid "Theme & Language"
+msgstr "Theme & Language"
+
+#: src/routes/settings/+page.svelte
+msgid "Theme"
+msgstr "Theme"
+
+#: src/routes/settings/+page.svelte
+msgid "Choose a theme..."
+msgstr "Choose a theme..."
+
+#~ msgid "AI Models"
+#~ msgstr "AI Models"
+
+#: src/routes/settings/+page.svelte
+msgid "Model Configuration"
+msgstr "Model Configuration"
+
+#: src/routes/settings/+page.svelte
+msgid "AI models run locally in your browser. No data is sent to external servers."
+msgstr "AI models run locally in your browser. No data is sent to external servers."
+
+#: src/routes/settings/+page.svelte
+msgid "Model settings will be available in future updates."
+msgstr "Model settings will be available in future updates."
+
+#: src/routes/settings/+page.svelte
+msgid "Save All Settings"
+msgstr "Save All Settings"
