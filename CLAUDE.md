@@ -129,8 +129,8 @@ src/
 
 ### AI-Specific Components
 
-- **ModelCard.svelte** - AI model information display
-- **ModelSwitcher.svelte** - Model selection interface
+- **IconCard.svelte** - Icon-based card component with configurable pros text
+- **HeroSelector.svelte** - Hero selection interface with configurable badge text
 - **HeroCard.svelte** - Hero card component with customizable action text
 
 ### Utilities

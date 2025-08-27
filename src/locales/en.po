@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T22:20:29.029Z\n"
-"PO-Revision-Date: 2025-08-27T23:02:27.266Z\n"
+"PO-Revision-Date: 2025-08-27T23:07:18.059Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -644,7 +644,6 @@ msgid "Model Components"
 msgstr "Model Components"
 
 #: src/routes/demo/+page.svelte
-#: src/routes/[[lang]]/demo/+page.svelte
 msgid "Model Cards"
 msgstr "Model Cards"
 
@@ -957,6 +956,7 @@ msgstr "Select Language"
 
 #: src/lib/components/common/StepHeader.svelte
 #: src/lib/components/common/ModelSwitcher.svelte
+#: src/lib/components/common/HeroSelector.svelte
 msgid "Step {0}:"
 msgstr "Step {0}:"
 
@@ -1156,3 +1156,7 @@ msgstr "Open Claude Tokenizer"
 #: src/routes/[[lang]]/demo/+page.svelte
 msgid "Open GPT Tokenizer"
 msgstr "Open GPT Tokenizer"
+
+#: src/routes/[[lang]]/demo/+page.svelte
+msgid "Icon Cards"
+msgstr "Icon Cards"

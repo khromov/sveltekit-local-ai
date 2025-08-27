@@ -1,5 +1,5 @@
 <script lang="ts">
-	interface ModelCard {
+	interface HeroCard {
 		id: string;
 		icon: any;
 		title: string;
@@ -11,11 +11,12 @@
 	interface Props {
 		title: string;
 		stepNumber?: number;
-		models: ModelCard[];
+		models: HeroCard[];
 		selectedModel: string | null;
 		onModelChange: (modelId: string) => void;
 		loading?: boolean;
 		rotation?: number;
+		defaultBadgeText?: string;
 	}
 
 	let {
@@ -25,11 +26,12 @@
 		selectedModel,
 		onModelChange,
 		loading = false,
-		rotation = -0.2
+		rotation = -0.2,
+		defaultBadgeText = 'Recommended'
 	}: Props = $props();
 </script>
 
-<div class="model-switcher" style:transform="rotate({rotation}deg)">
+<div class="hero-selector" style:transform="rotate({rotation}deg)">
 	<h3>
 		{#if stepNumber}
 			<span class="step-number">Step {stepNumber}:</span>
@@ -38,13 +40,13 @@
 	</h3>
 
 	<div
-		class="model-cards"
+		class="hero-cards"
 		class:single-column={models.length === 1}
 		class:two-column={models.length === 2}
 	>
 		{#each models as model, index (model.id)}
 			<button
-				class="model-card"
+				class="hero-card"
 				class:active={selectedModel === model.id}
 				class:loading
 				disabled={loading}
@@ -52,12 +54,12 @@
 				style:transform="rotate({index === 0 ? 0.5 : index === 1 ? -0.3 : 0.3}deg)"
 			>
 				{#if model.badge || model.recommended}
-					<div class="recommended-badge">{model.badge || 'Recommended'}</div>
+					<div class="recommended-badge">{model.badge || defaultBadgeText}</div>
 				{/if}
-				<div class="model-icon">
+				<div class="hero-icon">
 					<model.icon />
 				</div>
-				<div class="model-info">
+				<div class="hero-info">
 					<h4>{model.title}</h4>
 					<p>{model.description}</p>
 				</div>
@@ -67,7 +69,7 @@
 </div>
 
 <style>
-	.model-switcher {
+	.hero-selector {
 		background: var(--color-background-main);
 		border: var(--border-brutalist-extra-thick);
 		padding: 1.5rem;
@@ -105,23 +107,23 @@
 		display: inline-block;
 	}
 
-	.model-cards {
+	.hero-cards {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 1rem;
 	}
 
-	.model-cards.single-column {
+	.hero-cards.single-column {
 		grid-template-columns: 1fr;
 		max-width: 300px;
 		margin: 0 auto;
 	}
 
-	.model-cards.two-column {
+	.hero-cards.two-column {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
-	.model-card {
+	.hero-card {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -138,32 +140,32 @@
 		overflow: hidden;
 	}
 
-	.model-card:hover {
+	.hero-card:hover {
 		transform: translate(-2px, -2px) rotate(0deg) !important;
 		box-shadow: var(--shadow-brutalist-large);
 		background: var(--color-background-pattern);
 	}
 
-	.model-card.active {
+	.hero-card.active {
 		background: var(--color-success);
 		transform: translate(-2px, -2px) rotate(0deg) !important;
 		box-shadow: var(--shadow-brutalist-large);
 		border-color: var(--color-text-primary);
 	}
 
-	.model-card.loading {
+	.hero-card.loading {
 		opacity: 0.5;
 		cursor: not-allowed;
 		pointer-events: none;
 	}
 
-	.model-card.loading:hover {
+	.hero-card.loading:hover {
 		transform: inherit !important;
 		box-shadow: var(--shadow-brutalist-medium);
 		background: var(--color-background-tertiary);
 	}
 
-	.model-icon {
+	.hero-icon {
 		font-size: 2rem;
 		display: flex;
 		align-items: center;
@@ -176,12 +178,12 @@
 		box-shadow: var(--shadow-brutalist-small);
 	}
 
-	.model-icon :global(svg) {
+	.hero-icon :global(svg) {
 		width: 2rem;
 		height: 2rem;
 	}
 
-	.model-info h4 {
+	.hero-info h4 {
 		margin: 0 0 0.25rem 0;
 		font-size: 1rem;
 		font-weight: 700;
@@ -190,7 +192,7 @@
 		color: var(--color-text-primary);
 	}
 
-	.model-info p {
+	.hero-info p {
 		margin: 0;
 		font-size: 0.75rem;
 		color: var(--color-text-tertiary);
@@ -216,22 +218,22 @@
 	}
 
 	@media (max-width: 768px) {
-		.model-cards {
+		.hero-cards {
 			grid-template-columns: 1fr;
 			gap: 0.75rem;
 		}
 
-		.model-card {
+		.hero-card {
 			flex-direction: row;
 			justify-content: flex-start;
 			text-align: left;
 		}
 
-		.model-icon {
+		.hero-icon {
 			padding: 0.5rem;
 		}
 
-		.model-info {
+		.hero-info {
 			text-align: left;
 		}
 
@@ -244,7 +246,7 @@
 	}
 
 	@media (max-width: 600px) {
-		.model-switcher {
+		.hero-selector {
 			padding: 1rem;
 		}
 

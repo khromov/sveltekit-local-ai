@@ -27,14 +27,14 @@
 	import TextInput from '$lib/components/common/TextInput.svelte';
 	import Toggle from '$lib/components/common/Toggle.svelte';
 	import Toolbar from '$lib/components/common/Toolbar.svelte';
-	import ModelCard from '$lib/components/common/ModelCard.svelte';
+	import IconCard from '$lib/components/common/IconCard.svelte';
 	import LoadModelButton from '$lib/components/common/LoadModelButton.svelte';
 	import InfoBox from '$lib/components/common/InfoBox.svelte';
 	import OptionButton from '$lib/components/common/OptionButton.svelte';
 	import OrDivider from '$lib/components/common/OrDivider.svelte';
 
 	// Import newly extracted components
-	import ModelSwitcher from '$lib/components/common/ModelSwitcher.svelte';
+	import HeroSelector from '$lib/components/common/HeroSelector.svelte';
 	import TextInputCard from '$lib/components/common/TextInputCard.svelte';
 	import IntroCard from '$lib/components/common/IntroCard.svelte';
 	import ModeSelector from '$lib/components/common/ModeSelector.svelte';
@@ -317,7 +317,7 @@
 		<div class="component-section">
 			<h3>Model Switcher</h3>
 			<p>TTS Models (3 columns with recommended badge):</p>
-			<ModelSwitcher
+			<HeroSelector
 				title="Text-to-Speech Model"
 				stepNumber={1}
 				models={ttsModels}
@@ -327,7 +327,7 @@
 			/>
 
 			<p>Background Removal Models (2 columns with custom badge):</p>
-			<ModelSwitcher
+			<HeroSelector
 				title="Background Removal Model"
 				models={backgroundRemovalModels}
 				selectedModel={selectedBGModel}
@@ -577,10 +577,10 @@
 	<!-- Model Components Section -->
 	<Card title="Model Components" lean={true}>
 		<div class="component-section">
-			<h3>Model Cards</h3>
-			<div class="model-cards-demo">
+			<h3>Icon Cards</h3>
+			<div class="icon-cards-demo">
 				{#each demoModels as model (model.id)}
-					<ModelCard
+					<IconCard
 						name={model.name}
 						size={model.size}
 						ProsIcon={model.id === 'model1' ? BrainIcon : SmartphoneIcon}
@@ -827,7 +827,7 @@
 		gap: 1rem;
 	}
 
-	.model-cards-demo {
+	.icon-cards-demo {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 1rem;
@@ -942,7 +942,7 @@
 			grid-template-columns: 1fr;
 		}
 
-		.model-cards-demo {
+		.icon-cards-demo {
 			grid-template-columns: 1fr;
 		}
 	}

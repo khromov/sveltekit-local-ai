@@ -25,7 +25,7 @@
 </script>
 
 <button
-	class="model-card"
+	class="icon-card"
 	class:active
 	class:rotate-positive={rotation > 0}
 	class:rotate-negative={rotation < 0}
@@ -34,18 +34,18 @@
 	{disabled}
 >
 	<div class="card-decoration"></div>
-	<div class="model-icon">
+	<div class="icon-icon">
 		{#if ProsIcon}
 			<ProsIcon />
 		{/if}
 	</div>
-	<div class="model-header">
+	<div class="icon-header">
 		<h4>{name}</h4>
 		{#if size}
-			<div class="model-size">{size}</div>
+			<div class="icon-size">{size}</div>
 		{/if}
 	</div>
-	<div class="model-pros">
+	<div class="icon-pros">
 		{#if ProsIcon}
 			<span class="pros-icon"><ProsIcon /></span>
 		{/if}
@@ -54,7 +54,7 @@
 </button>
 
 <style>
-	.model-card {
+	.icon-card {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -75,7 +75,7 @@
 		transform: rotate(0.5deg);
 	}
 
-	.model-card.rotate-negative {
+	.icon-card.rotate-negative {
 		transform: rotate(-0.3deg);
 	}
 
@@ -92,35 +92,35 @@
 		z-index: 0;
 	}
 
-	.model-card.rotate-negative .card-decoration {
+	.icon-card.rotate-negative .card-decoration {
 		background: var(--color-accent-pink);
 		left: -6px;
 		right: auto;
 	}
 
-	.model-card:disabled {
+	.icon-card:disabled {
 		opacity: 0.6;
 		cursor: not-allowed;
 	}
 
-	.model-card:not(:disabled):hover {
+	.icon-card:not(:disabled):hover {
 		transform: translate(-2px, -2px) rotate(0deg);
 		box-shadow: var(--shadow-brutalist-large);
 		background: var(--color-background-pattern);
 	}
 
-	.model-card.active {
+	.icon-card.active {
 		background: var(--color-success);
 		transform: translate(-2px, -2px) rotate(0deg);
 		box-shadow: var(--shadow-brutalist-large);
 		border-color: var(--color-text-primary);
 	}
 
-	.model-card.active:not(:disabled):hover {
+	.icon-card.active:not(:disabled):hover {
 		background: var(--color-success-hover);
 	}
 
-	.model-icon {
+	.icon-icon {
 		font-size: 2rem;
 		display: flex;
 		align-items: center;
@@ -135,12 +135,12 @@
 		z-index: 1;
 	}
 
-	.model-icon :global(svg) {
+	.icon-icon :global(svg) {
 		width: 2rem;
 		height: 2rem;
 	}
 
-	.model-header {
+	.icon-header {
 		display: flex;
 		flex-direction: column;
 		gap: 0.375rem;
@@ -148,7 +148,7 @@
 		z-index: 1;
 	}
 
-	.model-header h4 {
+	.icon-header h4 {
 		margin: 0;
 		font-size: 1.125rem;
 		font-weight: 700;
@@ -158,7 +158,7 @@
 		line-height: 1.2;
 	}
 
-	.model-size {
+	.icon-size {
 		font-size: 0.75rem;
 		color: var(--color-text-tertiary);
 		background: var(--color-primary-dark);
@@ -171,7 +171,7 @@
 		margin: 0 auto;
 	}
 
-	.model-pros {
+	.icon-pros {
 		display: flex;
 		align-items: center;
 		gap: 0.375rem;
@@ -211,23 +211,23 @@
 	}
 
 	@media (max-width: 768px) {
-		.model-card {
+		.icon-card {
 			padding: 1.25rem 1rem;
 		}
 	}
 
 	@media (max-width: 600px) {
-		.model-icon {
+		.icon-icon {
 			font-size: 1.75rem;
 			padding: 0.625rem;
 		}
 
-		.model-icon :global(svg) {
+		.icon-icon :global(svg) {
 			width: 1.75rem;
 			height: 1.75rem;
 		}
 
-		.model-header h4 {
+		.icon-header h4 {
 			font-size: 1rem;
 		}
 
