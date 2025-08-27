@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-27T14:42:11.809Z\n"
+"PO-Revision-Date: 2025-08-27T14:43:46.696Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -1992,3 +1992,7 @@ msgstr "Get random quote"
 #: src/routes/demo/+page.svelte
 msgid "The quick brown fox jumps over the lazy dog."
 msgstr "The quick brown fox jumps over the lazy dog."
+
+#: src/routes/demo/+page.svelte
+msgid "Selected {0} background removal model"
+msgstr "Selected {0} background removal model"

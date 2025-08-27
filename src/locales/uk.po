@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-27T14:42:11.823Z\n"
+"PO-Revision-Date: 2025-08-27T14:43:46.704Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -1983,4 +1983,8 @@ msgstr ""
 
 #: src/routes/demo/+page.svelte
 msgid "The quick brown fox jumps over the lazy dog."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected {0} background removal model"
 msgstr ""

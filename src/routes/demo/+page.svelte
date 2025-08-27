@@ -78,6 +78,7 @@
 
 	// State for new components
 	let selectedTTSModel = $state('piper');
+	let selectedBGModel = $state('rmbg-small');
 	let selectedMode = $state('single');
 	let demoText = $state('Hello! This is a demo of the reusable components.');
 	let copied = $state(false);
@@ -212,6 +213,11 @@
 		selectedMode = modeId;
 		toast.success(`Selected ${modeId} mode`);
 	}
+
+	function handleBGModelChange(modelId: string) {
+		selectedBGModel = modelId;
+		toast.success(`Selected ${modelId} background removal model`);
+	}
 </script>
 
 <div class="demo-page">
@@ -247,8 +253,8 @@
 			<ModelSwitcher
 				title="Background Removal Model"
 				models={backgroundRemovalModels}
-				selectedModel="rmbg-small"
-				onModelChange={() => {}}
+				selectedModel={selectedBGModel}
+				onModelChange={handleBGModelChange}
 				rotation={0.3}
 			/>
 
