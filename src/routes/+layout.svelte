@@ -8,7 +8,9 @@
 	import { Toaster } from 'svelte-sonner';
 	import Tracking from '$lib/components/common/Tracking.svelte';
 	import Navigation from '$lib/components/common/Navigation.svelte';
-	import { getCurrentLanguage } from '$lib/i18n-utils';
+	import { getCurrentLanguage, createLocalizedLink } from '$lib/i18n-utils';
+	import HomeIcon from 'virtual:icons/lucide/home';
+	import SettingsIcon from 'virtual:icons/lucide/settings';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -20,6 +22,13 @@
 	const currentLang = $derived(getCurrentLanguage(page.url.pathname));
 
 	const DEFAULT_TITLE = 'Local AI tools';
+
+	const getLocalizedNavLinks = (currentLang: string) => {
+		return [
+			{ path: createLocalizedLink('/', currentLang), label: '', Icon: HomeIcon },
+			{ path: createLocalizedLink('/settings', currentLang), label: 'Settings', Icon: SettingsIcon }
+		];
+	};
 </script>
 
 <svelte:head>
@@ -43,7 +52,7 @@
 
 <div class="app-wrapper">
 	<div class="container">
-		<Navigation {currentLang} {page} />
+		<Navigation {currentLang} navLinks={getLocalizedNavLinks(currentLang)} {page} />
 
 		<div class="content-wrapper">
 			{@render children?.()}

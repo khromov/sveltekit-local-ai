@@ -1,16 +1,17 @@
 <script lang="ts">
-	import HomeIcon from 'virtual:icons/lucide/home';
-	import MessageSquareIcon from 'virtual:icons/lucide/message-square';
-	import MicIcon from 'virtual:icons/lucide/mic';
-	import ImageIcon from 'virtual:icons/lucide/image';
 	import GithubIcon from 'virtual:icons/lucide/github';
-	import SpeechIcon from 'virtual:icons/lucide/speech';
-	import CalculatorIcon from 'virtual:icons/lucide/calculator';
 	import GlobeIcon from 'virtual:icons/lucide/globe';
 	import { createLocalizedLink, locales } from '$lib/i18n-utils';
 
+	interface NavLink {
+		path: string;
+		label: string;
+		Icon: any;
+	}
+
 	interface Props {
 		currentLang: string;
+		navLinks: NavLink[];
 		page: {
 			url: {
 				pathname: string;
@@ -18,7 +19,7 @@
 		};
 	}
 
-	let { currentLang, page }: Props = $props();
+	let { currentLang, navLinks, page }: Props = $props();
 
 	function isActive(path: string): boolean {
 		if (page.url.pathname === path) {
@@ -30,70 +31,21 @@
 		}
 		return false;
 	}
-
-	const getLocalizedNavLinks = (currentLang: string) => {
-		return [
-			{ path: createLocalizedLink('/', currentLang), label: '', icon: 'home' },
-			{ path: createLocalizedLink('/chat', currentLang), label: 'Chat', icon: 'chat' },
-			{ path: createLocalizedLink('/transcribe', currentLang), label: 'Transcribe', icon: 'mic' },
-			{ path: createLocalizedLink('/text-to-speech', currentLang), label: 'TTS', icon: 'speech' },
-			{
-				path: createLocalizedLink('/background-remover', currentLang),
-				label: 'BG Remover',
-				icon: 'image'
-			},
-			{
-				path: createLocalizedLink('/count-tokens', currentLang),
-				label: 'Tokens',
-				icon: 'calculator'
-			}
-		];
-	};
 </script>
 
 <nav class="main-nav">
 	<ul>
 		<div class="nav-left">
-			{#each getLocalizedNavLinks(currentLang) as link (link.path)}
-				{#if link.icon === 'home'}
-					<li class="home-item">
-						<a
-							href={link.path}
-							class:active={isActive(link.path)}
-							class:home-link={link.icon === 'home'}
-						>
-							<HomeIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-							{#if link.label}
-								<span>{link.label}</span>
-							{/if}
-						</a>
-					</li>
-				{/if}
+			{#each navLinks as link (link.path)}
+				<li class="nav-item" class:home-item={!link.label}>
+					<a href={link.path} class:active={isActive(link.path)} class:home-link={!link.label}>
+						<link.Icon style="width: 20px; height: 20px; stroke-width: 2.5" />
+						{#if link.label}
+							<span>{link.label}</span>
+						{/if}
+					</a>
+				</li>
 			{/each}
-			<div class="center-items">
-				{#each getLocalizedNavLinks(currentLang) as link (link.path)}
-					{#if link.icon !== 'home'}
-						<li>
-							<a href={link.path} class:active={isActive(link.path)}>
-								{#if link.icon === 'chat'}
-									<MessageSquareIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-								{:else if link.icon === 'mic'}
-									<MicIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-								{:else if link.icon === 'speech'}
-									<SpeechIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-								{:else if link.icon === 'image'}
-									<ImageIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-								{:else if link.icon === 'calculator'}
-									<CalculatorIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
-								{/if}
-								{#if link.label}
-									<span>{link.label}</span>
-								{/if}
-							</a>
-						</li>
-					{/if}
-				{/each}
-			</div>
 		</div>
 		<li class="home-item language-item">
 			<a
@@ -172,8 +124,10 @@
 		list-style: none;
 	}
 
-	.main-nav li {
+	.main-nav li,
+	.nav-item {
 		flex: none;
+		list-style: none;
 	}
 
 	.main-nav a {
