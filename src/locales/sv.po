@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-27T13:32:30.369Z\n"
+"PO-Revision-Date: 2025-08-27T13:48:42.266Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Local AI Tools"
 msgstr "Lokala AI-verktyg"
 
@@ -155,8 +155,8 @@ msgstr "All bearbetning sker lokalt i din webbläsare med WebAssembly."
 msgid "No data is sent to external servers."
 msgstr "Ingen data skickas till externa servrar."
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -365,8 +365,8 @@ msgstr "Du"
 msgid "AI"
 msgstr "AI"
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/common/FileUpload.svelte
 msgid "Enter"
 msgstr "Enter"
@@ -456,9 +456,9 @@ msgstr "Inmatningstext"
 msgid "Load example"
 msgstr "Ladda exempel"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Clear text"
 msgstr "Rensa text"
 
@@ -550,8 +550,8 @@ msgstr "Testa WebGPU (experimentell) <0/>"
 msgid "Error"
 msgstr "Fel"
 
-#: src/routes/demo/+page.svelte
 #: src/lib/components/common/ErrorDisplay.svelte
+#: src/routes/demo/+page.svelte
 msgid "Retrying..."
 msgstr "Försöker igen..."
 
@@ -585,8 +585,8 @@ msgid "<0/> Clear Recording"
 msgstr "<0/> Rensa inspelning"
 
 #: src/lib/common/Spinner.svelte
-#: src/routes/demo/+page.svelte
 #: src/lib/components/common/SquareSpinner.svelte
+#: src/routes/demo/+page.svelte
 msgid "Loading"
 msgstr "Laddar"
 
@@ -627,6 +627,7 @@ msgid "Loading Model..."
 msgstr "Laddar modell..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/demo/+page.svelte
 msgid "Load Model"
 msgstr "Ladda modell"
 
@@ -647,9 +648,9 @@ msgid "Failed to load transcription model. Please try again."
 msgstr "Misslyckades att ladda transkriptionsmodell. Försök igen."
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/demo/+page.svelte
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Försök igen"
 
@@ -658,22 +659,27 @@ msgid "<0/> Choose Audio Source"
 msgstr "<0/> Välj ljudkälla"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Local File"
 msgstr "Lokal fil"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Select an audio file from your device (.mp3, .wav, .m4a)"
 msgstr "Välj en ljudfil från din enhet (.mp3, .wav, .m4a)"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Record Audio"
 msgstr "Spela in ljud"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Record audio directly from your microphone"
 msgstr "Spela in ljud direkt från din mikrofon"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Demo File"
 msgstr "Demofil"
 
@@ -779,8 +785,8 @@ msgid "Failed to load model. Please check your connection and try again."
 msgstr "Misslyckades att ladda modell. Kontrollera din anslutning och försök igen."
 
 #: src/routes/[[lang]]/chat/+page.svelte
-#: src/routes/demo/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/demo/+page.svelte
 msgid "Loading Model"
 msgstr "Laddar modell"
 
@@ -1028,15 +1034,15 @@ msgstr "Rekommenderad"
 msgid "Token ID: {0}"
 msgstr "Token-ID: {0}"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copied!"
 msgstr "Kopierad!"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copy text"
 msgstr "Kopiera text"
 
@@ -1785,4 +1791,64 @@ msgstr ""
 #: src/lib/common/FileUpload.svelte
 #: src/lib/components/common/FileUpload.svelte
 msgid "Max size: {0} MB"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Model Components"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Model Cards"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected {0}"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Load Model Button"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Load Selected Model"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Info Boxes"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Models run locally in your browser. No data is sent to external servers."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "This is a success message with green styling."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Warning: This action cannot be undone."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Option Components"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Option Buttons"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected Local File"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected Record Audio"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected Demo File"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Demo audio file available"
 msgstr ""

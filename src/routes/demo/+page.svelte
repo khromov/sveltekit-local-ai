@@ -27,6 +27,11 @@
 	import TextInput from '$lib/components/common/TextInput.svelte';
 	import Toggle from '$lib/components/common/Toggle.svelte';
 	import Toolbar from '$lib/components/common/Toolbar.svelte';
+	import ModelCard from '$lib/components/common/ModelCard.svelte';
+	import LoadModelButton from '$lib/components/common/LoadModelButton.svelte';
+	import InfoBox from '$lib/components/common/InfoBox.svelte';
+	import OptionButton from '$lib/components/common/OptionButton.svelte';
+	import OrDivider from '$lib/components/common/OrDivider.svelte';
 
 	// Import icons for demo
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
@@ -38,6 +43,12 @@
 	import HomeIcon from 'virtual:icons/lucide/home';
 	import SettingsIcon from 'virtual:icons/lucide/settings';
 	import UserIcon from 'virtual:icons/lucide/user';
+	import BrainIcon from 'virtual:icons/lucide/brain';
+	import SmartphoneIcon from 'virtual:icons/lucide/smartphone';
+	import FolderIcon from 'virtual:icons/lucide/folder';
+	import MicIcon from 'virtual:icons/lucide/mic';
+	import LockIcon from 'virtual:icons/lucide/lock';
+	import HourglassIcon from 'virtual:icons/lucide/hourglass';
 
 	// Demo state
 	let textInputValue = $state('');
@@ -47,6 +58,8 @@
 	let dropdownValue = $state<string | number>('');
 	let activeTab = $state('tab1');
 	let progressValue = $state(65);
+	let selectedModel = $state('model1');
+	let selectedOption = $state('option1');
 
 	const dropdownOptions = [
 		{ value: 'option1', label: 'Option One', icon: HomeIcon },
@@ -65,6 +78,16 @@
 		{ code: 'en', name: 'English', nativeName: 'English' },
 		{ code: 'es', name: 'Spanish', nativeName: 'Español' },
 		{ code: 'ja', name: 'Japanese', nativeName: '日本語' }
+	];
+
+	const demoModels = [
+		{ id: 'model1', name: 'Gemma 2B Instruct', size: '1.6 GB', prosText: 'Smarter AI responses' },
+		{
+			id: 'model2',
+			name: 'SmolLM2-1.7B',
+			size: '1.2 GB',
+			prosText: 'Runs on most computers and phones'
+		}
 	];
 
 	function handleClick(name: string) {
@@ -292,6 +315,112 @@
 		</div>
 	</Card>
 
+	<!-- Model Components Section -->
+	<Card title="Model Components" rotation={0.1}>
+		<div class="component-section">
+			<h3>Model Cards</h3>
+			<div class="model-cards-demo">
+				{#each demoModels as model (model.id)}
+					<ModelCard
+						name={model.name}
+						size={model.size}
+						prosIcon={model.id === 'model1' ? BrainIcon : SmartphoneIcon}
+						prosText={model.prosText}
+						active={selectedModel === model.id}
+						rotation={model.id === 'model1' ? 0.5 : -0.3}
+						onClick={() => {
+							selectedModel = model.id;
+							toast.success(`Selected ${model.name}`);
+						}}
+					/>
+				{/each}
+			</div>
+
+			<h3>Load Model Button</h3>
+			<LoadModelButton
+				onClick={() => handleClick('Load Model')}
+				icon={BoltIcon}
+				loadingIcon={HourglassIcon}
+				loading={false}
+			>
+				Load Selected Model
+			</LoadModelButton>
+
+			<h3>Info Boxes</h3>
+			<div class="info-boxes-demo">
+				<InfoBox
+					message="Models run locally in your browser. No data is sent to external servers."
+					icon={LockIcon}
+					variant="blue"
+					rotation={0.5}
+				/>
+				<InfoBox
+					message="This is a success message with green styling."
+					icon={StarIcon}
+					variant="success"
+					rotation={-0.3}
+				/>
+				<InfoBox
+					message="Warning: This action cannot be undone."
+					variant="warning"
+					rotation={0.2}
+				/>
+			</div>
+		</div>
+	</Card>
+
+	<!-- Option Components Section -->
+	<Card title="Option Components" rotation={-0.2}>
+		<div class="component-section">
+			<h3>Option Buttons</h3>
+			<div class="option-buttons-demo">
+				<OptionButton
+					title="Local File"
+					description="Select an audio file from your device (.mp3, .wav, .m4a)"
+					icon={FolderIcon}
+					selected={selectedOption === 'upload'}
+					name="demo-option"
+					value="upload"
+					onClick={() => {
+						selectedOption = 'upload';
+						toast.success('Selected Local File');
+					}}
+					rotation={-0.5}
+				/>
+
+				<OptionButton
+					title="Record Audio"
+					description="Record audio directly from your microphone"
+					icon={MicIcon}
+					selected={selectedOption === 'record'}
+					name="demo-option"
+					value="record"
+					onClick={() => {
+						selectedOption = 'record';
+						toast.success('Selected Record Audio');
+					}}
+					rotation={0.5}
+				/>
+
+				<OrDivider />
+
+				<OptionButton
+					title="Demo File"
+					description="Demo audio file available"
+					selected={selectedOption === 'demo'}
+					name="demo-option"
+					value="demo"
+					size="compact"
+					onClick={() => {
+						selectedOption = 'demo';
+						toast.success('Selected Demo File');
+					}}
+					rotation={0.2}
+				/>
+			</div>
+		</div>
+	</Card>
+
 	<!-- Full Interface Example -->
 	<Card title="Full Interface Example" rotation={0.15}>
 		<CardInterface>
@@ -396,6 +525,28 @@
 		gap: 1rem;
 	}
 
+	.model-cards-demo {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	.info-boxes-demo {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.option-buttons-demo {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
 	button:not([class]) {
 		padding: 0.5rem 1rem;
 		background: var(--color-background-tertiary);
@@ -422,6 +573,10 @@
 		}
 
 		.stats-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.model-cards-demo {
 			grid-template-columns: 1fr;
 		}
 	}

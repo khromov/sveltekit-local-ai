@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-27T13:32:30.390Z\n"
+"PO-Revision-Date: 2025-08-27T13:48:42.271Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Local AI Tools"
 msgstr "Локальні AI інструменти"
 
@@ -155,8 +155,8 @@ msgstr "Вся обробка відбувається локально у ва�
 msgid "No data is sent to external servers."
 msgstr "Жодні дані не передаються на зовнішні сервери."
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Токени"
 
@@ -365,8 +365,8 @@ msgstr "<0/> Завантажити"
 msgid "<0/> Process Another"
 msgstr "<0/> Обробити інше"
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/common/FileUpload.svelte
 msgid "Enter"
 msgstr "Enter"
@@ -456,9 +456,9 @@ msgstr "Вхідний текст"
 msgid "Load example"
 msgstr "Завантажити приклад"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Clear text"
 msgstr "Очистити текст"
 
@@ -466,8 +466,8 @@ msgstr "Очистити текст"
 msgid "Error"
 msgstr "Помилка"
 
-#: src/routes/demo/+page.svelte
 #: src/lib/components/common/ErrorDisplay.svelte
+#: src/routes/demo/+page.svelte
 msgid "Retrying..."
 msgstr "Повторна спроба..."
 
@@ -524,8 +524,8 @@ msgid "Step {0}:"
 msgstr "Крок {0}:"
 
 #: src/lib/common/Spinner.svelte
-#: src/routes/demo/+page.svelte
 #: src/lib/components/common/SquareSpinner.svelte
+#: src/routes/demo/+page.svelte
 msgid "Loading"
 msgstr "Завантаження"
 
@@ -543,6 +543,7 @@ msgid "Loading Model..."
 msgstr "Завантаження моделі..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/demo/+page.svelte
 msgid "Load Model"
 msgstr "Завантажити модель"
 
@@ -563,9 +564,9 @@ msgid "Failed to load transcription model. Please try again."
 msgstr "Не вдалося завантажити модель транскрибування. Спробуйте ще раз."
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/demo/+page.svelte
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Повторити"
 
@@ -638,22 +639,27 @@ msgid "<0/> Choose Audio Source"
 msgstr "<0/> Оберіть джерело аудіо"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Local File"
 msgstr "Локальний файл"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Select an audio file from your device (.mp3, .wav, .m4a)"
 msgstr "Оберіть аудіофайл з вашого пристрою (.mp3, .wav, .m4a)"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Record Audio"
 msgstr "Записати аудіо"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Record audio directly from your microphone"
 msgstr "Записати аудіо безпосередньо з вашого мікрофона"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Demo File"
 msgstr "Демо файл"
 
@@ -666,8 +672,8 @@ msgid "Failed to load model. Please check your connection and try again."
 msgstr "Не вдалося завантажити модель. Перевірте з'єднання та спробуйте знову."
 
 #: src/routes/[[lang]]/chat/+page.svelte
-#: src/routes/demo/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/demo/+page.svelte
 msgid "Loading Model"
 msgstr "Завантаження моделі"
 
@@ -1028,15 +1034,15 @@ msgstr "Рекомендовано"
 msgid "Token ID: {0}"
 msgstr "ID токена: {0}"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copied!"
 msgstr "Скопійовано!"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copy text"
 msgstr "Копіювати текст"
 
@@ -1785,4 +1791,64 @@ msgstr ""
 #: src/lib/common/FileUpload.svelte
 #: src/lib/components/common/FileUpload.svelte
 msgid "Max size: {0} MB"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Model Components"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Model Cards"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected {0}"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Load Model Button"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Load Selected Model"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Info Boxes"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Models run locally in your browser. No data is sent to external servers."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "This is a success message with green styling."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Warning: This action cannot be undone."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Option Components"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Option Buttons"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected Local File"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected Record Audio"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected Demo File"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Demo audio file available"
 msgstr ""

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-27T13:32:30.215Z\n"
+"PO-Revision-Date: 2025-08-27T13:48:42.258Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Local AI Tools"
 msgstr "Herramientas de IA Local"
 
@@ -222,8 +222,8 @@ msgstr "Galería de Conceptos de Favicon"
 msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
 msgstr "Todos los conceptos están diseñados en 512×512 píxeles con la estética de diseño brutalista en mente."
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/common/FileUpload.svelte
 msgid "Enter"
 msgstr "Entrar"
@@ -257,8 +257,8 @@ msgstr "Imágenes Seleccionadas ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Limpiar Todo"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -282,14 +282,14 @@ msgstr "Texto de Entrada"
 msgid "Load example"
 msgstr "Cargar ejemplo"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Clear text"
 msgstr "Limpiar texto"
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -383,8 +383,8 @@ msgid "<0/> Model responses may not always be accurate."
 msgstr "<0/> Las respuestas del modelo pueden no ser siempre precisas."
 
 #: src/lib/common/Spinner.svelte
-#: src/routes/demo/+page.svelte
 #: src/lib/components/common/SquareSpinner.svelte
+#: src/routes/demo/+page.svelte
 msgid "Loading"
 msgstr "Cargando"
 
@@ -549,22 +549,27 @@ msgid "<0/> Choose Audio Source"
 msgstr "<0/> Elegir Fuente de Audio"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Local File"
 msgstr "Archivo Local"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Select an audio file from your device (.mp3, .wav, .m4a)"
 msgstr "Selecciona un archivo de audio de tu dispositivo (.mp3, .wav, .m4a)"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Record Audio"
 msgstr "Grabar Audio"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Record audio directly from your microphone"
 msgstr "Graba audio directamente desde tu micrófono"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/routes/demo/+page.svelte
 msgid "Demo File"
 msgstr "Archivo de Demostración"
 
@@ -585,9 +590,9 @@ msgid "Failed to load transcription model. Please try again."
 msgstr "Error al cargar el modelo de transcripción. Por favor intenta de nuevo."
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/routes/demo/+page.svelte
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Reintentar"
 
@@ -596,8 +601,8 @@ msgid "Failed to load model. Please check your connection and try again."
 msgstr "Error al cargar el modelo. Por favor verifica tu conexión e intenta de nuevo."
 
 #: src/routes/[[lang]]/chat/+page.svelte
-#: src/routes/demo/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/demo/+page.svelte
 msgid "Loading Model"
 msgstr "Cargando Modelo"
 
@@ -963,8 +968,8 @@ msgstr ""
 "Diferentes modelos usan diferentes métodos de tokenización, por lo que el mismo texto puede resultar en diferentes\n"
 "conteos de tokens."
 
-#: src/routes/demo/+page.svelte
 #: src/lib/components/common/ErrorDisplay.svelte
+#: src/routes/demo/+page.svelte
 msgid "Retrying..."
 msgstr "Reintentando..."
 
@@ -973,6 +978,7 @@ msgid "Loading Model..."
 msgstr "Cargando Modelo..."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/demo/+page.svelte
 msgid "Load Model"
 msgstr "Cargar Modelo"
 
@@ -1028,15 +1034,15 @@ msgstr "Recomendado"
 msgid "Token ID: {0}"
 msgstr "ID de Token: {0}"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copied!"
 msgstr "¡Copiado!"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Copy text"
 msgstr "Copiar texto"
 
@@ -1785,4 +1791,64 @@ msgstr ""
 #: src/lib/common/FileUpload.svelte
 #: src/lib/components/common/FileUpload.svelte
 msgid "Max size: {0} MB"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Model Components"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Model Cards"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected {0}"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Load Model Button"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Load Selected Model"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Info Boxes"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Models run locally in your browser. No data is sent to external servers."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "This is a success message with green styling."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Warning: This action cannot be undone."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Option Components"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Option Buttons"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected Local File"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected Record Audio"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Selected Demo File"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Demo audio file available"
 msgstr ""
