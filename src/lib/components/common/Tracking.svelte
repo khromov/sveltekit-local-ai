@@ -5,10 +5,7 @@
 <!-- @wc-ignore -->
 <svelte:head>
 	{#if !dev}
-		<script
-			data-website-id="8b61040a-306f-4d99-95b3-0e925d631ec3"
-			data-host-url="https://u.khromov.se"
-		>
+		<script data-website-id="XXX" data-host-url="https://u.khromov.se">
 			!(function () {
 				'use strict';
 				((t) => {

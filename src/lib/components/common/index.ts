@@ -23,3 +23,4 @@ export { default as Tabs } from './Tabs.svelte';
 export { default as TextInput } from './TextInput.svelte';
 export { default as Toggle } from './Toggle.svelte';
 export { default as Toolbar } from './Toolbar.svelte';
+export { default as Tracking } from './Tracking.svelte';

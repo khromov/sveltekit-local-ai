@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-27T20:49:53.950Z\n"
+"PO-Revision-Date: 2025-08-27T21:00:45.706Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -12,151 +12,11 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/+page.svelte
-msgid "Local AI Tools"
-msgstr "Локальні AI інструменти"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
-"offline!"
-msgstr ""
-"На цій сторінці ви знайдете безкоштовні, приватні AI інструменти, які працюють повністю у вашому браузері - і навіть\n"
-"офлайн!"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #01"
-msgstr "Інструмент #01"
-
 #: src/routes/+layout.svelte
-#: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
 msgstr "Чат"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
-msgstr "Спілкуйтеся з великими мовними моделями як Gemma3, повністю на вашому пристрої завдяки llama.cpp"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Private & Secure"
-msgstr "Приватно та безпечно"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Works Offline"
-msgstr "Працює офлайн"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "No Data Sharing"
-msgstr "Без передачі даних"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #02"
-msgstr "Інструмент #02"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Transcribe Audio"
-msgstr "Транскрибувати аудіо"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
-"text or a subtitle file."
-msgstr ""
-"Перетворюйте мовлення на текст за допомогою Whisper AI. Завантажте будь-який аудіофайл та експортуйте як\n"
-"текст або файл субтитрів."
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "High Accuracy"
-msgstr "Висока точність"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Multiple Formats"
-msgstr "Різні формати"
-
-#: src/routes/[[lang]]/+page.svelte
-#: src/routes/[[lang]]/+page.svelte
-msgid "Local Processing"
-msgstr "Локальна обробка"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #03"
-msgstr "Інструмент #03"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Text to Speech"
-msgstr "Текст у мовлення"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
-"or Kokoro models for high-quality voice synthesis."
-msgstr ""
-"Перетворюйте текст на природне мовлення за допомогою AI моделей. Оберіть з Kitten TTS, Piper\n"
-"або Kokoro моделей для високоякісного синтезу голосу."
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Multiple Models"
-msgstr "Різні моделі"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Natural Voices"
-msgstr "Природні голоси"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #04"
-msgstr "Інструмент #04"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Remove Background"
-msgstr "Видалити фон"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
-"professional results."
-msgstr ""
-"Видаляйте фон із зображень за допомогою AI. На основі моделі RMBG v1.4 від BRIA AI для\n"
-"професійних результатів."
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "AI-Powered"
-msgstr "На основі AI"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "High Quality"
-msgstr "Висока якість"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #05"
-msgstr "Інструмент #05"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Count Tokens"
-msgstr "Підрахувати токени"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
-msgstr "Оцініть використання токенів для запитів у моделях OpenAI та Anthropic."
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "OpenAI & Anthropic"
-msgstr "OpenAI та Anthropic"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Accurate Counts"
-msgstr "Точні підрахунки"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "All processing happens locally in your browser using WebAssembly."
-msgstr "Вся обробка відбувається локально у вашому браузері за допомогою WebAssembly."
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "No data is sent to external servers."
-msgstr "Жодні дані не передаються на зовнішні сервери."
-
 #: src/routes/+layout.svelte
-#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Токени"
 
@@ -168,298 +28,11 @@ msgstr "Змінити мову"
 msgid "View source on GitHub"
 msgstr "Переглянути код на GitHub"
 
-#: src/routes/favicon/+page.svelte
-msgid "Favicon Concept Gallery"
-msgstr "Галерея концептів фавіконів"
-
-#: src/routes/favicon/+page.svelte
-msgid ""
-"A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
-"Local AI Tools application."
-msgstr ""
-"Колекція {0} квадратних концептів фавіконів у форматі 512×512, розроблених для\n"
-"додатку Local AI Tools."
-
-#: src/routes/favicon/+page.svelte
-msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
-msgstr "Всі концепти розроблені в розмірі 512×512 пікселів з урахуванням бруталістичної естетики дизайну."
-
-#: src/routes/favicon/+page.svelte
-msgid ""
-"Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
-"display sizes."
-msgstr ""
-"Кожен фавікон використовує яскраві кольори, сильні контрасти та чітку іконографію, придатну для різних\n"
-"розмірів відображення."
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Original {0}"
-msgstr "Оригінал {0}"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Processed {0}"
-msgstr "Оброблено {0}"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Failed {0}"
-msgstr "Помилка {0}"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "<0/> Batch Processing Complete!"
-msgstr "<0/> Пакетну обробку завершено!"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "{0} Successful"
-msgstr "{0} Успішно"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "{0} Failed"
-msgstr "{0} З помилками"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "<0/> Download All as ZIP"
-msgstr "<0/> Завантажити все як ZIP"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "<0/> Process More Images"
-msgstr "<0/> Обробити більше зображень"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Successfully Processed Images"
-msgstr "Успішно оброблені зображення"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Before"
-msgstr "До"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "After"
-msgstr "Після"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Download this image"
-msgstr "Завантажити це зображення"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Failed to Process"
-msgstr "Не вдалося обробити"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Processing failed"
-msgstr "Обробка не вдалася"
-
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-msgid "<0/> Processing Image"
-msgstr "<0/> Обробка зображення"
-
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-msgid "{0}% Complete"
-msgstr "{0}% Завершено"
-
-#: src/lib/components/chat/ChatMessages.svelte
-msgid "Start a Conversation"
-msgstr "Почати розмову"
-
-#: src/lib/components/chat/ChatMessages.svelte
-msgid "Type a message below to begin chatting with AI"
-msgstr "Введіть повідомлення нижче, щоб почати спілкування з AI"
-
-#: src/lib/components/chat/Message.svelte
-msgid "You"
-msgstr "Ви"
-
-#: src/lib/components/chat/Message.svelte
-msgid "AI"
-msgstr "AI"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Choose Image"
-msgstr "Обрати зображення"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Batch Processing"
-msgstr "Пакетна обробка"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Drop your image here"
-msgstr "Перетягніть зображення сюди"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "<0/> {0} image{1} selected"
-msgstr "<0/> {0} зображення{1} обрано"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Drop multiple images here"
-msgstr "Перетягніть кілька зображень сюди"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Click to change image"
-msgstr "Клацніть, щоб змінити зображення"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Click to add more images"
-msgstr "Клацніть, щоб додати більше зображень"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "or click to browse • JPG, PNG, WebP supported"
-msgstr "або клацніть для вибору • Підтримуються JPG, PNG, WebP"
-
-#: src/lib/components/whisper/TranscribeOptions.svelte
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "OR"
-msgstr "АБО"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "<0/> Try Example Image"
-msgstr "<0/> Спробувати приклад"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Selected Images ({0})"
-msgstr "Обрані зображення ({0})"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "<0/> Clear All"
-msgstr "<0/> Очистити все"
-
-#: src/lib/components/whisper/FileUpload.svelte
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "{0} MB"
-msgstr "{0} МБ"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "<0/> Process {0} Image{1}"
-msgstr "<0/> Обробити {0} зображення{1}"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Background Removed!"
-msgstr "<0/> Фон видалено!"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Processed"
-msgstr "<0/> Оброблено"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Compare"
-msgstr "<0/> Порівняти"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "Original"
-msgstr "Оригінал"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "Background Removed"
-msgstr "Фон видалено"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "Background removed"
-msgstr "Фон видалено"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Download"
-msgstr "<0/> Завантажити"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Process Another"
-msgstr "<0/> Обробити інше"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/common/FileUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
-#: src/lib/components/chat/MessageInput.svelte
-msgid "Stop generation"
-msgstr "Зупинити генерацію"
-
-#: src/lib/components/chat/MessageInput.svelte
-msgid "Send message"
-msgstr "Надіслати повідомлення"
-
-#: src/lib/components/chat/MessageInput.svelte
-msgid "<0/> Model responses may not always be accurate."
-msgstr "<0/> Відповіді моделі можуть бути не завжди точними."
-
-#: src/lib/components/count-tokens/EmptyState.svelte
-msgid "Type or paste text in the input field above to analyze tokens and character count."
-msgstr "Введіть або вставте текст у поле вводу вище для аналізу токенів та підрахунку символів."
-
-#: src/lib/components/count-tokens/RawTokensDisplay.svelte
-msgid "<0/> Raw Tokens ({0})"
-msgstr "<0/> Необроблені токени ({0})"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "Smarter AI responses"
-msgstr "Розумніші відповіді AI"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "Runs on most computers and phones"
-msgstr "Працює на більшості комп'ютерів та телефонів"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "High quality responses"
-msgstr "Високоякісні відповіді"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0/> Chat with AI Models"
-msgstr "<0/> Спілкування з AI моделями"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0>Step 1:</0> Choose Your AI Model"
-msgstr "<0>Крок 1:</0> Оберіть вашу AI модель"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0>Step 2:</0> Advanced Settings"
-msgstr "<0>Крок 2:</0> Розширені налаштування"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "Threads <0>(-1 auto)</0>"
-msgstr "Потоки <0>(-1 авто)</0>"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "Context Size"
-msgstr "Розмір контексту"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "Temperature"
-msgstr "Температура"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0/> Loading Model..."
-msgstr "<0/> Завантаження моделі..."
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0/> Load Selected Model"
-msgstr "<0/> Завантажити обрану модель"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0/> Models run locally in your browser. No data is sent to external servers."
-msgstr "<0/> Моделі працюють локально у вашому браузері. Жодні дані не передаються на зовнішні сервери."
-
-#: src/lib/components/tts/TextStatistics.svelte
-#: src/lib/components/count-tokens/TokenStats.svelte
-msgid "Characters"
-msgstr "Символи"
-
-#: src/lib/components/count-tokens/TokenStats.svelte
-msgid "Chars/Token"
-msgstr "Символів/токен"
-
-#: src/lib/components/count-tokens/TextInputSection.svelte
-msgid "Input Text"
-msgstr "Вхідний текст"
-
-#: src/lib/components/count-tokens/TextInputSection.svelte
-msgid "Load example"
-msgstr "Завантажити приклад"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Clear text"
 msgstr "Очистити текст"
 
@@ -467,705 +40,96 @@ msgstr "Очистити текст"
 msgid "Error"
 msgstr "Помилка"
 
+#: src/routes/+page.svelte
 #: src/lib/components/common/ErrorDisplay.svelte
-#: src/routes/demo/+page.svelte
 msgid "Retrying..."
 msgstr "Повторна спроба..."
 
-#: src/lib/components/whisper/AudioRecorder.svelte
-msgid "<0/> Start Recording"
-msgstr "<0/> Почати запис"
-
-#: src/lib/components/whisper/AudioRecorder.svelte
-msgid "<0/> Recording... {0}"
-msgstr "<0/> Запис... {0}"
-
-#: src/lib/components/whisper/AudioRecorder.svelte
-msgid "<0/> Stop Recording"
-msgstr "<0/> Зупинити запис"
-
-#: src/lib/components/whisper/AudioRecorder.svelte
-msgid "Recording Complete"
-msgstr "Запис завершено"
-
-#: src/lib/components/whisper/AudioRecorder.svelte
-msgid "<0/> Clear Recording"
-msgstr "<0/> Очистити запис"
-
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-msgid "<0/> Transcribing Audio"
-msgstr "<0/> Транскрибування аудіо"
-
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-msgid "Current Segment"
-msgstr "Поточний сегмент"
-
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-msgid "<0/> Transcription seems stuck <1>Reload Page →</1>"
-msgstr "<0/> Схоже, транскрибування застрягло <1>Перезавантажити сторінку →</1>"
-
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-msgid "<0/> Keep this tab active during transcription"
-msgstr "<0/> Тримайте цю вкладку активною під час транскрибування"
-
-#: src/lib/components/whisper/FileUpload.svelte
-msgid "Drag & Drop Audio File"
-msgstr "Перетягніть аудіофайл"
-
-#: src/lib/components/whisper/FileUpload.svelte
-msgid "or"
-msgstr "або"
-
-#: src/lib/components/whisper/FileUpload.svelte
-msgid "Browse Files"
-msgstr "Обрати файли"
-
-#: src/lib/components/common/StepHeader.svelte
 #: src/lib/components/common/ModelSwitcher.svelte
+#: src/lib/components/common/StepHeader.svelte
 msgid "Step {0}:"
 msgstr "Крок {0}:"
 
-#: src/lib/common/Spinner.svelte
+#: src/routes/+page.svelte
 #: src/lib/components/common/SquareSpinner.svelte
-#: src/routes/demo/+page.svelte
 msgid "Loading"
 msgstr "Завантаження"
 
-#: src/routes/[[lang]]/language/+page.svelte
 #: src/lib/components/common/LanguageSelector.svelte
 msgid "Select Language"
 msgstr "Оберіть мову"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Select Model"
-msgstr "Оберіть модель"
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Loading Model..."
-msgstr "Завантаження моделі..."
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Load Model"
 msgstr "Завантажити модель"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Model Ready"
-msgstr "Модель готова"
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Changing..."
-msgstr "Зміна..."
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Change Model"
-msgstr "Змінити модель"
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Failed to load transcription model. Please try again."
-msgstr "Не вдалося завантажити модель транскрибування. Спробуйте ще раз."
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/background-remover/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Retry"
 msgstr "Повторити"
 
-#: src/lib/components/whisper/TranscriptionResult.svelte
-msgid "<0/> Transcription Result"
-msgstr "<0/> Результат транскрибування"
-
-#: src/lib/components/whisper/TranscriptionResult.svelte
-msgid "Text"
-msgstr "Текст"
-
-#: src/lib/components/whisper/TranscriptionResult.svelte
-msgid "SRT"
-msgstr "SRT"
-
-#: src/lib/components/whisper/TranscriptionResult.svelte
-msgid "<0/> Copied!"
-msgstr "<0/> Скопійовано!"
-
-#: src/lib/components/whisper/TranscriptionResult.svelte
-msgid "<0/> Copy"
-msgstr "<0/> Копіювати"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "<0>Step 1:</0> Text-to-speech Model"
-msgstr "<0>Крок 1:</0> Модель тексту в мовлення"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "Kitten TTS Nano"
-msgstr "Kitten TTS Nano"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "24MB • Best for edge devices"
-msgstr "24МБ • Краще для периферійних пристроїв"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "Piper Voices"
-msgstr "Piper голоси"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "75MB • Better Quality • Fast"
-msgstr "75МБ • Краща якість • Швидко"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "Kokoro"
-msgstr "Kokoro"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "80MB • Highest Quality • Slow"
-msgstr "80МБ • Найвища якість • Повільно"
-
-#: src/lib/components/tts/SpeedControl.svelte
-msgid "Speed:"
-msgstr "Швидкість:"
-
-#: src/lib/components/tts/SpeedControl.svelte
-msgid "{0}x"
-msgstr "{0}x"
-
-#: src/lib/components/tts/SampleRateSelector.svelte
-msgid "Sample Rate:"
-msgstr "Частота дискретизації:"
-
-#: src/lib/components/tts/TextStatistics.svelte
-msgid "Words"
-msgstr "Слова"
-
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "<0/> Choose Audio Source"
-msgstr "<0/> Оберіть джерело аудіо"
-
-#: src/lib/components/whisper/TranscribeOptions.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Local File"
 msgstr "Локальний файл"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Select an audio file from your device (.mp3, .wav, .m4a)"
 msgstr "Оберіть аудіофайл з вашого пристрою (.mp3, .wav, .m4a)"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Record Audio"
 msgstr "Записати аудіо"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Record audio directly from your microphone"
 msgstr "Записати аудіо безпосередньо з вашого мікрофона"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Demo File"
 msgstr "Демо файл"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "Listen →"
-msgstr "Слухати →"
-
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Failed to load model. Please check your connection and try again."
-msgstr "Не вдалося завантажити модель. Перевірте з'єднання та спробуйте знову."
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/chat/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Loading Model"
 msgstr "Завантаження моделі"
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
-msgstr "Це займе кілька хвилин. Чат-модель завантажується у ваш браузер."
-
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "New <0>Chat</0>"
-msgstr "Новий <0>чат</0>"
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hello! I'm Heart, your friendly voice assistant."
-msgstr "Привіт! Я Heart, ваш дружній голосовий асистент."
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hi there! I'm Bella, ready to bring your words to life."
-msgstr "Привіт! Я Bella, готова оживити ваші слова."
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Greetings! I'm Nova, here to make your content shine."
-msgstr "Вітаю! Я Nova, тут щоб зробити ваш контент яскравим."
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hello! I'm Sarah, delighted to speak for you."
-msgstr "Привіт! Я Sarah, рада говорити для вас."
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hi! I'm Adam, your reliable voice companion."
-msgstr "Привіт! Я Adam, ваш надійний голосовий супутник."
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hello there! I'm Echo, echoing your thoughts perfectly."
-msgstr "Привіт! Я Echo, ідеально відлунюю ваші думки."
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hi! I'm {0}, nice to meet you!"
-msgstr "Привіт! Я {0}, приємно познайомитись!"
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Select Voice"
-msgstr "Оберіть голос"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "<0/> Count LLM Tokens"
-msgstr "<0/> Підрахунок токенів LLM"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid ""
-"Calculate how many tokens your text will use with different AI models. Token counts affect\n"
-"context limits for AI conversations."
-msgstr ""
-"Порахуйте, скільки токенів використає ваш текст у різних AI моделях. Кількість токенів впливає на\n"
-"обмеження контексту для AI розмов."
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Anthropic Claude"
 msgstr "Anthropic Claude"
 
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
 msgstr "Підрахунок токенів для моделей Claude, включаючи Claude 3 Opus, Sonnet та Haiku"
 
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-#: src/routes/[[lang]]/count-tokens/+page.svelte
 #: src/lib/components/common/TokenizerCard.svelte
 msgid "Open Tokenizer"
 msgstr "Відкрити токенізатор"
 
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "OpenAI ChatGPT"
 msgstr "OpenAI ChatGPT"
 
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
 msgstr "Підрахунок токенів для GPT-4, GPT-4o, GPT-3.5 Turbo та інших моделей OpenAI"
 
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "What are tokens?"
-msgstr "Що таке токени?"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid ""
-"Tokens are the basic units that language models process. A token can be as short as one\n"
-"character or as long as one word. On average:"
-msgstr ""
-"Токени - це основні одиниці, які обробляють мовні моделі. Токен може бути коротким як один\n"
-"символ або довгим як одне слово. В середньому:"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "1 token ≈ 4 characters in English"
-msgstr "1 токен ≈ 4 символи англійською"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid ""
-"Different models use different tokenization methods, so the same text may result in different\n"
-"token counts."
-msgstr ""
-"Різні моделі використовують різні методи токенізації, тому той самий текст може мати різну\n"
-"кількість токенів."
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "OpenGraph Image Generator"
-msgstr "Генератор OpenGraph зображень"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "OpenGraph Images"
-msgstr "OpenGraph зображення"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Simple designs optimized for social media sharing (1200×630)"
-msgstr "Прості дизайни оптимізовані для поширення в соціальних мережах (1200×630)"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Layout 1: Simple & Bold"
-msgstr "Макет 1: Простий та яскравий"
-
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Local AI"
-msgstr "Локальний AI"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
-msgstr "Чат • Транскрибування • Текст у мовлення • Видалення фону • Підрахунок токенів"
-
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "ai.stanislav.garden"
-msgstr "ai.stanislav.garden"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Layout 2: Split Simple"
-msgstr "Макет 2: Простий розділений"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Private AI in Your Browser"
-msgstr "Приватний AI у вашому браузері"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "💬 Chat"
-msgstr "💬 Чат"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "🎤 Transcribe Audio"
-msgstr "🎤 Транскрибувати аудіо"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "🗣️ Text to Speech"
-msgstr "🗣️ Текст у мовлення"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "🖼️ Remove Background"
-msgstr "🖼️ Видалити фон"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "🧮 Count Tokens"
-msgstr "🧮 Підрахувати токени"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Layout 3: Clean Focus"
-msgstr "Макет 3: Чистий фокус"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "100% Private"
-msgstr "100% Приватно"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Run offline: Chat • Transcribe • TTS • Background • Tokens"
-msgstr "Працює офлайн: Чат • Транскрибування • TTS • Фон • Токени"
-
-#: src/lib/components/tts/WebGPUToggle.svelte
-msgid "(not supported)"
-msgstr "(не підтримується)"
-
-#: src/lib/components/tts/WebGPUToggle.svelte
-msgid "Try WebGPU (experimental) <0/>"
-msgstr "Спробувати WebGPU (експериментально) <0/>"
-
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Change the language settings for the Local AI Tools application"
-msgstr "Змініть мовні налаштування для додатку Local AI Tools"
-
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Language Settings"
-msgstr "Налаштування мови"
-
-#: src/routes/[[lang]]/transcribe/+page.svelte
-msgid "Whisper Audio Transcription"
-msgstr "Транскрибування аудіо Whisper"
-
-#: src/routes/[[lang]]/transcribe/+page.svelte
-msgid "<0/> Transcribing..."
-msgstr "<0/> Транскрибування..."
-
-#: src/routes/[[lang]]/transcribe/+page.svelte
-msgid "<0/> Start Transcription"
-msgstr "<0/> Почати транскрибування"
-
-#: src/routes/[[lang]]/transcribe/+page.svelte
-msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
-msgstr "<0/> Транскрибування виконується локально у вашому браузері. Результати можуть бути не завжди точними."
-
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "Anthropic Claude Tokenizer"
-msgstr "Токенізатор Anthropic Claude"
-
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "Count tokens for Claude models (Opus, Sonnet, Haiku) using the official tokenizer"
-msgstr "Підрахунок токенів для моделей Claude (Opus, Sonnet, Haiku) з офіційним токенізатором"
-
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "About Claude's Tokenizer"
-msgstr "Про токенізатор Claude"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Text copied to clipboard!"
-msgstr "Текст скопійовано в буфер обміну!"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Text to Speech Studio"
-msgstr "Студія тексту в мовлення"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "<0/> Welcome to TTS Studio"
-msgstr "<0/> Ласкаво просимо до TTS студії"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Generate high-quality speech from text, all running locally in your browser!"
-msgstr "Генеруйте високоякісне мовлення з тексту, все працює локально у вашому браузері!"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Loading TTS Model"
-msgstr "Завантаження TTS моделі"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Initializing text-to-speech model..."
-msgstr "Ініціалізація моделі тексту в мовлення..."
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Enter Your Text"
 msgstr "Введіть ваш текст"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Get random Svelte quote"
-msgstr "Отримати випадкову цитату Svelte"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Type or paste your text here..."
-msgstr "Введіть або вставте ваш текст тут..."
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Voice:"
-msgstr "Голос:"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Generating"
-msgstr "Генерація"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Pause"
-msgstr "Пауза"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Play"
-msgstr "Відтворити"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Generate"
-msgstr "Згенерувати"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Download Audio"
-msgstr "Завантажити аудіо"
-
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "OpenAI ChatGPT Tokenizer"
-msgstr "Токенізатор OpenAI ChatGPT"
-
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "Count tokens for GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT and other OpenAI models"
-msgstr "Підрахунок токенів для GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT та інших моделей OpenAI"
-
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "About OpenAI's Tokenizer"
-msgstr "Про токенізатор OpenAI"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Small and fast"
-msgstr "Маленький та швидкий"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Runs on most devices"
-msgstr "Працює на більшості пристроїв"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Large, very slow model"
-msgstr "Велика, дуже повільна модель"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Generally provides better results"
-msgstr "Зазвичай дає кращі результати"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Background Remover ({0})"
-msgstr "Видалення фону ({0})"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Loading Background Removal Model"
-msgstr "Завантаження моделі видалення фону"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "The AI model is being downloaded and initialized. This may take a few moments."
-msgstr "AI модель завантажується та ініціалізується. Це може зайняти кілька хвилин."
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Restart"
-msgstr "Перезапустити"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Model Selection"
-msgstr "Вибір моделі"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Processing Mode"
-msgstr "Режим обробки"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "<0/> Single Image"
-msgstr "<0/> Одне зображення"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "<0/> Multiple images"
-msgstr "<0/> Кілька зображень"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Upload Images"
-msgstr "Завантажити зображення"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Try Again"
-msgstr "Спробувати знову"
-
-#: src/routes/[[lang]]/language/+page.svelte
-msgid ""
-"Choose your preferred language for the interface. Click on a language to switch to that\n"
-"version of the application."
-msgstr ""
-"Оберіть переважну мову для інтерфейсу. Клацніть на мову, щоб перейти на цю\n"
-"версію додатку."
-
-#: src/lib/components/tts/ModelSwitcher.svelte
 #: src/lib/components/common/ModelSwitcher.svelte
 msgid "Recommended"
 msgstr "Рекомендовано"
 
-#: src/lib/components/count-tokens/RawTokensDisplay.svelte
-msgid "Token ID: {0}"
-msgstr "ID токена: {0}"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Copied!"
 msgstr "Скопійовано!"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Copy text"
 msgstr "Копіювати текст"
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Stop preview"
-msgstr "Зупинити попередній перегляд"
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Preview voice"
-msgstr "Попередній перегляд голосу"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Remove {0}"
-msgstr "Видалити {0}"
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Loading Cached Model"
-msgstr "Завантаження моделі з кешу"
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Downloading Model"
-msgstr "Завантаження моделі"
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Loading..."
-msgstr "Завантаження..."
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Loading model from local cache..."
-msgstr "Завантаження моделі з локального кешу..."
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "The transcription model is being downloaded to your browser."
-msgstr "Модель транскрибації завантажується у ваш браузер."
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Loading model... Progress tracking not available in this browser."
-msgstr "Завантаження моделі... Відстеження прогресу не доступне в цьому браузері."
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Failed to load model"
-msgstr "Не вдалося завантажити модель"
-
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "Average token length: ~4 characters for English text"
-msgstr "Середня довжина токена: ~4 символи для англійського тексту"
-
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "Code and special characters typically use more tokens"
-msgstr "Код та спеціальні символи звичайно використовують більше токенів"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Processing image and removing background..."
-msgstr "Обробка зображення та видалення фону..."
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Processing image {0} of {1}..."
-msgstr "Обробка зображення {0} з {1}..."
-
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reloading..."
-msgstr "Перезавантаження..."
-
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reload Model"
-msgstr "Перезавантажити модель"
-
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-msgstr "Claude використовує BPE (кодування байтових пар) токенайзер, схожий на GPT моделі"
-
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "Special characters and code may use more tokens"
-msgstr "Спеціальні символи та код можуть використовувати більше токенів"
-
-#: src/lib/components/count-tokens/TokenizerHeader.svelte
-msgid "Switch to Anthropic"
-msgstr "Переключитися на Anthropic"
-
-#: src/lib/components/count-tokens/TokenizerHeader.svelte
-msgid "Switch to OpenAI"
-msgstr "Переключитися на OpenAI"
 
 #: src/lib/components/common/AdvancedSection.svelte
 msgid "Advanced Parameters"
 msgstr "Розширені параметри"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "RMBG-1.4"
-msgstr "RMBG-1.4"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "RMBG v1.4"
-msgstr "RMBG v1.4"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "QUANT"
-msgstr "QUANT"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "BEN2-ONNX"
-msgstr "BEN2-ONNX"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "BEN2"
-msgstr "BEN2"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "FP16"
-msgstr "FP16"
 
 #: src/routes/+layout.svelte
 msgid "Transcribe"
@@ -1179,685 +143,396 @@ msgstr "TTS"
 msgid "BG Remover"
 msgstr "Видалення фону"
 
-#~ msgid "A showcase of the brutalist design system UI components"
-#~ msgstr ""
-
-#~ msgid "Brutalist UI Library"
-#~ msgstr ""
-
-#~ msgid "A comprehensive collection of bold, accessible components with a distinctive brutalist design aesthetic."
-#~ msgstr ""
-
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Buttons"
 msgstr ""
 
-#~ msgid "Variants"
-#~ msgstr ""
-
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
 msgid "Primary"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
 msgid "Success"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
 msgid "Warning"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
 msgid "Danger"
 msgstr ""
 
-#~ msgid "Sizes & States"
-#~ msgstr ""
-
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
 msgid "Small"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
 msgid "Medium"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
 msgid "Large"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Disabled"
 msgstr ""
 
-#~ msgid "Toggle Loading"
-#~ msgstr ""
-
-#~ msgid "With Icons"
-#~ msgstr ""
-
-#~ msgid "Like"
-#~ msgstr ""
-
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Save"
 msgstr ""
 
-#~ msgid "Delete"
-#~ msgstr ""
-
-#~ msgid "Full Width"
-#~ msgstr ""
-
-#~ msgid "Form Inputs"
-#~ msgstr ""
-
-#~ msgid "Text Inputs"
-#~ msgstr ""
-
-#~ msgid "Basic Input"
-#~ msgstr ""
-
-#~ msgid "Enter some text..."
-#~ msgstr ""
-
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Email"
 msgstr ""
 
-#~ msgid "Password"
-#~ msgstr ""
-
-#~ msgid "Textarea"
-#~ msgstr ""
-
-#~ msgid "Enter multiple lines..."
-#~ msgstr ""
-
-#~ msgid "Disabled input"
-#~ msgstr ""
-
-#~ msgid "Error state"
-#~ msgstr ""
-
-#~ msgid "With Error"
-#~ msgstr ""
-
-#~ msgid "This field has an error"
-#~ msgstr ""
-
-#~ msgid "Select Dropdown"
-#~ msgstr ""
-
-#~ msgid "Choose Option"
-#~ msgstr ""
-
-#~ msgid "Select something..."
-#~ msgstr ""
-
-#~ msgid "With Icon"
-#~ msgstr ""
-
-#~ msgid "Disabled Select"
-#~ msgstr ""
-
-#~ msgid "Toggles & Switches"
-#~ msgstr ""
-
-#~ msgid "Basic Toggles"
-#~ msgstr ""
-
-#~ msgid "Enable Notifications"
-#~ msgstr ""
-
-#~ msgid "Get notified about important updates"
-#~ msgstr ""
-
-#~ msgid "Dark Mode"
-#~ msgstr ""
-
-#~ msgid "Use dark theme"
-#~ msgstr ""
-
-#~ msgid "Marketing Emails"
-#~ msgstr ""
-
-#~ msgid "Receive promotional content"
-#~ msgstr ""
-
-#~ msgid "Delete Account"
-#~ msgstr ""
-
-#~ msgid "This action cannot be undone"
-#~ msgstr ""
-
-#~ msgid "Badges & Tags"
-#~ msgstr ""
-
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Default"
 msgstr ""
 
-#~ msgid "Sizes & Styles"
-#~ msgstr ""
-
-#~ msgid "Outlined"
-#~ msgstr ""
-
-#~ msgid "Removable Tags"
-#~ msgstr ""
-
-#~ msgid "Alerts & Notifications"
-#~ msgstr ""
-
-#~ msgid "Alert Types"
-#~ msgstr ""
-
-#~ msgid "Information"
-#~ msgstr ""
-
-#~ msgid "This is an informational alert with some helpful context."
-#~ msgstr ""
-
-#~ msgid "Success!"
-#~ msgstr ""
-
-#~ msgid "Your action was completed successfully."
-#~ msgstr ""
-
-#~ msgid "Please review the following information carefully."
-#~ msgstr ""
-
-#~ msgid "Something went wrong. Please try again later."
-#~ msgstr ""
-
-#~ msgid "Loading States"
-#~ msgstr ""
-
-#~ msgid "Spinner Variants"
-#~ msgstr ""
-
-#~ msgid "Extra Large"
-#~ msgstr ""
-
-#~ msgid "Colored Spinners"
-#~ msgstr ""
-
-#~ msgid "Modal Dialog"
-#~ msgstr ""
-
-#~ msgid "Interactive Modal"
-#~ msgstr ""
-
-#~ msgid "Open Modal"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Click the button above to see the modal in action. It supports different sizes,\n"
-#~ "backdrop styles, and can be closed via ESC key or backdrop click."
-#~ msgstr ""
-
-#~ msgid "Component API"
-#~ msgstr ""
-
-#~ msgid "Button"
-#~ msgstr ""
-
-#~ msgid "<0>variant</0>: 'primary' | 'success' | 'warning' | 'danger'"
-#~ msgstr ""
-
-#~ msgid "<0>size</0>: 'small' | 'medium' | 'large'"
-#~ msgstr ""
-
-#~ msgid "<0>fullWidth</0>: boolean"
-#~ msgstr ""
-
-#~ msgid "<0>loading</0>: boolean"
-#~ msgstr ""
-
-#~ msgid "<0>disabled</0>: boolean"
-#~ msgstr ""
-
-#~ msgid "<0>Icon</0>: Svelte component"
-#~ msgstr ""
-
-#~ msgid "Input"
-#~ msgstr ""
-
-#~ msgid "<0>type</0>: 'text' | 'email' | 'password' | 'number'"
-#~ msgstr ""
-
-#~ msgid "<0>label</0>: string"
-#~ msgstr ""
-
-#~ msgid "<0>placeholder</0>: string"
-#~ msgstr ""
-
-#~ msgid "<0>error</0>: string"
-#~ msgstr ""
-
-#~ msgid "<0>required</0>: boolean"
-#~ msgstr ""
-
-#~ msgid "<0>rows</0>: number (for textarea)"
-#~ msgstr ""
-
-#~ msgid "Select"
-#~ msgstr ""
-
-#~ msgid "<0>options</0>: Array<Option> - Option has value, label, disabled properties"
-#~ msgstr ""
-
-#~ msgid "Toggle"
-#~ msgstr ""
-
-#~ msgid "<0>checked</0>: boolean"
-#~ msgstr ""
-
-#~ msgid "<0>description</0>: string"
-#~ msgstr ""
-
-#~ msgid "Example Modal"
-#~ msgstr ""
-
-#~ msgid "This is a sample modal dialog with the brutalist design system styling."
-#~ msgstr ""
-
-#~ msgid "Input in Modal"
-#~ msgstr ""
-
-#~ msgid "Type something..."
-#~ msgstr ""
-
-#~ msgid "Cancel"
-#~ msgstr ""
-
-#~ msgid "Save Changes"
-#~ msgstr ""
-
-#: src/lib/common/Alert.svelte
-msgid "Dismiss alert"
-msgstr ""
-
-#~ msgid "Remove"
-#~ msgstr ""
-
-#: src/lib/common/Modal.svelte
-#: src/lib/common/Select.svelte
-msgid "Escape"
-msgstr ""
-
-#: src/lib/common/Modal.svelte
-msgid "Close modal"
-msgstr ""
-
-#~ msgid ""
-#~ "A comprehensive collection of bold, accessible components with a distinctive brutalist design\n"
-#~ "aesthetic."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Click the button above to see the modal in action. It supports different sizes, backdrop\n"
-#~ "styles, and can be closed via ESC key or backdrop click."
-#~ msgstr ""
-
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Selected {0} file(s)"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "🎨 Neo-Brutalist UI Component Library"
 msgstr ""
 
-#~ msgid "A collection of reusable Svelte components with bold, playful brutalist design"
-#~ msgstr ""
-
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Primary Buttons"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Action Buttons"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Action"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Icon Buttons"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
+#: src/routes/+page.svelte
 msgid "Icon"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Form Controls"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Text Input"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Username"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Enter your username"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Disabled Input"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "This is disabled"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Toggles & Checkboxes"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Switch Toggle"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Checkbox"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Disabled Switch"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Slider"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Volume"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Dropdown"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Select an Option"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Choose something..."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "File Upload"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Upload Files"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Language Selector"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Language changed to {0}"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Data Display"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Badges"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Info"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Stat Cards"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Total Users"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Revenue"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Conversion"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Progress Bar"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Empty State"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "No data to display yet"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Add New Item"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Add item clicked"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Layout Components"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Tabs"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Tab changed to {0}"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Content for the first tab. This is where you would place your tab content."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Content for the second tab. Each tab can have completely different content."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Content for the third tab. The tab component handles all the switching logic."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Section Card"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "This is a section card with custom rotation and animation delay."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Step Header"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Choose Your Options"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Configure Settings"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Review & Submit"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Advanced Section"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "This content is inside an expandable advanced section."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "It can contain any content you want to hide by default."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Feedback Components"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Loading Progress"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Please wait while we load the AI model..."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Error Display"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Square Spinner"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Full Interface Example"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Example Interface"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Toolbar Action"
 msgstr ""
 
-#~ msgid "This demonstrates how the CardInterface, Toolbar, ContentArea, and InputArea components work together to create a complete interface."
-#~ msgstr ""
-
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Your content goes here"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Submit"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Submit Form"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid ""
 "This demonstrates how the CardInterface, Toolbar, ContentArea, and InputArea components\n"
 "work together to create a complete interface."
 msgstr ""
 
-#: src/lib/common/FileUpload.svelte
-msgid "Drag & Drop Files"
-msgstr ""
-
-#: src/lib/common/FileUpload.svelte
-msgid "or click to browse"
-msgstr ""
-
-#: src/lib/common/FileUpload.svelte
 #: src/lib/components/common/FileUpload.svelte
 msgid "Max size: {0} MB"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Model Components"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Model Cards"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Selected {0}"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Load Model Button"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Load Selected Model"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Info Boxes"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Models run locally in your browser. No data is sent to external servers."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "This is a success message with green styling."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Warning: This action cannot be undone."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Option Components"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Option Buttons"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Selected Local File"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Selected Record Audio"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Selected Demo File"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Demo audio file available"
 msgstr ""
 
@@ -1874,115 +549,115 @@ msgstr ""
 msgid "<0/> characters"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Selected {0} model"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Selected {0} mode"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Intro Card"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Welcome to the Demo"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "This intro card component was extracted from the TTS page and made reusable."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Model Switcher"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "TTS Models (3 columns with recommended badge):"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Text-to-Speech Model"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Background Removal Models (2 columns with custom badge):"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Background Removal Model"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Text Input Card"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Mode Selector"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Tokenizer Cards"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Expandable Sections"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Raw Tokens"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Hello"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "This"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "is"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "a"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "demo"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Configuration Options"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Temperature:"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Max Tokens:"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Top P:"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Frequency Penalty:"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Get random quote"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "The quick brown fox jumps over the lazy dog."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Selected {0} background removal model"
 msgstr ""
 
@@ -1998,138 +673,126 @@ msgstr ""
 msgid "or click to browse • {0}"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Welcome & Introduction"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Text Input & Actions"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Model & Mode Selection"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Navigation & Links"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Card Layout Examples"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Non-Leaning Cards (Default)"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "These cards are perfectly aligned without any rotation:"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Standard Card"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "This is a standard card without any lean. It sits perfectly straight."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Another Card"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Multiple cards in a row all align neatly without rotation."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Third Card"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Perfect for formal layouts or when precise alignment is needed."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Leaning Cards (Lean Enabled)"
 msgstr ""
 
-#~ msgid "These cards have subtle random rotations for a playful brutalist feel:"
-#~ msgstr ""
-
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Leaning Card 1"
 msgstr ""
 
-#~ msgid "This card has a subtle random rotation that gives it character and visual interest."
-#~ msgstr ""
-
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Leaning Card 2"
 msgstr ""
 
-#~ msgid "Each leaning card gets a unique rotation between -0.5° and +0.5°."
-#~ msgstr ""
-
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Leaning Card 3"
 msgstr ""
 
-#~ msgid "Perfect for creative layouts with a hand-drawn, organic feel."
-#~ msgstr ""
-
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Mixed Layout"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "You can mix leaning and non-leaning cards in the same layout:"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Straight Card"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "This one stays straight."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Leaning Card"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "This one leans playfully."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Another Straight"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Back to straight again."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Another Lean"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "And another subtle lean."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "These cards lean consistently to the right by 0.5 degrees for a playful brutalist feel:"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "This card leans consistently to the right by 0.5 degrees for visual interest."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "All leaning cards use the same 0.5° right rotation for consistency."
 msgstr ""
 
-#: src/routes/demo/+page.svelte
+#: src/routes/+page.svelte
 msgid "Perfect for creative layouts with a consistent, subtle lean effect."
 msgstr ""

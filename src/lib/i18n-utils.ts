@@ -62,18 +62,6 @@ export function getCurrentLanguageFromPage(page: { url: { pathname: string } }):
 }
 
 /**
- * Create localized links for specific tokenizer paths
- * @param currentLang - The current language code
- * @returns Object with localized tokenizer paths
- */
-export function getTokenizerPaths(currentLang: string) {
-	return {
-		openai: createLocalizedLink('/count-tokens/openai-chatgpt', currentLang),
-		anthropic: createLocalizedLink('/count-tokens/anthropic-claude', currentLang)
-	};
-}
-
-/**
  * Export the available locales from Wuchale for use in other components
  */
 export { locales };

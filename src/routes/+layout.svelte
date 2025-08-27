@@ -14,7 +14,7 @@
 	import CalculatorIcon from 'virtual:icons/lucide/calculator';
 	import GlobeIcon from 'virtual:icons/lucide/globe';
 	import { Toaster } from 'svelte-sonner';
-	import Tracking from '$lib/components/Tracking.svelte';
+	import Tracking from '$lib/components/common/Tracking.svelte';
 	import { getCurrentLanguage, createLocalizedLink, locales } from '$lib/i18n-utils';
 
 	interface Props {
