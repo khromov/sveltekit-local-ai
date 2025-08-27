@@ -1,6 +1,6 @@
 import devtoolsJson from 'vite-plugin-devtools-json';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import Icons from 'unplugin-icons/vite';
 import { wuchale } from '@wuchale/vite-plugin';
 

@@ -115,15 +115,6 @@
 		background: var(--color-border-primary);
 	}
 
-	.center-items {
-		display: flex;
-		gap: 1rem;
-	}
-
-	.center-items li {
-		list-style: none;
-	}
-
 	.main-nav li,
 	.nav-item {
 		flex: none;
@@ -194,10 +185,6 @@
 			gap: 0.5rem;
 		}
 
-		.center-items {
-			gap: 0.5rem;
-		}
-
 		.language-item .home-link,
 		.github-item .home-link {
 			border: var(--border-brutalist-thin);
@@ -212,10 +199,6 @@
 		}
 
 		.nav-left {
-			gap: 0.375rem;
-		}
-
-		.center-items {
 			gap: 0.375rem;
 		}
 
