@@ -76,65 +76,65 @@ src/
 
 ### Action & Navigation
 
-- **ActionButton** - Styled action button with icon support
-- **IconButton** - Circular icon-only button
-- **PrimaryButton** - Main CTA button with variants (primary, success, warning) and sizes
-- **OptionButton** - Toggle-style option selection button
-- **Navigation** - Main app navigation with language-aware links
+- **ActionButton.svelte** - Styled action button with icon support
+- **IconButton.svelte** - Circular icon-only button
+- **PrimaryButton.svelte** - Main CTA button with variants (primary, success, warning) and sizes
+- **OptionButton.svelte** - Toggle-style option selection button
+- **Navigation.svelte** - Main app navigation with language-aware links
 
 ### Layout & Structure
 
-- **Card** - Basic card container with optional title and animation
-- **CardInterface** - Full-featured card with toolbar and content areas
-- **ContentArea** - Standardized content wrapper with padding
-- **InputArea** - Form input container with consistent styling
-- **SectionCard** - Sectioned content card
-- **Toolbar** - Header toolbar for card interfaces
+- **Card.svelte** - Basic card container with optional title and animation
+- **CardInterface.svelte** - Full-featured card with toolbar and content areas
+- **ContentArea.svelte** - Standardized content wrapper with padding
+- **InputArea.svelte** - Form input container with consistent styling
+- **SectionCard.svelte** - Sectioned content card
+- **Toolbar.svelte** - Header toolbar for card interfaces
 
 ### Content Display
 
-- **Badge** - Small status or category indicator
-- **EmptyState** - Placeholder for empty content areas
-- **ErrorDisplay** - Error message component
-- **InfoBox** - Informational callout box
-- **IntroCard** - Introductory content card
-- **StatCard** - Metric/statistic display card
+- **Badge.svelte** - Small status or category indicator
+- **EmptyState.svelte** - Placeholder for empty content areas
+- **ErrorDisplay.svelte** - Error message component
+- **InfoBox.svelte** - Informational callout box
+- **IntroCard.svelte** - Introductory content card
+- **StatCard.svelte** - Metric/statistic display card
 
 ### Form Controls
 
-- **Dropdown** - Select dropdown with custom styling
-- **FileUpload** - Drag-and-drop file upload component
-- **Slider** - Range slider input
-- **TextInput** - Styled text input field
-- **TextInputCard** - Text input within card container
-- **Toggle** - Switch or checkbox toggle (with variants)
+- **Dropdown.svelte** - Select dropdown with custom styling
+- **FileUpload.svelte** - Drag-and-drop file upload component
+- **Slider.svelte** - Range slider input
+- **TextInput.svelte** - Styled text input field
+- **TextInputCard.svelte** - Text input within card container
+- **Toggle.svelte** - Switch or checkbox toggle (with variants)
 
 ### Interactive Elements
 
-- **AdvancedSection** - Collapsible advanced options section
-- **ExpandableSection** - Generic expandable content section
-- **LanguageSelector** - Language switching component
-- **ModeSelector** - Mode/view selection interface
-- **Tabs** - Tab navigation component
+- **AdvancedSection.svelte** - Collapsible advanced options section
+- **ExpandableSection.svelte** - Generic expandable content section
+- **LanguageSelector.svelte** - Language switching component
+- **ModeSelector.svelte** - Mode/view selection interface
+- **Tabs.svelte** - Tab navigation component
 
 ### Loading & Progress
 
-- **LoadingProgress** - Progress bar with percentage display
-- **LoadModelButton** - AI model loading button with states
-- **ProgressBar** - Basic progress indicator
-- **SquareSpinner** - Loading spinner animation
+- **LoadingProgress.svelte** - Progress bar with percentage display
+- **LoadModelButton.svelte** - AI model loading button with states
+- **ProgressBar.svelte** - Basic progress indicator
+- **SquareSpinner.svelte** - Loading spinner animation
 
 ### AI-Specific Components
 
-- **ModelCard** - AI model information display
-- **ModelSwitcher** - Model selection interface
-- **TokenizerCard** - Text tokenization display
+- **ModelCard.svelte** - AI model information display
+- **ModelSwitcher.svelte** - Model selection interface
+- **TokenizerCard.svelte** - Text tokenization display
 
 ### Utilities
 
-- **OrDivider** - Visual separator with "or" text
-- **StepHeader** - Step-by-step process header
-- **Tracking** - Analytics/tracking component
+- **OrDivider.svelte** - Visual separator with "or" text
+- **StepHeader.svelte** - Step-by-step process header
+- **Tracking.svelte** - Analytics/tracking component
 
 ### Import Pattern
 
