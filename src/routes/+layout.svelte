@@ -11,6 +11,7 @@
 	import { getCurrentLanguage, createLocalizedLink } from '$lib/i18n-utils';
 	import HomeIcon from 'virtual:icons/lucide/home';
 	import SettingsIcon from 'virtual:icons/lucide/settings';
+	import SparklesIcon from 'virtual:icons/lucide/sparkles';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -26,6 +27,7 @@
 	const getLocalizedNavLinks = (currentLang: string) => {
 		return [
 			{ path: createLocalizedLink('/', currentLang), label: '', Icon: HomeIcon },
+			{ path: createLocalizedLink('/demo', currentLang), label: 'Demo', Icon: SparklesIcon },
 			{ path: createLocalizedLink('/settings', currentLang), label: 'Settings', Icon: SettingsIcon }
 		];
 	};

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T22:20:29.029Z\n"
-"PO-Revision-Date: 2025-08-27T22:40:27.769Z\n"
+"PO-Revision-Date: 2025-08-27T22:44:40.580Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -35,581 +35,581 @@ msgstr "Change language"
 msgid "View source on GitHub"
 msgstr "View source on GitHub"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Selected {0} file(s)"
 msgstr "Selected {0} file(s)"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Get random quote"
 msgstr "Get random quote"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "The quick brown fox jumps over the lazy dog."
 msgstr "The quick brown fox jumps over the lazy dog."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Copied!"
 msgstr "Copied!"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Copy text"
 msgstr "Copy text"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Clear text"
 msgstr "Clear text"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Selected {0} model"
 msgstr "Selected {0} model"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Selected {0} mode"
 msgstr "Selected {0} mode"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Selected {0} background removal model"
 msgstr "Selected {0} background removal model"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "🎨 Neo-Brutalist UI Component Library"
 msgstr "🎨 Neo-Brutalist UI Component Library"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Welcome & Introduction"
 msgstr "Welcome & Introduction"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Intro Card"
 msgstr "Intro Card"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Welcome to the Demo"
 msgstr "Welcome to the Demo"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "This intro card component was extracted from the TTS page and made reusable."
 msgstr "This intro card component was extracted from the TTS page and made reusable."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Buttons"
 msgstr "Buttons"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Primary Buttons"
 msgstr "Primary Buttons"
 
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Primary"
 msgstr "Primary"
 
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Small"
 msgstr "Small"
 
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Medium"
 msgstr "Medium"
 
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Large"
 msgstr "Large"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Disabled"
 msgstr "Disabled"
 
-#: src/routes/+page.svelte
 #: src/lib/components/common/SquareSpinner.svelte
+#: src/routes/demo/+page.svelte
 msgid "Loading"
 msgstr "Loading"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Action Buttons"
 msgstr "Action Buttons"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Action"
 msgstr "Action"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Default"
 msgstr "Default"
 
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Success"
 msgstr "Success"
 
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Warning"
 msgstr "Warning"
 
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Danger"
 msgstr "Danger"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Icon Buttons"
 msgstr "Icon Buttons"
 
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Icon"
 msgstr "Icon"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Text Input & Actions"
 msgstr "Text Input & Actions"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Text Input Card"
 msgstr "Text Input Card"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Enter Your Text"
 msgstr "Enter Your Text"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Model & Mode Selection"
 msgstr "Model & Mode Selection"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Model Switcher"
 msgstr "Model Switcher"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "TTS Models (3 columns with recommended badge):"
 msgstr "TTS Models (3 columns with recommended badge):"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Text-to-Speech Model"
 msgstr "Text-to-Speech Model"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Background Removal Models (2 columns with custom badge):"
 msgstr "Background Removal Models (2 columns with custom badge):"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Background Removal Model"
 msgstr "Background Removal Model"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Mode Selector"
 msgstr "Mode Selector"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Navigation & Links"
 msgstr "Navigation & Links"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Tokenizer Cards"
 msgstr "Tokenizer Cards"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Anthropic Claude"
 msgstr "Anthropic Claude"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
 msgstr "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "OpenAI ChatGPT"
 msgstr "OpenAI ChatGPT"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
 msgstr "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Form Controls"
 msgstr "Form Controls"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Text Input"
 msgstr "Text Input"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Username"
 msgstr "Username"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Enter your username"
 msgstr "Enter your username"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Email"
 msgstr "Email"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Disabled Input"
 msgstr "Disabled Input"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "This is disabled"
 msgstr "This is disabled"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Toggles & Checkboxes"
 msgstr "Toggles & Checkboxes"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Switch Toggle"
 msgstr "Switch Toggle"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Checkbox"
 msgstr "Checkbox"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Disabled Switch"
 msgstr "Disabled Switch"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Slider"
 msgstr "Slider"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Volume"
 msgstr "Volume"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Dropdown"
 msgstr "Dropdown"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Select an Option"
 msgstr "Select an Option"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Choose something..."
 msgstr "Choose something..."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "File Upload"
 msgstr "File Upload"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Upload Files"
 msgstr "Upload Files"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Language Selector"
 msgstr "Language Selector"
 
-#: src/routes/+page.svelte
 #: src/routes/settings/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Language changed to {0}"
 msgstr "Language changed to {0}"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Data Display"
 msgstr "Data Display"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Badges"
 msgstr "Badges"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Info"
 msgstr "Info"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Stat Cards"
 msgstr "Stat Cards"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Total Users"
 msgstr "Total Users"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Revenue"
 msgstr "Revenue"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Conversion"
 msgstr "Conversion"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Progress Bar"
 msgstr "Progress Bar"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Empty State"
 msgstr "Empty State"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "No data to display yet"
 msgstr "No data to display yet"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Add New Item"
 msgstr "Add New Item"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Add item clicked"
 msgstr "Add item clicked"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Layout Components"
 msgstr "Layout Components"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Tabs"
 msgstr "Tabs"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Tab changed to {0}"
 msgstr "Tab changed to {0}"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Content for the first tab. This is where you would place your tab content."
 msgstr "Content for the first tab. This is where you would place your tab content."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Content for the second tab. Each tab can have completely different content."
 msgstr "Content for the second tab. Each tab can have completely different content."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Content for the third tab. The tab component handles all the switching logic."
 msgstr "Content for the third tab. The tab component handles all the switching logic."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Section Card"
 msgstr "Section Card"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "This is a section card with custom rotation and animation delay."
 msgstr "This is a section card with custom rotation and animation delay."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Step Header"
 msgstr "Step Header"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Choose Your Options"
 msgstr "Choose Your Options"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Configure Settings"
 msgstr "Configure Settings"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Review & Submit"
 msgstr "Review & Submit"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Advanced Section"
 msgstr "Advanced Section"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "This content is inside an expandable advanced section."
 msgstr "This content is inside an expandable advanced section."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "It can contain any content you want to hide by default."
 msgstr "It can contain any content you want to hide by default."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Expandable Sections"
 msgstr "Expandable Sections"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Raw Tokens"
 msgstr "Raw Tokens"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Hello"
 msgstr "Hello"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "This"
 msgstr "This"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "is"
 msgstr "is"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "a"
 msgstr "a"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "demo"
 msgstr "demo"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Configuration Options"
 msgstr "Configuration Options"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Temperature:"
 msgstr "Temperature:"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Max Tokens:"
 msgstr "Max Tokens:"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Top P:"
 msgstr "Top P:"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Frequency Penalty:"
 msgstr "Frequency Penalty:"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Feedback Components"
 msgstr "Feedback Components"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Loading Progress"
 msgstr "Loading Progress"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Loading Model"
 msgstr "Loading Model"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Please wait while we load the AI model..."
 msgstr "Please wait while we load the AI model..."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Error Display"
 msgstr "Error Display"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Something went wrong. Please try again."
 msgstr "Something went wrong. Please try again."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Retry"
 msgstr "Retry"
 
-#: src/routes/+page.svelte
 #: src/lib/components/common/ErrorDisplay.svelte
+#: src/routes/demo/+page.svelte
 msgid "Retrying..."
 msgstr "Retrying..."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Square Spinner"
 msgstr "Square Spinner"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Model Components"
 msgstr "Model Components"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Model Cards"
 msgstr "Model Cards"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Selected {0}"
 msgstr "Selected {0}"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Load Model Button"
 msgstr "Load Model Button"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Load Model"
 msgstr "Load Model"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Load Selected Model"
 msgstr "Load Selected Model"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Info Boxes"
 msgstr "Info Boxes"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Models run locally in your browser. No data is sent to external servers."
 msgstr "Models run locally in your browser. No data is sent to external servers."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "This is a success message with green styling."
 msgstr "This is a success message with green styling."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Warning: This action cannot be undone."
 msgstr "Warning: This action cannot be undone."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Option Components"
 msgstr "Option Components"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Option Buttons"
 msgstr "Option Buttons"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Local File"
 msgstr "Local File"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Select an audio file from your device (.mp3, .wav, .m4a)"
 msgstr "Select an audio file from your device (.mp3, .wav, .m4a)"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Selected Local File"
 msgstr "Selected Local File"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Record Audio"
 msgstr "Record Audio"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Record audio directly from your microphone"
 msgstr "Record audio directly from your microphone"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Selected Record Audio"
 msgstr "Selected Record Audio"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Demo File"
 msgstr "Demo File"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Demo audio file available"
 msgstr "Demo audio file available"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Selected Demo File"
 msgstr "Selected Demo File"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Full Interface Example"
 msgstr "Full Interface Example"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Example Interface"
 msgstr "Example Interface"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Toolbar Action"
 msgstr "Toolbar Action"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Save"
 msgstr "Save"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid ""
 "This demonstrates how the CardInterface, Toolbar, ContentArea, and InputArea components\n"
 "work together to create a complete interface."
@@ -617,123 +617,123 @@ msgstr ""
 "This demonstrates how the CardInterface, Toolbar, ContentArea, and InputArea components\n"
 "work together to create a complete interface."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Your content goes here"
 msgstr "Your content goes here"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Submit"
 msgstr "Submit"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Submit Form"
 msgstr "Submit Form"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Card Layout Examples"
 msgstr "Card Layout Examples"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Non-Leaning Cards (Default)"
 msgstr "Non-Leaning Cards (Default)"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "These cards are perfectly aligned without any rotation:"
 msgstr "These cards are perfectly aligned without any rotation:"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Standard Card"
 msgstr "Standard Card"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "This is a standard card without any lean. It sits perfectly straight."
 msgstr "This is a standard card without any lean. It sits perfectly straight."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Another Card"
 msgstr "Another Card"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Multiple cards in a row all align neatly without rotation."
 msgstr "Multiple cards in a row all align neatly without rotation."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Third Card"
 msgstr "Third Card"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Perfect for formal layouts or when precise alignment is needed."
 msgstr "Perfect for formal layouts or when precise alignment is needed."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Leaning Cards (Lean Enabled)"
 msgstr "Leaning Cards (Lean Enabled)"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "These cards lean consistently to the right by 0.5 degrees for a playful brutalist feel:"
 msgstr "These cards lean consistently to the right by 0.5 degrees for a playful brutalist feel:"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Leaning Card 1"
 msgstr "Leaning Card 1"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "This card leans consistently to the right by 0.5 degrees for visual interest."
 msgstr "This card leans consistently to the right by 0.5 degrees for visual interest."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Leaning Card 2"
 msgstr "Leaning Card 2"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "All leaning cards use the same 0.5° right rotation for consistency."
 msgstr "All leaning cards use the same 0.5° right rotation for consistency."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Leaning Card 3"
 msgstr "Leaning Card 3"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Perfect for creative layouts with a consistent, subtle lean effect."
 msgstr "Perfect for creative layouts with a consistent, subtle lean effect."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Mixed Layout"
 msgstr "Mixed Layout"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "You can mix leaning and non-leaning cards in the same layout:"
 msgstr "You can mix leaning and non-leaning cards in the same layout:"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Straight Card"
 msgstr "Straight Card"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "This one stays straight."
 msgstr "This one stays straight."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Leaning Card"
 msgstr "Leaning Card"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "This one leans playfully."
 msgstr "This one leans playfully."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Another Straight"
 msgstr "Another Straight"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Back to straight again."
 msgstr "Back to straight again."
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Another Lean"
 msgstr "Another Lean"
 
-#: src/routes/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "And another subtle lean."
 msgstr "And another subtle lean."
 
@@ -900,3 +900,23 @@ msgstr "Model settings will be available in future updates."
 #: src/routes/settings/+page.svelte
 msgid "Save All Settings"
 msgstr "Save All Settings"
+
+#: src/routes/+layout.svelte
+msgid "Demo"
+msgstr "Demo"
+
+#: src/routes/+page.svelte
+msgid "Run AI models locally in your browser"
+msgstr "Run AI models locally in your browser"
+
+#: src/routes/+page.svelte
+msgid "Hello World"
+msgstr "Hello World"
+
+#: src/routes/+page.svelte
+msgid "Welcome to Local AI tools. Explore our components in the Demo section."
+msgstr "Welcome to Local AI tools. Explore our components in the Demo section."
+
+#: src/routes/demo/+page.svelte
+msgid "Explore the Neo-Brutalist UI component library"
+msgstr "Explore the Neo-Brutalist UI component library"
