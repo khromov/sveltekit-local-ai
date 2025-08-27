@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-27T13:00:33.594Z\n"
+"PO-Revision-Date: 2025-08-27T13:18:30.159Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -1772,13 +1772,16 @@ msgid ""
 msgstr ""
 
 #: src/lib/common/FileUpload.svelte
+#: src/lib/components/common/FileUpload.svelte
 msgid "Drag & Drop Files"
 msgstr ""
 
 #: src/lib/common/FileUpload.svelte
+#: src/lib/components/common/FileUpload.svelte
 msgid "or click to browse"
 msgstr ""
 
 #: src/lib/common/FileUpload.svelte
+#: src/lib/components/common/FileUpload.svelte
 msgid "Max size: {0} MB"
 msgstr ""

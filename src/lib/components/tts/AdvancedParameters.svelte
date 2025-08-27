@@ -1,5 +1,5 @@
 <script lang="ts">
-	import AdvancedSection from '../common/AdvancedSection.svelte';
+	import AdvancedSection from '$lib/components/common/AdvancedSection.svelte';
 	import WebGPUToggle from './WebGPUToggle.svelte';
 	import SampleRateSelector from './SampleRateSelector.svelte';
 

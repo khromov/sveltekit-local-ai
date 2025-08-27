@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { AVAILABLE_MODELS, formatFileSize } from '$lib/wllama-config';
 	import { inferenceParams } from '$lib/stores';
-	import AdvancedSection from '../common/AdvancedSection.svelte';
+	import AdvancedSection from '$lib/components/common/AdvancedSection.svelte';
 	import RocketIcon from 'virtual:icons/lucide/rocket';
 	import ZapIcon from 'virtual:icons/lucide/zap';
 	import HourglassIcon from 'virtual:icons/lucide/hourglass';

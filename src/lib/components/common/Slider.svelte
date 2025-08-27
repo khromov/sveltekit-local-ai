@@ -31,7 +31,7 @@
 		}
 	}
 
-	$: percentage = ((value - min) / (max - min)) * 100;
+	let percentage = $derived(((value - min) / (max - min)) * 100);
 </script>
 
 <div class="slider-wrapper">

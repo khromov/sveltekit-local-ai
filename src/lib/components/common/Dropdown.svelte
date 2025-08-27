@@ -85,10 +85,9 @@
 		{disabled}
 	>
 		<div class="dropdown-button-content">
-			{@const selectedOption = getSelectedOption()}
-			{#if selectedOption?.icon}
+			{#if getSelectedOption()?.icon}
 				<span class="option-icon">
-					<svelte:component this={selectedOption.icon} />
+					<svelte:component this={getSelectedOption().icon} />
 				</span>
 			{/if}
 			<span class="dropdown-value" class:placeholder={!value}>

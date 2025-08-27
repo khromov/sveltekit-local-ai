@@ -125,7 +125,14 @@
 							<span class="file-name">{file.name}</span>
 							<span class="file-size">{formatFileSize(file.size)}</span>
 						</div>
-						<button class="remove-btn" onclick|stopPropagation={() => removeFile(index)} {disabled}>
+						<button
+							class="remove-btn"
+							onclick={(e) => {
+								e.stopPropagation();
+								removeFile(index);
+							}}
+							{disabled}
+						>
 							<XIcon />
 						</button>
 					</div>

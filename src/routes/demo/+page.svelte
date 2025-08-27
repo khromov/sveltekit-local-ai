@@ -1,32 +1,32 @@
 <script lang="ts">
 	import { toast } from 'svelte-sonner';
 
-	// Import all reusable components
-	import ActionButton from '$lib/common/ActionButton.svelte';
-	import AdvancedSection from '$lib/common/AdvancedSection.svelte';
-	import Badge from '$lib/common/Badge.svelte';
-	import Card from '$lib/common/Card.svelte';
-	import CardInterface from '$lib/common/CardInterface.svelte';
-	import ContentArea from '$lib/common/ContentArea.svelte';
-	import Dropdown from '$lib/common/Dropdown.svelte';
-	import EmptyState from '$lib/common/EmptyState.svelte';
-	import ErrorDisplay from '$lib/common/ErrorDisplay.svelte';
-	import FileUpload from '$lib/common/FileUpload.svelte';
-	import IconButton from '$lib/common/IconButton.svelte';
-	import InputArea from '$lib/common/InputArea.svelte';
-	import LanguageSelector from '$lib/common/LanguageSelector.svelte';
-	import LoadingProgress from '$lib/common/LoadingProgress.svelte';
-	import PrimaryButton from '$lib/common/PrimaryButton.svelte';
-	import ProgressBar from '$lib/common/ProgressBar.svelte';
-	import SectionCard from '$lib/common/SectionCard.svelte';
-	import Slider from '$lib/common/Slider.svelte';
-	import SquareSpinner from '$lib/common/SquareSpinner.svelte';
-	import StatCard from '$lib/common/StatCard.svelte';
-	import StepHeader from '$lib/common/StepHeader.svelte';
-	import Tabs from '$lib/common/Tabs.svelte';
-	import TextInput from '$lib/common/TextInput.svelte';
-	import Toggle from '$lib/common/Toggle.svelte';
-	import Toolbar from '$lib/common/Toolbar.svelte';
+	// Import all reusable components from $lib/components/common/
+	import ActionButton from '$lib/components/common/ActionButton.svelte';
+	import AdvancedSection from '$lib/components/common/AdvancedSection.svelte';
+	import Badge from '$lib/components/common/Badge.svelte';
+	import Card from '$lib/components/common/Card.svelte';
+	import CardInterface from '$lib/components/common/CardInterface.svelte';
+	import ContentArea from '$lib/components/common/ContentArea.svelte';
+	import Dropdown from '$lib/components/common/Dropdown.svelte';
+	import EmptyState from '$lib/components/common/EmptyState.svelte';
+	import ErrorDisplay from '$lib/components/common/ErrorDisplay.svelte';
+	import FileUpload from '$lib/components/common/FileUpload.svelte';
+	import IconButton from '$lib/components/common/IconButton.svelte';
+	import InputArea from '$lib/components/common/InputArea.svelte';
+	import LanguageSelector from '$lib/components/common/LanguageSelector.svelte';
+	import LoadingProgress from '$lib/components/common/LoadingProgress.svelte';
+	import PrimaryButton from '$lib/components/common/PrimaryButton.svelte';
+	import ProgressBar from '$lib/components/common/ProgressBar.svelte';
+	import SectionCard from '$lib/components/common/SectionCard.svelte';
+	import Slider from '$lib/components/common/Slider.svelte';
+	import SquareSpinner from '$lib/components/common/SquareSpinner.svelte';
+	import StatCard from '$lib/components/common/StatCard.svelte';
+	import StepHeader from '$lib/components/common/StepHeader.svelte';
+	import Tabs from '$lib/components/common/Tabs.svelte';
+	import TextInput from '$lib/components/common/TextInput.svelte';
+	import Toggle from '$lib/components/common/Toggle.svelte';
+	import Toolbar from '$lib/components/common/Toolbar.svelte';
 
 	// Import icons for demo
 	import SparklesIcon from 'virtual:icons/lucide/sparkles';
