@@ -452,8 +452,8 @@
 				<BackgroundRemoverProgress
 					progress={processingProgress}
 					message={processingMode === 'single'
-						? /* TODO: Not picked up */ 'Processing image and removing background...'
-						: /* TODO: Not picked up */ `Processing image ${currentBatchIndex} of ${totalBatchCount}...`}
+						? 'Processing image and removing background...'
+						: `Processing image ${currentBatchIndex} of ${totalBatchCount}...`}
 				/>
 			{/if}
 
