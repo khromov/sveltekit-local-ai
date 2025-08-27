@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T22:20:29.029Z\n"
-"PO-Revision-Date: 2025-08-27T22:44:40.580Z\n"
+"PO-Revision-Date: 2025-08-27T22:46:12.925Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -766,6 +766,7 @@ msgid "or click to browse • {0}"
 msgstr "or click to browse • {0}"
 
 #: src/lib/components/common/LanguageSelector.svelte
+#: src/routes/[[lang]]/language/+page.svelte
 msgid "Select Language"
 msgstr "Select Language"
 
@@ -906,17 +907,36 @@ msgid "Demo"
 msgstr "Demo"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Run AI models locally in your browser"
 msgstr "Run AI models locally in your browser"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Hello World"
 msgstr "Hello World"
 
 #: src/routes/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Welcome to Local AI tools. Explore our components in the Demo section."
 msgstr "Welcome to Local AI tools. Explore our components in the Demo section."
 
 #: src/routes/demo/+page.svelte
 msgid "Explore the Neo-Brutalist UI component library"
 msgstr "Explore the Neo-Brutalist UI component library"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Change the language settings for the Local AI Tools application"
+msgstr "Change the language settings for the Local AI Tools application"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Language Settings"
+msgstr "Language Settings"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid ""
+"Choose your preferred language for the interface. Click on a language to switch to that\n"
+"version of the application."
+msgstr ""
+"Choose your preferred language for the interface. Click on a language to switch to that\n"
+"version of the application."
