@@ -9,8 +9,8 @@
 
 	let { title, animationDelay = 0, elevation = 'large', lean = false, children }: Props = $props();
 
-	// Generate a subtle rotation when lean is true (between -0.5 and 0.5 degrees)
-	const cardRotation = lean ? Math.random() - 0.5 : 0;
+	// Apply a consistent right lean when lean is true
+	const cardRotation = lean ? 0.5 : 0;
 
 	const elevationStyles = {
 		small: 'var(--shadow-brutalist-small)',
@@ -24,7 +24,7 @@
 	class="card"
 	style="transform: rotate({cardRotation}deg); animation-delay: {animationDelay}s; box-shadow: {elevationStyles[
 		elevation
-	]};"
+	]}; --rotation: {cardRotation}deg;"
 >
 	{#if title}
 		<div class="card-header">
@@ -50,11 +50,11 @@
 
 	@keyframes slideIn {
 		from {
-			transform: translateY(10px) rotate(var(--rotation, 0.5deg));
+			transform: translateY(10px) rotate(var(--rotation));
 			opacity: 0;
 		}
 		to {
-			transform: translateY(0) rotate(var(--rotation, 0.5deg));
+			transform: translateY(0) rotate(var(--rotation));
 			opacity: 1;
 		}
 	}

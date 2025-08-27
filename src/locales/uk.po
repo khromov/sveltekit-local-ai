@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-27T20:47:01.885Z\n"
+"PO-Revision-Date: 2025-08-27T20:49:53.950Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -2054,33 +2054,29 @@ msgstr ""
 msgid "Leaning Cards (Lean Enabled)"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
-msgid "These cards have subtle random rotations for a playful brutalist feel:"
-msgstr ""
+#~ msgid "These cards have subtle random rotations for a playful brutalist feel:"
+#~ msgstr ""
 
 #: src/routes/demo/+page.svelte
 msgid "Leaning Card 1"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
-msgid "This card has a subtle random rotation that gives it character and visual interest."
-msgstr ""
+#~ msgid "This card has a subtle random rotation that gives it character and visual interest."
+#~ msgstr ""
 
 #: src/routes/demo/+page.svelte
 msgid "Leaning Card 2"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
-msgid "Each leaning card gets a unique rotation between -0.5° and +0.5°."
-msgstr ""
+#~ msgid "Each leaning card gets a unique rotation between -0.5° and +0.5°."
+#~ msgstr ""
 
 #: src/routes/demo/+page.svelte
 msgid "Leaning Card 3"
 msgstr ""
 
-#: src/routes/demo/+page.svelte
-msgid "Perfect for creative layouts with a hand-drawn, organic feel."
-msgstr ""
+#~ msgid "Perfect for creative layouts with a hand-drawn, organic feel."
+#~ msgstr ""
 
 #: src/routes/demo/+page.svelte
 msgid "Mixed Layout"
@@ -2120,4 +2116,20 @@ msgstr ""
 
 #: src/routes/demo/+page.svelte
 msgid "And another subtle lean."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "These cards lean consistently to the right by 0.5 degrees for a playful brutalist feel:"
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "This card leans consistently to the right by 0.5 degrees for visual interest."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "All leaning cards use the same 0.5° right rotation for consistency."
+msgstr ""
+
+#: src/routes/demo/+page.svelte
+msgid "Perfect for creative layouts with a consistent, subtle lean effect."
 msgstr ""

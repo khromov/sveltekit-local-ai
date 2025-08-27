@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-27T20:47:01.867Z\n"
+"PO-Revision-Date: 2025-08-27T20:49:53.927Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -2062,33 +2062,29 @@ msgstr "Perfect for formal layouts or when precise alignment is needed."
 msgid "Leaning Cards (Lean Enabled)"
 msgstr "Leaning Cards (Lean Enabled)"
 
-#: src/routes/demo/+page.svelte
-msgid "These cards have subtle random rotations for a playful brutalist feel:"
-msgstr "These cards have subtle random rotations for a playful brutalist feel:"
+#~ msgid "These cards have subtle random rotations for a playful brutalist feel:"
+#~ msgstr "These cards have subtle random rotations for a playful brutalist feel:"
 
 #: src/routes/demo/+page.svelte
 msgid "Leaning Card 1"
 msgstr "Leaning Card 1"
 
-#: src/routes/demo/+page.svelte
-msgid "This card has a subtle random rotation that gives it character and visual interest."
-msgstr "This card has a subtle random rotation that gives it character and visual interest."
+#~ msgid "This card has a subtle random rotation that gives it character and visual interest."
+#~ msgstr "This card has a subtle random rotation that gives it character and visual interest."
 
 #: src/routes/demo/+page.svelte
 msgid "Leaning Card 2"
 msgstr "Leaning Card 2"
 
-#: src/routes/demo/+page.svelte
-msgid "Each leaning card gets a unique rotation between -0.5° and +0.5°."
-msgstr "Each leaning card gets a unique rotation between -0.5° and +0.5°."
+#~ msgid "Each leaning card gets a unique rotation between -0.5° and +0.5°."
+#~ msgstr "Each leaning card gets a unique rotation between -0.5° and +0.5°."
 
 #: src/routes/demo/+page.svelte
 msgid "Leaning Card 3"
 msgstr "Leaning Card 3"
 
-#: src/routes/demo/+page.svelte
-msgid "Perfect for creative layouts with a hand-drawn, organic feel."
-msgstr "Perfect for creative layouts with a hand-drawn, organic feel."
+#~ msgid "Perfect for creative layouts with a hand-drawn, organic feel."
+#~ msgstr "Perfect for creative layouts with a hand-drawn, organic feel."
 
 #: src/routes/demo/+page.svelte
 msgid "Mixed Layout"
@@ -2129,3 +2125,19 @@ msgstr "Another Lean"
 #: src/routes/demo/+page.svelte
 msgid "And another subtle lean."
 msgstr "And another subtle lean."
+
+#: src/routes/demo/+page.svelte
+msgid "These cards lean consistently to the right by 0.5 degrees for a playful brutalist feel:"
+msgstr "These cards lean consistently to the right by 0.5 degrees for a playful brutalist feel:"
+
+#: src/routes/demo/+page.svelte
+msgid "This card leans consistently to the right by 0.5 degrees for visual interest."
+msgstr "This card leans consistently to the right by 0.5 degrees for visual interest."
+
+#: src/routes/demo/+page.svelte
+msgid "All leaning cards use the same 0.5° right rotation for consistency."
+msgstr "All leaning cards use the same 0.5° right rotation for consistency."
+
+#: src/routes/demo/+page.svelte
+msgid "Perfect for creative layouts with a consistent, subtle lean effect."
+msgstr "Perfect for creative layouts with a consistent, subtle lean effect."

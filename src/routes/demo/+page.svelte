@@ -719,19 +719,19 @@
 			</div>
 
 			<h3>Leaning Cards (Lean Enabled)</h3>
-			<p>These cards have subtle random rotations for a playful brutalist feel:</p>
+			<p>These cards lean consistently to the right by 0.5 degrees for a playful brutalist feel:</p>
 
 			<div class="cards-demo-grid">
 				<Card title="Leaning Card 1" lean={true} elevation="small">
-					<p>This card has a subtle random rotation that gives it character and visual interest.</p>
+					<p>This card leans consistently to the right by 0.5 degrees for visual interest.</p>
 				</Card>
 
 				<Card title="Leaning Card 2" lean={true} elevation="medium">
-					<p>Each leaning card gets a unique rotation between -0.5° and +0.5°.</p>
+					<p>All leaning cards use the same 0.5° right rotation for consistency.</p>
 				</Card>
 
 				<Card title="Leaning Card 3" lean={true} elevation="large">
-					<p>Perfect for creative layouts with a hand-drawn, organic feel.</p>
+					<p>Perfect for creative layouts with a consistent, subtle lean effect.</p>
 				</Card>
 			</div>
 
@@ -782,13 +782,6 @@
 		box-shadow: var(--shadow-brutalist-large);
 		display: inline-block;
 		transform: rotate(1deg);
-	}
-
-	.demo-header p {
-		margin: 0;
-		font-size: 1.25rem;
-		color: var(--color-text-secondary);
-		font-weight: 500;
 	}
 
 	.component-section {
@@ -955,10 +948,6 @@
 		.demo-header h1 {
 			font-size: 1.5rem;
 			padding: 0.75rem 1rem;
-		}
-
-		.demo-header p {
-			font-size: 1rem;
 		}
 	}
 </style>
