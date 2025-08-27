@@ -13,10 +13,7 @@
 	// Language metadata - this should match the locales from Wuchale config
 	const languageMetadata: Record<string, { name: string; nativeName: string }> = {
 		en: { name: 'English', nativeName: 'English' },
-		es: { name: 'Spanish', nativeName: 'Español' },
-		ja: { name: 'Japanese', nativeName: '日本語' },
-		sv: { name: 'Swedish', nativeName: 'Svenska' },
-		uk: { name: 'Ukrainian', nativeName: 'Українська' }
+		sv: { name: 'Swedish', nativeName: 'Svenska' }
 	};
 
 	// Create available languages from Wuchale locales
