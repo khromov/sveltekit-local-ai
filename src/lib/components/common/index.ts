@@ -19,6 +19,7 @@ export { default as LoadingProgress } from './LoadingProgress.svelte';
 export { default as ModeSelector } from './ModeSelector.svelte';
 export { default as ModelCard } from './ModelCard.svelte';
 export { default as ModelSwitcher } from './ModelSwitcher.svelte';
+export { default as Navigation } from './Navigation.svelte';
 export { default as OptionButton } from './OptionButton.svelte';
 export { default as OrDivider } from './OrDivider.svelte';
 export { default as PrimaryButton } from './PrimaryButton.svelte';
