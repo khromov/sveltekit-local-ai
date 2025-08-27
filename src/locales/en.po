@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-26T23:31:31.304Z\n"
+"POT-Creation-Date: 2025-08-27T22:20:29.029Z\n"
+"PO-Revision-Date: 2025-08-27T22:44:40.580Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -12,1146 +12,911 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Local AI Tools"
-msgstr "Local AI Tools"
+#~ msgid "Chat"
+#~ msgstr "Chat"
 
-#: src/routes/+layout.svelte
+#~ msgid "Transcribe"
+#~ msgstr "Transcribe"
+
+#~ msgid "TTS"
+#~ msgstr "TTS"
+
+#~ msgid "BG Remover"
+#~ msgstr "BG Remover"
+
+#~ msgid "Tokens"
+#~ msgstr "Tokens"
+
+#: src/lib/components/common/Navigation.svelte
 msgid "Change language"
 msgstr "Change language"
 
-#: src/routes/+layout.svelte
+#: src/lib/components/common/Navigation.svelte
 msgid "View source on GitHub"
 msgstr "View source on GitHub"
 
-#: src/routes/[[lang]]/transcribe/+page.svelte
-msgid "Whisper Audio Transcription"
-msgstr "Whisper Audio Transcription"
-
-#: src/routes/[[lang]]/transcribe/+page.svelte
-msgid "<0/> Transcribing..."
-msgstr "<0/> Transcribing..."
-
-#: src/routes/[[lang]]/transcribe/+page.svelte
-msgid "<0/> Start Transcription"
-msgstr "<0/> Start Transcription"
-
-#: src/routes/[[lang]]/transcribe/+page.svelte
-msgid "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
-msgstr "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
-
-#: src/lib/components/common/SquareSpinner.svelte
-msgid "Loading"
-msgstr "Loading"
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Select Model"
-msgstr "Select Model"
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Model Ready"
-msgstr "Model Ready"
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Failed to load transcription model. Please try again."
-msgstr "Failed to load transcription model. Please try again."
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/background-remover/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Retry"
-msgstr "Retry"
-
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "<0/> Choose Audio Source"
-msgstr "<0/> Choose Audio Source"
-
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "Local File"
-msgstr "Local File"
-
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "Select an audio file from your device (.mp3, .wav, .m4a)"
-msgstr "Select an audio file from your device (.mp3, .wav, .m4a)"
-
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "Record Audio"
-msgstr "Record Audio"
-
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "Record audio directly from your microphone"
-msgstr "Record audio directly from your microphone"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "OR"
-msgstr "OR"
-
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "Demo File"
-msgstr "Demo File"
-
-#: src/lib/components/whisper/TranscribeOptions.svelte
-msgid "Listen →"
-msgstr "Listen →"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-#: src/lib/components/whisper/FileUpload.svelte
-msgid "{0} MB"
-msgstr "{0} MB"
-
-#: src/lib/components/whisper/FileUpload.svelte
-msgid "Drag & Drop Audio File"
-msgstr "Drag & Drop Audio File"
-
-#: src/lib/components/whisper/FileUpload.svelte
-msgid "or"
-msgstr "or"
-
-#: src/lib/components/whisper/FileUpload.svelte
-msgid "Browse Files"
-msgstr "Browse Files"
-
-#: src/lib/components/whisper/AudioRecorder.svelte
-msgid "<0/> Start Recording"
-msgstr "<0/> Start Recording"
-
-#: src/lib/components/whisper/AudioRecorder.svelte
-msgid "<0/> Recording... {0}"
-msgstr "<0/> Recording... {0}"
-
-#: src/lib/components/whisper/AudioRecorder.svelte
-msgid "<0/> Stop Recording"
-msgstr "<0/> Stop Recording"
-
-#: src/lib/components/whisper/AudioRecorder.svelte
-msgid "Recording Complete"
-msgstr "Recording Complete"
-
-#: src/lib/components/whisper/AudioRecorder.svelte
-msgid "<0/> Clear Recording"
-msgstr "<0/> Clear Recording"
-
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-msgid "<0/> Transcribing Audio"
-msgstr "<0/> Transcribing Audio"
-
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-msgid "{0}% Complete"
-msgstr "{0}% Complete"
-
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-msgid "Current Segment"
-msgstr "Current Segment"
-
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-msgid "<0/> Transcription seems stuck <1>Reload Page →</1>"
-msgstr "<0/> Transcription seems stuck <1>Reload Page →</1>"
-
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-msgid "<0/> Keep this tab active during transcription"
-msgstr "<0/> Keep this tab active during transcription"
-
-#: src/lib/components/whisper/TranscriptionResult.svelte
-msgid "<0/> Transcription Result"
-msgstr "<0/> Transcription Result"
-
-#: src/lib/components/whisper/TranscriptionResult.svelte
-msgid "Text"
-msgstr "Text"
-
-#: src/lib/components/whisper/TranscriptionResult.svelte
-msgid "SRT"
-msgstr "SRT"
-
-#: src/lib/components/whisper/TranscriptionResult.svelte
-msgid "<0/> Copied!"
-msgstr "<0/> Copied!"
-
-#: src/lib/components/whisper/TranscriptionResult.svelte
-msgid "<0/> Copy"
-msgstr "<0/> Copy"
-
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Change the language settings for the Local AI Tools application"
-msgstr "Change the language settings for the Local AI Tools application"
-
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Language Settings"
-msgstr "Language Settings"
-
-#: src/lib/components/common/LanguageSelector.svelte
-#: src/routes/[[lang]]/language/+page.svelte
-msgid "Select Language"
-msgstr "Select Language"
-
-#: src/routes/favicon/+page.svelte
-msgid "Favicon Concept Gallery"
-msgstr "Favicon Concept Gallery"
-
-#: src/routes/favicon/+page.svelte
-msgid ""
-"A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
-"\t\t\tLocal AI Tools application."
-msgstr ""
-"A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
-"Local AI Tools application."
-
-#: src/routes/favicon/+page.svelte
-msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
-msgstr "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
-
-#: src/routes/favicon/+page.svelte
-msgid ""
-"Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
-"\t\t\tdisplay sizes."
-msgstr ""
-"Each favicon uses bold colors, strong contrasts, and clear iconography suitable for various\n"
-"display sizes."
-
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
-"\t\t\t\toffline!"
-msgstr ""
-"On this page you'll find free, private AI tools that run entirely in your browser - and even\n"
-"offline!"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #01"
-msgstr "Tool #01"
-
-#: src/routes/+layout.svelte
-#: src/routes/[[lang]]/+page.svelte
-msgid "Chat"
-msgstr "Chat"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
-msgstr "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Private & Secure"
-msgstr "Private & Secure"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Works Offline"
-msgstr "Works Offline"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "No Data Sharing"
-msgstr "No Data Sharing"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #02"
-msgstr "Tool #02"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Transcribe Audio"
-msgstr "Transcribe Audio"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
-"\t\t\t\t\t\ttext or a subtitle file."
-msgstr ""
-"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
-"text or a subtitle file."
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "High Accuracy"
-msgstr "High Accuracy"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Multiple Formats"
-msgstr "Multiple Formats"
-
-#: src/routes/[[lang]]/+page.svelte
-#: src/routes/[[lang]]/+page.svelte
-msgid "Local Processing"
-msgstr "Local Processing"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #03"
-msgstr "Tool #03"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Text to Speech"
-msgstr "Text to Speech"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
-"\t\t\t\t\t\tor Kokoro models for high-quality voice synthesis."
-msgstr ""
-"Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
-"or Kokoro models for high-quality voice synthesis."
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Multiple Models"
-msgstr "Multiple Models"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Natural Voices"
-msgstr "Natural Voices"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #04"
-msgstr "Tool #04"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Remove Background"
-msgstr "Remove Background"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
-"\t\t\t\t\t\tprofessional results."
-msgstr ""
-"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
-"professional results."
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "AI-Powered"
-msgstr "AI-Powered"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "High Quality"
-msgstr "High Quality"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Tool #05"
-msgstr "Tool #05"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Count Tokens"
-msgstr "Count Tokens"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
-msgstr "Estimate token usage for prompts across OpenAI and Anthropic models."
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "OpenAI & Anthropic"
-msgstr "OpenAI & Anthropic"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "Accurate Counts"
-msgstr "Accurate Counts"
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "All processing happens locally in your browser using WebAssembly."
-msgstr "All processing happens locally in your browser using WebAssembly."
-
-#: src/routes/[[lang]]/+page.svelte
-msgid "No data is sent to external servers."
-msgstr "No data is sent to external servers."
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Original {0}"
-msgstr "Original {0}"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Processed {0}"
-msgstr "Processed {0}"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Failed {0}"
-msgstr "Failed {0}"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "<0/> Batch Processing Complete!"
-msgstr "<0/> Batch Processing Complete!"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "{0} Successful"
-msgstr "{0} Successful"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "{0} Failed"
-msgstr "{0} Failed"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "<0/> Download All as ZIP"
-msgstr "<0/> Download All as ZIP"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "<0/> Process More Images"
-msgstr "<0/> Process More Images"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Successfully Processed Images"
-msgstr "Successfully Processed Images"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Before"
-msgstr "Before"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "After"
-msgstr "After"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Download this image"
-msgstr "Download this image"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Failed to Process"
-msgstr "Failed to Process"
-
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Processing failed"
-msgstr "Processing failed"
-
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-msgid "<0/> Processing Image"
-msgstr "<0/> Processing Image"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-#: src/lib/components/chat/MessageInput.svelte
-msgid "Enter"
-msgstr "Enter"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Drop your image here"
-msgstr "Drop your image here"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "<0/> {0} image{1} selected"
-msgstr "<0/> {0} image{1} selected"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Drop multiple images here"
-msgstr "Drop multiple images here"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "<0/> Try Example Image"
-msgstr "<0/> Try Example Image"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Selected Images ({0})"
-msgstr "Selected Images ({0})"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "<0/> Clear All"
-msgstr "<0/> Clear All"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "<0/> Process {0} Image{1}"
-msgstr "<0/> Process {0} Image{1}"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Background Removed!"
-msgstr "<0/> Background Removed!"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Processed"
-msgstr "<0/> Processed"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Compare"
-msgstr "<0/> Compare"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "Original"
-msgstr "Original"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "Background Removed"
-msgstr "Background Removed"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "Background removed"
-msgstr "Background removed"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Download"
-msgstr "<0/> Download"
-
-#: src/lib/components/background-remover/BackgroundRemoverResult.svelte
-msgid "<0/> Process Another"
-msgstr "<0/> Process Another"
-
-#: src/lib/components/chat/ChatMessages.svelte
-msgid "Start a Conversation"
-msgstr "Start a Conversation"
-
-#: src/lib/components/chat/ChatMessages.svelte
-msgid "Type a message below to begin chatting with AI"
-msgstr "Type a message below to begin chatting with AI"
-
-#: src/lib/components/chat/Message.svelte
-msgid "You"
-msgstr "You"
-
-#: src/lib/components/chat/Message.svelte
-msgid "AI"
-msgstr "AI"
-
-#: src/lib/components/chat/MessageInput.svelte
-msgid "Stop generation"
-msgstr "Stop generation"
-
-#: src/lib/components/chat/MessageInput.svelte
-msgid "Send message"
-msgstr "Send message"
-
-#: src/lib/components/chat/MessageInput.svelte
-msgid "<0/> Model responses may not always be accurate."
-msgstr "<0/> Model responses may not always be accurate."
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "Smarter AI responses"
-msgstr "Smarter AI responses"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "Runs on most computers and phones"
-msgstr "Runs on most computers and phones"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "High quality responses"
-msgstr "High quality responses"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0/> Chat with AI Models"
-msgstr "<0/> Chat with AI Models"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0>Step 1:</0> Choose Your AI Model"
-msgstr "<0>Step 1:</0> Choose Your AI Model"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0>Step 2:</0> Advanced Settings"
-msgstr "<0>Step 2:</0> Advanced Settings"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "Threads <0>(-1 auto)</0>"
-msgstr "Threads <0>(-1 auto)</0>"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "Context Size"
-msgstr "Context Size"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "Temperature"
-msgstr "Temperature"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0/> Loading Model..."
-msgstr "<0/> Loading Model..."
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0/> Load Selected Model"
-msgstr "<0/> Load Selected Model"
-
-#: src/lib/components/chat/ModelSelector.svelte
-msgid "<0/> Models run locally in your browser. No data is sent to external servers."
-msgstr "<0/> Models run locally in your browser. No data is sent to external servers."
-
-#: src/lib/components/count-tokens/RawTokensDisplay.svelte
-msgid "<0/> Raw Tokens ({0})"
-msgstr "<0/> Raw Tokens ({0})"
-
-#: src/lib/components/count-tokens/EmptyState.svelte
-msgid "Type or paste text in the input field above to analyze tokens and character count."
-msgstr "Type or paste text in the input field above to analyze tokens and character count."
-
-#: src/routes/+layout.svelte
-#: src/lib/components/count-tokens/TokenStats.svelte
-msgid "Tokens"
-msgstr "Tokens"
-
-#: src/lib/components/count-tokens/TokenStats.svelte
-#: src/lib/components/tts/TextStatistics.svelte
-msgid "Characters"
-msgstr "Characters"
-
-#: src/lib/components/count-tokens/TokenStats.svelte
-msgid "Chars/Token"
-msgstr "Chars/Token"
-
-#: src/lib/components/count-tokens/TextInputSection.svelte
-msgid "Input Text"
-msgstr "Input Text"
-
-#: src/lib/components/count-tokens/TextInputSection.svelte
-msgid "Load example"
-msgstr "Load example"
-
-#: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Clear text"
-msgstr "Clear text"
-
-#: src/lib/components/common/ErrorDisplay.svelte
-msgid "Error"
-msgstr "Error"
-
-#: src/lib/components/common/StepHeader.svelte
-msgid "Step {0}:"
-msgstr "Step {0}:"
-
-#: src/lib/components/tts/SpeedControl.svelte
-msgid "Speed:"
-msgstr "Speed:"
-
-#: src/lib/components/tts/SpeedControl.svelte
-msgid "{0}x"
-msgstr "{0}x"
-
-#: src/lib/components/tts/SampleRateSelector.svelte
-msgid "Sample Rate:"
-msgstr "Sample Rate:"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "<0>Step 1:</0> Text-to-speech Model"
-msgstr "<0>Step 1:</0> Text-to-speech Model"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "Kitten TTS Nano"
-msgstr "Kitten TTS Nano"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "24MB • Best for edge devices"
-msgstr "24MB • Best for edge devices"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "Piper Voices"
-msgstr "Piper Voices"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "75MB • Better Quality • Fast"
-msgstr "75MB • Better Quality • Fast"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "Kokoro"
-msgstr "Kokoro"
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "80MB • Highest Quality • Slow"
-msgstr "80MB • Highest Quality • Slow"
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hello! I'm Heart, your friendly voice assistant."
-msgstr "Hello! I'm Heart, your friendly voice assistant."
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hi there! I'm Bella, ready to bring your words to life."
-msgstr "Hi there! I'm Bella, ready to bring your words to life."
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Greetings! I'm Nova, here to make your content shine."
-msgstr "Greetings! I'm Nova, here to make your content shine."
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hello! I'm Sarah, delighted to speak for you."
-msgstr "Hello! I'm Sarah, delighted to speak for you."
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hi! I'm Adam, your reliable voice companion."
-msgstr "Hi! I'm Adam, your reliable voice companion."
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hello there! I'm Echo, echoing your thoughts perfectly."
-msgstr "Hello there! I'm Echo, echoing your thoughts perfectly."
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Hi! I'm {0}, nice to meet you!"
-msgstr "Hi! I'm {0}, nice to meet you!"
-
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Select Voice"
-msgstr "Select Voice"
-
-#: src/lib/components/tts/WebGPUToggle.svelte
-msgid "(not supported)"
-msgstr "(not supported)"
-
-#: src/lib/components/tts/WebGPUToggle.svelte
-msgid "Try WebGPU (experimental) <0/>"
-msgstr "Try WebGPU (experimental) <0/>"
-
-#: src/lib/components/tts/TextStatistics.svelte
-msgid "Words"
-msgstr "Words"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "<0/> Count LLM Tokens"
-msgstr "<0/> Count LLM Tokens"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid ""
-"Calculate how many tokens your text will use with different AI models. Token counts affect\n"
-"\t\t\tcontext limits for AI conversations."
-msgstr ""
-"Calculate how many tokens your text will use with different AI models. Token counts affect\n"
-"context limits for AI conversations."
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "Anthropic Claude"
-msgstr "Anthropic Claude"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
-msgstr "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "Open Tokenizer"
-msgstr "Open Tokenizer"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "OpenAI ChatGPT"
-msgstr "OpenAI ChatGPT"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
-msgstr "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "What are tokens?"
-msgstr "What are tokens?"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid ""
-"Tokens are the basic units that language models process. A token can be as short as one\n"
-"\t\t\tcharacter or as long as one word. On average:"
-msgstr ""
-"Tokens are the basic units that language models process. A token can be as short as one\n"
-"character or as long as one word. On average:"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "1 token ≈ 4 characters in English"
-msgstr "1 token ≈ 4 characters in English"
-
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid ""
-"Different models use different tokenization methods, so the same text may result in different\n"
-"\t\t\ttoken counts."
-msgstr ""
-"Different models use different tokenization methods, so the same text may result in different\n"
-"token counts."
-
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Failed to load model. Please check your connection and try again."
-msgstr "Failed to load model. Please check your connection and try again."
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Loading Model"
-msgstr "Loading Model"
-
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "This will take a couple of minutes. The chat model is being downloaded to your browser."
-msgstr "This will take a couple of minutes. The chat model is being downloaded to your browser."
-
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "New <0>Chat</0>"
-msgstr "New <0>Chat</0>"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Background Remover ({0})"
-msgstr "Background Remover ({0})"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Loading Background Removal Model"
-msgstr "Loading Background Removal Model"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "The AI model is being downloaded and initialized. This may take a few moments."
-msgstr "The AI model is being downloaded and initialized. This may take a few moments."
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Restart"
-msgstr "Restart"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Model Selection"
-msgstr "Model Selection"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Processing Mode"
-msgstr "Processing Mode"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "<0/> Single Image"
-msgstr "<0/> Single Image"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "<0/> Multiple images"
-msgstr "<0/> Multiple images"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Upload Images"
-msgstr "Upload Images"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Try Again"
-msgstr "Try Again"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Text copied to clipboard!"
-msgstr "Text copied to clipboard!"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Text to Speech Studio"
-msgstr "Text to Speech Studio"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "<0/> Welcome to TTS Studio"
-msgstr "<0/> Welcome to TTS Studio"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Generate high-quality speech from text, all running locally in your browser!"
-msgstr "Generate high-quality speech from text, all running locally in your browser!"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Loading TTS Model"
-msgstr "Loading TTS Model"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Initializing text-to-speech model..."
-msgstr "Initializing text-to-speech model..."
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Enter Your Text"
-msgstr "Enter Your Text"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Get random Svelte quote"
-msgstr "Get random Svelte quote"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Type or paste your text here..."
-msgstr "Type or paste your text here..."
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Voice:"
-msgstr "Voice:"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Generating"
-msgstr "Generating"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Pause"
-msgstr "Pause"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Download Audio"
-msgstr "Download Audio"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "OpenGraph Image Generator"
-msgstr "OpenGraph Image Generator"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "OpenGraph Images"
-msgstr "OpenGraph Images"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Simple designs optimized for social media sharing (1200×630)"
-msgstr "Simple designs optimized for social media sharing (1200×630)"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Layout 1: Simple & Bold"
-msgstr "Layout 1: Simple & Bold"
-
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Local AI"
-msgstr "Local AI"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
-msgstr "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
-
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "ai.stanislav.garden"
-msgstr "ai.stanislav.garden"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Layout 2: Split Simple"
-msgstr "Layout 2: Split Simple"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Private AI in Your Browser"
-msgstr "Private AI in Your Browser"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "💬 Chat"
-msgstr "💬 Chat"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "🎤 Transcribe Audio"
-msgstr "🎤 Transcribe Audio"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "🗣️ Text to Speech"
-msgstr "🗣️ Text to Speech"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "🖼️ Remove Background"
-msgstr "🖼️ Remove Background"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "🧮 Count Tokens"
-msgstr "🧮 Count Tokens"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Layout 3: Clean Focus"
-msgstr "Layout 3: Clean Focus"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "100% Private"
-msgstr "100% Private"
-
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Run offline: Chat • Transcribe • TTS • Background • Tokens"
-msgstr "Run offline: Chat • Transcribe • TTS • Background • Tokens"
-
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "OpenAI ChatGPT Tokenizer"
-msgstr "OpenAI ChatGPT Tokenizer"
-
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "Count tokens for GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT and other OpenAI models"
-msgstr "Count tokens for GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT and other OpenAI models"
-
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "About OpenAI's Tokenizer"
-msgstr "About OpenAI's Tokenizer"
-
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "Anthropic Claude Tokenizer"
-msgstr "Anthropic Claude Tokenizer"
-
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "Count tokens for Claude models (Opus, Sonnet, Haiku) using the official tokenizer"
-msgstr "Count tokens for Claude models (Opus, Sonnet, Haiku) using the official tokenizer"
-
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "About Claude's Tokenizer"
-msgstr "About Claude's Tokenizer"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Small and fast"
-msgstr "Small and fast"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Runs on most devices"
-msgstr "Runs on most devices"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Large, very slow model"
-msgstr "Large, very slow model"
-
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Generally provides better results"
-msgstr "Generally provides better results"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Choose Image"
-msgstr "Choose Image"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Batch Processing"
-msgstr "Batch Processing"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Click to change image"
-msgstr "Click to change image"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Click to add more images"
-msgstr "Click to add more images"
-
-#: src/lib/components/common/ErrorDisplay.svelte
-msgid "Retrying..."
-msgstr "Retrying..."
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Loading Model..."
-msgstr "Loading Model..."
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Load Model"
-msgstr "Load Model"
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Changing..."
-msgstr "Changing..."
-
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Change Model"
-msgstr "Change Model"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Play"
-msgstr "Play"
-
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Generate"
-msgstr "Generate"
-
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "or click to browse • JPG, PNG, WebP supported"
-msgstr "or click to browse • JPG, PNG, WebP supported"
-
-#: src/routes/[[lang]]/language/+page.svelte
-msgid ""
-"Choose your preferred language for the interface. Click on a language to switch to that\n"
-"version of the application."
-msgstr ""
-"Choose your preferred language for the interface. Click on a language to switch to that\n"
-"version of the application."
-
-#: src/lib/components/tts/ModelSwitcher.svelte
-msgid "Recommended"
-msgstr "Recommended"
-
-#: src/lib/components/count-tokens/RawTokensDisplay.svelte
-msgid "Token ID: {0}"
-msgstr "Token ID: {0}"
-
-#: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Selected {0} file(s)"
+msgstr "Selected {0} file(s)"
+
+#: src/routes/demo/+page.svelte
+msgid "Get random quote"
+msgstr "Get random quote"
+
+#: src/routes/demo/+page.svelte
+msgid "The quick brown fox jumps over the lazy dog."
+msgstr "The quick brown fox jumps over the lazy dog."
+
+#: src/routes/demo/+page.svelte
 msgid "Copied!"
 msgstr "Copied!"
 
-#: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Copy text"
 msgstr "Copy text"
 
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Stop preview"
-msgstr "Stop preview"
+#: src/routes/demo/+page.svelte
+msgid "Clear text"
+msgstr "Clear text"
 
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Preview voice"
-msgstr "Preview voice"
+#: src/routes/demo/+page.svelte
+msgid "Selected {0} model"
+msgstr "Selected {0} model"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Loading Cached Model"
-msgstr "Loading Cached Model"
+#: src/routes/demo/+page.svelte
+msgid "Selected {0} mode"
+msgstr "Selected {0} mode"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Downloading Model"
-msgstr "Downloading Model"
+#: src/routes/demo/+page.svelte
+msgid "Selected {0} background removal model"
+msgstr "Selected {0} background removal model"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Loading..."
-msgstr "Loading..."
+#: src/routes/demo/+page.svelte
+msgid "🎨 Neo-Brutalist UI Component Library"
+msgstr "🎨 Neo-Brutalist UI Component Library"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Loading model from local cache..."
-msgstr "Loading model from local cache..."
+#: src/routes/demo/+page.svelte
+msgid "Welcome & Introduction"
+msgstr "Welcome & Introduction"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "The transcription model is being downloaded to your browser."
-msgstr "The transcription model is being downloaded to your browser."
+#: src/routes/demo/+page.svelte
+msgid "Intro Card"
+msgstr "Intro Card"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Loading model... Progress tracking not available in this browser."
-msgstr "Loading model... Progress tracking not available in this browser."
+#: src/routes/demo/+page.svelte
+msgid "Welcome to the Demo"
+msgstr "Welcome to the Demo"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Remove {0}"
-msgstr "Remove {0}"
+#: src/routes/demo/+page.svelte
+msgid "This intro card component was extracted from the TTS page and made reusable."
+msgstr "This intro card component was extracted from the TTS page and made reusable."
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Processing image and removing background..."
-msgstr "Processing image and removing background..."
+#: src/routes/demo/+page.svelte
+msgid "Buttons"
+msgstr "Buttons"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Processing image {0} of {1}..."
-msgstr "Processing image {0} of {1}..."
+#: src/routes/demo/+page.svelte
+msgid "Primary Buttons"
+msgstr "Primary Buttons"
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reloading..."
-msgstr "Reloading..."
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Primary"
+msgstr "Primary"
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reload Model"
-msgstr "Reload Model"
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Small"
+msgstr "Small"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Failed to load model"
-msgstr "Failed to load model"
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Medium"
+msgstr "Medium"
 
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "Average token length: ~4 characters for English text"
-msgstr "Average token length: ~4 characters for English text"
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Large"
+msgstr "Large"
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "Code and special characters typically use more tokens"
-msgstr "Code and special characters typically use more tokens"
+#: src/routes/demo/+page.svelte
+msgid "Disabled"
+msgstr "Disabled"
 
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-msgstr "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+#: src/lib/components/common/SquareSpinner.svelte
+#: src/routes/demo/+page.svelte
+msgid "Loading"
+msgstr "Loading"
 
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "Special characters and code may use more tokens"
-msgstr "Special characters and code may use more tokens"
+#: src/routes/demo/+page.svelte
+msgid "Action Buttons"
+msgstr "Action Buttons"
 
-#: src/lib/components/count-tokens/TokenizerHeader.svelte
-msgid "Switch to Anthropic"
-msgstr "Switch to Anthropic"
+#: src/routes/demo/+page.svelte
+msgid "Action"
+msgstr "Action"
 
-#: src/lib/components/count-tokens/TokenizerHeader.svelte
-msgid "Switch to OpenAI"
-msgstr "Switch to OpenAI"
+#: src/routes/demo/+page.svelte
+msgid "Default"
+msgstr "Default"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Success"
+msgstr "Success"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Warning"
+msgstr "Warning"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Danger"
+msgstr "Danger"
+
+#: src/routes/demo/+page.svelte
+msgid "Icon Buttons"
+msgstr "Icon Buttons"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Icon"
+msgstr "Icon"
+
+#: src/routes/demo/+page.svelte
+msgid "Text Input & Actions"
+msgstr "Text Input & Actions"
+
+#: src/routes/demo/+page.svelte
+msgid "Text Input Card"
+msgstr "Text Input Card"
+
+#: src/routes/demo/+page.svelte
+msgid "Enter Your Text"
+msgstr "Enter Your Text"
+
+#: src/routes/demo/+page.svelte
+msgid "Model & Mode Selection"
+msgstr "Model & Mode Selection"
+
+#: src/routes/demo/+page.svelte
+msgid "Model Switcher"
+msgstr "Model Switcher"
+
+#: src/routes/demo/+page.svelte
+msgid "TTS Models (3 columns with recommended badge):"
+msgstr "TTS Models (3 columns with recommended badge):"
+
+#: src/routes/demo/+page.svelte
+msgid "Text-to-Speech Model"
+msgstr "Text-to-Speech Model"
+
+#: src/routes/demo/+page.svelte
+msgid "Background Removal Models (2 columns with custom badge):"
+msgstr "Background Removal Models (2 columns with custom badge):"
+
+#: src/routes/demo/+page.svelte
+msgid "Background Removal Model"
+msgstr "Background Removal Model"
+
+#: src/routes/demo/+page.svelte
+msgid "Mode Selector"
+msgstr "Mode Selector"
+
+#: src/routes/demo/+page.svelte
+msgid "Navigation & Links"
+msgstr "Navigation & Links"
+
+#: src/routes/demo/+page.svelte
+msgid "Tokenizer Cards"
+msgstr "Tokenizer Cards"
+
+#: src/routes/demo/+page.svelte
+msgid "Anthropic Claude"
+msgstr "Anthropic Claude"
+
+#: src/routes/demo/+page.svelte
+msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
+msgstr "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
+
+#: src/routes/demo/+page.svelte
+msgid "OpenAI ChatGPT"
+msgstr "OpenAI ChatGPT"
+
+#: src/routes/demo/+page.svelte
+msgid "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
+msgstr "Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
+
+#: src/routes/demo/+page.svelte
+msgid "Form Controls"
+msgstr "Form Controls"
+
+#: src/routes/demo/+page.svelte
+msgid "Text Input"
+msgstr "Text Input"
+
+#: src/routes/demo/+page.svelte
+msgid "Username"
+msgstr "Username"
+
+#: src/routes/demo/+page.svelte
+msgid "Enter your username"
+msgstr "Enter your username"
+
+#: src/routes/demo/+page.svelte
+msgid "Email"
+msgstr "Email"
+
+#: src/routes/demo/+page.svelte
+msgid "Disabled Input"
+msgstr "Disabled Input"
+
+#: src/routes/demo/+page.svelte
+msgid "This is disabled"
+msgstr "This is disabled"
+
+#: src/routes/demo/+page.svelte
+msgid "Toggles & Checkboxes"
+msgstr "Toggles & Checkboxes"
+
+#: src/routes/demo/+page.svelte
+msgid "Switch Toggle"
+msgstr "Switch Toggle"
+
+#: src/routes/demo/+page.svelte
+msgid "Checkbox"
+msgstr "Checkbox"
+
+#: src/routes/demo/+page.svelte
+msgid "Disabled Switch"
+msgstr "Disabled Switch"
+
+#: src/routes/demo/+page.svelte
+msgid "Slider"
+msgstr "Slider"
+
+#: src/routes/demo/+page.svelte
+msgid "Volume"
+msgstr "Volume"
+
+#: src/routes/demo/+page.svelte
+msgid "Dropdown"
+msgstr "Dropdown"
+
+#: src/routes/demo/+page.svelte
+msgid "Select an Option"
+msgstr "Select an Option"
+
+#: src/routes/demo/+page.svelte
+msgid "Choose something..."
+msgstr "Choose something..."
+
+#: src/routes/demo/+page.svelte
+msgid "File Upload"
+msgstr "File Upload"
+
+#: src/routes/demo/+page.svelte
+msgid "Upload Files"
+msgstr "Upload Files"
+
+#: src/routes/demo/+page.svelte
+msgid "Language Selector"
+msgstr "Language Selector"
+
+#: src/routes/settings/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Language changed to {0}"
+msgstr "Language changed to {0}"
+
+#: src/routes/demo/+page.svelte
+msgid "Data Display"
+msgstr "Data Display"
+
+#: src/routes/demo/+page.svelte
+msgid "Badges"
+msgstr "Badges"
+
+#: src/routes/demo/+page.svelte
+msgid "Info"
+msgstr "Info"
+
+#: src/routes/demo/+page.svelte
+msgid "Stat Cards"
+msgstr "Stat Cards"
+
+#: src/routes/demo/+page.svelte
+msgid "Total Users"
+msgstr "Total Users"
+
+#: src/routes/demo/+page.svelte
+msgid "Revenue"
+msgstr "Revenue"
+
+#: src/routes/demo/+page.svelte
+msgid "Conversion"
+msgstr "Conversion"
+
+#: src/routes/demo/+page.svelte
+msgid "Progress Bar"
+msgstr "Progress Bar"
+
+#: src/routes/demo/+page.svelte
+msgid "Empty State"
+msgstr "Empty State"
+
+#: src/routes/demo/+page.svelte
+msgid "No data to display yet"
+msgstr "No data to display yet"
+
+#: src/routes/demo/+page.svelte
+msgid "Add New Item"
+msgstr "Add New Item"
+
+#: src/routes/demo/+page.svelte
+msgid "Add item clicked"
+msgstr "Add item clicked"
+
+#: src/routes/demo/+page.svelte
+msgid "Layout Components"
+msgstr "Layout Components"
+
+#: src/routes/demo/+page.svelte
+msgid "Tabs"
+msgstr "Tabs"
+
+#: src/routes/demo/+page.svelte
+msgid "Tab changed to {0}"
+msgstr "Tab changed to {0}"
+
+#: src/routes/demo/+page.svelte
+msgid "Content for the first tab. This is where you would place your tab content."
+msgstr "Content for the first tab. This is where you would place your tab content."
+
+#: src/routes/demo/+page.svelte
+msgid "Content for the second tab. Each tab can have completely different content."
+msgstr "Content for the second tab. Each tab can have completely different content."
+
+#: src/routes/demo/+page.svelte
+msgid "Content for the third tab. The tab component handles all the switching logic."
+msgstr "Content for the third tab. The tab component handles all the switching logic."
+
+#: src/routes/demo/+page.svelte
+msgid "Section Card"
+msgstr "Section Card"
+
+#: src/routes/demo/+page.svelte
+msgid "This is a section card with custom rotation and animation delay."
+msgstr "This is a section card with custom rotation and animation delay."
+
+#: src/routes/demo/+page.svelte
+msgid "Step Header"
+msgstr "Step Header"
+
+#: src/routes/demo/+page.svelte
+msgid "Choose Your Options"
+msgstr "Choose Your Options"
+
+#: src/routes/demo/+page.svelte
+msgid "Configure Settings"
+msgstr "Configure Settings"
+
+#: src/routes/demo/+page.svelte
+msgid "Review & Submit"
+msgstr "Review & Submit"
+
+#: src/routes/demo/+page.svelte
+msgid "Advanced Section"
+msgstr "Advanced Section"
+
+#: src/routes/demo/+page.svelte
+msgid "This content is inside an expandable advanced section."
+msgstr "This content is inside an expandable advanced section."
+
+#: src/routes/demo/+page.svelte
+msgid "It can contain any content you want to hide by default."
+msgstr "It can contain any content you want to hide by default."
+
+#: src/routes/demo/+page.svelte
+msgid "Expandable Sections"
+msgstr "Expandable Sections"
+
+#: src/routes/demo/+page.svelte
+msgid "Raw Tokens"
+msgstr "Raw Tokens"
+
+#: src/routes/demo/+page.svelte
+msgid "Hello"
+msgstr "Hello"
+
+#: src/routes/demo/+page.svelte
+msgid "This"
+msgstr "This"
+
+#: src/routes/demo/+page.svelte
+msgid "is"
+msgstr "is"
+
+#: src/routes/demo/+page.svelte
+msgid "a"
+msgstr "a"
+
+#: src/routes/demo/+page.svelte
+msgid "demo"
+msgstr "demo"
+
+#: src/routes/demo/+page.svelte
+msgid "Configuration Options"
+msgstr "Configuration Options"
+
+#: src/routes/demo/+page.svelte
+msgid "Temperature:"
+msgstr "Temperature:"
+
+#: src/routes/demo/+page.svelte
+msgid "Max Tokens:"
+msgstr "Max Tokens:"
+
+#: src/routes/demo/+page.svelte
+msgid "Top P:"
+msgstr "Top P:"
+
+#: src/routes/demo/+page.svelte
+msgid "Frequency Penalty:"
+msgstr "Frequency Penalty:"
+
+#: src/routes/demo/+page.svelte
+msgid "Feedback Components"
+msgstr "Feedback Components"
+
+#: src/routes/demo/+page.svelte
+msgid "Loading Progress"
+msgstr "Loading Progress"
+
+#: src/routes/demo/+page.svelte
+msgid "Loading Model"
+msgstr "Loading Model"
+
+#: src/routes/demo/+page.svelte
+msgid "Please wait while we load the AI model..."
+msgstr "Please wait while we load the AI model..."
+
+#: src/routes/demo/+page.svelte
+msgid "Error Display"
+msgstr "Error Display"
+
+#: src/routes/demo/+page.svelte
+msgid "Something went wrong. Please try again."
+msgstr "Something went wrong. Please try again."
+
+#: src/routes/demo/+page.svelte
+msgid "Retry"
+msgstr "Retry"
+
+#: src/lib/components/common/ErrorDisplay.svelte
+#: src/routes/demo/+page.svelte
+msgid "Retrying..."
+msgstr "Retrying..."
+
+#: src/routes/demo/+page.svelte
+msgid "Square Spinner"
+msgstr "Square Spinner"
+
+#: src/routes/demo/+page.svelte
+msgid "Model Components"
+msgstr "Model Components"
+
+#: src/routes/demo/+page.svelte
+msgid "Model Cards"
+msgstr "Model Cards"
+
+#: src/routes/demo/+page.svelte
+msgid "Selected {0}"
+msgstr "Selected {0}"
+
+#: src/routes/demo/+page.svelte
+msgid "Load Model Button"
+msgstr "Load Model Button"
+
+#: src/routes/demo/+page.svelte
+msgid "Load Model"
+msgstr "Load Model"
+
+#: src/routes/demo/+page.svelte
+msgid "Load Selected Model"
+msgstr "Load Selected Model"
+
+#: src/routes/demo/+page.svelte
+msgid "Info Boxes"
+msgstr "Info Boxes"
+
+#: src/routes/demo/+page.svelte
+msgid "Models run locally in your browser. No data is sent to external servers."
+msgstr "Models run locally in your browser. No data is sent to external servers."
+
+#: src/routes/demo/+page.svelte
+msgid "This is a success message with green styling."
+msgstr "This is a success message with green styling."
+
+#: src/routes/demo/+page.svelte
+msgid "Warning: This action cannot be undone."
+msgstr "Warning: This action cannot be undone."
+
+#: src/routes/demo/+page.svelte
+msgid "Option Components"
+msgstr "Option Components"
+
+#: src/routes/demo/+page.svelte
+msgid "Option Buttons"
+msgstr "Option Buttons"
+
+#: src/routes/demo/+page.svelte
+msgid "Local File"
+msgstr "Local File"
+
+#: src/routes/demo/+page.svelte
+msgid "Select an audio file from your device (.mp3, .wav, .m4a)"
+msgstr "Select an audio file from your device (.mp3, .wav, .m4a)"
+
+#: src/routes/demo/+page.svelte
+msgid "Selected Local File"
+msgstr "Selected Local File"
+
+#: src/routes/demo/+page.svelte
+msgid "Record Audio"
+msgstr "Record Audio"
+
+#: src/routes/demo/+page.svelte
+msgid "Record audio directly from your microphone"
+msgstr "Record audio directly from your microphone"
+
+#: src/routes/demo/+page.svelte
+msgid "Selected Record Audio"
+msgstr "Selected Record Audio"
+
+#: src/routes/demo/+page.svelte
+msgid "Demo File"
+msgstr "Demo File"
+
+#: src/routes/demo/+page.svelte
+msgid "Demo audio file available"
+msgstr "Demo audio file available"
+
+#: src/routes/demo/+page.svelte
+msgid "Selected Demo File"
+msgstr "Selected Demo File"
+
+#: src/routes/demo/+page.svelte
+msgid "Full Interface Example"
+msgstr "Full Interface Example"
+
+#: src/routes/demo/+page.svelte
+msgid "Example Interface"
+msgstr "Example Interface"
+
+#: src/routes/demo/+page.svelte
+msgid "Toolbar Action"
+msgstr "Toolbar Action"
+
+#: src/routes/demo/+page.svelte
+msgid "Save"
+msgstr "Save"
+
+#: src/routes/demo/+page.svelte
+msgid ""
+"This demonstrates how the CardInterface, Toolbar, ContentArea, and InputArea components\n"
+"work together to create a complete interface."
+msgstr ""
+"This demonstrates how the CardInterface, Toolbar, ContentArea, and InputArea components\n"
+"work together to create a complete interface."
+
+#: src/routes/demo/+page.svelte
+msgid "Your content goes here"
+msgstr "Your content goes here"
+
+#: src/routes/demo/+page.svelte
+msgid "Submit"
+msgstr "Submit"
+
+#: src/routes/demo/+page.svelte
+msgid "Submit Form"
+msgstr "Submit Form"
+
+#: src/routes/demo/+page.svelte
+msgid "Card Layout Examples"
+msgstr "Card Layout Examples"
+
+#: src/routes/demo/+page.svelte
+msgid "Non-Leaning Cards (Default)"
+msgstr "Non-Leaning Cards (Default)"
+
+#: src/routes/demo/+page.svelte
+msgid "These cards are perfectly aligned without any rotation:"
+msgstr "These cards are perfectly aligned without any rotation:"
+
+#: src/routes/demo/+page.svelte
+msgid "Standard Card"
+msgstr "Standard Card"
+
+#: src/routes/demo/+page.svelte
+msgid "This is a standard card without any lean. It sits perfectly straight."
+msgstr "This is a standard card without any lean. It sits perfectly straight."
+
+#: src/routes/demo/+page.svelte
+msgid "Another Card"
+msgstr "Another Card"
+
+#: src/routes/demo/+page.svelte
+msgid "Multiple cards in a row all align neatly without rotation."
+msgstr "Multiple cards in a row all align neatly without rotation."
+
+#: src/routes/demo/+page.svelte
+msgid "Third Card"
+msgstr "Third Card"
+
+#: src/routes/demo/+page.svelte
+msgid "Perfect for formal layouts or when precise alignment is needed."
+msgstr "Perfect for formal layouts or when precise alignment is needed."
+
+#: src/routes/demo/+page.svelte
+msgid "Leaning Cards (Lean Enabled)"
+msgstr "Leaning Cards (Lean Enabled)"
+
+#: src/routes/demo/+page.svelte
+msgid "These cards lean consistently to the right by 0.5 degrees for a playful brutalist feel:"
+msgstr "These cards lean consistently to the right by 0.5 degrees for a playful brutalist feel:"
+
+#: src/routes/demo/+page.svelte
+msgid "Leaning Card 1"
+msgstr "Leaning Card 1"
+
+#: src/routes/demo/+page.svelte
+msgid "This card leans consistently to the right by 0.5 degrees for visual interest."
+msgstr "This card leans consistently to the right by 0.5 degrees for visual interest."
+
+#: src/routes/demo/+page.svelte
+msgid "Leaning Card 2"
+msgstr "Leaning Card 2"
+
+#: src/routes/demo/+page.svelte
+msgid "All leaning cards use the same 0.5° right rotation for consistency."
+msgstr "All leaning cards use the same 0.5° right rotation for consistency."
+
+#: src/routes/demo/+page.svelte
+msgid "Leaning Card 3"
+msgstr "Leaning Card 3"
+
+#: src/routes/demo/+page.svelte
+msgid "Perfect for creative layouts with a consistent, subtle lean effect."
+msgstr "Perfect for creative layouts with a consistent, subtle lean effect."
+
+#: src/routes/demo/+page.svelte
+msgid "Mixed Layout"
+msgstr "Mixed Layout"
+
+#: src/routes/demo/+page.svelte
+msgid "You can mix leaning and non-leaning cards in the same layout:"
+msgstr "You can mix leaning and non-leaning cards in the same layout:"
+
+#: src/routes/demo/+page.svelte
+msgid "Straight Card"
+msgstr "Straight Card"
+
+#: src/routes/demo/+page.svelte
+msgid "This one stays straight."
+msgstr "This one stays straight."
+
+#: src/routes/demo/+page.svelte
+msgid "Leaning Card"
+msgstr "Leaning Card"
+
+#: src/routes/demo/+page.svelte
+msgid "This one leans playfully."
+msgstr "This one leans playfully."
+
+#: src/routes/demo/+page.svelte
+msgid "Another Straight"
+msgstr "Another Straight"
+
+#: src/routes/demo/+page.svelte
+msgid "Back to straight again."
+msgstr "Back to straight again."
+
+#: src/routes/demo/+page.svelte
+msgid "Another Lean"
+msgstr "Another Lean"
+
+#: src/routes/demo/+page.svelte
+msgid "And another subtle lean."
+msgstr "And another subtle lean."
 
 #: src/lib/components/common/AdvancedSection.svelte
 msgid "Advanced Parameters"
 msgstr "Advanced Parameters"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "RMBG-1.4"
-msgstr "RMBG-1.4"
+#: src/lib/components/common/ErrorDisplay.svelte
+msgid "Error"
+msgstr "Error"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "RMBG v1.4"
-msgstr "RMBG v1.4"
+#: src/lib/components/common/FileUpload.svelte
+msgid "Enter"
+msgstr "Enter"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "QUANT"
-msgstr "QUANT"
+#: src/lib/components/common/FileUpload.svelte
+msgid "Drop your {0} here"
+msgstr "Drop your {0} here"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "BEN2-ONNX"
-msgstr "BEN2-ONNX"
+#: src/lib/components/common/FileUpload.svelte
+msgid "JPG, PNG, WebP supported"
+msgstr "JPG, PNG, WebP supported"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "BEN2"
-msgstr "BEN2"
+#: src/lib/components/common/FileUpload.svelte
+msgid "Max size: {0} MB"
+msgstr "Max size: {0} MB"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "FP16"
-msgstr "FP16"
+#: src/lib/components/common/FileUpload.svelte
+msgid "or click to browse • {0}"
+msgstr "or click to browse • {0}"
+
+#: src/lib/components/common/LanguageSelector.svelte
+msgid "Select Language"
+msgstr "Select Language"
+
+#: src/lib/components/common/StepHeader.svelte
+#: src/lib/components/common/ModelSwitcher.svelte
+msgid "Step {0}:"
+msgstr "Step {0}:"
+
+#: src/lib/components/common/ModelSwitcher.svelte
+msgid "Recommended"
+msgstr "Recommended"
+
+#: src/lib/components/common/TextInputCard.svelte
+msgid "<0/> chars"
+msgstr "<0/> chars"
+
+#: src/lib/components/common/TextInputCard.svelte
+#: src/lib/components/common/TextInputCard.svelte
+msgid "<0/> words"
+msgstr "<0/> words"
+
+#: src/lib/components/common/TextInputCard.svelte
+msgid "<0/> characters"
+msgstr "<0/> characters"
+
+#: src/lib/components/common/TokenizerCard.svelte
+msgid "Open Tokenizer"
+msgstr "Open Tokenizer"
 
 #: src/routes/+layout.svelte
-msgid "Transcribe"
-msgstr "Transcribe"
+msgid "Settings"
+msgstr "Settings"
+
+#: src/routes/settings/+page.svelte
+msgid "Configure your Local AI tools settings"
+msgstr "Configure your Local AI tools settings"
+
+#: src/routes/settings/+page.svelte
+msgid "Application Settings"
+msgstr "Application Settings"
+
+#~ msgid "General"
+#~ msgstr "General"
+
+#~ msgid "Configure general application preferences."
+#~ msgstr "Configure general application preferences."
+
+#~ msgid "Models"
+#~ msgstr "Models"
+
+#~ msgid "Manage your AI models and configurations."
+#~ msgstr "Manage your AI models and configurations."
+
+#~ msgid "Language"
+#~ msgstr "Language"
+
+#~ msgid "Select your preferred language for the interface."
+#~ msgstr "Select your preferred language for the interface."
+
+#: src/routes/settings/+page.svelte
+msgid "Settings saved successfully!"
+msgstr "Settings saved successfully!"
+
+#: src/routes/settings/+page.svelte
+msgid "Save All"
+msgstr "Save All"
+
+#~ msgid "User Preferences"
+#~ msgstr "User Preferences"
+
+#: src/routes/settings/+page.svelte
+msgid "Profile Settings"
+msgstr "Profile Settings"
+
+#: src/routes/settings/+page.svelte
+msgid "Display Name"
+msgstr "Display Name"
+
+#: src/routes/settings/+page.svelte
+msgid "Enter your display name"
+msgstr "Enter your display name"
+
+#~ msgid "Application Behavior"
+#~ msgstr "Application Behavior"
+
+#: src/routes/settings/+page.svelte
+msgid "General Options"
+msgstr "General Options"
+
+#: src/routes/settings/+page.svelte
+msgid "Enable Notifications"
+msgstr "Enable Notifications"
+
+#: src/routes/settings/+page.svelte
+msgid "Dark Mode (Coming Soon)"
+msgstr "Dark Mode (Coming Soon)"
+
+#: src/routes/settings/+page.svelte
+msgid "Auto-save Settings"
+msgstr "Auto-save Settings"
+
+#~ msgid "Appearance"
+#~ msgstr "Appearance"
+
+#: src/routes/settings/+page.svelte
+msgid "Theme & Language"
+msgstr "Theme & Language"
+
+#: src/routes/settings/+page.svelte
+msgid "Theme"
+msgstr "Theme"
+
+#: src/routes/settings/+page.svelte
+msgid "Choose a theme..."
+msgstr "Choose a theme..."
+
+#~ msgid "AI Models"
+#~ msgstr "AI Models"
+
+#: src/routes/settings/+page.svelte
+msgid "Model Configuration"
+msgstr "Model Configuration"
+
+#: src/routes/settings/+page.svelte
+msgid "AI models run locally in your browser. No data is sent to external servers."
+msgstr "AI models run locally in your browser. No data is sent to external servers."
+
+#: src/routes/settings/+page.svelte
+msgid "Model settings will be available in future updates."
+msgstr "Model settings will be available in future updates."
+
+#: src/routes/settings/+page.svelte
+msgid "Save All Settings"
+msgstr "Save All Settings"
 
 #: src/routes/+layout.svelte
-msgid "TTS"
-msgstr "TTS"
+msgid "Demo"
+msgstr "Demo"
 
-#: src/routes/+layout.svelte
-msgid "BG Remover"
-msgstr "BG Remover"
+#: src/routes/+page.svelte
+msgid "Run AI models locally in your browser"
+msgstr "Run AI models locally in your browser"
+
+#: src/routes/+page.svelte
+msgid "Hello World"
+msgstr "Hello World"
+
+#: src/routes/+page.svelte
+msgid "Welcome to Local AI tools. Explore our components in the Demo section."
+msgstr "Welcome to Local AI tools. Explore our components in the Demo section."
+
+#: src/routes/demo/+page.svelte
+msgid "Explore the Neo-Brutalist UI component library"
+msgstr "Explore the Neo-Brutalist UI component library"
