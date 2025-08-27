@@ -79,7 +79,6 @@
 				<div class="nav-left">
 					{#each getLocalizedNavLinks(currentLang) as link (link.path)}
 						{#if link.icon === 'home'}
-							<!-- TODO: Make SPA work with language switching -->
 							<li class="home-item">
 								<a
 									href={link.path}
