@@ -25,20 +25,6 @@
 	function getSelectedLanguage() {
 		return languages.find((language) => language.code === selectedLanguage);
 	}
-
-	/*
-	onMount(() => {
-		if (window.document) {
-			window.document.addEventListener('click', handleClickOutside);
-		}
-	});
-
-	onDestroy(() => {
-		if (window.document) {
-			window.document.removeEventListener('click', handleClickOutside);
-		}
-	});
-	*/
 </script>
 
 <div class="language-selector-container">

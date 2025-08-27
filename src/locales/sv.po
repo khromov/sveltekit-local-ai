@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T22:21:07.845Z\n"
-"PO-Revision-Date: 2025-08-27T22:47:32.353Z\n"
+"PO-Revision-Date: 2025-08-27T23:02:27.269Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -154,8 +154,8 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
-#: src/lib/components/common/SquareSpinner.svelte
 #: src/routes/demo/+page.svelte
+#: src/lib/components/common/SquareSpinner.svelte
 #: src/routes/[[lang]]/demo/+page.svelte
 msgid "Loading"
 msgstr ""
@@ -276,7 +276,6 @@ msgid "Navigation & Links"
 msgstr ""
 
 #: src/routes/demo/+page.svelte
-#: src/routes/[[lang]]/demo/+page.svelte
 msgid "Tokenizer Cards"
 msgstr ""
 
@@ -632,8 +631,8 @@ msgstr ""
 msgid "Retry"
 msgstr ""
 
-#: src/lib/components/common/ErrorDisplay.svelte
 #: src/routes/demo/+page.svelte
+#: src/lib/components/common/ErrorDisplay.svelte
 #: src/routes/[[lang]]/demo/+page.svelte
 msgid "Retrying..."
 msgstr ""
@@ -925,8 +924,8 @@ msgstr ""
 msgid "And another subtle lean."
 msgstr ""
 
-#: src/lib/components/common/LanguageSelector.svelte
 #: src/routes/[[lang]]/language/+page.svelte
+#: src/lib/components/common/LanguageSelector.svelte
 msgid "Select Language"
 msgstr ""
 
@@ -1140,4 +1139,16 @@ msgstr ""
 msgid ""
 "Choose your preferred language for the interface. Click on a language to switch to that\n"
 "version of the application."
+msgstr ""
+
+#: src/routes/[[lang]]/demo/+page.svelte
+msgid "Hero Cards"
+msgstr ""
+
+#: src/routes/[[lang]]/demo/+page.svelte
+msgid "Open Claude Tokenizer"
+msgstr ""
+
+#: src/routes/[[lang]]/demo/+page.svelte
+msgid "Open GPT Tokenizer"
 msgstr ""

@@ -4,6 +4,7 @@
 		icon: any;
 		title: string;
 		description: string;
+		actionText?: string;
 		decorationColor?: string;
 		decorationPosition?: 'left' | 'right';
 		hoverColor?: string;
@@ -15,6 +16,7 @@
 		icon: Icon,
 		title,
 		description,
+		actionText = 'Open Tokenizer',
 		decorationColor = 'var(--color-accent-pink)',
 		decorationPosition = 'right',
 		hoverColor = 'var(--color-accent-pink)',
@@ -22,7 +24,7 @@
 	}: Props = $props();
 </script>
 
-<a {href} class="tokenizer-card" style:transform="rotate({rotation}deg)">
+<a {href} class="hero-card" style:transform="rotate({rotation}deg)">
 	<div
 		class="card-decoration"
 		class:left-decoration={decorationPosition === 'left'}
@@ -35,7 +37,7 @@
 		<h2>{title}</h2>
 		<p class="card-description">{description}</p>
 		<div class="card-action">
-			<span>Open Tokenizer</span>
+			<span>{actionText}</span>
 			<!-- Chevron right icon inline -->
 			<svg
 				width="20"
@@ -54,7 +56,7 @@
 </a>
 
 <style>
-	.tokenizer-card {
+	.hero-card {
 		display: block;
 		text-decoration: none;
 		color: var(--color-text-primary);
@@ -68,7 +70,7 @@
 		border-radius: 12px;
 	}
 
-	.tokenizer-card:hover {
+	.hero-card:hover {
 		transform: translate(-3px, -3px) rotate(0deg);
 		box-shadow: 8px 8px 0 var(--color-border-primary);
 	}
@@ -112,7 +114,7 @@
 		transition: background 0.2s ease;
 	}
 
-	.tokenizer-card:hover .card-icon {
+	.hero-card:hover .card-icon {
 		background: var(--hover-color);
 	}
 
@@ -121,7 +123,7 @@
 		height: 2.5rem;
 	}
 
-	.tokenizer-card h2 {
+	.hero-card h2 {
 		font-size: 1.75rem;
 		font-weight: 700;
 		margin: 0 0 1rem 0;
@@ -158,7 +160,7 @@
 		height: 1.25rem;
 	}
 
-	.tokenizer-card:hover .card-action {
+	.hero-card:hover .card-action {
 		background: var(--color-primary);
 		transform: translate(-1px, -1px);
 		box-shadow: var(--shadow-brutalist-medium);

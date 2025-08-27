@@ -38,7 +38,7 @@
 	import TextInputCard from '$lib/components/common/TextInputCard.svelte';
 	import IntroCard from '$lib/components/common/IntroCard.svelte';
 	import ModeSelector from '$lib/components/common/ModeSelector.svelte';
-	import TokenizerCard from '$lib/components/common/TokenizerCard.svelte';
+	import HeroCard from '$lib/components/common/HeroCard.svelte';
 	import ExpandableSection from '$lib/components/common/ExpandableSection.svelte';
 
 	// Import icons for demo
@@ -348,24 +348,26 @@
 	<!-- Navigation & Links Section -->
 	<Card title="Navigation & Links" lean={true}>
 		<div class="component-section">
-			<h3>Tokenizer Cards</h3>
-			<div class="tokenizer-cards-demo">
-				<TokenizerCard
+			<h3>Hero Cards</h3>
+			<div class="hero-cards-demo">
+				<HeroCard
 					href="/demo"
 					icon={BrainIcon}
 					title="Anthropic Claude"
 					description="Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
+					actionText="Open Claude Tokenizer"
 					decorationColor="var(--color-accent-pink)"
 					decorationPosition="right"
 					hoverColor="var(--color-accent-pink)"
 					rotation={0.5}
 				/>
 
-				<TokenizerCard
+				<HeroCard
 					href="/demo"
 					icon={MessageSquareIcon}
 					title="OpenAI ChatGPT"
 					description="Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
+					actionText="Open GPT Tokenizer"
 					decorationColor="var(--color-success)"
 					decorationPosition="left"
 					hoverColor="var(--color-success)"
@@ -855,7 +857,7 @@
 	}
 
 	/* Styles for newly extracted components */
-	.tokenizer-cards-demo {
+	.hero-cards-demo {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 		gap: 2rem;

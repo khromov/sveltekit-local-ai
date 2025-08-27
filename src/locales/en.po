@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T22:20:29.029Z\n"
-"PO-Revision-Date: 2025-08-27T22:47:32.314Z\n"
+"PO-Revision-Date: 2025-08-27T23:02:27.266Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -150,8 +150,8 @@ msgstr "Large"
 msgid "Disabled"
 msgstr "Disabled"
 
-#: src/lib/components/common/SquareSpinner.svelte
 #: src/routes/demo/+page.svelte
+#: src/lib/components/common/SquareSpinner.svelte
 #: src/routes/[[lang]]/demo/+page.svelte
 msgid "Loading"
 msgstr "Loading"
@@ -272,7 +272,6 @@ msgid "Navigation & Links"
 msgstr "Navigation & Links"
 
 #: src/routes/demo/+page.svelte
-#: src/routes/[[lang]]/demo/+page.svelte
 msgid "Tokenizer Cards"
 msgstr "Tokenizer Cards"
 
@@ -628,8 +627,8 @@ msgstr "Something went wrong. Please try again."
 msgid "Retry"
 msgstr "Retry"
 
-#: src/lib/components/common/ErrorDisplay.svelte
 #: src/routes/demo/+page.svelte
+#: src/lib/components/common/ErrorDisplay.svelte
 #: src/routes/[[lang]]/demo/+page.svelte
 msgid "Retrying..."
 msgstr "Retrying..."
@@ -951,8 +950,8 @@ msgstr "Max size: {0} MB"
 msgid "or click to browse • {0}"
 msgstr "or click to browse • {0}"
 
-#: src/lib/components/common/LanguageSelector.svelte
 #: src/routes/[[lang]]/language/+page.svelte
+#: src/lib/components/common/LanguageSelector.svelte
 msgid "Select Language"
 msgstr "Select Language"
 
@@ -1145,3 +1144,15 @@ msgid ""
 msgstr ""
 "Choose your preferred language for the interface. Click on a language to switch to that\n"
 "version of the application."
+
+#: src/routes/[[lang]]/demo/+page.svelte
+msgid "Hero Cards"
+msgstr "Hero Cards"
+
+#: src/routes/[[lang]]/demo/+page.svelte
+msgid "Open Claude Tokenizer"
+msgstr "Open Claude Tokenizer"
+
+#: src/routes/[[lang]]/demo/+page.svelte
+msgid "Open GPT Tokenizer"
+msgstr "Open GPT Tokenizer"

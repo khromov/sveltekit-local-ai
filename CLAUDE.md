@@ -19,6 +19,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run format` - Format code with Prettier
 - `npm run checks` - Run all checks (format, lint, type check)
 - **IMPORTANT**: Always run `npm run checks` after any code changes to catch type errors and linting issues
+- **IMPORTANT**: Always use `git mv` when moving files.
 
 ### Testing
 
@@ -130,7 +131,7 @@ src/
 
 - **ModelCard.svelte** - AI model information display
 - **ModelSwitcher.svelte** - Model selection interface
-- **TokenizerCard.svelte** - Text tokenization display
+- **HeroCard.svelte** - Hero card component with customizable action text
 
 ### Utilities
 
