@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T22:20:29.029Z\n"
-"PO-Revision-Date: 2025-08-27T22:33:16.847Z\n"
+"PO-Revision-Date: 2025-08-27T22:37:08.421Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -795,5 +795,38 @@ msgid "Open Tokenizer"
 msgstr "Open Tokenizer"
 
 #: src/routes/+layout.svelte
+#: src/routes/settings/+page.svelte
 msgid "Settings"
 msgstr "Settings"
+
+#: src/routes/settings/+page.svelte
+msgid "Configure your Local AI tools settings"
+msgstr "Configure your Local AI tools settings"
+
+#: src/routes/settings/+page.svelte
+msgid "Application Settings"
+msgstr "Application Settings"
+
+#: src/routes/settings/+page.svelte
+msgid "General"
+msgstr "General"
+
+#: src/routes/settings/+page.svelte
+msgid "Configure general application preferences."
+msgstr "Configure general application preferences."
+
+#: src/routes/settings/+page.svelte
+msgid "Models"
+msgstr "Models"
+
+#: src/routes/settings/+page.svelte
+msgid "Manage your AI models and configurations."
+msgstr "Manage your AI models and configurations."
+
+#: src/routes/settings/+page.svelte
+msgid "Language"
+msgstr "Language"
+
+#: src/routes/settings/+page.svelte
+msgid "Select your preferred language for the interface."
+msgstr "Select your preferred language for the interface."
