@@ -99,6 +99,8 @@ src/
 - **Badge.svelte** - Small status or category indicator
 - **EmptyState.svelte** - Placeholder for empty content areas
 - **ErrorDisplay.svelte** - Error message component
+- **HeroCard.svelte** - Hero card component with customizable action text
+- **IconCard.svelte** - Icon-based card component with configurable pros text
 - **InfoBox.svelte** - Informational callout box
 - **IntroCard.svelte** - Introductory content card
 - **StatCard.svelte** - Metric/statistic display card
@@ -116,6 +118,7 @@ src/
 
 - **AdvancedSection.svelte** - Collapsible advanced options section
 - **ExpandableSection.svelte** - Generic expandable content section
+- **HeroSelector.svelte** - Hero selection interface with configurable badge text
 - **LanguageSelector.svelte** - Language switching component
 - **ModeSelector.svelte** - Mode/view selection interface
 - **Tabs.svelte** - Tab navigation component
@@ -126,12 +129,6 @@ src/
 - **LoadModelButton.svelte** - AI model loading button with states
 - **ProgressBar.svelte** - Basic progress indicator
 - **SquareSpinner.svelte** - Loading spinner animation
-
-### AI-Specific Components
-
-- **IconCard.svelte** - Icon-based card component with configurable pros text
-- **HeroSelector.svelte** - Hero selection interface with configurable badge text
-- **HeroCard.svelte** - Hero card component with customizable action text
 
 ### Utilities
 
