@@ -4,6 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
+** IMPORTANT: Always run `npm run checks` after making code changes to ensure type safety and code quality.**
+
 ### Core Development
 
 - `npm run dev` - Start development server on port 5173
