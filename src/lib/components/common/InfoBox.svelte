@@ -3,12 +3,12 @@
 
 	interface Props {
 		message: string;
-		icon?: ComponentType;
+		Icon?: ComponentType;
 		variant?: 'blue' | 'pink' | 'success' | 'warning' | 'primary';
 		rotation?: number;
 	}
 
-	let { message, icon, variant = 'blue', rotation = 0.5 }: Props = $props();
+	let { message, Icon, variant = 'blue', rotation = 0.5 }: Props = $props();
 
 	const variantStyles = {
 		blue: 'var(--color-accent-blue)',
@@ -23,8 +23,8 @@
 	class="info-box"
 	style="background: {variantStyles[variant]}; transform: rotate({rotation}deg);"
 >
-	{#if icon}
-		<span class="info-icon"><icon /></span>
+	{#if Icon}
+		<span class="info-icon"><Icon /></span>
 	{/if}
 	{message}
 </div>

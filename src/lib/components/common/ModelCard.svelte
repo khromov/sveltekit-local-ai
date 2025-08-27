@@ -4,7 +4,7 @@
 	interface Props {
 		name: string;
 		size?: string;
-		prosIcon?: ComponentType;
+		ProsIcon?: ComponentType;
 		prosText?: string;
 		active?: boolean;
 		disabled?: boolean;
@@ -15,7 +15,7 @@
 	let {
 		name,
 		size,
-		prosIcon,
+		ProsIcon,
 		prosText = 'High quality responses',
 		active = false,
 		disabled = false,
@@ -35,8 +35,8 @@
 >
 	<div class="card-decoration"></div>
 	<div class="model-icon">
-		{#if prosIcon}
-			<prosIcon />
+		{#if ProsIcon}
+			<ProsIcon />
 		{/if}
 	</div>
 	<div class="model-header">
@@ -46,8 +46,8 @@
 		{/if}
 	</div>
 	<div class="model-pros">
-		{#if prosIcon}
-			<span class="pros-icon"><prosIcon /></span>
+		{#if ProsIcon}
+			<span class="pros-icon"><ProsIcon /></span>
 		{/if}
 		<span class="pros-text">{prosText}</span>
 	</div>

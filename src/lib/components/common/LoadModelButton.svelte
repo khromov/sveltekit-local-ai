@@ -7,8 +7,8 @@
 		disabled?: boolean;
 		loading?: boolean;
 		variant?: 'primary' | 'success' | 'warning';
-		icon?: ComponentType;
-		loadingIcon?: ComponentType;
+		Icon?: ComponentType;
+		LoadingIcon?: ComponentType;
 		minWidth?: string;
 		fullWidth?: boolean;
 		rotation?: number;
@@ -20,8 +20,8 @@
 		disabled = false,
 		loading = false,
 		variant = 'success',
-		icon,
-		loadingIcon,
+		Icon,
+		LoadingIcon,
 		minWidth = '280px',
 		fullWidth = false,
 		rotation = -0.5
@@ -45,10 +45,10 @@
 	onclick={onClick}
 	{disabled}
 >
-	{#if loading && loadingIcon}
-		<span class="loading-icon"><loadingIcon /></span>
-	{:else if icon}
-		<span class="button-icon"><icon /></span>
+	{#if loading && LoadingIcon}
+		<span class="loading-icon"><LoadingIcon /></span>
+	{:else if Icon}
+		<span class="button-icon"><Icon /></span>
 	{/if}
 	{@render children?.()}
 </button>

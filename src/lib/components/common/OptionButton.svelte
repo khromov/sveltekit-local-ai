@@ -4,7 +4,7 @@
 	interface Props {
 		title: string;
 		description?: string;
-		icon?: ComponentType;
+		Icon?: ComponentType;
 		selected?: boolean;
 		disabled?: boolean;
 		onClick?: () => void;
@@ -17,7 +17,7 @@
 	let {
 		title,
 		description,
-		icon,
+		Icon,
 		selected = false,
 		disabled = false,
 		onClick,
@@ -44,8 +44,8 @@
 			{/if}
 		{:else}
 			<div class="option-header">
-				{#if icon}
-					<span class="option-icon"><icon /></span>
+				{#if Icon}
+					<span class="option-icon"><Icon /></span>
 				{/if}
 				<strong>{title}</strong>
 			</div>

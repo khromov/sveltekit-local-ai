@@ -324,7 +324,7 @@
 					<ModelCard
 						name={model.name}
 						size={model.size}
-						prosIcon={model.id === 'model1' ? BrainIcon : SmartphoneIcon}
+						ProsIcon={model.id === 'model1' ? BrainIcon : SmartphoneIcon}
 						prosText={model.prosText}
 						active={selectedModel === model.id}
 						rotation={model.id === 'model1' ? 0.5 : -0.3}
@@ -339,8 +339,8 @@
 			<h3>Load Model Button</h3>
 			<LoadModelButton
 				onClick={() => handleClick('Load Model')}
-				icon={BoltIcon}
-				loadingIcon={HourglassIcon}
+				Icon={BoltIcon}
+				LoadingIcon={HourglassIcon}
 				loading={false}
 			>
 				Load Selected Model
@@ -350,13 +350,13 @@
 			<div class="info-boxes-demo">
 				<InfoBox
 					message="Models run locally in your browser. No data is sent to external servers."
-					icon={LockIcon}
+					Icon={LockIcon}
 					variant="blue"
 					rotation={0.5}
 				/>
 				<InfoBox
 					message="This is a success message with green styling."
-					icon={StarIcon}
+					Icon={StarIcon}
 					variant="success"
 					rotation={-0.3}
 				/>
@@ -377,7 +377,7 @@
 				<OptionButton
 					title="Local File"
 					description="Select an audio file from your device (.mp3, .wav, .m4a)"
-					icon={FolderIcon}
+					Icon={FolderIcon}
 					selected={selectedOption === 'upload'}
 					name="demo-option"
 					value="upload"
@@ -391,7 +391,7 @@
 				<OptionButton
 					title="Record Audio"
 					description="Record audio directly from your microphone"
-					icon={MicIcon}
+					Icon={MicIcon}
 					selected={selectedOption === 'record'}
 					name="demo-option"
 					value="record"
