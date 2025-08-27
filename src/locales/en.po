@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-26T23:31:31.304Z\n"
+"PO-Revision-Date: 2025-08-27T12:29:05.360Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Local AI Tools"
 msgstr "Local AI Tools"
 
@@ -42,6 +42,7 @@ msgid "<0/> Transcription is performed locally in your browser. Results may not 
 msgstr "<0/> Transcription is performed locally in your browser. Results may not always be accurate."
 
 #: src/lib/components/common/SquareSpinner.svelte
+#: src/lib/common/Spinner.svelte
 msgid "Loading"
 msgstr "Loading"
 
@@ -58,8 +59,8 @@ msgid "Failed to load transcription model. Please try again."
 msgstr "Failed to load transcription model. Please try again."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Retry"
 msgstr "Retry"
 
@@ -83,8 +84,8 @@ msgstr "Record Audio"
 msgid "Record audio directly from your microphone"
 msgstr "Record audio directly from your microphone"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "OR"
 
@@ -96,8 +97,8 @@ msgstr "Demo File"
 msgid "Listen →"
 msgstr "Listen →"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -137,8 +138,8 @@ msgstr "<0/> Clear Recording"
 msgid "<0/> Transcribing Audio"
 msgstr "<0/> Transcribing Audio"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Complete"
 
@@ -182,8 +183,8 @@ msgstr "Change the language settings for the Local AI Tools application"
 msgid "Language Settings"
 msgstr "Language Settings"
 
-#: src/lib/components/common/LanguageSelector.svelte
 #: src/routes/[[lang]]/language/+page.svelte
+#: src/lib/components/common/LanguageSelector.svelte
 msgid "Select Language"
 msgstr "Select Language"
 
@@ -223,8 +224,8 @@ msgstr ""
 msgid "Tool #01"
 msgstr "Tool #01"
 
-#: src/routes/+layout.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -409,8 +410,9 @@ msgstr "Processing failed"
 msgid "<0/> Processing Image"
 msgstr "<0/> Processing Image"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/common/Toggle.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -560,8 +562,8 @@ msgstr "<0/> Raw Tokens ({0})"
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Type or paste text in the input field above to analyze tokens and character count."
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -589,6 +591,7 @@ msgid "Clear text"
 msgstr "Clear text"
 
 #: src/lib/components/common/ErrorDisplay.svelte
+#: src/routes/demo/+page.svelte
 msgid "Error"
 msgstr "Error"
 
@@ -1052,6 +1055,7 @@ msgstr "Downloading Model"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/routes/demo/+page.svelte
 msgid "Loading..."
 msgstr "Loading..."
 
@@ -1155,3 +1159,441 @@ msgstr "TTS"
 #: src/routes/+layout.svelte
 msgid "BG Remover"
 msgstr "BG Remover"
+
+#: src/routes/demo/+page.svelte
+msgid "A showcase of the brutalist design system UI components"
+msgstr "A showcase of the brutalist design system UI components"
+
+#: src/routes/demo/+page.svelte
+msgid "Brutalist UI Library"
+msgstr "Brutalist UI Library"
+
+#~ msgid "A comprehensive collection of bold, accessible components with a distinctive brutalist design aesthetic."
+#~ msgstr "A comprehensive collection of bold, accessible components with a distinctive brutalist design aesthetic."
+
+#: src/routes/demo/+page.svelte
+msgid "Buttons"
+msgstr "Buttons"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Variants"
+msgstr "Variants"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Primary"
+msgstr "Primary"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Success"
+msgstr "Success"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Warning"
+msgstr "Warning"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Danger"
+msgstr "Danger"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Sizes & States"
+msgstr "Sizes & States"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Small"
+msgstr "Small"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Medium"
+msgstr "Medium"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Large"
+msgstr "Large"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "Disabled"
+msgstr "Disabled"
+
+#: src/routes/demo/+page.svelte
+msgid "Toggle Loading"
+msgstr "Toggle Loading"
+
+#: src/routes/demo/+page.svelte
+msgid "With Icons"
+msgstr "With Icons"
+
+#: src/routes/demo/+page.svelte
+msgid "Like"
+msgstr "Like"
+
+#: src/routes/demo/+page.svelte
+msgid "Save"
+msgstr "Save"
+
+#: src/routes/demo/+page.svelte
+msgid "Delete"
+msgstr "Delete"
+
+#: src/routes/demo/+page.svelte
+msgid "Full Width"
+msgstr "Full Width"
+
+#: src/routes/demo/+page.svelte
+msgid "Form Inputs"
+msgstr "Form Inputs"
+
+#: src/routes/demo/+page.svelte
+msgid "Text Inputs"
+msgstr "Text Inputs"
+
+#: src/routes/demo/+page.svelte
+msgid "Basic Input"
+msgstr "Basic Input"
+
+#: src/routes/demo/+page.svelte
+msgid "Enter some text..."
+msgstr "Enter some text..."
+
+#: src/routes/demo/+page.svelte
+msgid "Email"
+msgstr "Email"
+
+#: src/routes/demo/+page.svelte
+msgid "Password"
+msgstr "Password"
+
+#: src/routes/demo/+page.svelte
+msgid "Textarea"
+msgstr "Textarea"
+
+#: src/routes/demo/+page.svelte
+msgid "Enter multiple lines..."
+msgstr "Enter multiple lines..."
+
+#: src/routes/demo/+page.svelte
+msgid "Disabled input"
+msgstr "Disabled input"
+
+#: src/routes/demo/+page.svelte
+msgid "Error state"
+msgstr "Error state"
+
+#: src/routes/demo/+page.svelte
+msgid "With Error"
+msgstr "With Error"
+
+#: src/routes/demo/+page.svelte
+msgid "This field has an error"
+msgstr "This field has an error"
+
+#: src/routes/demo/+page.svelte
+msgid "Select Dropdown"
+msgstr "Select Dropdown"
+
+#: src/routes/demo/+page.svelte
+msgid "Choose Option"
+msgstr "Choose Option"
+
+#: src/routes/demo/+page.svelte
+msgid "Select something..."
+msgstr "Select something..."
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "With Icon"
+msgstr "With Icon"
+
+#: src/routes/demo/+page.svelte
+msgid "Disabled Select"
+msgstr "Disabled Select"
+
+#: src/routes/demo/+page.svelte
+msgid "Toggles & Switches"
+msgstr "Toggles & Switches"
+
+#: src/routes/demo/+page.svelte
+msgid "Basic Toggles"
+msgstr "Basic Toggles"
+
+#: src/routes/demo/+page.svelte
+msgid "Enable Notifications"
+msgstr "Enable Notifications"
+
+#: src/routes/demo/+page.svelte
+msgid "Get notified about important updates"
+msgstr "Get notified about important updates"
+
+#: src/routes/demo/+page.svelte
+msgid "Dark Mode"
+msgstr "Dark Mode"
+
+#: src/routes/demo/+page.svelte
+msgid "Use dark theme"
+msgstr "Use dark theme"
+
+#: src/routes/demo/+page.svelte
+msgid "Marketing Emails"
+msgstr "Marketing Emails"
+
+#: src/routes/demo/+page.svelte
+msgid "Receive promotional content"
+msgstr "Receive promotional content"
+
+#: src/routes/demo/+page.svelte
+msgid "Delete Account"
+msgstr "Delete Account"
+
+#: src/routes/demo/+page.svelte
+msgid "This action cannot be undone"
+msgstr "This action cannot be undone"
+
+#: src/routes/demo/+page.svelte
+msgid "Badges & Tags"
+msgstr "Badges & Tags"
+
+#: src/routes/demo/+page.svelte
+msgid "Default"
+msgstr "Default"
+
+#: src/routes/demo/+page.svelte
+msgid "Sizes & Styles"
+msgstr "Sizes & Styles"
+
+#: src/routes/demo/+page.svelte
+msgid "Outlined"
+msgstr "Outlined"
+
+#: src/routes/demo/+page.svelte
+msgid "Removable Tags"
+msgstr "Removable Tags"
+
+#: src/routes/demo/+page.svelte
+msgid "Alerts & Notifications"
+msgstr "Alerts & Notifications"
+
+#: src/routes/demo/+page.svelte
+msgid "Alert Types"
+msgstr "Alert Types"
+
+#: src/routes/demo/+page.svelte
+msgid "Information"
+msgstr "Information"
+
+#: src/routes/demo/+page.svelte
+msgid "This is an informational alert with some helpful context."
+msgstr "This is an informational alert with some helpful context."
+
+#: src/routes/demo/+page.svelte
+msgid "Success!"
+msgstr "Success!"
+
+#: src/routes/demo/+page.svelte
+msgid "Your action was completed successfully."
+msgstr "Your action was completed successfully."
+
+#: src/routes/demo/+page.svelte
+msgid "Please review the following information carefully."
+msgstr "Please review the following information carefully."
+
+#: src/routes/demo/+page.svelte
+msgid "Something went wrong. Please try again later."
+msgstr "Something went wrong. Please try again later."
+
+#: src/routes/demo/+page.svelte
+msgid "Loading States"
+msgstr "Loading States"
+
+#: src/routes/demo/+page.svelte
+msgid "Spinner Variants"
+msgstr "Spinner Variants"
+
+#: src/routes/demo/+page.svelte
+msgid "Extra Large"
+msgstr "Extra Large"
+
+#: src/routes/demo/+page.svelte
+msgid "Colored Spinners"
+msgstr "Colored Spinners"
+
+#: src/routes/demo/+page.svelte
+msgid "Modal Dialog"
+msgstr "Modal Dialog"
+
+#: src/routes/demo/+page.svelte
+msgid "Interactive Modal"
+msgstr "Interactive Modal"
+
+#: src/routes/demo/+page.svelte
+msgid "Open Modal"
+msgstr "Open Modal"
+
+#~ msgid ""
+#~ "Click the button above to see the modal in action. It supports different sizes,\n"
+#~ "backdrop styles, and can be closed via ESC key or backdrop click."
+#~ msgstr ""
+#~ "Click the button above to see the modal in action. It supports different sizes,\n"
+#~ "backdrop styles, and can be closed via ESC key or backdrop click."
+
+#: src/routes/demo/+page.svelte
+msgid "Component API"
+msgstr "Component API"
+
+#: src/routes/demo/+page.svelte
+msgid "Button"
+msgstr "Button"
+
+#: src/routes/demo/+page.svelte
+msgid "<0>variant</0>: 'primary' | 'success' | 'warning' | 'danger'"
+msgstr "<0>variant</0>: 'primary' | 'success' | 'warning' | 'danger'"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "<0>size</0>: 'small' | 'medium' | 'large'"
+msgstr "<0>size</0>: 'small' | 'medium' | 'large'"
+
+#: src/routes/demo/+page.svelte
+msgid "<0>fullWidth</0>: boolean"
+msgstr "<0>fullWidth</0>: boolean"
+
+#: src/routes/demo/+page.svelte
+msgid "<0>loading</0>: boolean"
+msgstr "<0>loading</0>: boolean"
+
+#: src/routes/demo/+page.svelte
+msgid "<0>disabled</0>: boolean"
+msgstr "<0>disabled</0>: boolean"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "<0>Icon</0>: Svelte component"
+msgstr "<0>Icon</0>: Svelte component"
+
+#: src/routes/demo/+page.svelte
+msgid "Input"
+msgstr "Input"
+
+#: src/routes/demo/+page.svelte
+msgid "<0>type</0>: 'text' | 'email' | 'password' | 'number'"
+msgstr "<0>type</0>: 'text' | 'email' | 'password' | 'number'"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "<0>label</0>: string"
+msgstr "<0>label</0>: string"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/demo/+page.svelte
+msgid "<0>placeholder</0>: string"
+msgstr "<0>placeholder</0>: string"
+
+#: src/routes/demo/+page.svelte
+msgid "<0>error</0>: string"
+msgstr "<0>error</0>: string"
+
+#: src/routes/demo/+page.svelte
+msgid "<0>required</0>: boolean"
+msgstr "<0>required</0>: boolean"
+
+#: src/routes/demo/+page.svelte
+msgid "<0>rows</0>: number (for textarea)"
+msgstr "<0>rows</0>: number (for textarea)"
+
+#: src/routes/demo/+page.svelte
+msgid "Select"
+msgstr "Select"
+
+#: src/routes/demo/+page.svelte
+msgid "<0>options</0>: Array<Option> - Option has value, label, disabled properties"
+msgstr "<0>options</0>: Array<Option> - Option has value, label, disabled properties"
+
+#: src/routes/demo/+page.svelte
+msgid "Toggle"
+msgstr "Toggle"
+
+#: src/routes/demo/+page.svelte
+msgid "<0>checked</0>: boolean"
+msgstr "<0>checked</0>: boolean"
+
+#: src/routes/demo/+page.svelte
+msgid "<0>description</0>: string"
+msgstr "<0>description</0>: string"
+
+#: src/routes/demo/+page.svelte
+msgid "Example Modal"
+msgstr "Example Modal"
+
+#: src/routes/demo/+page.svelte
+msgid "This is a sample modal dialog with the brutalist design system styling."
+msgstr "This is a sample modal dialog with the brutalist design system styling."
+
+#: src/routes/demo/+page.svelte
+msgid "Input in Modal"
+msgstr "Input in Modal"
+
+#: src/routes/demo/+page.svelte
+msgid "Type something..."
+msgstr "Type something..."
+
+#: src/routes/demo/+page.svelte
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/routes/demo/+page.svelte
+msgid "Save Changes"
+msgstr "Save Changes"
+
+#: src/lib/common/Select.svelte
+#: src/lib/common/Modal.svelte
+msgid "Escape"
+msgstr "Escape"
+
+#: src/lib/common/Badge.svelte
+msgid "Remove"
+msgstr "Remove"
+
+#: src/lib/common/Alert.svelte
+msgid "Dismiss alert"
+msgstr "Dismiss alert"
+
+#: src/lib/common/Modal.svelte
+msgid "Close modal"
+msgstr "Close modal"
+
+#: src/routes/demo/+page.svelte
+msgid ""
+"A comprehensive collection of bold, accessible components with a distinctive brutalist design\n"
+"aesthetic."
+msgstr ""
+"A comprehensive collection of bold, accessible components with a distinctive brutalist design\n"
+"aesthetic."
+
+#: src/routes/demo/+page.svelte
+msgid ""
+"Click the button above to see the modal in action. It supports different sizes, backdrop\n"
+"styles, and can be closed via ESC key or backdrop click."
+msgstr ""
+"Click the button above to see the modal in action. It supports different sizes, backdrop\n"
+"styles, and can be closed via ESC key or backdrop click."
