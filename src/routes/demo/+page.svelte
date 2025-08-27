@@ -225,8 +225,8 @@
 		<h1>🎨 Neo-Brutalist UI Component Library</h1>
 	</div>
 
-	<!-- Newly Extracted Components Section -->
-	<Card title="🆕 Newly Extracted Components" rotation={0.5}>
+	<!-- Welcome & Introduction Section -->
+	<Card title="Welcome & Introduction" lean={true}>
 		<div class="component-section">
 			<h3>Intro Card</h3>
 			<IntroCard
@@ -236,114 +236,11 @@
 				animateIcon={true}
 				rotation={-0.3}
 			/>
-
-			<h3>Model Switcher</h3>
-			<p>TTS Models (3 columns with recommended badge):</p>
-			<ModelSwitcher
-				title="Text-to-Speech Model"
-				stepNumber={1}
-				models={ttsModels}
-				selectedModel={selectedTTSModel}
-				onModelChange={handleTTSModelChange}
-				rotation={-0.2}
-			/>
-
-			<p>Background Removal Models (2 columns with custom badge):</p>
-			<ModelSwitcher
-				title="Background Removal Model"
-				models={backgroundRemovalModels}
-				selectedModel={selectedBGModel}
-				onModelChange={handleBGModelChange}
-				rotation={0.3}
-			/>
-
-			<h3>Text Input Card</h3>
-			<TextInputCard
-				title="Enter Your Text"
-				bind:text={demoText}
-				{actionButtons}
-				showStats={true}
-				rotation={0.2}
-			/>
-
-			<h3>Mode Selector</h3>
-			<ModeSelector
-				modes={processingModes}
-				{selectedMode}
-				onModeChange={handleModeChange}
-				rotation={-0.3}
-			/>
-
-			<h3>Tokenizer Cards</h3>
-			<div class="tokenizer-cards-demo">
-				<TokenizerCard
-					href="/demo"
-					icon={BrainIcon}
-					title="Anthropic Claude"
-					description="Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
-					decorationColor="var(--color-accent-pink)"
-					decorationPosition="right"
-					hoverColor="var(--color-accent-pink)"
-					rotation={0.5}
-				/>
-
-				<TokenizerCard
-					href="/demo"
-					icon={MessageSquareIcon}
-					title="OpenAI ChatGPT"
-					description="Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
-					decorationColor="var(--color-success)"
-					decorationPosition="left"
-					hoverColor="var(--color-success)"
-					rotation={-0.5}
-				/>
-			</div>
-
-			<h3>Expandable Sections</h3>
-			<ExpandableSection title="Raw Tokens" count={42} bind:expanded={expandedSection1}>
-				<div class="demo-tokens">
-					<div class="token-grid">
-						<div class="token-item">
-							<span class="token-id">15339</span>
-							<span class="token-text">Hello</span>
-						</div>
-						<div class="token-item">
-							<span class="token-id">0</span>
-							<span class="token-text">!</span>
-						</div>
-						<div class="token-item">
-							<span class="token-id">1012</span>
-							<span class="token-text"> This</span>
-						</div>
-						<div class="token-item">
-							<span class="token-id">318</span>
-							<span class="token-text"> is</span>
-						</div>
-						<div class="token-item">
-							<span class="token-id">257</span>
-							<span class="token-text"> a</span>
-						</div>
-						<div class="token-item">
-							<span class="token-id">9206</span>
-							<span class="token-text"> demo</span>
-						</div>
-					</div>
-				</div>
-			</ExpandableSection>
-
-			<ExpandableSection title="Configuration Options" bind:expanded={expandedSection2}>
-				<div class="demo-config">
-					<p><strong>Temperature:</strong> 0.7</p>
-					<p><strong>Max Tokens:</strong> 150</p>
-					<p><strong>Top P:</strong> 0.9</p>
-					<p><strong>Frequency Penalty:</strong> 0.1</p>
-				</div>
-			</ExpandableSection>
 		</div>
 	</Card>
 
 	<!-- Buttons Section -->
-	<Card title="Buttons" rotation={-0.3}>
+	<Card title="Buttons" lean={true}>
 		<div class="component-section">
 			<h3>Primary Buttons</h3>
 			<div class="demo-row">
@@ -396,8 +293,85 @@
 		</div>
 	</Card>
 
+	<!-- Text Input & Actions Section -->
+	<Card title="Text Input & Actions" lean={true}>
+		<div class="component-section">
+			<h3>Text Input Card</h3>
+			<TextInputCard
+				title="Enter Your Text"
+				bind:text={demoText}
+				{actionButtons}
+				showStats={true}
+				rotation={0.2}
+			/>
+		</div>
+	</Card>
+
+	<!-- Model & Mode Selection Section -->
+	<Card title="Model & Mode Selection" lean={true}>
+		<div class="component-section">
+			<h3>Model Switcher</h3>
+			<p>TTS Models (3 columns with recommended badge):</p>
+			<ModelSwitcher
+				title="Text-to-Speech Model"
+				stepNumber={1}
+				models={ttsModels}
+				selectedModel={selectedTTSModel}
+				onModelChange={handleTTSModelChange}
+				rotation={-0.2}
+			/>
+
+			<p>Background Removal Models (2 columns with custom badge):</p>
+			<ModelSwitcher
+				title="Background Removal Model"
+				models={backgroundRemovalModels}
+				selectedModel={selectedBGModel}
+				onModelChange={handleBGModelChange}
+				rotation={0.3}
+			/>
+
+			<h3>Mode Selector</h3>
+			<ModeSelector
+				modes={processingModes}
+				{selectedMode}
+				onModeChange={handleModeChange}
+				rotation={-0.3}
+			/>
+		</div>
+	</Card>
+
+	<!-- Navigation & Links Section -->
+	<Card title="Navigation & Links" lean={true}>
+		<div class="component-section">
+			<h3>Tokenizer Cards</h3>
+			<div class="tokenizer-cards-demo">
+				<TokenizerCard
+					href="/demo"
+					icon={BrainIcon}
+					title="Anthropic Claude"
+					description="Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
+					decorationColor="var(--color-accent-pink)"
+					decorationPosition="right"
+					hoverColor="var(--color-accent-pink)"
+					rotation={0.5}
+				/>
+
+				<TokenizerCard
+					href="/demo"
+					icon={MessageSquareIcon}
+					title="OpenAI ChatGPT"
+					description="Count tokens for GPT-4, GPT-4o, GPT-3.5 Turbo, and other OpenAI models"
+					decorationColor="var(--color-success)"
+					decorationPosition="left"
+					hoverColor="var(--color-success)"
+					rotation={-0.5}
+				/>
+			</div>
+		</div>
+	</Card>
+
 	<!-- Form Controls Section -->
-	<Card title="Form Controls" rotation={0.2}>
+	<Card title="Form Controls" lean={true}>
 		<div class="component-section">
 			<h3>Text Input</h3>
 			<div class="demo-column">
@@ -454,7 +428,7 @@
 	</Card>
 
 	<!-- Data Display Section -->
-	<Card title="Data Display" rotation={-0.2}>
+	<Card title="Data Display" lean={true}>
 		<div class="component-section">
 			<h3>Badges</h3>
 			<div class="demo-row">
@@ -493,7 +467,7 @@
 	</Card>
 
 	<!-- Layout Components Section -->
-	<Card title="Layout Components" rotation={0.3}>
+	<Card title="Layout Components" lean={true}>
 		<div class="component-section">
 			<h3>Tabs</h3>
 			<Tabs {tabs} bind:activeTab onTabChange={(id) => toast.info(`Tab changed to ${id}`)}>
@@ -521,11 +495,52 @@
 				<p>This content is inside an expandable advanced section.</p>
 				<p>It can contain any content you want to hide by default.</p>
 			</AdvancedSection>
+
+			<h3>Expandable Sections</h3>
+			<ExpandableSection title="Raw Tokens" count={42} bind:expanded={expandedSection1}>
+				<div class="demo-tokens">
+					<div class="token-grid">
+						<div class="token-item">
+							<span class="token-id">15339</span>
+							<span class="token-text">Hello</span>
+						</div>
+						<div class="token-item">
+							<span class="token-id">0</span>
+							<span class="token-text">!</span>
+						</div>
+						<div class="token-item">
+							<span class="token-id">1012</span>
+							<span class="token-text"> This</span>
+						</div>
+						<div class="token-item">
+							<span class="token-id">318</span>
+							<span class="token-text"> is</span>
+						</div>
+						<div class="token-item">
+							<span class="token-id">257</span>
+							<span class="token-text"> a</span>
+						</div>
+						<div class="token-item">
+							<span class="token-id">9206</span>
+							<span class="token-text"> demo</span>
+						</div>
+					</div>
+				</div>
+			</ExpandableSection>
+
+			<ExpandableSection title="Configuration Options" bind:expanded={expandedSection2}>
+				<div class="demo-config">
+					<p><strong>Temperature:</strong> 0.7</p>
+					<p><strong>Max Tokens:</strong> 150</p>
+					<p><strong>Top P:</strong> 0.9</p>
+					<p><strong>Frequency Penalty:</strong> 0.1</p>
+				</div>
+			</ExpandableSection>
 		</div>
 	</Card>
 
 	<!-- Feedback Components Section -->
-	<Card title="Feedback Components" rotation={-0.1}>
+	<Card title="Feedback Components" lean={true}>
 		<div class="component-section">
 			<h3>Loading Progress</h3>
 			<LoadingProgress
@@ -553,7 +568,7 @@
 	</Card>
 
 	<!-- Model Components Section -->
-	<Card title="Model Components" rotation={0.1}>
+	<Card title="Model Components" lean={true}>
 		<div class="component-section">
 			<h3>Model Cards</h3>
 			<div class="model-cards-demo">
@@ -607,7 +622,7 @@
 	</Card>
 
 	<!-- Option Components Section -->
-	<Card title="Option Components" rotation={-0.2}>
+	<Card title="Option Components" lean={true}>
 		<div class="component-section">
 			<h3>Option Buttons</h3>
 			<div class="option-buttons-demo">
@@ -659,7 +674,7 @@
 	</Card>
 
 	<!-- Full Interface Example -->
-	<Card title="Full Interface Example" rotation={0.15}>
+	<Card title="Full Interface Example" lean={true}>
 		<CardInterface>
 			<Toolbar modelInfo="Example Interface" ModelIcon={SparklesIcon}>
 				<ActionButton onClick={() => handleClick('Toolbar Action')} Icon={SaveIcon}>
@@ -681,6 +696,66 @@
 				</PrimaryButton>
 			</InputArea>
 		</CardInterface>
+	</Card>
+
+	<!-- Card Layout Examples Section -->
+	<Card title="Card Layout Examples">
+		<div class="component-section">
+			<h3>Non-Leaning Cards (Default)</h3>
+			<p>These cards are perfectly aligned without any rotation:</p>
+
+			<div class="cards-demo-grid">
+				<Card title="Standard Card" elevation="small">
+					<p>This is a standard card without any lean. It sits perfectly straight.</p>
+				</Card>
+
+				<Card title="Another Card" elevation="medium">
+					<p>Multiple cards in a row all align neatly without rotation.</p>
+				</Card>
+
+				<Card title="Third Card" elevation="large">
+					<p>Perfect for formal layouts or when precise alignment is needed.</p>
+				</Card>
+			</div>
+
+			<h3>Leaning Cards (Lean Enabled)</h3>
+			<p>These cards have subtle random rotations for a playful brutalist feel:</p>
+
+			<div class="cards-demo-grid">
+				<Card title="Leaning Card 1" lean={true} elevation="small">
+					<p>This card has a subtle random rotation that gives it character and visual interest.</p>
+				</Card>
+
+				<Card title="Leaning Card 2" lean={true} elevation="medium">
+					<p>Each leaning card gets a unique rotation between -0.5° and +0.5°.</p>
+				</Card>
+
+				<Card title="Leaning Card 3" lean={true} elevation="large">
+					<p>Perfect for creative layouts with a hand-drawn, organic feel.</p>
+				</Card>
+			</div>
+
+			<h3>Mixed Layout</h3>
+			<p>You can mix leaning and non-leaning cards in the same layout:</p>
+
+			<div class="cards-demo-grid">
+				<Card title="Straight Card">
+					<p>This one stays straight.</p>
+				</Card>
+
+				<Card title="Leaning Card" lean={true}>
+					<p>This one leans playfully.</p>
+				</Card>
+
+				<Card title="Another Straight">
+					<p>Back to straight again.</p>
+				</Card>
+
+				<Card title="Another Lean" lean={true}>
+					<p>And another subtle lean.</p>
+				</Card>
+			</div>
+		</div>
 	</Card>
 </div>
 
@@ -772,6 +847,13 @@
 		gap: 1rem;
 		max-width: 600px;
 		margin: 0 auto;
+	}
+
+	.cards-demo-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 1.5rem;
+		margin: 1rem 0 2rem 0;
 	}
 
 	/* Styles for newly extracted components */

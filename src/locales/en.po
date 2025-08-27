@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-27T20:42:28.196Z\n"
+"PO-Revision-Date: 2025-08-27T20:47:01.867Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -417,8 +417,8 @@ msgstr "Processing failed"
 msgid "<0/> Processing Image"
 msgstr "<0/> Processing Image"
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/common/FileUpload.svelte
 msgid "Enter"
 msgstr "Enter"
@@ -757,8 +757,8 @@ msgstr ""
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Failed to load model. Please check your connection and try again."
 
-#: src/routes/[[lang]]/chat/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/chat/+page.svelte
 #: src/routes/demo/+page.svelte
 msgid "Loading Model"
 msgstr "Loading Model"
@@ -2005,3 +2005,127 @@ msgstr "JPG, PNG, WebP supported"
 #: src/lib/components/common/FileUpload.svelte
 msgid "or click to browse • {0}"
 msgstr "or click to browse • {0}"
+
+#: src/routes/demo/+page.svelte
+msgid "Welcome & Introduction"
+msgstr "Welcome & Introduction"
+
+#: src/routes/demo/+page.svelte
+msgid "Text Input & Actions"
+msgstr "Text Input & Actions"
+
+#: src/routes/demo/+page.svelte
+msgid "Model & Mode Selection"
+msgstr "Model & Mode Selection"
+
+#: src/routes/demo/+page.svelte
+msgid "Navigation & Links"
+msgstr "Navigation & Links"
+
+#: src/routes/demo/+page.svelte
+msgid "Card Layout Examples"
+msgstr "Card Layout Examples"
+
+#: src/routes/demo/+page.svelte
+msgid "Non-Leaning Cards (Default)"
+msgstr "Non-Leaning Cards (Default)"
+
+#: src/routes/demo/+page.svelte
+msgid "These cards are perfectly aligned without any rotation:"
+msgstr "These cards are perfectly aligned without any rotation:"
+
+#: src/routes/demo/+page.svelte
+msgid "Standard Card"
+msgstr "Standard Card"
+
+#: src/routes/demo/+page.svelte
+msgid "This is a standard card without any lean. It sits perfectly straight."
+msgstr "This is a standard card without any lean. It sits perfectly straight."
+
+#: src/routes/demo/+page.svelte
+msgid "Another Card"
+msgstr "Another Card"
+
+#: src/routes/demo/+page.svelte
+msgid "Multiple cards in a row all align neatly without rotation."
+msgstr "Multiple cards in a row all align neatly without rotation."
+
+#: src/routes/demo/+page.svelte
+msgid "Third Card"
+msgstr "Third Card"
+
+#: src/routes/demo/+page.svelte
+msgid "Perfect for formal layouts or when precise alignment is needed."
+msgstr "Perfect for formal layouts or when precise alignment is needed."
+
+#: src/routes/demo/+page.svelte
+msgid "Leaning Cards (Lean Enabled)"
+msgstr "Leaning Cards (Lean Enabled)"
+
+#: src/routes/demo/+page.svelte
+msgid "These cards have subtle random rotations for a playful brutalist feel:"
+msgstr "These cards have subtle random rotations for a playful brutalist feel:"
+
+#: src/routes/demo/+page.svelte
+msgid "Leaning Card 1"
+msgstr "Leaning Card 1"
+
+#: src/routes/demo/+page.svelte
+msgid "This card has a subtle random rotation that gives it character and visual interest."
+msgstr "This card has a subtle random rotation that gives it character and visual interest."
+
+#: src/routes/demo/+page.svelte
+msgid "Leaning Card 2"
+msgstr "Leaning Card 2"
+
+#: src/routes/demo/+page.svelte
+msgid "Each leaning card gets a unique rotation between -0.5° and +0.5°."
+msgstr "Each leaning card gets a unique rotation between -0.5° and +0.5°."
+
+#: src/routes/demo/+page.svelte
+msgid "Leaning Card 3"
+msgstr "Leaning Card 3"
+
+#: src/routes/demo/+page.svelte
+msgid "Perfect for creative layouts with a hand-drawn, organic feel."
+msgstr "Perfect for creative layouts with a hand-drawn, organic feel."
+
+#: src/routes/demo/+page.svelte
+msgid "Mixed Layout"
+msgstr "Mixed Layout"
+
+#: src/routes/demo/+page.svelte
+msgid "You can mix leaning and non-leaning cards in the same layout:"
+msgstr "You can mix leaning and non-leaning cards in the same layout:"
+
+#: src/routes/demo/+page.svelte
+msgid "Straight Card"
+msgstr "Straight Card"
+
+#: src/routes/demo/+page.svelte
+msgid "This one stays straight."
+msgstr "This one stays straight."
+
+#: src/routes/demo/+page.svelte
+msgid "Leaning Card"
+msgstr "Leaning Card"
+
+#: src/routes/demo/+page.svelte
+msgid "This one leans playfully."
+msgstr "This one leans playfully."
+
+#: src/routes/demo/+page.svelte
+msgid "Another Straight"
+msgstr "Another Straight"
+
+#: src/routes/demo/+page.svelte
+msgid "Back to straight again."
+msgstr "Back to straight again."
+
+#: src/routes/demo/+page.svelte
+msgid "Another Lean"
+msgstr "Another Lean"
+
+#: src/routes/demo/+page.svelte
+msgid "And another subtle lean."
+msgstr "And another subtle lean."

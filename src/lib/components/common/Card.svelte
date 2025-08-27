@@ -1,19 +1,16 @@
 <script lang="ts">
 	interface Props {
 		title?: string;
-		rotation?: number;
 		animationDelay?: number;
 		elevation?: 'small' | 'medium' | 'large' | 'xlarge';
+		lean?: boolean;
 		children?: import('svelte').Snippet;
 	}
 
-	let {
-		title,
-		rotation = 0.5,
-		animationDelay = 0,
-		elevation = 'large',
-		children
-	}: Props = $props();
+	let { title, animationDelay = 0, elevation = 'large', lean = false, children }: Props = $props();
+
+	// Generate a subtle rotation when lean is true (between -0.5 and 0.5 degrees)
+	const cardRotation = lean ? Math.random() - 0.5 : 0;
 
 	const elevationStyles = {
 		small: 'var(--shadow-brutalist-small)',
@@ -25,7 +22,7 @@
 
 <div
 	class="card"
-	style="transform: rotate({rotation}deg); animation-delay: {animationDelay}s; box-shadow: {elevationStyles[
+	style="transform: rotate({cardRotation}deg); animation-delay: {animationDelay}s; box-shadow: {elevationStyles[
 		elevation
 	]};"
 >
