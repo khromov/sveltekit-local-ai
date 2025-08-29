@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-26T23:31:31.304Z\n"
+"PO-Revision-Date: 2025-08-29T22:32:10.497Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -14,6 +14,7 @@ msgstr ""
 
 #: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/+layout.ts
 msgid "Local AI Tools"
 msgstr "Local AI Tools"
 
@@ -1155,3 +1156,63 @@ msgstr "TTS"
 #: src/routes/+layout.svelte
 msgid "BG Remover"
 msgstr "BG Remover"
+
+#: src/routes/+layout.ts
+msgid "Private AI tools that run in your browser"
+msgstr "Private AI tools that run in your browser"
+
+#: src/routes/[[lang]]/+page.ts
+msgid "Local AI Tools - Private, Offline AI in Your Browser"
+msgstr "Local AI Tools - Private, Offline AI in Your Browser"
+
+#: src/routes/[[lang]]/+page.ts
+msgid "Free, private AI tools that run entirely in your browser - and even offline! Chat with LLMs, transcribe audio, and remove backgrounds using WebAssembly."
+msgstr "Free, private AI tools that run entirely in your browser - and even offline! Chat with LLMs, transcribe audio, and remove backgrounds using WebAssembly."
+
+#: src/routes/[[lang]]/text-to-speech/+page.ts
+msgid "Text to Speech - Local AI Tools"
+msgstr "Text to Speech - Local AI Tools"
+
+#: src/routes/[[lang]]/text-to-speech/+page.ts
+msgid "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis, all running locally in your browser."
+msgstr "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis, all running locally in your browser."
+
+#: src/routes/[[lang]]/background-remover/+page.ts
+msgid "Background Remover - Local AI Tools"
+msgstr "Background Remover - Local AI Tools"
+
+#: src/routes/[[lang]]/background-remover/+page.ts
+msgid "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality."
+msgstr "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality."
+
+#: src/routes/[[lang]]/count-tokens/+page.ts
+msgid "Count LLM Tokens - Local AI Tools"
+msgstr "Count LLM Tokens - Local AI Tools"
+
+#: src/routes/[[lang]]/count-tokens/+page.ts
+msgid "Calculate token counts for different AI models. Understand context limits for Claude and ChatGPT models with our tokenizer tools."
+msgstr "Calculate token counts for different AI models. Understand context limits for Claude and ChatGPT models with our tokenizer tools."
+
+#: src/routes/favicon/+page.ts
+msgid "Favicon Concepts - Local AI Tools"
+msgstr "Favicon Concepts - Local AI Tools"
+
+#: src/routes/favicon/+page.ts
+msgid "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Local AI Tools application."
+msgstr "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Local AI Tools application."
+
+#: src/routes/[[lang]]/chat/+page.ts
+msgid "AI Chat - Local AI Tools"
+msgstr "AI Chat - Local AI Tools"
+
+#: src/routes/[[lang]]/chat/+page.ts
+msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp. Private, secure, and works offline with no data sharing."
+msgstr "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp. Private, secure, and works offline with no data sharing."
+
+#: src/routes/[[lang]]/transcribe/+page.ts
+msgid "Audio Transcription - Local AI Tools"
+msgstr "Audio Transcription - Local AI Tools"
+
+#: src/routes/[[lang]]/transcribe/+page.ts
+msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
+msgstr "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
