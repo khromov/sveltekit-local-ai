@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-29T12:37:22.735Z\n"
+"PO-Revision-Date: 2025-08-29T12:38:45.571Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -168,8 +168,9 @@ msgstr "この画像をダウンロード"
 msgid "Failed to Process"
 msgstr "処理失敗"
 
-#~ msgid "Processing failed"
-#~ msgstr "処理に失敗しました"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processing failed"
+msgstr "処理に失敗しました"
 
 #: src/routes/+layout.svelte
 msgid "View source on GitHub"
@@ -193,6 +194,7 @@ msgid "{0}% Complete"
 msgstr "{0}% 完了"
 
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -208,8 +210,8 @@ msgstr "<0/> {0}枚の画像を選択中"
 msgid "Drop multiple images here"
 msgstr "ここに複数の画像をドロップ"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "または"
 
@@ -225,8 +227,8 @@ msgstr "選択された画像 ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> すべてクリア"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -399,6 +401,7 @@ msgid "Tokens"
 msgstr "トークン"
 
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "文字数"
 
@@ -495,6 +498,7 @@ msgid "Failed to load transcription model. Please try again."
 msgstr "文字起こしモデルの読み込みに失敗しました。もう一度お試しください。"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "再試行"
@@ -535,8 +539,9 @@ msgstr "速度:"
 msgid "{0}x"
 msgstr "{0}倍"
 
-#~ msgid "Words"
-#~ msgstr "単語数"
+#: src/lib/components/tts/TextStatistics.svelte
+msgid "Words"
+msgstr "単語数"
 
 #: src/lib/components/tts/SampleRateSelector.svelte
 msgid "Sample Rate:"
@@ -570,8 +575,9 @@ msgstr "こんにちは！私はEcho、あなたの考えを完璧にエコー�
 msgid "Hi! I'm {0}, nice to meet you!"
 msgstr "こんにちは！私は{0}です、はじめまして！"
 
-#~ msgid "Select Voice"
-#~ msgstr "音声を選択"
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Select Voice"
+msgstr "音声を選択"
 
 #: src/lib/components/tts/WebGPUToggle.svelte
 msgid "(not supported)"
@@ -585,6 +591,7 @@ msgstr "WebGPUを試す (実験的) <0/>"
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "モデルの読み込みに失敗しました。接続を確認してもう一度お試しください。"
 
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "モデル読み込み中"
@@ -830,8 +837,9 @@ msgstr "GPT-5、GPT-4、GPT-4o、GPT-3.5 Turbo、ChatGPT、その他のOpenAIモ
 msgid "About OpenAI's Tokenizer"
 msgstr "OpenAIのトークナイザーについて"
 
-#~ msgid "Background Remover ({0})"
-#~ msgstr "背景除去 ({0})"
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Background Remover ({0})"
+msgstr "背景除去 ({0})"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Original {0}"
@@ -857,6 +865,7 @@ msgstr "ローカルAIツールアプリケーションの言語設定を変更"
 msgid "Language Settings"
 msgstr "言語設定"
 
+#: src/lib/components/common/LanguageSelector.svelte
 #: src/routes/[[lang]]/language/+page.svelte
 msgid "Select Language"
 msgstr "言語を選択"
@@ -949,38 +958,49 @@ msgstr ""
 "モデルによって異なるトークン化方法を使用するため、同じテキストでも\n"
 "トークン数が異なる場合があります。"
 
-#~ msgid "Loading Model..."
-#~ msgstr "モデル読み込み中..."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Model..."
+msgstr "モデル読み込み中..."
 
-#~ msgid "Load Model"
-#~ msgstr "モデルを読み込む"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Load Model"
+msgstr "モデルを読み込む"
 
-#~ msgid "Changing..."
-#~ msgstr "変更中..."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Changing..."
+msgstr "変更中..."
 
-#~ msgid "Change Model"
-#~ msgstr "モデルを変更"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Change Model"
+msgstr "モデルを変更"
 
-#~ msgid "Retrying..."
-#~ msgstr "再試行中..."
+#: src/lib/components/common/ErrorDisplay.svelte
+msgid "Retrying..."
+msgstr "再試行中..."
 
-#~ msgid "Choose Image"
-#~ msgstr "画像を選択"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Choose Image"
+msgstr "画像を選択"
 
-#~ msgid "Batch Processing"
-#~ msgstr "バッチ処理"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Batch Processing"
+msgstr "バッチ処理"
 
-#~ msgid "Click to change image"
-#~ msgstr "クリックして画像を変更"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to change image"
+msgstr "クリックして画像を変更"
 
-#~ msgid "Click to add more images"
-#~ msgstr "クリックして画像を追加"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to add more images"
+msgstr "クリックして画像を追加"
 
-#~ msgid "Play"
-#~ msgstr "再生"
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Play"
+msgstr "再生"
 
-#~ msgid "Generate"
-#~ msgstr "生成"
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Generate"
+msgstr "生成"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "or click to browse • JPG, PNG, WebP supported"
@@ -998,68 +1018,95 @@ msgstr ""
 msgid "Recommended"
 msgstr "推奨"
 
-#~ msgid "Token ID: {0}"
-#~ msgstr "トークンID: {0}"
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "Token ID: {0}"
+msgstr "トークンID: {0}"
 
-#~ msgid "Copied!"
-#~ msgstr "コピーしました！"
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copied!"
+msgstr "コピーしました！"
 
-#~ msgid "Copy text"
-#~ msgstr "テキストをコピー"
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copy text"
+msgstr "テキストをコピー"
 
-#~ msgid "Stop preview"
-#~ msgstr "プレビューを停止"
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Stop preview"
+msgstr "プレビューを停止"
 
-#~ msgid "Preview voice"
-#~ msgstr "音声をプレビュー"
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Preview voice"
+msgstr "音声をプレビュー"
 
-#~ msgid "Remove {0}"
-#~ msgstr "{0}を削除"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Remove {0}"
+msgstr "{0}を削除"
 
-#~ msgid "Failed to load model"
-#~ msgstr "モデルの読み込みに失敗しました"
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Failed to load model"
+msgstr "モデルの読み込みに失敗しました"
 
-#~ msgid "Loading Cached Model"
-#~ msgstr "キャッシュされたモデルを読み込み中"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Cached Model"
+msgstr "キャッシュされたモデルを読み込み中"
 
-#~ msgid "Downloading Model"
-#~ msgstr "モデルをダウンロード中"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Downloading Model"
+msgstr "モデルをダウンロード中"
 
-#~ msgid "Loading..."
-#~ msgstr "読み込み中..."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Loading..."
+msgstr "読み込み中..."
 
-#~ msgid "Loading model from local cache..."
-#~ msgstr "ローカルキャッシュからモデルを読み込み中..."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model from local cache..."
+msgstr "ローカルキャッシュからモデルを読み込み中..."
 
-#~ msgid "The transcription model is being downloaded to your browser."
-#~ msgstr "文字起こしモデルをブラウザにダウンロード中です。"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "The transcription model is being downloaded to your browser."
+msgstr "文字起こしモデルをブラウザにダウンロード中です。"
 
-#~ msgid "Loading model... Progress tracking not available in this browser."
-#~ msgstr "モデル読み込み中... このブラウザではプログレス追跡は利用できません。"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model... Progress tracking not available in this browser."
+msgstr "モデル読み込み中... このブラウザではプログレス追跡は利用できません。"
 
-#~ msgid "Average token length: ~4 characters for English text"
-#~ msgstr "平均トークン長: 英語テキストで約4文字"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Average token length: ~4 characters for English text"
+msgstr "平均トークン長: 英語テキストで約4文字"
 
-#~ msgid "Code and special characters typically use more tokens"
-#~ msgstr "コードと特殊文字は通常より多くのトークンを使用します"
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Code and special characters typically use more tokens"
+msgstr "コードと特殊文字は通常より多くのトークンを使用します"
 
-#~ msgid "Processing image and removing background..."
-#~ msgstr "画像を処理して背景を除去中..."
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image and removing background..."
+msgstr "画像を処理して背景を除去中..."
 
-#~ msgid "Processing image {0} of {1}..."
-#~ msgstr "画像 {0}/{1} を処理中..."
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image {0} of {1}..."
+msgstr "画像 {0}/{1} を処理中..."
 
-#~ msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-#~ msgstr "ClaudeはGPTモデルと同様のBPE（バイトペアエンコーディング）トークナイザーを使用します"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+msgstr "ClaudeはGPTモデルと同様のBPE（バイトペアエンコーディング）トークナイザーを使用します"
 
-#~ msgid "Special characters and code may use more tokens"
-#~ msgstr "特殊文字とコードはより多くのトークンを使用する可能性があります"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Special characters and code may use more tokens"
+msgstr "特殊文字とコードはより多くのトークンを使用する可能性があります"
 
-#~ msgid "Reloading..."
-#~ msgstr "再読み込み中..."
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reloading..."
+msgstr "再読み込み中..."
 
-#~ msgid "Reload Model"
-#~ msgstr "モデルを再読み込み"
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reload Model"
+msgstr "モデルを再読み込み"
 
 #: src/lib/components/count-tokens/TokenizerHeader.svelte
 msgid "Switch to Anthropic"

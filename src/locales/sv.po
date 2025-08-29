@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-29T12:37:22.741Z\n"
+"PO-Revision-Date: 2025-08-29T12:38:45.572Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -220,8 +220,9 @@ msgstr "Ladda ner denna bild"
 msgid "Failed to Process"
 msgstr "Misslyckades att bearbeta"
 
-#~ msgid "Processing failed"
-#~ msgstr "Bearbetning misslyckades"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processing failed"
+msgstr "Bearbetning misslyckades"
 
 #: src/routes/favicon/+page.svelte
 msgid "Favicon Concept Gallery"
@@ -290,11 +291,13 @@ msgstr "<0/> Ladda ner"
 msgid "<0/> Process Another"
 msgstr "<0/> Bearbeta en till"
 
-#~ msgid "Choose Image"
-#~ msgstr "Välj bild"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Choose Image"
+msgstr "Välj bild"
 
-#~ msgid "Batch Processing"
-#~ msgstr "Batchbearbetning"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Batch Processing"
+msgstr "Batchbearbetning"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Drop your image here"
@@ -308,18 +311,20 @@ msgstr "<0/> {0} bild{1} valda"
 msgid "Drop multiple images here"
 msgstr "Släpp flera bilder här"
 
-#~ msgid "Click to change image"
-#~ msgstr "Klicka för att byta bild"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to change image"
+msgstr "Klicka för att byta bild"
 
-#~ msgid "Click to add more images"
-#~ msgstr "Klicka för att lägga till fler bilder"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to add more images"
+msgstr "Klicka för att lägga till fler bilder"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "eller klicka för att bläddra • JPG, PNG, WebP stöds"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "ELLER"
 
@@ -335,8 +340,8 @@ msgstr "Valda bilder ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Rensa alla"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -360,6 +365,7 @@ msgstr "Du"
 msgid "AI"
 msgstr "AI"
 
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Enter"
@@ -433,6 +439,7 @@ msgid "Type or paste text in the input field above to analyze tokens and charact
 msgstr "Skriv eller klistra in text i fältet ovan för att analysera tokens och antal tecken."
 
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "Tecken"
 
@@ -494,8 +501,9 @@ msgstr "Kokoro"
 msgid "80MB • Highest Quality • Slow"
 msgstr "80MB • Högsta kvalitet • Långsam"
 
-#~ msgid "Words"
-#~ msgstr "Ord"
+#: src/lib/components/tts/TextStatistics.svelte
+msgid "Words"
+msgstr "Ord"
 
 #: src/lib/components/tts/VoiceSelector.svelte
 msgid "Hello! I'm Heart, your friendly voice assistant."
@@ -525,8 +533,9 @@ msgstr "Hej där! Jag är Echo, ekar dina tankar perfekt."
 msgid "Hi! I'm {0}, nice to meet you!"
 msgstr "Hej! Jag är {0}, trevligt att träffas!"
 
-#~ msgid "Select Voice"
-#~ msgstr "Välj röst"
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Select Voice"
+msgstr "Välj röst"
 
 #: src/lib/components/tts/WebGPUToggle.svelte
 msgid "(not supported)"
@@ -540,10 +549,12 @@ msgstr "Testa WebGPU (experimentell) <0/>"
 msgid "Error"
 msgstr "Fel"
 
-#~ msgid "Retrying..."
-#~ msgstr "Försöker igen..."
+#: src/lib/components/common/ErrorDisplay.svelte
+msgid "Retrying..."
+msgstr "Försöker igen..."
 
 #: src/routes/[[lang]]/language/+page.svelte
+#: src/lib/components/common/LanguageSelector.svelte
 msgid "Select Language"
 msgstr "Välj språk"
 
@@ -607,27 +618,32 @@ msgstr "Bläddra bland filer"
 msgid "Select Model"
 msgstr "Välj modell"
 
-#~ msgid "Loading Model..."
-#~ msgstr "Laddar modell..."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Model..."
+msgstr "Laddar modell..."
 
-#~ msgid "Load Model"
-#~ msgstr "Ladda modell"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Load Model"
+msgstr "Ladda modell"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Model Ready"
 msgstr "Modell redo"
 
-#~ msgid "Changing..."
-#~ msgstr "Byter..."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Changing..."
+msgstr "Byter..."
 
-#~ msgid "Change Model"
-#~ msgstr "Byt modell"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Change Model"
+msgstr "Byt modell"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Failed to load transcription model. Please try again."
 msgstr "Misslyckades att ladda transkriptionsmodell. Försök igen."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "Försök igen"
@@ -757,6 +773,7 @@ msgstr ""
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Misslyckades att ladda modell. Kontrollera din anslutning och försök igen."
 
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "Laddar modell"
@@ -864,8 +881,9 @@ msgstr "Stor, mycket långsam modell"
 msgid "Generally provides better results"
 msgstr "Ger generellt bättre resultat"
 
-#~ msgid "Background Remover ({0})"
-#~ msgstr "Bakgrundsborttagare ({0})"
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Background Remover ({0})"
+msgstr "Bakgrundsborttagare ({0})"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading Background Removal Model"
@@ -952,11 +970,13 @@ msgstr "Genererar"
 msgid "Pause"
 msgstr "Pausa"
 
-#~ msgid "Play"
-#~ msgstr "Spela"
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Play"
+msgstr "Spela"
 
-#~ msgid "Generate"
-#~ msgstr "Generera"
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Generate"
+msgstr "Generera"
 
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Download Audio"
@@ -998,68 +1018,95 @@ msgstr ""
 msgid "Recommended"
 msgstr "Rekommenderad"
 
-#~ msgid "Token ID: {0}"
-#~ msgstr "Token-ID: {0}"
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "Token ID: {0}"
+msgstr "Token-ID: {0}"
 
-#~ msgid "Copied!"
-#~ msgstr "Kopierad!"
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copied!"
+msgstr "Kopierad!"
 
-#~ msgid "Copy text"
-#~ msgstr "Kopiera text"
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copy text"
+msgstr "Kopiera text"
 
-#~ msgid "Stop preview"
-#~ msgstr "Stoppa förhandsgranskning"
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Stop preview"
+msgstr "Stoppa förhandsgranskning"
 
-#~ msgid "Preview voice"
-#~ msgstr "Förhandsgranska röst"
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Preview voice"
+msgstr "Förhandsgranska röst"
 
-#~ msgid "Remove {0}"
-#~ msgstr "Ta bort {0}"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Remove {0}"
+msgstr "Ta bort {0}"
 
-#~ msgid "Failed to load model"
-#~ msgstr "Misslyckades att ladda modell"
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Failed to load model"
+msgstr "Misslyckades att ladda modell"
 
-#~ msgid "Loading Cached Model"
-#~ msgstr "Laddar cachad modell"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Cached Model"
+msgstr "Laddar cachad modell"
 
-#~ msgid "Downloading Model"
-#~ msgstr "Laddar ner modell"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Downloading Model"
+msgstr "Laddar ner modell"
 
-#~ msgid "Loading..."
-#~ msgstr "Laddar..."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Loading..."
+msgstr "Laddar..."
 
-#~ msgid "Loading model from local cache..."
-#~ msgstr "Laddar modell från lokal cache..."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model from local cache..."
+msgstr "Laddar modell från lokal cache..."
 
-#~ msgid "The transcription model is being downloaded to your browser."
-#~ msgstr "Transkriptionsmodellen laddas ner till din webbläsare."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "The transcription model is being downloaded to your browser."
+msgstr "Transkriptionsmodellen laddas ner till din webbläsare."
 
-#~ msgid "Loading model... Progress tracking not available in this browser."
-#~ msgstr "Laddar modell... Framståndsspårning inte tillgänglig i denna webbläsare."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model... Progress tracking not available in this browser."
+msgstr "Laddar modell... Framståndsspårning inte tillgänglig i denna webbläsare."
 
-#~ msgid "Average token length: ~4 characters for English text"
-#~ msgstr "Genomsnittlig tokenlängd: ~4 tecken för engelsk text"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Average token length: ~4 characters for English text"
+msgstr "Genomsnittlig tokenlängd: ~4 tecken för engelsk text"
 
-#~ msgid "Code and special characters typically use more tokens"
-#~ msgstr "Kod och specialtecken använder vanligtvis fler tokens"
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Code and special characters typically use more tokens"
+msgstr "Kod och specialtecken använder vanligtvis fler tokens"
 
-#~ msgid "Processing image and removing background..."
-#~ msgstr "Bearbetar bild och tar bort bakgrund..."
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image and removing background..."
+msgstr "Bearbetar bild och tar bort bakgrund..."
 
-#~ msgid "Processing image {0} of {1}..."
-#~ msgstr "Bearbetar bild {0} av {1}..."
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image {0} of {1}..."
+msgstr "Bearbetar bild {0} av {1}..."
 
-#~ msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-#~ msgstr "Claude använder en BPE (Byte Pair Encoding) tokenizer liknande GPT-modeller"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+msgstr "Claude använder en BPE (Byte Pair Encoding) tokenizer liknande GPT-modeller"
 
-#~ msgid "Special characters and code may use more tokens"
-#~ msgstr "Specialtecken och kod kan använda fler tokens"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Special characters and code may use more tokens"
+msgstr "Specialtecken och kod kan använda fler tokens"
 
-#~ msgid "Reloading..."
-#~ msgstr "Laddar om..."
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reloading..."
+msgstr "Laddar om..."
 
-#~ msgid "Reload Model"
-#~ msgstr "Ladda om modell"
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reload Model"
+msgstr "Ladda om modell"
 
 #: src/lib/components/count-tokens/TokenizerHeader.svelte
 msgid "Switch to Anthropic"

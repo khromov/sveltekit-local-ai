@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-29T12:37:36.894Z\n"
+"PO-Revision-Date: 2025-08-29T12:38:45.571Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -172,8 +172,9 @@ msgstr "Descargar esta imagen"
 msgid "Failed to Process"
 msgstr "Error al Procesar"
 
-#~ msgid "Processing failed"
-#~ msgstr "Procesamiento fallido"
+#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
+msgid "Processing failed"
+msgstr "Procesamiento fallido"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "<0/> Processing Image"
@@ -221,6 +222,7 @@ msgstr "Galería de Conceptos de Favicon"
 msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
 msgstr "Todos los conceptos están diseñados en 512×512 píxeles con la estética de diseño brutalista en mente."
 
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Entrar"
@@ -285,12 +287,13 @@ msgstr "Cargar ejemplo"
 msgid "Clear text"
 msgstr "Limpiar texto"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "Caracteres"
 
@@ -418,8 +421,9 @@ msgstr "Velocidad:"
 msgid "{0}x"
 msgstr "{0}x"
 
-#~ msgid "Words"
-#~ msgstr "Palabras"
+#: src/lib/components/tts/TextStatistics.svelte
+msgid "Words"
+msgstr "Palabras"
 
 #: src/lib/components/whisper/AudioRecorder.svelte
 msgid "<0/> Start Recording"
@@ -477,8 +481,9 @@ msgstr "¡Hola! Soy Echo, haciendo eco de tus pensamientos perfectamente."
 msgid "Hi! I'm {0}, nice to meet you!"
 msgstr "¡Hola! Soy {0}, ¡un placer conocerte!"
 
-#~ msgid "Select Voice"
-#~ msgstr "Seleccionar Voz"
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Select Voice"
+msgstr "Seleccionar Voz"
 
 #: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "<0/> Transcribing Audio"
@@ -576,6 +581,7 @@ msgstr "Modelo Listo"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Error al cargar el modelo de transcripción. Por favor intenta de nuevo."
 
+#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
@@ -585,6 +591,7 @@ msgstr "Reintentar"
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Error al cargar el modelo. Por favor verifica tu conexión e intenta de nuevo."
 
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "Cargando Modelo"
@@ -830,8 +837,9 @@ msgstr "Cuenta tokens para GPT-5, GPT-4, GPT-4o, GPT-3.5 Turbo, ChatGPT y otros 
 msgid "About OpenAI's Tokenizer"
 msgstr "Acerca del Tokenizador de OpenAI"
 
-#~ msgid "Background Remover ({0})"
-#~ msgstr "Eliminador de Fondo ({0})"
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Background Remover ({0})"
+msgstr "Eliminador de Fondo ({0})"
 
 #: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
 msgid "Original {0}"
@@ -857,6 +865,7 @@ msgstr "Cambiar la configuración de idioma para la aplicación Herramientas de 
 msgid "Language Settings"
 msgstr "Configuración de Idioma"
 
+#: src/lib/components/common/LanguageSelector.svelte
 #: src/routes/[[lang]]/language/+page.svelte
 msgid "Select Language"
 msgstr "Seleccionar Idioma"
@@ -949,38 +958,49 @@ msgstr ""
 "Diferentes modelos usan diferentes métodos de tokenización, por lo que el mismo texto puede resultar en diferentes\n"
 "conteos de tokens."
 
-#~ msgid "Retrying..."
-#~ msgstr "Reintentando..."
+#: src/lib/components/common/ErrorDisplay.svelte
+msgid "Retrying..."
+msgstr "Reintentando..."
 
-#~ msgid "Loading Model..."
-#~ msgstr "Cargando Modelo..."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Model..."
+msgstr "Cargando Modelo..."
 
-#~ msgid "Load Model"
-#~ msgstr "Cargar Modelo"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Load Model"
+msgstr "Cargar Modelo"
 
-#~ msgid "Changing..."
-#~ msgstr "Cambiando..."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Changing..."
+msgstr "Cambiando..."
 
-#~ msgid "Change Model"
-#~ msgstr "Cambiar Modelo"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Change Model"
+msgstr "Cambiar Modelo"
 
-#~ msgid "Choose Image"
-#~ msgstr "Elegir Imagen"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Choose Image"
+msgstr "Elegir Imagen"
 
-#~ msgid "Batch Processing"
-#~ msgstr "Procesamiento por Lotes"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Batch Processing"
+msgstr "Procesamiento por Lotes"
 
-#~ msgid "Click to change image"
-#~ msgstr "Clic para cambiar imagen"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to change image"
+msgstr "Clic para cambiar imagen"
 
-#~ msgid "Click to add more images"
-#~ msgstr "Clic para agregar más imágenes"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Click to add more images"
+msgstr "Clic para agregar más imágenes"
 
-#~ msgid "Play"
-#~ msgstr "Reproducir"
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Play"
+msgstr "Reproducir"
 
-#~ msgid "Generate"
-#~ msgstr "Generar"
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Generate"
+msgstr "Generar"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "or click to browse • JPG, PNG, WebP supported"
@@ -998,68 +1018,95 @@ msgstr ""
 msgid "Recommended"
 msgstr "Recomendado"
 
-#~ msgid "Token ID: {0}"
-#~ msgstr "ID de Token: {0}"
+#: src/lib/components/count-tokens/RawTokensDisplay.svelte
+msgid "Token ID: {0}"
+msgstr "ID de Token: {0}"
 
-#~ msgid "Copied!"
-#~ msgstr "¡Copiado!"
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copied!"
+msgstr "¡Copiado!"
 
-#~ msgid "Copy text"
-#~ msgstr "Copiar texto"
+#: src/lib/components/count-tokens/TextInputSection.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Copy text"
+msgstr "Copiar texto"
 
-#~ msgid "Stop preview"
-#~ msgstr "Detener vista previa"
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Stop preview"
+msgstr "Detener vista previa"
 
-#~ msgid "Preview voice"
-#~ msgstr "Previsualizar voz"
+#: src/lib/components/tts/VoiceSelector.svelte
+msgid "Preview voice"
+msgstr "Previsualizar voz"
 
-#~ msgid "Remove {0}"
-#~ msgstr "Eliminar {0}"
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+msgid "Remove {0}"
+msgstr "Eliminar {0}"
 
-#~ msgid "Loading Cached Model"
-#~ msgstr "Cargando Modelo en Caché"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading Cached Model"
+msgstr "Cargando Modelo en Caché"
 
-#~ msgid "Downloading Model"
-#~ msgstr "Descargando Modelo"
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Downloading Model"
+msgstr "Descargando Modelo"
 
-#~ msgid "Loading..."
-#~ msgstr "Cargando..."
+#: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading..."
+msgstr "Cargando..."
 
-#~ msgid "Loading model from local cache..."
-#~ msgstr "Cargando modelo desde caché local..."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model from local cache..."
+msgstr "Cargando modelo desde caché local..."
 
-#~ msgid "The transcription model is being downloaded to your browser."
-#~ msgstr "El modelo de transcripción se está descargando a tu navegador."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "The transcription model is being downloaded to your browser."
+msgstr "El modelo de transcripción se está descargando a tu navegador."
 
-#~ msgid "Loading model... Progress tracking not available in this browser."
-#~ msgstr "Cargando modelo... El seguimiento del progreso no está disponible en este navegador."
+#: src/lib/components/whisper/WhisperModelSelector.svelte
+msgid "Loading model... Progress tracking not available in this browser."
+msgstr "Cargando modelo... El seguimiento del progreso no está disponible en este navegador."
 
-#~ msgid "Failed to load model"
-#~ msgstr "Error al cargar el modelo"
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
+msgid "Failed to load model"
+msgstr "Error al cargar el modelo"
 
-#~ msgid "Processing image and removing background..."
-#~ msgstr "Procesando imagen y eliminando fondo..."
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image and removing background..."
+msgstr "Procesando imagen y eliminando fondo..."
 
-#~ msgid "Processing image {0} of {1}..."
-#~ msgstr "Procesando imagen {0} de {1}..."
+#: src/routes/[[lang]]/background-remover/+page.svelte
+msgid "Processing image {0} of {1}..."
+msgstr "Procesando imagen {0} de {1}..."
 
-#~ msgid "Average token length: ~4 characters for English text"
-#~ msgstr "Longitud promedio de token: ~4 caracteres para texto en inglés"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Average token length: ~4 characters for English text"
+msgstr "Longitud promedio de token: ~4 caracteres para texto en inglés"
 
-#~ msgid "Code and special characters typically use more tokens"
-#~ msgstr "El código y los caracteres especiales normalmente usan más tokens"
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+msgid "Code and special characters typically use more tokens"
+msgstr "El código y los caracteres especiales normalmente usan más tokens"
 
-#~ msgid "Reloading..."
-#~ msgstr "Recargando..."
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reloading..."
+msgstr "Recargando..."
 
-#~ msgid "Reload Model"
-#~ msgstr "Recargar Modelo"
+#: src/routes/[[lang]]/chat/+page.svelte
+msgid "Reload Model"
+msgstr "Recargar Modelo"
 
-#~ msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-#~ msgstr "Claude usa un tokenizador BPE (Byte Pair Encoding) similar a los modelos GPT"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+msgstr "Claude usa un tokenizador BPE (Byte Pair Encoding) similar a los modelos GPT"
 
-#~ msgid "Special characters and code may use more tokens"
-#~ msgstr "Los caracteres especiales y el código pueden usar más tokens"
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+msgid "Special characters and code may use more tokens"
+msgstr "Los caracteres especiales y el código pueden usar más tokens"
 
 #: src/lib/components/count-tokens/TokenizerHeader.svelte
 msgid "Switch to Anthropic"
