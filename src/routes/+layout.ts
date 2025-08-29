@@ -20,10 +20,11 @@ export const load: LayoutLoad = async ({ url, params }) => {
 	const ogImageUrl = `${baseUrl}/og.png`;
 	const currentUrl = `${baseUrl}${url.pathname}`;
 
+	/* @wc-include */
 	return {
 		seo: {
-			title: 'Local AI Tools',
-			description: 'Private AI tools that run in your browser',
+			title: /* @wc-include */ 'Local AI Tools',
+			description: /* @wc-include */ 'Private AI tools that run in your browser',
 			ogImage: ogImageUrl,
 			url: currentUrl
 		}
