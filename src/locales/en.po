@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-29T22:47:55.072Z\n"
+"PO-Revision-Date: 2025-08-29T22:54:31.208Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 
 #: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/+layout.ts
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.ts
 msgid "Local AI Tools"
 msgstr "Local AI Tools"
 
@@ -225,8 +225,8 @@ msgstr ""
 msgid "Tool #01"
 msgstr "Tool #01"
 
-#: src/routes/+layout.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -411,8 +411,8 @@ msgstr "Processing failed"
 msgid "<0/> Processing Image"
 msgstr "<0/> Processing Image"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 

@@ -30,7 +30,11 @@
 	<h3>{title}</h3>
 	{#if mode === 'progress'}
 		{#if showPercentage}
-			<p class="download-percentage">{percentageText || `${progress}% Complete`}</p>
+			{#if percentageText}
+				<p class="download-percentage">{percentageText}</p>
+			{:else}
+				<p class="download-percentage">{displayPercentage}</p>
+			{/if}
 		{/if}
 		<ProgressBar {progress} {previousProgress} />
 	{:else}

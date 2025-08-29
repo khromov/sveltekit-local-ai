@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-29T22:47:55.096Z\n"
+"PO-Revision-Date: 2025-08-29T22:54:31.214Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 
 #: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/+layout.ts
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.ts
 msgid "Local AI Tools"
 msgstr "Локальні AI інструменти"
 
@@ -30,8 +30,8 @@ msgstr ""
 msgid "Tool #01"
 msgstr "Інструмент #01"
 
-#: src/routes/+layout.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Чат"
 
@@ -367,8 +367,8 @@ msgstr "<0/> Завантажити"
 msgid "<0/> Process Another"
 msgstr "<0/> Обробити інше"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -440,8 +440,8 @@ msgstr "<0/> Завантажити обрану модель"
 msgid "<0/> Models run locally in your browser. No data is sent to external servers."
 msgstr "<0/> Моделі працюють локально у вашому браузері. Жодні дані не передаються на зовнішні сервери."
 
-#: src/lib/components/tts/TextStatistics.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "Символи"
 

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-29T22:47:55.079Z\n"
+"PO-Revision-Date: 2025-08-29T22:54:31.209Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 
 #: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/+layout.ts
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.ts
 msgid "Local AI Tools"
 msgstr "Herramientas de IA Local"
 
@@ -26,8 +26,8 @@ msgstr "Ver código fuente en GitHub"
 msgid "Tool #01"
 msgstr "Herramienta #01"
 
-#: src/routes/+layout.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -224,8 +224,8 @@ msgstr "Galería de Conceptos de Favicon"
 msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
 msgstr "Todos los conceptos están diseñados en 512×512 píxeles con la estética de diseño brutalista en mente."
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Entrar"
 
