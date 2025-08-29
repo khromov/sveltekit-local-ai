@@ -1159,60 +1159,60 @@ msgstr "Eliminar Fondo"
 
 #: src/routes/[[lang]]/chat/+page.ts
 msgid "AI Chat - Local AI Tools"
-msgstr ""
+msgstr "Chat de IA - Herramientas de IA Local"
 
 #: src/routes/[[lang]]/chat/+page.ts
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp. Private, secure, and works offline with no data sharing."
-msgstr ""
+msgstr "Chatea con Modelos de Lenguaje Grande como Gemma3, completamente en tu dispositivo gracias a llama.cpp. Privado, seguro y funciona sin conexión sin compartir datos."
 
 #: src/routes/[[lang]]/+page.ts
 msgid "Local AI Tools - Private, Offline AI in Your Browser"
-msgstr ""
+msgstr "Herramientas de IA Local - IA Privada y Sin Conexión en Tu Navegador"
 
 #: src/routes/[[lang]]/+page.ts
 msgid "Free, private AI tools that run entirely in your browser - and even offline! Chat with LLMs, transcribe audio, and remove backgrounds using WebAssembly."
-msgstr ""
+msgstr "¡Herramientas de IA gratuitas y privadas que funcionan completamente en tu navegador - incluso sin conexión! Chatea con LLMs, transcribe audio y elimina fondos usando WebAssembly."
 
 #: src/routes/[[lang]]/background-remover/+page.ts
 msgid "Background Remover - Local AI Tools"
-msgstr ""
+msgstr "Eliminador de Fondo - Herramientas de IA Local"
 
 #: src/routes/[[lang]]/background-remover/+page.ts
 msgid "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality."
-msgstr ""
+msgstr "Elimina fondos de imágenes usando IA. Impulsado por el modelo RMBG v1.4 de BRIA AI para resultados profesionales. Impulsado por IA, alta calidad."
 
 #: src/routes/[[lang]]/text-to-speech/+page.ts
 msgid "Text to Speech - Local AI Tools"
-msgstr ""
+msgstr "Texto a Voz - Herramientas de IA Local"
 
 #: src/routes/[[lang]]/text-to-speech/+page.ts
 msgid "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis, all running locally in your browser."
-msgstr ""
+msgstr "Convierte texto en voz natural usando modelos de IA. Elige entre los modelos Kitten TTS, Piper o Kokoro para síntesis de voz de alta calidad, todo funcionando localmente en tu navegador."
 
 #: src/routes/favicon/+page.ts
 msgid "Favicon Concepts - Local AI Tools"
-msgstr ""
+msgstr "Conceptos de Favicon - Herramientas de IA Local"
 
 #: src/routes/favicon/+page.ts
 msgid "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Local AI Tools application."
-msgstr ""
+msgstr "Una galería completa de 31 diseños de conceptos de favicon en formato 512×512, con iconos temáticos de IA, patrones tecnológicos y elementos de diseño brutalista para la aplicación Herramientas de IA Local."
 
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Audio Transcription - Local AI Tools"
-msgstr ""
+msgstr "Transcripción de Audio - Herramientas de IA Local"
 
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
-msgstr ""
+msgstr "Convierte voz a texto usando Whisper AI. Sube cualquier archivo de audio existente y exporta como archivo de texto o subtítulos. Alta precisión con múltiples formatos y procesamiento local."
 
 #: src/routes/[[lang]]/count-tokens/+page.ts
 msgid "Count LLM Tokens - Local AI Tools"
-msgstr ""
+msgstr "Contar Tokens de LLM - Herramientas de IA Local"
 
 #: src/routes/[[lang]]/count-tokens/+page.ts
 msgid "Calculate token counts for different AI models. Understand context limits for Claude and ChatGPT models with our tokenizer tools."
-msgstr ""
+msgstr "Calcula conteos de tokens para diferentes modelos de IA. Comprende los límites de contexto para modelos Claude y ChatGPT con nuestras herramientas de tokenización."
 
 #: src/routes/+layout.ts
 msgid "Private AI tools that run in your browser"
-msgstr ""
+msgstr "Herramientas de IA privadas que funcionan en tu navegador"
