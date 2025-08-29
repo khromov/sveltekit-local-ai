@@ -7,9 +7,7 @@ export default defineConfig({
 	// sourceLocale is en by default
 	otherLocales: ['es', 'ja', 'sv', 'uk'],
 	adapters: {
-		main: svelte({
-			files: ['src/**/*.svelte', 'src/**/*.svelte.{js,ts}']
-		}),
+		main: svelte(),
 		server: vanilla({
 			files: [
 				'src/**/*.server.{js,ts}',
