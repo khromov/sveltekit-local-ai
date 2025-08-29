@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-26T23:31:31.311Z\n"
+"PO-Revision-Date: 2025-08-29T12:37:22.744Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -29,8 +29,8 @@ msgstr ""
 msgid "Tool #01"
 msgstr "Інструмент #01"
 
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/+layout.svelte
+#: src/routes/[[lang]]/+page.svelte
 msgid "Chat"
 msgstr "Чат"
 
@@ -244,9 +244,8 @@ msgstr "Завантажити це зображення"
 msgid "Failed to Process"
 msgstr "Не вдалося обробити"
 
-#: src/lib/components/background-remover/BackgroundRemoverBatchResult.svelte
-msgid "Processing failed"
-msgstr "Обробка не вдалася"
+#~ msgid "Processing failed"
+#~ msgstr "Обробка не вдалася"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "<0/> Processing Image"
@@ -273,13 +272,11 @@ msgstr "Ви"
 msgid "AI"
 msgstr "AI"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Choose Image"
-msgstr "Обрати зображення"
+#~ msgid "Choose Image"
+#~ msgstr "Обрати зображення"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Batch Processing"
-msgstr "Пакетна обробка"
+#~ msgid "Batch Processing"
+#~ msgstr "Пакетна обробка"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Drop your image here"
@@ -293,20 +290,18 @@ msgstr "<0/> {0} зображення{1} обрано"
 msgid "Drop multiple images here"
 msgstr "Перетягніть кілька зображень сюди"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Click to change image"
-msgstr "Клацніть, щоб змінити зображення"
+#~ msgid "Click to change image"
+#~ msgstr "Клацніть, щоб змінити зображення"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Click to add more images"
-msgstr "Клацніть, щоб додати більше зображень"
+#~ msgid "Click to add more images"
+#~ msgstr "Клацніть, щоб додати більше зображень"
 
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "або клацніть для вибору • Підтримуються JPG, PNG, WebP"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "АБО"
 
@@ -322,8 +317,8 @@ msgstr "Обрані зображення ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Очистити все"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} МБ"
 
@@ -365,7 +360,6 @@ msgstr "<0/> Завантажити"
 msgid "<0/> Process Another"
 msgstr "<0/> Обробити інше"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Enter"
@@ -438,7 +432,6 @@ msgstr "<0/> Завантажити обрану модель"
 msgid "<0/> Models run locally in your browser. No data is sent to external servers."
 msgstr "<0/> Моделі працюють локально у вашому браузері. Жодні дані не передаються на зовнішні сервери."
 
-#: src/lib/components/tts/TextStatistics.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Characters"
 msgstr "Символи"
@@ -465,9 +458,8 @@ msgstr "Очистити текст"
 msgid "Error"
 msgstr "Помилка"
 
-#: src/lib/components/common/ErrorDisplay.svelte
-msgid "Retrying..."
-msgstr "Повторна спроба..."
+#~ msgid "Retrying..."
+#~ msgstr "Повторна спроба..."
 
 #: src/lib/components/whisper/AudioRecorder.svelte
 msgid "<0/> Start Recording"
@@ -525,7 +517,6 @@ msgstr "Крок {0}:"
 msgid "Loading"
 msgstr "Завантаження"
 
-#: src/lib/components/common/LanguageSelector.svelte
 #: src/routes/[[lang]]/language/+page.svelte
 msgid "Select Language"
 msgstr "Оберіть мову"
@@ -534,32 +525,27 @@ msgstr "Оберіть мову"
 msgid "Select Model"
 msgstr "Оберіть модель"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Loading Model..."
-msgstr "Завантаження моделі..."
+#~ msgid "Loading Model..."
+#~ msgstr "Завантаження моделі..."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Load Model"
-msgstr "Завантажити модель"
+#~ msgid "Load Model"
+#~ msgstr "Завантажити модель"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Model Ready"
 msgstr "Модель готова"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Changing..."
-msgstr "Зміна..."
+#~ msgid "Changing..."
+#~ msgstr "Зміна..."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Change Model"
-msgstr "Змінити модель"
+#~ msgid "Change Model"
+#~ msgstr "Змінити модель"
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Failed to load transcription model. Please try again."
 msgstr "Не вдалося завантажити модель транскрибування. Спробуйте ще раз."
 
 #: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "Повторити"
@@ -624,9 +610,8 @@ msgstr "{0}x"
 msgid "Sample Rate:"
 msgstr "Частота дискретизації:"
 
-#: src/lib/components/tts/TextStatistics.svelte
-msgid "Words"
-msgstr "Слова"
+#~ msgid "Words"
+#~ msgstr "Слова"
 
 #: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "<0/> Choose Audio Source"
@@ -660,7 +645,6 @@ msgstr "Слухати →"
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Не вдалося завантажити модель. Перевірте з'єднання та спробуйте знову."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
 msgid "Loading Model"
 msgstr "Завантаження моделі"
@@ -701,9 +685,8 @@ msgstr "Привіт! Я Echo, ідеально відлунюю ваші дум
 msgid "Hi! I'm {0}, nice to meet you!"
 msgstr "Привіт! Я {0}, приємно познайомитись!"
 
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Select Voice"
-msgstr "Оберіть голос"
+#~ msgid "Select Voice"
+#~ msgstr "Оберіть голос"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "<0/> Count LLM Tokens"
@@ -926,13 +909,11 @@ msgstr "Генерація"
 msgid "Pause"
 msgstr "Пауза"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Play"
-msgstr "Відтворити"
+#~ msgid "Play"
+#~ msgstr "Відтворити"
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Generate"
-msgstr "Згенерувати"
+#~ msgid "Generate"
+#~ msgstr "Згенерувати"
 
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Download Audio"
@@ -966,9 +947,8 @@ msgstr "Велика, дуже повільна модель"
 msgid "Generally provides better results"
 msgstr "Зазвичай дає кращі результати"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Background Remover ({0})"
-msgstr "Видалення фону ({0})"
+#~ msgid "Background Remover ({0})"
+#~ msgstr "Видалення фону ({0})"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading Background Removal Model"
@@ -1018,95 +998,68 @@ msgstr ""
 msgid "Recommended"
 msgstr "Рекомендовано"
 
-#: src/lib/components/count-tokens/RawTokensDisplay.svelte
-msgid "Token ID: {0}"
-msgstr "ID токена: {0}"
+#~ msgid "Token ID: {0}"
+#~ msgstr "ID токена: {0}"
 
-#: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Copied!"
-msgstr "Скопійовано!"
+#~ msgid "Copied!"
+#~ msgstr "Скопійовано!"
 
-#: src/lib/components/count-tokens/TextInputSection.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Copy text"
-msgstr "Копіювати текст"
+#~ msgid "Copy text"
+#~ msgstr "Копіювати текст"
 
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Stop preview"
-msgstr "Зупинити попередній перегляд"
+#~ msgid "Stop preview"
+#~ msgstr "Зупинити попередній перегляд"
 
-#: src/lib/components/tts/VoiceSelector.svelte
-msgid "Preview voice"
-msgstr "Попередній перегляд голосу"
+#~ msgid "Preview voice"
+#~ msgstr "Попередній перегляд голосу"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
-msgid "Remove {0}"
-msgstr "Видалити {0}"
+#~ msgid "Remove {0}"
+#~ msgstr "Видалити {0}"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Loading Cached Model"
-msgstr "Завантаження моделі з кешу"
+#~ msgid "Loading Cached Model"
+#~ msgstr "Завантаження моделі з кешу"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Downloading Model"
-msgstr "Завантаження моделі"
+#~ msgid "Downloading Model"
+#~ msgstr "Завантаження моделі"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Loading..."
-msgstr "Завантаження..."
+#~ msgid "Loading..."
+#~ msgstr "Завантаження..."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Loading model from local cache..."
-msgstr "Завантаження моделі з локального кешу..."
+#~ msgid "Loading model from local cache..."
+#~ msgstr "Завантаження моделі з локального кешу..."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "The transcription model is being downloaded to your browser."
-msgstr "Модель транскрибації завантажується у ваш браузер."
+#~ msgid "The transcription model is being downloaded to your browser."
+#~ msgstr "Модель транскрибації завантажується у ваш браузер."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
-msgid "Loading model... Progress tracking not available in this browser."
-msgstr "Завантаження моделі... Відстеження прогресу не доступне в цьому браузері."
+#~ msgid "Loading model... Progress tracking not available in this browser."
+#~ msgstr "Завантаження моделі... Відстеження прогресу не доступне в цьому браузері."
 
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
-msgid "Failed to load model"
-msgstr "Не вдалося завантажити модель"
+#~ msgid "Failed to load model"
+#~ msgstr "Не вдалося завантажити модель"
 
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "Average token length: ~4 characters for English text"
-msgstr "Середня довжина токена: ~4 символи для англійського тексту"
+#~ msgid "Average token length: ~4 characters for English text"
+#~ msgstr "Середня довжина токена: ~4 символи для англійського тексту"
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
-msgid "Code and special characters typically use more tokens"
-msgstr "Код та спеціальні символи звичайно використовують більше токенів"
+#~ msgid "Code and special characters typically use more tokens"
+#~ msgstr "Код та спеціальні символи звичайно використовують більше токенів"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Processing image and removing background..."
-msgstr "Обробка зображення та видалення фону..."
+#~ msgid "Processing image and removing background..."
+#~ msgstr "Обробка зображення та видалення фону..."
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
-msgid "Processing image {0} of {1}..."
-msgstr "Обробка зображення {0} з {1}..."
+#~ msgid "Processing image {0} of {1}..."
+#~ msgstr "Обробка зображення {0} з {1}..."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reloading..."
-msgstr "Перезавантаження..."
+#~ msgid "Reloading..."
+#~ msgstr "Перезавантаження..."
 
-#: src/routes/[[lang]]/chat/+page.svelte
-msgid "Reload Model"
-msgstr "Перезавантажити модель"
+#~ msgid "Reload Model"
+#~ msgstr "Перезавантажити модель"
 
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
-msgstr "Claude використовує BPE (кодування байтових пар) токенайзер, схожий на GPT моделі"
+#~ msgid "Claude uses a BPE (Byte Pair Encoding) tokenizer similar to GPT models"
+#~ msgstr "Claude використовує BPE (кодування байтових пар) токенайзер, схожий на GPT моделі"
 
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
-msgid "Special characters and code may use more tokens"
-msgstr "Спеціальні символи та код можуть використовувати більше токенів"
+#~ msgid "Special characters and code may use more tokens"
+#~ msgstr "Спеціальні символи та код можуть використовувати більше токенів"
 
 #: src/lib/components/count-tokens/TokenizerHeader.svelte
 msgid "Switch to Anthropic"
