@@ -23,19 +23,18 @@
 		topMargin = false
 	}: Props = $props();
 
-	// Not extracted unless you remove "progress"
-	let displayPercentage = $derived(`${progress}% Complete`);
-	// Not extracted
-	let displayPercentageTest = $derived.by(() => {
-		return percentageText || `${progress}% Complete`;
-	});
+	let displayPercentage = /* @wc-include */ $derived(`${progress}% Complete`);
 </script>
 
 <div class="loading-progress" class:top-margin={topMargin}>
 	<h3>{title}</h3>
 	{#if mode === 'progress'}
 		{#if showPercentage}
-			<p class="download-percentage">{displayPercentage}</p>
+			{#if percentageText}
+				<p class="download-percentage">{percentageText}</p>
+			{:else}
+				<p class="download-percentage">{displayPercentage}</p>
+			{/if}
 		{/if}
 		<ProgressBar {progress} {previousProgress} />
 	{:else}

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-26T23:31:31.311Z\n"
+"PO-Revision-Date: 2025-08-29T22:54:31.214Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -12,8 +12,9 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.ts
 msgid "Local AI Tools"
 msgstr "Локальні AI інструменти"
 
@@ -155,8 +156,8 @@ msgstr "Вся обробка відбувається локально у ва�
 msgid "No data is sent to external servers."
 msgstr "Жодні дані не передаються на зовнішні сервери."
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Токени"
 
@@ -254,6 +255,7 @@ msgstr "<0/> Обробка зображення"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/common/LoadingProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Завершено"
 
@@ -365,8 +367,8 @@ msgstr "<0/> Завантажити"
 msgid "<0/> Process Another"
 msgstr "<0/> Обробити інше"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -438,8 +440,8 @@ msgstr "<0/> Завантажити обрану модель"
 msgid "<0/> Models run locally in your browser. No data is sent to external servers."
 msgstr "<0/> Моделі працюють локально у вашому браузері. Жодні дані не передаються на зовнішні сервери."
 
-#: src/lib/components/tts/TextStatistics.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "Символи"
 
@@ -558,9 +560,9 @@ msgstr "Змінити модель"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Не вдалося завантажити модель транскрибування. Спробуйте ще раз."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Повторити"
 
@@ -660,8 +662,8 @@ msgstr "Слухати →"
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Не вдалося завантажити модель. Перевірте з'єднання та спробуйте знову."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Model"
 msgstr "Завантаження моделі"
 
@@ -1054,8 +1056,8 @@ msgstr "Завантаження моделі з кешу"
 msgid "Downloading Model"
 msgstr "Завантаження моделі"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading..."
 msgstr "Завантаження..."
 
@@ -1155,3 +1157,63 @@ msgstr "TTS"
 #: src/routes/+layout.svelte
 msgid "BG Remover"
 msgstr "Видалення фону"
+
+#: src/routes/[[lang]]/background-remover/+page.ts
+msgid "Background Remover - Local AI Tools"
+msgstr "Видалення фону - Локальні AI інструменти"
+
+#: src/routes/[[lang]]/background-remover/+page.ts
+msgid "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality."
+msgstr "Видаляйте фон із зображень за допомогою AI. На основі моделі RMBG v1.4 від BRIA AI для професійних результатів. З підтримкою AI, висока якість."
+
+#: src/routes/+layout.ts
+msgid "Private AI tools that run in your browser"
+msgstr "Приватні AI інструменти, що працюють у вашому браузері"
+
+#: src/routes/[[lang]]/+page.ts
+msgid "Local AI Tools - Private, Offline AI in Your Browser"
+msgstr "Локальні AI інструменти - Приватний, офлайн AI у вашому браузері"
+
+#: src/routes/[[lang]]/+page.ts
+msgid "Free, private AI tools that run entirely in your browser - and even offline! Chat with LLMs, transcribe audio, and remove backgrounds using WebAssembly."
+msgstr "Безкоштовні, приватні AI інструменти, що працюють повністю у вашому браузері - навіть офлайн! Спілкуйтеся з LLM, транскрибуйте аудіо та видаляйте фон за допомогою WebAssembly."
+
+#: src/routes/[[lang]]/count-tokens/+page.ts
+msgid "Count LLM Tokens - Local AI Tools"
+msgstr "Підрахунок токенів LLM - Локальні AI інструменти"
+
+#: src/routes/[[lang]]/count-tokens/+page.ts
+msgid "Calculate token counts for different AI models. Understand context limits for Claude and ChatGPT models with our tokenizer tools."
+msgstr "Обчисліть кількість токенів для різних AI моделей. Зрозумійте обмеження контексту для моделей Claude та ChatGPT за допомогою наших інструментів токенізації."
+
+#: src/routes/[[lang]]/text-to-speech/+page.ts
+msgid "Text to Speech - Local AI Tools"
+msgstr "Текст у мовлення - Локальні AI інструменти"
+
+#: src/routes/[[lang]]/text-to-speech/+page.ts
+msgid "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis, all running locally in your browser."
+msgstr "Перетворюйте текст на природне мовлення за допомогою AI моделей. Оберіть з Kitten TTS, Piper або Kokoro моделей для високоякісного синтезу голосу, все працює локально у вашому браузері."
+
+#: src/routes/favicon/+page.ts
+msgid "Favicon Concepts - Local AI Tools"
+msgstr "Концепти фавіконів - Локальні AI інструменти"
+
+#: src/routes/favicon/+page.ts
+msgid "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Local AI Tools application."
+msgstr "Повна галерея з 31 концепту дизайну фавіконів у форматі 512×512, що містить AI-тематичні іконки, технологічні візерунки та бруталістичні елементи дизайну для додатку Локальні AI інструменти."
+
+#: src/routes/[[lang]]/chat/+page.ts
+msgid "AI Chat - Local AI Tools"
+msgstr "AI чат - Локальні AI інструменти"
+
+#: src/routes/[[lang]]/chat/+page.ts
+msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp. Private, secure, and works offline with no data sharing."
+msgstr "Спілкуйтеся з великими мовними моделями як Gemma3, повністю на вашому пристрої завдяки llama.cpp. Приватно, безпечно і працює офлайн без передачі даних."
+
+#: src/routes/[[lang]]/transcribe/+page.ts
+msgid "Audio Transcription - Local AI Tools"
+msgstr "Транскрибування аудіо - Локальні AI інструменти"
+
+#: src/routes/[[lang]]/transcribe/+page.ts
+msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
+msgstr "Перетворюйте мовлення на текст за допомогою Whisper AI. Завантажте будь-який аудіофайл та експортуйте як текст або файл субтитрів. Висока точність з підтримкою багатьох форматів та локальною обробкою."

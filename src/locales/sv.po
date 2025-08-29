@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-26T23:31:31.310Z\n"
+"PO-Revision-Date: 2025-08-29T22:54:31.212Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -12,8 +12,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.ts
 msgid "Local AI Tools"
 msgstr "Lokala AI-verktyg"
 
@@ -155,8 +156,8 @@ msgstr "All bearbetning sker lokalt i din webbläsare med WebAssembly."
 msgid "No data is sent to external servers."
 msgstr "Ingen data skickas till externa servrar."
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -254,6 +255,7 @@ msgstr "<0/> Bearbetar bild"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/common/LoadingProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% klart"
 
@@ -365,8 +367,8 @@ msgstr "Du"
 msgid "AI"
 msgstr "AI"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -642,9 +644,9 @@ msgstr "Byt modell"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Misslyckades att ladda transkriptionsmodell. Försök igen."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Försök igen"
 
@@ -773,8 +775,8 @@ msgstr ""
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Misslyckades att ladda modell. Kontrollera din anslutning och försök igen."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Model"
 msgstr "Laddar modell"
 
@@ -1058,8 +1060,8 @@ msgstr "Laddar cachad modell"
 msgid "Downloading Model"
 msgstr "Laddar ner modell"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading..."
 msgstr "Laddar..."
 
@@ -1155,3 +1157,63 @@ msgstr "TTS"
 #: src/routes/+layout.svelte
 msgid "BG Remover"
 msgstr "Bakgrundsborttagare"
+
+#: src/routes/[[lang]]/background-remover/+page.ts
+msgid "Background Remover - Local AI Tools"
+msgstr "Bakgrundsborttagare - Lokala AI-verktyg"
+
+#: src/routes/[[lang]]/background-remover/+page.ts
+msgid "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality."
+msgstr "Ta bort bakgrunder från bilder med AI. Drivs av RMBG v1.4-modellen från BRIA AI för professionella resultat. AI-driven, hög kvalitet."
+
+#: src/routes/[[lang]]/+page.ts
+msgid "Local AI Tools - Private, Offline AI in Your Browser"
+msgstr "Lokala AI-verktyg - Privat, offline AI i din webbläsare"
+
+#: src/routes/[[lang]]/+page.ts
+msgid "Free, private AI tools that run entirely in your browser - and even offline! Chat with LLMs, transcribe audio, and remove backgrounds using WebAssembly."
+msgstr "Gratis, privata AI-verktyg som körs helt i din webbläsare - även offline! Chatta med LLM:er, transkribera ljud och ta bort bakgrunder med WebAssembly."
+
+#: src/routes/+layout.ts
+msgid "Private AI tools that run in your browser"
+msgstr "Privata AI-verktyg som körs i din webbläsare"
+
+#: src/routes/[[lang]]/count-tokens/+page.ts
+msgid "Count LLM Tokens - Local AI Tools"
+msgstr "Räkna LLM-tokens - Lokala AI-verktyg"
+
+#: src/routes/[[lang]]/count-tokens/+page.ts
+msgid "Calculate token counts for different AI models. Understand context limits for Claude and ChatGPT models with our tokenizer tools."
+msgstr "Beräkna tokenantal för olika AI-modeller. Förstå kontextgränser för Claude- och ChatGPT-modeller med våra tokenizer-verktyg."
+
+#: src/routes/[[lang]]/text-to-speech/+page.ts
+msgid "Text to Speech - Local AI Tools"
+msgstr "Text till tal - Lokala AI-verktyg"
+
+#: src/routes/[[lang]]/text-to-speech/+page.ts
+msgid "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis, all running locally in your browser."
+msgstr "Konvertera text till naturligt tal med AI-modeller. Välj mellan Kitten TTS, Piper eller Kokoro-modeller för högkvalitativ röstsyntes, allt körs lokalt i din webbläsare."
+
+#: src/routes/favicon/+page.ts
+msgid "Favicon Concepts - Local AI Tools"
+msgstr "Favicon-koncept - Lokala AI-verktyg"
+
+#: src/routes/favicon/+page.ts
+msgid "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Local AI Tools application."
+msgstr "En omfattande galleri med 31 favicon-konceptdesigner i 512×512-format, med AI-tema ikoner, teknikmönster och brutalistiska designelement för Local AI Tools-applikationen."
+
+#: src/routes/[[lang]]/chat/+page.ts
+msgid "AI Chat - Local AI Tools"
+msgstr "AI-chatt - Lokala AI-verktyg"
+
+#: src/routes/[[lang]]/chat/+page.ts
+msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp. Private, secure, and works offline with no data sharing."
+msgstr "Chatta med stora språkmodeller som Gemma3, helt lokalt tack vare llama.cpp. Privat, säkert och fungerar offline utan datahantering."
+
+#: src/routes/[[lang]]/transcribe/+page.ts
+msgid "Audio Transcription - Local AI Tools"
+msgstr "Ljudtranskription - Lokala AI-verktyg"
+
+#: src/routes/[[lang]]/transcribe/+page.ts
+msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
+msgstr "Konvertera tal till text med Whisper AI. Ladda upp vilken ljudfil som helst och exportera som text- eller undertextfil. Hög noggrannhet med flera format och lokal bearbetning."

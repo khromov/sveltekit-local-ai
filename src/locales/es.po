@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-26T23:31:31.306Z\n"
+"PO-Revision-Date: 2025-08-29T22:54:31.209Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -12,8 +12,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.ts
 msgid "Local AI Tools"
 msgstr "Herramientas de IA Local"
 
@@ -25,8 +26,8 @@ msgstr "Ver código fuente en GitHub"
 msgid "Tool #01"
 msgstr "Herramienta #01"
 
-#: src/routes/+layout.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/+layout.svelte
 msgid "Chat"
 msgstr "Chat"
 
@@ -182,6 +183,7 @@ msgstr "<0/> Procesando Imagen"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/common/LoadingProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Completado"
 
@@ -222,8 +224,8 @@ msgstr "Galería de Conceptos de Favicon"
 msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
 msgstr "Todos los conceptos están diseñados en 512×512 píxeles con la estética de diseño brutalista en mente."
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Entrar"
 
@@ -287,8 +289,8 @@ msgstr "Cargar ejemplo"
 msgid "Clear text"
 msgstr "Limpiar texto"
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -581,9 +583,9 @@ msgstr "Modelo Listo"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Error al cargar el modelo de transcripción. Por favor intenta de nuevo."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Reintentar"
 
@@ -591,8 +593,8 @@ msgstr "Reintentar"
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Error al cargar el modelo. Por favor verifica tu conexión e intenta de nuevo."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Model"
 msgstr "Cargando Modelo"
 
@@ -1054,8 +1056,8 @@ msgstr "Cargando Modelo en Caché"
 msgid "Downloading Model"
 msgstr "Descargando Modelo"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading..."
 msgstr "Cargando..."
 
@@ -1155,3 +1157,63 @@ msgstr "TTS"
 #: src/routes/+layout.svelte
 msgid "BG Remover"
 msgstr "Eliminar Fondo"
+
+#: src/routes/+layout.ts
+msgid "Private AI tools that run in your browser"
+msgstr "Herramientas de IA privadas que funcionan en tu navegador"
+
+#: src/routes/[[lang]]/+page.ts
+msgid "Local AI Tools - Private, Offline AI in Your Browser"
+msgstr "Herramientas de IA Local - IA Privada y Sin Conexión en Tu Navegador"
+
+#: src/routes/[[lang]]/+page.ts
+msgid "Free, private AI tools that run entirely in your browser - and even offline! Chat with LLMs, transcribe audio, and remove backgrounds using WebAssembly."
+msgstr "¡Herramientas de IA gratuitas y privadas que funcionan completamente en tu navegador - incluso sin conexión! Chatea con LLMs, transcribe audio y elimina fondos usando WebAssembly."
+
+#: src/routes/[[lang]]/background-remover/+page.ts
+msgid "Background Remover - Local AI Tools"
+msgstr "Eliminador de Fondo - Herramientas de IA Local"
+
+#: src/routes/[[lang]]/background-remover/+page.ts
+msgid "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality."
+msgstr "Elimina fondos de imágenes usando IA. Impulsado por el modelo RMBG v1.4 de BRIA AI para resultados profesionales. Con IA, alta calidad."
+
+#: src/routes/[[lang]]/count-tokens/+page.ts
+msgid "Count LLM Tokens - Local AI Tools"
+msgstr "Contar Tokens LLM - Herramientas de IA Local"
+
+#: src/routes/[[lang]]/count-tokens/+page.ts
+msgid "Calculate token counts for different AI models. Understand context limits for Claude and ChatGPT models with our tokenizer tools."
+msgstr "Calcula conteos de tokens para diferentes modelos de IA. Comprende los límites de contexto para modelos Claude y ChatGPT con nuestras herramientas tokenizadoras."
+
+#: src/routes/[[lang]]/text-to-speech/+page.ts
+msgid "Text to Speech - Local AI Tools"
+msgstr "Texto a Voz - Herramientas de IA Local"
+
+#: src/routes/[[lang]]/text-to-speech/+page.ts
+msgid "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis, all running locally in your browser."
+msgstr "Convierte texto en voz de sonido natural usando modelos de IA. Elige entre modelos Kitten TTS, Piper o Kokoro para síntesis de voz de alta calidad, todo funcionando localmente en tu navegador."
+
+#: src/routes/favicon/+page.ts
+msgid "Favicon Concepts - Local AI Tools"
+msgstr "Conceptos de Favicon - Herramientas de IA Local"
+
+#: src/routes/favicon/+page.ts
+msgid "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Local AI Tools application."
+msgstr "Una galería completa de 31 diseños conceptuales de favicon en formato 512×512, con iconos temáticos de IA, patrones tecnológicos y elementos de diseño brutalista para la aplicación Herramientas de IA Local."
+
+#: src/routes/[[lang]]/chat/+page.ts
+msgid "AI Chat - Local AI Tools"
+msgstr "Chat IA - Herramientas de IA Local"
+
+#: src/routes/[[lang]]/chat/+page.ts
+msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp. Private, secure, and works offline with no data sharing."
+msgstr "Chatea con Modelos de Lenguaje Grande como Gemma3, completamente en tu dispositivo gracias a llama.cpp. Privado, seguro y funciona sin conexión sin compartir datos."
+
+#: src/routes/[[lang]]/transcribe/+page.ts
+msgid "Audio Transcription - Local AI Tools"
+msgstr "Transcripción de Audio - Herramientas de IA Local"
+
+#: src/routes/[[lang]]/transcribe/+page.ts
+msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
+msgstr "Convierte voz a texto usando Whisper AI. Sube cualquier archivo de audio existente y exporta como texto o archivo de subtítulos. Alta precisión con múltiples formatos y procesamiento local."
