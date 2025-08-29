@@ -1159,60 +1159,60 @@ msgstr "Видалення фону"
 
 #: src/routes/[[lang]]/background-remover/+page.ts
 msgid "Background Remover - Local AI Tools"
-msgstr ""
+msgstr "Видалення фону - Локальні AI інструменти"
 
 #: src/routes/[[lang]]/background-remover/+page.ts
 msgid "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality."
-msgstr ""
+msgstr "Видаляйте фон із зображень за допомогою AI. На основі моделі RMBG v1.4 від BRIA AI для професійних результатів. З підтримкою AI, висока якість."
 
 #: src/routes/+layout.ts
 msgid "Private AI tools that run in your browser"
-msgstr ""
+msgstr "Приватні AI інструменти, що працюють у вашому браузері"
 
 #: src/routes/[[lang]]/+page.ts
 msgid "Local AI Tools - Private, Offline AI in Your Browser"
-msgstr ""
+msgstr "Локальні AI інструменти - Приватний, офлайн AI у вашому браузері"
 
 #: src/routes/[[lang]]/+page.ts
 msgid "Free, private AI tools that run entirely in your browser - and even offline! Chat with LLMs, transcribe audio, and remove backgrounds using WebAssembly."
-msgstr ""
+msgstr "Безкоштовні, приватні AI інструменти, що працюють повністю у вашому браузері - навіть офлайн! Спілкуйтеся з LLM, транскрибуйте аудіо та видаляйте фон за допомогою WebAssembly."
 
 #: src/routes/[[lang]]/count-tokens/+page.ts
 msgid "Count LLM Tokens - Local AI Tools"
-msgstr ""
+msgstr "Підрахунок токенів LLM - Локальні AI інструменти"
 
 #: src/routes/[[lang]]/count-tokens/+page.ts
 msgid "Calculate token counts for different AI models. Understand context limits for Claude and ChatGPT models with our tokenizer tools."
-msgstr ""
+msgstr "Обчисліть кількість токенів для різних AI моделей. Зрозумійте обмеження контексту для моделей Claude та ChatGPT за допомогою наших інструментів токенізації."
 
 #: src/routes/[[lang]]/text-to-speech/+page.ts
 msgid "Text to Speech - Local AI Tools"
-msgstr ""
+msgstr "Текст у мовлення - Локальні AI інструменти"
 
 #: src/routes/[[lang]]/text-to-speech/+page.ts
 msgid "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis, all running locally in your browser."
-msgstr ""
+msgstr "Перетворюйте текст на природне мовлення за допомогою AI моделей. Оберіть з Kitten TTS, Piper або Kokoro моделей для високоякісного синтезу голосу, все працює локально у вашому браузері."
 
 #: src/routes/favicon/+page.ts
 msgid "Favicon Concepts - Local AI Tools"
-msgstr ""
+msgstr "Концепти фавіконів - Локальні AI інструменти"
 
 #: src/routes/favicon/+page.ts
 msgid "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Local AI Tools application."
-msgstr ""
+msgstr "Повна галерея з 31 концепту дизайну фавіконів у форматі 512×512, що містить AI-тематичні іконки, технологічні візерунки та бруталістичні елементи дизайну для додатку Локальні AI інструменти."
 
 #: src/routes/[[lang]]/chat/+page.ts
 msgid "AI Chat - Local AI Tools"
-msgstr ""
+msgstr "AI чат - Локальні AI інструменти"
 
 #: src/routes/[[lang]]/chat/+page.ts
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp. Private, secure, and works offline with no data sharing."
-msgstr ""
+msgstr "Спілкуйтеся з великими мовними моделями як Gemma3, повністю на вашому пристрої завдяки llama.cpp. Приватно, безпечно і працює офлайн без передачі даних."
 
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Audio Transcription - Local AI Tools"
-msgstr ""
+msgstr "Транскрибування аудіо - Локальні AI інструменти"
 
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
-msgstr ""
+msgstr "Перетворюйте мовлення на текст за допомогою Whisper AI. Завантажте будь-який аудіофайл та експортуйте як текст або файл субтитрів. Висока точність з підтримкою багатьох форматів та локальною обробкою."
