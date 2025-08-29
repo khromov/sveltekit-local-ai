@@ -1,5 +1,6 @@
 // @ts-check
 import { adapter as svelte } from '@wuchale/svelte';
+import { adapter as vanilla } from 'wuchale/adapter-vanilla';
 import { defineConfig } from 'wuchale';
 
 export default defineConfig({
@@ -7,14 +8,20 @@ export default defineConfig({
 	otherLocales: ['es', 'ja', 'sv', 'uk'],
 	adapters: {
 		main: svelte({
+			files: ['src/**/*.svelte', 'src/**/*.svelte.{js,ts}']
+		}),
+		server: vanilla({
 			files: [
-				'src/**/*.svelte',
-				'src/**/*.svelte.{js,ts}',
+				'src/**/*.server.{js,ts}',
 				'src/**/+page.{js,ts}',
 				'src/**/+layout.{js,ts}',
-				'+page.server.{js,ts}',
-				'+layout.server.{js,ts}'
-			]
+				'src/**/+page.server.{js,ts}',
+				'src/**/+layout.server.{js,ts}'
+			],
+			writeFiles: {
+				compiled: true,
+				proxy: true
+			}
 		})
 	}
 });
