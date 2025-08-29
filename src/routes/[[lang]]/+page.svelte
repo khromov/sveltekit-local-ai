@@ -20,7 +20,7 @@
 	<div class="menu-container">
 		<header class="menu-header">
 			<h1 class="main-title">
-				<span class="title-line">Local AI Tools</span>
+				<span class="title-line">LocalMind</span>
 			</h1>
 			<p class="subtitle">
 				On this page you'll find free, private AI tools that run entirely in your browser - and even

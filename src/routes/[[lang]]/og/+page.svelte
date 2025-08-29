@@ -73,7 +73,7 @@
 						</div>
 					</div>
 					<div class="main">
-						<h1>Local AI Tools</h1>
+						<h1>LocalMind</h1>
 						<p>Run offline: Chat • Transcribe • TTS • Background • Tokens</p>
 					</div>
 					<div class="footer">

@@ -7,7 +7,7 @@ export const load: PageLoad = ({ parent }) => {
 		...data,
 		seo: {
 			...data.seo,
-			title: 'Text to Speech - Local AI Tools',
+			title: 'Text to Speech - LocalMind',
 			description:
 				'Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis, all running locally in your browser.'
 		}

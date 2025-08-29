@@ -28,11 +28,8 @@
 </script>
 
 <svelte:head>
-	<title>Language Settings - Local AI Tools</title>
-	<meta
-		name="description"
-		content="Change the language settings for the Local AI Tools application"
-	/>
+	<title>Language Settings - LocalMind</title>
+	<meta name="description" content="Change the language settings for the LocalMind application" />
 </svelte:head>
 
 <CardInterface>

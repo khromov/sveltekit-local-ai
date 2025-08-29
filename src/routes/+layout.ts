@@ -22,7 +22,7 @@ export const load: LayoutLoad = async ({ url, params }) => {
 
 	return {
 		seo: {
-			title: 'Local AI Tools',
+			title: 'LocalMind',
 			description: 'Private AI tools that run in your browser',
 			ogImage: ogImageUrl,
 			url: currentUrl

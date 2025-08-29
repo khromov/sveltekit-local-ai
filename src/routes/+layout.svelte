@@ -40,7 +40,7 @@
 		return false;
 	}
 
-	const DEFAULT_TITLE = 'Local AI tools';
+	const DEFAULT_TITLE = 'LocalMind';
 
 	const getLocalizedNavLinks = (currentLang: string) => {
 		return [
