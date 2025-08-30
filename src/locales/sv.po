@@ -1207,16 +1207,20 @@ msgstr "Enclave: Lokal AI"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku"
-msgstr ""
+msgstr "Räkna tokens för Claude-modeller inklusive Claude Opus 4.1, Sonnet 4 och Haiku"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert speech to text using Whisper AI. Upload any existing audio file or record a new\n"
 "audio clip directly in your browser and export as text or a subtitle file."
 msgstr ""
+"Konvertera tal till text med Whisper AI. Ladda upp en befintlig ljudfil eller spela in ett nytt\n"
+"ljudklipp direkt i din webbläsare och exportera som text- eller undertextfil."
 
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for\n"
 "professional results."
 msgstr ""
+"Ta bort bakgrunder från bilder med AI. Välj mellan RMBG v1.4 och BEN2-modeller för\n"
+"professionella resultat."
