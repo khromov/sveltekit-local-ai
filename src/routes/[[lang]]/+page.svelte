@@ -20,7 +20,7 @@
 	<div class="menu-container">
 		<header class="menu-header">
 			<h1 class="main-title">
-				<span class="title-line">Local AI Tools</span>
+				<span class="title-line">Enclave: Local AI</span>
 			</h1>
 			<p class="subtitle">
 				On this page you'll find free, private AI tools that run entirely in your browser - and even
@@ -39,11 +39,6 @@
 					<p class="feature-description">
 						Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp
 					</p>
-					<div class="feature-highlights">
-						<span class="highlight">Private & Secure</span>
-						<span class="highlight">Works Offline</span>
-						<span class="highlight">No Data Sharing</span>
-					</div>
 				</div>
 			</a>
 
@@ -55,14 +50,9 @@
 					</div>
 					<h2>Transcribe Audio</h2>
 					<p class="feature-description">
-						Convert speech to text using Whisper AI. Upload any existing audio file and export as
-						text or a subtitle file.
+						Convert speech to text using Whisper AI. Upload any existing audio file or record a new
+						audio clip directly in your browser and export as text or a subtitle file.
 					</p>
-					<div class="feature-highlights">
-						<span class="highlight">High Accuracy</span>
-						<span class="highlight">Multiple Formats</span>
-						<span class="highlight">Local Processing</span>
-					</div>
 				</div>
 			</a>
 
@@ -77,11 +67,6 @@
 						Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,
 						or Kokoro models for high-quality voice synthesis.
 					</p>
-					<div class="feature-highlights">
-						<span class="highlight">Multiple Models</span>
-						<span class="highlight">Natural Voices</span>
-						<span class="highlight">Local Processing</span>
-					</div>
 				</div>
 			</a>
 
@@ -93,13 +78,9 @@
 					</div>
 					<h2>Remove Background</h2>
 					<p class="feature-description">
-						Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for
+						Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for
 						professional results.
 					</p>
-					<div class="feature-highlights">
-						<span class="highlight">AI-Powered</span>
-						<span class="highlight">High Quality</span>
-					</div>
 				</div>
 			</a>
 
@@ -113,10 +94,6 @@
 					<p class="feature-description">
 						Estimate token usage for prompts across OpenAI and Anthropic models.
 					</p>
-					<div class="feature-highlights">
-						<span class="highlight">OpenAI & Anthropic</span>
-						<span class="highlight">Accurate Counts</span>
-					</div>
 				</div>
 			</a>
 		</div>
@@ -325,39 +302,6 @@
 		margin: 0 0 1.5rem 0;
 	}
 
-	.feature-highlights {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-	}
-
-	.highlight {
-		font-size: 0.875rem;
-		color: var(--color-text-primary);
-		padding: 0.375rem 0.75rem;
-		background: var(--color-background-tertiary);
-		border: var(--border-brutalist-thin);
-		font-weight: 600;
-		border-radius: 4px;
-		transition: all 0.2s ease;
-	}
-
-	.chat-card:hover .highlight {
-		background: var(--color-gradient-gold);
-	}
-
-	.transcribe-card:hover .highlight {
-		background: var(--color-gradient-mint);
-	}
-
-	.tts-card:hover .highlight {
-		background: var(--color-gradient-lavender);
-	}
-
-	.background-card:hover .highlight {
-		background: var(--color-accent-blue);
-	}
-
 	.menu-footer {
 		text-align: center;
 		color: var(--color-text-tertiary);
@@ -410,15 +354,6 @@
 
 		.card-content {
 			padding: 1.5rem;
-		}
-
-		.feature-highlights {
-			gap: 0.375rem;
-		}
-
-		.highlight {
-			font-size: 0.8125rem;
-			padding: 0.25rem 0.5rem;
 		}
 	}
 </style>

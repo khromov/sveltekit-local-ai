@@ -16,13 +16,13 @@ export const load: LayoutLoad = async ({ url, params }) => {
 		await loadLocale(currentLocale);
 	}
 
-	const baseUrl = dev ? '' : 'https://ai.stanislav.garden';
+	const baseUrl = dev ? '' : 'https://enclave.page';
 	const ogImageUrl = `${baseUrl}/og.png`;
 	const currentUrl = `${baseUrl}${url.pathname}`;
 
 	return {
 		seo: {
-			title: 'Local AI Tools',
+			title: 'Enclave',
 			description: 'Private AI tools that run in your browser',
 			ogImage: ogImageUrl,
 			url: currentUrl

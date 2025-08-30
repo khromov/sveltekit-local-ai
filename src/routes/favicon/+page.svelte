@@ -160,7 +160,7 @@
 			name: 'Shield',
 			icon: ShieldIcon,
 			color: '#98fb98',
-			description: 'Local AI security and privacy'
+			description: 'Enclave security and privacy'
 		},
 		{
 			name: 'Lock',
@@ -303,7 +303,7 @@
 		<h1>Favicon Concept Gallery</h1>
 		<p>
 			A collection of {allConcepts.length} square favicon concepts in 512×512 format, designed for the
-			Local AI Tools application.
+			Enclave application.
 		</p>
 	</div>
 

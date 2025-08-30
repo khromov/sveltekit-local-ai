@@ -32,7 +32,7 @@
 				</div>
 				<h2>Anthropic Claude</h2>
 				<p class="card-description">
-					Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku
+					Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku
 				</p>
 				<div class="card-action">
 					<span>Open Tokenizer</span>

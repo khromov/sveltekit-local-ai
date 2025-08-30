@@ -1,5 +1,5 @@
 {
-	"name": "sveltekit-local-ai",
+	"name": "enclave",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
@@ -37,8 +37,8 @@
 		"@transcribe/transcriber": "^3.0.0",
 		"@webgpu/types": "^0.1.64",
 		"@wllama/wllama": "github:khromov/wllama#cache-reset-fix-2",
-		"@wuchale/svelte": "^0.14.0",
-		"@wuchale/vite-plugin": "^0.14.1",
+		"@wuchale/svelte": "^0.14.1",
+		"@wuchale/vite-plugin": "^0.14.2",
 		"eslint": "^9.34.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.11.0",

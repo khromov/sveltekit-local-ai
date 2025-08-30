@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-	<title>OpenGraph Generator - Local AI</title>
+	<title>OpenGraph Generator - Enclave: Local AI</title>
 </svelte:head>
 
 <CardInterface>
@@ -31,9 +31,9 @@
 						<div class="icon">
 							<BrainIcon />
 						</div>
-						<h1>Local AI</h1>
+						<h1>Enclave: Local AI</h1>
 						<p>Chat • Transcribe • Text to Speech • Background Remover • Count Tokens</p>
-						<div class="url">ai.stanislav.garden</div>
+						<div class="url">enclave.page</div>
 					</div>
 				</div>
 			</div>
@@ -46,8 +46,8 @@
 						<div class="logo">
 							<RocketIcon />
 						</div>
-						<h1>Local AI</h1>
-						<div class="url">ai.stanislav.garden</div>
+						<h1>Enclave: Local AI</h1>
+						<div class="url">enclave.page</div>
 					</div>
 					<div class="right">
 						<h2>Private AI in Your Browser</h2>
@@ -73,11 +73,11 @@
 						</div>
 					</div>
 					<div class="main">
-						<h1>Local AI Tools</h1>
+						<h1>Enclave</h1>
 						<p>Run offline: Chat • Transcribe • TTS • Background • Tokens</p>
 					</div>
 					<div class="footer">
-						<span class="url">ai.stanislav.garden</span>
+						<span class="url">enclave.page</span>
 					</div>
 				</div>
 			</div>

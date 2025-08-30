@@ -1,11 +1,11 @@
-# SvelteKit Local AI Tools
+# Enclave
 
 A browser-based AI application that runs entirely on your device without sending data to external servers. This project uses Svelte 5, SvelteKit, WebAssembly, and various AI libraries for chat, transcription, text-to-speech, and image processing.
 
 ## Live Demo
 
 You can try the application at:
-https://ai.stanislav.garden
+https://enclave.page
 
 ![Screenshot](./.github/screenshot.png)
 
@@ -54,10 +54,10 @@ npm run build
 
 ```bash
 # Build the Docker image
-docker build -t sveltekit-local-ai .
+docker build -t enclave .
 
 # Run the container
-docker run -p 3000:3000 sveltekit-local-ai
+docker run -p 3000:3000 enclave
 ```
 
 ## How It Works
