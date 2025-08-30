@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-30T16:44:47.136Z\n"
+"PO-Revision-Date: 2025-08-30T16:47:12.150Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -138,8 +138,8 @@ msgid "<0/> Transcribing Audio"
 msgstr "<0/> Transcribing Audio"
 
 #: src/lib/components/whisper/TranscriptionProgress.svelte
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 #: src/lib/components/common/LoadingProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Complete"
 
@@ -250,13 +250,12 @@ msgstr "Tool #02"
 msgid "Transcribe Audio"
 msgstr "Transcribe Audio"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
-"\t\t\t\t\t\ttext or a subtitle file."
-msgstr ""
-"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
-"text or a subtitle file."
+#~ msgid ""
+#~ "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
+#~ "\t\t\t\t\t\ttext or a subtitle file."
+#~ msgstr ""
+#~ "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
+#~ "text or a subtitle file."
 
 #~ msgid "High Accuracy"
 #~ msgstr "High Accuracy"
@@ -297,13 +296,12 @@ msgstr "Tool #04"
 msgid "Remove Background"
 msgstr "Remove Background"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
-"\t\t\t\t\t\tprofessional results."
-msgstr ""
-"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
-"professional results."
+#~ msgid ""
+#~ "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
+#~ "\t\t\t\t\t\tprofessional results."
+#~ msgstr ""
+#~ "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
+#~ "professional results."
 
 #~ msgid "AI-Powered"
 #~ msgstr "AI-Powered"
@@ -397,8 +395,8 @@ msgstr "Processing failed"
 msgid "<0/> Processing Image"
 msgstr "<0/> Processing Image"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -1210,3 +1208,19 @@ msgstr "Enclave: Local AI"
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku"
 msgstr "Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku"
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Convert speech to text using Whisper AI. Upload any existing audio file or record a new\n"
+"audio clip directly in your browser and export as text or a subtitle file."
+msgstr ""
+"Convert speech to text using Whisper AI. Upload any existing audio file or record a new\n"
+"audio clip directly in your browser and export as text or a subtitle file."
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for\n"
+"professional results."
+msgstr ""
+"Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for\n"
+"professional results."

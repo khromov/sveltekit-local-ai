@@ -50,8 +50,8 @@
 					</div>
 					<h2>Transcribe Audio</h2>
 					<p class="feature-description">
-						Convert speech to text using Whisper AI. Upload any existing audio file and export as
-						text or a subtitle file.
+						Convert speech to text using Whisper AI. Upload any existing audio file or record a new
+						audio clip directly in your browser and export as text or a subtitle file.
 					</p>
 				</div>
 			</a>
@@ -78,7 +78,7 @@
 					</div>
 					<h2>Remove Background</h2>
 					<p class="feature-description">
-						Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for
+						Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for
 						professional results.
 					</p>
 				</div>

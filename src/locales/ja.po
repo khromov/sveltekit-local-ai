@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-30T16:44:47.144Z\n"
+"PO-Revision-Date: 2025-08-30T16:47:12.160Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -175,14 +175,14 @@ msgstr "すべてのコンセプトは、ブルータリストデザインの美
 msgid "<0/> Processing Image"
 msgstr "<0/> 画像処理中"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-#: src/lib/components/common/LoadingProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/common/LoadingProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% 完了"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -198,8 +198,8 @@ msgstr "<0/> {0}枚の画像を選択中"
 msgid "Drop multiple images here"
 msgstr "ここに複数の画像をドロップ"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "または"
 
@@ -215,8 +215,8 @@ msgstr "選択された画像 ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> すべてクリア"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -485,9 +485,9 @@ msgstr "モデル準備完了"
 msgid "Failed to load transcription model. Please try again."
 msgstr "文字起こしモデルの読み込みに失敗しました。もう一度お試しください。"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Retry"
 msgstr "再試行"
 
@@ -879,13 +879,12 @@ msgstr ""
 "このページでは、ブラウザ上で完全に動作する無料でプライベートなAIツールをご利用いただけます - \n"
 "オフラインでも動作します！"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
-"text or a subtitle file."
-msgstr ""
-"Whisper AIを使用して音声をテキストに変換。任意の音声ファイルをアップロードして、\n"
-"テキストまたは字幕ファイルとしてエクスポート。"
+#~ msgid ""
+#~ "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
+#~ "text or a subtitle file."
+#~ msgstr ""
+#~ "Whisper AIを使用して音声をテキストに変換。任意の音声ファイルをアップロードして、\n"
+#~ "テキストまたは字幕ファイルとしてエクスポート。"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
@@ -895,13 +894,12 @@ msgstr ""
 "AIモデルを使用してテキストを自然な音声に変換。Kitten TTS、Piper、\n"
 "Kokoroモデルから選択して高品質な音声合成を実現。"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
-"professional results."
-msgstr ""
-"AIを使用して画像の背景を除去。BRIA AIのRMBG v1.4モデルにより\n"
-"プロフェッショナルな仕上がりを実現。"
+#~ msgid ""
+#~ "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
+#~ "professional results."
+#~ msgstr ""
+#~ "AIを使用して画像の背景を除去。BRIA AIのRMBG v1.4モデルにより\n"
+#~ "プロフェッショナルな仕上がりを実現。"
 
 #: src/routes/favicon/+page.svelte
 msgid ""
@@ -1043,8 +1041,8 @@ msgstr "キャッシュされたモデルを読み込み中"
 msgid "Downloading Model"
 msgstr "モデルをダウンロード中"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading..."
 msgstr "読み込み中..."
 
@@ -1209,4 +1207,16 @@ msgstr "Enclave: ローカルAI"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Convert speech to text using Whisper AI. Upload any existing audio file or record a new\n"
+"audio clip directly in your browser and export as text or a subtitle file."
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for\n"
+"professional results."
 msgstr ""

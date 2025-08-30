@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-30T16:44:47.142Z\n"
+"PO-Revision-Date: 2025-08-30T16:47:12.157Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -167,9 +167,9 @@ msgstr "Procesamiento fallido"
 msgid "<0/> Processing Image"
 msgstr "<0/> Procesando Imagen"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-#: src/lib/components/common/LoadingProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/common/LoadingProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Completado"
 
@@ -210,8 +210,8 @@ msgstr "Galería de Conceptos de Favicon"
 msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
 msgstr "Todos los conceptos están diseñados en 512×512 píxeles con la estética de diseño brutalista en mente."
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Entrar"
 
@@ -227,8 +227,8 @@ msgstr "<0/> {0} imagen{1} seleccionada{1}"
 msgid "Drop multiple images here"
 msgstr "Suelta múltiples imágenes aquí"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "O"
 
@@ -244,8 +244,8 @@ msgstr "Imágenes Seleccionadas ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Limpiar Todo"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -569,9 +569,9 @@ msgstr "Modelo Listo"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Error al cargar el modelo de transcripción. Por favor intenta de nuevo."
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Retry"
 msgstr "Reintentar"
 
@@ -879,13 +879,12 @@ msgstr ""
 "En esta página encontrarás herramientas de IA gratuitas y privadas que funcionan completamente en tu navegador - ¡incluso\n"
 "sin conexión!"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
-"text or a subtitle file."
-msgstr ""
-"Convierte voz a texto usando Whisper AI. Sube cualquier archivo de audio existente y expórtalo como\n"
-"texto o archivo de subtítulos."
+#~ msgid ""
+#~ "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
+#~ "text or a subtitle file."
+#~ msgstr ""
+#~ "Convierte voz a texto usando Whisper AI. Sube cualquier archivo de audio existente y expórtalo como\n"
+#~ "texto o archivo de subtítulos."
 
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
@@ -895,13 +894,12 @@ msgstr ""
 "Convierte texto en voz de sonido natural usando modelos de IA. Elige entre los modelos Kitten TTS, Piper\n"
 "o Kokoro para síntesis de voz de alta calidad."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
-"professional results."
-msgstr ""
-"Elimina fondos de imágenes usando IA. Impulsado por el modelo RMBG v1.4 de BRIA AI para\n"
-"resultados profesionales."
+#~ msgid ""
+#~ "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
+#~ "professional results."
+#~ msgstr ""
+#~ "Elimina fondos de imágenes usando IA. Impulsado por el modelo RMBG v1.4 de BRIA AI para\n"
+#~ "resultados profesionales."
 
 #: src/routes/favicon/+page.svelte
 msgid ""
@@ -1039,8 +1037,8 @@ msgstr "Cargando Modelo en Caché"
 msgid "Downloading Model"
 msgstr "Descargando Modelo"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading..."
 msgstr "Cargando..."
 
@@ -1209,4 +1207,16 @@ msgstr "Enclave: IA Local"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Convert speech to text using Whisper AI. Upload any existing audio file or record a new\n"
+"audio clip directly in your browser and export as text or a subtitle file."
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for\n"
+"professional results."
 msgstr ""

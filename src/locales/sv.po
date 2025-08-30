@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-30T16:44:47.146Z\n"
+"PO-Revision-Date: 2025-08-30T16:47:12.162Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -55,13 +55,12 @@ msgstr "Verktyg #02"
 msgid "Transcribe Audio"
 msgstr "Transkribera ljud"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
-"text or a subtitle file."
-msgstr ""
-"Konvertera tal till text med Whisper AI. Ladda upp en ljudfil och exportera som\n"
-"text eller undertextfil."
+#~ msgid ""
+#~ "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
+#~ "text or a subtitle file."
+#~ msgstr ""
+#~ "Konvertera tal till text med Whisper AI. Ladda upp en ljudfil och exportera som\n"
+#~ "text eller undertextfil."
 
 #~ msgid "High Accuracy"
 #~ msgstr "Hög noggrannhet"
@@ -102,13 +101,12 @@ msgstr "Verktyg #04"
 msgid "Remove Background"
 msgstr "Ta bort bakgrund"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid ""
-"Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
-"professional results."
-msgstr ""
-"Ta bort bakgrunder från bilder med AI. Drivs av RMBG v1.4-modellen från BRIA AI för\n"
-"professionella resultat."
+#~ msgid ""
+#~ "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
+#~ "professional results."
+#~ msgstr ""
+#~ "Ta bort bakgrunder från bilder med AI. Drivs av RMBG v1.4-modellen från BRIA AI för\n"
+#~ "professionella resultat."
 
 #~ msgid "AI-Powered"
 #~ msgstr "AI-driven"
@@ -239,9 +237,9 @@ msgstr ""
 msgid "<0/> Processing Image"
 msgstr "<0/> Bearbetar bild"
 
-#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-#: src/lib/components/common/LoadingProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/common/LoadingProgress.svelte
+#: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% klart"
 
@@ -311,8 +309,8 @@ msgstr "Klicka för att lägga till fler bilder"
 msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "eller klicka för att bläddra • JPG, PNG, WebP stöds"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "ELLER"
 
@@ -328,8 +326,8 @@ msgstr "Valda bilder ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Rensa alla"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -353,8 +351,8 @@ msgstr "Du"
 msgid "AI"
 msgstr "AI"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/chat/MessageInput.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -630,9 +628,9 @@ msgstr "Byt modell"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Misslyckades att ladda transkriptionsmodell. Försök igen."
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Retry"
 msgstr "Försök igen"
 
@@ -1043,8 +1041,8 @@ msgstr "Laddar cachad modell"
 msgid "Downloading Model"
 msgstr "Laddar ner modell"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading..."
 msgstr "Laddar..."
 
@@ -1209,4 +1207,16 @@ msgstr "Enclave: Lokal AI"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku"
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Convert speech to text using Whisper AI. Upload any existing audio file or record a new\n"
+"audio clip directly in your browser and export as text or a subtitle file."
+msgstr ""
+
+#: src/routes/[[lang]]/+page.svelte
+msgid ""
+"Remove backgrounds from images using AI. Choose between RMBG v1.4 and BEN2 models for\n"
+"professional results."
 msgstr ""
