@@ -1,6 +1,6 @@
 import * as ort from 'onnxruntime-web';
 import { cachedFetch } from '$lib/download-utils';
-import { phonemize } from 'phonemizer';
+import { phonemize } from '../../../node_modules/phonemizer/src/phonemizer.js';
 import { RawAudio } from '$lib/utils';
 
 // Piper TTS class for local model
