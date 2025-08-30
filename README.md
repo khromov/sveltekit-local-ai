@@ -7,6 +7,8 @@ A browser-based AI application that runs entirely on your device without sending
 You can try the application at:
 https://ai.stanislav.garden
 
+![Screenshot](./.github/screenshot.png)
+
 ## Features
 
 - **Chat** - LLM conversations using models like Gemma3 via llama.cpp

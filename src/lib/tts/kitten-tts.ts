@@ -1,7 +1,7 @@
 import { BASE_MODEL_URL } from '$lib/config';
 import * as ort from 'onnxruntime-web';
 import { cachedFetch } from '$lib/download-utils';
-import { phonemize } from 'phonemizer';
+import { phonemize } from '../../../node_modules/phonemizer/src/phonemizer.js';
 import { RawAudio } from '$lib/utils';
 
 // KittenTTS class for local model
