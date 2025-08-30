@@ -54,10 +54,10 @@ npm run build
 
 ```bash
 # Build the Docker image
-docker build -t localmind .
+docker build -t enclave .
 
 # Run the container
-docker run -p 3000:3000 localmind
+docker run -p 3000:3000 enclave
 ```
 
 ## How It Works

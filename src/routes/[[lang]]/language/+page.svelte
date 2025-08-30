@@ -28,8 +28,8 @@
 </script>
 
 <svelte:head>
-	<title>Language Settings - LocalMind</title>
-	<meta name="description" content="Change the language settings for the LocalMind application" />
+	<title>Language Settings - Enclave</title>
+	<meta name="description" content="Change the language settings for the Enclave application" />
 </svelte:head>
 
 <CardInterface>

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T12:44:06.349Z\n"
-"PO-Revision-Date: 2025-08-30T15:25:42.189Z\n"
+"PO-Revision-Date: 2025-08-30T16:33:14.296Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -12,9 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.ts
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/+layout.ts
 msgid "Enclave"
 msgstr "Enclave"
 
@@ -562,8 +561,8 @@ msgstr "<0/> Raw Tokens ({0})"
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Type or paste text in the input field above to analyze tokens and character count."
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -1217,3 +1216,7 @@ msgstr "Audio Transcription - Enclave"
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
 msgstr "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Enclave: Local AI"
+msgstr "Enclave: Local AI"

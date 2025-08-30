@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-30T15:25:42.217Z\n"
+"PO-Revision-Date: 2025-08-30T16:33:14.308Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -12,9 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.ts
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/+layout.ts
 msgid "Enclave"
 msgstr ""
 
@@ -156,8 +155,8 @@ msgstr "Вся обробка відбувається локально у ва�
 msgid "No data is sent to external servers."
 msgstr "Жодні дані не передаються на зовнішні сервери."
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Токени"
 
@@ -1217,3 +1216,7 @@ msgstr ""
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
 msgstr "Перетворюйте мовлення на текст за допомогою Whisper AI. Завантажте будь-який аудіофайл та експортуйте як текст або файл субтитрів. Висока точність з підтримкою багатьох форматів та локальною обробкою."
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Enclave: Local AI"
+msgstr ""

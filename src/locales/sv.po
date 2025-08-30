@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-30T15:25:42.216Z\n"
+"PO-Revision-Date: 2025-08-30T16:33:14.306Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -12,9 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.ts
-#: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/+layout.ts
 msgid "Enclave"
 msgstr ""
 
@@ -156,8 +155,8 @@ msgstr "All bearbetning sker lokalt i din webbläsare med WebAssembly."
 msgid "No data is sent to external servers."
 msgstr "Ingen data skickas till externa servrar."
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -1217,3 +1216,7 @@ msgstr ""
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
 msgstr "Konvertera tal till text med Whisper AI. Ladda upp vilken ljudfil som helst och exportera som text- eller undertextfil. Hög noggrannhet med flera format och lokal bearbetning."
+
+#: src/routes/[[lang]]/+page.svelte
+msgid "Enclave: Local AI"
+msgstr ""
