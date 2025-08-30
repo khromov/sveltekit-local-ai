@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-30T16:33:31.036Z\n"
+"PO-Revision-Date: 2025-08-30T16:44:47.144Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.ts
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/+layout.ts
 msgid "Enclave"
 msgstr "Enclave"
 
@@ -30,17 +30,14 @@ msgstr "チャット"
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 msgstr "llama.cppにより、Gemma3などの大規模言語モデルとデバイス上で完全にチャット"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Private & Secure"
-msgstr "プライベート＆セキュア"
+#~ msgid "Private & Secure"
+#~ msgstr "プライベート＆セキュア"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Works Offline"
-msgstr "オフライン動作"
+#~ msgid "Works Offline"
+#~ msgstr "オフライン動作"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "No Data Sharing"
-msgstr "データ共有なし"
+#~ msgid "No Data Sharing"
+#~ msgstr "データ共有なし"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #02"
@@ -50,18 +47,14 @@ msgstr "ツール #02"
 msgid "Transcribe Audio"
 msgstr "音声文字起こし"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "High Accuracy"
-msgstr "高精度"
+#~ msgid "High Accuracy"
+#~ msgstr "高精度"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Multiple Formats"
-msgstr "複数フォーマット対応"
+#~ msgid "Multiple Formats"
+#~ msgstr "複数フォーマット対応"
 
-#: src/routes/[[lang]]/+page.svelte
-#: src/routes/[[lang]]/+page.svelte
-msgid "Local Processing"
-msgstr "ローカル処理"
+#~ msgid "Local Processing"
+#~ msgstr "ローカル処理"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #03"
@@ -71,13 +64,11 @@ msgstr "ツール #03"
 msgid "Text to Speech"
 msgstr "テキスト読み上げ"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Multiple Models"
-msgstr "複数モデル対応"
+#~ msgid "Multiple Models"
+#~ msgstr "複数モデル対応"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Natural Voices"
-msgstr "自然な音声"
+#~ msgid "Natural Voices"
+#~ msgstr "自然な音声"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #04"
@@ -87,13 +78,11 @@ msgstr "ツール #04"
 msgid "Remove Background"
 msgstr "背景除去"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "AI-Powered"
-msgstr "AI搭載"
+#~ msgid "AI-Powered"
+#~ msgstr "AI搭載"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "High Quality"
-msgstr "高品質"
+#~ msgid "High Quality"
+#~ msgstr "高品質"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #05"
@@ -107,13 +96,11 @@ msgstr "トークンカウント"
 msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
 msgstr "OpenAIとAnthropicモデルのプロンプトのトークン使用量を推定。"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "OpenAI & Anthropic"
-msgstr "OpenAI & Anthropic"
+#~ msgid "OpenAI & Anthropic"
+#~ msgstr "OpenAI & Anthropic"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Accurate Counts"
-msgstr "正確なカウント"
+#~ msgid "Accurate Counts"
+#~ msgstr "正確なカウント"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "All processing happens locally in your browser using WebAssembly."
@@ -396,8 +383,8 @@ msgstr "録音完了"
 msgid "<0/> Clear Recording"
 msgstr "<0/> 録音をクリア"
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "トークン"
 
@@ -799,9 +786,8 @@ msgstr "<0/> LLMトークンカウント"
 msgid "Anthropic Claude"
 msgstr "Anthropic Claude"
 
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
-msgstr "Claude 3 Opus、Sonnet、Haikuを含むClaudeモデルのトークンをカウント"
+#~ msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
+#~ msgstr "Claude 3 Opus、Sonnet、Haikuを含むClaudeモデルのトークンをカウント"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+page.svelte
@@ -1215,8 +1201,12 @@ msgstr "音声転写 - Enclave"
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
 msgstr "Whisper AIを使用して音声をテキストに変換。任意の音声ファイルをアップロードしてテキストまたは字幕ファイルとしてエクスポート。複数フォーマットとローカル処理により高精度を実現。"
 
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave: Local AI"
 msgstr "Enclave: ローカルAI"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku"
+msgstr ""

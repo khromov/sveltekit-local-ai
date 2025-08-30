@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-30T16:33:31.036Z\n"
+"PO-Revision-Date: 2025-08-30T16:44:47.146Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.ts
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/+layout.ts
 msgid "Enclave"
 msgstr "Enclave"
 
@@ -38,17 +38,14 @@ msgstr "Chatt"
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 msgstr "Chatta med stora språkmodeller som Gemma3, helt lokalt tack vare llama.cpp"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Private & Secure"
-msgstr "Privat & säker"
+#~ msgid "Private & Secure"
+#~ msgstr "Privat & säker"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Works Offline"
-msgstr "Fungerar offline"
+#~ msgid "Works Offline"
+#~ msgstr "Fungerar offline"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "No Data Sharing"
-msgstr "Ingen datadelning"
+#~ msgid "No Data Sharing"
+#~ msgstr "Ingen datadelning"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #02"
@@ -66,18 +63,14 @@ msgstr ""
 "Konvertera tal till text med Whisper AI. Ladda upp en ljudfil och exportera som\n"
 "text eller undertextfil."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "High Accuracy"
-msgstr "Hög noggrannhet"
+#~ msgid "High Accuracy"
+#~ msgstr "Hög noggrannhet"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Multiple Formats"
-msgstr "Flera format"
+#~ msgid "Multiple Formats"
+#~ msgstr "Flera format"
 
-#: src/routes/[[lang]]/+page.svelte
-#: src/routes/[[lang]]/+page.svelte
-msgid "Local Processing"
-msgstr "Lokal bearbetning"
+#~ msgid "Local Processing"
+#~ msgstr "Lokal bearbetning"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #03"
@@ -95,13 +88,11 @@ msgstr ""
 "Konvertera text till naturligt tal med AI-modeller. Välj mellan Kitten TTS, Piper\n"
 "eller Kokoro-modeller för högkvalitativ röstsyntes."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Multiple Models"
-msgstr "Flera modeller"
+#~ msgid "Multiple Models"
+#~ msgstr "Flera modeller"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Natural Voices"
-msgstr "Naturliga röster"
+#~ msgid "Natural Voices"
+#~ msgstr "Naturliga röster"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #04"
@@ -119,13 +110,11 @@ msgstr ""
 "Ta bort bakgrunder från bilder med AI. Drivs av RMBG v1.4-modellen från BRIA AI för\n"
 "professionella resultat."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "AI-Powered"
-msgstr "AI-driven"
+#~ msgid "AI-Powered"
+#~ msgstr "AI-driven"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "High Quality"
-msgstr "Hög kvalitet"
+#~ msgid "High Quality"
+#~ msgstr "Hög kvalitet"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #05"
@@ -139,13 +128,11 @@ msgstr "Räkna tokens"
 msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
 msgstr "Uppskatta tokenanvändning för prompter i OpenAI- och Anthropic-modeller."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "OpenAI & Anthropic"
-msgstr "OpenAI & Anthropic"
+#~ msgid "OpenAI & Anthropic"
+#~ msgstr "OpenAI & Anthropic"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Accurate Counts"
-msgstr "Exakta beräkningar"
+#~ msgid "Accurate Counts"
+#~ msgstr "Exakta beräkningar"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "All processing happens locally in your browser using WebAssembly."
@@ -155,8 +142,8 @@ msgstr "All bearbetning sker lokalt i din webbläsare med WebAssembly."
 msgid "No data is sent to external servers."
 msgstr "Ingen data skickas till externa servrar."
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -729,9 +716,8 @@ msgstr ""
 msgid "Anthropic Claude"
 msgstr "Anthropic Claude"
 
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
-msgstr "Räkna tokens för Claude-modeller inklusive Claude 3 Opus, Sonnet och Haiku"
+#~ msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
+#~ msgstr "Räkna tokens för Claude-modeller inklusive Claude 3 Opus, Sonnet och Haiku"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+page.svelte
@@ -1215,8 +1201,12 @@ msgstr "Ljudtranskription - Enclave"
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
 msgstr "Konvertera tal till text med Whisper AI. Ladda upp vilken ljudfil som helst och exportera som text- eller undertextfil. Hög noggrannhet med flera format och lokal bearbetning."
 
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave: Local AI"
 msgstr "Enclave: Lokal AI"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku"
+msgstr ""

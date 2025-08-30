@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-30T16:33:31.035Z\n"
+"PO-Revision-Date: 2025-08-30T16:44:47.142Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.ts
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/+layout.ts
 msgid "Enclave"
 msgstr "Enclave"
 
@@ -34,17 +34,14 @@ msgstr "Chat"
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 msgstr "Chatea con Modelos de Lenguaje Grande como Gemma3, completamente en tu dispositivo gracias a llama.cpp"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Private & Secure"
-msgstr "Privado y Seguro"
+#~ msgid "Private & Secure"
+#~ msgstr "Privado y Seguro"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Works Offline"
-msgstr "Funciona Sin Conexión"
+#~ msgid "Works Offline"
+#~ msgstr "Funciona Sin Conexión"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "No Data Sharing"
-msgstr "Sin Compartir Datos"
+#~ msgid "No Data Sharing"
+#~ msgstr "Sin Compartir Datos"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #02"
@@ -54,18 +51,14 @@ msgstr "Herramienta #02"
 msgid "Transcribe Audio"
 msgstr "Transcribir Audio"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "High Accuracy"
-msgstr "Alta Precisión"
+#~ msgid "High Accuracy"
+#~ msgstr "Alta Precisión"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Multiple Formats"
-msgstr "Múltiples Formatos"
+#~ msgid "Multiple Formats"
+#~ msgstr "Múltiples Formatos"
 
-#: src/routes/[[lang]]/+page.svelte
-#: src/routes/[[lang]]/+page.svelte
-msgid "Local Processing"
-msgstr "Procesamiento Local"
+#~ msgid "Local Processing"
+#~ msgstr "Procesamiento Local"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #03"
@@ -75,13 +68,11 @@ msgstr "Herramienta #03"
 msgid "Text to Speech"
 msgstr "Texto a Voz"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Multiple Models"
-msgstr "Múltiples Modelos"
+#~ msgid "Multiple Models"
+#~ msgstr "Múltiples Modelos"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Natural Voices"
-msgstr "Voces Naturales"
+#~ msgid "Natural Voices"
+#~ msgstr "Voces Naturales"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #04"
@@ -91,13 +82,11 @@ msgstr "Herramienta #04"
 msgid "Remove Background"
 msgstr "Eliminar Fondo"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "AI-Powered"
-msgstr "Impulsado por IA"
+#~ msgid "AI-Powered"
+#~ msgstr "Impulsado por IA"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "High Quality"
-msgstr "Alta Calidad"
+#~ msgid "High Quality"
+#~ msgstr "Alta Calidad"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #05"
@@ -111,13 +100,11 @@ msgstr "Contar Tokens"
 msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
 msgstr "Estima el uso de tokens para prompts en modelos de OpenAI y Anthropic."
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "OpenAI & Anthropic"
-msgstr "OpenAI y Anthropic"
+#~ msgid "OpenAI & Anthropic"
+#~ msgstr "OpenAI y Anthropic"
 
-#: src/routes/[[lang]]/+page.svelte
-msgid "Accurate Counts"
-msgstr "Conteos Precisos"
+#~ msgid "Accurate Counts"
+#~ msgstr "Conteos Precisos"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "All processing happens locally in your browser using WebAssembly."
@@ -288,8 +275,8 @@ msgstr "Cargar ejemplo"
 msgid "Clear text"
 msgstr "Limpiar texto"
 
-#: src/routes/+layout.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/routes/+layout.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -649,9 +636,8 @@ msgstr "<0/> Contar Tokens de LLM"
 msgid "Anthropic Claude"
 msgstr "Anthropic Claude"
 
-#: src/routes/[[lang]]/count-tokens/+page.svelte
-msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
-msgstr "Cuenta tokens para modelos Claude incluyendo Claude 3 Opus, Sonnet y Haiku"
+#~ msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
+#~ msgstr "Cuenta tokens para modelos Claude incluyendo Claude 3 Opus, Sonnet y Haiku"
 
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+page.svelte
@@ -1215,8 +1201,12 @@ msgstr "Transcripción de Audio - Enclave"
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
 msgstr "Convierte voz a texto usando Whisper AI. Sube cualquier archivo de audio existente y exporta como texto o archivo de subtítulos. Alta precisión con múltiples formatos y procesamiento local."
 
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave: Local AI"
 msgstr "Enclave: IA Local"
+
+#: src/routes/[[lang]]/count-tokens/+page.svelte
+msgid "Count tokens for Claude models including Claude Opus 4.1, Sonnet 4, and Haiku"
+msgstr ""
