@@ -15,7 +15,7 @@ msgstr ""
 #: src/routes/+layout.ts
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave"
-msgstr ""
+msgstr "Enclave"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
@@ -1209,7 +1209,7 @@ msgstr "Chatta med stora språkmodeller som Gemma3, helt lokalt tack vare llama.
 
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Audio Transcription - Enclave"
-msgstr ""
+msgstr "Ljudtranskription - Enclave"
 
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."

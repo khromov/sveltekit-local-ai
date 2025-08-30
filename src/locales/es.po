@@ -15,7 +15,7 @@ msgstr ""
 #: src/routes/+layout.ts
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave"
-msgstr ""
+msgstr "Enclave"
 
 #: src/routes/+layout.svelte
 msgid "View source on GitHub"
@@ -1209,7 +1209,7 @@ msgstr "Chatea con Modelos de Lenguaje Grande como Gemma3, completamente en tu d
 
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Audio Transcription - Enclave"
-msgstr ""
+msgstr "Transcripción de Audio - Enclave"
 
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
