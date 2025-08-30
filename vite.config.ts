@@ -17,6 +17,7 @@ export default defineConfig({
 				});
 			}
 		},
+		// @ts-expect-error: Wuchale plugin has type compatibility issues with Vite
 		wuchale(),
 		sveltekit(),
 		Icons({
