@@ -1219,4 +1219,4 @@ msgstr "Convierte voz a texto usando Whisper AI. Sube cualquier archivo de audio
 #: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave: Local AI"
-msgstr ""
+msgstr "Enclave: IA Local"

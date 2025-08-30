@@ -160,7 +160,7 @@
 			name: 'Shield',
 			icon: ShieldIcon,
 			color: '#98fb98',
-			description: 'Local AI security and privacy'
+			description: 'Enclave security and privacy'
 		},
 		{
 			name: 'Lock',
