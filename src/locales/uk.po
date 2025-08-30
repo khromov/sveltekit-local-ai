@@ -15,7 +15,7 @@ msgstr ""
 #: src/routes/+layout.ts
 #: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
-msgid "LocalMind"
+msgid "Enclave"
 msgstr ""
 
 #: src/routes/[[lang]]/+page.svelte
@@ -176,10 +176,10 @@ msgstr "Галерея концептів фавіконів"
 #: src/routes/favicon/+page.svelte
 msgid ""
 "A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
-"LocalMind application."
+"Enclave application."
 msgstr ""
 "Колекція {0} квадратних концептів фавіконів у форматі 512×512, розроблених для\n"
-"додатку LocalMind."
+"додатку Enclave."
 
 #: src/routes/favicon/+page.svelte
 msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
@@ -792,8 +792,8 @@ msgstr "Чат • Транскрибування • Текст у мовлен
 #: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
-msgid "ai.stanislav.garden"
-msgstr "ai.stanislav.garden"
+msgid "enclave.page"
+msgstr "enclave.page"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Layout 2: Split Simple"
@@ -844,8 +844,8 @@ msgid "Try WebGPU (experimental) <0/>"
 msgstr "Спробувати WebGPU (експериментально) <0/>"
 
 #: src/routes/[[lang]]/language/+page.svelte
-msgid "Change the language settings for the LocalMind application"
-msgstr "Змініть мовні налаштування для додатку LocalMind"
+msgid "Change the language settings for the Enclave application"
+msgstr "Змініть мовні налаштування для додатку Enclave"
 
 #: src/routes/[[lang]]/language/+page.svelte
 msgid "Language Settings"
@@ -1159,7 +1159,7 @@ msgid "BG Remover"
 msgstr "Видалення фону"
 
 #: src/routes/[[lang]]/background-remover/+page.ts
-msgid "Background Remover - LocalMind"
+msgid "Background Remover - Enclave"
 msgstr "Видалення фону - Локальні AI інструменти"
 
 #: src/routes/[[lang]]/background-remover/+page.ts
@@ -1171,7 +1171,7 @@ msgid "Private AI tools that run in your browser"
 msgstr "Приватні AI інструменти, що працюють у вашому браузері"
 
 #: src/routes/[[lang]]/+page.ts
-msgid "LocalMind - Private, Offline AI in Your Browser"
+msgid "Enclave - Private, Offline AI in Your Browser"
 msgstr "Локальні AI інструменти - Приватний, офлайн AI у вашому браузері"
 
 #: src/routes/[[lang]]/+page.ts
@@ -1179,7 +1179,7 @@ msgid "Free, private AI tools that run entirely in your browser - and even offli
 msgstr "Безкоштовні, приватні AI інструменти, що працюють повністю у вашому браузері - навіть офлайн! Спілкуйтеся з LLM, транскрибуйте аудіо та видаляйте фон за допомогою WebAssembly."
 
 #: src/routes/[[lang]]/count-tokens/+page.ts
-msgid "Count LLM Tokens - LocalMind"
+msgid "Count LLM Tokens - Enclave"
 msgstr "Підрахунок токенів LLM - Локальні AI інструменти"
 
 #: src/routes/[[lang]]/count-tokens/+page.ts
@@ -1187,7 +1187,7 @@ msgid "Calculate token counts for different AI models. Understand context limits
 msgstr "Обчисліть кількість токенів для різних AI моделей. Зрозумійте обмеження контексту для моделей Claude та ChatGPT за допомогою наших інструментів токенізації."
 
 #: src/routes/[[lang]]/text-to-speech/+page.ts
-msgid "Text to Speech - LocalMind"
+msgid "Text to Speech - Enclave"
 msgstr "Текст у мовлення - Локальні AI інструменти"
 
 #: src/routes/[[lang]]/text-to-speech/+page.ts
@@ -1195,15 +1195,15 @@ msgid "Convert text to natural-sounding speech using AI models. Choose from Kitt
 msgstr "Перетворюйте текст на природне мовлення за допомогою AI моделей. Оберіть з Kitten TTS, Piper або Kokoro моделей для високоякісного синтезу голосу, все працює локально у вашому браузері."
 
 #: src/routes/favicon/+page.ts
-msgid "Favicon Concepts - LocalMind"
+msgid "Favicon Concepts - Enclave"
 msgstr "Концепти фавіконів - Локальні AI інструменти"
 
 #: src/routes/favicon/+page.ts
-msgid "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the LocalMind application."
+msgid "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Enclave application."
 msgstr "Повна галерея з 31 концепту дизайну фавіконів у форматі 512×512, що містить AI-тематичні іконки, технологічні візерунки та бруталістичні елементи дизайну для додатку Локальні AI інструменти."
 
 #: src/routes/[[lang]]/chat/+page.ts
-msgid "AI Chat - LocalMind"
+msgid "AI Chat - Enclave"
 msgstr "AI чат - Локальні AI інструменти"
 
 #: src/routes/[[lang]]/chat/+page.ts
@@ -1211,7 +1211,7 @@ msgid "Chat with Large Language Models like Gemma3, completely on-device thanks 
 msgstr "Спілкуйтеся з великими мовними моделями як Gemma3, повністю на вашому пристрої завдяки llama.cpp. Приватно, безпечно і працює офлайн без передачі даних."
 
 #: src/routes/[[lang]]/transcribe/+page.ts
-msgid "Audio Transcription - LocalMind"
+msgid "Audio Transcription - Enclave"
 msgstr ""
 
 #: src/routes/[[lang]]/transcribe/+page.ts

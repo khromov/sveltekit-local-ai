@@ -7,9 +7,9 @@ export const load: PageLoad = ({ parent }) => {
 		...data,
 		seo: {
 			...data.seo,
-			title: 'Favicon Concepts - LocalMind',
+			title: 'Favicon Concepts - Enclave',
 			description:
-				'A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the LocalMind application.'
+				'A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Enclave application.'
 		}
 	}));
 };

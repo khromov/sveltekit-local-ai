@@ -40,7 +40,7 @@
 		return false;
 	}
 
-	const DEFAULT_TITLE = 'LocalMind';
+	const DEFAULT_TITLE = 'Enclave';
 
 	const getLocalizedNavLinks = (currentLang: string) => {
 		return [

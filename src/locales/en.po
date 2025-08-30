@@ -15,8 +15,8 @@ msgstr ""
 #: src/routes/+layout.ts
 #: src/routes/[[lang]]/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
-msgid "LocalMind"
-msgstr "LocalMind"
+msgid "Enclave"
+msgstr "Enclave"
 
 #: src/routes/+layout.svelte
 msgid "Change language"
@@ -177,8 +177,8 @@ msgid "<0/> Copy"
 msgstr "<0/> Copy"
 
 #: src/routes/[[lang]]/language/+page.svelte
-msgid "Change the language settings for the LocalMind application"
-msgstr "Change the language settings for the LocalMind application"
+msgid "Change the language settings for the Enclave application"
+msgstr "Change the language settings for the Enclave application"
 
 #: src/routes/[[lang]]/language/+page.svelte
 msgid "Language Settings"
@@ -196,10 +196,10 @@ msgstr "Favicon Concept Gallery"
 #: src/routes/favicon/+page.svelte
 msgid ""
 "A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
-"\t\t\tLocalMind application."
+"\t\t\tEnclave application."
 msgstr ""
 "A collection of {0} square favicon concepts in 512×512 format, designed for the\n"
-"LocalMind application."
+"Enclave application."
 
 #: src/routes/favicon/+page.svelte
 msgid "All concepts are designed at 512×512 pixels with the brutalist design aesthetic in mind."
@@ -877,8 +877,8 @@ msgstr "Chat • Transcribe • Text to Speech • Background Remover • Count 
 #: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/[[lang]]/og/+page.svelte
-msgid "ai.stanislav.garden"
-msgstr "ai.stanislav.garden"
+msgid "enclave.page"
+msgstr "enclave.page"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Layout 2: Split Simple"
@@ -1163,56 +1163,56 @@ msgid "Private AI tools that run in your browser"
 msgstr "Private AI tools that run in your browser"
 
 #: src/routes/[[lang]]/+page.ts
-msgid "LocalMind - Private, Offline AI in Your Browser"
-msgstr "LocalMind - Private, Offline AI in Your Browser"
+msgid "Enclave - Private, Offline AI in Your Browser"
+msgstr "Enclave - Private, Offline AI in Your Browser"
 
 #: src/routes/[[lang]]/+page.ts
 msgid "Free, private AI tools that run entirely in your browser - and even offline! Chat with LLMs, transcribe audio, and remove backgrounds using WebAssembly."
 msgstr "Free, private AI tools that run entirely in your browser - and even offline! Chat with LLMs, transcribe audio, and remove backgrounds using WebAssembly."
 
 #: src/routes/[[lang]]/text-to-speech/+page.ts
-msgid "Text to Speech - LocalMind"
-msgstr "Text to Speech - LocalMind"
+msgid "Text to Speech - Enclave"
+msgstr "Text to Speech - Enclave"
 
 #: src/routes/[[lang]]/text-to-speech/+page.ts
 msgid "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis, all running locally in your browser."
 msgstr "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper, or Kokoro models for high-quality voice synthesis, all running locally in your browser."
 
 #: src/routes/[[lang]]/background-remover/+page.ts
-msgid "Background Remover - LocalMind"
-msgstr "Background Remover - LocalMind"
+msgid "Background Remover - Enclave"
+msgstr "Background Remover - Enclave"
 
 #: src/routes/[[lang]]/background-remover/+page.ts
 msgid "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality."
 msgstr "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for professional results. AI-powered, high quality."
 
 #: src/routes/[[lang]]/count-tokens/+page.ts
-msgid "Count LLM Tokens - LocalMind"
-msgstr "Count LLM Tokens - LocalMind"
+msgid "Count LLM Tokens - Enclave"
+msgstr "Count LLM Tokens - Enclave"
 
 #: src/routes/[[lang]]/count-tokens/+page.ts
 msgid "Calculate token counts for different AI models. Understand context limits for Claude and ChatGPT models with our tokenizer tools."
 msgstr "Calculate token counts for different AI models. Understand context limits for Claude and ChatGPT models with our tokenizer tools."
 
 #: src/routes/favicon/+page.ts
-msgid "Favicon Concepts - LocalMind"
-msgstr "Favicon Concepts - LocalMind"
+msgid "Favicon Concepts - Enclave"
+msgstr "Favicon Concepts - Enclave"
 
 #: src/routes/favicon/+page.ts
-msgid "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the LocalMind application."
-msgstr "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the LocalMind application."
+msgid "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Enclave application."
+msgstr "A comprehensive gallery of 31 favicon concept designs in 512×512 format, featuring AI-themed icons, tech patterns, and brutalist design elements for the Enclave application."
 
 #: src/routes/[[lang]]/chat/+page.ts
-msgid "AI Chat - LocalMind"
-msgstr "AI Chat - LocalMind"
+msgid "AI Chat - Enclave"
+msgstr "AI Chat - Enclave"
 
 #: src/routes/[[lang]]/chat/+page.ts
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp. Private, secure, and works offline with no data sharing."
 msgstr "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp. Private, secure, and works offline with no data sharing."
 
 #: src/routes/[[lang]]/transcribe/+page.ts
-msgid "Audio Transcription - LocalMind"
-msgstr "Audio Transcription - LocalMind"
+msgid "Audio Transcription - Enclave"
+msgstr "Audio Transcription - Enclave"
 
 #: src/routes/[[lang]]/transcribe/+page.ts
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."

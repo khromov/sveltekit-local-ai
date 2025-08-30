@@ -1,11 +1,11 @@
-# LocalMind
+# Enclave
 
 A browser-based AI application that runs entirely on your device without sending data to external servers. This project uses Svelte 5, SvelteKit, WebAssembly, and various AI libraries for chat, transcription, text-to-speech, and image processing.
 
 ## Live Demo
 
 You can try the application at:
-https://ai.stanislav.garden
+https://enclave.page
 
 ![Screenshot](./.github/screenshot.png)
 

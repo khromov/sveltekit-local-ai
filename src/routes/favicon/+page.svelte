@@ -303,7 +303,7 @@
 		<h1>Favicon Concept Gallery</h1>
 		<p>
 			A collection of {allConcepts.length} square favicon concepts in 512×512 format, designed for the
-			LocalMind application.
+			Enclave application.
 		</p>
 	</div>
 
