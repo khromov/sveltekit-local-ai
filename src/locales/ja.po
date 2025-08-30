@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-30T16:33:14.304Z\n"
+"PO-Revision-Date: 2025-08-30T16:33:31.036Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/+layout.ts
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave"
 msgstr ""
 
@@ -189,8 +189,8 @@ msgid "<0/> Processing Image"
 msgstr "<0/> 画像処理中"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/common/LoadingProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% 完了"
 
@@ -396,13 +396,13 @@ msgstr "録音完了"
 msgid "<0/> Clear Recording"
 msgstr "<0/> 録音をクリア"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "トークン"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/lib/components/tts/TextStatistics.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Characters"
 msgstr "文字数"
 
@@ -498,9 +498,9 @@ msgstr "モデル準備完了"
 msgid "Failed to load transcription model. Please try again."
 msgstr "文字起こしモデルの読み込みに失敗しました。もう一度お試しください。"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "再試行"
 
@@ -592,8 +592,8 @@ msgstr "WebGPUを試す (実験的) <0/>"
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "モデルの読み込みに失敗しました。接続を確認してもう一度お試しください。"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Model"
 msgstr "モデル読み込み中"
 
@@ -621,10 +621,8 @@ msgstr "ソーシャルメディア共有用に最適化されたシンプルな
 msgid "Layout 1: Simple & Bold"
 msgstr "レイアウト1: シンプル＆ボールド"
 
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Local AI"
-msgstr "ローカルAI"
+#~ msgid "Local AI"
+#~ msgstr "ローカルAI"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
@@ -1059,8 +1057,8 @@ msgstr "キャッシュされたモデルを読み込み中"
 msgid "Downloading Model"
 msgstr "モデルをダウンロード中"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading..."
 msgstr "読み込み中..."
 
@@ -1076,8 +1074,8 @@ msgstr "文字起こしモデルをブラウザにダウンロード中です。
 msgid "Loading model... Progress tracking not available in this browser."
 msgstr "モデル読み込み中... このブラウザではプログレス追跡は利用できません。"
 
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 #: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "平均トークン長: 英語テキストで約4文字"
 
@@ -1218,5 +1216,7 @@ msgid "Convert speech to text using Whisper AI. Upload any existing audio file a
 msgstr "Whisper AIを使用して音声をテキストに変換。任意の音声ファイルをアップロードしてテキストまたは字幕ファイルとしてエクスポート。複数フォーマットとローカル処理により高精度を実現。"
 
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave: Local AI"
 msgstr ""

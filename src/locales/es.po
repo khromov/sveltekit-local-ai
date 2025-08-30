@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:12:14.886Z\n"
-"PO-Revision-Date: 2025-08-30T16:33:14.301Z\n"
+"PO-Revision-Date: 2025-08-30T16:33:31.035Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/+layout.ts
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave"
 msgstr ""
 
@@ -181,8 +181,8 @@ msgid "<0/> Processing Image"
 msgstr "<0/> Procesando Imagen"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/common/LoadingProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Completado"
 
@@ -288,13 +288,13 @@ msgstr "Cargar ejemplo"
 msgid "Clear text"
 msgstr "Limpiar texto"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/lib/components/tts/TextStatistics.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Characters"
 msgstr "Caracteres"
 
@@ -582,9 +582,9 @@ msgstr "Modelo Listo"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Error al cargar el modelo de transcripción. Por favor intenta de nuevo."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Reintentar"
 
@@ -592,8 +592,8 @@ msgstr "Reintentar"
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Error al cargar el modelo. Por favor verifica tu conexión e intenta de nuevo."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Model"
 msgstr "Cargando Modelo"
 
@@ -759,10 +759,8 @@ msgstr "Diseños simples optimizados para compartir en redes sociales (1200×630
 msgid "Layout 1: Simple & Bold"
 msgstr "Diseño 1: Simple y Audaz"
 
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Local AI"
-msgstr "IA Local"
+#~ msgid "Local AI"
+#~ msgstr "IA Local"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
@@ -1055,8 +1053,8 @@ msgstr "Cargando Modelo en Caché"
 msgid "Downloading Model"
 msgstr "Descargando Modelo"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading..."
 msgstr "Cargando..."
 
@@ -1084,8 +1082,8 @@ msgstr "Procesando imagen y eliminando fondo..."
 msgid "Processing image {0} of {1}..."
 msgstr "Procesando imagen {0} de {1}..."
 
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 #: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "Longitud promedio de token: ~4 caracteres para texto en inglés"
 
@@ -1218,5 +1216,7 @@ msgid "Convert speech to text using Whisper AI. Upload any existing audio file a
 msgstr "Convierte voz a texto usando Whisper AI. Sube cualquier archivo de audio existente y exporta como texto o archivo de subtítulos. Alta precisión con múltiples formatos y procesamiento local."
 
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave: Local AI"
 msgstr ""

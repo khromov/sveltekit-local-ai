@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-08-30T16:33:14.308Z\n"
+"PO-Revision-Date: 2025-08-30T16:33:31.037Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/+layout.ts
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave"
 msgstr ""
 
@@ -155,8 +155,8 @@ msgstr "Вся обробка відбувається локально у ва�
 msgid "No data is sent to external servers."
 msgstr "Жодні дані не передаються на зовнішні сервери."
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Токени"
 
@@ -253,8 +253,8 @@ msgid "<0/> Processing Image"
 msgstr "<0/> Обробка зображення"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-#: src/lib/components/whisper/TranscriptionProgress.svelte
 #: src/lib/components/common/LoadingProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Завершено"
 
@@ -439,8 +439,8 @@ msgstr "<0/> Завантажити обрану модель"
 msgid "<0/> Models run locally in your browser. No data is sent to external servers."
 msgstr "<0/> Моделі працюють локально у вашому браузері. Жодні дані не передаються на зовнішні сервери."
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/lib/components/tts/TextStatistics.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Characters"
 msgstr "Символи"
 
@@ -559,9 +559,9 @@ msgstr "Змінити модель"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Не вдалося завантажити модель транскрибування. Спробуйте ще раз."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Повторити"
 
@@ -661,8 +661,8 @@ msgstr "Слухати →"
 msgid "Failed to load model. Please check your connection and try again."
 msgstr "Не вдалося завантажити модель. Перевірте з'єднання та спробуйте знову."
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/chat/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading Model"
 msgstr "Завантаження моделі"
 
@@ -779,10 +779,8 @@ msgstr "Прості дизайни оптимізовані для пошире
 msgid "Layout 1: Simple & Bold"
 msgstr "Макет 1: Простий та яскравий"
 
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
-msgid "Local AI"
-msgstr "Локальний AI"
+#~ msgid "Local AI"
+#~ msgstr "Локальний AI"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
@@ -1055,8 +1053,8 @@ msgstr "Завантаження моделі з кешу"
 msgid "Downloading Model"
 msgstr "Завантаження моделі"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading..."
 msgstr "Завантаження..."
 
@@ -1076,8 +1074,8 @@ msgstr "Завантаження моделі... Відстеження прог
 msgid "Failed to load model"
 msgstr "Не вдалося завантажити модель"
 
-#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 #: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
+#: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "Середня довжина токена: ~4 символи для англійського тексту"
 
@@ -1218,5 +1216,7 @@ msgid "Convert speech to text using Whisper AI. Upload any existing audio file a
 msgstr "Перетворюйте мовлення на текст за допомогою Whisper AI. Завантажте будь-який аудіофайл та експортуйте як текст або файл субтитрів. Висока точність з підтримкою багатьох форматів та локальною обробкою."
 
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave: Local AI"
 msgstr ""
