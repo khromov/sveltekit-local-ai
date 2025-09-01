@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-08-30T16:47:12.162Z\n"
+"PO-Revision-Date: 2025-09-01T15:59:52.364Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/+layout.ts
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave"
 msgstr "Enclave"
 
@@ -140,8 +140,8 @@ msgstr "All bearbetning sker lokalt i din webbläsare med WebAssembly."
 msgid "No data is sent to external servers."
 msgstr "Ingen data skickas till externa servrar."
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "Tokens"
 
@@ -237,9 +237,9 @@ msgstr ""
 msgid "<0/> Processing Image"
 msgstr "<0/> Bearbetar bild"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-#: src/lib/components/common/LoadingProgress.svelte
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/common/LoadingProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% klart"
 
@@ -309,8 +309,8 @@ msgstr "Klicka för att lägga till fler bilder"
 msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "eller klicka för att bläddra • JPG, PNG, WebP stöds"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "ELLER"
 
@@ -326,8 +326,8 @@ msgstr "Valda bilder ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Rensa alla"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -424,8 +424,8 @@ msgstr "<0/> Modeller körs lokalt i din webbläsare. Ingen data skickas till ex
 msgid "Type or paste text in the input field above to analyze tokens and character count."
 msgstr "Skriv eller klistra in text i fältet ovan för att analysera tokens och antal tecken."
 
-#: src/lib/components/tts/TextStatistics.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "Tecken"
 
@@ -628,9 +628,9 @@ msgstr "Byt modell"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Misslyckades att ladda transkriptionsmodell. Försök igen."
 
+#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Retry"
 msgstr "Försök igen"
 
@@ -1041,8 +1041,8 @@ msgstr "Laddar cachad modell"
 msgid "Downloading Model"
 msgstr "Laddar ner modell"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading..."
 msgstr "Laddar..."
 
@@ -1058,8 +1058,8 @@ msgstr "Transkriptionsmodellen laddas ner till din webbläsare."
 msgid "Loading model... Progress tracking not available in this browser."
 msgstr "Laddar modell... Framståndsspårning inte tillgänglig i denna webbläsare."
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "Genomsnittlig tokenlängd: ~4 tecken för engelsk text"
 
@@ -1199,9 +1199,9 @@ msgstr "Ljudtranskription - Enclave"
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
 msgstr "Konvertera tal till text med Whisper AI. Ladda upp vilken ljudfil som helst och exportera som text- eller undertextfil. Hög noggrannhet med flera format och lokal bearbetning."
 
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave: Local AI"
 msgstr "Enclave: Lokal AI"
 
@@ -1224,3 +1224,11 @@ msgid ""
 msgstr ""
 "Ta bort bakgrunder från bilder med AI. Välj mellan RMBG v1.4 och BEN2-modeller för\n"
 "professionella resultat."
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Language Settings - Enclave"
+msgstr ""
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "OpenGraph Generator - Enclave: Local AI"
+msgstr ""

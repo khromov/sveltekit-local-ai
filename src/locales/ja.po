@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-08-30T16:47:12.160Z\n"
+"PO-Revision-Date: 2025-09-01T15:59:52.363Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/+layout.ts
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave"
 msgstr "Enclave"
 
@@ -175,9 +175,9 @@ msgstr "すべてのコンセプトは、ブルータリストデザインの美
 msgid "<0/> Processing Image"
 msgstr "<0/> 画像処理中"
 
-#: src/lib/components/whisper/TranscriptionProgress.svelte
-#: src/lib/components/common/LoadingProgress.svelte
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
+#: src/lib/components/common/LoadingProgress.svelte
+#: src/lib/components/whisper/TranscriptionProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% 完了"
 
@@ -198,8 +198,8 @@ msgstr "<0/> {0}枚の画像を選択中"
 msgid "Drop multiple images here"
 msgstr "ここに複数の画像をドロップ"
 
-#: src/lib/components/whisper/TranscribeOptions.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/TranscribeOptions.svelte
 msgid "OR"
 msgstr "または"
 
@@ -215,8 +215,8 @@ msgstr "選択された画像 ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> すべてクリア"
 
-#: src/lib/components/whisper/FileUpload.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/whisper/FileUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -383,13 +383,13 @@ msgstr "録音完了"
 msgid "<0/> Clear Recording"
 msgstr "<0/> 録音をクリア"
 
-#: src/lib/components/count-tokens/TokenStats.svelte
 #: src/routes/+layout.svelte
+#: src/lib/components/count-tokens/TokenStats.svelte
 msgid "Tokens"
 msgstr "トークン"
 
-#: src/lib/components/tts/TextStatistics.svelte
 #: src/lib/components/count-tokens/TokenStats.svelte
+#: src/lib/components/tts/TextStatistics.svelte
 msgid "Characters"
 msgstr "文字数"
 
@@ -485,9 +485,9 @@ msgstr "モデル準備完了"
 msgid "Failed to load transcription model. Please try again."
 msgstr "文字起こしモデルの読み込みに失敗しました。もう一度お試しください。"
 
+#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
-#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Retry"
 msgstr "再試行"
 
@@ -1041,8 +1041,8 @@ msgstr "キャッシュされたモデルを読み込み中"
 msgid "Downloading Model"
 msgstr "モデルをダウンロード中"
 
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Loading..."
 msgstr "読み込み中..."
 
@@ -1058,8 +1058,8 @@ msgstr "文字起こしモデルをブラウザにダウンロード中です。
 msgid "Loading model... Progress tracking not available in this browser."
 msgstr "モデル読み込み中... このブラウザではプログレス追跡は利用できません。"
 
-#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 #: src/routes/[[lang]]/count-tokens/anthropic-claude/+page.svelte
+#: src/routes/[[lang]]/count-tokens/openai-chatgpt/+page.svelte
 msgid "Average token length: ~4 characters for English text"
 msgstr "平均トークン長: 英語テキストで約4文字"
 
@@ -1199,9 +1199,9 @@ msgstr "音声転写 - Enclave"
 msgid "Convert speech to text using Whisper AI. Upload any existing audio file and export as text or subtitle file. High accuracy with multiple formats and local processing."
 msgstr "Whisper AIを使用して音声をテキストに変換。任意の音声ファイルをアップロードしてテキストまたは字幕ファイルとしてエクスポート。複数フォーマットとローカル処理により高精度を実現。"
 
-#: src/routes/[[lang]]/og/+page.svelte
-#: src/routes/[[lang]]/og/+page.svelte
 #: src/routes/[[lang]]/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/[[lang]]/og/+page.svelte
 msgid "Enclave: Local AI"
 msgstr "Enclave: ローカルAI"
 
@@ -1224,3 +1224,11 @@ msgid ""
 msgstr ""
 "AIを使用して画像の背景を除去。プロフェッショナルな結果を得るために\n"
 "RMBG v1.4とBEN2モデルから選択。"
+
+#: src/routes/[[lang]]/language/+page.svelte
+msgid "Language Settings - Enclave"
+msgstr ""
+
+#: src/routes/[[lang]]/og/+page.svelte
+msgid "OpenGraph Generator - Enclave: Local AI"
+msgstr ""
