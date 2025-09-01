@@ -1171,8 +1171,8 @@ msgstr ""
 
 #: src/routes/[[lang]]/language/+page.svelte
 msgid "Language Settings - Enclave"
-msgstr ""
+msgstr "Språkinställningar - Lokala AI-verktyg"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "OpenGraph Generator - Enclave: Local AI"
-msgstr ""
+msgstr "OpenGraph-generator - Lokala AI-verktyg"
