@@ -14,7 +14,7 @@ export const handle = async ({ event, resolve }) => {
 	return await runWithLocale(localeToLoad, () =>
 		resolve(event, {
 			transformPageChunk: ({ html }) =>
-				html.replace('%tracking%', !dev ? '<!-- no tracking in dev mode -->' : trackingScript)
+				html.replace('%tracking%', dev ? '<!-- no tracking in dev mode -->' : trackingScript)
 		})
 	);
 };
