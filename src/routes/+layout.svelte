@@ -139,7 +139,7 @@
 				</li>
 				<li class="home-item github-item">
 					<a
-						href="https://github.com/khromov/sveltekit-local-ai"
+						href="https://github.com/khromov/enclave"
 						class="home-link"
 						aria-label="View source on GitHub"
 						target="_blank"
