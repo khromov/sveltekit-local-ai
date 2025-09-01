@@ -64,6 +64,7 @@
 <svelte:head>
 	<title>{page.data.seo?.title || DEFAULT_TITLE}</title>
 	<meta name="description" content={page.data.seo?.description || ''} />
+	<link rel="canonical" href={page.data.seo?.canonicalUrl || page.url.href} />
 
 	<!-- Open Graph meta tags -->
 	<meta property="og:title" content={page.data.seo?.title || DEFAULT_TITLE} />
@@ -78,8 +79,6 @@
 	<meta name="twitter:title" content={page.data.seo?.title || DEFAULT_TITLE} />
 	<meta name="twitter:description" content={page.data.seo?.description || ''} />
 	<meta name="twitter:image" content={page.data.seo?.ogImage || ''} />
-
-	<link rel="canonical" href={page.data.seo?.canonicalUrl || page.url.href} />
 </svelte:head>
 
 <div class="app-wrapper">
