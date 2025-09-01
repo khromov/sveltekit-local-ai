@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:20:18.035Z\n"
-"PO-Revision-Date: 2025-09-01T15:59:52.365Z\n"
+"PO-Revision-Date: 2025-09-01T18:09:02.214Z\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.ts
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/+layout.ts
 msgid "Enclave"
 msgstr "Enclave"
 
@@ -38,15 +38,6 @@ msgstr "Чат"
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 msgstr "Спілкуйтеся з великими мовними моделями як Gemma3, повністю на вашому пристрої завдяки llama.cpp"
 
-#~ msgid "Private & Secure"
-#~ msgstr "Приватно та безпечно"
-
-#~ msgid "Works Offline"
-#~ msgstr "Працює офлайн"
-
-#~ msgid "No Data Sharing"
-#~ msgstr "Без передачі даних"
-
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #02"
 msgstr "Інструмент #02"
@@ -54,22 +45,6 @@ msgstr "Інструмент #02"
 #: src/routes/[[lang]]/+page.svelte
 msgid "Transcribe Audio"
 msgstr "Транскрибувати аудіо"
-
-#~ msgid ""
-#~ "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
-#~ "text or a subtitle file."
-#~ msgstr ""
-#~ "Перетворюйте мовлення на текст за допомогою Whisper AI. Завантажте будь-який аудіофайл та експортуйте як\n"
-#~ "текст або файл субтитрів."
-
-#~ msgid "High Accuracy"
-#~ msgstr "Висока точність"
-
-#~ msgid "Multiple Formats"
-#~ msgstr "Різні формати"
-
-#~ msgid "Local Processing"
-#~ msgstr "Локальна обробка"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #03"
@@ -87,12 +62,6 @@ msgstr ""
 "Перетворюйте текст на природне мовлення за допомогою AI моделей. Оберіть з Kitten TTS, Piper\n"
 "або Kokoro моделей для високоякісного синтезу голосу."
 
-#~ msgid "Multiple Models"
-#~ msgstr "Різні моделі"
-
-#~ msgid "Natural Voices"
-#~ msgstr "Природні голоси"
-
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #04"
 msgstr "Інструмент #04"
@@ -100,19 +69,6 @@ msgstr "Інструмент #04"
 #: src/routes/[[lang]]/+page.svelte
 msgid "Remove Background"
 msgstr "Видалити фон"
-
-#~ msgid ""
-#~ "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
-#~ "professional results."
-#~ msgstr ""
-#~ "Видаляйте фон із зображень за допомогою AI. На основі моделі RMBG v1.4 від BRIA AI для\n"
-#~ "професійних результатів."
-
-#~ msgid "AI-Powered"
-#~ msgstr "На основі AI"
-
-#~ msgid "High Quality"
-#~ msgstr "Висока якість"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #05"
@@ -125,12 +81,6 @@ msgstr "Підрахувати токени"
 #: src/routes/[[lang]]/+page.svelte
 msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
 msgstr "Оцініть використання токенів для запитів у моделях OpenAI та Anthropic."
-
-#~ msgid "OpenAI & Anthropic"
-#~ msgstr "OpenAI та Anthropic"
-
-#~ msgid "Accurate Counts"
-#~ msgstr "Точні підрахунки"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "All processing happens locally in your browser using WebAssembly."
@@ -238,8 +188,8 @@ msgid "<0/> Processing Image"
 msgstr "<0/> Обробка зображення"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-#: src/lib/components/common/LoadingProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/common/LoadingProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% Завершено"
 
@@ -291,8 +241,8 @@ msgstr "Клацніть, щоб додати більше зображень"
 msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "або клацніть для вибору • Підтримуються JPG, PNG, WebP"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "АБО"
 
@@ -308,8 +258,8 @@ msgstr "Обрані зображення ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Очистити все"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} МБ"
 
@@ -351,8 +301,8 @@ msgstr "<0/> Завантажити"
 msgid "<0/> Process Another"
 msgstr "<0/> Обробити інше"
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -544,9 +494,9 @@ msgstr "Змінити модель"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Не вдалося завантажити модель транскрибування. Спробуйте ще раз."
 
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Повторити"
 
@@ -707,9 +657,6 @@ msgstr ""
 msgid "Anthropic Claude"
 msgstr "Anthropic Claude"
 
-#~ msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
-#~ msgstr "Підрахунок токенів для моделей Claude, включаючи Claude 3 Opus, Sonnet та Haiku"
-
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Open Tokenizer"
@@ -762,9 +709,6 @@ msgstr "Прості дизайни оптимізовані для пошире
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Layout 1: Simple & Bold"
 msgstr "Макет 1: Простий та яскравий"
-
-#~ msgid "Local AI"
-#~ msgstr "Локальний AI"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
@@ -1037,8 +981,8 @@ msgstr "Завантаження моделі з кешу"
 msgid "Downloading Model"
 msgstr "Завантаження моделі"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading..."
 msgstr "Завантаження..."
 

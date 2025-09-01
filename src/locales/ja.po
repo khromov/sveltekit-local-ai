@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-24T22:41:34.932Z\n"
-"PO-Revision-Date: 2025-09-01T15:59:52.363Z\n"
+"PO-Revision-Date: 2025-09-01T18:09:02.213Z\n"
 "Last-Translator: \n"
 "Language: ja\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.ts
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/+layout.ts
 msgid "Enclave"
 msgstr "Enclave"
 
@@ -30,15 +30,6 @@ msgstr "チャット"
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 msgstr "llama.cppにより、Gemma3などの大規模言語モデルとデバイス上で完全にチャット"
 
-#~ msgid "Private & Secure"
-#~ msgstr "プライベート＆セキュア"
-
-#~ msgid "Works Offline"
-#~ msgstr "オフライン動作"
-
-#~ msgid "No Data Sharing"
-#~ msgstr "データ共有なし"
-
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #02"
 msgstr "ツール #02"
@@ -46,15 +37,6 @@ msgstr "ツール #02"
 #: src/routes/[[lang]]/+page.svelte
 msgid "Transcribe Audio"
 msgstr "音声文字起こし"
-
-#~ msgid "High Accuracy"
-#~ msgstr "高精度"
-
-#~ msgid "Multiple Formats"
-#~ msgstr "複数フォーマット対応"
-
-#~ msgid "Local Processing"
-#~ msgstr "ローカル処理"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #03"
@@ -64,12 +46,6 @@ msgstr "ツール #03"
 msgid "Text to Speech"
 msgstr "テキスト読み上げ"
 
-#~ msgid "Multiple Models"
-#~ msgstr "複数モデル対応"
-
-#~ msgid "Natural Voices"
-#~ msgstr "自然な音声"
-
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #04"
 msgstr "ツール #04"
@@ -77,12 +53,6 @@ msgstr "ツール #04"
 #: src/routes/[[lang]]/+page.svelte
 msgid "Remove Background"
 msgstr "背景除去"
-
-#~ msgid "AI-Powered"
-#~ msgstr "AI搭載"
-
-#~ msgid "High Quality"
-#~ msgstr "高品質"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #05"
@@ -95,12 +65,6 @@ msgstr "トークンカウント"
 #: src/routes/[[lang]]/+page.svelte
 msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
 msgstr "OpenAIとAnthropicモデルのプロンプトのトークン使用量を推定。"
-
-#~ msgid "OpenAI & Anthropic"
-#~ msgstr "OpenAI & Anthropic"
-
-#~ msgid "Accurate Counts"
-#~ msgstr "正確なカウント"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "All processing happens locally in your browser using WebAssembly."
@@ -176,13 +140,13 @@ msgid "<0/> Processing Image"
 msgstr "<0/> 画像処理中"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-#: src/lib/components/common/LoadingProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/common/LoadingProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% 完了"
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -215,8 +179,8 @@ msgstr "選択された画像 ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> すべてクリア"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -486,8 +450,8 @@ msgid "Failed to load transcription model. Please try again."
 msgstr "文字起こしモデルの読み込みに失敗しました。もう一度お試しください。"
 
 #: src/routes/[[lang]]/background-remover/+page.svelte
-#: src/routes/[[lang]]/text-to-speech/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/text-to-speech/+page.svelte
 msgid "Retry"
 msgstr "再試行"
 
@@ -607,9 +571,6 @@ msgstr "ソーシャルメディア共有用に最適化されたシンプルな
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Layout 1: Simple & Bold"
 msgstr "レイアウト1: シンプル＆ボールド"
-
-#~ msgid "Local AI"
-#~ msgstr "ローカルAI"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
@@ -786,9 +747,6 @@ msgstr "<0/> LLMトークンカウント"
 msgid "Anthropic Claude"
 msgstr "Anthropic Claude"
 
-#~ msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
-#~ msgstr "Claude 3 Opus、Sonnet、Haikuを含むClaudeモデルのトークンをカウント"
-
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Open Tokenizer"
@@ -879,13 +837,6 @@ msgstr ""
 "このページでは、ブラウザ上で完全に動作する無料でプライベートなAIツールをご利用いただけます - \n"
 "オフラインでも動作します！"
 
-#~ msgid ""
-#~ "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
-#~ "text or a subtitle file."
-#~ msgstr ""
-#~ "Whisper AIを使用して音声をテキストに変換。任意の音声ファイルをアップロードして、\n"
-#~ "テキストまたは字幕ファイルとしてエクスポート。"
-
 #: src/routes/[[lang]]/+page.svelte
 msgid ""
 "Convert text to natural-sounding speech using AI models. Choose from Kitten TTS, Piper,\n"
@@ -893,13 +844,6 @@ msgid ""
 msgstr ""
 "AIモデルを使用してテキストを自然な音声に変換。Kitten TTS、Piper、\n"
 "Kokoroモデルから選択して高品質な音声合成を実現。"
-
-#~ msgid ""
-#~ "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
-#~ "professional results."
-#~ msgstr ""
-#~ "AIを使用して画像の背景を除去。BRIA AIのRMBG v1.4モデルにより\n"
-#~ "プロフェッショナルな仕上がりを実現。"
 
 #: src/routes/favicon/+page.svelte
 msgid ""

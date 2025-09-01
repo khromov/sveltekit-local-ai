@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-25T21:12:40.444Z\n"
-"PO-Revision-Date: 2025-09-01T15:59:52.364Z\n"
+"PO-Revision-Date: 2025-09-01T18:09:02.214Z\n"
 "Last-Translator: \n"
 "Language: sv\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
 
-#: src/routes/+layout.ts
 #: src/routes/[[lang]]/og/+page.svelte
+#: src/routes/+layout.ts
 msgid "Enclave"
 msgstr "Enclave"
 
@@ -38,15 +38,6 @@ msgstr "Chatt"
 msgid "Chat with Large Language Models like Gemma3, completely on-device thanks to llama.cpp"
 msgstr "Chatta med stora språkmodeller som Gemma3, helt lokalt tack vare llama.cpp"
 
-#~ msgid "Private & Secure"
-#~ msgstr "Privat & säker"
-
-#~ msgid "Works Offline"
-#~ msgstr "Fungerar offline"
-
-#~ msgid "No Data Sharing"
-#~ msgstr "Ingen datadelning"
-
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #02"
 msgstr "Verktyg #02"
@@ -54,22 +45,6 @@ msgstr "Verktyg #02"
 #: src/routes/[[lang]]/+page.svelte
 msgid "Transcribe Audio"
 msgstr "Transkribera ljud"
-
-#~ msgid ""
-#~ "Convert speech to text using Whisper AI. Upload any existing audio file and export as\n"
-#~ "text or a subtitle file."
-#~ msgstr ""
-#~ "Konvertera tal till text med Whisper AI. Ladda upp en ljudfil och exportera som\n"
-#~ "text eller undertextfil."
-
-#~ msgid "High Accuracy"
-#~ msgstr "Hög noggrannhet"
-
-#~ msgid "Multiple Formats"
-#~ msgstr "Flera format"
-
-#~ msgid "Local Processing"
-#~ msgstr "Lokal bearbetning"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #03"
@@ -87,12 +62,6 @@ msgstr ""
 "Konvertera text till naturligt tal med AI-modeller. Välj mellan Kitten TTS, Piper\n"
 "eller Kokoro-modeller för högkvalitativ röstsyntes."
 
-#~ msgid "Multiple Models"
-#~ msgstr "Flera modeller"
-
-#~ msgid "Natural Voices"
-#~ msgstr "Naturliga röster"
-
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #04"
 msgstr "Verktyg #04"
@@ -100,19 +69,6 @@ msgstr "Verktyg #04"
 #: src/routes/[[lang]]/+page.svelte
 msgid "Remove Background"
 msgstr "Ta bort bakgrund"
-
-#~ msgid ""
-#~ "Remove backgrounds from images using AI. Powered by the RMBG v1.4 model from BRIA AI for\n"
-#~ "professional results."
-#~ msgstr ""
-#~ "Ta bort bakgrunder från bilder med AI. Drivs av RMBG v1.4-modellen från BRIA AI för\n"
-#~ "professionella resultat."
-
-#~ msgid "AI-Powered"
-#~ msgstr "AI-driven"
-
-#~ msgid "High Quality"
-#~ msgstr "Hög kvalitet"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "Tool #05"
@@ -125,12 +81,6 @@ msgstr "Räkna tokens"
 #: src/routes/[[lang]]/+page.svelte
 msgid "Estimate token usage for prompts across OpenAI and Anthropic models."
 msgstr "Uppskatta tokenanvändning för prompter i OpenAI- och Anthropic-modeller."
-
-#~ msgid "OpenAI & Anthropic"
-#~ msgstr "OpenAI & Anthropic"
-
-#~ msgid "Accurate Counts"
-#~ msgstr "Exakta beräkningar"
 
 #: src/routes/[[lang]]/+page.svelte
 msgid "All processing happens locally in your browser using WebAssembly."
@@ -238,8 +188,8 @@ msgid "<0/> Processing Image"
 msgstr "<0/> Bearbetar bild"
 
 #: src/lib/components/background-remover/BackgroundRemoverProgress.svelte
-#: src/lib/components/common/LoadingProgress.svelte
 #: src/lib/components/whisper/TranscriptionProgress.svelte
+#: src/lib/components/common/LoadingProgress.svelte
 msgid "{0}% Complete"
 msgstr "{0}% klart"
 
@@ -309,8 +259,8 @@ msgstr "Klicka för att lägga till fler bilder"
 msgid "or click to browse • JPG, PNG, WebP supported"
 msgstr "eller klicka för att bläddra • JPG, PNG, WebP stöds"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/TranscribeOptions.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "OR"
 msgstr "ELLER"
 
@@ -326,8 +276,8 @@ msgstr "Valda bilder ({0})"
 msgid "<0/> Clear All"
 msgstr "<0/> Rensa alla"
 
-#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 #: src/lib/components/whisper/FileUpload.svelte
+#: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
 msgid "{0} MB"
 msgstr "{0} MB"
 
@@ -351,8 +301,8 @@ msgstr "Du"
 msgid "AI"
 msgstr "AI"
 
-#: src/lib/components/chat/MessageInput.svelte
 #: src/lib/components/background-remover/BackgroundRemoverUpload.svelte
+#: src/lib/components/chat/MessageInput.svelte
 msgid "Enter"
 msgstr "Enter"
 
@@ -628,9 +578,9 @@ msgstr "Byt modell"
 msgid "Failed to load transcription model. Please try again."
 msgstr "Misslyckades att ladda transkriptionsmodell. Försök igen."
 
+#: src/lib/components/whisper/WhisperModelSelector.svelte
 #: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/routes/[[lang]]/text-to-speech/+page.svelte
-#: src/lib/components/whisper/WhisperModelSelector.svelte
 msgid "Retry"
 msgstr "Försök igen"
 
@@ -714,9 +664,6 @@ msgstr ""
 msgid "Anthropic Claude"
 msgstr "Anthropic Claude"
 
-#~ msgid "Count tokens for Claude models including Claude 3 Opus, Sonnet, and Haiku"
-#~ msgstr "Räkna tokens för Claude-modeller inklusive Claude 3 Opus, Sonnet och Haiku"
-
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 #: src/routes/[[lang]]/count-tokens/+page.svelte
 msgid "Open Tokenizer"
@@ -786,9 +733,6 @@ msgstr "Enkla designer optimerade för delning på sociala medier (1200×630)"
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Layout 1: Simple & Bold"
 msgstr "Layout 1: Enkel & djärv"
-
-#~ msgid "Local AI"
-#~ msgstr "Lokal AI"
 
 #: src/routes/[[lang]]/og/+page.svelte
 msgid "Chat • Transcribe • Text to Speech • Background Remover • Count Tokens"
@@ -1041,8 +985,8 @@ msgstr "Laddar cachad modell"
 msgid "Downloading Model"
 msgstr "Laddar ner modell"
 
-#: src/routes/[[lang]]/background-remover/+page.svelte
 #: src/lib/components/whisper/WhisperModelSelector.svelte
+#: src/routes/[[lang]]/background-remover/+page.svelte
 msgid "Loading..."
 msgstr "Laddar..."
 
