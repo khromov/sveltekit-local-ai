@@ -15,17 +15,20 @@ export function getCurrentLanguage(pathname: string): string {
  * Create a localized link by prepending the language code
  * @param path - The base path (e.g., '/chat')
  * @param lang - The language code (e.g., 'es')
- * @returns The localized path (e.g., '/es/chat' or '/chat' for English)
+ * @returns The localized path (e.g., '/es/chat/' or '/chat/' for English)
  */
 export function createLocalizedLink(path: string, lang: string): string {
+	// Add trailing slash to all paths except root
+	const pathWithSlash = path === '/' ? path : path.endsWith('/') ? path : `${path}/`;
+
 	if (lang === 'en') {
-		return path; // English uses clean URLs without prefix
+		return pathWithSlash; // English uses clean URLs without prefix
 	}
 	// Handle root path specially to avoid double slash
-	if (path === '/') {
-		return `/${lang}`;
+	if (pathWithSlash === '/') {
+		return `/${lang}/`;
 	}
-	return `/${lang}${path}`;
+	return `/${lang}${pathWithSlash}`;
 }
 
 /**

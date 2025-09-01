@@ -14,7 +14,6 @@
 	import CalculatorIcon from 'virtual:icons/lucide/calculator';
 	import GlobeIcon from 'virtual:icons/lucide/globe';
 	import { Toaster } from 'svelte-sonner';
-	import Tracking from '$lib/components/Tracking.svelte';
 	import { getCurrentLanguage, createLocalizedLink, locales } from '$lib/i18n-utils';
 
 	interface Props {
@@ -65,6 +64,7 @@
 <svelte:head>
 	<title>{page.data.seo?.title || DEFAULT_TITLE}</title>
 	<meta name="description" content={page.data.seo?.description || ''} />
+	<link rel="canonical" href={page.data.seo?.canonicalUrl || page.url.href} />
 
 	<!-- Open Graph meta tags -->
 	<meta property="og:title" content={page.data.seo?.title || DEFAULT_TITLE} />
@@ -165,8 +165,6 @@
 			'border: 3px solid #000; box-shadow: 4px 4px 0 #000; border-radius: 8px; font-family: Space Grotesk, sans-serif; font-weight: 600;'
 	}}
 />
-
-<Tracking />
 
 <style>
 	/* Base styles with refined Neo-Brutalist approach */

@@ -7,6 +7,7 @@ import '../locales/loader.svelte.js';
 
 export const ssr = true;
 export const prerender = true;
+export const trailingSlash = 'always';
 
 export const load: LayoutLoad = async ({ url, params }) => {
 	const defaultLocale = 'en';
