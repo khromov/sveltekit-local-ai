@@ -85,10 +85,10 @@
 	<div class="container" class:fullWidth={page.url.pathname === '/og'}>
 		<nav class="main-nav">
 			<ul>
-				<div class="nav-left">
+				<li class="nav-left">
 					{#each getLocalizedNavLinks(currentLang) as link (link.path)}
 						{#if link.icon === 'home'}
-							<li class="home-item">
+							<div class="home-item">
 								<a
 									href={link.path}
 									class:active={isActive(link.path)}
@@ -99,13 +99,13 @@
 										<span>{link.label}</span>
 									{/if}
 								</a>
-							</li>
+							</div>
 						{/if}
 					{/each}
 					<div class="center-items">
 						{#each getLocalizedNavLinks(currentLang) as link (link.path)}
 							{#if link.icon !== 'home'}
-								<li>
+								<div>
 									<a href={link.path} class:active={isActive(link.path)}>
 										{#if link.icon === 'chat'}
 											<MessageSquareIcon style="width: 20px; height: 20px; stroke-width: 2.5" />
@@ -122,11 +122,11 @@
 											<span>{link.label}</span>
 										{/if}
 									</a>
-								</li>
+								</div>
 							{/if}
 						{/each}
 					</div>
-				</div>
+				</li>
 				<li class="home-item language-item">
 					<a
 						href={createLocalizedLink('/language', currentLang)}
@@ -291,6 +291,7 @@
 		scrollbar-color: var(--color-border-primary) transparent;
 		padding-top: 4px;
 		padding-bottom: 4px;
+		list-style: none;
 	}
 
 	.nav-left::-webkit-scrollbar {
@@ -306,12 +307,17 @@
 		gap: 1rem;
 	}
 
-	.center-items li {
-		list-style: none;
+	.center-items div {
+		flex: none;
 	}
 
 	.main-nav li {
 		flex: none;
+	}
+
+	.main-nav li.nav-left {
+		flex: 1;
+		min-width: 0;
 	}
 
 	.main-nav a {
