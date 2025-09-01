@@ -46,7 +46,7 @@
 
 				<div class="language-grid">
 					{#each availableLanguages as language (language.code)}
-						<a href={language.code === 'en' ? '/' : `/${language.code}`} class="language-card">
+						<a href={language.code === 'en' ? '/' : `/${language.code}/`} class="language-card">
 							<div class="language-code">{language.code.toUpperCase()}</div>
 							<div class="language-info">
 								<div class="language-name">{language.name}</div>
