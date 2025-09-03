@@ -19,8 +19,8 @@
 				b = 'true',
 				v = l.getAttribute.bind(l),
 				S = v(g + 'website-id'),
-				w = v(g + 'host-url'),
-				k = v(g + 'before-send'),
+				k = v(g + 'host-url'),
+				w = v(g + 'before-send'),
 				N = v(g + 'tag') || void 0,
 				T = 'false' !== v(g + 'auto-track'),
 				A = v(g + 'do-not-track') === b,
@@ -28,7 +28,7 @@
 				x = v(g + 'exclude-hash') === b,
 				$ = v(g + 'domains') || '',
 				E = $.split(',').map((t) => t.trim()),
-				K = `${(w || '' || l.src.split('/').slice(0, -1).join('/')).replace(/\/$/, '')}/api/send`,
+				K = `${(k || '' || l.src.split('/').slice(0, -1).join('/')).replace(/\/$/, '')}/api/send`,
 				L = `${e}x${a}`,
 				O = /data-umami-event-([\w-_]+)/,
 				_ = g + 'umami-event',
@@ -65,10 +65,11 @@
 						})()),
 				C = async (e, a = 'event') => {
 					if (B()) return;
-					const n = t[k];
+					const n = t[w];
 					if (('function' == typeof n && (e = n(a, e)), e))
 						try {
 							const t = await fetch(K, {
+									keepalive: !0,
 									method: 'POST',
 									body: JSON.stringify({ type: a, payload: e }),
 									headers: {
