@@ -136,4 +136,29 @@ describe('Sitemap XML endpoint', () => {
 		expect(xml).toContain('<priority>0.8</priority>');
 		expect(xml).not.toContain('<priority>1</priority>'); // Should not have integer format
 	});
+
+	it('validates all priority values are within 0.0-1.0 range', async () => {
+		const response = await GET({} as any);
+		const xml = await response.text();
+
+		// Extract all priority values using regex
+		const priorityMatches = xml.match(/<priority>([\d.]+)<\/priority>/g);
+		expect(priorityMatches).toBeTruthy();
+
+		const priorities = priorityMatches!.map((match) => {
+			const value = match.match(/<priority>([\d.]+)<\/priority>/)?.[1];
+			return parseFloat(value!);
+		});
+
+		// Check that all priorities are within valid range
+		for (const priority of priorities) {
+			expect(priority).toBeGreaterThanOrEqual(0.0);
+			expect(priority).toBeLessThanOrEqual(1.0);
+		}
+
+		// Check that we have the expected priority values
+		expect(priorities).toContain(1.0); // Main tools and home page
+		expect(priorities).toContain(0.8); // Language page
+		expect(priorities).toContain(0.3); // Favicon
+	});
 });
