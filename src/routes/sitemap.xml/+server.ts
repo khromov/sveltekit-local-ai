@@ -25,7 +25,7 @@ export const GET: RequestHandler = async () => {
 	for (const route of routes) {
 		for (const locale of locales) {
 			const localizedPath = createLocalizedLink(route.path, locale);
-			const url = `${baseUrl}${localizedPath === '/' ? '' : localizedPath.replace(/\/$/, '')}`;
+			const url = `${baseUrl}${localizedPath === '/' ? '' : localizedPath}`;
 			urls.push(`
     <url>
       <loc>${url}</loc>
@@ -35,15 +35,6 @@ export const GET: RequestHandler = async () => {
     </url>`);
 		}
 	}
-
-	// Add favicon route (non-localized)
-	urls.push(`
-    <url>
-      <loc>${baseUrl}/favicon</loc>
-      <lastmod>${now}</lastmod>
-      <changefreq>yearly</changefreq>
-      <priority>0.3</priority>
-    </url>`);
 
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

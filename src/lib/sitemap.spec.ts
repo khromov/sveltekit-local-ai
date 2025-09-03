@@ -53,11 +53,11 @@ describe('Sitemap XML endpoint', () => {
 		];
 
 		for (const route of toolRoutes) {
-			expect(xml).toContain(`<loc>https://enclave.page${route}</loc>`);
+			expect(xml).toContain(`<loc>https://enclave.page${route}/</loc>`);
 			// Check that this URL has priority 1.0
 			const urlBlock = xml.match(
 				new RegExp(
-					`<url>.*?<loc>https://enclave\\.page${route.replace(/[/]/g, '\\/')}</loc>.*?</url>`,
+					`<url>.*?<loc>https://enclave\\.page${route.replace(/[/]/g, '\\/')}/</loc>.*?</url>`,
 					's'
 				)
 			);
@@ -69,35 +69,25 @@ describe('Sitemap XML endpoint', () => {
 		const response = await GET({} as any);
 		const xml = await response.text();
 
-		// Check English (clean URLs)
+		// Check English (clean URLs with trailing slashes)
 		expect(xml).toContain('<loc>https://enclave.page</loc>');
-		expect(xml).toContain('<loc>https://enclave.page/chat</loc>');
+		expect(xml).toContain('<loc>https://enclave.page/chat/</loc>');
 
-		// Check other languages (with prefixes)
-		expect(xml).toContain('<loc>https://enclave.page/es</loc>');
-		expect(xml).toContain('<loc>https://enclave.page/es/chat</loc>');
-		expect(xml).toContain('<loc>https://enclave.page/ja/transcribe</loc>');
-		expect(xml).toContain('<loc>https://enclave.page/sv/text-to-speech</loc>');
-		expect(xml).toContain('<loc>https://enclave.page/uk/background-remover</loc>');
+		// Check other languages (with prefixes and trailing slashes)
+		expect(xml).toContain('<loc>https://enclave.page/es/</loc>');
+		expect(xml).toContain('<loc>https://enclave.page/es/chat/</loc>');
+		expect(xml).toContain('<loc>https://enclave.page/ja/transcribe/</loc>');
+		expect(xml).toContain('<loc>https://enclave.page/sv/text-to-speech/</loc>');
+		expect(xml).toContain('<loc>https://enclave.page/uk/background-remover/</loc>');
 	});
 
 	it('includes count-tokens sub-routes', async () => {
 		const response = await GET({} as any);
 		const xml = await response.text();
 
-		expect(xml).toContain('<loc>https://enclave.page/count-tokens/anthropic-claude</loc>');
-		expect(xml).toContain('<loc>https://enclave.page/count-tokens/openai-chatgpt</loc>');
-		expect(xml).toContain('<loc>https://enclave.page/es/count-tokens/anthropic-claude</loc>');
-	});
-
-	it('includes favicon route (non-localized)', async () => {
-		const response = await GET({} as any);
-		const xml = await response.text();
-
-		expect(xml).toContain('<loc>https://enclave.page/favicon</loc>');
-		// Should only appear once (not localized)
-		const faviconMatches = xml.match(/favicon/g);
-		expect(faviconMatches).toHaveLength(1);
+		expect(xml).toContain('<loc>https://enclave.page/count-tokens/anthropic-claude/</loc>');
+		expect(xml).toContain('<loc>https://enclave.page/count-tokens/openai-chatgpt/</loc>');
+		expect(xml).toContain('<loc>https://enclave.page/es/count-tokens/anthropic-claude/</loc>');
 	});
 
 	it('sets correct lastmod timestamps', async () => {
@@ -123,8 +113,8 @@ describe('Sitemap XML endpoint', () => {
 		// Count URL blocks
 		const urlBlocks = xml.match(/<url>/g);
 
-		// 9 routes × 5 languages + 1 favicon = 46 URLs
-		expect(urlBlocks).toHaveLength(46);
+		// 9 routes × 5 languages = 45 URLs
+		expect(urlBlocks).toHaveLength(45);
 	});
 
 	it('formats priority values correctly', async () => {
@@ -159,6 +149,5 @@ describe('Sitemap XML endpoint', () => {
 		// Check that we have the expected priority values
 		expect(priorities).toContain(1.0); // Main tools and home page
 		expect(priorities).toContain(0.8); // Language page
-		expect(priorities).toContain(0.3); // Favicon
 	});
 });
