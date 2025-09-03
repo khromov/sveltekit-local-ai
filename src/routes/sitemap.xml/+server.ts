@@ -2,6 +2,8 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { dev } from '$app/environment';
 import { createLocalizedLink, locales } from '$lib/i18n-utils';
 
+export const prerender = true;
+
 export const GET: RequestHandler = async () => {
 	const baseUrl = dev ? 'http://localhost:5173' : 'https://enclave.page';
 	const now = new Date().toISOString();
