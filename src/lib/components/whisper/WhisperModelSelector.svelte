@@ -95,7 +95,9 @@
 					: 'Loading Model'}
 			progress={downloadProgress}
 			previousProgress={previousDownloadProgress}
-			percentageText={hasProgressTracking ? `${downloadProgress}% Complete` : 'Loading...'}
+			percentageText={/* @wc-include */ hasProgressTracking
+				? `${downloadProgress}% Complete`
+				: 'Loading...'}
 			showPercentage={true}
 			message={usingCachedModel
 				? 'Loading model from local cache...'
